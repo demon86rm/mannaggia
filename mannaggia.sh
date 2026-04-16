@@ -133,7 +133,7 @@ while [ "$nds" != 0 ]
 		[ $page -ne 1 ] && path=more$page.html
 	fi
 
-	MANNAGGIA="Mannaggia $(curl -s "https://www.santiebeati.it/$letter/$path" | awk -F'<FONT SIZE="-2">|</FONT> <FONT SIZE="-1"><b>|</b>' '/<a href="\/dettaglio\/.*<FONT/{print $2,$3}' | iconv -f ISO-8859-1| $shufCmd -n1)"
+	MANNAGGIA="Mannaggia $(curl -s "https://www.santiebeati.it/$letter/$path" | awk -F'<FONT SIZE="-2">|</FONT> <FONT SIZE="-1"><b>|</b>' '/<a href="\/dettaglio\/.*<FONT/{print $2,$3}' | iconv -f UTF-8| $shufCmd -n1)"
 	if [ "$wallflag" = true ]
 		then
 		pot=$(( nds % 50 ))
