@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Mannaggia" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#8B0000</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+    </style>
+</resources>

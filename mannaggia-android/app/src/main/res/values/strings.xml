@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mannaggia</string>
+    <string name="btn_mannaggia">Mannaggia!</string>
+    <string name="chk_audio">Pronuncia (Google TTS)</string>
+    <string name="widget_default_text">Mannaggia!</string>
+    <string name="tile_label">Mannaggia</string>
+</resources>
