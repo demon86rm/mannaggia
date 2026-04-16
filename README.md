@@ -112,3 +112,14 @@ Progetto originale:
 - Thanks to: Veteran Unix Admins group on Facebook
 
 
+Android App
+=========
+
+## mannaggia.apk
+App Android sviluppata da Opus 4.6 extended partendo dallo script. Testata su Google Pixel 9 Pro e Android 16.
+L'app prevede la possibilità di usare il text-to-speech di Google, di triggerare un "Mannaggia" scuotendo il telefono (con l'app aperta) e include un widget col quale interagire direttamente dalla home screen. 
+
+## mannaggia-android 
+
+
+Nella cartella sono disponibili i file per poter testare ed effettuare la build dell'app su Android SDK.
