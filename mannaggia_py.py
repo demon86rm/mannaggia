@@ -184,37 +184,36 @@ class MannaggiApp:
             letter = chr(random.randint(65, 90))  # A-Z
             
             # Prima richiesta per ottenere il numero di pagine
-            resp = requests.get(f"https://www.santiebeati.it/{letter}/")
-            soup = BeautifulSoup(resp.content, "html.parser")
-            
-            # Trova il numero di pagine (se esistono)
+            resp = requests.get(f"https://www.santiebeati.it/{letter}/index.html")
+            resp.encoding = 'utf-8'
+
+            # Trova il numero di pagine ("Pagina 1 di N")
             pages = 1
-            pages_text = soup.find(text=re.compile("Pagina:"))
-            if pages_text:
-                pages_match = re.search(r"Pagina:\s*\d+/(\d+)", pages_text)
-                if pages_match:
-                    pages = int(pages_match.group(1))
-            
+            pages_match = re.search(r"Pagina\s+\d+\s+di\s+(\d+)", resp.text)
+            if pages_match:
+                pages = int(pages_match.group(1))
+
             # Scegli una pagina casuale
             page = random.randint(1, pages)
             if page == 1:
-                path = ""
+                path = "index.html"
             else:
-                path = f"more{page}.html"
-            
+                path = f"index.html?page={page}"
+
             # Scarica la pagina specifica
             url = f"https://www.santiebeati.it/{letter}/{path}"
             resp = requests.get(url)
-            resp.encoding = 'ISO-8859-1'  # Il sito usa questa codifica
+            resp.encoding = 'utf-8'  # Il sito ora usa UTF-8
             soup = BeautifulSoup(resp.text, "html.parser")
-            
-            # Estrai tutti i santi dalla pagina
+
+            # Estrai tutti i santi dalla pagina: <a href=".../dettaglio/N"><strong>Nome</strong></a>
             saints = []
-            for font_tag in soup.find_all("font", size="-2"):
-                if font_tag.find_next("font") and font_tag.find_next("font").find("b"):
-                    name = font_tag.text.strip()
-                    title = font_tag.find_next("font").find("b").text.strip()
-                    saints.append(f"{name} {title}")
+            for link in soup.find_all("a", href=re.compile(r"/dettaglio/\d+")):
+                strong = link.find("strong")
+                if strong:
+                    name = strong.get_text(" ", strip=True)
+                    if name:
+                        saints.append(name)
             
             if not saints:
                 return "San Kernel Panic protettore dei programmatori disperati"

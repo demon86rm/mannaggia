@@ -124,16 +124,17 @@ fi
 while [ "$nds" != 0 ]
 	do
 	letter=$(awk '{printf("%c", $1)}' <<<$((RANDOM % 26 + 65)))
-	pages=$(curl -s https://www.santiebeati.it/$letter/ |awk -F'more|\\.html' '/Pagina:/{print $(NF-1);exit}')
-	path=
+	# "Pagina 1 di N" -> N
+	pages=$(curl -s "https://www.santiebeati.it/$letter/index.html" | grep -o 'Pagina 1 di [0-9]*' | head -n1 | awk '{print $4}')
+	path=index.html
 
 	# Alcune lettere tipo Q e Z hanno una pagina sola
 	if [ -n "$pages" ]; then
 		page=$((RANDOM % pages + 1))
-		[ $page -ne 1 ] && path=more$page.html
+		[ $page -ne 1 ] && path="index.html?page=$page"
 	fi
 
-	MANNAGGIA="Mannaggia $(curl -s "https://www.santiebeati.it/$letter/$path" | awk -F'<FONT SIZE="-2">|</FONT> <FONT SIZE="-1"><b>|</b>' '/<a href="\/dettaglio\/.*<FONT/{print $2,$3}' | iconv -f UTF-8| $shufCmd -n1)"
+	MANNAGGIA="Mannaggia $(curl -s "https://www.santiebeati.it/$letter/$path" | grep -o 'dettaglio/[0-9]*"><strong>[^<]*' | sed -e 's/.*<strong>//' -e "s/&#039;/'/g" -e 's/&quot;/"/g' -e 's/&amp;/\&/g' | $shufCmd -n1)"
 	if [ "$wallflag" = true ]
 		then
 		pot=$(( nds % 50 ))
