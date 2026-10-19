@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         binding.txtResult.text = ""
 
         currentJob = lifecycleScope.launch {
-            val result = runCatching { Mannaggia.fetchRandomSaint() }
+            val result = runCatching { Mannaggia.randomSaint(this@MainActivity) }
             result.fold(
                 onSuccess = { saint ->
                     val phrase = Mannaggia.phraseOf(saint)

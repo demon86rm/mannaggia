@@ -13,7 +13,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 /**
- * Home screen widget. Tap the widget → fetch a saint → widget text updates
+ * Home screen widget. Tap the widget → pick a saint → widget text updates
  * in place. No notification, no app launch.
  */
 class MannaggiaWidgetProvider : AppWidgetProvider() {
@@ -40,10 +40,10 @@ class MannaggiaWidgetProvider : AppWidgetProvider() {
         // Show loading state in every instance of the widget.
         for (id in ids) render(context, mgr, id, text = "…")
 
-        // Run the fetch asynchronously; goAsync keeps the BroadcastReceiver alive.
+        // Pick the saint asynchronously; goAsync keeps the BroadcastReceiver alive.
         val pendingResult = goAsync()
         CoroutineScope(SupervisorJob() + Dispatchers.IO).launch {
-            val phrase = runCatching { Mannaggia.phraseOf(Mannaggia.fetchRandomSaint()) }
+            val phrase = runCatching { Mannaggia.phraseOf(Mannaggia.randomSaint(context)) }
                 .getOrElse { "Errore" }
             try {
                 for (id in ids) render(context, mgr, id, text = phrase)

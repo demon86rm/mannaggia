@@ -17,7 +17,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 /**
- * Quick Settings tile. One tap → fetch a saint → post a notification
+ * Quick Settings tile. One tap → pick a saint → post a notification
  * with the phrase. Tapping the notification opens the app.
  */
 class MannaggiaTileService : TileService() {
@@ -29,7 +29,7 @@ class MannaggiaTileService : TileService() {
         setTileState(Tile.STATE_ACTIVE)
 
         scope.launch {
-            val phrase = runCatching { Mannaggia.phraseOf(Mannaggia.fetchRandomSaint()) }
+            val phrase = runCatching { Mannaggia.phraseOf(Mannaggia.randomSaint(this@MannaggiaTileService)) }
                 .getOrElse { "Errore: ${it.message}" }
             showNotification(phrase)
             setTileState(Tile.STATE_INACTIVE)
