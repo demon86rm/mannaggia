@@ -5,4 +5,9 @@
     <string name="chk_audio">Pronuncia (sintesi vocale)</string>
     <string name="widget_default_text">Mannaggia!</string>
     <string name="tile_label">Mannaggia</string>
+    <string name="btn_info">Info</string>
+    <string name="tts_unavailable">Voce italiana non disponibile</string>
+    <string name="about_title">Mannaggia %1$s</string>
+    <string name="about_text">Invocazione automatica dei santi per Veteran Unix Admin depressi. Port Android di mannaggia.sh.\n\nSoftware libero, rilasciato sotto licenza GNU GPL v3. Codice sorgente:\nhttps://github.com/demon86rm/mannaggia\n\nScript originale: idea di Alexiobash, ampliato e mantenuto da Pietro \"Legolas\" Suffritti, con Enrico \"Henryx\" Bianchi, Alessandro \"Aleskandro\" Di Stefano, Davide \"kk0nrad\" Corrado e tutti i contributori.\n\nApp Android: demon86rm.\n\nElenco dei santi: Wikidata (CC0).\n\nL\'app non raccoglie né trasmette dati personali.</string>
+    <string name="about_close">Chiudi</string>
 </resources>

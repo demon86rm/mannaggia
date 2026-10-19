@@ -2,16 +2,31 @@ plugins {
     id("com.android.application")
 }
 
+// Upload key for Play Store builds. Keep the keystore and passwords out of the
+// repo: set these in ~/.gradle/gradle.properties (see README, "Release build").
+val releaseStoreFile = providers.gradleProperty("MANNAGGIA_STORE_FILE").orNull
+
 android {
     namespace = "com.mannaggia.app"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.mannaggia.app"
+        applicationId = "io.github.demon86rm.mannaggia"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 3
         versionName = "1.2.0"
+    }
+
+    signingConfigs {
+        if (releaseStoreFile != null) {
+            create("release") {
+                storeFile = file(releaseStoreFile)
+                storePassword = providers.gradleProperty("MANNAGGIA_STORE_PASSWORD").get()
+                keyAlias = providers.gradleProperty("MANNAGGIA_KEY_ALIAS").get()
+                keyPassword = providers.gradleProperty("MANNAGGIA_KEY_PASSWORD").get()
+            }
+        }
     }
 
     buildTypes {
@@ -21,6 +36,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.findByName("release")
         }
     }
 
@@ -31,6 +47,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 

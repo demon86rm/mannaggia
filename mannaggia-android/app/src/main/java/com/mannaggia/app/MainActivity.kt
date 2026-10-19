@@ -8,11 +8,17 @@ import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.text.method.LinkMovementMethod
+import android.text.util.Linkify
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.mannaggia.app.databinding.ActivityMainBinding
 import kotlinx.coroutines.Job
@@ -40,8 +46,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        applySystemBarInsets()
 
         binding.btnMannaggia.setOnClickListener { invokeSaint() }
+        binding.btnInfo.setOnClickListener { showAbout() }
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
@@ -99,10 +107,43 @@ class MainActivity : AppCompatActivity() {
 
     private fun speak(text: String) {
         if (!ttsReady) {
-            Toast.makeText(this, "Voce italiana non disponibile", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.tts_unavailable, Toast.LENGTH_SHORT).show()
             return
         }
         tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "mannaggia")
+    }
+
+    // ---------------------------------------------------------------
+    // Edge-to-edge (enforced from targetSdk 35) and the "Info" dialog
+    // ---------------------------------------------------------------
+
+    /** Keep content clear of the status and navigation bars, on top of the layout padding. */
+    private fun applySystemBarInsets() {
+        val root = binding.root
+        val left = root.paddingLeft
+        val top = root.paddingTop
+        val right = root.paddingRight
+        val bottom = root.paddingBottom
+        ViewCompat.setOnApplyWindowInsetsListener(root) { view, insets ->
+            val bars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            view.setPadding(left + bars.left, top + bars.top, right + bars.right, bottom + bars.bottom)
+            insets
+        }
+    }
+
+    /** License, source link and credits (GPLv3 asks for them to be visible). */
+    private fun showAbout() {
+        val dialog = AlertDialog.Builder(this)
+            .setTitle(getString(R.string.about_title, BuildConfig.VERSION_NAME))
+            .setMessage(getString(R.string.about_text))
+            .setPositiveButton(R.string.about_close, null)
+            .show()
+        dialog.findViewById<TextView>(android.R.id.message)?.apply {
+            Linkify.addLinks(this, Linkify.WEB_URLS)
+            movementMethod = LinkMovementMethod.getInstance()
+        }
     }
 
     private fun askForNotificationPermissionIfNeeded() {

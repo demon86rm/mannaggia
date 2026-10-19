@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     android:padding="24dp">
 
+    <Button
+        android:id="@+id/btnInfo"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/txtResult"
         android:layout_width="0dp"
