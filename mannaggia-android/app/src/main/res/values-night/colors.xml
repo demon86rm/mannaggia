@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Neon phrase colors for the dark theme. -->
+    <color name="phrase_red">#FF3B3B</color>
+    <color name="phrase_gold">#FFC107</color>
+    <color name="phrase_orange">#FF9100</color>
+    <color name="phrase_green">#39FF14</color>
+    <color name="phrase_cyan">#00E5FF</color>
+    <color name="phrase_magenta">#FF40FF</color>
+</resources>

@@ -18,6 +18,18 @@
         <item>cursive</item>
     </string-array>
 
+    <string-array name="theme_names">
+        <item>Sistema (predefinito)</item>
+        <item>Chiaro</item>
+        <item>Scuro</item>
+    </string-array>
+    <string-array name="theme_values">
+        <item>system</item>
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
+
+    <!-- Each color has a light and a dark (neon) shade, see values*/colors.xml. -->
     <string-array name="color_names">
         <item>Tema (predefinito)</item>
         <item>Rosso</item>
@@ -29,11 +41,11 @@
     </string-array>
     <string-array name="color_values">
         <item>theme</item>
-        <item>#FF3B3B</item>
-        <item>#FFC107</item>
-        <item>#FF9100</item>
-        <item>#39FF14</item>
-        <item>#00E5FF</item>
-        <item>#FF40FF</item>
+        <item>red</item>
+        <item>gold</item>
+        <item>orange</item>
+        <item>green</item>
+        <item>cyan</item>
+        <item>magenta</item>
     </string-array>
 </resources>

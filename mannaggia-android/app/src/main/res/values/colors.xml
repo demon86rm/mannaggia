@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Phrase colors for the light theme: deeper shades that stay readable on white.
+         The neon versions for the dark theme are in values-night/colors.xml. -->
+    <color name="phrase_red">#C62828</color>
+    <color name="phrase_gold">#B07A00</color>
+    <color name="phrase_orange">#D84315</color>
+    <color name="phrase_green">#1E8E3E</color>
+    <color name="phrase_cyan">#00838F</color>
+    <color name="phrase_magenta">#A0009E</color>
+</resources>

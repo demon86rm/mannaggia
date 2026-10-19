@@ -25,6 +25,15 @@
         android:title="@string/pref_cat_style"
         app:iconSpaceReserved="false">
 
+        <ListPreference
+            android:key="theme"
+            android:defaultValue="system"
+            android:entries="@array/theme_names"
+            android:entryValues="@array/theme_values"
+            android:title="@string/pref_theme_title"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
         <com.mannaggia.app.StylePreviewPreference
             android:key="preview" />
 

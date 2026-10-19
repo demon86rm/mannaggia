@@ -60,6 +60,10 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         override fun onSharedPreferenceChanged(prefs: SharedPreferences?, key: String?) {
+            if (key == Prefs.KEY_THEME) {
+                Prefs.applyNightMode(requireContext())
+                return
+            }
             if (key == Prefs.KEY_FONT || key == Prefs.KEY_COLOR || key == Prefs.KEY_GLOW) {
                 findPreference<StylePreviewPreference>("preview")?.refresh()
             }
