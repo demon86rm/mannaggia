@@ -5,11 +5,11 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorManager
-import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -17,7 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import com.mannaggia.app.databinding.ActivityMainBinding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.net.URLEncoder
+import java.util.Locale
 
 /**
  * Main screen: tap the button (or shake the phone) to invoke a saint.
@@ -25,7 +25,8 @@ import java.net.URLEncoder
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var mediaPlayer: MediaPlayer? = null
+    private var tts: TextToSpeech? = null
+    private var ttsReady = false
 
     private lateinit var sensorManager: SensorManager
     private var accelerometer: Sensor? = null
@@ -45,6 +46,14 @@ class MainActivity : AppCompatActivity() {
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         shakeDetector = ShakeDetector { invokeSaint() }
+
+        tts = TextToSpeech(this) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                val result = tts?.setLanguage(Locale.ITALIAN)
+                ttsReady = result != TextToSpeech.LANG_MISSING_DATA &&
+                    result != TextToSpeech.LANG_NOT_SUPPORTED
+            }
+        }
 
         askForNotificationPermissionIfNeeded()
     }
@@ -75,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                 onSuccess = { saint ->
                     val phrase = Mannaggia.phraseOf(saint)
                     binding.txtResult.text = phrase
-                    if (binding.chkAudio.isChecked) speakWithGoogleTts(phrase)
+                    if (binding.chkAudio.isChecked) speak(phrase)
                 },
                 onFailure = { e -> binding.txtResult.text = "Errore: ${e.message}" }
             )
@@ -85,31 +94,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     // ---------------------------------------------------------------
-    // Google Translate TTS (same endpoint the bash `say()` uses)
+    // System text-to-speech (offline, uses the device's Italian voice)
     // ---------------------------------------------------------------
 
-    private fun speakWithGoogleTts(text: String) {
-        releasePlayer()
-        val encoded = URLEncoder.encode(text, "UTF-8")
-        val url =
-            "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=$encoded&tl=it"
-        try {
-            mediaPlayer = MediaPlayer().apply {
-                val headers = mapOf("User-Agent" to "Mozilla/5.0")
-                setDataSource(this@MainActivity, Uri.parse(url), headers)
-                setOnPreparedListener { start() }
-                setOnCompletionListener { releasePlayer() }
-                setOnErrorListener { _, _, _ -> releasePlayer(); true }
-                prepareAsync()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
+    private fun speak(text: String) {
+        if (!ttsReady) {
+            Toast.makeText(this, "Voce italiana non disponibile", Toast.LENGTH_SHORT).show()
+            return
         }
-    }
-
-    private fun releasePlayer() {
-        mediaPlayer?.release()
-        mediaPlayer = null
+        tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "mannaggia")
     }
 
     private fun askForNotificationPermissionIfNeeded() {
@@ -121,7 +114,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        releasePlayer()
+        tts?.shutdown()
+        tts = null
         super.onDestroy()
     }
 }
