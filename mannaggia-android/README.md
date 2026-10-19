@@ -4,21 +4,31 @@ Android port of [`mannaggia.sh`](https://github.com/LegolasTheElf/mannaggia/blob
 the automatic saint-invoker for depressed Veteran Unix Admins.
 
 Tap the button → the app picks a random saint from a bundled list and shows
-you `Mannaggia <Saint>!`. Flip the **Pronuncia** toggle to also hear it
+you `Mannaggia <Saint>!`. Turn on **Pronuncia** in **Opzioni** to also hear it
 spoken by the system text-to-speech in Italian. Works fully offline: the app
 needs no network permission.
 
 ## Ways to invoke a saint
 
 - **In-app button** — tap `Mannaggia!` on the main screen.
-- **Shake the phone** — sharp movement (>2.7 G) while the app is in the
+- **Shake-to-Mannaggia** — sharp movement (>2.7 G) while the app is in the
   foreground triggers a new invocation. 1.5 s cooldown prevents spam.
+  Can be turned off in **Opzioni**.
 - **Quick Settings tile** — long-press the notification shade, edit tiles,
   drag **Mannaggia** into your active tiles. One tap from anywhere in the
   system picks a saint and shows it as a notification.
 - **Home screen widget** — long-press the home screen → **Widgets** →
   find **Mannaggia** → drag it somewhere. Tap it to re-roll; the text
   updates in place.
+
+## Options
+
+The **Opzioni** button on the main screen opens the settings:
+
+- **Shake-to-Mannaggia** on/off
+- **Pronuncia**: read the phrase aloud with the system text-to-speech
+- **Phrase style**: font (system families only), color, and a neon glow
+  effect, with a live preview
 
 ## What was ported
 

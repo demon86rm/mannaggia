@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- System font families: nothing bundled, no extra font licenses. -->
+    <string-array name="font_names">
+        <item>Predefinito</item>
+        <item>Condensato</item>
+        <item>Serif</item>
+        <item>Monospace (terminale)</item>
+        <item>Fumetto</item>
+        <item>Corsivo</item>
+    </string-array>
+    <string-array name="font_values">
+        <item>sans-serif</item>
+        <item>sans-serif-condensed</item>
+        <item>serif</item>
+        <item>monospace</item>
+        <item>casual</item>
+        <item>cursive</item>
+    </string-array>
+
+    <string-array name="color_names">
+        <item>Tema (predefinito)</item>
+        <item>Rosso</item>
+        <item>Oro</item>
+        <item>Arancio</item>
+        <item>Verde terminale</item>
+        <item>Ciano</item>
+        <item>Magenta</item>
+    </string-array>
+    <string-array name="color_values">
+        <item>theme</item>
+        <item>#FF3B3B</item>
+        <item>#FFC107</item>
+        <item>#FF9100</item>
+        <item>#39FF14</item>
+        <item>#00E5FF</item>
+        <item>#FF40FF</item>
+    </string-array>
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="@string/pref_cat_invoke"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreferenceCompat
+            android:key="shake"
+            android:defaultValue="true"
+            android:title="@string/pref_shake_title"
+            android:summary="@string/pref_shake_summary"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:key="tts"
+            android:defaultValue="false"
+            android:title="@string/pref_tts_title"
+            android:summary="@string/pref_tts_summary"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_cat_style"
+        app:iconSpaceReserved="false">
+
+        <com.mannaggia.app.StylePreviewPreference
+            android:key="preview" />
+
+        <ListPreference
+            android:key="font"
+            android:defaultValue="sans-serif"
+            android:entries="@array/font_names"
+            android:entryValues="@array/font_values"
+            android:title="@string/pref_font_title"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:key="color"
+            android:defaultValue="theme"
+            android:entries="@array/color_names"
+            android:entryValues="@array/color_values"
+            android:title="@string/pref_color_title"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreferenceCompat
+            android:key="glow"
+            android:defaultValue="false"
+            android:title="@string/pref_glow_title"
+            android:summary="@string/pref_glow_summary"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -2,6 +2,7 @@ package com.mannaggia.app
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorManager
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     private var accelerometer: Sensor? = null
     private lateinit var shakeDetector: ShakeDetector
     private var currentJob: Job? = null
+    private var themeTextColor = 0
 
     private val requestNotifPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* no-op */ }
@@ -50,6 +52,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnMannaggia.setOnClickListener { invokeSaint() }
         binding.btnInfo.setOnClickListener { showAbout() }
+        binding.btnSettings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+        themeTextColor = binding.txtResult.currentTextColor
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
@@ -68,8 +74,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        accelerometer?.let {
-            sensorManager.registerListener(shakeDetector, it, SensorManager.SENSOR_DELAY_UI)
+        // Options may have changed in SettingsActivity.
+        Prefs.applyPhraseStyle(binding.txtResult, themeTextColor)
+        if (Prefs.shakeEnabled(this)) {
+            accelerometer?.let {
+                sensorManager.registerListener(shakeDetector, it, SensorManager.SENSOR_DELAY_UI)
+            }
         }
     }
 
@@ -92,7 +102,7 @@ class MainActivity : AppCompatActivity() {
                 onSuccess = { saint ->
                     val phrase = Mannaggia.phraseOf(saint)
                     binding.txtResult.text = phrase
-                    if (binding.chkAudio.isChecked) speak(phrase)
+                    if (Prefs.ttsEnabled(this@MainActivity)) speak(phrase)
                 },
                 onFailure = { e -> binding.txtResult.text = "Errore: ${e.message}" }
             )

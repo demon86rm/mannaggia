@@ -20,6 +20,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="@string/settings_title" />
+
         <!-- Quick Settings Tile -->
         <service
             android:name=".MannaggiaTileService"

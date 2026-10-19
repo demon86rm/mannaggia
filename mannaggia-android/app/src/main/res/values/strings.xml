@@ -2,10 +2,23 @@
 <resources>
     <string name="app_name">Mannaggia</string>
     <string name="btn_mannaggia">Mannaggia!</string>
-    <string name="chk_audio">Pronuncia (sintesi vocale)</string>
     <string name="widget_default_text">Mannaggia!</string>
     <string name="tile_label">Mannaggia</string>
     <string name="btn_info">Info</string>
+    <string name="btn_settings">Opzioni</string>
+    <string name="settings_title">Opzioni</string>
+    <string name="settings_back">Indietro</string>
+    <string name="pref_cat_invoke">Invocazione</string>
+    <string name="pref_shake_title">Shake-to-Mannaggia</string>
+    <string name="pref_shake_summary">Scuoti il telefono con l\'app aperta per invocare un santo</string>
+    <string name="pref_tts_title">Pronuncia</string>
+    <string name="pref_tts_summary">Legge la frase con la sintesi vocale del telefono</string>
+    <string name="pref_cat_style">Stile della frase</string>
+    <string name="pref_preview_text">Mannaggia San Pietro!</string>
+    <string name="pref_font_title">Carattere</string>
+    <string name="pref_color_title">Colore</string>
+    <string name="pref_glow_title">Effetto neon</string>
+    <string name="pref_glow_summary">Aggiunge un alone luminoso del colore scelto</string>
     <string name="tts_unavailable">Voce italiana non disponibile</string>
     <string name="about_title">Mannaggia %1$s</string>
     <string name="about_text">Invocazione automatica dei santi per Veteran Unix Admin depressi. Port Android di mannaggia.sh.\n\nSoftware libero, rilasciato sotto licenza GNU GPL v3. Codice sorgente:\nhttps://github.com/demon86rm/mannaggia\n\nScript originale: idea di Alexiobash, ampliato e mantenuto da Pietro \"Legolas\" Suffritti, con Enrico \"Henryx\" Bianchi, Alessandro \"Aleskandro\" Di Stefano, Davide \"kk0nrad\" Corrado e tutti i contributori.\n\nApp Android: demon86rm.\n\nElenco dei santi: Wikidata (CC0).\n\nL\'app non raccoglie né trasmette dati personali.</string>
