@@ -11,3 +11,6 @@ venv/
 .idea/
 .vscode/
 *.swp
+
+# Android build output (distributed via GitHub Releases)
+*.apk
