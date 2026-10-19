@@ -59,12 +59,35 @@ gradle wrapper --gradle-version 9.8.1
 # APK ends up at: app/build/outputs/apk/debug/app-debug.apk
 ```
 
-For a signed release build:
+## Release build (Play Store)
 
-```sh
-./gradlew assembleRelease
-# you'll need to configure a keystore in app/build.gradle.kts first
-```
+Release builds are signed with an upload key that never goes in the repo.
+
+1. One-time: create the keystore (keep it and its passwords safe, outside the repo):
+
+   ```sh
+   keytool -genkeypair -v -keystore ~/keystores/mannaggia-upload.jks \
+     -alias upload -keyalg RSA -keysize 4096 -validity 10000
+   ```
+
+2. Add to `~/.gradle/gradle.properties`:
+
+   ```properties
+   MANNAGGIA_STORE_FILE=/Users/<you>/keystores/mannaggia-upload.jks
+   MANNAGGIA_STORE_PASSWORD=...
+   MANNAGGIA_KEY_ALIAS=upload
+   MANNAGGIA_KEY_PASSWORD=...
+   ```
+
+3. Build the bundle to upload to Play Console:
+
+   ```sh
+   ./gradlew bundleRelease
+   # AAB ends up at: app/build/outputs/bundle/release/app-release.aab
+   ```
+
+Without those properties the release build is left unsigned. Store listing
+texts and graphics are in `store/`.
 
 ## Build — CI path (no local setup)
 
@@ -122,4 +145,5 @@ python3 -I tools/genera_santi.py > app/src/main/assets/santi.txt
 
 ## License
 
-Same as the upstream script: **GPL-3.0**.
+Same as the upstream script: **GPL-3.0** (see [`LICENSE`](../LICENSE)).
+Privacy policy: [`PRIVACY.md`](../PRIVACY.md).

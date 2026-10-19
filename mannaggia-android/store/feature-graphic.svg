@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="500" viewBox="0 0 1024 500">
+<rect width="1024" height="500" fill="#8B0000"/>
+<g transform="translate(-20,52) scale(3.6)"><path stroke="#FFC107" stroke-width="3.5" fill="none" d="M38,32 a16,5 0 1,0 32,0 a16,5 0 1,0 -32,0"/>
+<path fill="#FFF" d="M34,42 H74 A8,8 0 0,1 82,50 V66 A8,8 0 0,1 74,74 H52 L42,82 L44,74 H34 A8,8 0 0,1 26,66 V50 A8,8 0 0,1 34,42 Z"/>
+<path stroke="#8B0000" stroke-width="2.4" stroke-linecap="round" d="M35,51 L33,65 M40,51 L38,65 M31.5,55.5 L41.5,55.5 M31,60.5 L41,60.5"/>
+<path stroke="#8B0000" stroke-width="2.2" stroke-linecap="round" fill="none" d="M50.5,58 a2.5,2.5 0 1,1 -5,0 a2.5,2.5 0 1,1 5,0 M50.5,55.5 L50.5,59.5 Q50.5,62 52.5,61.5 Q54.5,61 54.5,58 A6.5,6.5 0 1,0 51.25,63.63"/>
+<path stroke="#8B0000" stroke-width="2.6" stroke-linecap="round" d="M61,51.5 L61,60.5"/>
+<path fill="#8B0000" d="M59.5,65 a1.5,1.5 0 1,0 3,0 a1.5,1.5 0 1,0 -3,0"/>
+<path stroke="#8B0000" stroke-width="2.2" stroke-linecap="round" d="M72,53.5 L72,62.5 M68.1,55.75 L75.9,60.25 M68.1,60.25 L75.9,55.75"/></g>
+<text x="380" y="240" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="bold" font-size="92" fill="#FFFFFF">Mannaggia!</text>
+<text x="384" y="300" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" fill="#FFC107">Un santo a caso, quando serve.</text>
+</svg>
