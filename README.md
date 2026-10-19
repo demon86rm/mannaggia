@@ -119,7 +119,7 @@ Android App
 [⬇️ Scarica l'ultima versione](https://github.com/demon86rm/mannaggia/releases/latest/download/mannaggia.apk) · [Tutte le release](https://github.com/demon86rm/mannaggia/releases)
 
 App Android sviluppata da Opus 4.6 extended partendo dallo script. Testata su Google Pixel 9 Pro e Android 16.
-L'app prevede la possibilità di usare il text-to-speech di Google, di triggerare un "Mannaggia" scuotendo il telefono (con l'app aperta) e include un widget col quale interagire direttamente dalla home screen. 
+L'app funziona offline (i santi sono inclusi nell'app, da Wikidata) e prevede la possibilità di usare la sintesi vocale del telefono, di triggerare un "Mannaggia" scuotendo il telefono (con l'app aperta) e include un widget col quale interagire direttamente dalla home screen. 
 
 ## mannaggia-android 
 

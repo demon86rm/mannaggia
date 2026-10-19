@@ -3,9 +3,10 @@
 Android port of [`mannaggia.sh`](https://github.com/LegolasTheElf/mannaggia/blob/master/mannaggia.sh) —
 the automatic saint-invoker for depressed Veteran Unix Admins.
 
-Tap the button → the app scrapes **santiebeati.it**, picks a random saint,
-and shows you `Mannaggia <Saint>!`. Flip the **Pronuncia** toggle to also
-hear it spoken via Google Translate TTS in Italian.
+Tap the button → the app picks a random saint from a bundled list and shows
+you `Mannaggia <Saint>!`. Flip the **Pronuncia** toggle to also hear it
+spoken by the system text-to-speech in Italian. Works fully offline: the app
+needs no network permission.
 
 ## Ways to invoke a saint
 
@@ -14,7 +15,7 @@ hear it spoken via Google Translate TTS in Italian.
   foreground triggers a new invocation. 1.5 s cooldown prevents spam.
 - **Quick Settings tile** — long-press the notification shade, edit tiles,
   drag **Mannaggia** into your active tiles. One tap from anywhere in the
-  system fetches a saint and shows it as a notification.
+  system picks a saint and shows it as a notification.
 - **Home screen widget** — long-press the home screen → **Widgets** →
   find **Mannaggia** → drag it somewhere. Tap it to re-roll; the text
   updates in place.
@@ -23,17 +24,15 @@ hear it spoken via Google Translate TTS in Italian.
 
 | bash | Kotlin/Android |
 | --- | --- |
-| `curl` | `HttpURLConnection` |
-| `iconv -f ISO-8859-1` | `String(bytes, Charsets.ISO_8859_1)` |
-| `awk -F'…'` | `line.split(Regex("…"))` |
+| `curl` scraping of santiebeati.it | Bundled `assets/santi.txt` (see below) |
 | `shuf -n1` | `List<String>.random()` |
-| `mplayer <tts url>` | `MediaPlayer` pointed at the same Google TTS URL |
+| `mplayer <tts url>` | `android.speech.tts.TextToSpeech` (Italian) |
 | CLI flags (`--spm`, `--nds`, `--wall`, `--shutdown` …) | **Not ported** — they don't make sense on a phone |
 
 ## Requirements
 
 - **Android Studio** Hedgehog (2023.1) or newer — easiest path
-- OR: JDK 17 + Android command-line tools + a local `gradle` ≥ 8.5
+- OR: JDK 17–25 + Android command-line tools + a local `gradle` ≥ 9.8
 
 Target: Android 7.0 (API 24) and up.
 
@@ -52,8 +51,8 @@ Target: Android 7.0 (API 24) and up.
 From inside the project folder:
 
 ```sh
-# one-time: generate the gradle wrapper (requires a system gradle ≥ 8.5)
-gradle wrapper --gradle-version 8.5
+# one-time: generate the gradle wrapper (requires a system gradle ≥ 9.8)
+gradle wrapper --gradle-version 9.8.1
 
 # then every build:
 ./gradlew assembleDebug
@@ -81,9 +80,9 @@ For a signed release build:
        steps:
          - uses: actions/checkout@v4
          - uses: actions/setup-java@v4
-           with: { distribution: temurin, java-version: '17' }
+           with: { distribution: temurin, java-version: '21' }
          - uses: gradle/actions/setup-gradle@v3
-         - run: gradle wrapper --gradle-version 8.5
+         - run: gradle wrapper --gradle-version 9.8.1
          - run: ./gradlew assembleDebug
          - uses: actions/upload-artifact@v4
            with:
@@ -92,6 +91,17 @@ For a signed release build:
    ```
 
 3. Push → go to **Actions** tab → download the APK artifact.
+
+## Saint list
+
+`app/src/main/assets/santi.txt` holds ~5400 saints and blessed taken from
+[Wikidata](https://www.wikidata.org) (CC0), with the right Italian title
+(San / Sant' / Santo / Santa / Beato / Beata). It is generated, not edited by
+hand. To refresh it, from this folder:
+
+```sh
+python3 -I tools/genera_santi.py > app/src/main/assets/santi.txt
+```
 
 ## Install on your phone
 
@@ -103,14 +113,9 @@ For a signed release build:
 
 ## Known caveats
 
-- **Parsing fragility.** The script (and this port) parse
-  `santiebeati.it`'s HTML using very specific `<FONT>` tag patterns.
-  If the site ever redesigns, both the original script AND this app
-  break. There's a `"Sant'Anonimo"` fallback if nothing is found.
-- **Cleartext traffic allowed** (`usesCleartextTraffic="true"`) in case
-  the site ever drops to HTTP. It currently serves over HTTPS.
-- **Google TTS** is an unofficial, undocumented endpoint. If Google
-  changes it (again), audio will silently fail — text-only still works.
+- **Italian voice required for audio.** If the device has no Italian
+  text-to-speech voice, the app shows a toast and stays text-only. Install
+  one from Settings → System → Languages → Text-to-speech output.
 - Dropped CLI features: `--audio` (replaced by the in-app toggle),
   `--spm` / `--nds` / `--wall` / `--shutdown` / `--off`
   (nonsensical on a phone).
