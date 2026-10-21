@@ -62,4 +62,27 @@
             android:summary="@string/pref_glow_summary"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_cat_project"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            android:key="upcoming"
+            android:title="@string/pref_upcoming_title"
+            android:summary="@string/pref_upcoming_summary"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="issues"
+            android:title="@string/pref_issues_title"
+            android:summary="@string/pref_issues_summary"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="contribute"
+            android:title="@string/pref_contribute_title"
+            android:summary="@string/pref_contribute_summary"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
 </PreferenceScreen>

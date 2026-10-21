@@ -20,8 +20,25 @@
     <string name="pref_color_title">Colore</string>
     <string name="pref_glow_title">Effetto neon</string>
     <string name="pref_glow_summary">Aggiunge un alone luminoso del colore scelto</string>
+    <string name="pref_cat_project">Progetto</string>
+    <string name="pref_upcoming_title">Prossimamente</string>
+    <string name="pref_upcoming_summary">Le novità in arrivo</string>
+    <string name="pref_issues_title">Segnala un problema o proponi un\'idea</string>
+    <string name="pref_issues_summary">Apri una issue su GitHub</string>
+    <string name="pref_contribute_title">Contribuisci al codice</string>
+    <string name="pref_contribute_summary">Il codice è libero: fork e pull request benvenute</string>
+    <string name="upcoming_title">Prossimamente</string>
+    <string name="upcoming_propose">Proponi un\'idea</string>
+    <string name="no_browser">Nessun browser disponibile</string>
+    <!-- Roadmap shown in Options → Prossimamente. Update here when plans change. -->
+    <string-array name="upcoming_features">
+        <item>🎙️ Voce \"Mannaggia\": un pacchetto vocale opzionale con una voce neurale, in alternativa alla sintesi del telefono.</item>
+        <item>📖 Album dei santi: tieni traccia dei santi già invocati e prova a collezionarli tutti e 5420.</item>
+        <item>🏆 ??? Qualcosa si sblocca, se sai cosa fare.</item>
+        <item>💡 Hai un\'idea? Proponila su GitHub.</item>
+    </string-array>
     <string name="tts_unavailable">Voce italiana non disponibile</string>
     <string name="about_title">Mannaggia %1$s</string>
-    <string name="about_text">Invocazione automatica dei santi per Veteran Unix Admin depressi. Port Android di mannaggia.sh.\n\nSoftware libero, rilasciato sotto licenza GNU GPL v3. Codice sorgente:\nhttps://github.com/demon86rm/mannaggia\n\nScript originale: idea di Alexiobash, ampliato e mantenuto da Pietro \"Legolas\" Suffritti, con Enrico \"Henryx\" Bianchi, Alessandro \"Aleskandro\" Di Stefano, Davide \"kk0nrad\" Corrado e tutti i contributori.\n\nApp Android: demon86rm.\n\nElenco dei santi: Wikidata (CC0).\n\nL\'app non raccoglie né trasmette dati personali.</string>
+    <string name="about_text">Invocazione automatica dei santi per Veteran Unix Admin depressi. Port Android di mannaggia.sh.\n\nSoftware libero, rilasciato sotto licenza GNU GPL v3. Codice sorgente:\nhttps://github.com/demon86rm/mannaggia\n\nIdee e segnalazioni:\nhttps://github.com/demon86rm/mannaggia/issues\n\nScript originale: idea di Alexiobash, ampliato e mantenuto da Pietro \"Legolas\" Suffritti, con Enrico \"Henryx\" Bianchi, Alessandro \"Aleskandro\" Di Stefano, Davide \"kk0nrad\" Corrado e tutti i contributori.\n\nApp Android: demon86rm.\n\nElenco dei santi: Wikidata (CC0).\n\nL\'app non raccoglie né trasmette dati personali.</string>
     <string name="about_close">Chiudi</string>
 </resources>

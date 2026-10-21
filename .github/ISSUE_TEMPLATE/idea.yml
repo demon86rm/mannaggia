@@ -1,0 +1,21 @@
+name: 💡 Proponi un'idea
+description: Una funzione nuova, un santo dimenticato, un achievement da inventare...
+labels: ["idea"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: L'idea
+      description: Cosa vorresti trovare nell'app?
+    validations:
+      required: true
+  - type: textarea
+    id: perche
+    attributes:
+      label: Perché sarebbe utile (o divertente)
+  - type: checkboxes
+    id: aiuto
+    attributes:
+      label: Contributo
+      options:
+        - label: Mi piacerebbe realizzarla io con una pull request

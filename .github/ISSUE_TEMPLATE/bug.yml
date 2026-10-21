@@ -1,0 +1,38 @@
+name: 🐛 Segnala un problema
+description: Qualcosa non funziona come dovrebbe
+labels: ["bug"]
+body:
+  - type: textarea
+    id: cosa
+    attributes:
+      label: Cosa succede
+      description: Descrivi il problema e cosa ti aspettavi invece.
+    validations:
+      required: true
+  - type: textarea
+    id: passi
+    attributes:
+      label: Come riprodurlo
+      placeholder: |
+        1. Apri l'app
+        2. Tocca "Mannaggia!"
+        3. ...
+  - type: input
+    id: versione
+    attributes:
+      label: Versione dell'app
+      description: La trovi toccando "Info".
+      placeholder: "1.3.0"
+  - type: input
+    id: telefono
+    attributes:
+      label: Telefono e versione di Android
+      placeholder: "Pixel 8, Android 16"
+  - type: dropdown
+    id: origine
+    attributes:
+      label: Da dove hai installato l'app
+      options:
+        - Play Store
+        - GitHub (APK)
+        - Compilata da sorgente

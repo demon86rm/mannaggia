@@ -121,6 +121,14 @@ Android App
 App Android sviluppata da Opus 4.6 extended partendo dallo script. Testata su Google Pixel 9 Pro e Android 16.
 L'app funziona offline (i santi sono inclusi nell'app, da Wikidata) e prevede la possibilità di usare la sintesi vocale del telefono, di triggerare un "Mannaggia" scuotendo il telefono (con l'app aperta) e include un widget col quale interagire direttamente dalla home screen. 
 
+## Contribuisci
+
+L'app è gratuita, senza pubblicità e senza sponsor. Il modo migliore per sostenerla è partecipare:
+- [segnala un problema o proponi un'idea](https://github.com/demon86rm/mannaggia/issues/new/choose) (anche dall'app: Opzioni → Progetto);
+- fai fork e apri una pull request: santi dimenticati, achievement da inventare, correzioni.
+
+Le novità in arrivo sono nell'app, in Opzioni → Prossimamente.
+
 ## mannaggia-android 
 
 
