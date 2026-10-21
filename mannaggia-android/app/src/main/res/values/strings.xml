@@ -37,6 +37,8 @@
         <item>💡 Hai un\'idea? Proponila su GitHub.</item>
     </string-array>
     <string name="saint_of_day">Oggi si festeggia %1$s</string>
+    <string name="saint_of_day_used">Oggi hai già invocato %1$s</string>
+    <string name="saint_of_day_none">Oggi nessun santo del giorno</string>
     <string name="btn_album">Album</string>
     <string name="album_title">Album dei santi</string>
     <string name="album_count">%1$d santi su %2$d (%3$s%%)</string>

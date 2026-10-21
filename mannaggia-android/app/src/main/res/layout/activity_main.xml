@@ -42,23 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="@string/btn_mannaggia"
-        app:layout_constraintBottom_toTopOf="@id/txtSaintOfDay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- "Oggi si festeggia ...": tap to invoke that saint. Hidden until loaded. -->
-    <TextView
-        android:id="@+id/txtSaintOfDay"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="?attr/selectableItemBackground"
-        android:gravity="center"
-        android:minHeight="48dp"
-        android:padding="8dp"
-        android:textAppearance="?attr/textAppearanceBodyMedium"
-        android:textColor="?android:attr/textColorSecondary"
-        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/progress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -83,6 +66,21 @@
         android:padding="4dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Saint of the day (pixel-art calendar), above the binder: one invocation a day,
+         "ghost" (half transparent, disabled) once used or when no saint is celebrated. -->
+    <ImageView
+        android:id="@+id/btnSaintOfDay"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/saint_of_day_none"
+        android:padding="4dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/btnAlbum"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- New card popping up and flying into the binder (see CardPop). -->

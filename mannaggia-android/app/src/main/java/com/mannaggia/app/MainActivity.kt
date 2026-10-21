@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.TooltipCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -59,8 +60,12 @@ class MainActivity : AppCompatActivity() {
         applySystemBarInsets()
 
         binding.btnMannaggia.setOnClickListener { invokeSaint() }
-        binding.txtSaintOfDay.setOnClickListener {
-            saintOfDay?.let { saint -> invokeSaint { saint } }
+        binding.btnSaintOfDay.setOnClickListener {
+            val saint = saintOfDay ?: return@setOnClickListener
+            // One saint-of-the-day invocation a day; a busy tap doesn't use it up.
+            if (Prefs.saintOfDayUsedToday(this) || !invokeSaint { saint }) return@setOnClickListener
+            Prefs.markSaintOfDayUsed(this)
+            showSaintOfDay(saint)
         }
         binding.btnInfo.setOnClickListener { showAbout() }
         binding.btnSettings.setOnClickListener {
@@ -78,7 +83,11 @@ class MainActivity : AppCompatActivity() {
                 true
             }
         }
-        lifecycleScope.launch { binding.btnAlbum.setImageDrawable(Avatars.binder(this@MainActivity)) }
+        lifecycleScope.launch {
+            binding.btnAlbum.setImageDrawable(Avatars.binder(this@MainActivity))
+            binding.btnSaintOfDay.setImageDrawable(Avatars.saintOfDayIcon(this@MainActivity))
+            binding.btnSaintOfDay.visibility = View.VISIBLE
+        }
         themeTextColor = binding.txtResult.currentTextColor
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -133,15 +142,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun showSaintOfDay(saint: String?) {
         saintOfDay = saint
-        binding.txtSaintOfDay.text = saint?.let { getString(R.string.saint_of_day, it) }
-        binding.txtSaintOfDay.visibility = if (saint == null) View.GONE else View.VISIBLE
+        val used = Prefs.saintOfDayUsedToday(this)
+        val available = saint != null && !used
+        val btn = binding.btnSaintOfDay
+        // "Ghost" when there is no saint today or today's invocation was used.
+        btn.alpha = if (available) 1f else GHOST_ALPHA
+        btn.isEnabled = available
+        btn.isClickable = available
+        val label = when {
+            saint == null -> getString(R.string.saint_of_day_none)
+            used -> getString(R.string.saint_of_day_used, saint)
+            else -> getString(R.string.saint_of_day, saint)
+        }
+        btn.contentDescription = label
+        TooltipCompat.setTooltipText(btn, label)
     }
 
     /** Show (and optionally speak) the phrase for the saint returned by [pick]: random by default. */
-    private fun invokeSaint(pick: suspend () -> String = { Mannaggia.randomSaint(this) }) {
+    /** Returns false (and does nothing) while a previous invocation is still in flight. */
+    private fun invokeSaint(pick: suspend () -> String = { Mannaggia.randomSaint(this) }): Boolean {
         // Ignore button, shake and saint-of-the-day triggers until the previous phrase
         // has been spoken (or shown for a moment): the job stays active until then.
-        if (currentJob?.isActive == true) return
+        if (currentJob?.isActive == true) return false
 
         binding.progress.visibility = View.VISIBLE
         binding.btnMannaggia.isEnabled = false
@@ -162,6 +184,7 @@ class MainActivity : AppCompatActivity() {
             )
             binding.btnMannaggia.isEnabled = true
         }
+        return true
     }
 
     // ---------------------------------------------------------------
@@ -224,6 +247,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         /** Without speech, how long a phrase stays before the next one can be invoked. */
         private const val SHOW_ONLY_COOLDOWN_MS = 600L
+        private const val GHOST_ALPHA = 0.5f
         private const val SPEECH_TIMEOUT_MS = 15_000L
     }
 

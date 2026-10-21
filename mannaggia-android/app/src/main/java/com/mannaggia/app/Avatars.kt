@@ -68,8 +68,13 @@ object Avatars {
     }
 
     /** The pixel-art card binder icon of the main screen. */
-    suspend fun binder(context: Context): BitmapDrawable? = withContext(Dispatchers.IO) {
-        runCatching { pixelated(context, decode(context, "raccoglitore.png")) }.getOrNull()
+    suspend fun binder(context: Context): BitmapDrawable? = icon(context, "raccoglitore.png")
+
+    /** The pixel-art saint-of-the-day icon (calendar page with a gold star). */
+    suspend fun saintOfDayIcon(context: Context): BitmapDrawable? = icon(context, "santo_del_giorno.png")
+
+    private suspend fun icon(context: Context, file: String): BitmapDrawable? = withContext(Dispatchers.IO) {
+        runCatching { pixelated(context, decode(context, file)) }.getOrNull()
     }
 
     /** A new sparkling gold frame (each view needs its own; the bitmaps are shared). */

@@ -29,7 +29,7 @@ Server giù? Deploy del venerdì andato male? Mannaggia invoca per te uno degli 
 
 - **Pulsante "Mannaggia!"**, oppure **scuoti il telefono** con l'app aperta.
 - **Widget** per la schermata Home e **riquadro nelle Impostazioni rapide**, per imprecare da qualunque schermata.
-- **Santo del giorno**: sotto il pulsante c'è il santo festeggiato oggi; toccalo per invocarlo.
+- **Santo del giorno**: l'icona col calendario in basso a destra invoca il santo festeggiato oggi, una volta al giorno.
 - **Album dei santi**: ogni santo invocato diventa una figurina in pixel art, disegnata a mano col suo abito e i suoi attributi. I 50 più famosi sono leggendari, con una cornice d'oro che scintilla. Riuscirai a trovarli tutti?
 - **Pronuncia** della frase con la sintesi vocale del telefono.
 - **Stile a piacere**: tema chiaro o scuro, carattere, colore ed effetto neon, con anteprima dal vivo.

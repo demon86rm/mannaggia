@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
+import java.util.Calendar
+import java.util.Locale
 
 /**
  * User options (edited in SettingsActivity) and the phrase styling they drive.
@@ -22,6 +24,8 @@ object Prefs {
     const val KEY_GLOW = "glow"
     const val KEY_THEME = "theme"
     const val KEY_CARD_ANIM = "card_anim"
+    /** Date (yyyy-MM-dd) of the last saint-of-the-day invocation: one a day. */
+    private const val KEY_SAINT_OF_DAY_USED = "saint_of_day_used"
 
     /** Value of KEY_COLOR meaning "keep the theme's text color". */
     private const val COLOR_THEME = "theme"
@@ -48,6 +52,16 @@ object Prefs {
 
     /** Animate each new album card; legendary saints are animated anyway. */
     fun cardAnimEnabled(context: Context) = prefs(context).getBoolean(KEY_CARD_ANIM, true)
+
+    fun saintOfDayUsedToday(context: Context) = prefs(context).getString(KEY_SAINT_OF_DAY_USED, null) == today()
+
+    fun markSaintOfDayUsed(context: Context) =
+        prefs(context).edit().putString(KEY_SAINT_OF_DAY_USED, today()).apply()
+
+    private fun today(): String = Calendar.getInstance().let {
+        String.format(Locale.ROOT, "%04d-%02d-%02d",
+            it.get(Calendar.YEAR), it.get(Calendar.MONTH) + 1, it.get(Calendar.DAY_OF_MONTH))
+    }
 
     /** Apply the light/dark choice app-wide; AppCompat recreates open activities. */
     fun applyNightMode(context: Context) {
