@@ -31,12 +31,12 @@ Conversione dello script bash `mannaggia.sh` in un'applicazione Python con inter
 
 Esegui il programma con:
 ```
-python3 mannaggia.py
+python3 mannaggia_py.py
 ```
 
 Per eseguire con permessi di amministratore (necessari per le funzioni wall e shutdown):
 ```
-sudo python3 mannaggia.py
+sudo python3 mannaggia_py.py
 ```
 
 ## Funzionalità

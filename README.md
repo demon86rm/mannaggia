@@ -1,135 +1,102 @@
-mannaggia.sh
-=========
+<p align="center">
+  <img src="mannaggia-android/store/feature-graphic.png" alt="Mannaggia" width="640">
+</p>
 
-Automatic saint invocation for depressed Veteran Unix Admins,
+<h1 align="center">Mannaggia</h1>
 
-it's developed in italian, it can be easily adapted in other languages.
+<p align="center">
+  <b>Il tool apotropaico e imprecante che vi accompagnerà nei momenti più bui.</b><br>
+  Un santo a caso, con un tocco. Per Android.
+</p>
 
-requires mplayer to use the --audio parameters
+<p align="center">
+  <a href="https://github.com/demon86rm/mannaggia/releases/latest"><img src="https://img.shields.io/github/v/release/demon86rm/mannaggia?label=versione" alt="Ultima versione"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/licenza-GPLv3-blue" alt="Licenza GPLv3"></a>
+  <a href="https://ko-fi.com/demon86rm"><img src="https://img.shields.io/badge/Ko--fi-offrimi%20un%20caff%C3%A8-ff5e5b?logo=ko-fi&logoColor=white" alt="Ko-fi"></a>
+</p>
 
+> 🇬🇧 **In short:** Mannaggia is a free, open-source, ad-free Android app that curses on your behalf by summoning a random Catholic saint ("Mannaggia San Pietro!") whenever things go wrong. It is the mobile heir of `mannaggia.sh`, a cult script among Italian sysadmins. It works fully offline, needs no network permission and collects no data. The app is in Italian.
 
+## Scarica
 
-Questo script provvede a nominare tutti i santi per voi quando vi sentite depressi.
+**[⬇️ Scarica l'APK](https://github.com/demon86rm/mannaggia/releases/latest/download/mannaggia.apk)** · [tutte le versioni](https://github.com/demon86rm/mannaggia/releases)
 
-Prerequisiti:
-* mplayer per potere usare il parametro --audio
+Presto anche sul Google Play Store.
 
-parametri da command line:
-* --audio : attiva mplayer per fargli pronunciare i santi
-* --spm <n> : numero di santi per minuto
-* --wall : invia l'output a tutte le console : attenzione , se non siete root o sudoers disattivare il flag -n
-* --shutdown : se si e' root spegne il computer dopo aver finito di invocare sant (dipende da --nds)
-* --off : equivalente a --nds 1 --shutdown
+## Cosa fa
 
-Rilasciato sotto Licenza GNU-GPL v.3
+Server giù? Deploy del venerdì andato male? Mannaggia invoca per te uno degli oltre **5000 santi e beati** del calendario.
 
-idea originale by Alexiobash dallo script incazzatore.sh
+- **Pulsante "Mannaggia!"**, oppure **scuoti il telefono** con l'app aperta.
+- **Widget** per la schermata Home e **riquadro nelle Impostazioni rapide**, per imprecare da qualunque schermata.
+- **Pronuncia** della frase con la sintesi vocale del telefono.
+- **Stile a piacere**: tema chiaro o scuro, carattere, colore ed effetto neon, con anteprima dal vivo.
+- **Rispetta la tua privacy**: funziona offline, non chiede permessi di rete, niente pubblicità, account o tracciamento ([informativa](PRIVACY.md)).
 
-ampliata, riscritta e mantenuta da Pietro "Legolas" Suffritti
+## Prossimamente
 
-convertita in mannaggia.sh rel 0.2
+- 🎙️ **Voce "Mannaggia"**: un pacchetto vocale opzionale con voce neurale, in alternativa alla sintesi del telefono.
+- 📖 **Album dei santi**: tieni traccia dei santi già invocati e prova a collezionarli tutti.
+- 🏆 **???**: qualcosa si sblocca, se sai cosa fare.
 
-Collaborators:
-* Enrico "Henryx" Bianchi
-* Alessandro "Aleskandro" Di Stefano
-* Davide "kk0nrad" Corrado
-
-patcher e contributors:
-* Marco Placidi
-* Maurizio "Tannoiser" Lemmo
-* Matteo Panella
-* Mattia Munari
-* Paolo Fabbri
-
-thanks to : Veteran Unix Admins group on Facebook
-
-mannaggia_py.py
-=========
-# Mannaggiatore Automatico - Python Edition
-
-Conversione dello script bash `mannaggia.sh` in un'applicazione Python con interfaccia grafica, effettuat tramite Claude.ai .
-
-## Requisiti
-
-- Python 3.6+
-- Tkinter (incluso nella maggior parte delle distribuzioni Python)
-- Beautiful Soup 4
-- Requests
-- mplayer (per la funzionalità audio)
-
-## Installazione
-
-1. Assicurati di avere Python 3 installato:
-   ```
-   python3 --version
-   ```
-
-2. Installa le dipendenze Python:
-   ```
-   pip install -r requirements.txt
-   ```
-
-3. Per la funzionalità audio, installa mplayer:
-   ```
-   sudo apt-get install mplayer
-   ```
-
-## Utilizzo
-
-Esegui il programma con:
-```
-python3 mannaggia.py
-```
-
-Per eseguire con permessi di amministratore (necessari per le funzioni wall e shutdown):
-```
-sudo python3 mannaggia.py
-```
-
-## Funzionalità
-
-- **Audio (TTS)**: Attiva la riproduzione audio delle frasi tramite Google TTS
-- **Wall**: Invia l'output a tutti i terminali (richiede permessi di root)
-- **Santi per minuto**: Imposta quanti santi invocare al minuto
-- **Numero di santi**: Imposta quanti santi invocare in totale (-1 per infinito)
-- **Spegni al termine**: Spegne il sistema quando il conteggio raggiunge lo zero (richiede permessi di root)
-- **OFF**: Shortcut per invocare un santo e spegnere (richiede permessi di root)
-
-## Licenza
-
-Rilasciato sotto GNU-GPLv3, come lo script originale.
-
-## Crediti
-
-Questa è una conversione del codice originale `mannaggia.sh`.
-
-Progetto originale:
-- Idea originale by Alexiobash dallo script incazzatore.sh
-- Ampliata, riscritta e mantenuta da Pietro "Legolas" Suffritti
-- Convertita in mannaggia.sh rel 0.2
-- Collaborators: Enrico "Henryx" Bianchi, Alessandro "Aleskandro" Di Stefano, Davide "kk0nrad" Corrado
-- Patcher e contributors: Marco Placidi, Maurizio "Tannoiser" Lemmo, Matteo Panella, Mattia Munari
-- Thanks to: Veteran Unix Admins group on Facebook
-
-
-Android App
-=========
-
-## mannaggia.apk
-[⬇️ Scarica l'ultima versione](https://github.com/demon86rm/mannaggia/releases/latest/download/mannaggia.apk) · [Tutte le release](https://github.com/demon86rm/mannaggia/releases)
-
-App Android sviluppata da Opus 4.6 extended partendo dallo script. Testata su Google Pixel 9 Pro e Android 16.
-L'app funziona offline (i santi sono inclusi nell'app, da Wikidata) e prevede la possibilità di usare la sintesi vocale del telefono, di triggerare un "Mannaggia" scuotendo il telefono (con l'app aperta) e include un widget col quale interagire direttamente dalla home screen. 
+La lista aggiornata è anche nell'app, in Opzioni → Prossimamente.
 
 ## Contribuisci
 
-L'app è gratuita, senza pubblicità e senza sponsor. Il modo migliore per sostenerla è partecipare:
-- [segnala un problema o proponi un'idea](https://github.com/demon86rm/mannaggia/issues/new/choose) (anche dall'app: Opzioni → Progetto);
-- fai fork e apri una pull request: santi dimenticati, achievement da inventare, correzioni.
+Mannaggia è gratuita e senza sponsor, e così resterà. Puoi aiutarla così:
 
-Le novità in arrivo sono nell'app, in Opzioni → Prossimamente.
+- **[Segnala un problema o proponi un'idea](https://github.com/demon86rm/mannaggia/issues/new/choose)**, anche dall'app (Opzioni → Progetto).
+- **Fai fork e apri una pull request**: santi dimenticati, achievement da inventare, correzioni.
+- **[Offrimi un caffè su Ko-fi](https://ko-fi.com/demon86rm)**: aiuta a coprire i costi (account sviluppatore, ore di GPU per la voce) o è semplicemente un grazie.
 
-## mannaggia-android 
+## Compilare da sorgente
 
+L'app sta in [`mannaggia-android/`](mannaggia-android): Kotlin, Android SDK 36, minimo Android 7.0.
 
-Nella cartella sono disponibili i file per poter testare ed effettuare la build dell'app su Android SDK.
+```sh
+cd mannaggia-android
+gradle assembleDebug
+```
+
+Servono Gradle 9.8 o superiore (il repo non include `gradlew`) e un JDK 17 o superiore, per esempio il JBR di Android Studio. L'elenco dei santi (`app/src/main/assets/santi.txt`) è generato da Wikidata con [`tools/genera_santi.py`](mannaggia-android/tools/genera_santi.py).
+
+## Le origini
+
+Tutto è cominciato con `incazzatore.sh` di Alexiobash, poi ampliato e riscritto da Pietro "Legolas" Suffritti in **[`mannaggia.sh`](https://github.com/LegolasTheElf/mannaggia)**: uno script bash che invoca i santi al posto vostro, nato nel gruppo Facebook *Veteran Unix Admins*. Questo repository è un fork di quel progetto. Lo script è ancora qui, insieme a una versione Python con interfaccia grafica, e l'app Android ne è l'evoluzione.
+
+<details>
+<summary><b>mannaggia.sh</b>: lo script originale</summary>
+
+Lo script nomina tutti i santi per voi quando vi sentite depressi.
+
+Prerequisiti: `mplayer`, per il parametro `--audio`.
+
+Parametri da riga di comando:
+- `--audio`: usa mplayer per pronunciare i santi
+- `--spm <n>`: numero di santi al minuto
+- `--wall`: invia l'output a tutte le console. Attenzione: se non siete root o sudoers, disattivate il flag `-n`.
+- `--shutdown`: se siete root, spegne il computer dopo aver finito di invocare i santi (dipende da `--nds`)
+- `--off`: equivale a `--nds 1 --shutdown`
+
+</details>
+
+<details>
+<summary><b>mannaggia_py.py</b>: la versione Python con interfaccia grafica</summary>
+
+Conversione di `mannaggia.sh` in un'applicazione Python con Tkinter. Requisiti, installazione e uso sono in [`readme-py.md`](readme-py.md).
+
+</details>
+
+## Crediti
+
+- **Idea originale**: Alexiobash, dallo script `incazzatore.sh`
+- **Ampliata, riscritta e mantenuta da**: Pietro "Legolas" Suffritti, fino a `mannaggia.sh` rel 0.2
+- **Collaboratori**: Enrico "Henryx" Bianchi, Alessandro "Aleskandro" Di Stefano, Davide "kk0nrad" Corrado
+- **Patcher e contributori**: Marco Placidi, Maurizio "Tannoiser" Lemmo, Matteo Panella, Mattia Munari, Paolo Fabbri
+- **App Android**: demon86rm
+- **Elenco dei santi**: [Wikidata](https://www.wikidata.org), dati CC0
+- **Grazie a**: il gruppo Facebook *Veteran Unix Admins*
+
+## Licenza
+
+Software libero, rilasciato sotto [GNU GPL v3](LICENSE) come lo script originale.
