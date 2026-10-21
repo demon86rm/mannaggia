@@ -93,7 +93,7 @@ Conversione di `mannaggia.sh` in un'applicazione Python con Tkinter. Requisiti, 
 - **Ampliata, riscritta e mantenuta da**: Pietro "Legolas" Suffritti, fino a `mannaggia.sh` rel 0.2
 - **Collaboratori**: Enrico "Henryx" Bianchi, Alessandro "Aleskandro" Di Stefano, Davide "kk0nrad" Corrado
 - **Patcher e contributori**: Marco Placidi, Maurizio "Tannoiser" Lemmo, Matteo Panella, Mattia Munari, Paolo Fabbri
-- **App Android**: demon86rm
+- **App Android**: Demon86RM (Marco Placidi)
 - **Elenco dei santi**: [Wikidata](https://www.wikidata.org), dati CC0
 - **Grazie a**: il gruppo Facebook *Veteran Unix Admins*
 
