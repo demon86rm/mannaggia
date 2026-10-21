@@ -1141,6 +1141,25 @@ def raccoglitore():
     return outline(c.img)
 
 
+def calendario():
+    """Saint-of-the-day icon: a calendar page with a gold star, in the avatar style."""
+    c = Canvas()
+    PAGE, PAGE_SHADE = (246, 242, 232), (214, 208, 196)
+    c.rect((8, 10, 40, 44), PAGE)
+    c.rect((8, 40, 40, 44), PAGE_SHADE)               # pagine sotto
+    c.line([(9, 42), (39, 42)], PAGE)
+    c.rect((8, 8, 40, 16), RED)                       # testata
+    c.rect((8, 8, 40, 9), shade(RED, 1.2))
+    for x in (14, 33):                                # anelli
+        c.rect((x, 4, x + 1, 11), STEEL_DARK); c.px(x, 4, STEEL_LIGHT)
+    # Gold star in the middle of the page.
+    star = [(24, 19), (26, 25), (32, 25), (27, 29), (29, 35), (24, 31), (19, 35), (21, 29), (16, 25), (22, 25)]
+    c.poly(star, GOLD)
+    c.poly([(24, 21), (25, 25), (24, 29), (22, 26)], GOLD_LIGHT)
+    c.px(24, 25, (255, 250, 220))
+    return outline(c.img)
+
+
 def render_final(name, t, leggendario):
     img = render(name, t)
     if leggendario:
@@ -1304,6 +1323,7 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
         "# (piu' voci Wikipedia). I primi sono i leggendari, vedi leggendari.txt.\n"
         + "\n".join(by_fame) + "\n", encoding="utf-8")
     raccoglitore().convert("RGBA").save(out / "raccoglitore.png", optimize=True)
+    calendario().convert("RGBA").save(out / "santo_del_giorno.png", optimize=True)
     (out / "leggendari.txt").write_text(
         "# I santi con piu' voci Wikipedia (Wikidata sitelinks): cornice d'oro nell'album.\n"
         + "\n".join(leggendari) + "\n", encoding="utf-8")
