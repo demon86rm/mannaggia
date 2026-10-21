@@ -49,6 +49,12 @@ object Mannaggia {
         map[key]?.firstOrNull()
     }
 
+    /** Feast days of [saint] as "MM-dd", in calendar order (empty if unknown). */
+    suspend fun feastsOf(context: Context, saint: String): List<String> = withContext(Dispatchers.IO) {
+        val map = feasts ?: loadFeasts(context).also { feasts = it }
+        map.filterValues { saint in it }.keys.sorted()
+    }
+
     /** Read assets/santi.txt, skipping blank lines and `#` comments. */
     private fun loadSaints(context: Context): List<String> = readLines(context, SAINTS_ASSET)
 

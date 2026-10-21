@@ -1,23 +1,33 @@
 package com.mannaggia.app
 
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mannaggia.app.databinding.ActivityAlbumBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.DateFormatSymbols
 import java.util.Date
 import java.util.Locale
 
-/** Album: the saints invoked so far, in order of discovery, with the X/total counter. */
+/**
+ * Album: the saints invoked so far, in order of discovery, as pixel-art cards
+ * (legendary saints get a sparkling gold frame), with the X/total counter.
+ * Tapping a card opens its detail.
+ */
 class AlbumActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAlbumBinding
@@ -28,17 +38,17 @@ class AlbumActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.toolbar.setNavigationOnClickListener { finish() }
 
-        // Edge-to-edge: toolbar below the status bar, list above the navigation bar.
+        // Edge-to-edge: toolbar below the status bar, grid above the navigation bar.
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
             val bars = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
             )
             view.setPadding(bars.left, bars.top, bars.right, 0)
-            binding.list.setPadding(0, 0, 0, bars.bottom)
+            binding.list.setPadding(6, 0, 6, bars.bottom)
             insets
         }
 
-        binding.list.layoutManager = LinearLayoutManager(this)
+        binding.list.layoutManager = GridLayoutManager(this, COLUMNS)
     }
 
     override fun onResume() {
@@ -60,20 +70,71 @@ class AlbumActivity : AppCompatActivity() {
         binding.progressAlbum.progress = entries.size
         binding.txtEmpty.visibility = if (entries.isEmpty()) View.VISIBLE else View.GONE
         binding.list.visibility = if (entries.isEmpty()) View.GONE else View.VISIBLE
-        binding.list.adapter = AlbumAdapter(entries)
+        binding.list.adapter = AlbumAdapter(entries, lifecycleScope) { position -> showDetail(entries, position) }
     }
 
-    private class AlbumAdapter(private val entries: List<Album.Entry>) :
-        RecyclerView.Adapter<AlbumAdapter.Holder>() {
+    /** Bottom sheet with the big portrait, legend badge, feast days and discovery date. */
+    private fun showDetail(entries: List<Album.Entry>, position: Int) {
+        val entry = entries[position]
+        val dialog = BottomSheetDialog(this)
+        val view = layoutInflater.inflate(R.layout.dialog_santo, null)
+        dialog.setContentView(view)
+        val avatar = view.findViewById<ImageView>(R.id.imgAvatar)
+        val frame = view.findViewById<ImageView>(R.id.imgFrame)
+        view.findViewById<TextView>(R.id.txtSaint).text = entry.saint
+        view.findViewById<TextView>(R.id.txtFound).text = getString(
+            R.string.album_detail_found, position + 1, foundOn(entry)
+        )
+        lifecycleScope.launch {
+            Avatars.load(this@AlbumActivity, entry.saint)?.let {
+                avatar.setImageDrawable(Avatars.pixelated(this@AlbumActivity, it))
+            }
+            val feasts = Mannaggia.feastsOf(this@AlbumActivity, entry.saint)
+            view.findViewById<TextView>(R.id.txtFeast).text =
+                if (feasts.isEmpty()) getString(R.string.album_feast_unknown)
+                else getString(R.string.album_feast, feasts.joinToString(", ") { formatDay(it) })
+            if (Avatars.isLegendary(this@AlbumActivity, entry.saint)) {
+                view.findViewById<TextView>(R.id.txtLegend).visibility = View.VISIBLE
+                val sparkle = Avatars.frameDrawable(this@AlbumActivity)
+                frame.setImageDrawable(sparkle)
+                frame.visibility = View.VISIBLE
+                sparkle.start()
+            }
+        }
+        dialog.show()
+    }
+
+    private fun foundOn(entry: Album.Entry): String {
+        val date = Date(entry.discoveredAt)
+        return getString(
+            R.string.album_found_on,
+            DateFormat.getMediumDateFormat(this).format(date),
+            DateFormat.getTimeFormat(this).format(date)
+        )
+    }
+
+    /** "10-04" → "4 ottobre". */
+    private fun formatDay(mmdd: String): String {
+        val (month, day) = mmdd.split('-').map { it.toInt() }
+        return "$day ${DateFormatSymbols(Locale.ITALIAN).months[month - 1]}"
+    }
+
+    private class AlbumAdapter(
+        private val entries: List<Album.Entry>,
+        private val scope: CoroutineScope,
+        private val onClick: (Int) -> Unit,
+    ) : RecyclerView.Adapter<AlbumAdapter.Holder>() {
 
         class Holder(view: View) : RecyclerView.ViewHolder(view) {
+            val avatar: ImageView = view.findViewById(R.id.imgAvatar)
+            val frame: ImageView = view.findViewById(R.id.imgFrame)
             val number: TextView = view.findViewById(R.id.txtNumber)
             val saint: TextView = view.findViewById(R.id.txtSaint)
-            val date: TextView = view.findViewById(R.id.txtDate)
+            var job: Job? = null
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = Holder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_album, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_figurina, parent, false)
         )
 
         override fun getItemCount() = entries.size
@@ -83,12 +144,36 @@ class AlbumActivity : AppCompatActivity() {
             val context = holder.itemView.context
             holder.number.text = context.getString(R.string.album_number, position + 1)
             holder.saint.text = entry.saint
-            val date = Date(entry.discoveredAt)
-            holder.date.text = context.getString(
-                R.string.album_found_on,
-                DateFormat.getMediumDateFormat(context).format(date),
-                DateFormat.getTimeFormat(context).format(date)
-            )
+            holder.itemView.setOnClickListener { onClick(holder.bindingAdapterPosition) }
+            holder.avatar.setImageDrawable(null)
+            holder.frame.visibility = View.GONE
+            // Recycled views: cancel the load of the saint previously shown here.
+            holder.job?.cancel()
+            holder.job = scope.launch {
+                Avatars.load(context, entry.saint)?.let {
+                    holder.avatar.setImageDrawable(Avatars.pixelated(context, it))
+                }
+                if (Avatars.isLegendary(context, entry.saint)) {
+                    if (holder.frame.drawable !is AnimationDrawable) {
+                        holder.frame.setImageDrawable(Avatars.frameDrawable(context))
+                    }
+                    holder.frame.visibility = View.VISIBLE
+                    (holder.frame.drawable as AnimationDrawable).start()
+                }
+            }
         }
+
+        // Only cards on screen sparkle.
+        override fun onViewAttachedToWindow(holder: Holder) {
+            if (holder.frame.visibility == View.VISIBLE) (holder.frame.drawable as? AnimationDrawable)?.start()
+        }
+
+        override fun onViewDetachedFromWindow(holder: Holder) {
+            (holder.frame.drawable as? AnimationDrawable)?.stop()
+        }
+    }
+
+    companion object {
+        private const val COLUMNS = 3
     }
 }
