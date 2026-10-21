@@ -32,6 +32,10 @@ object Avatars {
     @Volatile
     private var frames: List<Bitmap>? = null
 
+    /** Saint -> card number (1 = most famous), from catalogo.txt. */
+    @Volatile
+    private var numbers: Map<String, Int>? = null
+
     /** Same id as tools/tts/genera_audio.py and tools/ritratti/avatar.py. */
     fun fileId(saint: String): String =
         MessageDigest.getInstance("SHA-1").digest(saint.toByteArray(Charsets.UTF_8))
@@ -49,6 +53,23 @@ object Avatars {
                 .useLines { lines -> lines.map { it.trim() }.filter { it.isNotEmpty() && !it.startsWith("#") }.toSet() }
         }.getOrDefault(emptySet()).also { legendary = it }
         saint in set
+    }
+
+    /** Card number of [saint]: 1 is the most famous (and rarest to find among the famous). */
+    suspend fun number(context: Context, saint: String): Int? = withContext(Dispatchers.IO) {
+        val map = numbers ?: runCatching {
+            context.applicationContext.assets.open("$DIR/catalogo.txt").bufferedReader(Charsets.UTF_8)
+                .useLines { lines ->
+                    lines.map { it.trim() }.filter { it.isNotEmpty() && !it.startsWith("#") }
+                        .withIndex().associate { (i, s) -> s to i + 1 }
+                }
+        }.getOrDefault(emptyMap()).also { numbers = it }
+        map[saint]
+    }
+
+    /** The pixel-art card binder icon of the main screen. */
+    suspend fun binder(context: Context): BitmapDrawable? = withContext(Dispatchers.IO) {
+        runCatching { pixelated(context, decode(context, "raccoglitore.png")) }.getOrNull()
     }
 
     /** A new sparkling gold frame (each view needs its own; the bitmaps are shared). */

@@ -21,6 +21,7 @@ object Prefs {
     const val KEY_COLOR = "color"
     const val KEY_GLOW = "glow"
     const val KEY_THEME = "theme"
+    const val KEY_CARD_ANIM = "card_anim"
 
     /** Value of KEY_COLOR meaning "keep the theme's text color". */
     private const val COLOR_THEME = "theme"
@@ -44,6 +45,9 @@ object Prefs {
     fun shakeEnabled(context: Context) = prefs(context).getBoolean(KEY_SHAKE, true)
 
     fun ttsEnabled(context: Context) = prefs(context).getBoolean(KEY_TTS, false)
+
+    /** Animate each new album card; legendary saints are animated anyway. */
+    fun cardAnimEnabled(context: Context) = prefs(context).getBoolean(KEY_CARD_ANIM, true)
 
     /** Apply the light/dark choice app-wide; AppCompat recreates open activities. */
     fun applyNightMode(context: Context) {

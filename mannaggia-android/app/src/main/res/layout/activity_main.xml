@@ -16,16 +16,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnAlbum"
-        style="@style/Widget.Material3.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_album"
-        app:layout_constraintEnd_toStartOf="@id/btnInfo"
-        app:layout_constraintStart_toEndOf="@id/btnSettings"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/btnInfo"
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
@@ -82,5 +72,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Pixel-art card binder: opens the album; new cards fly into it. -->
+    <ImageView
+        android:id="@+id/btnAlbum"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/btn_album"
+        android:padding="4dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- New card popping up and flying into the binder (see CardPop). -->
+    <include
+        android:id="@+id/cardPop"
+        layout="@layout/view_card_pop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     private var currentJob: Job? = null
     private var themeTextColor = 0
     private var saintOfDay: String? = null
+    private lateinit var cardPop: CardPop
 
     private val requestNotifPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* no-op */ }
@@ -66,8 +67,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
         binding.btnAlbum.setOnClickListener {
+            cardPop.cancel()
             startActivity(Intent(this, AlbumActivity::class.java))
         }
+        cardPop = CardPop(binding.cardPop, binding.btnAlbum, lifecycleScope)
+        if (BuildConfig.DEBUG) {
+            // Debug builds only: long-press the binder to preview the legendary animation.
+            binding.btnAlbum.setOnLongClickListener {
+                lifecycleScope.launch { cardPop.show("San Pietro", Avatars.number(this@MainActivity, "San Pietro"), true) }
+                true
+            }
+        }
+        lifecycleScope.launch { binding.btnAlbum.setImageDrawable(Avatars.binder(this@MainActivity)) }
         themeTextColor = binding.txtResult.currentTextColor
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -109,6 +120,15 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         sensorManager.unregisterListener(shakeDetector)
+        cardPop.cancel()
+    }
+
+    /** A saint just entered the album: show its card flying into the binder. */
+    private suspend fun showNewCard(saint: String) {
+        val legendary = Avatars.isLegendary(this, saint)
+        if (legendary || Prefs.cardAnimEnabled(this)) {
+            cardPop.show(saint, Avatars.number(this, saint), legendary)
+        }
     }
 
     private fun showSaintOfDay(saint: String?) {
@@ -132,7 +152,8 @@ class MainActivity : AppCompatActivity() {
             binding.progress.visibility = View.GONE
             result.fold(
                 onSuccess = { saint ->
-                    runCatching { Album.record(this@MainActivity, saint) }
+                    val isNew = runCatching { Album.record(this@MainActivity, saint) }.getOrDefault(false)
+                    if (isNew) showNewCard(saint)
                     val phrase = Mannaggia.phraseOf(saint)
                     binding.txtResult.text = phrase
                     if (Prefs.ttsEnabled(this@MainActivity)) speakAndWait(phrase) else delay(SHOW_ONLY_COOLDOWN_MS)
