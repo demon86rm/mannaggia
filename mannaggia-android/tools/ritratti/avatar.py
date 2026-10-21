@@ -14,6 +14,8 @@ livello separato cosi' l'app puo' applicarla sopra l'avatar.
 Uso (venv con pillow; dalla cartella mannaggia-android):
     python tools/ritratti/avatar.py --nomi lista.txt --out ~/mannaggia-avatar-prova
     python tools/ritratti/avatar.py --famosi --out ~/mannaggia-avatar-prova   # tutta la tabella
+    python tools/ritratti/avatar.py --tutti --app app/src/main/assets/avatar \\
+        --cache tools/ritratti/tratti_wikidata.json                         # asset dell'app
 """
 
 import argparse
@@ -1247,8 +1249,9 @@ def file_id(name):
     return hashlib.sha1(name.encode("utf-8")).hexdigest()[:12]
 
 
-def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1):
-    """All saints: <sha1>.png (no frame), cornice_NN.png, leggendari.txt, tratti.tsv, provini."""
+def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=False):
+    """All saints: <sha1>.png (no frame), cornice_NN.png, leggendari.txt and, unless [app]
+    (only what the app ships), tratti.tsv and review sheets."""
     import random
     names = [l.strip() for l in open(santi_path, encoding="utf-8") if l.strip() and not l.startswith("#")]
     facts = wikidata_facts(names, cache)
@@ -1273,6 +1276,9 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1):
     (out / "leggendari.txt").write_text(
         "# I santi con piu' voci Wikipedia (Wikidata sitelinks): cornice d'oro nell'album.\n"
         + "\n".join(leggendari) + "\n", encoding="utf-8")
+    if app:
+        print(f"{len(names)} avatar per l'app in {out}", file=sys.stderr)
+        return
     with open(out / "tratti.tsv", "w", encoding="utf-8") as f:
         f.write("santo\tfile\torigine\tabito\tcopricapo\tattributi\n")
         for r in rows:
@@ -1301,12 +1307,17 @@ def main():
     ap.add_argument("--leggendari", type=int, default=50)
     ap.add_argument("--provini", type=int, default=5, help="con --tutti: provini casuali da 48 santi")
     ap.add_argument("--out", default=str(Path.home() / "mannaggia-avatar-prova"))
+    ap.add_argument("--app", help="con --tutti: scrive solo gli asset dell'app in questa cartella "
+                                  "(es. app/src/main/assets/avatar)")
     ap.add_argument("--zoom", type=int, default=5)
     ap.add_argument("--colonne", type=int, default=8)
     args = ap.parse_args()
     out = Path(args.out).expanduser()
     if args.tutti:
-        genera_tutti(args.santi, out, args.cache, args.leggendari, args.provini)
+        if args.app:
+            genera_tutti(args.santi, Path(args.app), args.cache, args.leggendari, 0, app=True)
+        else:
+            genera_tutti(args.santi, out, args.cache, args.leggendari, args.provini)
         return
     names = list(FAMOSI) if args.famosi else []
     if args.nomi:
