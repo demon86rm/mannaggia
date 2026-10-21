@@ -8,4 +8,9 @@
     <color name="phrase_green">#1E8E3E</color>
     <color name="phrase_cyan">#00838F</color>
     <color name="phrase_magenta">#A0009E</color>
+    <!-- Trophy rewards. -->
+    <color name="phrase_oro">#A67C00</color>
+    <color name="phrase_acquasanta">#1A7FA0</color>
+    <color name="phrase_inferno">#C62A0A</color>
+    <color name="phrase_porpora">#8E1B3A</color>
 </resources>

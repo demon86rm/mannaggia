@@ -18,8 +18,7 @@
     <string name="pref_theme_title">Tema</string>
     <string name="pref_font_title">Carattere</string>
     <string name="pref_color_title">Colore</string>
-    <string name="pref_glow_title">Effetto neon</string>
-    <string name="pref_glow_summary">Aggiunge un alone luminoso del colore scelto</string>
+    <string name="pref_effect_title">Effetto</string>
     <string name="pref_cat_project">Progetto</string>
     <string name="pref_upcoming_title">Prossimamente</string>
     <string name="pref_upcoming_summary">Le novità in arrivo</string>

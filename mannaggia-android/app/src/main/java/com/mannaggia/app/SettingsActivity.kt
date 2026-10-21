@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceViewHolder
@@ -18,7 +19,7 @@ import com.mannaggia.app.databinding.ActivitySettingsBinding
 
 /**
  * Options screen: shake-to-Mannaggia, text-to-speech, phrase style
- * (font, color, neon glow) with a live preview on top, and project links
+ * (font, color, effect; trophy rewards only once unlocked) with a live preview on top, and project links
  * (roadmap, issues, contributing).
  */
 class SettingsActivity : AppCompatActivity() {
@@ -53,9 +54,23 @@ class SettingsActivity : AppCompatActivity() {
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.preferences, rootKey)
+            Prefs.effect(requireContext())  // migrate the old neon switch before showing the list
+            // Trophy rewards appear in the lists only once unlocked.
+            onlyUnlocked(Prefs.KEY_COLOR, Trofei.Tipo.COLORE)
+            onlyUnlocked(Prefs.KEY_FONT, Trofei.Tipo.CARATTERE)
+            onlyUnlocked(Prefs.KEY_EFFECT, Trofei.Tipo.EFFETTO)
             onClick("upcoming") { showUpcoming() }
             onClick("issues") { openUrl(ISSUES_URL) }
             onClick("contribute") { openUrl(REPO_URL) }
+        }
+
+        private fun onlyUnlocked(key: String, tipo: Trofei.Tipo) {
+            val list = findPreference<ListPreference>(key) ?: return
+            val keep = list.entryValues.indices.filter {
+                Trofei.rewardAvailable(requireContext(), tipo, list.entryValues[it].toString())
+            }
+            list.entries = keep.map { list.entries[it] }.toTypedArray()
+            list.entryValues = keep.map { list.entryValues[it] }.toTypedArray()
         }
 
         private fun onClick(key: String, action: () -> Unit) {
@@ -103,14 +118,14 @@ class SettingsActivity : AppCompatActivity() {
                 return
             }
             if (key == Prefs.KEY_FONT) Trofei.cambioCarattere(requireContext())
-            if (key == Prefs.KEY_FONT || key == Prefs.KEY_COLOR || key == Prefs.KEY_GLOW) {
+            if (key == Prefs.KEY_FONT || key == Prefs.KEY_COLOR || key == Prefs.KEY_EFFECT) {
                 findPreference<StylePreviewPreference>("preview")?.refresh()
             }
         }
     }
 }
 
-/** Shows a sample phrase with the current font, color and glow. */
+/** Shows a sample phrase with the current font, color and effect. */
 class StylePreviewPreference(
     context: android.content.Context,
     attrs: android.util.AttributeSet?

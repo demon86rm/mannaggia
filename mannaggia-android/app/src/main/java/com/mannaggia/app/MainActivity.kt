@@ -144,6 +144,7 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         sensorManager.unregisterListener(shakeDetector)
         cardPop.cancel()
+        PhraseEffects.stop(binding.txtResult)  // restarted by applyPhraseStyle in onResume
     }
 
     /** Show the banners of the trophies unlocked since the last call. */

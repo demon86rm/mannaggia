@@ -21,7 +21,13 @@ object Prefs {
     const val KEY_TTS = "tts"
     const val KEY_FONT = "font"
     const val KEY_COLOR = "color"
-    const val KEY_GLOW = "glow"
+    const val KEY_EFFECT = "effect"
+    /** Old on/off neon switch, migrated to KEY_EFFECT = "neon". */
+    private const val KEY_GLOW_OLD = "glow"
+    const val EFFECT_NEON = "neon"
+    const val EFFECT_AUREOLA = "aureola"
+    const val EFFECT_TREMOLIO = "tremolio"
+    const val EFFECT_FIAMMA = "fiamma"
     const val KEY_THEME = "theme"
     const val KEY_CARD_ANIM = "card_anim"
     /** Date (yyyy-MM-dd) of the last saint-of-the-day invocation: one a day. */
@@ -38,6 +44,10 @@ object Prefs {
         "green" to R.color.phrase_green,
         "cyan" to R.color.phrase_cyan,
         "magenta" to R.color.phrase_magenta,
+        "oro" to R.color.phrase_oro,
+        "acquasanta" to R.color.phrase_acquasanta,
+        "inferno" to R.color.phrase_inferno,
+        "porpora" to R.color.phrase_porpora,
     )
 
     /** Glow radius, in dp, for the neon effect. */
@@ -87,11 +97,25 @@ object Prefs {
         val color = if (colorRes == null) themeColor else ContextCompat.getColor(view.context, colorRes)
         view.setTextColor(color)
 
-        if (p.getBoolean(KEY_GLOW, false)) {
+        // Neon is a still glow; the other effects animate (PhraseEffects).
+        val effect = effect(view.context)
+        PhraseEffects.stop(view)
+        if (effect == EFFECT_NEON) {
             val radius = GLOW_RADIUS_DP * view.resources.displayMetrics.density
             view.setShadowLayer(radius, 0f, 0f, color)
         } else {
             view.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT)
+            PhraseEffects.start(view, effect, color)
         }
+    }
+
+    /** The phrase effect; migrates the old neon switch the first time. */
+    fun effect(context: Context): String {
+        val p = prefs(context)
+        if (!p.contains(KEY_EFFECT) && p.contains(KEY_GLOW_OLD)) {
+            p.edit().putString(KEY_EFFECT, if (p.getBoolean(KEY_GLOW_OLD, false)) EFFECT_NEON else "none")
+                .remove(KEY_GLOW_OLD).apply()
+        }
+        return p.getString(KEY_EFFECT, "none") ?: "none"
     }
 }

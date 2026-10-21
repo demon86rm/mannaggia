@@ -8,6 +8,10 @@
         <item>Monospace (terminale)</item>
         <item>Fumetto</item>
         <item>Corsivo</item>
+        <!-- Trophy rewards: shown only once unlocked (SettingsActivity). -->
+        <item>Black</item>
+        <item>Maiuscoletto</item>
+        <item>Leggero</item>
     </string-array>
     <string-array name="font_values">
         <item>sans-serif</item>
@@ -16,6 +20,9 @@
         <item>monospace</item>
         <item>casual</item>
         <item>cursive</item>
+        <item>sans-serif-black</item>
+        <item>sans-serif-smallcaps</item>
+        <item>sans-serif-light</item>
     </string-array>
 
     <string-array name="theme_names">
@@ -38,6 +45,10 @@
         <item>Verde terminale</item>
         <item>Ciano</item>
         <item>Magenta</item>
+        <item>Oro zecchino</item>
+        <item>Acquasanta</item>
+        <item>Fuoco infernale</item>
+        <item>Porpora cardinalizia</item>
     </string-array>
     <string-array name="color_values">
         <item>theme</item>
@@ -47,5 +58,25 @@
         <item>green</item>
         <item>cyan</item>
         <item>magenta</item>
+        <item>oro</item>
+        <item>acquasanta</item>
+        <item>inferno</item>
+        <item>porpora</item>
+    </string-array>
+
+    <!-- Phrase effect: neon is always there, the others are trophy rewards. -->
+    <string-array name="effect_names">
+        <item>Nessuno</item>
+        <item>Neon</item>
+        <item>Aureola</item>
+        <item>Tremolio</item>
+        <item>Fiamma</item>
+    </string-array>
+    <string-array name="effect_values">
+        <item>none</item>
+        <item>neon</item>
+        <item>aureola</item>
+        <item>tremolio</item>
+        <item>fiamma</item>
     </string-array>
 </resources>
