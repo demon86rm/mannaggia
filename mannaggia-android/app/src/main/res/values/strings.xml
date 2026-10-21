@@ -46,6 +46,9 @@
     <string name="album_feast">Festa: %1$s</string>
     <string name="album_feast_unknown">Festa non nota</string>
     <string name="card_number">N° %1$d</string>
+    <string name="card_number_special">S%1$d</string>
+    <string name="album_detail_special">Figurina speciale S%1$d · trofeo «%2$s»</string>
+    <string name="album_feast_special">Fuori calendario</string>
     <string name="card_new">📖 Nuova figurina!</string>
     <string name="card_new_legendary">⭐ Santo leggendario!</string>
     <string name="card_tap_hint">Tocca per metterla nell\'album</string>

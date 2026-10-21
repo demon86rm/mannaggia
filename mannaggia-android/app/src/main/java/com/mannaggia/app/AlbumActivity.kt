@@ -61,20 +61,31 @@ class AlbumActivity : AppCompatActivity() {
             val cards = discovered.mapIndexed { i, e ->
                 Card(e, Avatars.number(this@AlbumActivity, e.saint) ?: Int.MAX_VALUE, i + 1)
             }.sortedBy { it.number }
-            show(cards, total)
+            // Special cards (trophy rewards) come first, S1..S6, with a silver frame.
+            val specials = Trofei.TUTTI.filter { it.ricompensa.tipo == Trofei.Tipo.FIGURINA }.mapNotNull { t ->
+                val at = Trofei.unlockedAt(this@AlbumActivity, t.id) ?: return@mapNotNull null
+                val name = t.ricompensa.valore
+                Card(Album.Entry(at, name), Trofei.specialNumber(name) ?: 0, 0, trophy = t)
+            }.sortedBy { it.number }
+            show(specials + cards, total, cards.size)
         }
     }
 
-    /** An album card: the album entry, its card number and its discovery order (#1 = first found). */
-    private class Card(val entry: Album.Entry, val number: Int, val discovery: Int)
+    /**
+     * An album card: the album entry, its card number and its discovery order (#1 = first found).
+     * Special cards have [trophy] (the one that unlocked them) and number S1..S6.
+     */
+    private class Card(val entry: Album.Entry, val number: Int, val discovery: Int, val trophy: Trofei.Trofeo? = null) {
+        val special get() = trophy != null
+    }
 
-    private fun show(entries: List<Card>, total: Int) {
-        val percent = if (total == 0) 0.0 else entries.size * 100.0 / total
+    private fun show(entries: List<Card>, total: Int, found: Int = entries.size) {
+        val percent = if (total == 0) 0.0 else found * 100.0 / total
         binding.txtCount.text = getString(
-            R.string.album_count, entries.size, total, String.format(Locale.ITALIAN, "%.1f", percent)
+            R.string.album_count, found, total, String.format(Locale.ITALIAN, "%.1f", percent)
         )
         binding.progressAlbum.max = total.coerceAtLeast(1)
-        binding.progressAlbum.progress = entries.size
+        binding.progressAlbum.progress = found
         binding.txtEmpty.visibility = if (entries.isEmpty()) View.VISIBLE else View.GONE
         binding.list.visibility = if (entries.isEmpty()) View.GONE else View.VISIBLE
         binding.list.adapter = AlbumAdapter(entries, lifecycleScope) { position -> showDetail(entries, position) }
@@ -90,7 +101,9 @@ class AlbumActivity : AppCompatActivity() {
         val avatar = view.findViewById<ImageView>(R.id.imgAvatar)
         val frame = view.findViewById<ImageView>(R.id.imgFrame)
         view.findViewById<TextView>(R.id.txtSaint).text = entry.saint
-        view.findViewById<TextView>(R.id.txtFound).text =
+        view.findViewById<TextView>(R.id.txtFound).text = if (card.trophy != null)
+            getString(R.string.album_detail_special, card.number, card.trophy.nome) + "\n" + foundOn(entry)
+        else
             getString(R.string.album_detail_found_number, card.number, card.discovery) + "\n" + foundOn(entry)
         lifecycleScope.launch {
             Avatars.load(this@AlbumActivity, entry.saint)?.let {
@@ -98,9 +111,13 @@ class AlbumActivity : AppCompatActivity() {
             }
             val feasts = Mannaggia.feastsOf(this@AlbumActivity, entry.saint)
             view.findViewById<TextView>(R.id.txtFeast).text =
-                if (feasts.isEmpty()) getString(R.string.album_feast_unknown)
+                if (card.special) getString(R.string.album_feast_special)
+                else if (feasts.isEmpty()) getString(R.string.album_feast_unknown)
                 else getString(R.string.album_feast, feasts.joinToString(", ") { formatDay(it) })
-            if (Avatars.isLegendary(this@AlbumActivity, entry.saint)) {
+            if (card.special) {
+                frame.setImageDrawable(Avatars.silverFrame(this@AlbumActivity))
+                frame.visibility = View.VISIBLE
+            } else if (Avatars.isLegendary(this@AlbumActivity, entry.saint)) {
                 view.findViewById<TextView>(R.id.txtLegend).visibility = View.VISIBLE
                 val sparkle = Avatars.frameDrawable(this@AlbumActivity)
                 frame.setImageDrawable(sparkle)
@@ -150,7 +167,9 @@ class AlbumActivity : AppCompatActivity() {
             val card = entries[position]
             val entry = card.entry
             val context = holder.itemView.context
-            holder.number.text = context.getString(R.string.card_number, card.number)
+            holder.number.text = context.getString(
+                if (card.special) R.string.card_number_special else R.string.card_number, card.number
+            )
             holder.saint.text = entry.saint
             holder.itemView.setOnClickListener { onClick(holder.bindingAdapterPosition) }
             holder.avatar.setImageDrawable(null)
@@ -161,7 +180,10 @@ class AlbumActivity : AppCompatActivity() {
                 Avatars.load(context, entry.saint)?.let {
                     holder.avatar.setImageDrawable(Avatars.pixelated(context, it))
                 }
-                if (Avatars.isLegendary(context, entry.saint)) {
+                if (card.special) {
+                    holder.frame.setImageDrawable(Avatars.silverFrame(context))
+                    holder.frame.visibility = View.VISIBLE
+                } else if (Avatars.isLegendary(context, entry.saint)) {
                     if (holder.frame.drawable !is AnimationDrawable) {
                         holder.frame.setImageDrawable(Avatars.frameDrawable(context))
                     }
