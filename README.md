@@ -31,14 +31,14 @@ Server giù? Deploy del venerdì andato male? Mannaggia invoca per te uno degli 
 - **Widget** per la schermata Home e **riquadro nelle Impostazioni rapide**, per imprecare da qualunque schermata.
 - **Santo del giorno**: l'icona col calendario in basso a destra invoca il santo festeggiato oggi, una volta al giorno.
 - **Album dei santi**: ogni santo invocato diventa una figurina in pixel art, disegnata a mano col suo abito e i suoi attributi. I 50 più famosi sono leggendari, con una cornice d'oro che scintilla. Riuscirai a trovarli tutti?
+- **Trofei segreti**: certi gesti, orari e costanze vengono premiati. Cosa sblocca cosa non lo diciamo: colori, caratteri, effetti animati e qualche figurina che nel calendario non troverai.
 - **Pronuncia** della frase con la sintesi vocale del telefono.
-- **Stile a piacere**: tema chiaro o scuro, carattere, colore ed effetto neon, con anteprima dal vivo.
+- **Stile a piacere**: tema chiaro o scuro, carattere, colore ed effetto, con anteprima dal vivo.
 - **Rispetta la tua privacy**: funziona offline, non chiede permessi di rete, niente pubblicità, account o tracciamento ([informativa](PRIVACY.md)).
 
 ## Prossimamente
 
 - 🎙️ **Voce "Mannaggia"**: un pacchetto vocale opzionale con voce neurale, in alternativa alla sintesi del telefono.
-- 🏆 **???**: qualcosa si sblocca, se sai cosa fare.
 
 La lista aggiornata è anche nell'app, in Opzioni → Prossimamente.
 
