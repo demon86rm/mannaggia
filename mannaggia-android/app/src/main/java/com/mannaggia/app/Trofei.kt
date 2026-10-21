@@ -94,16 +94,10 @@ object Trofei {
         synchronized(this) {
             val p = prefs(context)
             val e = p.edit()
-            val now = System.currentTimeMillis()
             val cal = Calendar.getInstance()
             val count = p.getInt("total", 0) + 1
             e.putInt("total", count)
             e.putInt("src_${fonte.name}", p.getInt("src_${fonte.name}", 0) + 1)
-
-            val shakes = if (fonte == Fonte.SCUOTIMENTO) {
-                (p.getString("shakes", "")!!.split(',').mapNotNull { it.toLongOrNull() } + now)
-                    .takeLast(ESORCISMO_SHAKES).also { e.putString("shakes", it.joinToString(",")) }
-            } else emptyList()
 
             val today = day(cal)
             val last = p.getString("lastDay", null)
@@ -120,9 +114,7 @@ object Trofei {
             val src = { f: Fonte -> f == fonte || p.getInt("src_${f.name}", 0) > 0 }
             val ok = mutableListOf<String>()
             if (count >= 1) ok += "primo"
-            if (fonte == Fonte.SCUOTIMENTO && weekday == Calendar.SUNDAY && hour in 9..11) ok += "messa"
             if (hour == 3) ok += "diavolo"
-            if (shakes.size >= ESORCISMO_SHAKES && now - shakes.first() <= ESORCISMO_WINDOW_MS) ok += "esorcismo"
             if (src(Fonte.PULSANTE) && src(Fonte.WIDGET) && src(Fonte.RIQUADRO)) ok += "trinita"
             if (streak >= PELLEGRINO_DAYS) ok += "pellegrino"
             if (count >= 100) ok += "devoto"
@@ -135,6 +127,23 @@ object Trofei {
             if (weekday == Calendar.FRIDAY && hour in 17..18) ok += "venerdi"
             unlock(context, ok)
         }
+    }
+
+    /**
+     * A shake, counted even when it doesn't start an invocation (e.g. during the
+     * spoken phrase): "Esorcismo" needs 7 of them in 15 seconds.
+     */
+    fun scossa(context: Context) = synchronized(this) {
+        val p = prefs(context)
+        val now = System.currentTimeMillis()
+        val shakes = (p.getString("shakes", "")!!.split(',').mapNotNull { it.toLongOrNull() } + now)
+            .takeLast(ESORCISMO_SHAKES)
+        p.edit().putString("shakes", shakes.joinToString(",")).apply()
+        val cal = Calendar.getInstance()
+        val ok = mutableListOf<String>()
+        if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY && cal.get(Calendar.HOUR_OF_DAY) in 9..11) ok += "messa"
+        if (shakes.size >= ESORCISMO_SHAKES && now - shakes.first() <= ESORCISMO_WINDOW_MS) ok += "esorcismo"
+        unlock(context, ok)
     }
 
     /** The phrase font was changed in Options. */

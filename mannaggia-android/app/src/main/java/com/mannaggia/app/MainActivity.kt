@@ -104,7 +104,10 @@ class MainActivity : AppCompatActivity() {
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-        shakeDetector = ShakeDetector { invokeSaint(Trofei.Fonte.SCUOTIMENTO) }
+        shakeDetector = ShakeDetector {
+            Trofei.scossa(this)
+            if (!invokeSaint(Trofei.Fonte.SCUOTIMENTO)) announceTrophies()  // a busy shake can still unlock
+        }
 
         tts = TextToSpeech(this) { status ->
             if (status == TextToSpeech.SUCCESS) {
