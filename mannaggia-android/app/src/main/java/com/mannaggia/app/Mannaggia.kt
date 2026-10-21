@@ -28,6 +28,11 @@ object Mannaggia {
     /** Build the final phrase shown to the user. */
     fun phraseOf(saint: String): String = "Mannaggia $saint!"
 
+    /** Number of saints in the bundled list (the album's 100%). */
+    suspend fun saintCount(context: Context): Int = withContext(Dispatchers.IO) {
+        (saints ?: loadSaints(context).also { saints = it }).size
+    }
+
     /** Pick a random saint from the bundled list (loaded once, then cached). */
     suspend fun randomSaint(context: Context): String = withContext(Dispatchers.IO) {
         val list = saints ?: loadSaints(context).also { saints = it }

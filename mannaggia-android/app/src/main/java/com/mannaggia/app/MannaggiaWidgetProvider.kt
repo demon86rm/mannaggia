@@ -43,8 +43,11 @@ class MannaggiaWidgetProvider : AppWidgetProvider() {
         // Pick the saint asynchronously; goAsync keeps the BroadcastReceiver alive.
         val pendingResult = goAsync()
         CoroutineScope(SupervisorJob() + Dispatchers.IO).launch {
-            val phrase = runCatching { Mannaggia.phraseOf(Mannaggia.randomSaint(context)) }
-                .getOrElse { "Errore" }
+            val phrase = runCatching {
+                val saint = Mannaggia.randomSaint(context)
+                Album.record(context, saint)
+                Mannaggia.phraseOf(saint)
+            }.getOrElse { "Errore" }
             try {
                 for (id in ids) render(context, mgr, id, text = phrase)
             } finally {

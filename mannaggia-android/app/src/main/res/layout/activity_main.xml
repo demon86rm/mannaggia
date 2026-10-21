@@ -16,6 +16,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/btnAlbum"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_album"
+        app:layout_constraintEnd_toStartOf="@id/btnInfo"
+        app:layout_constraintStart_toEndOf="@id/btnSettings"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/btnInfo"
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"

@@ -26,6 +26,11 @@
             android:exported="false"
             android:label="@string/settings_title" />
 
+        <activity
+            android:name=".AlbumActivity"
+            android:exported="false"
+            android:label="@string/album_title" />
+
         <!-- Quick Settings Tile -->
         <service
             android:name=".MannaggiaTileService"

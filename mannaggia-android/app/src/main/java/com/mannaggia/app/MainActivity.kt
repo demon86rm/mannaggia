@@ -59,6 +59,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
+        binding.btnAlbum.setOnClickListener {
+            startActivity(Intent(this, AlbumActivity::class.java))
+        }
         themeTextColor = binding.txtResult.currentTextColor
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -113,6 +116,7 @@ class MainActivity : AppCompatActivity() {
             val result = runCatching { pick() }
             result.fold(
                 onSuccess = { saint ->
+                    runCatching { Album.record(this@MainActivity, saint) }
                     val phrase = Mannaggia.phraseOf(saint)
                     binding.txtResult.text = phrase
                     if (Prefs.ttsEnabled(this@MainActivity)) speak(phrase)

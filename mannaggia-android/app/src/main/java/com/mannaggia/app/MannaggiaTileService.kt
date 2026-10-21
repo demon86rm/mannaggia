@@ -29,8 +29,11 @@ class MannaggiaTileService : TileService() {
         setTileState(Tile.STATE_ACTIVE)
 
         scope.launch {
-            val phrase = runCatching { Mannaggia.phraseOf(Mannaggia.randomSaint(this@MannaggiaTileService)) }
-                .getOrElse { "Errore: ${it.message}" }
+            val phrase = runCatching {
+                val saint = Mannaggia.randomSaint(this@MannaggiaTileService)
+                Album.record(this@MannaggiaTileService, saint)
+                Mannaggia.phraseOf(saint)
+            }.getOrElse { "Errore: ${it.message}" }
             showNotification(phrase)
             setTileState(Tile.STATE_INACTIVE)
         }

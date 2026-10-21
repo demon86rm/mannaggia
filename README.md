@@ -29,6 +29,8 @@ Server giù? Deploy del venerdì andato male? Mannaggia invoca per te uno degli 
 
 - **Pulsante "Mannaggia!"**, oppure **scuoti il telefono** con l'app aperta.
 - **Widget** per la schermata Home e **riquadro nelle Impostazioni rapide**, per imprecare da qualunque schermata.
+- **Santo del giorno**: sotto il pulsante c'è il santo festeggiato oggi; toccalo per invocarlo.
+- **Album dei santi**: raccoglie i santi già invocati, in ordine di scoperta. Riuscirai a trovarli tutti?
 - **Pronuncia** della frase con la sintesi vocale del telefono.
 - **Stile a piacere**: tema chiaro o scuro, carattere, colore ed effetto neon, con anteprima dal vivo.
 - **Rispetta la tua privacy**: funziona offline, non chiede permessi di rete, niente pubblicità, account o tracciamento ([informativa](PRIVACY.md)).
@@ -36,7 +38,6 @@ Server giù? Deploy del venerdì andato male? Mannaggia invoca per te uno degli 
 ## Prossimamente
 
 - 🎙️ **Voce "Mannaggia"**: un pacchetto vocale opzionale con voce neurale, in alternativa alla sintesi del telefono.
-- 📖 **Album dei santi**: tieni traccia dei santi già invocati e prova a collezionarli tutti.
 - 🏆 **???**: qualcosa si sblocca, se sai cosa fare.
 
 La lista aggiornata è anche nell'app, in Opzioni → Prossimamente.
