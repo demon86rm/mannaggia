@@ -11,15 +11,17 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.mannaggia.app.databinding.ViewCardPopBinding
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
 
 /**
  * The "new card" animation on the main screen: the card of a saint just added to
  * the album pops up in the middle, then shrinks and flies into the binder [target],
- * which bounces. Legendary saints stay on screen longer, with the sparkling gold
- * frame and a pulsing glow behind the card.
+ * which bounces. Legendary saints get a short angelic choir, the sparkling gold
+ * frame and a pulsing glow, and stay on screen until the card is tapped.
  */
 class CardPop(
     private val pop: ViewCardPopBinding,
@@ -29,6 +31,11 @@ class CardPop(
 
     private var job: Job? = null
     private var glowPulse: ValueAnimator? = null
+    private var coro: Coro? = null
+
+    /** True while a legendary card waits for the tap that puts it in the album. */
+    var isHolding = false
+        private set
 
     init {
         // Soft gold glow: radial gradient from warm gold to transparent.
@@ -43,6 +50,8 @@ class CardPop(
     fun show(saint: String, number: Int?, legendary: Boolean) {
         val context = pop.root.context
         cancel()
+        // The choir starts with the card (synchronously, so awaitChoir() sees it).
+        if (legendary) coro = Coro(context).also { it.start() }
         job = scope.launch {
             pop.txtSaint.text = saint
             pop.txtNumber.text = number?.let { context.getString(R.string.card_number, it) } ?: ""
@@ -80,8 +89,25 @@ class CardPop(
             card.animate().scaleX(1f).scaleY(1f).alpha(1f)
                 .setDuration(POP_IN_MS).setInterpolator(OvershootInterpolator(1.6f)).start()
 
-            // 2. Stay on screen (longer for a legend).
-            delay(POP_IN_MS + if (legendary) HOLD_LEGENDARY_MS else HOLD_MS)
+            // 2. Stay on screen: a moment, or until tapped for a legend.
+            if (legendary) {
+                isHolding = true
+                val tapped = CompletableDeferred<Unit>()
+                pop.root.setOnClickListener { tapped.complete(Unit) }
+                launch {
+                    delay(POP_IN_MS + HINT_DELAY_MS)
+                    pop.txtHint.alpha = 0f
+                    pop.txtHint.visibility = View.VISIBLE
+                    pop.txtHint.animate().alpha(1f).setDuration(300).start()
+                }
+                tapped.await()
+                pop.root.setOnClickListener(null)
+                pop.root.isClickable = false
+                pop.txtHint.visibility = View.GONE
+                isHolding = false
+            } else {
+                delay(POP_IN_MS + HOLD_MS)
+            }
 
             // 3. Fly into the binder.
             pop.imgGlow.animate().alpha(0f).setDuration(FLY_MS).start()
@@ -101,9 +127,21 @@ class CardPop(
         }
     }
 
+    /** Wait (at most [timeoutMs]) for the choir to end, e.g. before speaking the phrase. */
+    suspend fun awaitChoir(timeoutMs: Long) {
+        val c = coro ?: return
+        withTimeoutOrNull(timeoutMs) { c.done.await() }
+    }
+
     fun cancel() {
         job?.cancel()
+        coro?.stop()
+        coro = null
         pop.popCard.animate().setListener(null).cancel()
+        pop.root.setOnClickListener(null)
+        pop.root.isClickable = false
+        pop.txtHint.visibility = View.GONE
+        isHolding = false
         hide()
     }
 
@@ -123,7 +161,8 @@ class CardPop(
     companion object {
         private const val POP_IN_MS = 220L
         private const val HOLD_MS = 600L
-        private const val HOLD_LEGENDARY_MS = 3000L
+        /** The "tap to put it in the album" hint appears after this. */
+        private const val HINT_DELAY_MS = 1000L
         private const val FLY_MS = 480L
         private const val BUMP_MS = 260L
         private const val GLOW_PULSE_MS = 700L

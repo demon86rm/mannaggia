@@ -80,4 +80,19 @@
                 android:textAppearance="?attr/textAppearanceTitleSmall" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
+    <!-- Legendary cards wait for a tap: "Tocca per metterla nell'album". -->
+    <TextView
+        android:id="@+id/txtHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="96dp"
+        android:background="#B3000000"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:text="@string/card_tap_hint"
+        android:textAppearance="?attr/textAppearanceLabelLarge"
+        android:textColor="#FFF4D58A"
+        android:visibility="gone" />
 </FrameLayout>

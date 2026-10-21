@@ -49,12 +49,13 @@
     <string name="card_number">N° %1$d</string>
     <string name="card_new">📖 Nuova figurina!</string>
     <string name="card_new_legendary">⭐ Santo leggendario!</string>
+    <string name="card_tap_hint">Tocca per metterla nell\'album</string>
     <string name="album_detail_found_number">N° %1$d · scoperta #%2$d</string>
     <string name="pref_card_anim_title">Animazione nuove figurine</string>
     <string name="pref_card_anim_summary">Mostra ogni nuovo santo che entra nell\'album (i leggendari sono sempre animati)</string>
     <string name="album_empty">Nessun santo, per ora.\nTorna qui dopo il primo Mannaggia!</string>
     <string name="tts_unavailable">Voce italiana non disponibile</string>
     <string name="about_title">Mannaggia %1$s</string>
-    <string name="about_text">Invocazione automatica dei santi per Veteran Unix Admin depressi. Port Android di mannaggia.sh.\n\nSoftware libero, rilasciato sotto licenza GNU GPL v3. Codice sorgente:\nhttps://github.com/demon86rm/mannaggia\n\nIdee e segnalazioni:\nhttps://github.com/demon86rm/mannaggia/issues\n\nScript originale: idea di Alexiobash, ampliato e mantenuto da Pietro \"Legolas\" Suffritti, con Enrico \"Henryx\" Bianchi, Alessandro \"Aleskandro\" Di Stefano, Davide \"kk0nrad\" Corrado e tutti i contributori.\n\nApp Android: demon86rm.\n\nElenco dei santi e feste: Wikidata (CC0).\n\nRitratti dei santi: disegni originali in pixel art, GPL v3.\n\nL\'app non raccoglie né trasmette dati personali.</string>
+    <string name="about_text">Invocazione automatica dei santi per Veteran Unix Admin depressi. Port Android di mannaggia.sh.\n\nSoftware libero, rilasciato sotto licenza GNU GPL v3. Codice sorgente:\nhttps://github.com/demon86rm/mannaggia\n\nIdee e segnalazioni:\nhttps://github.com/demon86rm/mannaggia/issues\n\nScript originale: idea di Alexiobash, ampliato e mantenuto da Pietro \"Legolas\" Suffritti, con Enrico \"Henryx\" Bianchi, Alessandro \"Aleskandro\" Di Stefano, Davide \"kk0nrad\" Corrado e tutti i contributori.\n\nApp Android: demon86rm.\n\nElenco dei santi e feste: Wikidata (CC0).\n\nRitratti dei santi: disegni originali in pixel art, GPL v3.\n\nCoro angelico: sintetizzato apposta, GPL v3.\n\nL\'app non raccoglie né trasmette dati personali.</string>
     <string name="about_close">Chiudi</string>
 </resources>

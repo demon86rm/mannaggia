@@ -132,12 +132,16 @@ class MainActivity : AppCompatActivity() {
         cardPop.cancel()
     }
 
-    /** A saint just entered the album: show its card flying into the binder. */
-    private suspend fun showNewCard(saint: String) {
+    /**
+     * A saint just entered the album: show its card flying into the binder.
+     * Returns true for a legendary saint (its card comes with the choir).
+     */
+    private suspend fun showNewCard(saint: String): Boolean {
         val legendary = Avatars.isLegendary(this, saint)
         if (legendary || Prefs.cardAnimEnabled(this)) {
             cardPop.show(saint, Avatars.number(this, saint), legendary)
         }
+        return legendary
     }
 
     private fun showSaintOfDay(saint: String?) {
@@ -164,6 +168,8 @@ class MainActivity : AppCompatActivity() {
         // Ignore button, shake and saint-of-the-day triggers until the previous phrase
         // has been spoken (or shown for a moment): the job stays active until then.
         if (currentJob?.isActive == true) return false
+        // A legendary card is waiting for its tap: no new curse on top of it.
+        if (cardPop.isHolding) return false
 
         binding.progress.visibility = View.VISIBLE
         binding.btnMannaggia.isEnabled = false
@@ -175,10 +181,15 @@ class MainActivity : AppCompatActivity() {
             result.fold(
                 onSuccess = { saint ->
                     val isNew = runCatching { Album.record(this@MainActivity, saint) }.getOrDefault(false)
-                    if (isNew) showNewCard(saint)
+                    val choir = isNew && showNewCard(saint)
                     val phrase = Mannaggia.phraseOf(saint)
                     binding.txtResult.text = phrase
-                    if (Prefs.ttsEnabled(this@MainActivity)) speakAndWait(phrase) else delay(SHOW_ONLY_COOLDOWN_MS)
+                    if (Prefs.ttsEnabled(this@MainActivity)) {
+                        if (choir) cardPop.awaitChoir(CHOIR_MAX_WAIT_MS)  // first the choir, then the voice
+                        speakAndWait(phrase)
+                    } else {
+                        delay(SHOW_ONLY_COOLDOWN_MS)
+                    }
                 },
                 onFailure = { e -> binding.txtResult.text = "Errore: ${e.message}" }
             )
@@ -248,6 +259,8 @@ class MainActivity : AppCompatActivity() {
         /** Without speech, how long a phrase stays before the next one can be invoked. */
         private const val SHOW_ONLY_COOLDOWN_MS = 600L
         private const val GHOST_ALPHA = 0.5f
+        /** Safety cap on waiting for the choir before speaking (it lasts about 3 s). */
+        private const val CHOIR_MAX_WAIT_MS = 4_000L
         private const val SPEECH_TIMEOUT_MS = 15_000L
     }
 
