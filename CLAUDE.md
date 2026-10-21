@@ -19,6 +19,8 @@ Generatore di "Mannaggia <santo>!". Nella root ci sono lo script bash (`mannaggi
 - `app/src/main/assets/santi.txt` è generato da `tools/genera_santi.py` (Wikidata, CC0): non modificarlo a mano.
 - Rigenera con `python3 -I tools/genera_santi.py > app/src/main/assets/santi.txt`.
 - Dopo ogni modifica ai filtri (santo/beato, religione) controlla a campione prefissi, numero di righe ed esclusioni.
+- `app/src/main/assets/feste.tsv` (santo del giorno) è generato dallo stesso script, solo per i santi già in `santi.txt`: `python3 -I tools/genera_santi.py --feste app/src/main/assets/feste.tsv --solo app/src/main/assets/santi.txt`. Non modificarlo a mano. Le correzioni (feste mancanti su Wikidata, santo del giorno imposto) vanno in `EXTRA_FEASTS` e `SAINT_OF_DAY` nello script.
+- Non rigenerare `santi.txt` senza motivo: i nomi sono la chiave dei file audio (`sha1`) e, in futuro, dell'album.
 
 ## Shell
 - zsh: nei comandi da incollare niente `!` tra virgolette doppie (history expansion). Usa le virgolette singole e `'\''` per gli apostrofi.
