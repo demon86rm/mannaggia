@@ -9,6 +9,7 @@ import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
 import android.text.method.LinkMovementMethod
 import android.text.util.Linkify
 import android.view.View
@@ -22,8 +23,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.mannaggia.app.databinding.ActivityMainBinding
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
 import java.util.Locale
 
 /**
@@ -34,6 +38,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var tts: TextToSpeech? = null
     private var ttsReady = false
+    /** Completed by the TTS engine when the current phrase has been spoken. */
+    private var speechDone: CompletableDeferred<Unit>? = null
 
     private lateinit var sensorManager: SensorManager
     private var accelerometer: Sensor? = null
@@ -73,6 +79,14 @@ class MainActivity : AppCompatActivity() {
                 val result = tts?.setLanguage(Locale.ITALIAN)
                 ttsReady = result != TextToSpeech.LANG_MISSING_DATA &&
                     result != TextToSpeech.LANG_NOT_SUPPORTED
+                tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+                    override fun onStart(utteranceId: String?) = Unit
+                    override fun onDone(utteranceId: String?) { speechDone?.complete(Unit) }
+                    @Deprecated("Deprecated in Java")
+                    override fun onError(utteranceId: String?) { speechDone?.complete(Unit) }
+                    override fun onError(utteranceId: String?, errorCode: Int) { speechDone?.complete(Unit) }
+                    override fun onStop(utteranceId: String?, interrupted: Boolean) { speechDone?.complete(Unit) }
+                })
             }
         }
 
@@ -105,7 +119,8 @@ class MainActivity : AppCompatActivity() {
 
     /** Show (and optionally speak) the phrase for the saint returned by [pick]: random by default. */
     private fun invokeSaint(pick: suspend () -> String = { Mannaggia.randomSaint(this) }) {
-        // Ignore re-entrant triggers while an invocation is still in flight.
+        // Ignore button, shake and saint-of-the-day triggers until the previous phrase
+        // has been spoken (or shown for a moment): the job stays active until then.
         if (currentJob?.isActive == true) return
 
         binding.progress.visibility = View.VISIBLE
@@ -114,16 +129,16 @@ class MainActivity : AppCompatActivity() {
 
         currentJob = lifecycleScope.launch {
             val result = runCatching { pick() }
+            binding.progress.visibility = View.GONE
             result.fold(
                 onSuccess = { saint ->
                     runCatching { Album.record(this@MainActivity, saint) }
                     val phrase = Mannaggia.phraseOf(saint)
                     binding.txtResult.text = phrase
-                    if (Prefs.ttsEnabled(this@MainActivity)) speak(phrase)
+                    if (Prefs.ttsEnabled(this@MainActivity)) speakAndWait(phrase) else delay(SHOW_ONLY_COOLDOWN_MS)
                 },
                 onFailure = { e -> binding.txtResult.text = "Errore: ${e.message}" }
             )
-            binding.progress.visibility = View.GONE
             binding.btnMannaggia.isEnabled = true
         }
     }
@@ -132,12 +147,16 @@ class MainActivity : AppCompatActivity() {
     // System text-to-speech (offline, uses the device's Italian voice)
     // ---------------------------------------------------------------
 
-    private fun speak(text: String) {
+    /** Speak [text] and suspend until it has been spoken (or [SPEECH_TIMEOUT_MS] at most). */
+    private suspend fun speakAndWait(text: String) {
         if (!ttsReady) {
             Toast.makeText(this, R.string.tts_unavailable, Toast.LENGTH_SHORT).show()
             return
         }
-        tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "mannaggia")
+        val done = CompletableDeferred<Unit>().also { speechDone = it }
+        if (tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "mannaggia") != TextToSpeech.SUCCESS) return
+        // Safety net: some engines never report the end of an utterance.
+        withTimeoutOrNull(SPEECH_TIMEOUT_MS) { done.await() }
     }
 
     // ---------------------------------------------------------------
@@ -179,6 +198,12 @@ class MainActivity : AppCompatActivity() {
             this, Manifest.permission.POST_NOTIFICATIONS
         ) == PackageManager.PERMISSION_GRANTED
         if (!granted) requestNotifPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+    }
+
+    companion object {
+        /** Without speech, how long a phrase stays before the next one can be invoked. */
+        private const val SHOW_ONLY_COOLDOWN_MS = 600L
+        private const val SPEECH_TIMEOUT_MS = 15_000L
     }
 
     override fun onDestroy() {
