@@ -45,7 +45,8 @@ class MannaggiaWidgetProvider : AppWidgetProvider() {
         CoroutineScope(SupervisorJob() + Dispatchers.IO).launch {
             val phrase = runCatching {
                 val saint = Mannaggia.randomSaint(context)
-                Album.record(context, saint)
+                val isNew = !Trofei.isSpecial(saint) && Album.record(context, saint)
+                Trofei.invocazione(context, Trofei.Fonte.WIDGET, saint, isNew)
                 Mannaggia.phraseOf(saint)
             }.getOrElse { "Errore" }
             try {

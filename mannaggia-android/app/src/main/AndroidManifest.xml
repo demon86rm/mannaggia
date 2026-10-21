@@ -27,6 +27,11 @@
             android:label="@string/settings_title" />
 
         <activity
+            android:name=".TrofeiActivity"
+            android:exported="false"
+            android:label="@string/trophies_title" />
+
+        <activity
             android:name=".AlbumActivity"
             android:exported="false"
             android:label="@string/album_title" />

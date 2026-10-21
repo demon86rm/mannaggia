@@ -53,6 +53,13 @@
     <string name="album_detail_found_number">N° %1$d · scoperta #%2$d</string>
     <string name="pref_card_anim_title">Animazione nuove figurine</string>
     <string name="pref_card_anim_summary">Mostra ogni nuovo santo che entra nell\'album (i leggendari sono sempre animati)</string>
+    <string name="btn_trophies">Trofei</string>
+    <string name="trophies_title">Trofei</string>
+    <string name="trophies_count">%1$d trofei su %2$d</string>
+    <string name="trophy_unlocked">🏆 Trofeo sbloccato</string>
+    <string name="trophy_unlocked_on">Sbloccato il %1$s alle %2$s</string>
+    <string name="trophy_locked">\?\?\?</string>
+    <string name="trophy_locked_hint">Continua a imprecare…</string>
     <string name="album_empty">Nessun santo, per ora.\nTorna qui dopo il primo Mannaggia!</string>
     <string name="tts_unavailable">Voce italiana non disponibile</string>
     <string name="about_title">Mannaggia %1$s</string>

@@ -83,6 +83,29 @@
         app:layout_constraintBottom_toTopOf="@id/btnAlbum"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Trophies (pixel-art cup), on top of the bottom-right column. -->
+    <ImageView
+        android:id="@+id/btnTrophies"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/btn_trophies"
+        android:padding="4dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@id/btnSaintOfDay"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Trophy unlocked banner, sliding from the top (see TrophyPop). -->
+    <include
+        android:id="@+id/trophyPop"
+        layout="@layout/view_trophy_pop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <!-- New card popping up and flying into the binder (see CardPop). -->
     <include
         android:id="@+id/cardPop"

@@ -1,0 +1,206 @@
+package com.mannaggia.app
+
+import android.content.Context
+import android.content.SharedPreferences
+import java.util.Calendar
+import java.util.Locale
+
+/**
+ * Hidden trophies ("Trofei"): local statistics, the rules that unlock trophies
+ * and the cosmetic rewards they give (colors, fonts, effects, special cards).
+ *
+ * Everything stays on the phone (SharedPreferences "stats"). Unlocks from any
+ * source (main screen, widget, tile, options, album) go into a queue that the
+ * main screen announces with [TrophyPop] when it is visible.
+ */
+object Trofei {
+
+    /** Where an invocation came from. */
+    enum class Fonte { PULSANTE, SCUOTIMENTO, CALENDARIO, WIDGET, RIQUADRO }
+
+    enum class Tipo { COLORE, CARATTERE, EFFETTO, FIGURINA }
+
+    /** A cosmetic reward: [valore] is the preference value (or the special card's name). */
+    data class Ricompensa(val tipo: Tipo, val valore: String, val nome: String) {
+        val descrizione: String
+            get() = when (tipo) {
+                Tipo.COLORE -> "Nuovo colore: $nome"
+                Tipo.CARATTERE -> "Nuovo carattere: $nome"
+                Tipo.EFFETTO -> "Nuovo effetto: $nome"
+                Tipo.FIGURINA -> "Figurina speciale: $nome"
+            }
+    }
+
+    data class Trofeo(val id: String, val nome: String, val condizione: String, val ricompensa: Ricompensa)
+
+    private fun colore(v: String, n: String) = Ricompensa(Tipo.COLORE, v, n)
+    private fun carattere(v: String, n: String) = Ricompensa(Tipo.CARATTERE, v, n)
+    private fun effetto(v: String, n: String) = Ricompensa(Tipo.EFFETTO, v, n)
+    private fun figurina(n: String) = Ricompensa(Tipo.FIGURINA, n, n)
+
+    val TUTTI = listOf(
+        Trofeo("primo", "Primo peccato", "La prima imprecazione", colore("oro", "Oro zecchino")),
+        Trofeo("messa", "Messa saltata", "Scuotere il telefono la domenica mattina, tra le 9 e le 12",
+            colore("acquasanta", "Acquasanta")),
+        Trofeo("diavolo", "L'ora del diavolo", "Imprecare tra le 3 e le 4 di notte",
+            colore("inferno", "Fuoco infernale")),
+        Trofeo("helvetica", "Il diavolo veste Helvetica", "Cambiare carattere 666 volte",
+            carattere("sans-serif-black", "Black")),
+        Trofeo("esorcismo", "Esorcismo", "Scuotere il telefono 7 volte in 15 secondi",
+            effetto("tremolio", "Tremolio")),
+        Trofeo("trinita", "Santissima Trinità", "Imprecare dal pulsante, dal widget e dal riquadro",
+            effetto("aureola", "Aureola")),
+        Trofeo("pellegrino", "Pellegrino", "Imprecare per 7 giorni di fila",
+            carattere("sans-serif-smallcaps", "Maiuscoletto")),
+        Trofeo("devoto", "Devoto", "100 imprecazioni", colore("porpora", "Porpora cardinalizia")),
+        Trofeo("sacrestano", "Sacrestano", "Album al 10%", carattere("sans-serif-light", "Leggero")),
+        Trofeo("vescovo", "Vescovo", "Album al 50%", effetto("fiamma", "Fiamma")),
+        Trofeo("papa", "Papa", "Album completo", figurina("Santo Subito")),
+        Trofeo("leggenda", "Colpo di fortuna", "Trovare il primo santo leggendario", figurina("San Culo")),
+        Trofeo("onomastico", "Onomastico", "Pescare per caso il santo del giorno", figurina("San Calendario")),
+        Trofeo("venerdi", "Deploy del venerdì", "Imprecare il venerdì tra le 17 e le 19", figurina("San Deploy")),
+        Trofeo("root", "Root", "1000 imprecazioni", figurina("San Sudo")),
+        Trofeo("pazienza", "Santa Pazienza", "Aprire l'album 50 volte senza figurine nuove",
+            figurina("Santa Pazienza")),
+    )
+
+    private val BY_ID = TUTTI.associateBy { it.id }
+
+    /** The special (off-catalogue) cards, in card order: S1 = first (same order as speciali.txt). */
+    val SPECIALI: List<String> = TUTTI.filter { it.ricompensa.tipo == Tipo.FIGURINA }.map { it.ricompensa.valore }
+
+    fun isSpecial(saint: String) = saint in SPECIALI
+
+    /** "S3" number of a special card (1-based), or null. */
+    fun specialNumber(saint: String): Int? = SPECIALI.indexOf(saint).takeIf { it >= 0 }?.plus(1)
+
+    private const val ESORCISMO_SHAKES = 7
+    private const val ESORCISMO_WINDOW_MS = 15_000L
+    private const val PELLEGRINO_DAYS = 7
+    private const val PAZIENZA_OPENS = 50
+    private const val HELVETICA_CHANGES = 666
+
+    private fun prefs(context: Context): SharedPreferences =
+        context.applicationContext.getSharedPreferences("stats", Context.MODE_PRIVATE)
+
+    // --- Events ---------------------------------------------------------------
+
+    /** An invocation of [saint]; [isNew] if it just entered the album. */
+    suspend fun invocazione(context: Context, fonte: Fonte, saint: String, isNew: Boolean) {
+        val legendary = isNew && Avatars.isLegendary(context, saint)
+        val dayMatch = fonte != Fonte.CALENDARIO && saint == Mannaggia.saintOfDay(context)
+        val albumSize = Album.entries(context).count { !isSpecial(it.saint) }
+        val total = Mannaggia.saintCount(context)
+        synchronized(this) {
+            val p = prefs(context)
+            val e = p.edit()
+            val now = System.currentTimeMillis()
+            val cal = Calendar.getInstance()
+            val count = p.getInt("total", 0) + 1
+            e.putInt("total", count)
+            e.putInt("src_${fonte.name}", p.getInt("src_${fonte.name}", 0) + 1)
+
+            val shakes = if (fonte == Fonte.SCUOTIMENTO) {
+                (p.getString("shakes", "")!!.split(',').mapNotNull { it.toLongOrNull() } + now)
+                    .takeLast(ESORCISMO_SHAKES).also { e.putString("shakes", it.joinToString(",")) }
+            } else emptyList()
+
+            val today = day(cal)
+            val last = p.getString("lastDay", null)
+            val streak = when (last) {
+                today -> p.getInt("streak", 1)
+                day(Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, -1) }) -> p.getInt("streak", 0) + 1
+                else -> 1
+            }
+            e.putString("lastDay", today).putInt("streak", streak)
+            e.apply()
+
+            val hour = cal.get(Calendar.HOUR_OF_DAY)
+            val weekday = cal.get(Calendar.DAY_OF_WEEK)
+            val src = { f: Fonte -> f == fonte || p.getInt("src_${f.name}", 0) > 0 }
+            val ok = mutableListOf<String>()
+            if (count >= 1) ok += "primo"
+            if (fonte == Fonte.SCUOTIMENTO && weekday == Calendar.SUNDAY && hour in 9..11) ok += "messa"
+            if (hour == 3) ok += "diavolo"
+            if (shakes.size >= ESORCISMO_SHAKES && now - shakes.first() <= ESORCISMO_WINDOW_MS) ok += "esorcismo"
+            if (src(Fonte.PULSANTE) && src(Fonte.WIDGET) && src(Fonte.RIQUADRO)) ok += "trinita"
+            if (streak >= PELLEGRINO_DAYS) ok += "pellegrino"
+            if (count >= 100) ok += "devoto"
+            if (count >= 1000) ok += "root"
+            if (total > 0 && albumSize * 10 >= total) ok += "sacrestano"
+            if (total > 0 && albumSize * 2 >= total) ok += "vescovo"
+            if (total > 0 && albumSize >= total) ok += "papa"
+            if (legendary) ok += "leggenda"
+            if (dayMatch) ok += "onomastico"
+            if (weekday == Calendar.FRIDAY && hour in 17..18) ok += "venerdi"
+            unlock(context, ok)
+        }
+    }
+
+    /** The phrase font was changed in Options. */
+    fun cambioCarattere(context: Context) = synchronized(this) {
+        val p = prefs(context)
+        val n = p.getInt("fonts", 0) + 1
+        p.edit().putInt("fonts", n).apply()
+        if (n >= HELVETICA_CHANGES) unlock(context, listOf("helvetica"))
+    }
+
+    /** The album was opened: 50 openings in a row without new cards in between. */
+    suspend fun aperturaAlbum(context: Context) {
+        val size = Album.entries(context).size
+        synchronized(this) {
+            val p = prefs(context)
+            val empty = if (size == p.getInt("albumSizeAtOpen", -1)) p.getInt("emptyOpens", 0) + 1 else 0
+            p.edit().putInt("albumSizeAtOpen", size).putInt("emptyOpens", empty).apply()
+            if (empty >= PAZIENZA_OPENS) unlock(context, listOf("pazienza"))
+        }
+    }
+
+    // --- State ----------------------------------------------------------------
+
+    fun isUnlocked(context: Context, id: String) = prefs(context).contains("unlocked_$id")
+
+    fun unlockedAt(context: Context, id: String): Long? =
+        prefs(context).getLong("unlocked_$id", 0L).takeIf { it > 0 }
+
+    fun unlockedCount(context: Context) = TUTTI.count { isUnlocked(context, it.id) }
+
+    /** True if the reward [valore] of type [tipo] belongs to an unlocked trophy (or to no trophy). */
+    fun rewardAvailable(context: Context, tipo: Tipo, valore: String): Boolean {
+        val owner = TUTTI.firstOrNull { it.ricompensa.tipo == tipo && it.ricompensa.valore == valore }
+        return owner == null || isUnlocked(context, owner.id)
+    }
+
+    /** Names of the special cards already unlocked. */
+    fun unlockedSpecials(context: Context): List<String> =
+        TUTTI.filter { it.ricompensa.tipo == Tipo.FIGURINA && isUnlocked(context, it.id) }.map { it.ricompensa.valore }
+
+    /** Unlocks waiting to be announced, oldest first; clears the queue. */
+    fun takePending(context: Context): List<Trofeo> = synchronized(this) {
+        val p = prefs(context)
+        val ids = p.getString("pending", "")!!.split(',').filter { it.isNotEmpty() }
+        p.edit().remove("pending").apply()
+        ids.mapNotNull { BY_ID[it] }
+    }
+
+    /** Debug builds: unlock everything, one trophy at a time. */
+    fun debugUnlockNext(context: Context): Boolean = synchronized(this) {
+        val next = TUTTI.firstOrNull { !isUnlocked(context, it.id) } ?: return false
+        unlock(context, listOf(next.id))
+        true
+    }
+
+    private fun unlock(context: Context, ids: List<String>) {
+        val p = prefs(context)
+        val fresh = ids.filter { !p.contains("unlocked_$it") }
+        if (fresh.isEmpty()) return
+        val e = p.edit()
+        val now = System.currentTimeMillis()
+        fresh.forEach { e.putLong("unlocked_$it", now) }
+        val pending = p.getString("pending", "")!!.split(',').filter { it.isNotEmpty() } + fresh
+        e.putString("pending", pending.joinToString(",")).apply()
+    }
+
+    private fun day(c: Calendar) = String.format(Locale.ROOT, "%04d-%02d-%02d",
+        c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH))
+}

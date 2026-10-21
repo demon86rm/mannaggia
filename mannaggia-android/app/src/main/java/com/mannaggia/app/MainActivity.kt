@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
     private var themeTextColor = 0
     private var saintOfDay: String? = null
     private lateinit var cardPop: CardPop
+    private lateinit var trophyPop: TrophyPop
 
     private val requestNotifPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* no-op */ }
@@ -59,11 +60,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         applySystemBarInsets()
 
-        binding.btnMannaggia.setOnClickListener { invokeSaint() }
+        binding.btnMannaggia.setOnClickListener { invokeSaint(Trofei.Fonte.PULSANTE) }
         binding.btnSaintOfDay.setOnClickListener {
             val saint = saintOfDay ?: return@setOnClickListener
             // One saint-of-the-day invocation a day; a busy tap doesn't use it up.
-            if (Prefs.saintOfDayUsedToday(this) || !invokeSaint { saint }) return@setOnClickListener
+            if (Prefs.saintOfDayUsedToday(this) || !invokeSaint(Trofei.Fonte.CALENDARIO) { saint }) return@setOnClickListener
             Prefs.markSaintOfDayUsed(this)
             showSaintOfDay(saint)
         }
@@ -76,7 +77,17 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, AlbumActivity::class.java))
         }
         cardPop = CardPop(binding.cardPop, binding.btnAlbum, lifecycleScope)
+        // Trophy banners wait while a legendary card (with its choir) is on stage.
+        trophyPop = TrophyPop(binding.trophyPop, lifecycleScope) { cardPop.isHolding }
+        binding.btnTrophies.setOnClickListener {
+            startActivity(Intent(this, TrofeiActivity::class.java))
+        }
         if (BuildConfig.DEBUG) {
+            // Debug builds only: long-press the cup to unlock the next trophy.
+            binding.btnTrophies.setOnLongClickListener {
+                if (Trofei.debugUnlockNext(this)) announceTrophies()
+                true
+            }
             // Debug builds only: long-press the binder to preview the legendary animation.
             binding.btnAlbum.setOnLongClickListener {
                 lifecycleScope.launch { cardPop.show("San Pietro", Avatars.number(this@MainActivity, "San Pietro"), true) }
@@ -85,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         }
         lifecycleScope.launch {
             binding.btnAlbum.setImageDrawable(Avatars.binder(this@MainActivity))
+            binding.btnTrophies.setImageDrawable(Avatars.cup(this@MainActivity))
             binding.btnSaintOfDay.setImageDrawable(Avatars.saintOfDayIcon(this@MainActivity))
             binding.btnSaintOfDay.visibility = View.VISIBLE
         }
@@ -92,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-        shakeDetector = ShakeDetector { invokeSaint() }
+        shakeDetector = ShakeDetector { invokeSaint(Trofei.Fonte.SCUOTIMENTO) }
 
         tts = TextToSpeech(this) { status ->
             if (status == TextToSpeech.SUCCESS) {
@@ -119,6 +131,8 @@ class MainActivity : AppCompatActivity() {
         Prefs.applyPhraseStyle(binding.txtResult, themeTextColor)
         // Refreshed on every resume, so it is right even after midnight.
         lifecycleScope.launch { showSaintOfDay(runCatching { Mannaggia.saintOfDay(this@MainActivity) }.getOrNull()) }
+        // Trophies unlocked elsewhere (widget, tile, options, album) are announced here.
+        announceTrophies()
         if (Prefs.shakeEnabled(this)) {
             accelerometer?.let {
                 sensorManager.registerListener(shakeDetector, it, SensorManager.SENSOR_DELAY_UI)
@@ -130,6 +144,11 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         sensorManager.unregisterListener(shakeDetector)
         cardPop.cancel()
+    }
+
+    /** Show the banners of the trophies unlocked since the last call. */
+    private fun announceTrophies() {
+        trophyPop.show(Trofei.takePending(this))
     }
 
     /**
@@ -164,7 +183,10 @@ class MainActivity : AppCompatActivity() {
 
     /** Show (and optionally speak) the phrase for the saint returned by [pick]: random by default. */
     /** Returns false (and does nothing) while a previous invocation is still in flight. */
-    private fun invokeSaint(pick: suspend () -> String = { Mannaggia.randomSaint(this) }): Boolean {
+    private fun invokeSaint(
+        fonte: Trofei.Fonte = Trofei.Fonte.PULSANTE,
+        pick: suspend () -> String = { Mannaggia.randomSaint(this) },
+    ): Boolean {
         // Ignore button, shake and saint-of-the-day triggers until the previous phrase
         // has been spoken (or shown for a moment): the job stays active until then.
         if (currentJob?.isActive == true) return false
@@ -180,8 +202,12 @@ class MainActivity : AppCompatActivity() {
             binding.progress.visibility = View.GONE
             result.fold(
                 onSuccess = { saint ->
-                    val isNew = runCatching { Album.record(this@MainActivity, saint) }.getOrDefault(false)
+                    // Special cards live in the trophies, not in the album file.
+                    val isNew = !Trofei.isSpecial(saint) &&
+                        runCatching { Album.record(this@MainActivity, saint) }.getOrDefault(false)
                     val choir = isNew && showNewCard(saint)
+                    runCatching { Trofei.invocazione(this@MainActivity, fonte, saint, isNew) }
+                    announceTrophies()
                     val phrase = Mannaggia.phraseOf(saint)
                     binding.txtResult.text = phrase
                     if (Prefs.ttsEnabled(this@MainActivity)) {

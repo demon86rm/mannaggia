@@ -31,7 +31,8 @@ class MannaggiaTileService : TileService() {
         scope.launch {
             val phrase = runCatching {
                 val saint = Mannaggia.randomSaint(this@MannaggiaTileService)
-                Album.record(this@MannaggiaTileService, saint)
+                val isNew = !Trofei.isSpecial(saint) && Album.record(this@MannaggiaTileService, saint)
+                Trofei.invocazione(this@MannaggiaTileService, Trofei.Fonte.RIQUADRO, saint, isNew)
                 Mannaggia.phraseOf(saint)
             }.getOrElse { "Errore: ${it.message}" }
             showNotification(phrase)

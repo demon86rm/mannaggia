@@ -70,6 +70,12 @@ object Avatars {
     /** The pixel-art card binder icon of the main screen. */
     suspend fun binder(context: Context): BitmapDrawable? = icon(context, "raccoglitore.png")
 
+    /** The pixel-art trophy cup (main screen, trophy list, unlock banner). */
+    suspend fun cup(context: Context): BitmapDrawable? = icon(context, "coppa.png")
+
+    /** Still silver frame of the special cards. */
+    suspend fun silverFrame(context: Context): BitmapDrawable? = icon(context, "cornice_argento.png")
+
     /** The pixel-art saint-of-the-day icon (calendar page with a gold star). */
     suspend fun saintOfDayIcon(context: Context): BitmapDrawable? = icon(context, "santo_del_giorno.png")
 

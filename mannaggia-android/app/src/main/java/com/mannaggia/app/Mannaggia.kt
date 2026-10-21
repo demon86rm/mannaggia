@@ -36,7 +36,9 @@ object Mannaggia {
     /** Pick a random saint from the bundled list (loaded once, then cached). */
     suspend fun randomSaint(context: Context): String = withContext(Dispatchers.IO) {
         val list = saints ?: loadSaints(context).also { saints = it }
-        if (list.isEmpty()) "Sant'Anonimo" else list.random()
+        // Unlocked special cards (trophy rewards) can come out too, like any saint.
+        val pool = list + Trofei.unlockedSpecials(context)
+        if (pool.isEmpty()) "Sant'Anonimo" else pool.random()
     }
 
     /** The saint of the day: the most famous one celebrated today, or null if none. */

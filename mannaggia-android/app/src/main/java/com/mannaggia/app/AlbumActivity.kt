@@ -49,6 +49,7 @@ class AlbumActivity : AppCompatActivity() {
         }
 
         binding.list.layoutManager = GridLayoutManager(this, COLUMNS)
+        if (savedInstanceState == null) lifecycleScope.launch { Trofei.aperturaAlbum(this@AlbumActivity) }
     }
 
     override fun onResume() {

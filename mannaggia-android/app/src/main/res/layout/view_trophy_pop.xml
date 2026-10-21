@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Trophy unlocked: a banner sliding down from the top with the pixel-art cup,
+     the trophy name and its reward (see TrophyPop). -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/trophyRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="24dp"
+    android:visibility="gone"
+    app:cardBackgroundColor="#F02A2230"
+    app:cardCornerRadius="12dp"
+    app:strokeColor="#E8B838"
+    app:strokeWidth="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/imgCup"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/trophy_unlocked"
+                android:textAppearance="?attr/textAppearanceLabelMedium"
+                android:textColor="#FFE8B838" />
+
+            <TextView
+                android:id="@+id/txtTrophy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="#FFFFFFFF" />
+
+            <TextView
+                android:id="@+id/txtReward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="#FFD8D0C8" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

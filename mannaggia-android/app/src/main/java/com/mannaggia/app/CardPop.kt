@@ -31,7 +31,7 @@ class CardPop(
 
     private var job: Job? = null
     private var glowPulse: ValueAnimator? = null
-    private var coro: Coro? = null
+    private var coro: Suono? = null
 
     /** True while a legendary card waits for the tap that puts it in the album. */
     var isHolding = false
@@ -51,7 +51,7 @@ class CardPop(
         val context = pop.root.context
         cancel()
         // The choir starts with the card (synchronously, so awaitChoir() sees it).
-        if (legendary) coro = Coro(context).also { it.start() }
+        if (legendary) coro = Suono(context, R.raw.coro).also { it.start() }
         job = scope.launch {
             pop.txtSaint.text = saint
             pop.txtNumber.text = number?.let { context.getString(R.string.card_number, it) } ?: ""

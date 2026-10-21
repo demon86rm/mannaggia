@@ -4,16 +4,17 @@ import android.content.Context
 import android.media.AudioAttributes
 import android.media.AudioManager
 import android.media.MediaPlayer
+import androidx.annotation.RawRes
 import kotlinx.coroutines.CompletableDeferred
 
 /**
- * The short angelic choir played when a legendary saint is found for the first
- * time (res/raw/coro.ogg, about 3 s, synthesized by tools/suoni/coro.py). It
- * plays once and ends by itself, at the media volume whatever the ringer mode
+ * A short sound played once: the angelic choir of legendary saints
+ * (R.raw.coro, tools/suoni/coro.py) or the trophy jingle (R.raw.trofeo,
+ * tools/suoni/jingle.py). It plays at the media volume whatever the ringer mode
  * (the user keeps the phone on silent). [done] completes when it has finished
  * (or could not be played, or was stopped).
  */
-class Coro(private val context: Context) {
+class Suono(private val context: Context, @RawRes private val res: Int) {
 
     private var player: MediaPlayer? = null
     val done = CompletableDeferred<Unit>()
@@ -25,7 +26,7 @@ class Coro(private val context: Context) {
             .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
             .build()
         val session = audio?.generateAudioSessionId() ?: AudioManager.AUDIO_SESSION_ID_GENERATE
-        val mp = MediaPlayer.create(context, R.raw.coro, attrs, session)
+        val mp = MediaPlayer.create(context, res, attrs, session)
         if (mp == null) {
             done.complete(Unit)
             return

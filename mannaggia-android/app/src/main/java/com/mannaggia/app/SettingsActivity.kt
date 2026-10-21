@@ -102,6 +102,7 @@ class SettingsActivity : AppCompatActivity() {
                 Prefs.applyNightMode(requireContext())
                 return
             }
+            if (key == Prefs.KEY_FONT) Trofei.cambioCarattere(requireContext())
             if (key == Prefs.KEY_FONT || key == Prefs.KEY_COLOR || key == Prefs.KEY_GLOW) {
                 findPreference<StylePreviewPreference>("preview")?.refresh()
             }
