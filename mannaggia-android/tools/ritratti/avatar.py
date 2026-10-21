@@ -1026,20 +1026,72 @@ def render(name, t):
     return img
 
 
-def cornice():
-    """Thin gold frame with small corner flourishes for legendary saints (transparent inside)."""
+# Gemme: scala di luminosita' della stessa tinta, dalla piu' scura alla piu' chiara.
+GEM_RED = [(120, 20, 30), (178, 34, 44), (230, 70, 80), (255, 150, 150)]
+GEM_BLUE = [(30, 60, 120), (60, 110, 190), (110, 160, 240), (190, 220, 255)]
+FRAME_STEPS = 8  # fotogrammi dell'animazione
+
+
+def _perimeter():
+    """Pixel coordinates along the outer ring, clockwise from the top-left corner."""
+    top = [(x, 0) for x in range(S)]
+    right = [(S - 1, y) for y in range(1, S)]
+    bottom = [(x, S - 1) for x in range(S - 2, -1, -1)]
+    left = [(0, y) for y in range(S - 2, 0, -1)]
+    return top + right + bottom + left
+
+
+def cornice(step=None):
+    """Thin gold frame for legendary saints (transparent inside).
+
+    With [step] (0..FRAME_STEPS-1) it is one frame of the sparkle animation: each gem
+    cycles through the light levels of its colour with its own phase, and a short
+    glint runs around the border. Without it, the still version.
+    """
     c = Canvas()
     c.d.rectangle((0, 0, S - 1, S - 1), outline=GOLD_DARK + (255,))
     c.d.rectangle((1, 1, S - 2, S - 2), outline=GOLD_LIGHT + (255,))
-    for (x, y) in ((0, 0), (S - 5, 0), (0, S - 5), (S - 5, S - 5)):
-        # Fregio d'angolo: piccolo quadrato d'oro con una gemma rossa.
+
+    def gem(i, palette):
+        if step is None:
+            return palette[1], False
+        # Triangle wave 0,1,2,3,2,1,... shifted per gem so they don't blink together.
+        k = (step + i * 3) % 6
+        level = k if k < 4 else 6 - k
+        return palette[level], level == 3
+
+    for i, (x, y) in enumerate(((0, 0), (S - 5, 0), (S - 5, S - 5), (0, S - 5))):
         c.rect((x, y, x + 4, y + 4), GOLD)
         c.d.rectangle((x, y, x + 4, y + 4), outline=GOLD_DARK + (255,))
-        c.px(x + 2, y + 2, RED)
-    for (x, y) in ((S // 2 - 1, 0), (S // 2 - 1, S - 3), (0, S // 2 - 1), (S - 3, S // 2 - 1)):
-        c.rect((x, y, x + 2, y + 2), GOLD)        # gemme a meta' lato
-        c.px(x + 1, y + 1, (60, 110, 190))
+        col, peak = gem(i, GEM_RED)
+        c.px(x + 2, y + 2, col)
+        if peak:  # riflesso bianco al massimo della luce
+            c.px(x + 1, y + 1, (255, 255, 255))
+    for i, (x, y) in enumerate(((S // 2 - 1, 0), (S - 3, S // 2 - 1), (S // 2 - 1, S - 3), (0, S // 2 - 1))):
+        c.rect((x, y, x + 2, y + 2), GOLD)
+        col, peak = gem(i + 4, GEM_BLUE)
+        c.px(x + 1, y + 1, col)
+        if peak:
+            c.px(x, y, (255, 255, 255))
+    if step is not None:
+        ring = _perimeter()
+        start = step * len(ring) // FRAME_STEPS
+        for j, col in enumerate((GOLD_LIGHT, (255, 250, 220), GOLD_LIGHT)):
+            x, y = ring[(start + j) % len(ring)]
+            if c.img.getpixel((x, y))[:3] in (GOLD_DARK, GOLD_LIGHT):  # only on the plain border
+                c.px(x, y, col)
     return c.img
+
+
+def gif_leggendario(name, t, path, zoom=6, ms=110):
+    """Animated preview: still avatar with the sparkling frame on top."""
+    base = render(name, t)
+    frames = []
+    for step in range(FRAME_STEPS):
+        f = base.copy()
+        f.alpha_composite(cornice(step))
+        frames.append(f.convert("RGB").resize((S * zoom, S * zoom), Image.NEAREST))
+    frames[0].save(path, save_all=True, append_images=frames[1:], duration=ms, loop=0)
 
 
 def render_final(name, t, leggendario):
