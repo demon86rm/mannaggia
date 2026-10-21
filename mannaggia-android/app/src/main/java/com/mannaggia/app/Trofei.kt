@@ -62,6 +62,8 @@ object Trofei {
         Trofeo("root", "Root", "1000 imprecazioni", figurina("San Sudo")),
         Trofeo("pazienza", "Santa Pazienza", "Aprire l'album 50 volte senza figurine nuove",
             figurina("Santa Pazienza")),
+        Trofeo("sudo", "sudo !!", "Imprecare 10 volte di fila con il carattere Monospace",
+            effetto(Prefs.EFFECT_TERMINALE, "Terminale")),
     )
 
     private val BY_ID = TUTTI.associateBy { it.id }
@@ -79,6 +81,7 @@ object Trofei {
     private const val PELLEGRINO_DAYS = 7
     private const val PAZIENZA_OPENS = 50
     private const val HELVETICA_CHANGES = 666
+    private const val SUDO_IN_A_ROW = 10
 
     private fun prefs(context: Context): SharedPreferences =
         context.applicationContext.getSharedPreferences("stats", Context.MODE_PRIVATE)
@@ -107,6 +110,9 @@ object Trofei {
                 else -> 1
             }
             e.putString("lastDay", today).putInt("streak", streak)
+            val mono = Prefs.isMonospace(context)
+            val monoRun = if (mono) p.getInt("monoRun", 0) + 1 else 0
+            e.putInt("monoRun", monoRun)
             e.apply()
 
             val hour = cal.get(Calendar.HOUR_OF_DAY)
@@ -125,6 +131,7 @@ object Trofei {
             if (legendary) ok += "leggenda"
             if (dayMatch) ok += "onomastico"
             if (weekday == Calendar.FRIDAY && hour in 17..18) ok += "venerdi"
+            if (monoRun >= SUDO_IN_A_ROW) ok += "sudo"
             unlock(context, ok)
         }
     }

@@ -199,7 +199,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.progress.visibility = View.VISIBLE
         binding.btnMannaggia.isEnabled = false
-        binding.txtResult.text = ""
+        PhraseEffects.setText(binding.txtResult, "")
 
         currentJob = lifecycleScope.launch {
             val result = runCatching { pick() }
@@ -213,7 +213,7 @@ class MainActivity : AppCompatActivity() {
                     runCatching { Trofei.invocazione(this@MainActivity, fonte, saint, isNew) }
                     announceTrophies()
                     val phrase = Mannaggia.phraseOf(saint)
-                    binding.txtResult.text = phrase
+                    PhraseEffects.setText(binding.txtResult, phrase)
                     if (Prefs.ttsEnabled(this@MainActivity)) {
                         if (choir) cardPop.awaitChoir(CHOIR_MAX_WAIT_MS)  // first the choir, then the voice
                         speakAndWait(phrase)
@@ -221,7 +221,7 @@ class MainActivity : AppCompatActivity() {
                         delay(SHOW_ONLY_COOLDOWN_MS)
                     }
                 },
-                onFailure = { e -> binding.txtResult.text = "Errore: ${e.message}" }
+                onFailure = { e -> PhraseEffects.setText(binding.txtResult, "Errore: ${e.message}") }
             )
             binding.btnMannaggia.isEnabled = true
         }

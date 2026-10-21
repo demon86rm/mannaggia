@@ -2,4 +2,6 @@
 <resources>
     <!-- View tag holding the running phrase effect animator (PhraseEffects). -->
     <item name="phrase_effect" type="id" />
+    <!-- The phrase as set by the app, without the Terminale prompt and cursor. -->
+    <item name="phrase_text" type="id" />
 </resources>

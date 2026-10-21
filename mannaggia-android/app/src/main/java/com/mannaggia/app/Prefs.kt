@@ -28,6 +28,7 @@ object Prefs {
     const val EFFECT_AUREOLA = "aureola"
     const val EFFECT_TREMOLIO = "tremolio"
     const val EFFECT_FIAMMA = "fiamma"
+    const val EFFECT_TERMINALE = "terminale"
     const val KEY_THEME = "theme"
     const val KEY_CARD_ANIM = "card_anim"
     /** Date (yyyy-MM-dd) of the last saint-of-the-day invocation: one a day. */
@@ -62,6 +63,9 @@ object Prefs {
 
     /** Animate each new album card; legendary saints are animated anyway. */
     fun cardAnimEnabled(context: Context) = prefs(context).getBoolean(KEY_CARD_ANIM, true)
+
+    /** True when the phrase font is "Monospace (terminale)" (trophy "sudo !!"). */
+    fun isMonospace(context: Context) = prefs(context).getString(KEY_FONT, "sans-serif") == "monospace"
 
     fun saintOfDayUsedToday(context: Context) = prefs(context).getString(KEY_SAINT_OF_DAY_USED, null) == today()
 

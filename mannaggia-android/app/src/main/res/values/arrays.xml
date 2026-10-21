@@ -71,6 +71,7 @@
         <item>Aureola</item>
         <item>Tremolio</item>
         <item>Fiamma</item>
+        <item>Terminale</item>
     </string-array>
     <string-array name="effect_values">
         <item>none</item>
@@ -78,5 +79,6 @@
         <item>aureola</item>
         <item>tremolio</item>
         <item>fiamma</item>
+        <item>terminale</item>
     </string-array>
 </resources>

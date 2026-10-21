@@ -23,6 +23,7 @@ Generatore di "Mannaggia <santo>!". Nella root ci sono lo script bash (`mannaggi
 - `app/src/main/assets/avatar/` (ritratti pixel art dell'album, cornice animata, `leggendari.txt`) è generato da `tools/ritratti/avatar.py`: `python tools/ritratti/avatar.py --tutti --app app/src/main/assets/avatar --cache tools/ritratti/tratti_wikidata.json` (venv `~/venv/ritratti` con pillow). Non modificarlo a mano: l'iconografia dei santi famosi sta in `FAMOSI`, le regole per gli altri in `regole()`. Va rigenerato se cambia `santi.txt`.
 - `app/src/main/res/raw/coro.ogg` (coro dei leggendari, ~3 s) è sintetizzato da `tools/suoni/coro.py`: `python tools/suoni/coro.py --out app/src/main/res/raw/coro.ogg` (venv `~/venv/ritratti`, ffmpeg). Nessun campione registrato: è originale, GPL.
 - `app/src/main/res/raw/trofeo.ogg` (jingle dei trofei) è sintetizzato da `tools/suoni/jingle.py`: `python tools/suoni/jingle.py --out app/src/main/res/raw/trofeo.ogg`.
+- Il testo della frase va impostato con `PhraseEffects.setText()`, non con `txtResult.text`: l'effetto Terminale lo riscrive mentre lo batte.
 - Trofei e ricompense sono in `Trofei.kt` (`TUTTI`). Le ricompense di tipo colore, carattere ed effetto usano gli stessi valori di `arrays.xml`. Le figurine speciali stanno nella tabella `SPECIALI` di `avatar.py`, nello stesso ordine delle ricompense `FIGURINA`, che corrisponde ai numeri S1…S6.
 - Non rigenerare `santi.txt` senza motivo: i nomi sono la chiave dei file audio (`sha1`) e, in futuro, dell'album.
 
