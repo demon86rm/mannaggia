@@ -124,6 +124,11 @@ FAMOSI = {
     "San Mattia": A(capelli="corti", colore_capelli="nero", barba="corta",
                     colore_abito=(150, 50, 60), attributo="ascia"),
     # Famiglia di Gesu' e figure bibliche
+    "Santa Maria": T(donna=True, eta="giovane", copricapo="velo", colore_velo=(56, 96, 176),
+                     abito="tunica", colore_abito=(170, 40, 50), attributo="giglio",
+                     extra=["stelle", "manto_azzurro"]),
+    "San Davide": T(eta="adulto", capelli="ricci", colore_capelli="rosso", barba="corta",
+                    copricapo="corona", abito="regale", colore_abito=(120, 40, 120), attributo="arpa"),
     "San Giuseppe": A(eta="anziano", capelli="corti", colore_capelli="grigio", barba="corta",
                       colore_abito=(150, 110, 60), attributo="giglio"),
     "San Giovanni Battista": T(capelli="lunghi", colore_capelli="castano", barba="lunga",
@@ -484,6 +489,9 @@ def draw_body(c, t, robe, skin):
         c.line([(19, 36), (19, 44)], (60, 60, 70)); c.ell((18, 44, 21, 46), STEEL)  # stetoscopio
     elif a == "moderno":
         c.poly([(19, 33), (24, 37), (29, 33)], shade(robe, 0.75))  # scollo
+    if "manto_azzurro" in t.extra:  # manto della Madonna sopra l'abito rosso
+        c.poly([(5, 47), (6, 38), (13, 33), (18, 34), (16, 47)], (56, 96, 176))
+        c.poly([(43, 47), (42, 38), (35, 33), (30, 34), (32, 47)], (44, 78, 150))
     if "croce_rossa" in t.extra:
         c.rect((12, 37, 14, 43), RED); c.rect((10, 39, 16, 41), RED)
     if "sole_petto" in t.extra:  # San Tommaso d'Aquino
@@ -645,6 +653,9 @@ def draw_cover_front(c, t, skin):
         c.ell((10, 9, 38, 15), (120, 84, 52))     # tesa larga
         c.ell((16, 5, 32, 13), (140, 98, 60))
         c.ell((22, 8, 26, 11), (240, 228, 200))   # conchiglia sul cappello
+    if "stelle" in t.extra:  # corona di dodici stelle (qui sei, sull'aureola)
+        for (x, y) in ((12, 8), (17, 4), (24, 2), (31, 4), (36, 8), (38, 15)):
+            c.px(x, y, (255, 250, 210))
     if "spine" in t.extra:
         for x in range(17, 32, 2):
             c.px(x, 13 + (x % 4 == 1), (90, 70, 40))
@@ -950,6 +961,14 @@ def at_rosario(c):
     c.line([(24, 41), (24, 45)], (90, 60, 40)); c.line([(23, 43), (25, 43)], (90, 60, 40))
 
 
+def at_arpa(c):  # l'arpa di re Davide
+    c.line([(35, 46), (35, 26)], GOLD_DARK, 2)
+    c.line([(35, 26), (45, 32)], GOLD, 2)
+    c.line([(45, 32), (44, 46)], GOLD_DARK)
+    for x in range(37, 44, 2):
+        c.line([(x, 28 + (x - 35) // 2 + 1), (x, 45)], (240, 236, 220))
+
+
 ATTRIBUTI = {name[3:]: fn for name, fn in globals().items() if name.startswith("at_")}
 
 
@@ -1104,33 +1123,57 @@ def render_final(name, t, leggendario):
 
 # --- Tratti da Wikidata -------------------------------------------------------
 
-def wikidata_tratti(names):
-    """Tratti dalle regole, per santi non in FAMOSI. Richiede la rete."""
+def wikidata_facts(names, cache=None):
+    """santo -> {female, beato, labels, birth, sitelinks} from Wikidata, in batches.
+
+    [cache] is a JSON file: when it exists it is used instead of the network, so the
+    avatars can be regenerated identically (Wikidata changes over time).
+    """
+    import json
+    if cache and Path(cache).exists():
+        facts = json.loads(Path(cache).read_text(encoding="utf-8"))
+        return {n: facts[n] for n in names if n in facts}
     spec = importlib.util.spec_from_file_location("gs", ROOT / "tools/genera_santi.py")
     gs = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(gs)
     people = gs.collect(gs.fetch())
-    qids = {gs.display_name(p): q for q, p in people.items()}
+    qids = {}
+    for q, p in people.items():
+        qids.setdefault(gs.display_name(p), q)  # same name, several items: keep the first
     wanted = {qids[n]: n for n in names if n in qids}
-    if not wanted:
-        return {}
-    query = """SELECT ?item ?valLabel ?birth WHERE {
-      VALUES ?item { %s }
-      OPTIONAL { ?item wdt:P569 ?birth }
-      OPTIONAL { VALUES ?p { wdt:P39 wdt:P611 wdt:P106 wdt:P1196 } ?item ?p ?val. }
-      SERVICE wikibase:label { bd:serviceParam wikibase:language "en". } }""" % " ".join("wd:" + q for q in wanted)
-    facts = {n: {"labels": [], "birth": None} for n in wanted.values()}
-    for row in gs.fetch(query):
-        n = wanted[row["item"]["value"].rsplit("/", 1)[1]]
-        if "valLabel" in row:
-            facts[n]["labels"].append(row["valLabel"]["value"].lower())
-        if "birth" in row and facts[n]["birth"] is None:
-            try:
-                facts[n]["birth"] = int(row["birth"]["value"].lstrip("+").split("-")[0] or 0)
-            except ValueError:
-                pass
-    return {n: regole(n, people[q]["female"], not people[q]["saint"], " | ".join(facts[n]["labels"]),
-                      facts[n]["birth"]) for q, n in wanted.items()}
+    facts = {n: {"female": people[q]["female"], "beato": not people[q]["saint"],
+                 "labels": [], "birth": None, "sitelinks": 0} for q, n in wanted.items()}
+    items = list(wanted)
+    for i in range(0, len(items), 200):  # one big VALUES makes Wikidata time out
+        query = """SELECT ?item ?valLabel ?birth ?sitelinks WHERE {
+          VALUES ?item { %s }
+          OPTIONAL { ?item wikibase:sitelinks ?sitelinks }
+          OPTIONAL { ?item wdt:P569 ?birth }
+          OPTIONAL { VALUES ?p { wdt:P39 wdt:P611 wdt:P106 wdt:P1196 wdt:P411 } ?item ?p ?val. }
+          SERVICE wikibase:label { bd:serviceParam wikibase:language "en". } }""" % " ".join(
+            "wd:" + q for q in items[i:i + 200])
+        for row in gs.fetch(query):
+            f = facts[wanted[row["item"]["value"].rsplit("/", 1)[1]]]
+            if "valLabel" in row and row["valLabel"]["value"].lower() not in f["labels"]:
+                f["labels"].append(row["valLabel"]["value"].lower())
+            if "sitelinks" in row:
+                f["sitelinks"] = int(row["sitelinks"]["value"])
+            if "birth" in row and f["birth"] is None:
+                try:
+                    f["birth"] = int(row["birth"]["value"].lstrip("+").split("-")[0] or 0)
+                except ValueError:
+                    pass
+        print(f"  Wikidata: {min(i + 200, len(items))}/{len(items)}", file=sys.stderr)
+    if cache:
+        Path(cache).write_text(json.dumps(facts, ensure_ascii=False, indent=0), encoding="utf-8")
+    return facts
+
+
+def wikidata_tratti(names, cache=None):
+    """Tratti dalle regole, per santi non in FAMOSI."""
+    facts = wikidata_facts(names, cache)
+    return {n: regole(n, f["female"], f["beato"], " | ".join(f["labels"]), f["birth"])
+            for n, f in facts.items()}
 
 
 def regole(name, donna, beato, labels, birth):
@@ -1142,7 +1185,8 @@ def regole(name, donna, beato, labels, birth):
     else:
         t.capelli = ["corti", "corti", "ricci", "calvo"][h(name, "taglio") % 4]
         t.barba = ["nessuna", "corta", "lunga"][h(name, "barba") % 3] if (birth or 0) < 1600 else "nessuna"
-    t.martire = has("martyr", "execution", "decapitation", "killed", "homicide", "crucifixion", "shot")
+    t.martire = has("martyr", "execution", "decapitation", "beheading", "killed", "homicide", "crucifixion",
+                    "shot", "capital punishment", "burned at the stake", "stoning", "hanging")
     if has("pope"):
         t.copricapo, t.abito, t.attributo = ("tiara" if (birth or 0) < 1900 else "zucchetto_bianco"), "papa", "croce"
     elif has("cardinal"):
@@ -1173,44 +1217,21 @@ def regole(name, donna, beato, labels, birth):
         t.colore_abito = (120, 40, 120) if h(name, "re") % 2 else (150, 40, 50)
     elif has("soldier", "knight", "military"):
         t.abito, t.attributo = "armatura", "spada"
+    elif has("hermit", "anchorite", "stylite"):
+        t.abito, t.colore_abito, t.attributo = "saio", (96, 78, 62), "bastone"
+        if not donna:
+            t.barba, t.eta = "lunga", "anziano"
     elif has("priest", "jesuit", "presbyter", "missionary", "deacon"):
         t.abito, t.attributo = "talare", "libro"
-    if t.attributo == "nessuno" and t.martire:
-        t.attributo = "palma"
+    if t.martire and t.attributo in ("nessuno", "libro", "croce", "giglio", "bastone"):
+        t.attributo = "palma"  # the martyr's palm wins over generic attributes, not over the crozier
     elif t.attributo == "nessuno":
         t.attributo = ["nessuno", "libro", "croce", "giglio"][h(name, "attr") % 4]
     return t
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--nomi", help="file con i santi (uno per riga)")
-    ap.add_argument("--famosi", action="store_true", help="tutta la tabella FAMOSI")
-    ap.add_argument("--out", default=str(Path.home() / "mannaggia-avatar-prova"))
-    ap.add_argument("--zoom", type=int, default=5)
-    ap.add_argument("--colonne", type=int, default=8)
-    args = ap.parse_args()
-    names = list(FAMOSI) if args.famosi else []
-    if args.nomi:
-        names += [l.strip() for l in open(args.nomi, encoding="utf-8") if l.strip() and l.strip() not in names]
-    tratti = {n: FAMOSI[n] for n in names if n in FAMOSI}
-    others = [n for n in names if n not in FAMOSI]
-    if others:
-        tratti.update(wikidata_tratti(others))
-    out = Path(args.out).expanduser()
-    out.mkdir(parents=True, exist_ok=True)
-
-    tiles = []
-    for n in names:
-        if n not in tratti:
-            print(f"  non trovato: {n}", file=sys.stderr)
-            continue
-        img = render_final(n, tratti[n], n in LEGGENDARI_PROVA)
-        img.save(out / f"{hashlib.sha1(n.encode()).hexdigest()[:12]}.png")
-        tiles.append((n + ("" if n in FAMOSI else " *"), img))
-
-    z, cols = args.zoom, args.colonne
-    cell = S * z
+def contact_sheet(tiles, path, zoom, cols):
+    cell = S * zoom
     rows = (len(tiles) + cols - 1) // cols
     sheet = Image.new("RGB", (cols * (cell + 10) + 10, rows * (cell + 26) + 10), (28, 28, 28))
     d = ImageDraw.Draw(sheet)
@@ -1219,7 +1240,92 @@ def main():
         y = 10 + (i // cols) * (cell + 26)
         sheet.paste(img.resize((cell, cell), Image.NEAREST), (x, y))
         d.text((x, y + cell + 5), n[:38], fill=(230, 230, 230))
-    sheet.save(out / "provino.png")
+    sheet.save(path)
+
+
+def file_id(name):
+    return hashlib.sha1(name.encode("utf-8")).hexdigest()[:12]
+
+
+def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1):
+    """All saints: <sha1>.png (no frame), cornice_NN.png, leggendari.txt, tratti.tsv, provini."""
+    import random
+    names = [l.strip() for l in open(santi_path, encoding="utf-8") if l.strip() and not l.startswith("#")]
+    facts = wikidata_facts(names, cache)
+    tratti = {n: FAMOSI.get(n) or regole(n, f["female"], f["beato"], " | ".join(f["labels"]), f["birth"])
+              for n, f in facts.items()}
+    for n in names:  # not found on Wikidata (renamed item, ...): generic avatar from the name only
+        tratti.setdefault(n, FAMOSI.get(n) or regole(n, n.startswith(("Santa", "Beata")),
+                                                     n.startswith("Beat"), "", None))
+    out.mkdir(parents=True, exist_ok=True)
+    rows = []
+    for i, n in enumerate(names, 1):
+        t = tratti[n]
+        render(n, t).convert("RGB").save(out / f"{file_id(n)}.png", optimize=True)
+        rows.append((n, file_id(n), "tabella" if n in FAMOSI else ("regole" if n in facts else "solo nome"),
+                     t.abito, t.copricapo, t.attributo))
+        if i % 500 == 0:
+            print(f"  avatar: {i}/{len(names)}", file=sys.stderr)
+    for step in range(FRAME_STEPS):
+        cornice(step).save(out / f"cornice_{step:02d}.png", optimize=True)
+    by_fame = sorted(names, key=lambda n: -facts.get(n, {}).get("sitelinks", 0))
+    leggendari = by_fame[:n_leggendari]
+    (out / "leggendari.txt").write_text(
+        "# I santi con piu' voci Wikipedia (Wikidata sitelinks): cornice d'oro nell'album.\n"
+        + "\n".join(leggendari) + "\n", encoding="utf-8")
+    with open(out / "tratti.tsv", "w", encoding="utf-8") as f:
+        f.write("santo\tfile\torigine\tabito\tcopricapo\tattributi\n")
+        for r in rows:
+            f.write("\t".join(r) + "\n")
+    # Review sheets: random rule-based saints, plus the legendary ones with their frame.
+    regole_only = [n for n in names if n not in FAMOSI]
+    random.Random(seed).shuffle(regole_only)
+    for k in range(provini):
+        chunk = regole_only[k * 48:(k + 1) * 48]
+        contact_sheet([(n, render(n, tratti[n]).convert("RGB")) for n in chunk],
+                      out / f"provino_regole_{k + 1}.png", zoom=4, cols=8)
+    contact_sheet([(n, render_final(n, tratti[n], True)) for n in leggendari],
+                  out / "provino_leggendari.png", zoom=4, cols=10)
+    print(f"{len(names)} avatar in {out}; tabella {sum(r[2] == 'tabella' for r in rows)}, "
+          f"regole {sum(r[2] == 'regole' for r in rows)}, solo nome {sum(r[2] == 'solo nome' for r in rows)}",
+          file=sys.stderr)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--nomi", help="file con i santi (uno per riga)")
+    ap.add_argument("--famosi", action="store_true", help="tutta la tabella FAMOSI")
+    ap.add_argument("--tutti", action="store_true", help="tutti i santi di --santi, con leggendari e provini")
+    ap.add_argument("--santi", default=str(ROOT / "app/src/main/assets/santi.txt"))
+    ap.add_argument("--cache", help="JSON con i dati Wikidata (letto se esiste, scritto altrimenti)")
+    ap.add_argument("--leggendari", type=int, default=50)
+    ap.add_argument("--provini", type=int, default=5, help="con --tutti: provini casuali da 48 santi")
+    ap.add_argument("--out", default=str(Path.home() / "mannaggia-avatar-prova"))
+    ap.add_argument("--zoom", type=int, default=5)
+    ap.add_argument("--colonne", type=int, default=8)
+    args = ap.parse_args()
+    out = Path(args.out).expanduser()
+    if args.tutti:
+        genera_tutti(args.santi, out, args.cache, args.leggendari, args.provini)
+        return
+    names = list(FAMOSI) if args.famosi else []
+    if args.nomi:
+        names += [l.strip() for l in open(args.nomi, encoding="utf-8") if l.strip() and l.strip() not in names]
+    tratti = {n: FAMOSI[n] for n in names if n in FAMOSI}
+    others = [n for n in names if n not in FAMOSI]
+    if others:
+        tratti.update(wikidata_tratti(others, args.cache))
+    out.mkdir(parents=True, exist_ok=True)
+
+    tiles = []
+    for n in names:
+        if n not in tratti:
+            print(f"  non trovato: {n}", file=sys.stderr)
+            continue
+        img = render_final(n, tratti[n], n in LEGGENDARI_PROVA)
+        img.save(out / f"{file_id(n)}.png")
+        tiles.append((n + ("" if n in FAMOSI else " *"), img))
+    contact_sheet(tiles, out / "provino.png", args.zoom, args.colonne)
     print(f"{len(tiles)} avatar in {out} (* = tratti dalle regole Wikidata)", file=sys.stderr)
 
 
