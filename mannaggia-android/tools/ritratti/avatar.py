@@ -1029,7 +1029,8 @@ def render(name, t):
 # Gemme: scala di luminosita' della stessa tinta, dalla piu' scura alla piu' chiara.
 GEM_RED = [(120, 20, 30), (178, 34, 44), (230, 70, 80), (255, 150, 150)]
 GEM_BLUE = [(30, 60, 120), (60, 110, 190), (110, 160, 240), (190, 220, 255)]
-FRAME_STEPS = 8  # fotogrammi dell'animazione
+FRAME_STEPS = 12  # fotogrammi dell'animazione: 12 x 167 ms = un giro ogni 2 secondi
+FRAME_MS = 167
 
 
 def _perimeter():
@@ -1083,7 +1084,7 @@ def cornice(step=None):
     return c.img
 
 
-def gif_leggendario(name, t, path, zoom=6, ms=110):
+def gif_leggendario(name, t, path, zoom=6, ms=FRAME_MS):
     """Animated preview: still avatar with the sparkling frame on top."""
     base = render(name, t)
     frames = []
