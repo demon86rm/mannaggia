@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var shakeDetector: ShakeDetector
     private var currentJob: Job? = null
     private var themeTextColor = 0
+    private var saintOfDay: String? = null
 
     private val requestNotifPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* no-op */ }
@@ -51,6 +52,9 @@ class MainActivity : AppCompatActivity() {
         applySystemBarInsets()
 
         binding.btnMannaggia.setOnClickListener { invokeSaint() }
+        binding.txtSaintOfDay.setOnClickListener {
+            saintOfDay?.let { saint -> invokeSaint { saint } }
+        }
         binding.btnInfo.setOnClickListener { showAbout() }
         binding.btnSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
@@ -76,6 +80,8 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         // Options may have changed in SettingsActivity.
         Prefs.applyPhraseStyle(binding.txtResult, themeTextColor)
+        // Refreshed on every resume, so it is right even after midnight.
+        lifecycleScope.launch { showSaintOfDay(runCatching { Mannaggia.saintOfDay(this@MainActivity) }.getOrNull()) }
         if (Prefs.shakeEnabled(this)) {
             accelerometer?.let {
                 sensorManager.registerListener(shakeDetector, it, SensorManager.SENSOR_DELAY_UI)
@@ -88,7 +94,14 @@ class MainActivity : AppCompatActivity() {
         sensorManager.unregisterListener(shakeDetector)
     }
 
-    private fun invokeSaint() {
+    private fun showSaintOfDay(saint: String?) {
+        saintOfDay = saint
+        binding.txtSaintOfDay.text = saint?.let { getString(R.string.saint_of_day, it) }
+        binding.txtSaintOfDay.visibility = if (saint == null) View.GONE else View.VISIBLE
+    }
+
+    /** Show (and optionally speak) the phrase for the saint returned by [pick]: random by default. */
+    private fun invokeSaint(pick: suspend () -> String = { Mannaggia.randomSaint(this) }) {
         // Ignore re-entrant triggers while an invocation is still in flight.
         if (currentJob?.isActive == true) return
 
@@ -97,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         binding.txtResult.text = ""
 
         currentJob = lifecycleScope.launch {
-            val result = runCatching { Mannaggia.randomSaint(this@MainActivity) }
+            val result = runCatching { pick() }
             result.fold(
                 onSuccess = { saint ->
                     val phrase = Mannaggia.phraseOf(saint)

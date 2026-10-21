@@ -42,6 +42,23 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="@string/btn_mannaggia"
+        app:layout_constraintBottom_toTopOf="@id/txtSaintOfDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- "Oggi si festeggia ...": tap to invoke that saint. Hidden until loaded. -->
+    <TextView
+        android:id="@+id/txtSaintOfDay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?android:attr/textColorSecondary"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/progress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
