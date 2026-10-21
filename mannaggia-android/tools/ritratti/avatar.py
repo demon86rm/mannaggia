@@ -346,6 +346,23 @@ FAMOSI = {
                           abito="moderno", colore_abito=(170, 40, 50), attributo="nessuno"),
 }
 
+# Figurine speciali fuori catalogo (S1..S6), sbloccabili solo con i trofei.
+# L'ordine e' il numero: S1 = la prima. I nomi sono anche la chiave del file (sha1).
+SPECIALI = {
+    "Santo Subito": T(eta="anziano", capelli="corti", colore_capelli="bianco",
+                      copricapo="zucchetto_bianco", abito="papa", attributo="striscione"),
+    "San Culo": T(eta="giovane", capelli="ricci", colore_capelli="biondo", abito="tunica",
+                  colore_abito=(60, 90, 170), attributo="ferro_cavallo+quadrifoglio"),
+    "San Calendario": T(capelli="corti", colore_capelli="castano", barba="corta", abito="tunica",
+                        colore_abito=(150, 50, 60), attributo="calendario_mano"),
+    "San Deploy": T(capelli="corti", colore_capelli="castano", barba="corta", abito="moderno",
+                    colore_abito=(50, 60, 80), attributo="server_fuoco", extra=["cuffie", "occhiali"]),
+    "San Sudo": T(eta="giovane", capelli="corti", colore_capelli="castano", copricapo="cappuccio",
+                  abito="moderno", colore_abito=(70, 74, 84), attributo="terminale"),
+    "Santa Pazienza": T(donna=True, eta="anziano", copricapo="velo", colore_velo=(110, 120, 160),
+                        abito="tunica", colore_abito=(110, 120, 160), attributo="clessidra"),
+}
+
 # Leggendari per il provino (nell'app si calcoleranno dalle voci Wikipedia).
 LEGGENDARI_PROVA = {"San Pietro", "San Paolo di Tarso", "San Francesco d'Assisi",
                     "Sant'Agostino d'Ippona", "San Giovanni Paolo II", "Santa Giovanna d'Arco",
@@ -542,6 +559,10 @@ def draw_face(c, t, skin, name):
             c.line([(19, 19), (21, 19)], EYE); c.line([(26, 19), (28, 19)], EYE)  # ciglia
     if "ferita_fronte" in t.extra:
         c.px(24, 15, DARK_RED); c.px(24, 16, RED)
+    if "cuffie" in t.extra:  # San Deploy: cuffie con microfono
+        c.d.arc((14, 5, 34, 27), 180, 360, fill=(40, 40, 46, 255), width=2)  # archetto sottile
+        c.rect((12, 16, 16, 24), (60, 60, 70)); c.rect((32, 16, 36, 24), (60, 60, 70))
+        c.line([(15, 25), (21, 28)], (60, 60, 70)); c.px(22, 28, RED)
     if "occhiali" in t.extra:
         for x in (18, 25):
             c.d.rectangle((x, 19, x + 4, 22), outline=(40, 40, 46, 255))
@@ -971,6 +992,53 @@ def at_arpa(c):  # l'arpa di re Davide
         c.line([(x, 28 + (x - 35) // 2 + 1), (x, 45)], (240, 236, 220))
 
 
+def at_striscione(c):  # "SANTO SUBITO": striscione bianco con righe rosse
+    c.line([(32, 14), (32, 46)], WOOD); c.line([(46, 14), (46, 46)], WOOD)
+    c.rect((32, 16, 46, 30), WHITE)
+    c.line([(34, 20), (44, 20)], RED); c.line([(34, 23), (44, 23)], RED); c.line([(34, 26), (41, 26)], RED)
+
+
+def at_ferro_cavallo(c):
+    c.ell((32, 24, 45, 38), STEEL); c.d.ellipse((35, 27, 42, 37), fill=(0, 0, 0, 0))
+    c.d.rectangle((35, 33, 42, 38), fill=(0, 0, 0, 0))
+    for (x, y) in ((33, 29), (44, 29), (33, 33), (44, 33)):
+        c.px(x, y, STEEL_DARK)
+
+
+def at_quadrifoglio(c):
+    for (x, y) in ((20, 37), (25, 37), (20, 41), (25, 41)):
+        c.ell((x - 2, y - 2, x + 2, y + 2), GREEN)
+    c.px(22, 39, DARK_GREEN); c.line([(23, 41), (25, 46)], DARK_GREEN)
+
+
+def at_calendario_mano(c):
+    c.rect((32, 30, 45, 45), (246, 242, 232)); c.rect((32, 30, 45, 33), RED)
+    c.px(35, 29, STEEL_DARK); c.px(42, 29, STEEL_DARK)
+    c.poly([(38, 35), (39, 38), (42, 38), (40, 40), (41, 43), (38, 41), (35, 43), (36, 40), (34, 38), (37, 38)], GOLD)
+
+
+def at_server_fuoco(c):  # il server che va in fiamme il venerdi' alle 18
+    c.rect((32, 28, 45, 46), (60, 64, 76))
+    for y in (31, 36, 41):
+        c.rect((34, y, 43, y + 2), (36, 38, 46)); c.px(42, y + 1, (90, 220, 90))
+    c.poly([(36, 28), (35, 22), (38, 25), (39, 19), (41, 24), (43, 21), (43, 28)], (240, 130, 40))
+    c.poly([(38, 28), (38, 25), (40, 23), (41, 28)], (255, 220, 90))
+
+
+def at_terminale(c):  # portatile con il prompt verde
+    c.rect((28, 34, 46, 44), (40, 42, 50)); c.rect((29, 35, 45, 42), (16, 20, 18))
+    c.line([(30, 37), (32, 37)], (90, 230, 110)); c.px(34, 37, (90, 230, 110))   # "$ _"
+    c.line([(30, 40), (38, 40)], (60, 170, 80))
+    c.rect((26, 44, 47, 46), (110, 114, 124))
+
+
+def at_clessidra(c):
+    c.rect((33, 26, 45, 27), WOOD); c.rect((33, 45, 45, 46), WOOD)
+    c.poly([(34, 28), (44, 28), (39, 36)], (220, 230, 240)); c.poly([(34, 44), (44, 44), (39, 36)], (220, 230, 240))
+    c.poly([(36, 29), (42, 29), (39, 33)], (230, 200, 120)); c.poly([(35, 44), (43, 44), (39, 40)], (230, 200, 120))
+    c.line([(39, 34), (39, 40)], (230, 200, 120))
+
+
 ATTRIBUTI = {name[3:]: fn for name, fn in globals().items() if name.startswith("at_")}
 
 
@@ -1138,6 +1206,37 @@ def raccoglitore():
     c.rect((20, 22, 34, 32), GOLD)
     c.ring((23, 23, 31, 31), GOLD_LIGHT)
     c.px(27, 27, (255, 250, 220))
+    return outline(c.img)
+
+
+SILVER, SILVER_DARK, SILVER_LIGHT = (196, 202, 212), (120, 126, 140), (238, 242, 248)
+
+
+def cornice_argento():
+    """Still silver frame for the special (off-catalogue) cards."""
+    c = Canvas()
+    c.d.rectangle((0, 0, S - 1, S - 1), outline=SILVER_DARK + (255,))
+    c.d.rectangle((1, 1, S - 2, S - 2), outline=SILVER_LIGHT + (255,))
+    for (x, y) in ((0, 0), (S - 5, 0), (S - 5, S - 5), (0, S - 5)):
+        c.rect((x, y, x + 4, y + 4), SILVER)
+        c.d.rectangle((x, y, x + 4, y + 4), outline=SILVER_DARK + (255,))
+        c.px(x + 2, y + 2, (90, 170, 230))
+    return c.img
+
+
+def coppa():
+    """Trophy cup icon for the main screen, in the avatar style."""
+    c = Canvas()
+    c.ell((7, 10, 17, 24), GOLD); c.d.ellipse((10, 13, 15, 21), fill=(0, 0, 0, 0))   # manici
+    c.ell((31, 10, 41, 24), GOLD); c.d.ellipse((33, 13, 38, 21), fill=(0, 0, 0, 0))
+    c.poly([(12, 8), (36, 8), (34, 22), (28, 29), (20, 29), (14, 22)], GOLD)        # coppa
+    c.poly([(30, 9), (35, 9), (33, 21), (28, 27)], GOLD_DARK)
+    c.poly([(15, 9), (19, 9), (19, 22), (16, 20)], GOLD_LIGHT)
+    c.rect((12, 6, 36, 9), GOLD_LIGHT)                                                  # bordo
+    c.rect((21, 29, 27, 35), GOLD_DARK)                                                 # stelo
+    c.rect((15, 35, 33, 39), GOLD); c.rect((12, 39, 36, 44), WOOD)                      # base
+    c.rect((19, 40, 29, 42), GOLD_LIGHT)
+    c.px(24, 15, (255, 255, 255)); c.px(23, 16, (255, 250, 220)); c.px(25, 16, (255, 250, 220))
     return outline(c.img)
 
 
@@ -1324,6 +1423,13 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
         + "\n".join(by_fame) + "\n", encoding="utf-8")
     raccoglitore().convert("RGBA").save(out / "raccoglitore.png", optimize=True)
     calendario().convert("RGBA").save(out / "santo_del_giorno.png", optimize=True)
+    coppa().convert("RGBA").save(out / "coppa.png", optimize=True)
+    cornice_argento().save(out / "cornice_argento.png", optimize=True)
+    for n, t in SPECIALI.items():
+        render(n, t).convert("RGB").save(out / f"{file_id(n)}.png", optimize=True)
+    (out / "speciali.txt").write_text(
+        "# Figurine speciali fuori catalogo: la riga N e' la figurina SN (si sbloccano coi trofei).\n"
+        + "\n".join(SPECIALI) + "\n", encoding="utf-8")
     (out / "leggendari.txt").write_text(
         "# I santi con piu' voci Wikipedia (Wikidata sitelinks): cornice d'oro nell'album.\n"
         + "\n".join(leggendari) + "\n", encoding="utf-8")
