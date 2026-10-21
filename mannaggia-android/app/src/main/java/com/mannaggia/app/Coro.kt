@@ -9,8 +9,9 @@ import kotlinx.coroutines.CompletableDeferred
 /**
  * The short angelic choir played when a legendary saint is found for the first
  * time (res/raw/coro.ogg, about 3 s, synthesized by tools/suoni/coro.py). It
- * plays once and ends by itself; silent when the phone is on silent or vibrate.
- * [done] completes when it has finished (or was not played, or was stopped).
+ * plays once and ends by itself, at the media volume whatever the ringer mode
+ * (the user keeps the phone on silent). [done] completes when it has finished
+ * (or could not be played, or was stopped).
  */
 class Coro(private val context: Context) {
 
@@ -19,15 +20,12 @@ class Coro(private val context: Context) {
 
     fun start() {
         val audio = context.getSystemService(AudioManager::class.java)
-        if (audio?.ringerMode != AudioManager.RINGER_MODE_NORMAL) {
-            done.complete(Unit)
-            return
-        }
         val attrs = AudioAttributes.Builder()
             .setUsage(AudioAttributes.USAGE_GAME)
             .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
             .build()
-        val mp = MediaPlayer.create(context, R.raw.coro, attrs, audio.generateAudioSessionId())
+        val session = audio?.generateAudioSessionId() ?: AudioManager.AUDIO_SESSION_ID_GENERATE
+        val mp = MediaPlayer.create(context, R.raw.coro, attrs, session)
         if (mp == null) {
             done.complete(Unit)
             return
