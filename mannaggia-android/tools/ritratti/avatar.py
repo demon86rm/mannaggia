@@ -1116,6 +1116,31 @@ def gif_leggendario(name, t, path, zoom=6, ms=FRAME_MS):
     frames[0].save(path, save_all=True, append_images=frames[1:], duration=ms, loop=0)
 
 
+def raccoglitore():
+    """The card binder icon for the main screen, in the same style as the avatars."""
+    c = Canvas()
+    LEATHER, LEATHER_DARK, LEATHER_LIGHT = (150, 40, 44), (104, 26, 32), (184, 64, 64)
+    # A card sticking out of the top, with a little halo and face.
+    c.rect((20, 2, 38, 18), (246, 242, 232))
+    c.ell((25, 4, 33, 12), HALO); c.ell((27, 6, 31, 11), (234, 186, 146))
+    # Cover.
+    c.rect((8, 9, 42, 45), LEATHER)
+    c.rect((36, 9, 42, 45), LEATHER_DARK)
+    c.rect((8, 9, 13, 45), LEATHER_DARK)               # dorso
+    c.line([(14, 11), (14, 43)], LEATHER_LIGHT)
+    for y in (14, 26, 38):                               # anelli
+        c.rect((6, y, 11, y + 2), GOLD); c.px(6, y, GOLD_LIGHT)
+    for (x, y) in ((38, 9), (38, 41)):                   # angoli d'oro
+        c.rect((x, y, x + 4, y + 4), GOLD)
+    c.px(42, 9, GOLD_DARK); c.px(42, 45, GOLD_DARK)
+    # Emblem: a gold halo on a plate.
+    c.rect((19, 21, 35, 33), GOLD_DARK)
+    c.rect((20, 22, 34, 32), GOLD)
+    c.ring((23, 23, 31, 31), GOLD_LIGHT)
+    c.px(27, 27, (255, 250, 220))
+    return outline(c.img)
+
+
 def render_final(name, t, leggendario):
     img = render(name, t)
     if leggendario:
@@ -1271,8 +1296,14 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
             print(f"  avatar: {i}/{len(names)}", file=sys.stderr)
     for step in range(FRAME_STEPS):
         cornice(step).save(out / f"cornice_{step:02d}.png", optimize=True)
-    by_fame = sorted(names, key=lambda n: -facts.get(n, {}).get("sitelinks", 0))
+    # Card numbers: N. 1 is the most famous saint (most Wikipedia sitelinks), ties by name.
+    by_fame = sorted(names, key=lambda n: (-facts.get(n, {}).get("sitelinks", 0), n))
     leggendari = by_fame[:n_leggendari]
+    (out / "catalogo.txt").write_text(
+        "# Numero delle figurine: la riga N (senza contare i commenti) e' il santo N. 1 e' il piu' famoso\n"
+        "# (piu' voci Wikipedia). I primi sono i leggendari, vedi leggendari.txt.\n"
+        + "\n".join(by_fame) + "\n", encoding="utf-8")
+    raccoglitore().convert("RGBA").save(out / "raccoglitore.png", optimize=True)
     (out / "leggendari.txt").write_text(
         "# I santi con piu' voci Wikipedia (Wikidata sitelinks): cornice d'oro nell'album.\n"
         + "\n".join(leggendari) + "\n", encoding="utf-8")
