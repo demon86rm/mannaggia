@@ -20,6 +20,7 @@ Generatore di "Mannaggia <santo>!". Nella root ci sono lo script bash (`mannaggi
 - Rigenera con `python3 -I tools/genera_santi.py > app/src/main/assets/santi.txt`.
 - Dopo ogni modifica ai filtri (santo/beato, religione) controlla a campione prefissi, numero di righe ed esclusioni.
 - `app/src/main/assets/feste.tsv` (santo del giorno) è generato dallo stesso script, solo per i santi già in `santi.txt`: `python3 -I tools/genera_santi.py --feste app/src/main/assets/feste.tsv --solo app/src/main/assets/santi.txt`. Non modificarlo a mano. Le correzioni (feste mancanti su Wikidata, santo del giorno imposto) vanno in `EXTRA_FEASTS` e `SAINT_OF_DAY` nello script.
+- `app/src/main/assets/avatar/` (ritratti pixel art dell'album, cornice animata, `leggendari.txt`) è generato da `tools/ritratti/avatar.py`: `python tools/ritratti/avatar.py --tutti --app app/src/main/assets/avatar --cache tools/ritratti/tratti_wikidata.json` (venv `~/venv/ritratti` con pillow). Non modificarlo a mano: l'iconografia dei santi famosi sta in `FAMOSI`, le regole per gli altri in `regole()`. Va rigenerato se cambia `santi.txt`.
 - Non rigenerare `santi.txt` senza motivo: i nomi sono la chiave dei file audio (`sha1`) e, in futuro, dell'album.
 
 ## Shell
