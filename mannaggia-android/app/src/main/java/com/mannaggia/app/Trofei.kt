@@ -64,6 +64,10 @@ object Trofei {
             figurina("Santa Pazienza")),
         Trofeo("sudo", "sudo !!", "Imprecare 10 volte di fila con il carattere Monospace",
             effetto(Prefs.EFFECT_TERMINALE, "Terminale")),
+        Trofeo("amanuense", "Amanuense", "Imprecare 50 volte con il carattere Medievale",
+            carattere("font:mainzer_fraktur", "Fraktur")),
+        Trofeo("gutenberg", "Gutenberg", "Trovare un santo di Magonza",
+            carattere("font:cat_altgotisch", "Gotico antico")),
     )
 
     private val BY_ID = TUTTI.associateBy { it.id }
@@ -82,6 +86,10 @@ object Trofei {
     private const val PAZIENZA_OPENS = 50
     private const val HELVETICA_CHANGES = 666
     private const val SUDO_IN_A_ROW = 10
+    private const val AMANUENSE_INVOCATIONS = 50
+
+    /** The saints of Mainz, Gutenberg's city: San Lullo di Magonza, Sant'Albano da Magonza... */
+    private val MAGONZA = Regex("""\b(di|da) Magonza$""")
 
     private fun prefs(context: Context): SharedPreferences =
         context.applicationContext.getSharedPreferences("stats", Context.MODE_PRIVATE)
@@ -113,6 +121,8 @@ object Trofei {
             val mono = Prefs.isMonospace(context)
             val monoRun = if (mono) p.getInt("monoRun", 0) + 1 else 0
             e.putInt("monoRun", monoRun)
+            val medieval = p.getInt("medieval", 0) + if (Prefs.isMedieval(context)) 1 else 0
+            e.putInt("medieval", medieval)
             e.apply()
 
             val hour = cal.get(Calendar.HOUR_OF_DAY)
@@ -132,6 +142,8 @@ object Trofei {
             if (dayMatch) ok += "onomastico"
             if (weekday == Calendar.FRIDAY && hour in 17..18) ok += "venerdi"
             if (monoRun >= SUDO_IN_A_ROW) ok += "sudo"
+            if (medieval >= AMANUENSE_INVOCATIONS) ok += "amanuense"
+            if (MAGONZA.containsMatchIn(saint)) ok += "gutenberg"
             unlock(context, ok)
         }
     }

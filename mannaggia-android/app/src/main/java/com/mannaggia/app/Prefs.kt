@@ -7,6 +7,7 @@ import android.graphics.Typeface
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.preference.PreferenceManager
 import java.util.Calendar
 import java.util.Locale
@@ -20,6 +21,9 @@ object Prefs {
     const val KEY_SHAKE = "shake"
     const val KEY_TTS = "tts"
     const val KEY_FONT = "font"
+    /** font_values prefix of the fonts bundled in res/font (e.g. "font:medievalsharp"). */
+    private const val BUNDLED_FONT = "font:"
+    const val FONT_MEDIEVAL = "font:medievalsharp"
     const val KEY_COLOR = "color"
     const val KEY_EFFECT = "effect"
     /** Old on/off neon switch, migrated to KEY_EFFECT = "neon". */
@@ -64,6 +68,21 @@ object Prefs {
     /** Animate each new album card; legendary saints are animated anyway. */
     fun cardAnimEnabled(context: Context) = prefs(context).getBoolean(KEY_CARD_ANIM, true)
 
+    /** True when the phrase font is "Medievale" (trophy "Amanuense"). */
+    fun isMedieval(context: Context) = prefs(context).getString(KEY_FONT, "sans-serif") == FONT_MEDIEVAL
+
+    /**
+     * The phrase typeface for a font_values entry: a system family in bold, or a font
+     * bundled in res/font for the "font:" values (gothic fonts, one weight only).
+     */
+    private fun phraseTypeface(context: Context, value: String): Typeface {
+        if (value.startsWith(BUNDLED_FONT)) {
+            val id = context.resources.getIdentifier(value.removePrefix(BUNDLED_FONT), "font", context.packageName)
+            if (id != 0) ResourcesCompat.getFont(context, id)?.let { return it }
+        }
+        return Typeface.create(value, Typeface.BOLD)
+    }
+
     /** True when the phrase font is "Monospace (terminale)" (trophy "sudo !!"). */
     fun isMonospace(context: Context) = prefs(context).getString(KEY_FONT, "sans-serif") == "monospace"
 
@@ -94,8 +113,8 @@ object Prefs {
     fun applyPhraseStyle(view: TextView, themeColor: Int) {
         val p = prefs(view.context)
 
-        val family = p.getString(KEY_FONT, "sans-serif") ?: "sans-serif"
-        view.typeface = Typeface.create(family, Typeface.BOLD)
+        view.typeface = phraseTypeface(view.context, p.getString(KEY_FONT, "sans-serif") ?: "sans-serif")
+        PhraseEffects.refit(view)
 
         val colorRes = PHRASE_COLORS[p.getString(KEY_COLOR, COLOR_THEME)]
         val color = if (colorRes == null) themeColor else ContextCompat.getColor(view.context, colorRes)

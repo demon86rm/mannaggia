@@ -150,6 +150,13 @@ object PhraseEffects {
         }
     }
 
+    /** Fit the current phrase again, e.g. after a font change (gothic fonts are wider). */
+    fun refit(view: TextView) {
+        val text = view.getTag(R.id.phrase_text) as? CharSequence ?: return
+        val terminale = view.getTag(R.id.phrase_effect) is Terminale
+        fitTwoLines(view, if (terminale) Terminale.PROMPT + text + Terminale.CURSOR else text)
+    }
+
     /** The largest size, from [MAX_SP] down to [MIN_SP], at which [text] fits in two lines of [view]. */
     private fun fitTwoLines(view: TextView, text: CharSequence) {
         val width = view.width - view.totalPaddingLeft - view.totalPaddingRight

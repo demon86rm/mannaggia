@@ -34,3 +34,4 @@ Generatore di "Mannaggia <santo>!". Nella root ci sono lo script bash (`mannaggi
 ## Play Store
 - Pubblicazione gratuita, senza pubblicità.
 - Le licenze accettabili per dipendenze e asset sono Apache-2.0, MIT, BSD, CC0, CC-BY e GPL. Niente licenze NC.
+- Solo per i font è ammessa anche la SIL OFL 1.1: il file `.ttf` va in `res/font/` senza modifiche, la licenza originale in `assets/licenze/OFL-<font>.txt` e i crediti in `about_text`.
