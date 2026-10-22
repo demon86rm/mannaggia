@@ -1279,9 +1279,13 @@ GOTICA_PIENA = {
     "g": [".XXXXX", "XX..XX", "XX..XX", "XX..XX", "XX..XX", "XX.XXX", ".XX.XX",
           "....XX", "X...XX", ".XXXX."],
     "i": ["XX", "..", "XX", "XX", "XX", "XX", "XX", "XX", "XX"],
+    "p": ["XXXXX.", "XX..XX", "XX..XX", "XX..XX", "XX..XX", "XX..XX", "XXXXX.",
+          "XX....", "XX....", "XX...."],
+    "z": ["XXXXXX", "....XX", "...XX.", "..XX..", ".XX...", "XX....", "XXXXXX"],
+    "f": ["..XXX", ".XX..", ".XX..", "XXXX.", ".XX..", ".XX..", ".XX..", ".XX..", ".XX..", ".XX.."],
     "!": ["XX", "XX", "XX", "XX", "XX", "..", "XX"],
 }
-GLIFO_SU = {"i": 2}
+GLIFO_SU = {"i": 2, "f": 3}
 # Rubricated initials, 13 px tall: thick left stem, three-pixel diagonals.
 CAPOLETTERA_N = [
     "XXXX....XXX",
@@ -1312,6 +1316,36 @@ CAPOLETTERA_M = [
     ".XX.......XX.",
     ".XX.......XX.",
     "XXXX.....XXXX",
+]
+CAPOLETTERA_O = [
+    "...XXXXX...",
+    ".XXX...XXX.",
+    "XXX.....XXX",
+    "XX.......XX",
+    "XX.......XX",
+    "XX.......XX",
+    "XX.......XX",
+    "XX.......XX",
+    "XX.......XX",
+    "XX.......XX",
+    "XXX.....XXX",
+    ".XXX...XXX.",
+    "...XXXXX...",
+]
+CAPOLETTERA_I = [
+    "XXXXXX",
+    ".XXXX.",
+    "..XX..",
+    "..XX..",
+    "..XX..",
+    "..XX..",
+    "..XX..",
+    "..XX..",
+    "..XX..",
+    "..XX..",
+    "..XX..",
+    ".XXXX.",
+    "XXXXXX",
 ]
 PERGAMENA, PERGAMENA_OMBRA = (244, 232, 200), (214, 196, 156)
 INCHIOSTRO = (40, 30, 34)
@@ -1352,7 +1386,11 @@ def etichetta(capolettera, parola, variante="piena", premuto=False):
     cx, cy = 4, 3 + dy
     # Initial: red with a lighter left edge (gold on the ribbon).
     _glifo(c, capolettera, cx, cy, GOLD if nastro else RED)
-    c.line([(cx + 1, cy + 1), (cx + 1, cy + cap_h - 2)], GOLD_LIGHT if nastro else shade(RED, 1.35))
+    luce = GOLD_LIGHT if nastro else shade(RED, 1.35)
+    for r in range(1, cap_h - 1):                           # luce sul primo pixel di ogni riga
+        x0 = capolettera[r].find("X")
+        if x0 >= 0:
+            c.px(cx + x0, cy + r, luce)
     # Gothic lowercase, sitting on the baseline of the initial.
     ink = PERGAMENA if nastro else INCHIOSTRO
     base = cy + cap_h
@@ -1368,9 +1406,18 @@ def timbro(variante="piena"):
     return etichetta(CAPOLETTERA_N, "uova!", variante)
 
 
-def pulsante(premuto=False):
-    """The "Mannaggia!" button of the main screen: gold M, parchment letters on a red ribbon."""
-    return etichetta(CAPOLETTERA_M, "annaggia!", "nastro", premuto)
+PULSANTI = {
+    "mannaggia": (CAPOLETTERA_M, "annaggia!"),
+    "opzioni": (CAPOLETTERA_O, "pzioni"),
+    "info": (CAPOLETTERA_I, "nfo"),
+}
+
+
+def pulsante(premuto=False, nome="mannaggia"):
+    """Main-screen buttons ("Mannaggia!", "Opzioni", "Info"): gold initial, parchment
+    letters on a red ribbon, readable on light and dark themes alike."""
+    cap, parola = PULSANTI[nome]
+    return etichetta(cap, parola, "nastro", premuto)
 
 
 def anteprima_timbro(out, zoom=8):
@@ -1379,8 +1426,11 @@ def anteprima_timbro(out, zoom=8):
     for v in ("piena", "sottile", "nastro"):
         img = timbro(v)
         img.resize((img.width * zoom, img.height * zoom), Image.NEAREST).save(out / f"timbro-{v}.png")
-    for nome, img in (("pulsante", pulsante()), ("pulsante-premuto", pulsante(True))):
-        img.resize((img.width * zoom, img.height * zoom), Image.NEAREST).save(out / f"{nome}.png")
+    for nome in PULSANTI:
+        for premuto in (False, True):
+            img = pulsante(premuto, nome)
+            suffisso = "-premuto" if premuto else ""
+            img.resize((img.width * zoom, img.height * zoom), Image.NEAREST).save(out / f"pulsante-{nome}{suffisso}.png")
     print(f"anteprime del timbro e del pulsante in {out}", file=sys.stderr)
 
 
@@ -1550,8 +1600,9 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
     calendario().convert("RGBA").save(out / "santo_del_giorno.png", optimize=True)
     coppa().convert("RGBA").save(out / "coppa.png", optimize=True)
     timbro().save(out / "timbro_nuova.png", optimize=True)
-    pulsante().save(out / "pulsante_mannaggia.png", optimize=True)
-    pulsante(True).save(out / "pulsante_mannaggia_premuto.png", optimize=True)
+    for nome in PULSANTI:
+        pulsante(False, nome).save(out / f"pulsante_{nome}.png", optimize=True)
+        pulsante(True, nome).save(out / f"pulsante_{nome}_premuto.png", optimize=True)
     cornice_argento().save(out / "cornice_argento.png", optimize=True)
     for n, t in SPECIALI.items():
         render(n, t).convert("RGB").save(out / f"{file_id(n)}.png", optimize=True)

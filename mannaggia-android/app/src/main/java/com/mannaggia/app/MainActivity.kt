@@ -101,7 +101,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
         lifecycleScope.launch {
-            binding.btnMannaggia.setImageDrawable(Avatars.mannaggiaButton(this@MainActivity))
+            binding.btnMannaggia.setImageDrawable(Avatars.ribbonButton(this@MainActivity, "mannaggia"))
+            binding.btnSettings.setImageDrawable(Avatars.ribbonButton(this@MainActivity, "opzioni"))
+            binding.btnInfo.setImageDrawable(Avatars.ribbonButton(this@MainActivity, "info"))
             binding.btnAlbum.setImageDrawable(Avatars.binder(this@MainActivity))
             binding.btnTrophies.setImageDrawable(Avatars.cup(this@MainActivity))
             binding.btnSaintOfDay.setImageDrawable(Avatars.saintOfDayIcon(this@MainActivity))

@@ -7,21 +7,29 @@
     android:clipChildren="false"
     android:padding="24dp">
 
-    <Button
+    <!-- Pixel-art ribbon buttons (see Avatars.ribbonButton): readable on both themes.
+         2dp per pixel, padded to a 48dp touch target. -->
+    <ImageView
         android:id="@+id/btnSettings"
-        style="@style/Widget.Material3.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_settings"
+        android:layout_width="108dp"
+        android:layout_height="48dp"
+        android:paddingVertical="2dp"
+        android:clickable="true"
+        android:contentDescription="@string/btn_settings"
+        android:focusable="true"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageView
         android:id="@+id/btnInfo"
-        style="@style/Widget.Material3.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_info"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:paddingVertical="5dp"
+        android:clickable="true"
+        android:contentDescription="@string/btn_info"
+        android:focusable="true"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,7 +97,7 @@
             android:visibility="gone" />
     </FrameLayout>
 
-    <!-- Pixel-art "Mannaggia!" ribbon (see Avatars.mannaggiaButton): at most 200dp, and
+    <!-- Pixel-art "Mannaggia!" ribbon (see Avatars.ribbonButton): at most 200dp, and
          clear of the icon column on the right (72dp) on narrow phones. -->
     <ImageView
         android:id="@+id/btnMannaggia"

@@ -81,13 +81,14 @@ object Avatars {
     suspend fun newStamp(context: Context): BitmapDrawable? = icon(context, "timbro_nuova.png")
 
     /**
-     * The pixel-art "Mannaggia!" button (gold M on a red ribbon): darker when pressed,
-     * half transparent while disabled (an invocation still in flight).
+     * A pixel-art ribbon button of the main screen ("mannaggia", "opzioni", "info"): gold
+     * initial on red, readable on any theme. Darker when pressed, half transparent while
+     * disabled (the "Mannaggia!" button during an invocation).
      */
-    suspend fun mannaggiaButton(context: Context): StateListDrawable? = withContext(Dispatchers.IO) {
+    suspend fun ribbonButton(context: Context, name: String): StateListDrawable? = withContext(Dispatchers.IO) {
         runCatching {
-            val normal = decode(context, "pulsante_mannaggia.png")
-            val pressed = decode(context, "pulsante_mannaggia_premuto.png")
+            val normal = decode(context, "pulsante_$name.png")
+            val pressed = decode(context, "pulsante_${name}_premuto.png")
             StateListDrawable().apply {
                 addState(intArrayOf(-android.R.attr.state_enabled), pixelated(context, normal).apply { alpha = 128 })
                 addState(intArrayOf(android.R.attr.state_pressed), pixelated(context, pressed))
