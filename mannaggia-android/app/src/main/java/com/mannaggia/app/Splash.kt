@@ -4,15 +4,19 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.os.Build
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -28,24 +32,85 @@ object Splash {
 
     private const val SHOW_MS = 1_500L
     private const val FADE_MS = 300L
+    /** Without the Android 12+ system splash signal, start this long after the window focus. */
+    private const val SYSTEM_SPLASH_FALLBACK_MS = 2_500L
     /** Share of the screen width for the logo and the title (as in the approved mock-up). */
     private const val LOGO_WIDTH = 0.46f
     private const val TITLE_WIDTH = 0.74f
     private const val SUBTITLE_SIZE = 0.062f
 
-    fun show(activity: AppCompatActivity) {
+    /**
+     * Show the splash; [onGone] runs once it has gone (e.g. to ask for permissions then).
+     * [afterRecreation]: the activity was recreated, so the system splash is already gone.
+     */
+    fun show(activity: AppCompatActivity, afterRecreation: Boolean = false, onGone: () -> Unit = {}) {
         val content = activity.findViewById<FrameLayout>(android.R.id.content)
         val splash = LayoutInflater.from(activity).inflate(R.layout.view_splash, content, false)
         content.addView(splash)
         var gone = false
+        var choir: Suono? = null
+        // The activity can be recreated mid-splash (a configuration change on the first start):
+        // MainActivity shows a new splash then, so this one's choir must not keep playing.
+        activity.lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onDestroy(owner: LifecycleOwner) { choir?.stop() }
+        })
         fun dismiss() {
             if (gone) return
             gone = true
             choir?.fadeOut(FADE_MS)
             choir = null
-            splash.animate().alpha(0f).setDuration(FADE_MS).withEndAction { content.removeView(splash) }.start()
+            splash.animate().alpha(0f).setDuration(FADE_MS).withEndAction {
+                content.removeView(splash)
+                onGone()
+            }.start()
         }
         splash.setOnClickListener { dismiss() }
+
+        // The time on screen (and the choir) starts once the pixel art is ready AND the user can
+        // see it: on Android 12+ when the system splash goes away (slow on the first start after
+        // an install), otherwise when the window gets the focus. Fallback: 2.5 s after the focus,
+        // in case no system splash was shown.
+        var ready = false
+        var visible = false
+        var started = false
+        fun maybeStart() {
+            if (!ready || !visible || started || gone) return
+            started = true
+            choir = if (choirAllowed(activity)) Suono(activity, R.raw.coro).also { it.start() } else null
+            activity.lifecycleScope.launch {
+                delay(SHOW_MS)
+                dismiss()
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !afterRecreation) {
+            activity.splashScreen.setOnExitAnimationListener { systemSplash ->
+                systemSplash.remove()
+                visible = true
+                maybeStart()
+            }
+        }
+        fun onFocus() {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || afterRecreation) {
+                visible = true
+                maybeStart()
+            } else {
+                activity.lifecycleScope.launch {
+                    delay(SYSTEM_SPLASH_FALLBACK_MS)
+                    visible = true
+                    maybeStart()
+                }
+            }
+        }
+        if (splash.hasWindowFocus()) onFocus() else {
+            splash.viewTreeObserver.addOnWindowFocusChangeListener(object : ViewTreeObserver.OnWindowFocusChangeListener {
+                override fun onWindowFocusChanged(hasFocus: Boolean) {
+                    if (!hasFocus) return
+                    splash.viewTreeObserver.removeOnWindowFocusChangeListener(this)
+                    onFocus()
+                }
+            })
+        }
+
         activity.lifecycleScope.launch {
             val logo = Avatars.splashLogo(activity)
             val title = Avatars.splashTitle(activity)
@@ -56,18 +121,12 @@ object Splash {
                 splash.findViewById<TextView>(R.id.txtSplashSubtitle)
                     .setTextSize(TypedValue.COMPLEX_UNIT_PX, w * SUBTITLE_SIZE)
                 splash.findViewById<View>(R.id.splashContent).visibility = View.VISIBLE
-                // The time on screen (and the choir) starts now that the splash is shown,
-                // not when the app process started: a slow cold start must not eat it.
-                choir = if (choirAllowed(activity)) Suono(activity, R.raw.coro).also { it.start() } else null
-                activity.lifecycleScope.launch {
-                    delay(SHOW_MS)
-                    dismiss()
-                }
+                ready = true
+                maybeStart()
             }
         }
     }
 
-    private var choir: Suono? = null
 
     /**
      * The choir plays if enabled in Options, at the media volume like the voice and the other

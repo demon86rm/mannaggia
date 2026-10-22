@@ -59,8 +59,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // Pixel-art splash on a cold start only (not after a rotation or a theme change).
-        if (savedInstanceState == null) Splash.show(this)
+        // Pixel-art splash at start, until it has been seen once: if the activity is recreated
+        // mid-splash (a configuration change right after the first start) it starts again; after
+        // that, rotations and theme changes don't show it. The notification permission is asked
+        // after it, so the dialog doesn't cover it.
+        splashDone = savedInstanceState?.getBoolean(KEY_SPLASH_DONE) == true
+        if (!splashDone) Splash.show(this, afterRecreation = savedInstanceState != null) {
+            splashDone = true
+            askForNotificationPermissionIfNeeded()
+        } else askForNotificationPermissionIfNeeded()
         // Debug builds only: start with a given saint, e.g.
         // adb shell am start -n io.github.demon86rm.mannaggia/com.mannaggia.app.MainActivity -e santo "San Carlo I di Fiandra"
         if (BuildConfig.DEBUG && savedInstanceState == null) intent.getStringExtra("santo")?.let { santo ->
@@ -151,7 +158,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        askForNotificationPermissionIfNeeded()
     }
 
     override fun onResume() {
@@ -350,9 +356,18 @@ class MainActivity : AppCompatActivity() {
         /** Safety cap on waiting for the choir before speaking (it lasts about 3 s). */
         private const val CHOIR_MAX_WAIT_MS = 4_000L
         private const val SPEECH_TIMEOUT_MS = 15_000L
+        private const val KEY_SPLASH_DONE = "splash_done"
         /** Pause between the invoked saint and the special card it won, so both get seen. */
         private const val UNWRAP_PAUSE_MS = 1_200L
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(KEY_SPLASH_DONE, splashDone)
+    }
+
+    /** True once the splash has been shown to the end (kept across recreations). */
+    private var splashDone = false
 
     override fun onDestroy() {
         tts?.shutdown()
