@@ -37,9 +37,10 @@ import java.util.Locale
  *
  * Two tabs: "Album" (every card found) and "Preferiti" (the favourite cards, marked by a
  * banner bookmark). In the album a long press starts a multiple selection to add cards to
- * the favourites; the detail has a bookmark toggle too. In "Preferiti" a tap speaks the
- * card's phrase on demand (whatever the Pronuncia option, and without counting as an
- * invocation for the album or the trophies); a long press opens the detail.
+ * the favourites; the detail has a bookmark toggle too. In "Preferiti" a tap opens the
+ * card's detail and speaks its phrase on demand (whatever the Pronuncia option, and without
+ * counting as an invocation for the album or the trophies); a long press opens the detail
+ * without the voice.
  */
 class AlbumActivity : AppCompatActivity() {
 
@@ -170,7 +171,10 @@ class AlbumActivity : AppCompatActivity() {
         val saint = card.entry.saint
         when {
             selected.isNotEmpty() -> toggleSelection(saint)
-            showFavourites -> invokeOnDemand(saint, view)
+            showFavourites -> {                 // the card pops up, as in the album, and speaks
+                showDetail(card)
+                invokeOnDemand(saint, view)
+            }
             else -> showDetail(card)
         }
     }
