@@ -14,7 +14,7 @@ object Pronuncia {
     private val PAROLE = mapOf(
         "systemd" to "sistem di",
         "TLS" to "ti elle èsse",                    // open "e", as the letter is said
-        "change request" to "ceingi riquest",       // soft g: the final i makes it like "change"
+        "change request" to "ceinge riquest",       // soft g: the final e makes it like "change"
         "777" to "sette sette sette",                // the permissions, digit by digit
     )
 
