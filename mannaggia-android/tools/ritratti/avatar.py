@@ -346,7 +346,7 @@ FAMOSI = {
                           abito="moderno", colore_abito=(170, 40, 50), attributo="nessuno"),
 }
 
-# Figurine speciali fuori catalogo (S1..S6), sbloccabili solo con i trofei.
+# Figurine speciali fuori catalogo (S1..S7), sbloccabili solo con i trofei.
 # L'ordine e' il numero: S1 = la prima. I nomi sono anche la chiave del file (sha1).
 SPECIALI = {
     "Santo Subito": T(eta="anziano", capelli="corti", colore_capelli="bianco",
@@ -361,6 +361,9 @@ SPECIALI = {
                   abito="moderno", colore_abito=(70, 74, 84), attributo="terminale"),
     "Santa Pazienza": T(donna=True, eta="anziano", copricapo="velo", colore_velo=(110, 120, 160),
                         abito="tunica", colore_abito=(110, 120, 160), attributo="clessidra"),
+    # mannaggia.sh: "...ti strafulmini santa cunegonda bipalluta protrettice dei VUA".
+    "Santa Cunegonda Bipalluta": T(donna=True, copricapo="velo", colore_velo=(60, 60, 70),
+                                   abito="tunica", colore_abito=(60, 60, 70), attributo="fulmine+sfere"),
 }
 
 # Leggendari per il provino (nell'app si calcoleranno dalle voci Wikipedia).
@@ -1038,6 +1041,16 @@ def at_clessidra(c):
     c.poly([(34, 28), (44, 28), (39, 36)], (220, 230, 240)); c.poly([(34, 44), (44, 44), (39, 36)], (220, 230, 240))
     c.poly([(36, 29), (42, 29), (39, 33)], (230, 200, 120)); c.poly([(35, 44), (43, 44), (39, 40)], (230, 200, 120))
     c.line([(39, 34), (39, 40)], (230, 200, 120))
+
+
+def at_fulmine(c):  # "ti strafulmini": la saetta alzata
+    c.poly([(40, 12), (34, 24), (38, 24), (33, 34), (44, 20), (40, 20), (44, 12)], GOLD_LIGHT)
+    c.line([(40, 13), (35, 23)], WHITE)
+
+
+def at_sfere(c):  # "bipalluta": due sfere d'oro in mano
+    for x in (32, 39):
+        c.ell((x, 37, x + 5, 42), GOLD); c.px(x + 1, 38, GOLD_LIGHT); c.px(x + 4, 41, GOLD_DARK)
 
 
 ATTRIBUTI = {name[3:]: fn for name, fn in globals().items() if name.startswith("at_")}

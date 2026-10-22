@@ -100,6 +100,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
+            // Debug builds only: long-press the ribbon to draw an unlocked special card (with its
+            // invocation, spoken if Pronuncia is on), or Santa Cunegonda if none is unlocked yet.
+            binding.btnMannaggia.setOnLongClickListener {
+                invokeSaint(Trofei.Fonte.PULSANTE) {
+                    Trofei.unlockedSpecials(this).randomOrNull() ?: Trofei.SPECIALI.last()
+                }
+                true
+            }
         }
         lifecycleScope.launch {
             binding.btnMannaggia.setImageDrawable(Avatars.ribbonButton(this@MainActivity, "mannaggia"))

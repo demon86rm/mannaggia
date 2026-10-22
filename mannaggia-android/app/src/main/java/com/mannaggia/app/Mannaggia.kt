@@ -25,8 +25,23 @@ object Mannaggia {
     @Volatile
     private var feasts: Map<String, List<String>>? = null
 
-    /** Build the final phrase shown to the user. */
-    fun phraseOf(saint: String): String = "Mannaggia $saint!"
+    /**
+     * Build the final phrase shown (and spoken) to the user: "Mannaggia <saint>!", or for
+     * the special cards their own invocation, "<saint>, proteggici da ...!".
+     */
+    fun phraseOf(saint: String): String = ESCLAMAZIONI[saint] ?: "Mannaggia $saint!"
+
+    /** The special cards (trophy rewards, see Trofei) don't curse: they protect. */
+    private val ESCLAMAZIONI = mapOf(
+        "Santo Subito" to "Santo Subito, proteggici da chi dice «lo sistemo dopo»!",
+        "San Culo" to "San Culo, proteggici dai backup mai testati!",
+        "San Calendario" to "San Calendario, proteggici dai certificati scaduti!",
+        "San Deploy" to "San Deploy, proteggici dal deploy del venerdì pomeriggio!",
+        "San Sudo" to "San Sudo, proteggici dai permessi 777!",
+        "Santa Pazienza" to "Santa Pazienza, proteggici dagli utenti che «hanno già riavviato»!",
+        // mannaggia.sh: "...ti strafulmini santa cunegonda bipalluta protrettice dei VUA".
+        "Santa Cunegonda Bipalluta" to "Santa Cunegonda Bipalluta, proteggici da systemd!",
+    )
 
     /** Number of saints in the bundled list (the album's 100%). */
     suspend fun saintCount(context: Context): Int = withContext(Dispatchers.IO) {

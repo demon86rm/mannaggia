@@ -68,6 +68,9 @@ object Trofei {
             carattere("font:mainzer_fraktur", "Fraktur")),
         Trofeo("gutenberg", "Gutenberg", "Trovare un santo di Magonza",
             carattere("font:cat_altgotisch", "Gotico antico")),
+        // Last FIGURINA reward, so Santa Cunegonda is card S7 (same order as SPECIALI in avatar.py).
+        Trofeo("vua", "In onore dei Veteran Unix Admins", "50 imprecazioni",
+            figurina("Santa Cunegonda Bipalluta")),
     )
 
     private val BY_ID = TUTTI.associateBy { it.id }
@@ -87,6 +90,7 @@ object Trofei {
     private const val HELVETICA_CHANGES = 666
     private const val SUDO_IN_A_ROW = 10
     private const val AMANUENSE_INVOCATIONS = 50
+    private const val VUA_INVOCATIONS = 50
 
     /** The saints of Mainz, Gutenberg's city: San Lullo di Magonza, Sant'Albano da Magonza... */
     private val MAGONZA = Regex("""\b(di|da) Magonza$""")
@@ -133,6 +137,7 @@ object Trofei {
             if (hour == 3) ok += "diavolo"
             if (src(Fonte.PULSANTE) && src(Fonte.WIDGET) && src(Fonte.RIQUADRO)) ok += "trinita"
             if (streak >= PELLEGRINO_DAYS) ok += "pellegrino"
+            if (count >= VUA_INVOCATIONS) ok += "vua"   // mannaggia.sh summoned her every 50 saints
             if (count >= 100) ok += "devoto"
             if (count >= 1000) ok += "root"
             if (total > 0 && albumSize * 10 >= total) ok += "sacrestano"
