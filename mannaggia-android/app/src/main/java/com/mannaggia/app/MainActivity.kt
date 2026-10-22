@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     private var currentJob: Job? = null
     private var themeTextColor = 0
     private var saintOfDay: String? = null
-    private lateinit var cardPop: CardPop
+    private lateinit var cardSlot: CardSlot
     private lateinit var trophyPop: TrophyPop
 
     private val requestNotifPermission =
@@ -73,12 +73,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
         binding.btnAlbum.setOnClickListener {
-            cardPop.cancel()
+            cardSlot.cancel()
             startActivity(Intent(this, AlbumActivity::class.java))
         }
-        cardPop = CardPop(binding.cardPop, binding.btnAlbum, lifecycleScope)
+        cardSlot = CardSlot(
+            binding.cardSlot, binding.cardFit, binding.txtStamp, binding.imgGlow, binding.cardFx,
+            binding.btnAlbum, lifecycleScope, above = binding.txtResult, below = binding.btnMannaggia,
+        )
         // Trophy banners wait while a legendary card (with its choir) is on stage.
-        trophyPop = TrophyPop(binding.trophyPop, lifecycleScope) { cardPop.isHolding }
+        trophyPop = TrophyPop(binding.trophyPop, lifecycleScope) { cardSlot.isHolding }
         binding.btnTrophies.setOnClickListener {
             startActivity(Intent(this, TrofeiActivity::class.java))
         }
@@ -90,7 +93,10 @@ class MainActivity : AppCompatActivity() {
             }
             // Debug builds only: long-press the binder to preview the legendary animation.
             binding.btnAlbum.setOnLongClickListener {
-                lifecycleScope.launch { cardPop.show("San Pietro", Avatars.number(this@MainActivity, "San Pietro"), true) }
+                lifecycleScope.launch {
+                    val n = Avatars.number(this@MainActivity, "San Pietro")
+                    cardSlot.show("San Pietro", n, isNew = true, legendary = true, special = false, animate = true)
+                }
                 true
             }
         }
@@ -146,7 +152,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         sensorManager.unregisterListener(shakeDetector)
-        cardPop.cancel()
+        cardSlot.cancel()
         PhraseEffects.stop(binding.txtResult)  // restarted by applyPhraseStyle in onResume
     }
 
@@ -156,15 +162,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * A saint just entered the album: show its card flying into the binder.
-     * Returns true for a legendary saint (its card comes with the choir).
+     * Show the card of [saint] under the phrase: new ones pop in with the "NUOVA!" stamp
+     * and fly into the binder, the others just appear. Returns true for a new legendary
+     * saint (its card comes with the choir).
      */
-    private suspend fun showNewCard(saint: String): Boolean {
-        val legendary = Avatars.isLegendary(this, saint)
-        if (legendary || Prefs.cardAnimEnabled(this)) {
-            cardPop.show(saint, Avatars.number(this, saint), legendary)
-        }
-        return legendary
+    private suspend fun showCard(saint: String, isNew: Boolean): Boolean {
+        val special = Trofei.isSpecial(saint)
+        val legendary = !special && Avatars.isLegendary(this, saint)
+        val number = if (special) Trofei.specialNumber(saint) else Avatars.number(this, saint)
+        cardSlot.show(saint, number, isNew, legendary, special, Prefs.cardAnimEnabled(this))
+        return isNew && legendary
     }
 
     private fun showSaintOfDay(saint: String?) {
@@ -195,7 +202,7 @@ class MainActivity : AppCompatActivity() {
         // has been spoken (or shown for a moment): the job stays active until then.
         if (currentJob?.isActive == true) return false
         // A legendary card is waiting for its tap: no new curse on top of it.
-        if (cardPop.isHolding) return false
+        if (cardSlot.isHolding) return false
 
         binding.progress.visibility = View.VISIBLE
         binding.btnMannaggia.isEnabled = false
@@ -209,13 +216,13 @@ class MainActivity : AppCompatActivity() {
                     // Special cards live in the trophies, not in the album file.
                     val isNew = !Trofei.isSpecial(saint) &&
                         runCatching { Album.record(this@MainActivity, saint) }.getOrDefault(false)
-                    val choir = isNew && showNewCard(saint)
+                    val choir = showCard(saint, isNew)
                     runCatching { Trofei.invocazione(this@MainActivity, fonte, saint, isNew) }
                     announceTrophies()
                     val phrase = Mannaggia.phraseOf(saint)
                     PhraseEffects.setText(binding.txtResult, phrase)
                     if (Prefs.ttsEnabled(this@MainActivity)) {
-                        if (choir) cardPop.awaitChoir(CHOIR_MAX_WAIT_MS)  // first the choir, then the voice
+                        if (choir) cardSlot.awaitChoir(CHOIR_MAX_WAIT_MS)  // first the choir, then the voice
                         speakAndWait(phrase)
                     } else {
                         delay(SHOW_ONLY_COOLDOWN_MS)

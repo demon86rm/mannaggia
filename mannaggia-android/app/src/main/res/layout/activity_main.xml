@@ -24,17 +24,71 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- The phrase stays at the top; the card of its saint sits below it. -->
     <TextView
         android:id="@+id/txtResult"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:textSize="28sp"
         android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSettings" />
+
+    <!-- Pulsing gold glow behind a new legendary card (see CardSlot). -->
+    <ImageView
+        android:id="@+id/imgGlow"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:contentDescription="@null"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/cardFit"
+        app:layout_constraintEnd_toEndOf="@id/cardFit"
+        app:layout_constraintStart_toStartOf="@id/cardFit"
+        app:layout_constraintTop_toTopOf="@id/cardFit" />
+
+    <!-- The card of the last saint, between the phrase and the button. CardSlot
+         scales this wrapper down when the space is short (small screens, long phrase). -->
+    <FrameLayout
+        android:id="@+id/cardFit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:padding="12dp"
         app:layout_constraintBottom_toTopOf="@id/btnMannaggia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/txtResult">
+
+        <include
+            android:id="@+id/cardSlot"
+            layout="@layout/view_card"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+
+        <!-- "NUOVA!" stamp over the top corner of a new card. -->
+        <TextView
+            android:id="@+id/txtStamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="-6dp"
+            android:layout_marginEnd="-10dp"
+            android:background="@drawable/bg_stamp"
+            android:elevation="14dp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:rotation="12"
+            android:text="@string/card_stamp_new"
+            android:textColor="#FFD32F2F"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
 
     <Button
         android:id="@+id/btnMannaggia"
@@ -106,10 +160,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- New card popping up and flying into the binder (see CardPop). -->
+    <!-- Card effects: copy flying into the binder, legendary tap hint (see CardSlot). -->
     <include
-        android:id="@+id/cardPop"
-        layout="@layout/view_card_pop"
+        android:id="@+id/cardFx"
+        layout="@layout/view_card_fx"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
