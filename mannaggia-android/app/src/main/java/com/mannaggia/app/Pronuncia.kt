@@ -13,7 +13,8 @@ object Pronuncia {
     /** Written word (any case) → how to spell it so the Italian voice says it right. */
     private val PAROLE = mapOf(
         "systemd" to "sistem di",
-        "TLS" to "ti elle esse",
+        "TLS" to "ti elle èsse",                    // open "e", as the letter is said
+        "change request" to "ceing riquest",
         "777" to "sette sette sette",                // the permissions, digit by digit
     )
 
