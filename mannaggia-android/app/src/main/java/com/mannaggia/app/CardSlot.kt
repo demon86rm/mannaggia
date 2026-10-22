@@ -143,6 +143,7 @@ class CardSlot(
                 fx.root.setOnClickListener { tapped.complete(Unit) }
                 launch {
                     delay(HINT_DELAY_MS)
+                    placeHintUnderCard()
                     fx.txtHint.alpha = 0f
                     fx.txtHint.visibility = View.VISIBLE
                     fx.txtHint.animate().alpha(1f).setDuration(300).start()
@@ -160,6 +161,25 @@ class CardSlot(
             // 3. A copy flies into the binder; the card stays.
             flyCopy()
         }
+    }
+
+    /**
+     * Put the "tap" hint between the card and the "Mannaggia!" button, centred in that space;
+     * if the space is too short (16:9 and smaller screens), over the bottom of the card instead.
+     */
+    private fun placeHintUnderCard() {
+        val rootY = IntArray(2).also { fx.root.getLocationOnScreen(it) }[1]
+        val cardBottom = IntArray(2).also { card.root.getLocationOnScreen(it) }[1] - rootY + card.root.height
+        val buttonTop = IntArray(2).also { button.getLocationOnScreen(it) }[1] - rootY
+        val gap = HINT_GAP_DP * card.root.resources.displayMetrics.density
+        val hint = fx.txtHint
+        if (hint.height == 0) hint.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
+        val h = if (hint.height > 0) hint.height else hint.measuredHeight
+        val space = buttonTop - cardBottom
+        val fits = space >= h + 2 * gap
+        hint.translationY = if (fits) cardBottom + (space - h) / 2f else cardBottom - h - gap
+        // Over the card it must hide the name under it, not show through.
+        hint.setBackgroundColor(if (fits) HINT_BG else HINT_BG_OPAQUE)
     }
 
     /** Wait (at most [timeoutMs]) for the choir to end, e.g. before speaking the phrase. */
@@ -313,6 +333,9 @@ class CardSlot(
         private const val HOLD_MS = 700L
         /** The "tap to put it in the album" hint appears after this. */
         private const val HINT_DELAY_MS = 1000L
+        private const val HINT_GAP_DP = 2f
+        private const val HINT_BG = 0xB3000000.toInt()
+        private const val HINT_BG_OPAQUE = 0xFF2A2228.toInt()
         private const val FLY_MS = 480L
         private const val BUMP_MS = 260L
         private const val GLOW_PULSE_MS = 700L
