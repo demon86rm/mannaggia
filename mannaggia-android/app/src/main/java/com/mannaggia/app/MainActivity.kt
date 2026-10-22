@@ -77,8 +77,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, AlbumActivity::class.java))
         }
         cardSlot = CardSlot(
-            binding.cardSlot, binding.cardFit, binding.txtStamp, binding.imgGlow, binding.cardFx,
-            binding.btnAlbum, lifecycleScope, above = binding.txtResult, below = binding.btnMannaggia,
+            binding.cardSlot, binding.cardFit, binding.imgStamp, binding.imgGlow, binding.cardFx,
+            binding.btnAlbum, lifecycleScope, above = binding.btnSettings, below = binding.txtResult,
         )
         // Trophy banners wait while a legendary card (with its choir) is on stage.
         trophyPop = TrophyPop(binding.trophyPop, lifecycleScope) { cardSlot.isHolding }

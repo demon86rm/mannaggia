@@ -373,10 +373,11 @@ LEGGENDARI_PROVA = {"San Pietro", "San Paolo di Tarso", "San Francesco d'Assisi"
 # --- Disegno ------------------------------------------------------------------
 
 class Canvas:
-    """48x48 RGBA layer drawn with aliased PIL primitives (pixel-exact)."""
+    """RGBA layer (48x48 by default) drawn with aliased PIL primitives (pixel-exact)."""
 
-    def __init__(self):
-        self.img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    def __init__(self, w=S, h=S):
+        self.w, self.h = w, h
+        self.img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
         self.d = ImageDraw.Draw(self.img)
 
     def ell(self, box, c):
@@ -395,7 +396,7 @@ class Canvas:
         self.d.line(pts, fill=c + (255,), width=w)
 
     def px(self, x, y, c):
-        if 0 <= x < S and 0 <= y < S:
+        if 0 <= x < self.w and 0 <= y < self.h:
             self.img.putpixel((x, y), c + (255,))
 
     def hole(self, box):
@@ -405,8 +406,8 @@ class Canvas:
     def recolor(self, box, src, dst):
         """Replace color [src] with [dst] inside [box] (for shading one part only)."""
         x0, y0, x1, y1 = box
-        for y in range(max(0, y0), min(S, y1 + 1)):
-            for x in range(max(0, x0), min(S, x1 + 1)):
+        for y in range(max(0, y0), min(self.h, y1 + 1)):
+            for x in range(max(0, x0), min(self.w, x1 + 1)):
                 if self.img.getpixel((x, y))[:3] == src:
                     self.img.putpixel((x, y), dst + (255,))
 
@@ -1056,13 +1057,14 @@ def outline(layer):
     """Dark 1-px outline around everything drawn (on transparent neighbours)."""
     src = layer.copy()
     out = layer.copy()
-    for y in range(S):
-        for x in range(S):
+    w, h = layer.size
+    for y in range(h):
+        for x in range(w):
             if src.getpixel((x, y))[3]:
                 continue
             for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 nx, ny = x + dx, y + dy
-                if 0 <= nx < S and 0 <= ny < S and src.getpixel((nx, ny))[3]:
+                if 0 <= nx < w and 0 <= ny < h and src.getpixel((nx, ny))[3]:
                     out.putpixel((x, y), OUTLINE + (255,))
                     break
     return out
@@ -1259,6 +1261,89 @@ def calendario():
     return outline(c.img)
 
 
+# Gothic (textura) lowercase for the "Nuova!" stamp, 7 px tall: thin and bold strokes.
+GOTICA_SOTTILE = {
+    "u": ["X...X", "X...X", "X...X", "X...X", "X...X", "X..XX", ".XX.X"],
+    "o": [".XXX.", "XX..X", "X...X", "X...X", "X...X", "X..XX", ".XXX."],
+    "v": ["X...X", "X...X", "X...X", "X...X", ".X.X.", ".X.X.", "..X.."],
+    "a": [".XXX.", "X...X", "...XX", ".XX.X", "X...X", "X..XX", ".XX.X"],
+    "!": ["X", "X", "X", "X", "X", ".", "X"],
+}
+GOTICA_PIENA = {
+    "u": ["XX..XX", "XX..XX", "XX..XX", "XX..XX", "XX..XX", "XX.XXX", ".XX.XX"],
+    "o": [".XXXX.", "XX..XX", "XX..XX", "XX..XX", "XX..XX", "XX..XX", ".XXXX."],
+    "v": ["XX..XX", "XX..XX", "XX..XX", "XX..XX", ".XXXX.", ".XXXX.", "..XX.."],
+    "a": [".XXXX.", "....XX", ".XXXXX", "XX..XX", "XX..XX", "XX.XXX", ".XX.XX"],
+    "!": ["XX", "XX", "XX", "XX", "XX", "..", "XX"],
+}
+# Rubricated initial "N", 11x13: thick left stem, three-pixel diagonal, hairline right stem.
+CAPOLETTERA_N = [
+    "XXXX....XXX",
+    ".XXXX....X.",
+    ".XXXXX...X.",
+    ".XX.XXX..X.",
+    ".XX..XXX.X.",
+    ".XX...XXXX.",
+    ".XX....XXX.",
+    ".XX.....XX.",
+    ".XX......X.",
+    ".XX......X.",
+    ".XX......X.",
+    ".XX......X.",
+    "XXXX.....X.",
+]
+PERGAMENA, PERGAMENA_OMBRA = (244, 232, 200), (214, 196, 156)
+INCHIOSTRO = (40, 30, 34)
+
+
+def _glifo(c, rows, x0, y0, col):
+    for dy, row in enumerate(rows):
+        for dx, ch in enumerate(row):
+            if ch == "X":
+                c.px(x0 + dx, y0 + dy, col)
+
+
+def timbro(variante="piena"):
+    """"Nuova!" stamp for new cards, like a codex rubric: red initial N, gothic lowercase.
+
+    variante: "piena" (bold textura on parchment), "sottile" (thin strokes on parchment),
+    "nastro" (parchment letters on a red ribbon, gold initial).
+    """
+    font = GOTICA_SOTTILE if variante == "sottile" else GOTICA_PIENA
+    word = "uova!"
+    word_w = sum(len(font[ch][0]) for ch in word) + len(word) - 1
+    # 1 px transparent margin all round, so outline() draws the label's dark border.
+    w, h = 1 + 3 + 11 + 2 + word_w + 3 + 1, 1 + 17 + 1
+    c = Canvas(w, h)
+    nastro = variante == "nastro"
+    fondo, ombra = (RED, DARK_RED) if nastro else (PERGAMENA, PERGAMENA_OMBRA)
+    c.rect((1, 1, w - 2, h - 2), fondo)
+    c.rect((1, h - 3, w - 2, h - 2), ombra)                 # bordo inferiore in ombra
+    c.line([(2, 1), (w - 3, 1)], shade(fondo, 1.08))        # luce sul bordo superiore
+    for (x, y) in ((1, 1), (w - 2, 1), (1, h - 2), (w - 2, h - 2)):
+        c.img.putpixel((x, y), (0, 0, 0, 0))                # angoli smussati
+    # Initial: red with a lighter left edge (gold on the ribbon).
+    cap = GOLD if nastro else RED
+    _glifo(c, CAPOLETTERA_N, 4, 3, cap)
+    c.line([(5, 4), (5, 14)], GOLD_LIGHT if nastro else shade(RED, 1.35))
+    # Gothic lowercase, sitting on the baseline of the initial.
+    ink = PERGAMENA if nastro else INCHIOSTRO
+    x = 4 + 11 + 2
+    for ch in word:
+        _glifo(c, font[ch], x, 3 + 13 - 7, ink)
+        x += len(font[ch][0]) + 1
+    return outline(c.img)
+
+
+def anteprima_timbro(out, zoom=8):
+    """Save the stamp variants, enlarged, side by side for choosing one."""
+    out.mkdir(parents=True, exist_ok=True)
+    for v in ("piena", "sottile", "nastro"):
+        img = timbro(v)
+        img.resize((img.width * zoom, img.height * zoom), Image.NEAREST).save(out / f"timbro-{v}.png")
+    print(f"anteprime del timbro in {out}", file=sys.stderr)
+
+
 def render_final(name, t, leggendario):
     img = render(name, t)
     if leggendario:
@@ -1424,6 +1509,7 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
     raccoglitore().convert("RGBA").save(out / "raccoglitore.png", optimize=True)
     calendario().convert("RGBA").save(out / "santo_del_giorno.png", optimize=True)
     coppa().convert("RGBA").save(out / "coppa.png", optimize=True)
+    timbro().save(out / "timbro_nuova.png", optimize=True)
     cornice_argento().save(out / "cornice_argento.png", optimize=True)
     for n, t in SPECIALI.items():
         render(n, t).convert("RGB").save(out / f"{file_id(n)}.png", optimize=True)
@@ -1468,8 +1554,12 @@ def main():
                                   "(es. app/src/main/assets/avatar)")
     ap.add_argument("--zoom", type=int, default=5)
     ap.add_argument("--colonne", type=int, default=8)
+    ap.add_argument("--anteprima-timbro", action="store_true", help="varianti del timbro \"Nuova!\" in --out")
     args = ap.parse_args()
     out = Path(args.out).expanduser()
+    if args.anteprima_timbro:
+        anteprima_timbro(out)
+        return
     if args.tutti:
         if args.app:
             genera_tutti(args.santi, Path(args.app), args.cache, args.leggendari, 0, app=True)

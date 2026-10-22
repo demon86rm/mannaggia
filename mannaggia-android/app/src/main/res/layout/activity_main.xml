@@ -24,18 +24,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- The phrase stays at the top; the card of its saint sits below it. -->
+    <!-- The phrase sits above the button and grows upwards (two lines, typing). -->
     <TextView
         android:id="@+id/txtResult"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
         android:gravity="center"
         android:textSize="28sp"
         android:text=""
+        app:layout_constraintBottom_toTopOf="@id/btnMannaggia"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSettings" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Pulsing gold glow behind a new legendary card (see CardSlot). -->
     <ImageView
@@ -49,7 +49,7 @@
         app:layout_constraintStart_toStartOf="@id/cardFit"
         app:layout_constraintTop_toTopOf="@id/cardFit" />
 
-    <!-- The card of the last saint, between the phrase and the button. CardSlot
+    <!-- The card of the last saint, between the top buttons and the phrase. CardSlot
          scales this wrapper down when the space is short (small screens, long phrase). -->
     <FrameLayout
         android:id="@+id/cardFit"
@@ -58,10 +58,10 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:padding="12dp"
-        app:layout_constraintBottom_toTopOf="@id/btnMannaggia"
+        app:layout_constraintBottom_toTopOf="@id/txtResult"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtResult">
+        app:layout_constraintTop_toBottomOf="@id/btnSettings">
 
         <include
             android:id="@+id/cardSlot"
@@ -70,23 +70,19 @@
             android:layout_height="wrap_content"
             android:visibility="invisible" />
 
-        <!-- "NUOVA!" stamp over the top corner of a new card. -->
-        <TextView
-            android:id="@+id/txtStamp"
-            android:layout_width="wrap_content"
+        <!-- "Nuova!" stamp (pixel art, see Avatars.newStamp) over the top corner of a new card. -->
+        <ImageView
+            android:id="@+id/imgStamp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="top|end"
-            android:layout_marginTop="-6dp"
-            android:layout_marginEnd="-10dp"
-            android:background="@drawable/bg_stamp"
+            android:layout_marginTop="-8dp"
+            android:layout_marginEnd="-28dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/card_stamp_new"
             android:elevation="14dp"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="2dp"
             android:rotation="12"
-            android:text="@string/card_stamp_new"
-            android:textColor="#FFD32F2F"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:scaleType="fitCenter"
             android:visibility="gone" />
     </FrameLayout>
 

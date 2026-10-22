@@ -76,6 +76,9 @@ object Avatars {
     /** Still silver frame of the special cards. */
     suspend fun silverFrame(context: Context): BitmapDrawable? = icon(context, "cornice_argento.png")
 
+    /** The "Nuova!" stamp on new cards (red initial, gothic lowercase, on parchment). */
+    suspend fun newStamp(context: Context): BitmapDrawable? = icon(context, "timbro_nuova.png")
+
     /** The pixel-art saint-of-the-day icon (calendar page with a gold star). */
     suspend fun saintOfDayIcon(context: Context): BitmapDrawable? = icon(context, "santo_del_giorno.png")
 

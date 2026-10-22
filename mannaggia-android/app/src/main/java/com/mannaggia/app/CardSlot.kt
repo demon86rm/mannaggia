@@ -11,7 +11,6 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.view.drawToBitmap
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.mannaggia.app.databinding.ViewCardBinding
@@ -23,9 +22,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeoutOrNull
 
 /**
- * The card of the last saint invoked, always on the main screen under the phrase.
+ * The card of the last saint invoked, always on the main screen above the phrase.
  *
- * - A saint new to the album pops in with a "NUOVA!" stamp, then a copy of the card
+ * - A saint new to the album pops in with the pixel-art "Nuova!" stamp, then a copy of the card
  *   flies into the binder [target], which bounces; the card itself stays.
  * - A saint already in the album just fades in, labelled "Già nell'album".
  * - New legendary saints also get the angelic choir, a pulsing gold glow and wait for
@@ -36,7 +35,7 @@ class CardSlot(
     private val card: ViewCardBinding,
     /** Wrapper of the card and its stamp, scaled down when the space is short. */
     private val fit: View,
-    private val stamp: TextView,
+    private val stamp: ImageView,
     private val glow: ImageView,
     private val fx: ViewCardFxBinding,
     private val target: View,
@@ -61,7 +60,8 @@ class CardSlot(
             gradientRadius = 480f
             colors = intArrayOf(0xCCFFE27A.toInt(), 0x66F2B632, 0x00F2B632)
         })
-        // Refit whenever the phrase (typing, 2 lines), the card or the button move.
+        scope.launch { stamp.setImageDrawable(Avatars.newStamp(stamp.context)) }
+        // Refit whenever the top buttons, the card or the phrase (typing, 2 lines) move.
         val refit = View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> fitToSpace() }
         above.addOnLayoutChangeListener(refit)
         fit.addOnLayoutChangeListener(refit)
@@ -258,7 +258,7 @@ class CardSlot(
         ObjectAnimator.ofFloat(target, View.SCALE_Y, 1f, 1.25f, 1f).setDuration(BUMP_MS).start()
     }
 
-    /** Scale the card down (never up) to fit between the phrase and the button. */
+    /** Scale the card down (never up) to fit between the top buttons and the phrase. */
     private fun fitToSpace() {
         val h = fit.height
         if (h == 0) return
