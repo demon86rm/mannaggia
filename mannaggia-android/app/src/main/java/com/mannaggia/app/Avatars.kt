@@ -74,6 +74,10 @@ object Avatars {
     /** The pixel-art trophy cup (main screen, trophy list, unlock banner). */
     suspend fun cup(context: Context): BitmapDrawable? = icon(context, "coppa.png")
 
+    /** Banner bookmark of the favourite cards: [full] for a favourite, a faint outline otherwise. */
+    suspend fun bookmark(context: Context, full: Boolean): BitmapDrawable? =
+        icon(context, if (full) "segnalibro.png" else "segnalibro_vuoto.png")
+
     /** Still silver frame of the special cards. */
     suspend fun silverFrame(context: Context): BitmapDrawable? = icon(context, "cornice_argento.png")
 

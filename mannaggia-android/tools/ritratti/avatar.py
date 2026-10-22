@@ -1433,6 +1433,36 @@ def pulsante(premuto=False, nome="mannaggia"):
     return etichetta(cap, parola, "nastro", premuto)
 
 
+# Favourites bookmark: a swallow-tailed banner hanging from a gold rod (palette: cloth, border).
+STENDARDI = {
+    "lapislazzuli": ((38, 70, 150), GOLD),          # blue and gold of illuminated codices
+    "porpora": ((120, 30, 70), GOLD),
+    "smeraldo": ((30, 110, 70), SILVER),
+}
+SEGNALIBRO_W, SEGNALIBRO_H = 14, 22
+
+
+def segnalibro(attivo=True, colori="lapislazzuli"):
+    """Bookmark of the favourite cards: full banner when [attivo], a faint outline otherwise."""
+    drappo, bordo = STENDARDI[colori]
+    w, h = SEGNALIBRO_W, SEGNALIBRO_H
+    c = Canvas(w, h)
+    # Gold rod with knobs.
+    c.line([(1, 1), (w - 2, 1)], GOLD_DARK); c.line([(1, 2), (w - 2, 2)], GOLD)
+    c.px(0, 1, GOLD_LIGHT); c.px(w - 1, 1, GOLD_LIGHT)
+    # Cloth with a swallow tail: the notch goes up 5 px in the middle.
+    cloth = [(2, 3), (w - 3, 3), (w - 3, h - 2), (w // 2, h - 8), (2, h - 2)]
+    if attivo:
+        c.poly(cloth, bordo)
+        c.poly([(3, 3), (w - 4, 3), (w - 4, h - 4), (w // 2, h - 10), (3, h - 4)], drappo)
+        c.line([(4, 4), (4, h - 6)], shade(drappo, 1.25))               # light on the left fold
+        mx = w // 2                                                         # small cross
+        c.line([(mx, 6), (mx, 11)], bordo); c.line([(mx - 2, 8), (mx + 1, 8)], bordo)
+        return outline(c.img)
+    c.d.polygon(cloth, fill=drappo + (50,), outline=bordo + (200,))
+    return c.img
+
+
 def anteprima_timbro(out, zoom=8):
     """Save the stamp variants and the button, enlarged, for review."""
     out.mkdir(parents=True, exist_ok=True)
@@ -1444,7 +1474,18 @@ def anteprima_timbro(out, zoom=8):
             img = pulsante(premuto, nome)
             suffisso = "-premuto" if premuto else ""
             img.resize((img.width * zoom, img.height * zoom), Image.NEAREST).save(out / f"pulsante-{nome}{suffisso}.png")
-    print(f"anteprime del timbro e del pulsante in {out}", file=sys.stderr)
+    # Bookmarks: every palette, full and empty, on a light and a dark card.
+    tile, tile_h = (SEGNALIBRO_W + 6) * zoom, (SEGNALIBRO_H + 4) * zoom
+    sheet = Image.new("RGB", (tile * 2 * len(STENDARDI), tile_h * 2), (240, 226, 230))
+    ImageDraw.Draw(sheet).rectangle((0, tile_h, sheet.width, sheet.height), fill=(36, 30, 38))
+    for i, colori in enumerate(STENDARDI):
+        for j, attivo in enumerate((True, False)):
+            img = segnalibro(attivo, colori)
+            big = img.resize((img.width * zoom, img.height * zoom), Image.NEAREST)
+            for row in (0, 1):
+                sheet.paste(big, ((i * 2 + j) * tile + 3 * zoom, row * tile_h + 2 * zoom), big)
+    sheet.save(out / "segnalibri.png")
+    print(f"anteprime del timbro, dei pulsanti e dei segnalibri in {out}", file=sys.stderr)
 
 
 def render_final(name, t, leggendario):
@@ -1617,6 +1658,8 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
         pulsante(False, nome).save(out / f"pulsante_{nome}.png", optimize=True)
         pulsante(True, nome).save(out / f"pulsante_{nome}_premuto.png", optimize=True)
     cornice_argento().save(out / "cornice_argento.png", optimize=True)
+    segnalibro(True).save(out / "segnalibro.png", optimize=True)
+    segnalibro(False).save(out / "segnalibro_vuoto.png", optimize=True)
     for n, t in SPECIALI.items():
         render(n, t).convert("RGB").save(out / f"{file_id(n)}.png", optimize=True)
     (out / "speciali.txt").write_text(

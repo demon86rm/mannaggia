@@ -9,12 +9,14 @@
         <item>Fumetto</item>
         <item>Corsivo</item>
         <item>Medievale</item>
+        <item>Eagle Lake</item>
         <!-- Trophy rewards: shown only once unlocked (SettingsActivity). -->
         <item>Black</item>
         <item>Maiuscoletto</item>
         <item>Leggero</item>
         <item>Fraktur</item>
         <item>Gotico antico</item>
+        <item>Unifraktur</item>
     </string-array>
     <string-array name="font_values">
         <item>sans-serif</item>
@@ -25,11 +27,13 @@
         <item>cursive</item>
         <!-- "font:" = bundled in res/font (SIL OFL, licenses in assets/licenze). -->
         <item>font:medievalsharp</item>
+        <item>font:eagle_lake</item>
         <item>sans-serif-black</item>
         <item>sans-serif-smallcaps</item>
         <item>sans-serif-light</item>
         <item>font:mainzer_fraktur</item>
         <item>font:cat_altgotisch</item>
+        <item>font:unifraktur_maguntia</item>
     </string-array>
 
     <string-array name="theme_names">

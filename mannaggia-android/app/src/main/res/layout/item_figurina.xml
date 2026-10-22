@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- One album card: portrait (with the gold frame on top for legendary saints),
-     discovery number and name. -->
+     discovery number and name. Favourites show the banner bookmark; in selection
+     mode the card is checked (Material checkmark, top right). -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
+    android:checkable="true"
     app:cardCornerRadius="8dp">
 
     <LinearLayout
@@ -32,6 +34,16 @@
                 android:contentDescription="@null"
                 android:scaleType="fitCenter"
                 android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imgBookmark"
+                android:layout_width="21dp"
+                android:layout_height="33dp"
+                android:layout_gravity="top|start"
+                android:layout_marginStart="2dp"
+                android:contentDescription="@string/fav_badge"
+                android:scaleType="fitCenter"
+                android:visibility="gone" />
         </com.mannaggia.app.SquareFrameLayout>
 
         <TextView
@@ -39,15 +51,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/unifraktur_maguntia"
             android:textAppearance="?attr/textAppearanceLabelSmall"
-            android:textColor="?android:attr/textColorSecondary" />
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/txtSaint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:fontFamily="@font/unifraktur_maguntia"
             android:lines="2"
-            android:textAppearance="?attr/textAppearanceLabelMedium" />
+            android:textAppearance="?attr/textAppearanceLabelMedium"
+            android:textSize="14sp" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

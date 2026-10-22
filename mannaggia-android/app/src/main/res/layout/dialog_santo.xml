@@ -32,8 +32,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/unifraktur_maguntia"
         android:gravity="center"
-        android:textAppearance="?attr/textAppearanceHeadlineSmall" />
+        android:textAppearance="?attr/textAppearanceHeadlineSmall"
+        android:textSize="28sp" />
+
+    <!-- Favourite on/off: the banner bookmark, full or empty. -->
+    <ImageButton
+        android:id="@+id/btnBookmark"
+        android:layout_width="48dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/fav_add"
+        android:padding="6dp"
+        android:scaleType="fitCenter" />
 
     <TextView
         android:id="@+id/txtLegend"

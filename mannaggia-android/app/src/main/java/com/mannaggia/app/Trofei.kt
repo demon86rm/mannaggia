@@ -68,6 +68,8 @@ object Trofei {
             carattere("font:mainzer_fraktur", "Fraktur")),
         Trofeo("gutenberg", "Gutenberg", "Trovare un santo di Magonza",
             carattere("font:cat_altgotisch", "Gotico antico")),
+        Trofeo("mille", "Mille e non più mille", "Trovare 1000 santi",
+            carattere("font:unifraktur_maguntia", "Unifraktur")),
         // Last FIGURINA reward, so Santa Cunegonda is card S7 (same order as SPECIALI in avatar.py).
         Trofeo("vua", "In onore dei Veteran Unix Admins", "50 imprecazioni",
             figurina("Santa Cunegonda Bipalluta")),
@@ -91,6 +93,7 @@ object Trofei {
     private const val SUDO_IN_A_ROW = 10
     private const val AMANUENSE_INVOCATIONS = 50
     private const val VUA_INVOCATIONS = 50
+    private const val MILLE_SAINTS = 1000
 
     /** The saints of Mainz, Gutenberg's city: San Lullo di Magonza, Sant'Albano da Magonza... */
     private val MAGONZA = Regex("""\b(di|da) Magonza$""")
@@ -142,6 +145,7 @@ object Trofei {
             if (count >= 1000) ok += "root"
             if (total > 0 && albumSize * 10 >= total) ok += "sacrestano"
             if (total > 0 && albumSize * 2 >= total) ok += "vescovo"
+            if (albumSize >= MILLE_SAINTS) ok += "mille"
             if (total > 0 && albumSize >= total) ok += "papa"
             if (legendary) ok += "leggenda"
             if (dayMatch) ok += "onomastico"
