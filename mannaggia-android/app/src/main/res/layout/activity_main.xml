@@ -89,11 +89,14 @@
             android:visibility="gone" />
     </FrameLayout>
 
-    <!-- Pixel-art "Mannaggia!" ribbon (see Avatars.mannaggiaButton). -->
+    <!-- Pixel-art "Mannaggia!" ribbon (see Avatars.mannaggiaButton): at most 200dp, and
+         clear of the icon column on the right (72dp) on narrow phones. -->
     <ImageView
         android:id="@+id/btnMannaggia"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="72dp"
         android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
         android:clickable="true"
@@ -102,7 +105,8 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@id/progress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_max="200dp" />
 
     <ProgressBar
         android:id="@+id/progress"
