@@ -7,10 +7,12 @@ import android.animation.ValueAnimator
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.GradientDrawable
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.FrameLayout
 import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.drawToBitmap
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.mannaggia.app.databinding.ViewCardBinding
@@ -22,7 +24,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeoutOrNull
 
 /**
- * The card of the last saint invoked, always on the main screen under the phrase.
+ * The card of the last saint invoked, centred on the main screen between the phrase and the button.
  *
  * - A saint new to the album pops in with the pixel-art "Nuova!" stamp, then a copy of the card
  *   flies into the binder [target], which bounces; the card itself stays.
@@ -33,16 +35,19 @@ import kotlinx.coroutines.withTimeoutOrNull
  */
 class CardSlot(
     private val card: ViewCardBinding,
-    /** Wrapper of the card and its stamp, scaled down when the space is short. */
+    /** Wrapper of the card and its stamp, centred on the screen. */
     private val fit: View,
     private val stamp: ImageView,
     private val glow: ImageView,
     private val fx: ViewCardFxBinding,
     private val target: View,
     private val scope: LifecycleCoroutineScope,
-    /** The card fits between the bottom of [above] and the top of [below]. */
-    private val above: View,
-    private val below: View,
+    /** The screen layout: the card is centred in it, with [phrase] above and [button] below. */
+    private val root: View,
+    /** Nothing goes above the bottom of this view (the top buttons). */
+    private val topLimit: View,
+    private val phrase: View,
+    private val button: View,
 ) {
 
     private var job: Job? = null
@@ -62,10 +67,11 @@ class CardSlot(
         })
         scope.launch { stamp.setImageDrawable(Avatars.newStamp(stamp.context)) }
         // Refit whenever the phrase (typing, 2 lines), the card or the button move.
-        val refit = View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> fitToSpace() }
-        above.addOnLayoutChangeListener(refit)
+        // Refit (after the layout pass) whenever the phrase grows, the card changes or the screen does.
+        val refit = View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> fit.post { fitToSpace() } }
+        root.addOnLayoutChangeListener(refit)
+        phrase.addOnLayoutChangeListener(refit)
         fit.addOnLayoutChangeListener(refit)
-        below.addOnLayoutChangeListener(refit)
     }
 
     /**
@@ -218,20 +224,19 @@ class CardSlot(
     private fun flyCopy() {
         val view = card.root
         if (view.width == 0 || view.height == 0) return
-        val scale = fit.scaleX
         val fly = fx.imgFly
         fly.setImageBitmap(view.drawToBitmap())
         fly.layoutParams = (fly.layoutParams as FrameLayout.LayoutParams).apply {
-            width = (view.width * scale).toInt()
-            height = (view.height * scale).toInt()
+            width = view.width
+            height = view.height
         }
         val rootPos = IntArray(2).also { fx.root.getLocationOnScreen(it) }
         val cardPos = IntArray(2).also { view.getLocationOnScreen(it) }
         val targetPos = IntArray(2).also { target.getLocationOnScreen(it) }
         val startX = (cardPos[0] - rootPos[0]).toFloat()
         val startY = (cardPos[1] - rootPos[1]).toFloat()
-        val w = view.width * scale
-        val h = view.height * scale
+        val w = view.width.toFloat()
+        val h = view.height.toFloat()
         fly.translationX = startX; fly.translationY = startY
         fly.scaleX = 1f; fly.scaleY = 1f; fly.alpha = 1f
         fly.visibility = View.VISIBLE
@@ -258,17 +263,48 @@ class CardSlot(
         ObjectAnimator.ofFloat(target, View.SCALE_Y, 1f, 1.25f, 1f).setDuration(BUMP_MS).start()
     }
 
-    /** Scale the card down (never up) to fit between the phrase and the button. */
+    /**
+     * The card is centred on the screen, with the phrase above it and the button below.
+     * When the phrase (and the "Nuova!" stamp) would reach the top buttons, the card moves
+     * down, as far as the button allows; only if that is not enough it gets narrower, and its
+     * square portrait shorter.
+     */
     private fun fitToSpace() {
-        val h = fit.height
-        if (h == 0) return
-        val space = below.top - above.bottom
-        val s = if (space <= 0) MIN_SCALE else (space.toFloat() / h).coerceIn(MIN_SCALE, 1f)
-        if (fit.scaleX != s) {
-            fit.scaleX = s
-            fit.scaleY = s
+        val view = card.root
+        val fitH = fit.height
+        if (fitH == 0 || root.height == 0) return
+        val density = view.resources.displayMetrics.density
+        val gap = GAP_DP * density
+        val phraseGap = marginOf(phrase) { it.bottomMargin }
+        // The stamp may stick out above the card into the gap left for the phrase, not beyond.
+        val stampOut = maxOf(0, -stamp.top - phraseGap)
+        val minTop = topLimit.bottom + gap + phrase.height + phraseGap + stampOut   // top of the card wrapper
+        val maxBottom = button.top - gap
+        val contentTop = root.paddingTop
+        val contentH = root.height - root.paddingTop - root.paddingBottom
+
+        // 1. Width: narrower when even the whole space between phrase and button is short.
+        val width = view.width
+        val target = (width + (maxBottom - minTop - fitH)).toInt()
+            .coerceIn((MIN_CARD_DP * density).toInt(), (MAX_CARD_DP * density).toInt())
+        if (kotlin.math.abs(target - width) >= 1) {
+            view.layoutParams = view.layoutParams.apply { this.width = target }
+            return                                          // refit after the new layout
+        }
+
+        // 2. Position: centred if possible, otherwise as close to the centre as the limits allow.
+        val centredTop = contentTop + (contentH - fitH) / 2f
+        val top = centredTop.coerceAtMost(maxBottom - fitH).coerceAtLeast(minTop)
+        val bias = if (contentH > fitH) ((top - contentTop) / (contentH - fitH)).coerceIn(0f, 1f) else 0.5f
+        val params = fit.layoutParams as ConstraintLayout.LayoutParams
+        if (kotlin.math.abs(params.verticalBias - bias) > 0.002f) {
+            params.verticalBias = bias
+            fit.layoutParams = params
         }
     }
+
+    private fun marginOf(v: View, side: (ViewGroup.MarginLayoutParams) -> Int) =
+        (v.layoutParams as? ViewGroup.MarginLayoutParams)?.let(side) ?: 0
 
     companion object {
         private const val POP_IN_MS = 220L
@@ -280,6 +316,10 @@ class CardSlot(
         private const val FLY_MS = 480L
         private const val BUMP_MS = 260L
         private const val GLOW_PULSE_MS = 700L
-        private const val MIN_SCALE = 0.5f
+        /** Card width: 180dp as designed, down to 90dp on cramped screens. */
+        private const val MAX_CARD_DP = 180f
+        private const val MIN_CARD_DP = 90f
+        /** Breathing space below the top buttons and above the button. */
+        private const val GAP_DP = 12f
     }
 }

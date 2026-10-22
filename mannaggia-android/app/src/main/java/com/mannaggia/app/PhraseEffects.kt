@@ -3,6 +3,9 @@ package com.mannaggia.app
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.graphics.Color
+import android.text.StaticLayout
+import android.text.TextPaint
+import android.util.TypedValue
 import android.view.View
 import android.widget.TextView
 import kotlin.random.Random
@@ -19,10 +22,15 @@ import kotlin.random.Random
  */
 object PhraseEffects {
 
-    /** Show [text] in [view]; with the Terminale effect on, it gets typed. */
+    /**
+     * Show [text] in [view]; with the Terminale effect on, it gets typed. Long saint names
+     * get a smaller font so the phrase never takes more than two lines.
+     */
     fun setText(view: TextView, text: CharSequence) {
         view.setTag(R.id.phrase_text, text)
-        if (view.getTag(R.id.phrase_effect) is Terminale) {
+        val terminale = view.getTag(R.id.phrase_effect) is Terminale
+        fitTwoLines(view, if (terminale) Terminale.PROMPT + text + Terminale.CURSOR else text)
+        if (terminale) {
             Terminale(view, text).start()
         } else {
             view.text = text
@@ -141,6 +149,25 @@ object PhraseEffects {
             const val BLINK_MS = 530L
         }
     }
+
+    /** The largest size, from [MAX_SP] down to [MIN_SP], at which [text] fits in two lines of [view]. */
+    private fun fitTwoLines(view: TextView, text: CharSequence) {
+        val width = view.width - view.totalPaddingLeft - view.totalPaddingRight
+        if (width <= 0 || text.isEmpty()) return
+        val metrics = view.resources.displayMetrics
+        val paint = TextPaint(view.paint)
+        var sp = MAX_SP
+        while (sp > MIN_SP) {
+            paint.textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, metrics)
+            if (StaticLayout.Builder.obtain(text, 0, text.length, paint, width).build().lineCount <= 2) break
+            sp -= 1f
+        }
+        view.setTextSize(TypedValue.COMPLEX_UNIT_SP, sp)
+    }
+
+    /** The phrase size of activity_main.xml, and the smallest one for long names. */
+    private const val MAX_SP = 28f
+    private const val MIN_SP = 18f
 
     private val FLAME_RED = Color.parseColor("#E53935")
     private val FLAME_ORANGE = Color.parseColor("#FF8F00")

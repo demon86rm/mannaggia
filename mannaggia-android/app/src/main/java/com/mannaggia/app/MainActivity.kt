@@ -78,7 +78,8 @@ class MainActivity : AppCompatActivity() {
         }
         cardSlot = CardSlot(
             binding.cardSlot, binding.cardFit, binding.imgStamp, binding.imgGlow, binding.cardFx,
-            binding.btnAlbum, lifecycleScope, above = binding.txtResult, below = binding.btnMannaggia,
+            binding.btnAlbum, lifecycleScope,
+            root = binding.root, topLimit = binding.btnSettings, phrase = binding.txtResult, button = binding.btnMannaggia,
         )
         // Trophy banners wait while a legendary card (with its choir) is on stage.
         trophyPop = TrophyPop(binding.trophyPop, lifecycleScope) { cardSlot.isHolding }

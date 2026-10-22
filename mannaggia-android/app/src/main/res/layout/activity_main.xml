@@ -33,18 +33,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- The phrase, a little below the top buttons; the card of its saint sits below it. -->
+    <!-- The phrase, just above the card, growing upwards (two lines, typing). -->
     <TextView
         android:id="@+id/txtResult"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="36dp"
         android:gravity="center"
         android:textSize="28sp"
         android:text=""
+        app:layout_constraintBottom_toTopOf="@id/cardFit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSettings" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Pulsing gold glow behind a new legendary card (see CardSlot). -->
     <ImageView
@@ -58,9 +58,8 @@
         app:layout_constraintStart_toStartOf="@id/cardFit"
         app:layout_constraintTop_toTopOf="@id/cardFit" />
 
-    <!-- The card of the last saint, between the phrase and the button, nearer the button
-         (centre column, clear of the icons on the right). CardSlot scales this wrapper
-         down when the space is short (small screens, long phrase). -->
+    <!-- The card of the last saint, centred on the screen: the reference for the phrase
+         (above) and the button (below). CardSlot narrows the card when they don't fit. -->
     <FrameLayout
         android:id="@+id/cardFit"
         android:layout_width="wrap_content"
@@ -68,11 +67,10 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:padding="12dp"
-        app:layout_constraintBottom_toTopOf="@id/btnMannaggia"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtResult"
-        app:layout_constraintVertical_bias="0.65">
+        app:layout_constraintTop_toTopOf="parent">
 
         <include
             android:id="@+id/cardSlot"
@@ -97,34 +95,34 @@
             android:visibility="gone" />
     </FrameLayout>
 
-    <!-- Pixel-art "Mannaggia!" ribbon (see Avatars.ribbonButton): at most 200dp, and
-         clear of the icon column on the right (72dp) on narrow phones. -->
+    <!-- Pixel-art "Mannaggia!" ribbon (see Avatars.ribbonButton): centred on the
+         saint-of-the-day icon, at most 200dp, clear of the icon column (72dp). -->
     <ImageView
         android:id="@+id/btnMannaggia"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginEnd="72dp"
-        android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
         android:clickable="true"
         android:contentDescription="@string/btn_mannaggia"
         android:focusable="true"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@id/progress"
+        app:layout_constraintBottom_toBottomOf="@id/btnSaintOfDay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnSaintOfDay"
         app:layout_constraintWidth_max="200dp" />
 
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnMannaggia" />
 
     <!-- Pixel-art card binder: opens the album; new cards fly into it. -->
     <ImageView
