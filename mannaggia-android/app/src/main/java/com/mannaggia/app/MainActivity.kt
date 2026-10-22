@@ -170,7 +170,36 @@ class MainActivity : AppCompatActivity() {
 
     /** Show the banners of the trophies unlocked since the last call. */
     private fun announceTrophies() {
-        trophyPop.show(Trofei.takePending(this))
+        val unlocked = Trofei.takePending(this)
+        trophyPop.show(unlocked)
+        // A special card won with a trophy is "unwrapped": shown and spoken right away,
+        // after the phrase in progress if there is one (see invokeSaint).
+        newSpecials += unlocked.filter { it.ricompensa.tipo == Trofei.Tipo.FIGURINA }.map { it.ricompensa.valore }
+        if (newSpecials.isNotEmpty() && currentJob?.isActive != true) {
+            currentJob = lifecycleScope.launch { unwrapNewSpecials() }
+        }
+    }
+
+    /** Special cards just won, waiting to be unwrapped. */
+    private val newSpecials = ArrayDeque<String>()
+
+    /**
+     * Show each special card just won as a new card, with its invocation as the phrase,
+     * spoken when Pronuncia is on. Runs inside the invocation job, so nothing else starts
+     * meanwhile.
+     */
+    private suspend fun unwrapNewSpecials() {
+        while (newSpecials.isNotEmpty()) {
+            val special = newSpecials.removeFirst()
+            delay(UNWRAP_PAUSE_MS)
+            binding.btnMannaggia.isEnabled = false
+            cardSlot.show(special, Trofei.specialNumber(special), isNew = true, legendary = false,
+                special = true, animate = Prefs.cardAnimEnabled(this))
+            val phrase = Mannaggia.phraseOf(special)
+            PhraseEffects.setText(binding.txtResult, phrase)
+            if (Prefs.ttsEnabled(this)) speakAndWait(phrase) else delay(SHOW_ONLY_COOLDOWN_MS)
+            binding.btnMannaggia.isEnabled = true
+        }
     }
 
     /**
@@ -243,6 +272,7 @@ class MainActivity : AppCompatActivity() {
                 onFailure = { e -> PhraseEffects.setText(binding.txtResult, "Errore: ${e.message}") }
             )
             binding.btnMannaggia.isEnabled = true
+            unwrapNewSpecials()   // special cards won with this invocation
         }
         return true
     }
@@ -311,6 +341,8 @@ class MainActivity : AppCompatActivity() {
         /** Safety cap on waiting for the choir before speaking (it lasts about 3 s). */
         private const val CHOIR_MAX_WAIT_MS = 4_000L
         private const val SPEECH_TIMEOUT_MS = 15_000L
+        /** Pause between the invoked saint and the special card it won, so both get seen. */
+        private const val UNWRAP_PAUSE_MS = 1_200L
     }
 
     override fun onDestroy() {
