@@ -24,18 +24,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- The phrase sits above the button and grows upwards (two lines, typing). -->
+    <!-- The phrase, a little below the top buttons; the card of its saint sits below it. -->
     <TextView
         android:id="@+id/txtResult"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:textSize="28sp"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@id/btnMannaggia"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSettings" />
 
     <!-- Pulsing gold glow behind a new legendary card (see CardSlot). -->
     <ImageView
@@ -49,8 +49,9 @@
         app:layout_constraintStart_toStartOf="@id/cardFit"
         app:layout_constraintTop_toTopOf="@id/cardFit" />
 
-    <!-- The card of the last saint, between the top buttons and the phrase. CardSlot
-         scales this wrapper down when the space is short (small screens, long phrase). -->
+    <!-- The card of the last saint, between the phrase and the button, nearer the button
+         (centre column, clear of the icons on the right). CardSlot scales this wrapper
+         down when the space is short (small screens, long phrase). -->
     <FrameLayout
         android:id="@+id/cardFit"
         android:layout_width="wrap_content"
@@ -58,10 +59,11 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:padding="12dp"
-        app:layout_constraintBottom_toTopOf="@id/txtResult"
+        app:layout_constraintBottom_toTopOf="@id/btnMannaggia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSettings">
+        app:layout_constraintTop_toBottomOf="@id/txtResult"
+        app:layout_constraintVertical_bias="0.65">
 
         <include
             android:id="@+id/cardSlot"
@@ -86,12 +88,18 @@
             android:visibility="gone" />
     </FrameLayout>
 
-    <Button
+    <!-- Pixel-art "Mannaggia!" ribbon (see Avatars.mannaggiaButton). -->
+    <ImageView
         android:id="@+id/btnMannaggia"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="@string/btn_mannaggia"
+        android:adjustViewBounds="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/btn_mannaggia"
+        android:focusable="true"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@id/progress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

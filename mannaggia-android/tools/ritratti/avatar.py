@@ -1261,7 +1261,8 @@ def calendario():
     return outline(c.img)
 
 
-# Gothic (textura) lowercase for the "Nuova!" stamp, 7 px tall: thin and bold strokes.
+# Gothic (textura) lowercase for the pixel-art labels, 7 px x-height: thin and bold strokes.
+# Rows past the 7th hang below the baseline (g); GLIFO_SU lifts a glyph above the x-height (i).
 GOTICA_SOTTILE = {
     "u": ["X...X", "X...X", "X...X", "X...X", "X...X", "X..XX", ".XX.X"],
     "o": [".XXX.", "XX..X", "X...X", "X...X", "X...X", "X..XX", ".XXX."],
@@ -1274,9 +1275,14 @@ GOTICA_PIENA = {
     "o": [".XXXX.", "XX..XX", "XX..XX", "XX..XX", "XX..XX", "XX..XX", ".XXXX."],
     "v": ["XX..XX", "XX..XX", "XX..XX", "XX..XX", ".XXXX.", ".XXXX.", "..XX.."],
     "a": [".XXXX.", "....XX", ".XXXXX", "XX..XX", "XX..XX", "XX.XXX", ".XX.XX"],
+    "n": ["XXXXX.", "XX..XX", "XX..XX", "XX..XX", "XX..XX", "XX..XX", "XX..XX"],
+    "g": [".XXXXX", "XX..XX", "XX..XX", "XX..XX", "XX..XX", "XX.XXX", ".XX.XX",
+          "....XX", "X...XX", ".XXXX."],
+    "i": ["XX", "..", "XX", "XX", "XX", "XX", "XX", "XX", "XX"],
     "!": ["XX", "XX", "XX", "XX", "XX", "..", "XX"],
 }
-# Rubricated initial "N", 11x13: thick left stem, three-pixel diagonal, hairline right stem.
+GLIFO_SU = {"i": 2}
+# Rubricated initials, 13 px tall: thick left stem, three-pixel diagonals.
 CAPOLETTERA_N = [
     "XXXX....XXX",
     ".XXXX....X.",
@@ -1292,6 +1298,21 @@ CAPOLETTERA_N = [
     ".XX......X.",
     "XXXX.....X.",
 ]
+CAPOLETTERA_M = [
+    "XXX.......XXX",
+    ".XXX.....XXX.",
+    ".XXXX...XXXX.",
+    ".XX.XX.XX.XX.",
+    ".XX..XXX..XX.",
+    ".XX...X...XX.",
+    ".XX.......XX.",
+    ".XX.......XX.",
+    ".XX.......XX.",
+    ".XX.......XX.",
+    ".XX.......XX.",
+    ".XX.......XX.",
+    "XXXX.....XXXX",
+]
 PERGAMENA, PERGAMENA_OMBRA = (244, 232, 200), (214, 196, 156)
 INCHIOSTRO = (40, 30, 34)
 
@@ -1303,45 +1324,64 @@ def _glifo(c, rows, x0, y0, col):
                 c.px(x0 + dx, y0 + dy, col)
 
 
-def timbro(variante="piena"):
-    """"Nuova!" stamp for new cards, like a codex rubric: red initial N, gothic lowercase.
+def etichetta(capolettera, parola, variante="piena", premuto=False):
+    """A codex-style label: rubricated initial, then gothic lowercase on the same baseline.
 
     variante: "piena" (bold textura on parchment), "sottile" (thin strokes on parchment),
-    "nastro" (parchment letters on a red ribbon, gold initial).
+    "nastro" (parchment letters on a red ribbon, gold initial). [premuto] darkens the
+    background and drops the content by 1 px (pressed button).
     """
     font = GOTICA_SOTTILE if variante == "sottile" else GOTICA_PIENA
-    word = "uova!"
-    word_w = sum(len(font[ch][0]) for ch in word) + len(word) - 1
+    cap_w, cap_h = len(capolettera[0]), len(capolettera)
+    word_w = sum(len(font[ch][0]) for ch in parola) + len(parola) - 1
+    giu = max(len(font[ch]) - GLIFO_SU.get(ch, 0) - 7 for ch in parola)   # discendenti
     # 1 px transparent margin all round, so outline() draws the label's dark border.
-    w, h = 1 + 3 + 11 + 2 + word_w + 3 + 1, 1 + 17 + 1
+    w, h = 1 + 3 + cap_w + 2 + word_w + 3 + 1, 1 + 2 + cap_h + giu + 2 + 1
     c = Canvas(w, h)
     nastro = variante == "nastro"
     fondo, ombra = (RED, DARK_RED) if nastro else (PERGAMENA, PERGAMENA_OMBRA)
+    if premuto:
+        fondo = shade(fondo, 0.85)
     c.rect((1, 1, w - 2, h - 2), fondo)
     c.rect((1, h - 3, w - 2, h - 2), ombra)                 # bordo inferiore in ombra
-    c.line([(2, 1), (w - 3, 1)], shade(fondo, 1.08))        # luce sul bordo superiore
+    if not premuto:
+        c.line([(2, 1), (w - 3, 1)], shade(fondo, 1.08))    # luce sul bordo superiore
     for (x, y) in ((1, 1), (w - 2, 1), (1, h - 2), (w - 2, h - 2)):
         c.img.putpixel((x, y), (0, 0, 0, 0))                # angoli smussati
+    dy = 1 if premuto else 0
+    cx, cy = 4, 3 + dy
     # Initial: red with a lighter left edge (gold on the ribbon).
-    cap = GOLD if nastro else RED
-    _glifo(c, CAPOLETTERA_N, 4, 3, cap)
-    c.line([(5, 4), (5, 14)], GOLD_LIGHT if nastro else shade(RED, 1.35))
+    _glifo(c, capolettera, cx, cy, GOLD if nastro else RED)
+    c.line([(cx + 1, cy + 1), (cx + 1, cy + cap_h - 2)], GOLD_LIGHT if nastro else shade(RED, 1.35))
     # Gothic lowercase, sitting on the baseline of the initial.
     ink = PERGAMENA if nastro else INCHIOSTRO
-    x = 4 + 11 + 2
-    for ch in word:
-        _glifo(c, font[ch], x, 3 + 13 - 7, ink)
+    base = cy + cap_h
+    x = cx + cap_w + 2
+    for ch in parola:
+        _glifo(c, font[ch], x, base - 7 - GLIFO_SU.get(ch, 0), ink)
         x += len(font[ch][0]) + 1
     return outline(c.img)
 
 
+def timbro(variante="piena"):
+    """"Nuova!" stamp for new cards (red initial N, gothic lowercase on parchment)."""
+    return etichetta(CAPOLETTERA_N, "uova!", variante)
+
+
+def pulsante(premuto=False):
+    """The "Mannaggia!" button of the main screen: gold M, parchment letters on a red ribbon."""
+    return etichetta(CAPOLETTERA_M, "annaggia!", "nastro", premuto)
+
+
 def anteprima_timbro(out, zoom=8):
-    """Save the stamp variants, enlarged, side by side for choosing one."""
+    """Save the stamp variants and the button, enlarged, for review."""
     out.mkdir(parents=True, exist_ok=True)
     for v in ("piena", "sottile", "nastro"):
         img = timbro(v)
         img.resize((img.width * zoom, img.height * zoom), Image.NEAREST).save(out / f"timbro-{v}.png")
-    print(f"anteprime del timbro in {out}", file=sys.stderr)
+    for nome, img in (("pulsante", pulsante()), ("pulsante-premuto", pulsante(True))):
+        img.resize((img.width * zoom, img.height * zoom), Image.NEAREST).save(out / f"{nome}.png")
+    print(f"anteprime del timbro e del pulsante in {out}", file=sys.stderr)
 
 
 def render_final(name, t, leggendario):
@@ -1510,6 +1550,8 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
     calendario().convert("RGBA").save(out / "santo_del_giorno.png", optimize=True)
     coppa().convert("RGBA").save(out / "coppa.png", optimize=True)
     timbro().save(out / "timbro_nuova.png", optimize=True)
+    pulsante().save(out / "pulsante_mannaggia.png", optimize=True)
+    pulsante(True).save(out / "pulsante_mannaggia_premuto.png", optimize=True)
     cornice_argento().save(out / "cornice_argento.png", optimize=True)
     for n, t in SPECIALI.items():
         render(n, t).convert("RGB").save(out / f"{file_id(n)}.png", optimize=True)
@@ -1554,7 +1596,7 @@ def main():
                                   "(es. app/src/main/assets/avatar)")
     ap.add_argument("--zoom", type=int, default=5)
     ap.add_argument("--colonne", type=int, default=8)
-    ap.add_argument("--anteprima-timbro", action="store_true", help="varianti del timbro \"Nuova!\" in --out")
+    ap.add_argument("--anteprima-timbro", action="store_true", help="varianti del timbro \"Nuova!\" e il pulsante in --out")
     args = ap.parse_args()
     out = Path(args.out).expanduser()
     if args.anteprima_timbro:

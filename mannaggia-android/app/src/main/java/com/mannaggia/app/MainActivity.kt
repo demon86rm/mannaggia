@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         }
         cardSlot = CardSlot(
             binding.cardSlot, binding.cardFit, binding.imgStamp, binding.imgGlow, binding.cardFx,
-            binding.btnAlbum, lifecycleScope, above = binding.btnSettings, below = binding.txtResult,
+            binding.btnAlbum, lifecycleScope, above = binding.txtResult, below = binding.btnMannaggia,
         )
         // Trophy banners wait while a legendary card (with its choir) is on stage.
         trophyPop = TrophyPop(binding.trophyPop, lifecycleScope) { cardSlot.isHolding }
@@ -101,6 +101,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         lifecycleScope.launch {
+            binding.btnMannaggia.setImageDrawable(Avatars.mannaggiaButton(this@MainActivity))
             binding.btnAlbum.setImageDrawable(Avatars.binder(this@MainActivity))
             binding.btnTrophies.setImageDrawable(Avatars.cup(this@MainActivity))
             binding.btnSaintOfDay.setImageDrawable(Avatars.saintOfDayIcon(this@MainActivity))

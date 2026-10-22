@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.StateListDrawable
 import android.util.LruCache
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -78,6 +79,22 @@ object Avatars {
 
     /** The "Nuova!" stamp on new cards (red initial, gothic lowercase, on parchment). */
     suspend fun newStamp(context: Context): BitmapDrawable? = icon(context, "timbro_nuova.png")
+
+    /**
+     * The pixel-art "Mannaggia!" button (gold M on a red ribbon): darker when pressed,
+     * half transparent while disabled (an invocation still in flight).
+     */
+    suspend fun mannaggiaButton(context: Context): StateListDrawable? = withContext(Dispatchers.IO) {
+        runCatching {
+            val normal = decode(context, "pulsante_mannaggia.png")
+            val pressed = decode(context, "pulsante_mannaggia_premuto.png")
+            StateListDrawable().apply {
+                addState(intArrayOf(-android.R.attr.state_enabled), pixelated(context, normal).apply { alpha = 128 })
+                addState(intArrayOf(android.R.attr.state_pressed), pixelated(context, pressed))
+                addState(intArrayOf(), pixelated(context, normal))
+            }
+        }.getOrNull()
+    }
 
     /** The pixel-art saint-of-the-day icon (calendar page with a gold star). */
     suspend fun saintOfDayIcon(context: Context): BitmapDrawable? = icon(context, "santo_del_giorno.png")

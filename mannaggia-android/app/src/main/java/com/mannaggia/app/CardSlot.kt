@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeoutOrNull
 
 /**
- * The card of the last saint invoked, always on the main screen above the phrase.
+ * The card of the last saint invoked, always on the main screen under the phrase.
  *
  * - A saint new to the album pops in with the pixel-art "Nuova!" stamp, then a copy of the card
  *   flies into the binder [target], which bounces; the card itself stays.
@@ -61,7 +61,7 @@ class CardSlot(
             colors = intArrayOf(0xCCFFE27A.toInt(), 0x66F2B632, 0x00F2B632)
         })
         scope.launch { stamp.setImageDrawable(Avatars.newStamp(stamp.context)) }
-        // Refit whenever the top buttons, the card or the phrase (typing, 2 lines) move.
+        // Refit whenever the phrase (typing, 2 lines), the card or the button move.
         val refit = View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> fitToSpace() }
         above.addOnLayoutChangeListener(refit)
         fit.addOnLayoutChangeListener(refit)
@@ -258,7 +258,7 @@ class CardSlot(
         ObjectAnimator.ofFloat(target, View.SCALE_Y, 1f, 1.25f, 1f).setDuration(BUMP_MS).start()
     }
 
-    /** Scale the card down (never up) to fit between the top buttons and the phrase. */
+    /** Scale the card down (never up) to fit between the phrase and the button. */
     private fun fitToSpace() {
         val h = fit.height
         if (h == 0) return
