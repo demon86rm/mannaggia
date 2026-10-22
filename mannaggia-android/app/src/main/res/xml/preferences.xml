@@ -21,6 +21,13 @@
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
+            android:key="splash_choir"
+            android:defaultValue="true"
+            android:title="@string/pref_splash_choir_title"
+            android:summary="@string/pref_splash_choir_summary"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
             android:key="tts"
             android:defaultValue="false"
             android:title="@string/pref_tts_title"

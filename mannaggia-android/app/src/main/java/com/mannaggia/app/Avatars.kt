@@ -78,6 +78,10 @@ object Avatars {
     suspend fun bookmark(context: Context, full: Boolean): BitmapDrawable? =
         icon(context, if (full) "segnalibro.png" else "segnalibro_vuoto.png")
 
+    /** Splash screen: the app icon in pixel art (halo and speech bubble) and the title. */
+    suspend fun splashLogo(context: Context): Bitmap? = icon(context, "logo.png")?.bitmap
+    suspend fun splashTitle(context: Context): Bitmap? = icon(context, "titolo.png")?.bitmap
+
     /** Still silver frame of the special cards. */
     suspend fun silverFrame(context: Context): BitmapDrawable? = icon(context, "cornice_argento.png")
 

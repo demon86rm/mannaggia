@@ -35,6 +35,7 @@ object Prefs {
     const val EFFECT_TERMINALE = "terminale"
     const val KEY_THEME = "theme"
     const val KEY_CARD_ANIM = "card_anim"
+    const val KEY_SPLASH_CHOIR = "splash_choir"
     /** Date (yyyy-MM-dd) of the last saint-of-the-day invocation: one a day. */
     private const val KEY_SAINT_OF_DAY_USED = "saint_of_day_used"
 
@@ -67,6 +68,9 @@ object Prefs {
 
     /** Animate each new album card; legendary saints are animated anyway. */
     fun cardAnimEnabled(context: Context) = prefs(context).getBoolean(KEY_CARD_ANIM, true)
+
+    /** The angelic choir on the splash screen (only when the phone is not on silent). */
+    fun splashChoirEnabled(context: Context) = prefs(context).getBoolean(KEY_SPLASH_CHOIR, true)
 
     /** True when the phrase font is "Medievale" (trophy "Amanuense"). */
     fun isMedieval(context: Context) = prefs(context).getString(KEY_FONT, "sans-serif") == FONT_MEDIEVAL

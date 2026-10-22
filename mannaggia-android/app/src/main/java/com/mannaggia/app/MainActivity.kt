@@ -58,6 +58,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Pixel-art splash on a cold start only (not after a rotation or a theme change).
+        if (savedInstanceState == null) Splash.show(this)
         applySystemBarInsets()
 
         binding.btnMannaggia.setOnClickListener { invokeSaint(Trofei.Fonte.PULSANTE) }

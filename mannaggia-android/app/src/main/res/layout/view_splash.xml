@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Splash screen (see Splash.kt): pixel-art logo, gothic title and subtitle on red, inside
+     a gold frame. Covers the whole window, above everything else. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8B0000"
+    android:clickable="true"
+    android:elevation="40dp"
+    android:focusable="true">
+
+    <com.mannaggia.app.CorniceSplash
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Centred a little above the middle, as in the mock-up. Hidden until the pixel art
+         is loaded and sized (Splash.kt), so it never shows half-drawn. -->
+    <LinearLayout
+        android:id="@+id/splashContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:translationY="-40dp"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/imgSplashLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null" />
+
+        <ImageView
+            android:id="@+id/imgSplashTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:id="@+id/txtSplashSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/unifraktur_maguntia"
+            android:text="@string/splash_subtitle"
+            android:textColor="#FFC107" />
+    </LinearLayout>
+</FrameLayout>

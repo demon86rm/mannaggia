@@ -41,6 +41,7 @@
     <string name="btn_album">Album</string>
     <string name="album_title">Album dei santi</string>
     <string name="album_count">%1$d santi su %2$d (%3$s%%)</string>
+    <string name="splash_subtitle">Un santo a caso, quando serve.</string>
     <string name="tab_album">Album</string>
     <string name="tab_preferiti">Preferiti</string>
     <string name="fav_count">%1$d preferiti · tocca una figurina per invocarla</string>
@@ -64,6 +65,8 @@
     <string name="card_stamp_new">NUOVA!</string>
     <string name="card_tap_hint">Tocca per metterla nell\'album</string>
     <string name="album_detail_found_number">N° %1$d · scoperta #%2$d</string>
+    <string name="pref_splash_choir_title">Coro all\'avvio</string>
+    <string name="pref_splash_choir_summary">Il coro angelico accompagna la schermata iniziale (non suona col telefono in silenzioso)</string>
     <string name="pref_card_anim_title">Animazione nuove figurine</string>
     <string name="pref_card_anim_summary">Le nuove figurine compaiono con un rimbalzo e volano nell\'album (i leggendari sono sempre animati)</string>
     <string name="btn_trophies">Trofei</string>

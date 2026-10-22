@@ -1375,7 +1375,8 @@ def etichetta(capolettera, parola, variante="piena", premuto=False):
     """A codex-style label: rubricated initial, then gothic lowercase on the same baseline.
 
     variante: "piena" (bold textura on parchment), "sottile" (thin strokes on parchment),
-    "nastro" (parchment letters on a red ribbon, gold initial). [premuto] darkens the
+    "nastro" (parchment letters on a red ribbon, gold initial), "nudo" (gold initial and
+    white letters with no background, outlined, e.g. on the red splash). [premuto] darkens the
     background and drops the content by 1 px (pressed button).
     """
     font = GOTICA_SOTTILE if variante == "sottile" else GOTICA_PIENA
@@ -1385,16 +1386,18 @@ def etichetta(capolettera, parola, variante="piena", premuto=False):
     # 1 px transparent margin all round, so outline() draws the label's dark border.
     w, h = 1 + 3 + cap_w + 2 + word_w + 3 + 1, 1 + 2 + cap_h + giu + 2 + 1
     c = Canvas(w, h)
-    nastro = variante == "nastro"
+    nudo = variante == "nudo"                                # just the letters (e.g. on the red splash)
+    nastro = variante == "nastro" or nudo
     fondo, ombra = (RED, DARK_RED) if nastro else (PERGAMENA, PERGAMENA_OMBRA)
     if premuto:
         fondo = shade(fondo, 0.7)
-    c.rect((1, 1, w - 2, h - 2), fondo)
-    c.rect((1, h - 3, w - 2, h - 2), ombra)                 # bordo inferiore in ombra
-    if not premuto:
-        c.line([(2, 1), (w - 3, 1)], shade(fondo, 1.08))    # luce sul bordo superiore
-    for (x, y) in ((1, 1), (w - 2, 1), (1, h - 2), (w - 2, h - 2)):
-        c.img.putpixel((x, y), (0, 0, 0, 0))                # angoli smussati
+    if not nudo:
+        c.rect((1, 1, w - 2, h - 2), fondo)
+        c.rect((1, h - 3, w - 2, h - 2), ombra)             # bordo inferiore in ombra
+        if not premuto:
+            c.line([(2, 1), (w - 3, 1)], shade(fondo, 1.08))  # luce sul bordo superiore
+        for (x, y) in ((1, 1), (w - 2, 1), (1, h - 2), (w - 2, h - 2)):
+            c.img.putpixel((x, y), (0, 0, 0, 0))            # angoli smussati
     dy = 1 if premuto else 0
     cx, cy = 4, 3 + dy
     # Initial: red with a lighter left edge (gold on the ribbon).
@@ -1405,7 +1408,7 @@ def etichetta(capolettera, parola, variante="piena", premuto=False):
         if x0 >= 0:
             c.px(cx + x0, cy + r, luce)
     # Gothic lowercase, sitting on the baseline of the initial.
-    ink = PERGAMENA if nastro else INCHIOSTRO
+    ink = (250, 246, 236) if nudo else PERGAMENA if nastro else INCHIOSTRO
     base = cy + cap_h
     x = cx + cap_w + 2
     for ch in parola:
@@ -1461,6 +1464,37 @@ def segnalibro(attivo=True, colori="lapislazzuli"):
         return outline(c.img)
     c.d.polygon(cloth, fill=drappo + (50,), outline=bordo + (200,))
     return c.img
+
+
+# The "#@!*" of the app icon, 7 px tall, for the pixel-art logo.
+GRAWLIX = {
+    "#": [".X..X.", "XXXXXX", ".X..X.", ".X..X.", "XXXXXX", ".X..X.", ".X..X."],
+    "@": [".XXXX.", "X....X", "X.XX.X", "X.XX.X", "X.XXXX", "X.....", ".XXXX."],
+    "!": ["XX", "XX", "XX", "XX", "XX", "..", "XX"],
+    "*": ["..X..", "X.X.X", ".XXX.", "XXXXX", ".XXX.", "X.X.X", "..X.."],
+}
+LOGO_RED = (139, 0, 0)          # #8B0000, the red of the icon and of the store graphic
+
+
+def logo():
+    """The app icon in pixel art: a white speech bubble saying "#@!*" under a gold halo."""
+    w, h = 40, 38
+    c = Canvas(w, h)
+    # Halo: a gold ring, lighter on the far side.
+    c.ell((10, 0, 29, 7), HALO_RING); c.d.ellipse((13, 2, 26, 5), fill=(0, 0, 0, 0))
+    c.d.arc((10, 0, 29, 7), 190, 350, fill=HALO + (255,))
+    # Bubble: rounded box, snug around the text, with the tail down on the left.
+    c.d.rounded_rectangle((1, 10, 38, 29), radius=5, fill=(250, 248, 242, 255))
+    c.poly([(8, 28), (15, 28), (5, 36)], (250, 248, 242))
+    c.line([(3, 28), (36, 28)], (222, 216, 206))                  # shade along the bottom
+    # "#@!*", centred in the bubble.
+    word = "#@!*"
+    width = sum(len(GRAWLIX[ch][0]) for ch in word) + 2 * (len(word) - 1)
+    x = (w - width) // 2
+    for ch in word:
+        _glifo(c, GRAWLIX[ch], x, 16, LOGO_RED)
+        x += len(GRAWLIX[ch][0]) + 2
+    return outline(c.img)
 
 
 def anteprima_timbro(out, zoom=8):
@@ -1659,6 +1693,8 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
         pulsante(True, nome).save(out / f"pulsante_{nome}_premuto.png", optimize=True)
     cornice_argento().save(out / "cornice_argento.png", optimize=True)
     segnalibro(True).save(out / "segnalibro.png", optimize=True)
+    logo().save(out / "logo.png", optimize=True)
+    etichetta(CAPOLETTERA_M, "annaggia!", "nudo").save(out / "titolo.png", optimize=True)
     segnalibro(False).save(out / "segnalibro_vuoto.png", optimize=True)
     for n, t in SPECIALI.items():
         render(n, t).convert("RGB").save(out / f"{file_id(n)}.png", optimize=True)

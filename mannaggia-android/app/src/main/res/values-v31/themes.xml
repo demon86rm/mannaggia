@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+: the system splash is plain red (no icon), so the pixel-art splash that
+         follows doesn't show the logo twice in two styles. -->
+    <style name="Theme.Mannaggia" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#8B0000</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:windowSplashScreenBackground">#8B0000</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_vuoto</item>
+    </style>
+</resources>
