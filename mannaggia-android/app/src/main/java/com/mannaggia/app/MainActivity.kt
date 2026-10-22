@@ -8,6 +8,7 @@ import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import android.text.method.LinkMovementMethod
@@ -60,6 +61,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         // Pixel-art splash on a cold start only (not after a rotation or a theme change).
         if (savedInstanceState == null) Splash.show(this)
+        // Debug builds only: start with a given saint, e.g.
+        // adb shell am start -n io.github.demon86rm.mannaggia/com.mannaggia.app.MainActivity -e santo "San Carlo I di Fiandra"
+        if (BuildConfig.DEBUG && savedInstanceState == null) intent.getStringExtra("santo")?.let { santo ->
+            binding.root.post { invokeSaint(Trofei.Fonte.PULSANTE) { santo } }
+        }
         applySystemBarInsets()
 
         binding.btnMannaggia.setOnClickListener { invokeSaint(Trofei.Fonte.PULSANTE) }
@@ -285,12 +291,13 @@ class MainActivity : AppCompatActivity() {
 
     /** Speak [text] and suspend until it has been spoken (or [SPEECH_TIMEOUT_MS] at most). */
     private suspend fun speakAndWait(text: String) {
+        if (BuildConfig.DEBUG) Log.d("Pronuncia", "$text -> ${Pronuncia.perVoce(text)}")
         if (!ttsReady) {
             Toast.makeText(this, R.string.tts_unavailable, Toast.LENGTH_SHORT).show()
             return
         }
         val done = CompletableDeferred<Unit>().also { speechDone = it }
-        if (tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "mannaggia") != TextToSpeech.SUCCESS) return
+        if (tts?.speak(Pronuncia.perVoce(text), TextToSpeech.QUEUE_FLUSH, null, "mannaggia") != TextToSpeech.SUCCESS) return
         // Safety net: some engines never report the end of an utterance.
         withTimeoutOrNull(SPEECH_TIMEOUT_MS) { done.await() }
     }

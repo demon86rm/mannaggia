@@ -195,7 +195,7 @@ class AlbumActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.tts_unavailable, Toast.LENGTH_SHORT).show()
             return
         }
-        tts?.speak(Mannaggia.phraseOf(saint), TextToSpeech.QUEUE_FLUSH, null, "preferito")
+        tts?.speak(Pronuncia.perVoce(Mannaggia.phraseOf(saint)), TextToSpeech.QUEUE_FLUSH, null, "preferito")
     }
 
     // --- Album tab: multiple selection ----------------------------------------------------
