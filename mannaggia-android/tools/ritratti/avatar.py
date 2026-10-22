@@ -1341,7 +1341,7 @@ def etichetta(capolettera, parola, variante="piena", premuto=False):
     nastro = variante == "nastro"
     fondo, ombra = (RED, DARK_RED) if nastro else (PERGAMENA, PERGAMENA_OMBRA)
     if premuto:
-        fondo = shade(fondo, 0.85)
+        fondo = shade(fondo, 0.7)
     c.rect((1, 1, w - 2, h - 2), fondo)
     c.rect((1, h - 3, w - 2, h - 2), ombra)                 # bordo inferiore in ombra
     if not premuto:
