@@ -13,6 +13,8 @@ object Pronuncia {
     /** Written word (any case) → how to spell it so the Italian voice says it right. */
     private val PAROLE = mapOf(
         "systemd" to "sistem di",
+        "TLS" to "ti elle esse",
+        "777" to "sette sette sette",                // the permissions, digit by digit
     )
 
     private val WORDS = Regex("""\b(${PAROLE.keys.joinToString("|") { Regex.escape(it) }})\b""", RegexOption.IGNORE_CASE)

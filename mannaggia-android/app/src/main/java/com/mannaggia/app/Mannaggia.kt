@@ -33,10 +33,10 @@ object Mannaggia {
 
     /** The special cards (trophy rewards, see Trofei) don't curse: they protect. */
     private val ESCLAMAZIONI = mapOf(
-        "Santo Subito" to "Santo Subito, proteggici da chi dice «lo sistemo dopo»!",
+        "Santo Subito" to "Santo Subito, proteggici da chi non apre le change request!",
         "San Culo" to "San Culo, proteggici dai backup mai testati!",
-        "San Calendario" to "San Calendario, proteggici dai certificati scaduti!",
-        "San Deploy" to "San Deploy, proteggici dal deploy del venerdì pomeriggio!",
+        "San Calendario" to "San Calendario, proteggici dai certificati TLS scaduti!",
+        "San Deploy" to "San Deploy, proteggici dai rilasci in produzione del venerdì alle 18!",
         "San Sudo" to "San Sudo, proteggici dai permessi 777!",
         "Santa Pazienza" to "Santa Pazienza, proteggici dagli utenti che «hanno già riavviato»!",
         // mannaggia.sh: "...ti strafulmini santa cunegonda bipalluta protrettice dei VUA".
