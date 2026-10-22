@@ -69,7 +69,7 @@ object Prefs {
     /** Animate each new album card; legendary saints are animated anyway. */
     fun cardAnimEnabled(context: Context) = prefs(context).getBoolean(KEY_CARD_ANIM, true)
 
-    /** The angelic choir on the splash screen (only when the phone is not on silent). */
+    /** The angelic choir on the splash screen (at the media volume). */
     fun splashChoirEnabled(context: Context) = prefs(context).getBoolean(KEY_SPLASH_CHOIR, true)
 
     /** True when the phrase font is "Medievale" (trophy "Amanuense"). */

@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.media.AudioManager
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -70,11 +69,11 @@ object Splash {
 
     private var choir: Suono? = null
 
-    /** The choir plays if enabled in Options and the phone is not on silent or vibrate. */
-    private fun choirAllowed(context: Context): Boolean {
-        val audio = context.getSystemService(AudioManager::class.java)
-        return Prefs.splashChoirEnabled(context) && audio?.ringerMode == AudioManager.RINGER_MODE_NORMAL
-    }
+    /**
+     * The choir plays if enabled in Options, at the media volume like the voice and the other
+     * sounds (whatever the ringer mode): with the media volume down it is simply not heard.
+     */
+    private fun choirAllowed(context: Context) = Prefs.splashChoirEnabled(context)
 
     /** Show [bitmap] scaled by the largest whole factor that fits [maxWidth]: crisp pixels. */
     private fun size(view: ImageView, bitmap: android.graphics.Bitmap?, maxWidth: Float) {
