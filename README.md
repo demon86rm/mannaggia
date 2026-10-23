@@ -15,13 +15,13 @@
   <a href="https://ko-fi.com/demon86rm"><img src="https://img.shields.io/badge/Ko--fi-offrimi%20un%20caff%C3%A8-ff5e5b?logo=ko-fi&logoColor=white" alt="Ko-fi"></a>
 </p>
 
-> 🇬🇧 **In short:** Mannaggia is a free, open-source, ad-free Android app that curses on your behalf by summoning a random Catholic saint ("Mannaggia San Pietro!") whenever things go wrong. It is the mobile heir of `mannaggia.sh`, a cult script among Italian sysadmins. It works fully offline, needs no network permission and collects no data. The app is in Italian.
+> 🇬🇧 **In short:** Mannaggia is a free, open-source, ad-free Android app that curses on your behalf by summoning a random Catholic saint ("Mannaggia San Pietro!") whenever things go wrong. It is the mobile heir of `mannaggia.sh`, a cult script among Italian sysadmins. It works fully offline, needs no network permission and collects no data. The app is in Italian. Want to help it reach Google Play? [Join the closed test](https://forms.gle/wHWbGGDAmRQnpswL7).
 
 ## Scarica
 
 **[⬇️ Scarica l'APK](https://github.com/demon86rm/mannaggia/releases/latest/download/mannaggia.apk)** · [tutte le versioni](https://github.com/demon86rm/mannaggia/releases)
 
-Presto anche sul Google Play Store.
+**Sul Google Play Store manca poco**: Google chiede un test chiuso con almeno 12 tester per 14 giorni. Hai un telefono Android e un account Google? **[Diventa tester](https://forms.gle/wHWbGGDAmRQnpswL7)**: ti aggiungo alla lista e ti scrivo quando puoi installarla.
 
 ## Cosa fa
 
