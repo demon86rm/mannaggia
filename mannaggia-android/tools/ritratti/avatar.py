@@ -1187,6 +1187,44 @@ def cornice(step=None):
                 c.px(x, y, col)
     return c.img
 
+FUOCO = [(255, 250, 200), (255, 220, 80), (250, 150, 30), (220, 70, 20), (150, 30, 20)]
+def cornice_fuoco(step=None):
+    """Burning frame for hot legendary saints chicks 
+
+    With [step] (0..FRAME_STEPS-1) it is one frame of the burning animation
+    """
+    import math
+    t = 2 * math.pi * (step or 0) / FRAME_STEPS
+    c = Canvas()
+    c.d.rectangle((0, 0, S - 1, S - 1), outline=(60, 24, 16, 255))
+
+    def fiamma(pos, base, alta):
+        v = math.sin(pos * 0.9 - 2 * t) + 0.7 * math.sin(pos * 0.37 + t)
+        return max(1, round(base + alta * v))
+
+    def colonna(pts):
+        n = len(pts)
+        for k, (x, y) in enumerate(pts):
+            c.px(x, y, FUOCO[min(len(FUOCO) - 1, (k * len(FUOCO)) // n + (1 if n < 3 else 0))])
+
+    for x in range(S):
+        n = fiamma(x, 4, 2.5)                                                
+        colonna([(x, S - 1 - k) for k in range(n)])
+        n = fiamma(x + 100, 1.5, 1)                                          
+        colonna([(x, k) for k in range(n)])
+    for y in range(S):
+        n = fiamma(y * 0.6 + 50, 2.5 if y > S // 2 else 1.8, 1.4)   
+        colonna([(k, y) for k in range(n)])
+        n = fiamma(y * 0.6 + 200, 2.5 if y > S // 2 else 1.8, 1.4)
+        colonna([(S - 1 - k, y) for k in range(n)])
+    for i in range(6):                                                       
+        x0 = 4 + h(str(i), "scintilla") % (S - 8)
+        lato = i % 2
+        sx = (3 + i % 3) if lato == 0 else (S - 4 - i % 3)
+        y = (S - 4 - ((step or 0) * 4 + x0 * 3) % (S - 8))
+        c.px(sx, y, FUOCO[1 if i % 3 else 0])
+    return c.img
+
 
 def gif_leggendario(name, t, path, zoom=6, ms=FRAME_MS):
     """Animated preview: still avatar with the sparkling frame on top."""
