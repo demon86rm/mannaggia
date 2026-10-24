@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             askForNotificationPermissionIfNeeded()
         } else askForNotificationPermissionIfNeeded()
         // Debug builds only: start with a given saint, e.g.
-        // adb shell am start -n io.github.demon86rm.mannaggia/com.mannaggia.app.MainActivity -e santo "San Carlo I di Fiandra"
+        // adb shell am start -n io.github.demon86rm.mannaggia.debug/com.mannaggia.app.MainActivity -e santo "San Carlo I di Fiandra"
         if (BuildConfig.DEBUG && savedInstanceState == null) intent.getStringExtra("santo")?.let { santo ->
             binding.root.post { invokeSaint(Trofei.Fonte.PULSANTE) { santo } }
         }

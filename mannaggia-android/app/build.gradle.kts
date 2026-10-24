@@ -30,6 +30,11 @@ android {
     }
 
     buildTypes {
+        // Installs next to the Play version ("Mannaggia debug"), so testing doesn't touch its album.
+        debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+        }
         release {
             isMinifyEnabled = true
             isShrinkResources = true

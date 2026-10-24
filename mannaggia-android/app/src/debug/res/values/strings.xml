@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Debug build only: a different name, to tell it from the Play version on the phone. -->
+<resources>
+    <string name="app_name">Mannaggia debug</string>
+</resources>
