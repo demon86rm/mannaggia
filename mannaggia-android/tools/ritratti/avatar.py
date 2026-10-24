@@ -9,7 +9,8 @@ Wikidata (genere, cariche, ordine religioso, mestiere, martirio). Le piccole
 variazioni (carnagione, colori, volto) sono deterministiche: dipendono dal nome.
 
 I santi leggendari hanno in piu' una cornice d'oro (cornice()), disegnata come
-livello separato cosi' l'app puo' applicarla sopra l'avatar.
+livello separato cosi' l'app puo' applicarla sopra l'avatar. Alcuni hanno una cornice
+tutta loro (CORNICI, es. le fiamme del rogo per Giovanna d'Arco).
 
 Uso (venv con pillow; dalla cartella mannaggia-android):
     python tools/ritratti/avatar.py --nomi lista.txt --out ~/mannaggia-avatar-prova
@@ -21,6 +22,7 @@ Uso (venv con pillow; dalla cartella mannaggia-android):
 import argparse
 import hashlib
 import importlib.util
+import math
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -1187,52 +1189,68 @@ def cornice(step=None):
                 c.px(x, y, col)
     return c.img
 
+# Fiamme: dalla base (piu' calda, quasi bianca) alla punta (rosso scuro).
 FUOCO = [(255, 250, 200), (255, 220, 80), (250, 150, 30), (220, 70, 20), (150, 30, 20)]
-def cornice_fuoco(step=None):
-    """Burning frame for hot legendary saints chicks 
 
-    With [step] (0..FRAME_STEPS-1) it is one frame of the burning animation
+
+def cornice_fuoco(step=None):
+    """Burning frame for Saint Joan of Arc, burned at the stake (transparent inside).
+
+    Flames rise from the four edges, taller at the bottom, with a few sparks going up
+    the sides. With [step] (0..FRAME_STEPS-1) it is one frame of the animation, which
+    loops seamlessly; without it, the still version (step 0).
     """
-    import math
-    t = 2 * math.pi * (step or 0) / FRAME_STEPS
+    step = step or 0
+    t = 2 * math.pi * step / FRAME_STEPS
     c = Canvas()
     c.d.rectangle((0, 0, S - 1, S - 1), outline=(60, 24, 16, 255))
 
     def fiamma(pos, base, alta):
+        """Flame height at [pos] along an edge: two waves, both periodic over the loop."""
         v = math.sin(pos * 0.9 - 2 * t) + 0.7 * math.sin(pos * 0.37 + t)
         return max(1, round(base + alta * v))
 
     def colonna(pts):
+        """One flame tongue, coloured from the base (pts[0]) to the tip."""
         n = len(pts)
         for k, (x, y) in enumerate(pts):
             c.px(x, y, FUOCO[min(len(FUOCO) - 1, (k * len(FUOCO)) // n + (1 if n < 3 else 0))])
 
     for x in range(S):
-        n = fiamma(x, 4, 2.5)                                                
-        colonna([(x, S - 1 - k) for k in range(n)])
-        n = fiamma(x + 100, 1.5, 1)                                          
-        colonna([(x, k) for k in range(n)])
+        colonna([(x, S - 1 - k) for k in range(fiamma(x, 4, 2.5))])        # sotto: il rogo
+        colonna([(x, k) for k in range(fiamma(x + 100, 1.5, 1))])          # sopra
     for y in range(S):
-        n = fiamma(y * 0.6 + 50, 2.5 if y > S // 2 else 1.8, 1.4)   
-        colonna([(k, y) for k in range(n)])
-        n = fiamma(y * 0.6 + 200, 2.5 if y > S // 2 else 1.8, 1.4)
-        colonna([(S - 1 - k, y) for k in range(n)])
-    for i in range(6):                                                       
+        base = 2.5 if y > S // 2 else 1.8                                   # piu' alte in basso
+        colonna([(k, y) for k in range(fiamma(y * 0.6 + 50, base, 1.4))])
+        colonna([(S - 1 - k, y) for k in range(fiamma(y * 0.6 + 200, base, 1.4))])
+    # Sparks going up the sides: one lap of S - 8 pixels per animation loop.
+    for i in range(6):
         x0 = 4 + h(str(i), "scintilla") % (S - 8)
-        lato = i % 2
-        sx = (3 + i % 3) if lato == 0 else (S - 4 - i % 3)
-        y = (S - 4 - ((step or 0) * 4 + x0 * 3) % (S - 8))
+        sx = (3 + i % 3) if i % 2 == 0 else (S - 4 - i % 3)
+        y = S - 4 - (step * (S - 8) // FRAME_STEPS + x0 * 3) % (S - 8)
         c.px(sx, y, FUOCO[1 if i % 3 else 0])
     return c.img
 
 
+# Cornici speciali per alcuni leggendari (al posto di quella d'oro): santo -> (nome, funzione).
+# L'app trova il nome in cornici.txt e carica <nome>_00..11.png.
+CORNICI = {
+    "Santa Giovanna d'Arco": ("fuoco", cornice_fuoco),
+}
+
+
+def cornice_di(name):
+    """The frame function of a legendary saint: gold, or the special one in CORNICI."""
+    return CORNICI.get(name, ("cornice", cornice))[1]
+
+
 def gif_leggendario(name, t, path, zoom=6, ms=FRAME_MS):
-    """Animated preview: still avatar with the sparkling frame on top."""
+    """Animated preview: still avatar with its animated frame (gold, or from CORNICI) on top."""
     base = render(name, t)
     frames = []
     for step in range(FRAME_STEPS):
         f = base.copy()
-        f.alpha_composite(cornice(step))
+        f.alpha_composite(cornice_di(name)(step))
         frames.append(f.convert("RGB").resize((S * zoom, S * zoom), Image.NEAREST))
     frames[0].save(path, save_all=True, append_images=frames[1:], duration=ms, loop=0)
 
@@ -1563,7 +1581,7 @@ def anteprima_timbro(out, zoom=8):
 def render_final(name, t, leggendario):
     img = render(name, t)
     if leggendario:
-        img.alpha_composite(cornice())
+        img.alpha_composite(cornice_di(name)())
     return img.convert("RGB")
 
 
@@ -1694,8 +1712,8 @@ def file_id(name):
 
 
 def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=False):
-    """All saints: <sha1>.png (no frame), cornice_NN.png, leggendari.txt and, unless [app]
-    (only what the app ships), tratti.tsv and review sheets."""
+    """All saints: <sha1>.png (no frame), cornice_NN.png, the CORNICI frames with cornici.txt,
+    leggendari.txt and, unless [app] (only what the app ships), tratti.tsv and review sheets."""
     import random
     names = [l.strip() for l in open(santi_path, encoding="utf-8") if l.strip() and not l.startswith("#")]
     facts = wikidata_facts(names, cache)
@@ -1715,6 +1733,8 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
             print(f"  avatar: {i}/{len(names)}", file=sys.stderr)
     for step in range(FRAME_STEPS):
         cornice(step).save(out / f"cornice_{step:02d}.png", optimize=True)
+        for nome, disegna in CORNICI.values():
+            disegna(step).save(out / f"{nome}_{step:02d}.png", optimize=True)
     # Card numbers: N. 1 is the most famous saint (most Wikipedia sitelinks), ties by name.
     by_fame = sorted(names, key=lambda n: (-facts.get(n, {}).get("sitelinks", 0), n))
     leggendari = by_fame[:n_leggendari]
@@ -1739,6 +1759,9 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
     (out / "speciali.txt").write_text(
         "# Figurine speciali fuori catalogo: la riga N e' la figurina SN (si sbloccano coi trofei).\n"
         + "\n".join(SPECIALI) + "\n", encoding="utf-8")
+    (out / "cornici.txt").write_text(
+        "# Leggendari con una cornice speciale al posto di quella d'oro: santo<TAB>nome (file <nome>_NN.png).\n"
+        + "".join(f"{n}\t{nome}\n" for n, (nome, _) in CORNICI.items()), encoding="utf-8")
     (out / "leggendari.txt").write_text(
         "# I santi con piu' voci Wikipedia (Wikidata sitelinks): cornice d'oro nell'album.\n"
         + "\n".join(leggendari) + "\n", encoding="utf-8")

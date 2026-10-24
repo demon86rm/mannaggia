@@ -296,7 +296,7 @@ class AlbumActivity : AppCompatActivity() {
                 frame.visibility = View.VISIBLE
             } else if (Avatars.isLegendary(this@AlbumActivity, entry.saint)) {
                 view.findViewById<TextView>(R.id.txtLegend).visibility = View.VISIBLE
-                val sparkle = Avatars.frameDrawable(this@AlbumActivity)
+                val sparkle = Avatars.frameDrawable(this@AlbumActivity, entry.saint)
                 frame.setImageDrawable(sparkle)
                 frame.visibility = View.VISIBLE
                 sparkle.start()
@@ -374,8 +374,11 @@ class AlbumActivity : AppCompatActivity() {
                     holder.frame.setImageDrawable(Avatars.silverFrame(context))
                     holder.frame.visibility = View.VISIBLE
                 } else if (Avatars.isLegendary(context, entry.saint)) {
-                    if (holder.frame.drawable !is AnimationDrawable) {
-                        holder.frame.setImageDrawable(Avatars.frameDrawable(context))
+                    // A recycled cell keeps its animation only if it is the same frame (gold or special).
+                    val frameName = Avatars.frameName(context, entry.saint)
+                    if (holder.frame.drawable !is AnimationDrawable || holder.frame.tag != frameName) {
+                        holder.frame.setImageDrawable(Avatars.frameDrawable(context, entry.saint))
+                        holder.frame.tag = frameName
                     }
                     holder.frame.visibility = View.VISIBLE
                     (holder.frame.drawable as AnimationDrawable).start()
