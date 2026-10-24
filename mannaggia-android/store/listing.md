@@ -48,6 +48,12 @@ L'elenco dei santi proviene da Wikidata (CC0). I caratteri gotici sono sotto SIL
 
 Umorismo da sistemisti, senza bestemmie.
 
+## Note di rilascio 2.0.1 (max 500 caratteri)
+
+• Santa Giovanna d'Arco ha una cornice tutta sua: le fiamme del rogo (grazie a lucatarik!)
+• Album: ordina le figurine per numero o per nome e mostra solo i santi o solo i beati
+• Pronuncia corretta dei nomi spagnoli con la "y" (es. "Calvo y Calvo")
+
 ## Note di rilascio 2.0.0 (max 500 caratteri)
 
 Prima versione sul Play Store!
