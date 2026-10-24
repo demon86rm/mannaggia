@@ -90,7 +90,9 @@ MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
 DATE_RE = re.compile(r"^(%s) (\d{1,2})$" % "|".join(MONTHS))
 
-TITLE_RE = re.compile(r"^(?:(?:santa|santo|san|beata|beato|papa)\s+|sant['’]\s*)", re.IGNORECASE)
+# Italian titles, plus the English/French ones some Italian labels copy ("Saint Amun", "Sainte Ode"):
+# without them the app would say "San Saint Amun".
+TITLE_RE = re.compile(r"^(?:(?:santa|santo|san|beata|beato|papa|saint|sainte|st\.)\s+|sant['’]\s*)", re.IGNORECASE)
 VALID_RE = re.compile(r"^[A-ZÀ-Ý][\w'’\-. àèéìòùÀÈÉÌÒÙçÇ]+$")
 
 
@@ -192,20 +194,51 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--feste", help="scrive le feste in questo file invece di stampare i santi")
     ap.add_argument("--solo", help="con --feste: tiene solo i santi di questo santi.txt")
+    ap.add_argument("--correggi", help="rifà i titoli dei nomi di questo santi.txt, senza Wikidata "
+                                       "(i santi restano gli stessi, cosi' l'album non cambia)")
     args = ap.parse_args()
+    if args.correggi:
+        print_names(retitle(args.correggi))
+        return
     if args.feste:
         if not args.solo:
             ap.error("--feste richiede --solo")
         write_feasts(args.feste, args.solo)
         return
 
-    names = {n for p in collect(fetch()).values() if (n := display_name(p))}
+    print_names({n for p in collect(fetch()).values() if (n := display_name(p))})
 
+
+def print_names(names):
     print("# Santi e beati da Wikidata (https://www.wikidata.org), dati CC0.")
     print("# Generato con tools/genera_santi.py, non modificare a mano.")
     for n in sorted(names):
         print(n)
     print(f"{len(names)} nomi", file=sys.stderr)
+
+
+def retitle(path):
+    """The names of an existing santi.txt, with their titles redone by display_name().
+
+    Saint/blessed and gender come from the old title. Lets a fix to the titles (e.g.
+    "San Saint Amun" -> "Sant'Amun") reach the app without regenerating from Wikidata,
+    which changes over time. Renamed saints are listed on stderr: the app's album must
+    migrate them (Album.RENAMED).
+    """
+    names = set()
+    for line in open(path, encoding="utf-8"):
+        old = line.strip()
+        if not old or old.startswith("#"):
+            continue
+        m = re.match(r"^(Sant'|Santo|Santa|San|Beato|Beata) ?(.*)$", old)
+        title, label = m.group(1), m.group(2)
+        # "Sant'" hides the gender, but it only comes before a vowel, where the title is the same.
+        female = title in ("Santa", "Beata")
+        new = display_name({"label": label, "saint": not title.startswith("Beat"), "female": female})
+        if new != old:
+            print(f"  {old} -> {new}", file=sys.stderr)
+        names.add(new)
+    return names
 
 
 if __name__ == "__main__":

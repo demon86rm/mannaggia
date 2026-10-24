@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Ordina e filtra" in the album: applied at once, remembered in Prefs. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="8dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/album_sort"
+        android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+    <RadioGroup
+        android:id="@+id/groupSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp">
+
+        <RadioButton
+            android:id="@+id/sortNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/album_sort_number" />
+
+        <RadioButton
+            android:id="@+id/sortName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/album_sort_name" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/album_filter"
+        android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+    <RadioGroup
+        android:id="@+id/groupFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/filterAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/album_filter_all" />
+
+        <RadioButton
+            android:id="@+id/filterSaints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/album_filter_saints" />
+
+        <RadioButton
+            android:id="@+id/filterBlessed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/album_filter_blessed" />
+    </RadioGroup>
+</LinearLayout>

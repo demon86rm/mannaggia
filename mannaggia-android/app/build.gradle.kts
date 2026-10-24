@@ -14,8 +14,8 @@ android {
         applicationId = "io.github.demon86rm.mannaggia"
         minSdk = 24
         targetSdk = 36
-        versionCode = 4
-        versionName = "2.0.0"
+        versionCode = 5
+        versionName = "2.0.1"
     }
 
     signingConfigs {
@@ -30,6 +30,11 @@ android {
     }
 
     buildTypes {
+        // Installs next to the Play version ("Mannaggia debug"), so testing doesn't touch its album.
+        debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+        }
         release {
             isMinifyEnabled = true
             isShrinkResources = true

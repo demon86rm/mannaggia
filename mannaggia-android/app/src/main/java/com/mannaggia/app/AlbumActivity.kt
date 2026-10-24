@@ -12,7 +12,9 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.RadioGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -26,6 +28,7 @@ import com.mannaggia.app.databinding.ActivityAlbumBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.Collator
 import java.text.DateFormatSymbols
 import java.util.Date
 import java.util.Locale
@@ -41,6 +44,10 @@ import java.util.Locale
  * card's detail and speaks its phrase on demand (whatever the Pronuncia option, and without
  * counting as an invocation for the album or the trophies); a long press opens the detail
  * without the voice.
+ *
+ * "Ordina e filtra" in the toolbar sorts both tabs by card number or by name (without the
+ * title, so "Santa Chiara" goes under C) and shows every card, only saints or only blessed,
+ * with the counter of that category. Special cards always come first.
  */
 class AlbumActivity : AppCompatActivity() {
 
@@ -48,7 +55,8 @@ class AlbumActivity : AppCompatActivity() {
 
     private var cards: List<Card> = emptyList()
     private var total = 0
-    private var found = 0
+    private var blessedTotal = 0
+    private val collator: Collator = Collator.getInstance(Locale.ITALIAN)
     private var favourites: Set<String> = emptySet()
     private var showFavourites = false
     /** Saints selected in selection mode (empty = not selecting). */
@@ -70,7 +78,10 @@ class AlbumActivity : AppCompatActivity() {
             if (selected.isNotEmpty()) clearSelection() else finish()
         }
         binding.toolbar.setOnMenuItemClickListener { item ->
-            if (item.itemId == R.id.action_favourite) toggleSelectedFavourites()
+            when (item.itemId) {
+                R.id.action_favourite -> toggleSelectedFavourites()
+                R.id.action_sort_filter -> showSortFilter()
+            }
             true
         }
         onBackPressedDispatcher.addCallback(this, exitSelection)
@@ -110,6 +121,7 @@ class AlbumActivity : AppCompatActivity() {
             bookmarkBitmap = bookmarkBitmap ?: Avatars.bookmark(this@AlbumActivity, true)?.bitmap
             val discovered = Album.entries(this@AlbumActivity)
             total = Mannaggia.saintCount(this@AlbumActivity)
+            blessedTotal = Mannaggia.blessedCount(this@AlbumActivity)
             val found = discovered.mapIndexed { i, e ->
                 Card(e, Avatars.number(this@AlbumActivity, e.saint) ?: Int.MAX_VALUE, i + 1)
             }.sortedBy { it.number }
@@ -120,7 +132,6 @@ class AlbumActivity : AppCompatActivity() {
                 Card(Album.Entry(at, name), Trofei.specialNumber(name) ?: 0, 0, trophy = t)
             }.sortedBy { it.number }
             cards = specials + found
-            this@AlbumActivity.found = found.size
             favourites = Preferiti.all(this@AlbumActivity)
             show()
         }
@@ -140,23 +151,41 @@ class AlbumActivity : AppCompatActivity() {
         val special get() = trophy != null
     }
 
-    /** Fill the grid for the current tab. */
+    /** Fill the grid for the current tab, with the chosen order and filter. */
     private fun show() {
-        val entries = if (showFavourites) cards.filter { it.entry.saint in favourites } else cards
+        val filter = Prefs.albumFilter(this)
+        val tab = if (showFavourites) cards.filter { it.entry.saint in favourites } else cards
+        val (specials, saints) = tab.filter { inFilter(it, filter) }.partition { it.special }
+        val sorted = if (Prefs.albumSort(this) == Prefs.ALBUM_SORT_NAME)
+            saints.sortedWith(compareBy(collator) { it: Card -> Mannaggia.withoutTitle(it.entry.saint) })
+        else saints                                     // already by card number
+        val entries = specials + sorted
         if (showFavourites) {
             binding.txtCount.text = getString(R.string.fav_count, entries.size)
             binding.progressAlbum.visibility = View.GONE
             binding.txtEmpty.setText(R.string.fav_empty)
         } else {
-            val percent = if (total == 0) 0.0 else found * 100.0 / total
-            binding.txtCount.text = getString(
-                R.string.album_count, found, total, String.format(Locale.ITALIAN, "%.1f", percent)
-            )
+            // Special cards don't count: they are not in the calendar.
+            val found = saints.size
+            val of = when (filter) {
+                Prefs.ALBUM_FILTER_SAINTS -> total - blessedTotal
+                Prefs.ALBUM_FILTER_BLESSED -> blessedTotal
+                else -> total
+            }
+            val percent = String.format(Locale.ITALIAN, "%.1f", if (of == 0) 0.0 else found * 100.0 / of)
+            binding.txtCount.text = when (filter) {
+                Prefs.ALBUM_FILTER_SAINTS ->
+                    getString(R.string.album_count_category, getString(R.string.album_category_saints), found, of, percent)
+                Prefs.ALBUM_FILTER_BLESSED ->
+                    getString(R.string.album_count_category, getString(R.string.album_category_blessed), found, of, percent)
+                else -> getString(R.string.album_count, found, of, percent)
+            }
             binding.progressAlbum.visibility = View.VISIBLE
-            binding.progressAlbum.max = total.coerceAtLeast(1)
+            binding.progressAlbum.max = of.coerceAtLeast(1)
             binding.progressAlbum.progress = found
             binding.txtEmpty.setText(R.string.album_empty)
         }
+        if (entries.isEmpty() && tab.isNotEmpty()) binding.txtEmpty.setText(R.string.album_empty_filter)
         binding.txtEmpty.visibility = if (entries.isEmpty()) View.VISIBLE else View.GONE
         binding.list.visibility = if (entries.isEmpty()) View.GONE else View.VISIBLE
         binding.list.adapter = AlbumAdapter(
@@ -182,6 +211,42 @@ class AlbumActivity : AppCompatActivity() {
     private fun onCardLongClick(entries: List<Card>, position: Int) {
         val card = entries[position]
         if (showFavourites) showDetail(card) else toggleSelection(card.entry.saint)
+    }
+
+    private fun inFilter(card: Card, filter: String) = when (filter) {
+        Prefs.ALBUM_FILTER_SAINTS -> !Mannaggia.isBlessed(card.entry.saint)
+        Prefs.ALBUM_FILTER_BLESSED -> Mannaggia.isBlessed(card.entry.saint)
+        else -> true
+    }
+
+    /** "Ordina e filtra": every change is applied at once, behind the dialog, and remembered. */
+    private fun showSortFilter() {
+        val view = layoutInflater.inflate(R.layout.dialog_album_order, null)
+        val sort = view.findViewById<RadioGroup>(R.id.groupSort)
+        val filter = view.findViewById<RadioGroup>(R.id.groupFilter)
+        sort.check(if (Prefs.albumSort(this) == Prefs.ALBUM_SORT_NAME) R.id.sortName else R.id.sortNumber)
+        filter.check(when (Prefs.albumFilter(this)) {
+            Prefs.ALBUM_FILTER_SAINTS -> R.id.filterSaints
+            Prefs.ALBUM_FILTER_BLESSED -> R.id.filterBlessed
+            else -> R.id.filterAll
+        })
+        sort.setOnCheckedChangeListener { _, id ->
+            Prefs.setAlbumSort(this, if (id == R.id.sortName) Prefs.ALBUM_SORT_NAME else Prefs.ALBUM_SORT_NUMBER)
+            show()
+        }
+        filter.setOnCheckedChangeListener { _, id ->
+            Prefs.setAlbumFilter(this, when (id) {
+                R.id.filterSaints -> Prefs.ALBUM_FILTER_SAINTS
+                R.id.filterBlessed -> Prefs.ALBUM_FILTER_BLESSED
+                else -> Prefs.ALBUM_FILTER_ALL
+            })
+            show()
+        }
+        AlertDialog.Builder(this)
+            .setTitle(R.string.album_sort_filter)
+            .setView(view)
+            .setPositiveButton(android.R.string.ok, null)
+            .show()
     }
 
     // --- Favourites tab: on-demand invocation ----------------------------------------------
@@ -228,6 +293,7 @@ class AlbumActivity : AppCompatActivity() {
             }
         } else {
             binding.toolbar.setTitle(R.string.album_title)
+            binding.toolbar.inflateMenu(R.menu.album)
         }
     }
 
@@ -296,7 +362,7 @@ class AlbumActivity : AppCompatActivity() {
                 frame.visibility = View.VISIBLE
             } else if (Avatars.isLegendary(this@AlbumActivity, entry.saint)) {
                 view.findViewById<TextView>(R.id.txtLegend).visibility = View.VISIBLE
-                val sparkle = Avatars.frameDrawable(this@AlbumActivity)
+                val sparkle = Avatars.frameDrawable(this@AlbumActivity, entry.saint)
                 frame.setImageDrawable(sparkle)
                 frame.visibility = View.VISIBLE
                 sparkle.start()
@@ -374,8 +440,11 @@ class AlbumActivity : AppCompatActivity() {
                     holder.frame.setImageDrawable(Avatars.silverFrame(context))
                     holder.frame.visibility = View.VISIBLE
                 } else if (Avatars.isLegendary(context, entry.saint)) {
-                    if (holder.frame.drawable !is AnimationDrawable) {
-                        holder.frame.setImageDrawable(Avatars.frameDrawable(context))
+                    // A recycled cell keeps its animation only if it is the same frame (gold or special).
+                    val frameName = Avatars.frameName(context, entry.saint)
+                    if (holder.frame.drawable !is AnimationDrawable || holder.frame.tag != frameName) {
+                        holder.frame.setImageDrawable(Avatars.frameDrawable(context, entry.saint))
+                        holder.frame.tag = frameName
                     }
                     holder.frame.visibility = View.VISIBLE
                     (holder.frame.drawable as AnimationDrawable).start()

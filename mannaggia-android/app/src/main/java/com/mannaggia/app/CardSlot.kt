@@ -104,7 +104,7 @@ class CardSlot(
                     card.imgFrame.visibility = View.VISIBLE
                 }
                 legendary -> {
-                    val sparkle = Avatars.frameDrawable(context)
+                    val sparkle = Avatars.frameDrawable(context, saint)
                     card.imgFrame.setImageDrawable(sparkle)
                     card.imgFrame.visibility = View.VISIBLE
                     sparkle.start()

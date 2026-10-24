@@ -19,7 +19,7 @@
 01-01	Santa Fanchea
 01-01	San Basilio di Ancira
 01-01	San Buonfiglio dei Monaldi
-01-01	San Saint Baglan
+01-01	San Baglan
 01-02	San Basilio
 01-02	San Gregorio Nazianzeno
 01-02	San Telesforo
@@ -87,7 +87,7 @@
 01-06	Santa Rafaela Porras y Ayllón
 01-06	San Pietro Tommaso
 01-06	Beata Gertrude van der Oosten
-01-06	San Saint Eigrad
+01-06	Sant'Eigrad
 01-07	San Raimondo di Peñafort
 01-07	San Canuto Lavard
 01-07	San Luciano di Antiochia
@@ -145,7 +145,7 @@
 01-10	Santa Tecla da Lentini
 01-10	Beato Egidio da Laurenzana
 01-10	Sant'Aldo eremita
-01-10	San Saint Ratian
+01-10	San Ratian
 01-11	Sant'Igino
 01-11	San Davide I di Scozia
 01-11	San Paolino II
@@ -181,9 +181,9 @@
 01-13	Sant'Erbin
 01-13	Beata María Francisca Espejo Martos
 01-13	San Conan di Man
-01-13	San Saint Ilar
 01-13	San Vivenzio di Blera
 01-13	Sant'Eilian
+01-13	Sant'Ilar
 01-13	Santa Glafira
 01-13	San Lonegisilus Buciacensis
 01-14	Sant'Igino
@@ -198,8 +198,8 @@
 01-14	San Dazio di Milano
 01-14	San Potito
 01-14	Sant'Oddone di Novara
-01-14	San Saint Ilar
 01-14	Sant'Eufrasio di Clermont
+01-14	Sant'Ilar
 01-15	Sant'Abacuc
 01-15	San Serafino di Sarov
 01-15	San Paolo di Tebe
@@ -218,7 +218,7 @@
 01-15	San Romedio
 01-15	San Viatore di Bergamo
 01-15	Sant'Abeluzius
-01-15	San Saint Ilar
+01-15	Sant'Ilar
 01-15	Beato Valentín Palencia
 01-15	San Giovanni
 01-15	Sant'Ableberto di Cambrai
@@ -286,7 +286,7 @@
 01-20	Beato Basile Moreau
 01-20	San Neofito di Nicea
 01-20	Beato Benedetto Ricasoli
-01-20	San Saint Tariec
+01-20	San Tariec
 01-21	Sant'Agnese
 01-21	San Massimo il Confessore
 01-21	San Publio di Malta
@@ -299,7 +299,7 @@
 01-21	Beato Edward Stransham
 01-21	Beata Margaret of the Blessed Sacrament
 01-21	Santo Zosimo di Siracusa
-01-21	San Saint Doetval
+01-21	San Doetval
 01-21	San Publio di Atene
 01-21	Sant'Olcese
 01-22	San Timoteo
@@ -384,7 +384,7 @@
 01-27	Beato Paul Josef Nardini
 01-27	Santa Carolina Santocanale
 01-27	San Giuliano di Sora
-01-27	San Saint Gilduin
+01-27	San Gilduin
 01-27	Beata Alruna di Cham
 01-27	San Marino di Bodon
 01-28	San Tommaso d'Aquino
@@ -439,7 +439,7 @@
 01-31	Santa Melangell
 01-31	San Ciro di Alessandria
 01-31	San Marciano l'Asceta
-01-31	Santa Sainte Ulphe
+01-31	Sant'Ulphe
 01-31	San Metrano di Alessandria d'Egitto
 01-31	Sant'Atanasio
 02-01	San Sigeberto III
@@ -652,7 +652,7 @@
 02-14	San Nostriano di Napoli
 02-14	Sant'Antonino di Sorrento
 02-14	Beato Vicente Vilar David
-02-14	San Saint Derien
+02-14	San Derien
 02-15	Sant'Onesimo
 02-15	San Claude de la Colombière
 02-15	San Sigfrido di Växjö
@@ -863,7 +863,7 @@
 03-03	Santa Camilla di Auxerre
 03-03	Sant'Asterio di Cesarea
 03-03	Sant'Eutropio
-03-03	San Saint Calupan
+03-03	San Calupan
 03-04	San Lucio I
 03-04	San Casimiro di Cracovia
 03-04	San Jurij II di Vladimir
@@ -891,9 +891,9 @@
 03-05	San Virgilio di Arles
 03-05	San Cono il taumaturgo
 03-05	Sant'Adriano di Cesarea
-03-05	San Saint Elouan
+03-05	Sant'Elouan
+03-05	San Frambold
 03-05	San Gerasimo di San Lorenzo
-03-05	San Saint Frambold
 03-05	Sant'Orante
 03-06	San Crodegango di Metz
 03-06	San Giuliano di Toledo
@@ -921,7 +921,7 @@
 03-08	San Senano di Inis Cathaigh
 03-08	San Humphroy de Thérouanne
 03-08	Santo Stefano d'Obazine
-03-08	Santa Saint Derchairthinn
+03-08	Santa Derchairthinn
 03-08	San Probino di Como
 03-08	San Litifredo I di Pavia
 03-09	Santa Caterina da Bologna
@@ -1088,8 +1088,8 @@
 03-24	Sant'Aldemaro di Capua
 03-24	Beata Bertha de Bardi
 03-24	San Bernolfo di Asti
+03-24	San Bernulf
 03-24	San Riccardo di Pontoise
-03-24	San Saint Bernulf
 03-25	San Gregorio I
 03-25	San Disma
 03-25	Santa Maryam Sūltanah Danil Ghaţţas
@@ -1364,7 +1364,7 @@
 04-19	Beato Corrado Miliani
 04-19	San Giorgio d'Antiochia
 04-19	San Teodoro di Perge
-04-19	San Saint Loubouer
+04-19	San Loubouer
 04-20	Sant'Aniceto
 04-20	Sant'Agnese di Montepulciano
 04-20	San Beuno
@@ -1374,7 +1374,7 @@
 04-20	Beato Simone Rinalducci
 04-20	Santa Sara di Antiochia
 04-20	Beato Domenico Vernagalli
-04-20	Santa Sainte Grimonie
+04-20	Santa Grimonie
 04-21	Sant'Anselmo d'Aosta
 04-21	San Giuseppe Moscati
 04-21	Sant'Anastasio il Sinaita
@@ -1801,7 +1801,7 @@
 05-19	Beato Agostino Novello
 05-19	San Teofilo da Corte
 05-19	Beata Giuseppina Suriano
-05-19	San Saint Bashnouna
+05-19	San Bashnouna
 05-19	Beata Umiliana de' Cerchi
 05-19	Beato Gianluigi da Besançon
 05-19	Sant'Adolfo di Cambrai
@@ -2228,7 +2228,7 @@
 06-15	San Landelino di Lobbes
 06-15	Beato Clemente Vismara
 06-15	Sant'Isfrido di Ratzeburg
-06-15	San Saint Trillo
+06-15	San Trillo
 06-15	Sant'Ilariano di Perse
 06-15	San Lotario di Séez
 06-16	San Benno di Meißen
@@ -2257,7 +2257,7 @@
 06-17	Sant'Ipazio
 06-17	San Nectan
 06-17	San Manuele
-06-17	San Saint Antide
+06-17	Sant'Antide
 06-17	Sant'Imerio
 06-17	San Papino
 06-17	Sant'Agrippino di Como
@@ -2606,7 +2606,7 @@
 07-13	Beato Mariano de Jesús Euse Hoyos
 07-13	Santa Golindouch
 07-13	Santa Mirope di Chio
-07-13	San Saint Turiau
+07-13	San Turiau
 07-13	Santa Giustina vergine e martire
 07-14	San Camillo de Lellis
 07-14	San Francesco Solano
@@ -3328,7 +3328,7 @@
 08-30	Sant'Agilo
 08-30	San Bononio di Lucedio
 08-30	San Pietro l'eremita
-08-30	Beato Saint Richard Martin
+08-30	Beato Richard Martin
 08-30	Santa Gaudenzia
 08-31	San Nicodemo
 08-31	Sant'Aristide Marciano
@@ -3439,7 +3439,7 @@
 09-05	Beata Maria Maddalena Starace
 09-05	San Genebaldo
 09-05	San Quinto di Capua
-09-05	San Saint Rufinien
+09-05	San Rufinien
 09-06	Sant'Onesiforo
 09-06	San Magno di Füssen
 09-06	Sant'Olinto Marella
@@ -3692,7 +3692,7 @@
 09-23	Santo Zaccaria
 09-23	Sant'Elisabetta
 09-23	Sant'Adamnano di Iona
-09-23	Santa Saint Rais
+09-23	Santa Rais
 09-23	Beata Émilie Tavernier Gamelin
 09-23	San Liutvino di Treviri
 09-23	Beato Padre Victor
@@ -3835,7 +3835,7 @@
 10-04	Beato Tommaso da Celano
 10-04	Sant'Ingegerd Olofsdotter
 10-04	San Petronio
-10-04	San Saint Amun
+10-04	Sant'Amun
 10-04	Sant'Ieroteo il Tesmoteta
 10-04	Beato Francesco Saverio Seelos
 10-04	Sant'Aurea di Parigi
@@ -4042,7 +4042,7 @@
 10-17	Beato Fidel Fuidio
 10-17	Sant'Anstrude di Laon
 10-17	San Dulcedio di Agen
-10-17	Santa Sainte Soline
+10-17	Santa Soline
 10-18	San Luca
 10-18	San Didimo il Cieco
 10-18	San Pietro d'Alcántara
@@ -4099,7 +4099,7 @@
 10-21	Beato Pietro Capucci
 10-21	Sant'Alodia
 10-21	San Dasio di Nicomedia
-10-21	San Saint Munn
+10-21	San Munn
 10-21	Santa Zaira
 10-22	San Giovanni Paolo II
 10-22	San Longino
@@ -4560,7 +4560,7 @@
 11-19	Beato Aimaro di Cluny
 11-19	Beata Elisabetta Picenardi
 11-19	San Barlaam di Antiochia
-11-19	San Saint Houardon
+11-19	San Houardon
 11-19	Santa Domne Eafe
 11-20	Sant'Edmondo dell'Anglia orientale
 11-20	Sant'Ambrogio Traversari
@@ -4592,7 +4592,7 @@
 11-22	San Pragmazio di Autun
 11-22	San Valeriano di Forlì
 11-22	Sant'Alessandro di Tessalonica
-11-22	San Saint Herbert
+11-22	San Herbert
 11-23	San Clemente I
 11-23	San Colombano di Bobbio
 11-23	San Miguel Agustín Pro
@@ -4726,7 +4726,7 @@
 12-02	Santa Mirope di Chio
 12-02	Sant'Avit de Rouen
 12-02	Sant'Oderisio di Montecassino
-12-02	San Saint Tadec
+12-02	San Tadec
 12-02	San Pimenio di Roma
 12-03	San Francesco Saverio
 12-03	San Birino di Dorchester
@@ -4915,7 +4915,7 @@
 12-20	San Vincenzo Romano
 12-20	Sant'Ursicino del Giura
 12-20	San Liberato
-12-20	San Saint Fachanan
+12-20	San Fachanan
 12-20	Sant'Abramo di Arazd
 12-21	San Pietro Canisio
 12-21	Santa Giuliana di Nicomedia

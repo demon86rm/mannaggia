@@ -6,6 +6,7 @@ package com.mannaggia.app
  * - regnal numbers become Italian ordinals agreeing with the saint ("San Carlo I" →
  *   "San Carlo primo", "Santa Beatrice II" → "Santa Beatrice seconda"): a lone "I" is
  *   otherwise read as the letter;
+ * - the Spanish "y" between two names ("Calvo y Calvo") is read "i", not "uai";
  * - single words the voice mispronounces get a phonetic spelling ([PAROLE]).
  */
 object Pronuncia {
@@ -22,6 +23,9 @@ object Pronuncia {
 
     /** A Roman numeral standing alone after a name (followed by a space, punctuation or the end). */
     private val ROMAN = Regex("""(?<=\s)(?=[IVXLCDM])(M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3}))(?=[\s!,.;:]|$)""")
+
+    /** The Spanish conjunction: a lowercase "y" alone between two words. */
+    private val SPANISH_AND = Regex("""(?<=\p{L}) y (?=\p{L})""")
 
     private val FEMALE_TITLE = Regex("""\b(Santa|Beata)\s""")
 
@@ -41,7 +45,8 @@ object Pronuncia {
             val word = ORDINALI.getOrNull(n - 1) ?: return@replace m.value
             if (female) word.dropLast(1) + "a" else word
         }
-        return WORDS.replace(numbers) { m -> PAROLE.entries.first { it.key.equals(m.value, ignoreCase = true) }.value }
+        val spanish = SPANISH_AND.replace(numbers, " i ")
+        return WORDS.replace(spanish) { m -> PAROLE.entries.first { it.key.equals(m.value, ignoreCase = true) }.value }
     }
 
     private fun romanValue(s: String): Int {

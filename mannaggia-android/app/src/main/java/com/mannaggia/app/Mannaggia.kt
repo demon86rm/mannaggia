@@ -48,6 +48,19 @@ object Mannaggia {
         (saints ?: loadSaints(context).also { saints = it }).size
     }
 
+    /** Number of blessed ("Beato", "Beata") in the bundled list; the others are saints. */
+    suspend fun blessedCount(context: Context): Int = withContext(Dispatchers.IO) {
+        (saints ?: loadSaints(context).also { saints = it }).count { isBlessed(it) }
+    }
+
+    /** A blessed rather than a saint (album filter). */
+    fun isBlessed(name: String) = name.startsWith("Beato ") || name.startsWith("Beata ")
+
+    private val TITLE = Regex("""^(?:(?:San|Santo|Santa|Beato|Beata)\s+|Sant')""")
+
+    /** The name without its title, to sort by name: "Santa Chiara d'Assisi" → "Chiara d'Assisi". */
+    fun withoutTitle(name: String) = TITLE.replaceFirst(name, "")
+
     /** Pick a random saint from the bundled list (loaded once, then cached). */
     suspend fun randomSaint(context: Context): String = withContext(Dispatchers.IO) {
         val list = saints ?: loadSaints(context).also { saints = it }

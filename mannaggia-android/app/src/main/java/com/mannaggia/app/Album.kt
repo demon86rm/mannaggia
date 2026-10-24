@@ -46,7 +46,7 @@ object Album {
         val list = if (!f.exists()) mutableListOf() else f.readLines(Charsets.UTF_8).mapNotNull { line ->
             val tab = line.indexOf('\t')
             val time = if (tab > 0) line.substring(0, tab).toLongOrNull() else null
-            if (time == null) null else Entry(time, line.substring(tab + 1))
+            if (time == null) null else Entry(time, Rinominati.attuale(line.substring(tab + 1)))
         }.distinctBy { it.saint }.toMutableList()
         entries = list
         known = list.mapTo(HashSet()) { it.saint }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Album, outside selection mode: order (card number or name) and filter (saints, blessed). -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_sort_filter"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/album_sort_filter"
+        app:showAsAction="always" />
+</menu>

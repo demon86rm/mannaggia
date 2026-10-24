@@ -1170,6 +1170,7 @@ Beato Riccardo di Arnsberg
 Beato Richard Fetherston
 Beato Richard Herst
 Beato Richard Langhorne
+Beato Richard Martin
 Beato Richard Sergeant
 Beato Richard Simpson
 Beato Richard Whiting
@@ -1195,7 +1196,6 @@ Beato Rotho
 Beato Rudolf Komorek
 Beato Rusten
 Beato Rutilio Grande
-Beato Saint Richard Martin
 Beato Salvador Huerta Gutiérrez
 Beato Salvatore Lilli
 Beato Salvatore Pigem Serra
@@ -1332,6 +1332,7 @@ San Baboleno
 San Bachtheson
 San Bacolo di Sorrento
 San Badulf
+San Baglan
 San Baino di Thérouanne
 San Baldomero di Lione
 San Baldovino di Rieti
@@ -1351,6 +1352,7 @@ San Bartolomeo Fernandes
 San Bartolomeo di Simeri
 San Bartolomeo il Giovane
 San Basarab V Neagoe
+San Bashnouna
 San Basileo di Amasea
 San Basilide di Alessandria
 San Basilio
@@ -1416,6 +1418,7 @@ San Bernoardo di Hildesheim
 San Bernoldo di Utrecht
 San Bernolfo di Asti
 San Bernone di Cluny
+San Bernulf
 San Bertario di Montecassino
 San Bertilone di Digione
 San Bertino di Sithiu
@@ -1499,6 +1502,7 @@ San Callisto Caravario
 San Callisto I
 San Calminio
 San Calogero di Sicilia
+San Calupan
 San Calva di Napoli
 San Camillo Costanzo
 San Camillo de Lellis
@@ -1651,6 +1655,7 @@ San Conone l'ortolano
 San Console di Como
 San Constantin Brâncoveanu
 San Contardo d'Este
+San Conven
 San Convoione
 San Corbiniano di Frisinga
 San Corentino di Quimper
@@ -1698,6 +1703,7 @@ San Cristiolus
 San Cristoforo
 San Cristóbal Magallanes Jara
 San Crodegango di Metz
+San Croidan
 San Cromazio d'Aquileia
 San Cucufate
 San Cumiano di Bobbio
@@ -1758,6 +1764,7 @@ San Demetrio di Tessalonica
 San Deocar
 San Deodato di Nevers
 San Deogratias
+San Derien
 San Deruviano
 San Desiderato di Besançon
 San Desiderato di Bourges
@@ -1796,7 +1803,9 @@ San Dioscoro di Alessandria
 San Disibodo d'Irlanda
 San Disma
 San Dodone di Wallers-en-Fagne
+San Doetval
 San Dogfan
+San Doha
 San Doimo
 San Domenico Henares
 San Domenico Loricato
@@ -1851,6 +1860,7 @@ San Fabiano
 San Fabio
 San Fabio il Vessillifero
 San Fabriziano di Toledo
+San Fachanan
 San Fachtna di Ross
 San Facondino
 San Falco di Palena
@@ -1984,6 +1994,7 @@ San Fortunato di Todi
 San Fotino di Benevento
 San Fozio di Costantinopoli
 San Fraimbault de Lassay
+San Frambold
 San Francesc Gil de Frederic
 San Francesco Antonio Fasani
 San Francesco Borgia
@@ -2158,6 +2169,7 @@ San Gilberto di Meaux
 San Gilberto di Sempringham
 San Gildardo di Rouen
 San Gildas
+San Gilduin
 San Gioacchino
 San Giocondo di Aosta
 San Gioele
@@ -2406,12 +2418,14 @@ San Heahmund
 San Heimerad
 San Henri Dorie
 San Henryk Kaczorowski
+San Herbert
 San Hereberht of Huntingdon
 San Hermenegild de Salceda
 San Hermes de Bononia
 San Hermes di Filippopoli
 San Hildegrim di Chalons
 San Hoel
+San Houardon
 San Hovhannès Ier Mandakouni
 San Humphroy de Thérouanne
 San Héctor Valdivielso Sáez
@@ -2587,6 +2601,7 @@ San Lorenzo di Canterbury
 San Lorenzo di Novara
 San Lotario I
 San Lotario di Séez
+San Loubouer
 San Louis Beaulieu
 San Louis Martin
 San Loup de Soissons
@@ -2648,6 +2663,7 @@ San Macario di Gerusalemme
 San Macario di Kanev
 San Machar di Aberdeen
 San Maclovio
+San Maden
 San Madḫānina Egziʾ
 San Magaldo di Man
 San Maglorio di Dol
@@ -2842,6 +2858,7 @@ San Modesto di Gerusalemme
 San Modesto di Treviri
 San Modestus
 San Moloc
+San Momble
 San Mommolino di Fleury
 San Mommolino di Noyon
 San Mona di Milano
@@ -2853,6 +2870,7 @@ San Mosè di Corene
 San Mosè l'Etiope
 San Muci de Bizanci
 San Mungo di Glasgow
+San Munn
 San Muredach
 San Muziano Maria Wiaux
 San Mykola Cegel'skij
@@ -2941,6 +2959,7 @@ San Nimatullah Kassab Al-Hardini
 San Niniano di Whithorn
 San Niphon Kausokalybites
 San Nivard de Reims
+San Nonna
 San Nonnoso del Monte Soratte
 San Norberto di Prémontré
 San Nostriano di Napoli
@@ -3229,6 +3248,7 @@ San Ranieri Scacceri
 San Raniero di Forcona
 San Raoul di Bourges
 San Rastislav di Moravia
+San Ratian
 San Ratoldo
 San Raymond de Toulouse
 San Redento da Trani
@@ -3268,6 +3288,7 @@ San Rodion Osljabja
 San Rodobaldo II di Pavia
 San Rodolfo Gabrielli
 San Rodrigo di Cordova
+San Roland
 San Rolando de' Medici
 San Roman Lysko
 San Roman Sitko
@@ -3289,8 +3310,10 @@ San Roque González de Santa Cruz
 San Rostislav di Kiev
 San Ruadhan di Lorrha
 San Ruben Sevak
+San Rubin
 San Rudesindo
 San Rufillo di Forlimpopoli
+San Rufinien
 San Rufino
 San Rufino di Assisi
 San Rufo di Avignone
@@ -3325,44 +3348,6 @@ San Sabino di Escanecrabe
 San Sacerdote di Limoges
 San Sacerdote di Lione
 San Sagare di Laodicea
-San Saint Amun
-San Saint Antide
-San Saint Baglan
-San Saint Bashnouna
-San Saint Bernulf
-San Saint Calupan
-San Saint Conven
-San Saint Croidan
-San Saint Derien
-San Saint Doetval
-San Saint Doha
-San Saint Eigrad
-San Saint Elouan
-San Saint Fachanan
-San Saint Frambold
-San Saint Gilduin
-San Saint Herbert
-San Saint Houardon
-San Saint Ilar
-San Saint Isan
-San Saint Loubouer
-San Saint Maden
-San Saint Momble
-San Saint Munn
-San Saint Nonna
-San Saint Ratian
-San Saint Roland
-San Saint Rubin
-San Saint Rufinien
-San Saint Setni
-San Saint Stamp
-San Saint Tadec
-San Saint Tariec
-San Saint Thivisiau
-San Saint Trillo
-San Saint Turiau
-San Saint Urfol
-San Saint Vulfric
 San Salmanus
 San Salom
 San Salomon Leclercq
@@ -3419,6 +3404,7 @@ San Sergio di Radonež
 San Servazio di Tongres
 San Servolo
 San Sestio di Valence
+San Setni
 San Settimio di Jesi
 San Sever de Rustan
 San Severino
@@ -3511,11 +3497,13 @@ San Sulpizio di Bourges
 San Sulpizio il Pio
 San Taddeo Liu Ruiting
 San Taddeo Studita
+San Tadec
 San Talaleo
 San Tammaro
 San Tammaro vescovo
 San Tarasio di Costantinopoli
 San Tarcisio
+San Tariec
 San Tascio Cecilio Cipriano
 San Tassac di Elphin
 San Tatuino
@@ -3584,6 +3572,7 @@ San Tetrico di Langres
 San Theoderich von Reims
 San Theodgar di Vestervig
 San Thibaut de Marly
+San Thivisiau
 San Thomas Cranmer
 San Thomas Garnet
 San Thurgood Marshall
@@ -3623,6 +3612,7 @@ San Tozzo
 San Trifilio di Leucosia
 San Trifone
 San Trifone di Pečenga
+San Trillo
 San Trinio
 San Trofimo di Arles
 San Trofimo di Efeso
@@ -3631,6 +3621,7 @@ San Tsongkhapa
 San Tudno
 San Tugdual di Tréguier
 San Tuotilo
+San Turiau
 San Turibio de Mogrovejo
 San Turibio di Astorga
 San Vakhtang I Gorgasali
@@ -3753,6 +3744,7 @@ San Volodymyr Pryjma
 San Volusiano di Tours
 San Vsevolod di Pskov
 San Vulfranno di Sens
+San Vulfric
 San Vulstano di Worcester
 San Vunibaldo di Heidenheim
 San Wala
@@ -4047,6 +4039,7 @@ Sant'Amos
 Sant'Ampelio di Milano
 Sant'Ampelio eremita
 Sant'Amphilochios Makrēs
+Sant'Amun
 Sant'Anania di Damasco
 Sant'Anastasia di Sirmio
 Sant'Anastasia martire
@@ -4123,6 +4116,7 @@ Sant'Anstrude di Laon
 Sant'Ansverus
 Sant'Antelmo di Chignin
 Sant'Antero
+Sant'Antide
 Sant'Antigio
 Sant'Antimo d'Iberia
 Sant'Antimo di Nicomedia
@@ -4342,7 +4336,9 @@ Sant'Egidio Maria da Taranto
 Sant'Egidio da Sansepolcro
 Sant'Egidio di Casaio
 Sant'Egwin di Evesham
+Sant'Eigen
 Sant'Eigion
+Sant'Eigrad
 Sant'Eigron
 Sant'Eilian
 Sant'Ekanātha
@@ -4392,6 +4388,7 @@ Sant'Elladio di Auxerre
 Sant'Elladio di Toledo
 Sant'Ellero di Galeata
 Sant'Elli
+Sant'Elouan
 Sant'Elpidio Abate
 Sant'Elpis
 Sant'Eluned
@@ -4612,6 +4609,7 @@ Sant'Ignazio da Santhià
 Sant'Ignazio di Antiochia
 Sant'Ignazio di Loyola
 Sant'Ignoroc de Vannes
+Sant'Ilar
 Sant'Ilariano di Perse
 Sant'Ilario
 Sant'Ilario di Aquileia
@@ -4669,6 +4667,7 @@ Sant'Isacco Jogues
 Sant'Isacco d'Armenia
 Sant'Isacco di Monteluco
 Sant'Isacco di Ninive
+Sant'Isan
 Sant'Isernino
 Sant'Isfrido di Ratzeburg
 Sant'Isidoro di Chio
@@ -4689,6 +4688,7 @@ Sant'Oda
 Sant'Oda di Canterbury
 Sant'Oddone di Cluny
 Sant'Oddone di Novara
+Sant'Ode
 Sant'Oderisio di Montecassino
 Sant'Odilone di Cluny
 Sant'Odolfo di Stavoren
@@ -4771,6 +4771,7 @@ Sant'Ugo di Lincoln
 Sant'Ugo di Novara di Sicilia
 Sant'Ugolina di Vercelli
 Sant'Uguccione da Firenze
+Sant'Ulphe
 Sant'Ulpiano di Tiro
 Sant'Ulrico di Augusta
 Sant'Ulrico di Zell
@@ -4785,6 +4786,7 @@ Sant'Urbano I
 Sant'Urbano di Langres
 Sant'Urbicio
 Sant'Urbicio di Metz
+Sant'Urfol
 Sant'Ursicin de Cahors
 Sant'Ursicino del Giura
 Sant'Ursicino di Brescia
@@ -4889,6 +4891,7 @@ Santa Daria di Venafro
 Santa Degna di Roma
 Santa Degna di Todi
 Santa Demetria di Roma
+Santa Derchairthinn
 Santa Derfuta
 Santa Devota
 Santa Di Sens
@@ -4994,6 +4997,7 @@ Santa Gorgonia di Nazianzo
 Santa Grania
 Santa Grata di Bergamo
 Santa Greca di Decimomannu
+Santa Grimonie
 Santa Gudula di Bruxelles
 Santa Guglielmina
 Santa Gwen Teirbron
@@ -5038,6 +5042,7 @@ Santa Lidija Wasiljewna Zaszczuk
 Santa Liduina di Schiedam
 Santa Lioba di Tauberbischofsheim
 Santa Liutbirg
+Santa Llechid
 Santa Louise-Thérèse de Montaignac de Chauvance
 Santa Lucia
 Santa Lucia Filippini
@@ -5209,6 +5214,7 @@ Santa Quiteria
 Santa Radegonda
 Santa Rafaela Porras y Ayllón
 Santa Ragenfreda di Denain
+Santa Rais
 Santa Rebecca Ar-Rayès
 Santa Regina di Alise
 Santa Regina di Ostrevent
@@ -5216,6 +5222,7 @@ Santa Reinilde di Saints
 Santa Reparata di Cesarea di Palestina
 Santa Restituta d'Africa
 Santa Restituta di Sora
+Santa Rhian
 Santa Riccarda di Svevia
 Santa Rictrude di Marchiennes
 Santa Ripsima
@@ -5231,15 +5238,6 @@ Santa Rufina
 Santa Rut
 Santa Sabina
 Santa Sabrina di Troyes
-Santa Saint Derchairthinn
-Santa Saint Eigen
-Santa Saint Llechid
-Santa Saint Rais
-Santa Saint Rhian
-Santa Sainte Grimonie
-Santa Sainte Ode
-Santa Sainte Soline
-Santa Sainte Ulphe
 Santa Salaberga di Laon
 Santa Salome
 Santa Samaritana
@@ -5265,6 +5263,7 @@ Santa Sofia
 Santa Sofija Michajłowna Bołotowa
 Santa Sofronia
 Santa Solange
+Santa Soline
 Santa Sotere
 Santa Sperandea
 Santa Stanisława Rodzińska
@@ -5348,6 +5347,7 @@ Santo Spes
 Santo Spes di Norcia
 Santo Spiridione di Trimitonte
 Santo Stachys l'Apostolo
+Santo Stamp
 Santo Stanislao Casimiritano
 Santo Stanislao Kostka
 Santo Stanislao di Cracovia
