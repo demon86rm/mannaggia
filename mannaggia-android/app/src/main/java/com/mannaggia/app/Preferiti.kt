@@ -37,7 +37,7 @@ object Preferiti {
     private fun load(context: Context): LinkedHashSet<String> {
         saints?.let { return it }
         val f = file(context)
-        val set = if (f.exists()) f.readLines(Charsets.UTF_8).map { it.trim() }.filterTo(LinkedHashSet()) { it.isNotEmpty() }
+        val set = if (f.exists()) f.readLines(Charsets.UTF_8).map { Rinominati.attuale(it.trim()) }.filterTo(LinkedHashSet()) { it.isNotEmpty() }
         else LinkedHashSet()
         saints = set
         return set

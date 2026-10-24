@@ -26,7 +26,8 @@ Generatore di "Mannaggia <santo>!". Nella root ci sono lo script bash (`mannaggi
 - Il testo della frase va impostato con `PhraseEffects.setText()`, non con `txtResult.text`: l'effetto Terminale lo riscrive mentre lo batte.
 - Le correzioni di pronuncia del TTS del telefono stanno in `Pronuncia.kt`: i numeri romani diventano ordinali, le parole lette male vanno in `PAROLE`. Cambia solo il testo passato alla voce, non quello a schermo. Per provare un caso, nella build debug: `adb shell am start -n io.github.demon86rm.mannaggia.debug/com.mannaggia.app.MainActivity -e santo "<santo>"` (la build debug ha il suffisso `.debug` e si installa accanto a quella del Play), poi `adb logcat -s Pronuncia:D`.
 - Trofei e ricompense sono in `Trofei.kt` (`TUTTI`). Le ricompense di tipo colore, carattere ed effetto usano gli stessi valori di `arrays.xml`. Le figurine speciali stanno nella tabella `SPECIALI` di `avatar.py`, nello stesso ordine delle ricompense `FIGURINA`, che corrisponde ai numeri S1…S6.
-- Non rigenerare `santi.txt` senza motivo: i nomi sono la chiave dei file audio (`sha1`) e, in futuro, dell'album.
+- Non rigenerare `santi.txt` senza motivo: i nomi sono la chiave dei file audio (`sha1`), dei ritratti, della cache `tratti_wikidata.json`, dell'album e dei preferiti.
+- Per correggere solo i titoli dei nomi (es. "San Saint Amun" → "Sant'Amun") senza ripescare da Wikidata, che nel tempo cambia: `python3 -I tools/genera_santi.py --correggi app/src/main/assets/santi.txt > nuovo.txt`. Le coppie vecchio → nuovo che stampa vanno in `Rinominati.kt` (migrazione di album e preferiti) e nelle chiavi di `tratti_wikidata.json`; poi rigenera feste e ritratti e cancella i ritratti dei nomi vecchi.
 
 ## Shell
 - zsh: nei comandi da incollare niente `!` tra virgolette doppie (history expansion). Usa le virgolette singole e `'\''` per gli apostrofi.

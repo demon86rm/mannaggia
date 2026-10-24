@@ -53,6 +53,7 @@ Umorismo da sistemisti, senza bestemmie.
 • Santa Giovanna d'Arco ha una cornice tutta sua: le fiamme del rogo (grazie a lucatarik!)
 • Album: ordina le figurine per numero o per nome e mostra solo i santi o solo i beati
 • Pronuncia corretta dei nomi spagnoli con la "y" (es. "Calvo y Calvo")
+• Niente più "San Saint…": 48 nomi corretti, le figurine già trovate restano
 
 ## Note di rilascio 2.0.0 (max 500 caratteri)
 
