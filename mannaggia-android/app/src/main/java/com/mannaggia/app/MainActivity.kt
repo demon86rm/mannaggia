@@ -107,11 +107,13 @@ class MainActivity : AppCompatActivity() {
                 if (Trofei.debugUnlockNext(this)) announceTrophies()
                 true
             }
-            // Debug builds only: long-press the binder to preview the legendary animation.
+            // Debug builds only: long-press the binder to preview the legendary animation, in turn
+            // with the fire frame (Santa Giovanna d'Arco) and the gold one (San Pietro).
             binding.btnAlbum.setOnLongClickListener {
+                val saint = DEBUG_LEGENDS[debugLegend++ % DEBUG_LEGENDS.size]
                 lifecycleScope.launch {
-                    val n = Avatars.number(this@MainActivity, "San Pietro")
-                    cardSlot.show("San Pietro", n, isNew = true, legendary = true, special = false, animate = true)
+                    val n = Avatars.number(this@MainActivity, saint)
+                    cardSlot.show(saint, n, isNew = true, legendary = true, special = false, animate = true)
                 }
                 true
             }
@@ -350,6 +352,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        /** Debug: the legendary cards previewed in turn by a long press on the binder. */
+        private val DEBUG_LEGENDS = listOf("Santa Giovanna d'Arco", "San Pietro")
         /** Without speech, how long a phrase stays before the next one can be invoked. */
         private const val SHOW_ONLY_COOLDOWN_MS = 600L
         private const val GHOST_ALPHA = 0.5f
@@ -368,6 +372,7 @@ class MainActivity : AppCompatActivity() {
 
     /** True once the splash has been shown to the end (kept across recreations). */
     private var splashDone = false
+    private var debugLegend = 0
 
     override fun onDestroy() {
         tts?.shutdown()
