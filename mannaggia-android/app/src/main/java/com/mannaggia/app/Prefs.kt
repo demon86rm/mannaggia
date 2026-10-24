@@ -36,6 +36,14 @@ object Prefs {
     const val KEY_THEME = "theme"
     const val KEY_CARD_ANIM = "card_anim"
     const val KEY_SPLASH_CHOIR = "splash_choir"
+    /** Album order (ALBUM_SORT_*) and which cards it shows (ALBUM_FILTER_*). */
+    private const val KEY_ALBUM_SORT = "album_sort"
+    private const val KEY_ALBUM_FILTER = "album_filter"
+    const val ALBUM_SORT_NUMBER = "number"
+    const val ALBUM_SORT_NAME = "name"
+    const val ALBUM_FILTER_ALL = "all"
+    const val ALBUM_FILTER_SAINTS = "santi"
+    const val ALBUM_FILTER_BLESSED = "beati"
     /** Date (yyyy-MM-dd) of the last saint-of-the-day invocation: one a day. */
     private const val KEY_SAINT_OF_DAY_USED = "saint_of_day_used"
 
@@ -89,6 +97,12 @@ object Prefs {
 
     /** True when the phrase font is "Monospace (terminale)" (trophy "sudo !!"). */
     fun isMonospace(context: Context) = prefs(context).getString(KEY_FONT, "sans-serif") == "monospace"
+
+    fun albumSort(context: Context) = prefs(context).getString(KEY_ALBUM_SORT, ALBUM_SORT_NUMBER) ?: ALBUM_SORT_NUMBER
+    fun setAlbumSort(context: Context, value: String) = prefs(context).edit().putString(KEY_ALBUM_SORT, value).apply()
+
+    fun albumFilter(context: Context) = prefs(context).getString(KEY_ALBUM_FILTER, ALBUM_FILTER_ALL) ?: ALBUM_FILTER_ALL
+    fun setAlbumFilter(context: Context, value: String) = prefs(context).edit().putString(KEY_ALBUM_FILTER, value).apply()
 
     fun saintOfDayUsedToday(context: Context) = prefs(context).getString(KEY_SAINT_OF_DAY_USED, null) == today()
 

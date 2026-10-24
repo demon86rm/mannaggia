@@ -49,6 +49,20 @@
     <string name="fav_add">Aggiungi ai preferiti</string>
     <string name="fav_remove">Togli dai preferiti</string>
     <string name="fav_badge">Preferito</string>
+    <string name="album_sort_filter">Ordina e filtra</string>
+    <string name="album_sort">Ordina per</string>
+    <string name="album_sort_number">Numero della figurina</string>
+    <string name="album_sort_name">Nome</string>
+    <string name="album_filter">Mostra</string>
+    <string name="album_filter_all">Santi e beati</string>
+    <string name="album_filter_saints">Solo santi</string>
+    <string name="album_filter_blessed">Solo beati</string>
+    <!-- "Beati: 12 su 1327 (0,9%)" -->
+    <string name="album_count_category">%1$s: %2$d su %3$d (%4$s%%)</string>
+    <string name="album_category_saints">Santi</string>
+    <string name="album_category_blessed">Beati</string>
+    <string name="album_empty_filter">Nessuna figurina con questo filtro.
+Cambialo da «Ordina e filtra».</string>
     <string name="album_selected">%1$d selezionate</string>
     <string name="album_found_on">Trovato il %1$s alle %2$s</string>
     <string name="album_legendary">⭐ Santo leggendario</string>
