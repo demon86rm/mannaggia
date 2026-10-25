@@ -360,12 +360,15 @@ class AlbumActivity : AppCompatActivity() {
             if (card.special) {
                 frame.setImageDrawable(Avatars.silverFrame(this@AlbumActivity))
                 frame.visibility = View.VISIBLE
-            } else if (Avatars.isLegendary(this@AlbumActivity, entry.saint)) {
-                view.findViewById<TextView>(R.id.txtLegend).visibility = View.VISIBLE
-                val sparkle = Avatars.frameDrawable(this@AlbumActivity, entry.saint)
-                frame.setImageDrawable(sparkle)
-                frame.visibility = View.VISIBLE
-                sparkle.start()
+            } else {
+                if (Avatars.isLegendary(this@AlbumActivity, entry.saint))
+                    view.findViewById<TextView>(R.id.txtLegend).visibility = View.VISIBLE
+                Avatars.frameName(this@AlbumActivity, entry.saint)?.let { frameName ->
+                    val sparkle = Avatars.frameDrawable(this@AlbumActivity, frameName)
+                    frame.setImageDrawable(sparkle)
+                    frame.visibility = View.VISIBLE
+                    sparkle.start()
+                }
             }
         }
         dialog.show()
@@ -439,11 +442,11 @@ class AlbumActivity : AppCompatActivity() {
                 if (card.special) {
                     holder.frame.setImageDrawable(Avatars.silverFrame(context))
                     holder.frame.visibility = View.VISIBLE
-                } else if (Avatars.isLegendary(context, entry.saint)) {
-                    // A recycled cell keeps its animation only if it is the same frame (gold or special).
-                    val frameName = Avatars.frameName(context, entry.saint)
+                } else {
+                    val frameName = Avatars.frameName(context, entry.saint) ?: return@launch
+                    // A recycled cell keeps its animation only if it is the same frame.
                     if (holder.frame.drawable !is AnimationDrawable || holder.frame.tag != frameName) {
-                        holder.frame.setImageDrawable(Avatars.frameDrawable(context, entry.saint))
+                        holder.frame.setImageDrawable(Avatars.frameDrawable(context, frameName))
                         holder.frame.tag = frameName
                     }
                     holder.frame.visibility = View.VISIBLE

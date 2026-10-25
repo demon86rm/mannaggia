@@ -18,7 +18,8 @@ import java.util.concurrent.ConcurrentHashMap
  * Each saint is `<sha1(name)[:12]>.png` (48x48), the same id as the audio files.
  * Legendary saints (assets/avatar/leggendari.txt) get an animated gold frame
  * (cornice_00..11.png) drawn on top, or their own frame when cornici.txt names one
- * (e.g. the flames of Saint Joan of Arc, fuoco_00..11.png).
+ * (e.g. the flames of Saint Joan of Arc, fuoco_00..11.png). With the "Colorful" option
+ * the other saints get one too, and martyrs the flames, as listed in cornici_colorful.txt.
  */
 object Avatars {
 
@@ -39,6 +40,10 @@ object Avatars {
     /** Saint -> special frame name, from cornici.txt. */
     @Volatile
     private var specialFrames: Map<String, String>? = null
+
+    /** Saint -> frame name with the "Colorful" option, from cornici_colorful.txt. */
+    @Volatile
+    private var colorfulFrames: Map<String, String>? = null
 
     /** Saint -> card number (1 = most famous), from catalogo.txt. */
     @Volatile
@@ -119,25 +124,37 @@ object Avatars {
         runCatching { pixelated(context, decode(context, file)) }.getOrNull()
     }
 
-    /** Name of the animated frame of legendary [saint]: "cornice" (gold) or its own from cornici.txt. */
-    suspend fun frameName(context: Context, saint: String): String = withContext(Dispatchers.IO) {
-        val map = specialFrames ?: runCatching {
-            context.applicationContext.assets.open("$DIR/cornici.txt").bufferedReader(Charsets.UTF_8)
-                .useLines { lines ->
-                    lines.filter { it.isNotBlank() && !it.startsWith("#") }
-                        .mapNotNull { line -> line.split('\t').takeIf { it.size == 2 }?.let { it[0].trim() to it[1].trim() } }
-                        .toMap()
-                }
-        }.getOrDefault(emptyMap()).also { specialFrames = it }
-        map[saint] ?: GOLD_FRAME
+    /**
+     * Name of the animated frame of [saint], or null for none. With the "Colorful" option,
+     * the one in cornici_colorful.txt; otherwise (and for legendary saints not listed there)
+     * legendary saints only: "cornice" (gold) or their own from cornici.txt.
+     */
+    suspend fun frameName(context: Context, saint: String): String? = withContext(Dispatchers.IO) {
+        if (Prefs.colorfulEnabled(context)) {
+            val colorful = colorfulFrames ?: frameTable(context, "cornici_colorful.txt").also { colorfulFrames = it }
+            colorful[saint]?.let { return@withContext it }
+        }
+        if (!isLegendary(context, saint)) return@withContext null
+        val special = specialFrames ?: frameTable(context, "cornici.txt").also { specialFrames = it }
+        special[saint] ?: GOLD_FRAME
     }
 
+    /** A saint<TAB>frame table from assets/avatar/[file]. */
+    private fun frameTable(context: Context, file: String): Map<String, String> = runCatching {
+        context.applicationContext.assets.open("$DIR/$file").bufferedReader(Charsets.UTF_8)
+            .useLines { lines ->
+                lines.filter { it.isNotBlank() && !it.startsWith("#") }
+                    .mapNotNull { line -> line.split('\t').takeIf { it.size == 2 }?.let { it[0].trim() to it[1].trim() } }
+                    .toMap()
+            }
+    }.getOrDefault(emptyMap())
+
     /**
-     * A new animated frame for legendary [saint]: the sparkling gold one, or its own
+     * A new animated frame [name] (from [frameName]): the sparkling gold one, or another
      * (each view needs its own drawable; the bitmaps are shared).
      */
-    suspend fun frameDrawable(context: Context, saint: String): AnimationDrawable = withContext(Dispatchers.IO) {
-        val bitmaps = frameBitmaps(context, frameName(context, saint))
+    suspend fun frameDrawable(context: Context, name: String): AnimationDrawable = withContext(Dispatchers.IO) {
+        val bitmaps = frameBitmaps(context, name)
         AnimationDrawable().apply {
             for (b in bitmaps) addFrame(pixelated(context, b), FRAME_MS)
             isOneShot = false

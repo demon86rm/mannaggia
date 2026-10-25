@@ -81,6 +81,8 @@ Cambialo da «Ordina e filtra».</string>
     <string name="album_detail_found_number">N° %1$d · scoperta #%2$d</string>
     <string name="pref_splash_choir_title">Coro all\'avvio</string>
     <string name="pref_splash_choir_summary">Il coro angelico accompagna la schermata iniziale (al volume dei contenuti multimediali)</string>
+    <string name="pref_colorful_title">Colorful</string>
+    <string name="pref_colorful_summary">Una cornice animata per ogni figurina: fuoco per i martiri, neon, vaporwave, arcobaleno, legno e altre</string>
     <string name="pref_card_anim_title">Animazione nuove figurine</string>
     <string name="pref_card_anim_summary">Le nuove figurine compaiono con un rimbalzo e volano nell\'album (i leggendari sono sempre animati)</string>
     <string name="btn_trophies">Trofei</string>
