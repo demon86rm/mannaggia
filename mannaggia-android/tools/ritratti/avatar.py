@@ -1691,6 +1691,17 @@ def regole(name, donna, beato, labels, birth):
         t.attributo = "palma"  # the martyr's palm wins over generic attributes, not over the crozier
     elif t.attributo == "nessuno":
         t.attributo = ["nessuno", "libro", "croce", "giglio"][h(name, "attr") % 4]
+    # The epithet wins over the age set above (e.g. the hermit's): "San Basilio il Giovane"
+    # must not look older than "San Basilio il Vecchio". Grey hair comes with "anziano".
+    if " il Giovane" in name or " la Giovane" in name:
+        t.eta = "giovane"
+        if not donna:
+            t.barba = "corta" if t.barba == "lunga" else t.barba
+            t.capelli = "corti" if t.capelli == "calvo" else t.capelli
+    elif " il Vecchio" in name or " la Vecchia" in name:
+        t.eta = "anziano"
+        if not donna and t.barba == "nessuna":
+            t.barba = "lunga"
     return t
 
 
