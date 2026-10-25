@@ -1,5 +1,6 @@
 package com.mannaggia.app
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
@@ -16,7 +17,9 @@ import android.widget.RadioGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.core.view.ViewCompat
+import androidx.core.view.drawToBitmap
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -28,6 +31,7 @@ import com.mannaggia.app.databinding.ActivityAlbumBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.io.File
 import java.text.Collator
 import java.text.DateFormatSymbols
 import java.util.Date
@@ -58,6 +62,8 @@ class AlbumActivity : AppCompatActivity() {
     private var blessedTotal = 0
     private val collator: Collator = Collator.getInstance(Locale.ITALIAN)
     private var favourites: Set<String> = emptySet()
+    /** Saints that entered the album as a gift. */
+    private var gifts: Set<String> = emptySet()
     private var showFavourites = false
     /** Saints selected in selection mode (empty = not selecting). */
     private val selected = linkedSetOf<String>()
@@ -133,6 +139,7 @@ class AlbumActivity : AppCompatActivity() {
             }.sortedBy { it.number }
             cards = specials + found
             favourites = Preferiti.all(this@AlbumActivity)
+            gifts = Dono.arrivedAsGift(this@AlbumActivity)
             show()
         }
     }
@@ -317,6 +324,32 @@ class AlbumActivity : AppCompatActivity() {
         }
     }
 
+    // --- Share and gift -------------------------------------------------------------------
+
+    /** Share the card as an image (portrait and frame as shown) with a line of text. */
+    private fun shareCard(card: Card, image: View) {
+        val saint = card.entry.saint
+        val file = File(File(cacheDir, "condivisi").apply { mkdirs() }, "${Avatars.fileId(saint)}.png")
+        file.outputStream().use { image.drawToBitmap().compress(Bitmap.CompressFormat.PNG, 100, it) }
+        val number = if (card.special) getString(R.string.share_special, card.number)
+        else getString(R.string.share_number, card.number)
+        val send = Intent(Intent.ACTION_SEND)
+            .setType("image/png")
+            .putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, "$packageName.condivisi", file))
+            .putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text, saint, number))
+            .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        startActivity(Intent.createChooser(send, getString(R.string.share_chooser)))
+    }
+
+    /** Gift the card to a friend: a link that adds it to their album (see [Dono]). */
+    private fun giftCard(saint: String) {
+        lifecycleScope.launch { Trofei.donoInviato(this@AlbumActivity, saint) }
+        val send = Intent(Intent.ACTION_SEND)
+            .setType("text/plain")
+            .putExtra(Intent.EXTRA_TEXT, getString(R.string.gift_text, saint, Dono.link(saint)))
+        startActivity(Intent.createChooser(send, getString(R.string.gift_chooser)))
+    }
+
     // --- Detail ---------------------------------------------------------------------------
 
     /** Bottom sheet with the big portrait, legend badge, feast days, discovery date and bookmark. */
@@ -332,11 +365,17 @@ class AlbumActivity : AppCompatActivity() {
         view.findViewById<TextView>(R.id.txtFound).text = if (card.trophy != null)
             getString(R.string.album_detail_special, card.number, card.trophy.nome) + "\n" + foundOn(entry)
         else
-            getString(R.string.album_detail_found_number, card.number, card.discovery) + "\n" + foundOn(entry)
+            getString(R.string.album_detail_found_number, card.number, card.discovery) + "\n" + foundOn(entry) +
+                if (entry.saint in gifts) " · " + getString(R.string.album_gift_received) else ""
         suspend fun showBookmark() {
             val fav = entry.saint in favourites
             bookmark.setImageDrawable(Avatars.bookmark(this@AlbumActivity, fav))
             bookmark.contentDescription = getString(if (fav) R.string.fav_remove else R.string.fav_add)
+        }
+        view.findViewById<View>(R.id.btnShare).setOnClickListener { shareCard(card, view.findViewById(R.id.cardImage)) }
+        view.findViewById<View>(R.id.btnGift).apply {
+            if (card.special) visibility = View.GONE        // special cards are won, not given
+            else setOnClickListener { giftCard(entry.saint) }
         }
         bookmark.setOnClickListener {
             lifecycleScope.launch {

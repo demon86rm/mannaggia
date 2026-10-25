@@ -7,7 +7,9 @@
     android:orientation="vertical"
     android:padding="24dp">
 
+    <!-- Also the image shared with "Condividi" (portrait and frame). -->
     <FrameLayout
+        android:id="@+id/cardImage"
         android:layout_width="240dp"
         android:layout_height="240dp">
 
@@ -47,6 +49,27 @@
         android:contentDescription="@string/fav_add"
         android:padding="6dp"
         android:scaleType="fitCenter" />
+
+    <!-- Share the card (image and text), or gift it to a friend as a link (not the special cards). -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnShare"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/share_button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGift"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gift_button" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txtLegend"

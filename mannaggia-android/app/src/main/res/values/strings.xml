@@ -63,6 +63,16 @@
     <string name="album_category_blessed">Beati</string>
     <string name="album_empty_filter">Nessuna figurina con questo filtro.
 Cambialo da «Ordina e filtra».</string>
+    <string name="share_button">Condividi</string>
+    <string name="share_chooser">Condividi con…</string>
+    <!-- "Ho trovato Santa Giovanna d'Arco (N° 6) su Mannaggia! <link>" -->
+    <string name="share_text">Ho trovato %1$s (%2$s) su Mannaggia! https://play.google.com/store/apps/details?id=io.github.demon86rm.mannaggia</string>
+    <string name="share_number">N° %1$d</string>
+    <string name="share_special">figurina speciale S%1$d</string>
+    <string name="gift_button">Regala</string>
+    <string name="gift_chooser">Regala a…</string>
+    <string name="gift_text">Ti regalo %1$s per il tuo album di Mannaggia! %2$s</string>
+    <string name="album_gift_received">ricevuta in dono</string>
     <string name="album_selected">%1$d selezionate</string>
     <string name="album_found_on">Trovato il %1$s alle %2$s</string>
     <string name="album_legendary">⭐ Santo leggendario</string>

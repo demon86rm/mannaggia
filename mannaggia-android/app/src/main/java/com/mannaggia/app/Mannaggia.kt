@@ -48,6 +48,14 @@ object Mannaggia {
         (saints ?: loadSaints(context).also { saints = it }).size
     }
 
+    /** True if [name] is in the bundled list (not the special cards). */
+    suspend fun isSaint(context: Context, name: String): Boolean = withContext(Dispatchers.IO) {
+        name in (saintSet ?: loadSaints(context).toHashSet().also { saintSet = it })
+    }
+
+    @Volatile
+    private var saintSet: Set<String>? = null
+
     /** Number of blessed ("Beato", "Beata") in the bundled list; the others are saints. */
     suspend fun blessedCount(context: Context): Int = withContext(Dispatchers.IO) {
         (saints ?: loadSaints(context).also { saints = it }).count { isBlessed(it) }

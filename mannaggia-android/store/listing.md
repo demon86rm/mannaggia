@@ -28,6 +28,7 @@ L'ALBUM DEI SANTI
 • I santi più famosi sono leggendari: cornice d'oro e coro angelico quando li trovi
 • Il santo del giorno: un'invocazione al giorno dal calendario
 • Segna i tuoi santi preferiti con lo stendardo e invocali quando vuoi
+• Regala ai tuoi amici i santi che mancano al loro album, con un link
 
 TROFEI SEGRETI
 • Certi gesti, orari e costanze vengono premiati. Cosa sblocca cosa non lo diciamo
@@ -40,13 +41,19 @@ STILE MEDIEVALE
 PRIVACY
 • Funziona completamente offline: nessun permesso di rete
 • Nessuna pubblicità, nessun account, nessun tracciamento
-• Album, trofei e preferiti restano sul tuo telefono
+• Album, trofei e preferiti restano sul tuo telefono (anche i doni: il link contiene solo il nome del santo)
 
 SOFTWARE LIBERO
 Mannaggia è rilasciata sotto licenza GNU GPL v3. Il codice sorgente è su GitHub: https://github.com/demon86rm/mannaggia
 L'elenco dei santi proviene da Wikidata (CC0). I caratteri gotici sono sotto SIL Open Font License.
 
 Umorismo da sistemisti, senza bestemmie.
+
+## Note di rilascio 2.1.0 (max 500 caratteri)
+
+• Regala i tuoi santi agli amici: dal dettaglio dell'album tocca «Regala» e manda il link, la figurina finisce nel loro album
+• Condividi le tue figurine su WhatsApp, Telegram e social
+• Nuovi trofei segreti per chi fa e riceve doni
 
 ## Note di rilascio 2.0.1 (max 500 caratteri)
 

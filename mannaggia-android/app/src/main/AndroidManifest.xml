@@ -19,7 +19,28 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- Gift links (Dono): verified by .well-known/assetlinks.json on demon86rm.github.io. -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="demon86rm.github.io"
+                    android:pathPrefix="/mannaggia/dono"
+                    android:scheme="https" />
+            </intent-filter>
         </activity>
+
+        <!-- Card images for the share sheet (cache/condivisi), readable only by the chosen app. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.condivisi"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/condivisi" />
+        </provider>
 
         <activity
             android:name=".SettingsActivity"

@@ -29,6 +29,11 @@ Generatore di "Mannaggia <santo>!". Nella root ci sono lo script bash (`mannaggi
 - Non rigenerare `santi.txt` senza motivo: i nomi sono la chiave dei file audio (`sha1`), dei ritratti, della cache `tratti_wikidata.json`, dell'album e dei preferiti.
 - Per correggere solo i titoli dei nomi (es. "San Saint Amun" → "Sant'Amun") senza ripescare da Wikidata, che nel tempo cambia: `python3 -I tools/genera_santi.py --correggi app/src/main/assets/santi.txt > nuovo.txt`. Le coppie vecchio → nuovo che stampa vanno in `Rinominati.kt` (migrazione di album e preferiti) e nelle chiavi di `tratti_wikidata.json`; poi rigenera feste e ritratti e cancella i ritratti dei nomi vecchi.
 
+## Doni (link)
+- I link dei doni (`Dono.kt`) sono App Link verificati da `https://demon86rm.github.io/.well-known/assetlinks.json`, nel repo `demon86rm/demon86rm.github.io`, che contiene anche la pagina di ripiego `mannaggia/dono/`. Ci sono le impronte SHA-256 della firma di Play, della chiave di upload e della chiave di debug di WSL (package `.debug`): se cambia una chiave, va aggiornato quel file.
+- Il link è input non fidato: si accettano solo nomi di `santi.txt`. Il santo sta nel frammento `#` (il pulsante della pagina usa la query, perché `intent://` occupa il frammento).
+- Non rinominare l'account GitHub: il dominio dei link è `demon86rm.github.io`.
+
 ## Shell
 - zsh: nei comandi da incollare niente `!` tra virgolette doppie (history expansion). Usa le virgolette singole e `'\''` per gli apostrofi.
 - Metti tra virgolette singole i glob negli argomenti, ad es. `--include='*.kt'`.
