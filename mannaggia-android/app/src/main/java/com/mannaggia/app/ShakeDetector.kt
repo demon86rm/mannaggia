@@ -31,6 +31,7 @@ class ShakeDetector(private val onShake: () -> Unit) : SensorEventListener {
 
     companion object {
         private const val SHAKE_THRESHOLD_G = 2.7f
-        private const val COOLDOWN_MS = 1_500L
+        /** 1.5 s lost the next shake after a phrase; invokeSaint blocks double invocations anyway. */
+        private const val COOLDOWN_MS = 1_000L
     }
 }

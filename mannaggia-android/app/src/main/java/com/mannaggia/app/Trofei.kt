@@ -49,7 +49,7 @@ object Trofei {
             colore("inferno", "Fuoco infernale")),
         Trofeo("helvetica", "Il diavolo veste Helvetica", "Cambiare carattere 666 volte",
             carattere("sans-serif-black", "Black")),
-        Trofeo("esorcismo", "Esorcismo", "Scuotere il telefono 7 volte in 15 secondi",
+        Trofeo("esorcismo", "Esorcismo", "Scuotere il telefono 5 volte in 15 secondi",
             effetto("tremolio", "Tremolio")),
         Trofeo("trinita", "Santissima Trinità", "Imprecare dal pulsante, dal widget e dal riquadro",
             effetto("aureola", "Aureola")),
@@ -93,7 +93,7 @@ object Trofei {
     /** "S3" number of a special card (1-based), or null. */
     fun specialNumber(saint: String): Int? = SPECIALI.indexOf(saint).takeIf { it >= 0 }?.plus(1)
 
-    private const val ESORCISMO_SHAKES = 7
+    private const val ESORCISMO_SHAKES = 5      // 7 was hard: shakes come at most 1 s apart and peaks can be missed
     private const val ESORCISMO_WINDOW_MS = 15_000L
     private const val PELLEGRINO_DAYS = 7
     private const val PAZIENZA_OPENS = 50
