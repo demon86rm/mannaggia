@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -20,8 +21,9 @@ import kotlinx.coroutines.launch
 import java.util.Date
 
 /**
- * Trophies: unlocked ones show cup, name, condition, reward and date; locked
- * ones are a grey cup and "???", with no hint.
+ * Trophies: unlocked ones show cup, name, reward and date, and a tap opens the detail with
+ * the condition (not in the list, so a screenshot of it doesn't spoil how to win them);
+ * locked ones are a grey cup and "???", with no hint.
  */
 class TrofeiActivity : AppCompatActivity() {
 
@@ -82,7 +84,7 @@ class TrofeiActivity : AppCompatActivity() {
                 holder.cup.colorFilter = null
                 holder.cup.alpha = 1f
                 holder.name.text = t.nome
-                holder.condition.text = t.condizione
+                holder.condition.visibility = View.GONE
                 holder.reward.text = t.ricompensa.descrizione
                 holder.reward.visibility = View.VISIBLE
                 val d = Date(at)
@@ -92,14 +94,24 @@ class TrofeiActivity : AppCompatActivity() {
                     DateFormat.getTimeFormat(this@TrofeiActivity).format(d)
                 )
                 holder.date.visibility = View.VISIBLE
+                holder.itemView.setOnClickListener {
+                    AlertDialog.Builder(this@TrofeiActivity)
+                        .setTitle(t.nome)
+                        .setMessage(listOf(t.condizione, t.ricompensa.descrizione, holder.date.text).joinToString("\n\n"))
+                        .setPositiveButton(android.R.string.ok, null)
+                        .show()
+                }
             } else {
                 // Locked: grey cup, no name, no hint.
                 holder.cup.colorFilter = ColorMatrixColorFilter(ColorMatrix().apply { setSaturation(0f) })
                 holder.cup.alpha = 0.45f
                 holder.name.text = getString(R.string.trophy_locked)
                 holder.condition.text = getString(R.string.trophy_locked_hint)
+                holder.condition.visibility = View.VISIBLE
                 holder.reward.visibility = View.GONE
                 holder.date.visibility = View.GONE
+                holder.itemView.setOnClickListener(null)
+                holder.itemView.isClickable = false
             }
         }
     }

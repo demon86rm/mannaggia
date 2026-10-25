@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- One trophy: cup (grey when locked), name, condition, reward, date. Locked trophies show "???". -->
+<!-- One trophy: cup (grey when locked), name, reward, date (the condition is in the detail on tap).
+     Locked trophies show "???" and the generic hint in txtCondition. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:minHeight="72dp"
     android:orientation="horizontal"
