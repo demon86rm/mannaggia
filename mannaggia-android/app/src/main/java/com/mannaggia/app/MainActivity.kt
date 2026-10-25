@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.os.Build
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.speech.tts.TextToSpeech
@@ -64,10 +65,16 @@ class MainActivity : AppCompatActivity() {
         // that, rotations and theme changes don't show it. The notification permission is asked
         // after it, so the dialog doesn't cover it.
         splashDone = savedInstanceState?.getBoolean(KEY_SPLASH_DONE) == true
+        // A gift link (Dono) opened the app: its card appears once the splash is gone.
+        val gift = if (savedInstanceState == null) intent.data else null
         if (!splashDone) Splash.show(this, afterRecreation = savedInstanceState != null) {
             splashDone = true
             askForNotificationPermissionIfNeeded()
-        } else askForNotificationPermissionIfNeeded()
+            receiveGift(gift)
+        } else {
+            askForNotificationPermissionIfNeeded()
+            receiveGift(gift)
+        }
         // Debug builds only: start with a given saint, e.g.
         // adb shell am start -n io.github.demon86rm.mannaggia.debug/com.mannaggia.app.MainActivity -e santo "San Carlo I di Fiandra"
         if (BuildConfig.DEBUG && savedInstanceState == null) intent.getStringExtra("santo")?.let { santo ->
@@ -251,8 +258,19 @@ class MainActivity : AppCompatActivity() {
 
     /** Show (and optionally speak) the phrase for the saint returned by [pick]: random by default. */
     /** Returns false (and does nothing) while a previous invocation is still in flight. */
+    /** Show the card of a gift link, if [uri] is a valid one (invalid links are ignored). */
+    private fun receiveGift(uri: Uri?) {
+        if (uri == null) return
+        lifecycleScope.launch {
+            val saint = Dono.parse(this@MainActivity, uri) ?: return@launch
+            invokeSaint(gift = true) { saint }
+        }
+    }
+
+    /** [gift]: the saint comes from a gift link, which is not an invocation for the trophies. */
     private fun invokeSaint(
         fonte: Trofei.Fonte = Trofei.Fonte.PULSANTE,
+        gift: Boolean = false,
         pick: suspend () -> String = { Mannaggia.randomSaint(this) },
     ): Boolean {
         // Ignore button, shake and saint-of-the-day triggers until the previous phrase
@@ -274,7 +292,10 @@ class MainActivity : AppCompatActivity() {
                     val isNew = !Trofei.isSpecial(saint) &&
                         runCatching { Album.record(this@MainActivity, saint) }.getOrDefault(false)
                     val choir = showCard(saint, isNew)
-                    runCatching { Trofei.invocazione(this@MainActivity, fonte, saint, isNew) }
+                    runCatching {
+                        if (gift) Trofei.dono(this@MainActivity, saint, isNew)
+                        else Trofei.invocazione(this@MainActivity, fonte, saint, isNew)
+                    }
                     announceTrophies()
                     val phrase = Mannaggia.phraseOf(saint)
                     PhraseEffects.setText(binding.txtResult, phrase)

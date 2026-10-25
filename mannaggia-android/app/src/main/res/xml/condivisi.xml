@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Card images shared from the album (Condividi), in the cache: see AlbumActivity.shareCard. -->
+<paths>
+    <cache-path name="condivisi" path="condivisi/" />
+</paths>

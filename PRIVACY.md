@@ -1,6 +1,6 @@
 # Informativa sulla privacy — Mannaggia (app Android)
 
-*Ultimo aggiornamento: 22 ottobre 2026*
+*Ultimo aggiornamento: 25 ottobre 2026*
 
 Mannaggia (`io.github.demon86rm.mannaggia`) non raccoglie e non trasmette dati personali.
 
@@ -8,6 +8,7 @@ Mannaggia (`io.github.demon86rm.mannaggia`) non raccoglie e non trasmette dati p
 - **Nessun account, analytics, pubblicità o tracciamento.** Nell'app non sono presenti SDK di terze parti per statistiche, pubblicità o crash reporting.
 - **Dati salvati solo sul dispositivo.** L'album dei santi trovati, i trofei, i preferiti, alcune statistiche di gioco (per esempio il numero di invocazioni) e le opzioni sono salvati nella memoria privata dell'app sul telefono e non lasciano mai il dispositivo. Possono essere inclusi nel backup del dispositivo, se lo hai attivato nelle impostazioni di Android. Disinstallando l'app vengono cancellati.
 - **Sintesi vocale.** La pronuncia usa il motore di sintesi vocale installato sul dispositivo (per esempio quello di Google). Il testo pronunciato è la frase mostrata a schermo, a volte scritta in modo diverso perché venga letta correttamente (per esempio i numeri romani in lettere). Il suo trattamento dipende dal motore scelto nelle impostazioni del telefono.
+- **Condivisione e doni.** "Condividi" e "Regala" passano un'immagine della figurina, una frase e un link all'app che scegli (WhatsApp, Telegram, email…): è quell'app a inviarli, secondo le sue regole. Il link di un dono contiene solo il nome del santo, dopo il simbolo `#`, che il browser non invia al server. La pagina https://demon86rm.github.io/mannaggia/dono/, che si apre se non hai l'app, è statica: non usa cookie né statistiche. I doni fatti e ricevuti sono annotati solo sul telefono.
 - **Notifiche.** Il permesso di notifica serve solo a mostrare la frase quando si usa il riquadro delle Impostazioni rapide.
 - **Sensori.** L'accelerometro serve solo a rilevare lo scuotimento del telefono mentre l'app è aperta; i dati non vengono salvati.
 
@@ -17,7 +18,7 @@ Per domande o segnalazioni: demon86rm@gmail.com oppure https://github.com/demon8
 
 # Privacy policy — Mannaggia (Android app)
 
-*Last updated: October 22, 2026*
+*Last updated: October 25, 2026*
 
 Mannaggia (`io.github.demon86rm.mannaggia`) does not collect or transmit any personal data.
 
@@ -25,6 +26,7 @@ Mannaggia (`io.github.demon86rm.mannaggia`) does not collect or transmit any per
 - **No accounts, analytics, ads or tracking.** The app contains no third-party SDKs for analytics, advertising or crash reporting.
 - **Data stored only on the device.** The album of saints found, the trophies, the favourites, a few game statistics (such as the number of invocations) and the settings are stored in the app's private storage on the phone and never leave the device. They may be included in the device backup, if you turned it on in the Android settings. Uninstalling the app deletes them.
 - **Text-to-speech.** Speech uses the text-to-speech engine installed on the device (for example Google's). The text spoken is the phrase shown on screen, sometimes spelled differently so that it is read correctly (for example Roman numerals in words). How it is processed depends on the engine selected in the phone's settings.
+- **Sharing and gifts.** "Condividi" and "Regala" pass a picture of the card, a sentence and a link to the app you choose (WhatsApp, Telegram, email…), which sends them under its own rules. A gift link holds only the saint's name, after the `#` sign, which browsers don't send to the server. The page https://demon86rm.github.io/mannaggia/dono/, shown if you don't have the app, is static: no cookies, no statistics. Gifts made and received are logged only on the phone.
 - **Notifications.** The notification permission is used only to show the phrase when the Quick Settings tile is used.
 - **Sensors.** The accelerometer is used only to detect shaking while the app is open; no data is stored.
 
