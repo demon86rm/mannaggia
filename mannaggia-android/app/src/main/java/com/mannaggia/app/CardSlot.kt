@@ -30,8 +30,9 @@ import kotlinx.coroutines.withTimeoutOrNull
  *   flies into the binder [target], which bounces; the card itself stays.
  * - A saint already in the album just fades in, labelled "Già nell'album".
  * - New legendary saints also get the angelic choir, a pulsing gold glow and wait for
- *   a tap before their copy flies. Legendary cards always keep the sparkling frame,
- *   special cards (S1–S6) the silver one.
+ *   a tap before their copy flies. Legendary cards always keep the sparkling frame
+ *   (with the "Colorful" option every card has an animated one), special cards (S1–S6)
+ *   the silver one.
  */
 class CardSlot(
     private val card: ViewCardBinding,
@@ -103,13 +104,17 @@ class CardSlot(
                     card.imgFrame.setImageDrawable(Avatars.silverFrame(context))
                     card.imgFrame.visibility = View.VISIBLE
                 }
-                legendary -> {
-                    val sparkle = Avatars.frameDrawable(context, saint)
-                    card.imgFrame.setImageDrawable(sparkle)
-                    card.imgFrame.visibility = View.VISIBLE
-                    sparkle.start()
+                else -> {
+                    val frameName = Avatars.frameName(context, saint)
+                    if (frameName != null) {
+                        val sparkle = Avatars.frameDrawable(context, frameName)
+                        card.imgFrame.setImageDrawable(sparkle)
+                        card.imgFrame.visibility = View.VISIBLE
+                        sparkle.start()
+                    } else {
+                        card.imgFrame.visibility = View.GONE
+                    }
                 }
-                else -> card.imgFrame.visibility = View.GONE
             }
 
             showBookmark(context, saint)

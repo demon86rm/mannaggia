@@ -10,7 +10,9 @@ variazioni (carnagione, colori, volto) sono deterministiche: dipendono dal nome.
 
 I santi leggendari hanno in piu' una cornice d'oro (cornice()), disegnata come
 livello separato cosi' l'app puo' applicarla sopra l'avatar. Alcuni hanno una cornice
-tutta loro (CORNICI, es. le fiamme del rogo per Giovanna d'Arco).
+tutta loro (CORNICI, es. le fiamme del rogo per Giovanna d'Arco). Con l'opzione
+"Colorful" dell'app anche gli altri santi hanno una cornice animata (COLORATE: argento,
+legno, arcobaleno, neon, vaporwave, ...; il fuoco ai martiri non leggendari), elencata in cornici_colorful.txt.
 
 Uso (venv con pillow; dalla cartella mannaggia-android):
     python tools/ritratti/avatar.py --nomi lista.txt --out ~/mannaggia-avatar-prova
@@ -20,6 +22,7 @@ Uso (venv con pillow; dalla cartella mannaggia-android):
 """
 
 import argparse
+import colorsys
 import hashlib
 import importlib.util
 import math
@@ -1151,13 +1154,49 @@ FRAME_STEPS = 12  # fotogrammi dell'animazione: 12 x 167 ms = un giro ogni 2 sec
 FRAME_MS = 167
 
 
-def _perimeter():
-    """Pixel coordinates along the outer ring, clockwise from the top-left corner."""
-    top = [(x, 0) for x in range(S)]
-    right = [(S - 1, y) for y in range(1, S)]
-    bottom = [(x, S - 1) for x in range(S - 2, -1, -1)]
-    left = [(0, y) for y in range(S - 2, 0, -1)]
+CORNERS = ((0, 0), (S - 5, 0), (S - 5, S - 5), (0, S - 5))
+
+
+def _perimeter(inset=0):
+    """Pixel coordinates along the ring [inset] px inside the edge, clockwise from the top-left corner."""
+    a, b = inset, S - 1 - inset
+    top = [(x, a) for x in range(a, b + 1)]
+    right = [(b, y) for y in range(a + 1, b + 1)]
+    bottom = [(x, b) for x in range(b - 1, a - 1, -1)]
+    left = [(a, y) for y in range(b - 1, a, -1)]
     return top + right + bottom + left
+
+
+def _gemma(c, x, y, palette, step, i):
+    """Gem at (x, y). With [step] it cycles through the 4 light levels of [palette] with its
+    own phase [i] (triangle wave 0,1,2,3,2,1, so gems don't blink together) and a white
+    glint up-left at the peak; without it, the still gem palette[1]."""
+    if step is None:
+        c.px(x, y, palette[1])
+        return
+    k = (step + i * 3) % 6
+    level = k if k < 4 else 6 - k
+    c.px(x, y, palette[level])
+    if level == 3:  # riflesso bianco al massimo della luce
+        c.px(x - 1, y - 1, (255, 255, 255))
+
+
+def _luccichio(c, step, plain, colours):
+    """A short glint ([colours], 3 px) running once around the outer border per animation,
+    only over the [plain] border colours (not over corners and gems)."""
+    if step is None:
+        return
+    ring = _perimeter()
+    start = step * len(ring) // FRAME_STEPS
+    for j, col in enumerate(colours):
+        x, y = ring[(start + j) % len(ring)]
+        if c.img.getpixel((x, y))[:3] in plain:
+            c.px(x, y, col)
+
+
+def _schiarisci(col, f):
+    """[col] moved a fraction [f] towards white."""
+    return tuple(round(v + (255 - v) * f) for v in col)
 
 
 def cornice(step=None):
@@ -1170,35 +1209,14 @@ def cornice(step=None):
     c = Canvas()
     c.d.rectangle((0, 0, S - 1, S - 1), outline=GOLD_DARK + (255,))
     c.d.rectangle((1, 1, S - 2, S - 2), outline=GOLD_LIGHT + (255,))
-
-    def gem(i, palette):
-        if step is None:
-            return palette[1], False
-        # Triangle wave 0,1,2,3,2,1,... shifted per gem so they don't blink together.
-        k = (step + i * 3) % 6
-        level = k if k < 4 else 6 - k
-        return palette[level], level == 3
-
-    for i, (x, y) in enumerate(((0, 0), (S - 5, 0), (S - 5, S - 5), (0, S - 5))):
+    for i, (x, y) in enumerate(CORNERS):
         c.rect((x, y, x + 4, y + 4), GOLD)
         c.d.rectangle((x, y, x + 4, y + 4), outline=GOLD_DARK + (255,))
-        col, peak = gem(i, GEM_RED)
-        c.px(x + 2, y + 2, col)
-        if peak:  # riflesso bianco al massimo della luce
-            c.px(x + 1, y + 1, (255, 255, 255))
+        _gemma(c, x + 2, y + 2, GEM_RED, step, i)
     for i, (x, y) in enumerate(((S // 2 - 1, 0), (S - 3, S // 2 - 1), (S // 2 - 1, S - 3), (0, S // 2 - 1))):
         c.rect((x, y, x + 2, y + 2), GOLD)
-        col, peak = gem(i + 4, GEM_BLUE)
-        c.px(x + 1, y + 1, col)
-        if peak:
-            c.px(x, y, (255, 255, 255))
-    if step is not None:
-        ring = _perimeter()
-        start = step * len(ring) // FRAME_STEPS
-        for j, col in enumerate((GOLD_LIGHT, (255, 250, 220), GOLD_LIGHT)):
-            x, y = ring[(start + j) % len(ring)]
-            if c.img.getpixel((x, y))[:3] in (GOLD_DARK, GOLD_LIGHT):  # only on the plain border
-                c.px(x, y, col)
+        _gemma(c, x + 1, y + 1, GEM_BLUE, step, i + 4)
+    _luccichio(c, step, (GOLD_DARK, GOLD_LIGHT), (GOLD_LIGHT, (255, 250, 220), GOLD_LIGHT))
     return c.img
 
 # Fiamme: dalla base (piu' calda, quasi bianca) alla punta (rosso scuro).
@@ -1446,17 +1464,144 @@ def raccoglitore():
 SILVER, SILVER_DARK, SILVER_LIGHT = (196, 202, 212), (120, 126, 140), (238, 242, 248)
 
 
-def cornice_argento():
-    """Still silver frame for the special (off-catalogue) cards."""
+def _cornice_semplice(dark, light, base, gem, step=None, grana=None):
+    """Frame like the gold one: 2 px border (dark outside, light inside), 5x5 corners with a
+    gem in the middle, transparent inside. [grana] recolours 2 light pixels every 7 (wood
+    grain). With [step], one frame of the animation (gems and glint as on the gold one)."""
     c = Canvas()
-    c.d.rectangle((0, 0, S - 1, S - 1), outline=SILVER_DARK + (255,))
-    c.d.rectangle((1, 1, S - 2, S - 2), outline=SILVER_LIGHT + (255,))
-    for (x, y) in ((0, 0), (S - 5, 0), (S - 5, S - 5), (0, S - 5)):
-        c.rect((x, y, x + 4, y + 4), SILVER)
-        c.d.rectangle((x, y, x + 4, y + 4), outline=SILVER_DARK + (255,))
-        c.px(x + 2, y + 2, (90, 170, 230))
+    c.d.rectangle((0, 0, S - 1, S - 1), outline=dark + (255,))
+    c.d.rectangle((1, 1, S - 2, S - 2), outline=light + (255,))
+    if grana:
+        for j, (x, y) in enumerate(_perimeter(1)):
+            if j % 7 < 2:
+                c.px(x, y, grana)
+    gems = [shade(gem, 0.6), gem, _schiarisci(gem, 0.4), _schiarisci(gem, 0.75)]
+    for i, (x, y) in enumerate(CORNERS):
+        c.rect((x, y, x + 4, y + 4), base)
+        c.d.rectangle((x, y, x + 4, y + 4), outline=dark + (255,))
+        _gemma(c, x + 2, y + 2, gems, step, i)
+    glint = _schiarisci(light, 0.3)
+    _luccichio(c, step, (dark, light), (glint, _schiarisci(light, 0.7), glint))
     return c.img
 
+
+def cornice_argento(step=None):
+    """Silver frame: still for the special (off-catalogue) cards, animated among the
+    colorful ones."""
+    return _cornice_semplice(SILVER_DARK, SILVER_LIGHT, SILVER, (90, 170, 230), step)
+
+
+def cornice_bronzo(step=None):
+    return _cornice_semplice((120, 70, 30), (236, 170, 100), (190, 120, 56), (60, 170, 110), step)
+
+
+def cornice_smeraldo(step=None):
+    return _cornice_semplice((20, 80, 50), (110, 200, 130), (40, 140, 80), GOLD, step)
+
+
+def cornice_porpora(step=None):
+    return _cornice_semplice((80, 20, 50), (200, 90, 140), (130, 36, 80), GOLD, step)
+
+
+def cornice_lapislazzuli(step=None):
+    return _cornice_semplice((24, 44, 104), (110, 150, 230), (38, 70, 150), GOLD, step)
+
+
+def cornice_legno(step=None):
+    """Wooden frame: grain on the light side, iron nails in the corners."""
+    return _cornice_semplice(WOOD_DARK, (176, 124, 76), WOOD, STEEL_LIGHT, step, grana=WOOD)
+
+
+def _hsv(f, s, v):
+    return tuple(round(k * 255) for k in colorsys.hsv_to_rgb(f % 1, s, v))
+
+
+def cornice_arcobaleno(step=None):
+    """Rainbow frame: the hue goes once around the border and turns with [step]; white
+    corners with a coloured gem."""
+    giro = (step or 0) / FRAME_STEPS
+    c = Canvas()
+    for inset, v in ((0, 0.75), (1, 1.0)):
+        ring = _perimeter(inset)
+        for j, (x, y) in enumerate(ring):
+            c.px(x, y, _hsv(j / len(ring) - giro, 0.75, v))
+    for i, (x, y) in enumerate(CORNERS):
+        c.rect((x + 1, y + 1, x + 3, y + 3), WHITE)
+        c.px(x + 2, y + 2, _hsv(i / 4 + 1 / 8 - giro, 0.75, 0.9))
+    return c.img
+
+
+NEON_ROSA, NEON_CIANO = (255, 60, 200), (60, 240, 255)
+
+
+def cornice_neon(step=None):
+    """Neon sign frame: a pink tube with a soft glow on both sides and cyan corner bulbs.
+    The tube hums (brightness pulse) and flickers off twice per loop, like a bad starter."""
+    step = step or 0
+    spento = step in (7, 9)
+    c = Canvas()
+    c.d.rectangle((0, 0, S - 1, S - 1), outline=(30, 16, 40, 255))      # the dark backing
+    tubo = shade(NEON_ROSA, 0.35) if spento else _schiarisci(NEON_ROSA, 0.15 + 0.15 * math.sin(2 * math.pi * step / FRAME_STEPS))
+    alone = 0 if spento else 110
+    for x, y in _perimeter(2):
+        c.img.putpixel((x, y), NEON_ROSA + (alone,))                        # glow inside
+    for x, y in _perimeter(1):
+        c.px(x, y, tubo)
+    for i, (x, y) in enumerate(CORNERS):
+        acceso = not spento or i % 2
+        bulbo = _schiarisci(NEON_CIANO, 0.5) if acceso else shade(NEON_CIANO, 0.4)
+        c.rect((x + 1, y + 1, x + 3, y + 3), (30, 16, 40))
+        c.px(x + 2, y + 2, bulbo)
+        if acceso:
+            for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+                c.px(x + 2 + dx, y + 2 + dy, NEON_CIANO)
+    return c.img
+
+
+VAPOR = [(255, 113, 206), (185, 103, 255), (1, 205, 254), (5, 255, 161)]
+
+
+def cornice_vaporwave(step=None):
+    """Vaporwave frame: pastel pink, violet, cyan and mint flowing down the border, with a
+    striped sunset in each corner whose stripes scroll down."""
+    step = step or 0
+
+    def tinta(f):
+        """Colour at [f] (0..1, looping) along the VAPOR gradient."""
+        f = (f % 1) * len(VAPOR)
+        a, b = VAPOR[int(f)], VAPOR[(int(f) + 1) % len(VAPOR)]
+        k = f - int(f)
+        return tuple(round(a[n] + (b[n] - a[n]) * k) for n in range(3))
+
+    c = Canvas()
+    for inset, chiaro in ((0, 0.0), (1, 0.35)):
+        for x, y in _perimeter(inset):
+            c.px(x, y, _schiarisci(tinta(y / S - step / FRAME_STEPS), chiaro))
+    sole = [(255, 230, 110), (255, 160, 90), (255, 90, 150), (150, 70, 200)]
+    for (x, y) in CORNERS:
+        for dy in range(5):
+            c.line([(x, y + dy), (x + 4, y + dy)], sole[(dy - step) % len(sole)])
+        c.d.rectangle((x, y, x + 4, y + 4), outline=(60, 30, 90, 255))
+    return c.img
+
+
+# Cornici dell'opzione "Colorful" dell'app: nome -> funzione (file <nome>_00..11.png).
+# I leggendari tengono la loro cornice; ai martiri va il fuoco, agli altri una delle COLORATE.
+COLORATE = {"argento": cornice_argento, "bronzo": cornice_bronzo, "legno": cornice_legno,
+            "arcobaleno": cornice_arcobaleno, "smeraldo": cornice_smeraldo,
+            "porpora": cornice_porpora, "lapislazzuli": cornice_lapislazzuli,
+            "neon": cornice_neon, "vaporwave": cornice_vaporwave}
+
+
+def cornice_colorata(name, t, leggendario):
+    """Colorful frame name of [name]: none (None) for legendary saints, martyrs too, which
+    keep theirs (gold, or CORNICI); "fuoco" for the other martyrs; otherwise one of
+    COLORATE, random but fixed (it depends only on the name)."""
+    if leggendario:
+        return None
+    if t.martire:
+        return "fuoco"
+    return list(COLORATE)[h(name, "cornice") % len(COLORATE)]
 
 def coppa():
     """Trophy cup icon for the main screen, in the avatar style."""
@@ -1748,6 +1893,14 @@ def render_final(name, t, leggendario):
     return img.convert("RGB")
 
 
+def render_colorful(name, t, nome):
+    """Avatar with its frame of the Colorful option ([nome] from cornice_colorata())."""
+    img = render(name, t)
+    if nome:
+        img.alpha_composite((cornice_fuoco if nome == "fuoco" else COLORATE[nome])())
+    return img.convert("RGB")
+
+
 # --- Tratti da Wikidata -------------------------------------------------------
 
 def wikidata_facts(names, cache=None):
@@ -1887,7 +2040,8 @@ def file_id(name):
 
 def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=False):
     """All saints: <sha1>.png (no frame), cornice_NN.png, the CORNICI frames with cornici.txt,
-    leggendari.txt and, unless [app] (only what the app ships), tratti.tsv and review sheets."""
+    the COLORATE frames with cornici_colorful.txt, leggendari.txt and, unless [app] (only
+    what the app ships), tratti.tsv and review sheets."""
     import random
     names = [l.strip() for l in open(santi_path, encoding="utf-8") if l.strip() and not l.startswith("#")]
     facts = wikidata_facts(names, cache)
@@ -1909,9 +2063,16 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
         cornice(step).save(out / f"cornice_{step:02d}.png", optimize=True)
         for nome, disegna in list(CORNICI.values()) + list(CORNICI_PREMIO.items()):
             disegna(step).save(out / f"{nome}_{step:02d}.png", optimize=True)
+        for nome, disegna in COLORATE.items():
+            disegna(step).save(out / f"{nome}_{step:02d}.png", optimize=True)
     # Card numbers: N. 1 is the most famous saint (most Wikipedia sitelinks), ties by name.
     by_fame = sorted(names, key=lambda n: (-facts.get(n, {}).get("sitelinks", 0), n))
     leggendari = by_fame[:n_leggendari]
+    colorate = {n: cornice_colorata(n, tratti[n], n in leggendari) for n in names}
+    (out / "cornici_colorful.txt").write_text(
+        "# Cornici dell'opzione Colorful: santo<TAB>nome (file <nome>_NN.png). Fuoco ai martiri; i\n"
+        "# leggendari non ci sono e tengono la loro cornice.\n"
+        + "".join(f"{n}\t{c}\n" for n, c in colorate.items() if c), encoding="utf-8")
     (out / "catalogo.txt").write_text(
         "# Numero delle figurine: la riga N (senza contare i commenti) e' il santo N. 1 e' il piu' famoso\n"
         "# (piu' voci Wikipedia). I primi sono i leggendari, vedi leggendari.txt.\n"
@@ -1960,6 +2121,8 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
                       out / f"provino_regole_{k + 1}.png", zoom=4, cols=8)
     contact_sheet([(n, render_final(n, tratti[n], True)) for n in leggendari],
                   out / "provino_leggendari.png", zoom=4, cols=10)
+    contact_sheet([(n, render_colorful(n, tratti[n], colorate[n])) for n in regole_only[:48]],
+                  out / "provino_colorful.png", zoom=4, cols=8)
     print(f"{len(names)} avatar in {out}; tabella {sum(r[2] == 'tabella' for r in rows)}, "
           f"regole {sum(r[2] == 'regole' for r in rows)}, solo nome {sum(r[2] == 'solo nome' for r in rows)}",
           file=sys.stderr)

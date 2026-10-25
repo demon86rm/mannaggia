@@ -1,0 +1,5372 @@
+# Cornici dell'opzione Colorful: santo<TAB>nome (file <nome>_NN.png). Fuoco ai martiri; i
+# leggendari non ci sono e tengono la loro cornice.
+Beata Adele di Francia	legno
+Beata Adèle de Batz de Trenquelléon	argento
+Beata Agnese di Gesù	arcobaleno
+Beata Alda di Siena	arcobaleno
+Beata Alessandrina da Letto	bronzo
+Beata Alexandrina Maria da Costa	vaporwave
+Beata Alix Le Clerc	bronzo
+Beata Alruna di Cham	arcobaleno
+Beata Ana Julia Duque Heckner	lapislazzuli
+Beata Ana María Janer Anglarill	argento
+Beata Ana Monteagudo	porpora
+Beata Ana de Jesús	smeraldo
+Beata Angelina di Marsciano	lapislazzuli
+Beata Aniela Salawa	lapislazzuli
+Beata Anna Katharina Emmerick	bronzo
+Beata Anna Maria Taigi	neon
+Beata Anna Maria Tauscher van den Bosch	argento
+Beata Anna Michelotti	porpora
+Beata Anna Rosa Gattorno	argento
+Beata Anna di San Bartolomeo	lapislazzuli
+Beata Annunciata Cocchetti	neon
+Beata Antonia Mesina	porpora
+Beata Apolonia du Saint-Sacrement	fuoco
+Beata Arcangela Girlani	smeraldo
+Beata Armida Barelli	neon
+Beata Ascensión Nicol Goñi	arcobaleno
+Beata Assunta Marchetti	neon
+Beata Baptista Varani	lapislazzuli
+Beata Barbara Maix	bronzo
+Beata Beatrice I d'Este	porpora
+Beata Beatrice d'Assisi	smeraldo
+Beata Beatrice d'Ornacieux	vaporwave
+Beata Beatrice di Nazareth	arcobaleno
+Beata Beatrix van Lens	lapislazzuli
+Beata Benedetta Bianchi Porro	arcobaleno
+Beata Benedetta di Assisi	smeraldo
+Beata Bernardina Jabłońska	neon
+Beata Berta	lapislazzuli
+Beata Bertha de Bardi	smeraldo
+Beata Blandina del Sacro Cuore	vaporwave
+Beata Blasa di Maria	fuoco
+Beata Bogumiła Noiszewska	bronzo
+Beata Bolesława Lament	neon
+Beata Brigida Morello	smeraldo
+Beata Bronislava di Kamień	argento
+Beata Bruna Pellesi	smeraldo
+Beata Camilla Bartolini Rucellai	vaporwave
+Beata Carmen Rendiles Martínez	porpora
+Beata Caterina Brugora	smeraldo
+Beata Caterina Cittadini	smeraldo
+Beata Caterina Jarrige	lapislazzuli
+Beata Caterina Mattei	neon
+Beata Caterina Moriggi	legno
+Beata Caterina di Bosnia	vaporwave
+Beata Cecilia	argento
+Beata Cecilia Attendoli di Cotignola	arcobaleno
+Beata Cecilia Castelli Giovanelli	lapislazzuli
+Beata Cecilia Eusepi	neon
+Beata Celina Chludzińska Borzęcka	legno
+Beata Chiara Badano	porpora
+Beata Chiara da Rimini	smeraldo
+Beata Christina Reteressensis	neon
+Beata Christina von Retters	arcobaleno
+Beata Clara Fey	legno
+Beata Clelia Merloni	porpora
+Beata Clotilde Micheli	smeraldo
+Beata Colomba Gabriel	argento
+Beata Colomba da Rieti	arcobaleno
+Beata Colomba da Truccazzano	smeraldo
+Beata Concepcion Cabrera de Armida	legno
+Beata Costanza di Hohenstaufen	porpora
+Beata Crescencia Valls Espí	fuoco
+Beata Cristina Semenzi da Calvisano	smeraldo
+Beata Cristina da Stommeln	neon
+Beata Daniela di San Barnaba	lapislazzuli
+Beata Daria Campillo Paniagua de Santa Sofia	porpora
+Beata Delfina di Signe	argento
+Beata Diana degli Andalò	neon
+Beata Dina Bélanger	porpora
+Beata Dorotea Chávez Orozco	vaporwave
+Beata Elena Aiello	vaporwave
+Beata Elena Enselmini	legno
+Beata Elena Guerra	neon
+Beata Elena Valentinis	argento
+Beata Eleonora di Castiglia	porpora
+Beata Elia di San Clemente	bronzo
+Beata Elisa Martinez	smeraldo
+Beata Elisabeth Tubback	argento
+Beata Elisabetta Achler	lapislazzuli
+Beata Elisabetta Canori Mora	bronzo
+Beata Elisabetta Picenardi	argento
+Beata Elisabetta Sanna	lapislazzuli
+Beata Elisabetta da Mortara	vaporwave
+Beata Emilia Bicchieri	neon
+Beata Emma di Baviera	argento
+Beata Enrichetta Alfieri	legno
+Beata Ermengarda	neon
+Beata Esclarmonde di Foix	smeraldo
+Beata Eugenia Ravasco	smeraldo
+Beata Eugénie Smet	legno
+Beata Eusebia Palomino Yenes	legno
+Beata Feliciana Uribe Orbe	fuoco
+Beata Filipa de Chantemilan	arcobaleno
+Beata Filippa Mareri	neon
+Beata Francesca Schervier	neon
+Beata Francesca d'Amboise	smeraldo
+Beata Francinaina Cirer Carbonell	porpora
+Beata Francisca Aldea Araujo	arcobaleno
+Beata Francisca Ametzua	porpora
+Beata Gaetana Sterni	lapislazzuli
+Beata Gaetana Tolomeo	bronzo
+Beata Gerberga di Lotaringia	argento
+Beata Gerlind vom Elsass	arcobaleno
+Beata Gertrude di Altenberg	legno
+Beata Gertrude van der Oosten	smeraldo
+Beata Gherardesca della Gherardesca	vaporwave
+Beata Giacoma de Settesoli	arcobaleno
+Beata Giovanna Maria Bonomo	bronzo
+Beata Giovanna Maria de Maillé	argento
+Beata Giovanna Scopelli	bronzo
+Beata Giovanna Soderini	vaporwave
+Beata Giovanna d'Aviz	lapislazzuli
+Beata Giovanna d'Aza	smeraldo
+Beata Giovannina Franchi	vaporwave
+Beata Gisella di Baviera	bronzo
+Beata Giulia Crostarosa	neon
+Beata Giuliana Puricelli	legno
+Beata Giuliana di Collalto	vaporwave
+Beata Giuliana di Norwich	bronzo
+Beata Giuseppina Bonino	argento
+Beata Giuseppina Nicoli	porpora
+Beata Giuseppina Suriano	argento
+Beata Giuseppina di San Giovanni di Dio	fuoco
+Beata Guadalupe Ortiz de Landázuri	legno
+Beata Hanna Chrzanowska	argento
+Beata Hildegard Burjan	neon
+Beata Hélène de Chappotin de Neuville	porpora
+Beata Ida di Boulogne	porpora
+Beata Ildegarda	argento
+Beata Ildegonda	neon
+Beata Imelda Lambertini	neon
+Beata Iolanda di Polonia	porpora
+Beata Iolanda di Vianden	bronzo
+Beata Ippolita di Melegnano	argento
+Beata Irene Stefani	lapislazzuli
+Beata Isabel Cristina Mrad Campos	arcobaleno
+Beata Isabella di Francia	lapislazzuli
+Beata Itala Mela	arcobaleno
+Beata Jeanne Haze	neon
+Beata Jerónima de la Asunción	bronzo
+Beata Josepha Hendrina Stenmanns	porpora
+Beata Karolina Gerhardinger	lapislazzuli
+Beata Karolina Kózkówna	fuoco
+Beata Laura Vicuña	argento
+Beata Leonella Sgorbati	fuoco
+Beata Leopoldina Naudet	argento
+Beata Levkadija Harasymiv	argento
+Beata Libânia do Carmo Galvão Mexia Telles de Albuquerque	bronzo
+Beata Liduina Meneguzzi	porpora
+Beata Lucia Broccadelli da Narni	arcobaleno
+Beata Lucia da Caltagirone	argento
+Beata Lucia da Settefonti	porpora
+Beata Ludovica Albertoni	vaporwave
+Beata Ludovica di Savoia	porpora
+Beata Ludwika Szczęsna	smeraldo
+Beata Luisa Carvajal y Mendoza	porpora
+Beata Maddalena Albrici	smeraldo
+Beata Maddalena Morano	vaporwave
+Beata Maddalena di Canossa	lapislazzuli
+Beata Madre Speranza di Gesù	vaporwave
+Beata Mafalda del Portogallo	vaporwave
+Beata Manuela de Jesús Arias Espinosa	argento
+Beata Marcelina Darowska	legno
+Beata Margaret Pole	fuoco
+Beata Margaret of the Blessed Sacrament	arcobaleno
+Beata Margareta Ebner	lapislazzuli
+Beata Margarita María López de Maturana	neon
+Beata Margherita Ball	arcobaleno
+Beata Margherita Colonna	vaporwave
+Beata Margherita di Lorena	vaporwave
+Beata Margherita di Lovanio	porpora
+Beata Margherita di Lussemburgo	smeraldo
+Beata Margherita di Savoia	argento
+Beata Maria Adeodata Pisani	bronzo
+Beata Maria Agostina Rivas López	fuoco
+Beata Maria Angela Astorch	porpora
+Beata Maria Angela Truszkowska	legno
+Beata Maria Anna Donati	vaporwave
+Beata Maria Anna Sala	smeraldo
+Beata Maria Anna di Gesù	lapislazzuli
+Beata Maria Antonina Kratochwil	arcobaleno
+Beata Maria Assunta Pallotta	neon
+Beata Maria Barba	arcobaleno
+Beata Maria Bolognesi	porpora
+Beata Maria Caterina di Sant'Agostino	lapislazzuli
+Beata Maria Clementina Anuarite Nengapeta	arcobaleno
+Beata Maria Climent Mateu	smeraldo
+Beata Maria Corsini	arcobaleno
+Beata Maria Costanza Panas	vaporwave
+Beata Maria Cristina di Savoia	smeraldo
+Beata Maria Crocifissa Curcio	lapislazzuli
+Beata Maria Crocifissa Satellico	legno
+Beata Maria Dolorosa	fuoco
+Beata Maria Domenica Brun Barbantini	argento
+Beata Maria Domenica Mantovani	neon
+Beata Maria Elisabetta Renzi	bronzo
+Beata Maria Euthymia Üffing	legno
+Beata Maria Fortunata Viti	bronzo
+Beata Maria Gabriella Sagheddu	porpora
+Beata Maria Gargani	porpora
+Beata Maria Giuseppina di Gesù Crocifisso	bronzo
+Beata Maria Grazia Tarallo	legno
+Beata Maria Josefa Karolina Brader	smeraldo
+Beata Maria Karłowska	neon
+Beata Maria Laura Mainetti	arcobaleno
+Beata Maria Lorenza Longo	lapislazzuli
+Beata Maria Ludovica De Angelis	smeraldo
+Beata Maria Luisa di Borbone-Spagna	vaporwave
+Beata Maria Maddalena Martinengo	porpora
+Beata Maria Maddalena Starace	vaporwave
+Beata Maria Maddalena dell'Incarnazione	neon
+Beata Maria Mancini	smeraldo
+Beata Maria Margherita Szewczyk	smeraldo
+Beata Maria Merkert	vaporwave
+Beata Maria Pia Mastena	argento
+Beata Maria Pierina De Micheli	porpora
+Beata Maria Raffaella Cimatti	smeraldo
+Beata Maria Repetto	arcobaleno
+Beata Maria Restituta Kafka	bronzo
+Beata Maria Rosa Flesch	smeraldo
+Beata Maria Sagrario di San Luigi Gonzaga	fuoco
+Beata Maria Schininà	smeraldo
+Beata Maria Teresa Casini	vaporwave
+Beata Maria Teresa Ferragut Roig	legno
+Beata Maria Teresa Ledóchowska	smeraldo
+Beata Maria Teresa Scrilli	argento
+Beata Maria Teresa de Soubiran La Louvière	vaporwave
+Beata Maria Theresia Scherer	porpora
+Beata Maria Vittoria De Fornari Strata	arcobaleno
+Beata Maria de Requesens	neon
+Beata Maria de la Cabeza	vaporwave
+Beata Maria degli Angeli Fontanella	neon
+Beata Maria del Divin Cuore di Gesù	porpora
+Beata Maria del Olvido Noguera Albelda	argento
+Beata Maria del Transito di Gesù Sacramentato	arcobaleno
+Beata Maria dell'Incarnazione Avrillot	lapislazzuli
+Beata Maria di Gesù Deluil-Martiny	fuoco
+Beata Maria di Gesù López de Rivas Martínez	smeraldo
+Beata Marie Poussepin	arcobaleno
+Beata Marie de La Dive	bronzo
+Beata Marie-Anne Sureau Blondin	porpora
+Beata Marie-Anne Vaillot	argento
+Beata Marie-Céline de la Présentation	smeraldo
+Beata Marie-Louise Trichet	lapislazzuli
+Beata Marie-Louise de Lamoignon	argento
+Beata Marie-Léonie Paradis	neon
+Beata Marie-Rose Durocher	legno
+Beata Marta Le Bouteiller	bronzo
+Beata María Alvarado Cardozo	neon
+Beata María Antonia Bandrés y Elósegui	argento
+Beata María Catalina Irigoyen Echegaray	bronzo
+Beata María Crescencia Pérez	lapislazzuli
+Beata María Dolores Aguiar-Mella y Díaz	vaporwave
+Beata María Dolores Rodríguez Sopeña	legno
+Beata María Francisca Espejo Martos	porpora
+Beata María Luisa Montesinos Orduña	legno
+Beata María Pilar Izquierdo Albero	bronzo
+Beata María Pilar de San Francisco de Borja	argento
+Beata María Rafols Bruna	lapislazzuli
+Beata María Romero Meneses	arcobaleno
+Beata María de la Purificación Vidal Pastor	neon
+Beata María del Carmen González-Ramos	smeraldo
+Beata María Ángeles de San José	bronzo
+Beata Matilda di Quedlinburg	neon
+Beata Mechtildis	argento
+Beata Mercedes Prat	porpora
+Beata Michelina da Pesaro	smeraldo
+Beata Miriam Teresa Demjanovich	lapislazzuli
+Beata Natalia Tułasiewicz	legno
+Beata Nera Tolomei	lapislazzuli
+Beata Nhá Chica	arcobaleno
+Beata Odile Baumgarten	fuoco
+Beata Olimpia Bida	porpora
+Beata Ombelina di Jully	arcobaleno
+Beata Oringa Menabuoi	vaporwave
+Beata Orsolina Veneri	neon
+Beata Ortolana d'Assisi	legno
+Beata Osanna Andreasi	vaporwave
+Beata Osanna di Cattaro	vaporwave
+Beata Paula Gambara Costa	vaporwave
+Beata Paula Isla Alonso de Santa Anastasia	vaporwave
+Beata Pauline Jaricot	arcobaleno
+Beata Pauline von Mallinckrodt	argento
+Beata Pierina Morosini	fuoco
+Beata Pietra di San Giuseppe	arcobaleno
+Beata Pilar Villalonga Villalba	bronzo
+Beata Prudence Castori	smeraldo
+Beata Rafaela Ybarra de Vilallonga	bronzo
+Beata Rani Maria Vattalil	fuoco
+Beata Regina Protmann	vaporwave
+Beata Richeza di Lotaringia	legno
+Beata Rita Josefa Pujalte Sánchez	vaporwave
+Beata Rita Lopes de Almeida	neon
+Beata Rosalie Rendu	smeraldo
+Beata Rosamunda di Blaru	lapislazzuli
+Beata Róża Czacka	vaporwave
+Beata Salomea di Polonia	arcobaleno
+Beata Sancha I di León	vaporwave
+Beata Sancha d'Aragona	arcobaleno
+Beata Sancha del Portogallo	lapislazzuli
+Beata Sancja Szymkowiak	porpora
+Beata Sandra Sabattini	argento
+Beata Saturnina Rodríguez de Zavalía	porpora
+Beata Sibillina Biscossi	smeraldo
+Beata Stefana Quinzani	arcobaleno
+Beata Stilla von Abenberg	smeraldo
+Beata Suor San Luigi	fuoco
+Beata Suor Santa Marta	fuoco
+Beata Susana Paz Castillo Ramírez	vaporwave
+Beata Sára Salkaházi	fuoco
+Beata Tarsila Cordoba Belda	lapislazzuli
+Beata Tarsykija Mac'kiv	arcobaleno
+Beata Teresa Bracco	neon
+Beata Teresa Grillo Michel	arcobaleno
+Beata Teresa Manetti	lapislazzuli
+Beata Teresa del Niño Jesús y de San Juan de la Cruz	legno
+Beata Teresa del Portogallo	argento
+Beata Teresa di Sant'Ignazio	fuoco
+Beata Therese von Wüllenweber	arcobaleno
+Beata Ulrica Nisch	bronzo
+Beata Umiliana de' Cerchi	vaporwave
+Beata Urraca Díaz de Haro	argento
+Beata Veronica Antal	vaporwave
+Beata Veronica Negroni da Binasco	legno
+Beata Victoria Díez Bustos de Molina	smeraldo
+Beata Vincenza Maria Poloni	bronzo
+Beata Wiktoria Ulma	neon
+Beata Wilhelmine Bonzel	bronzo
+Beata Zdenka Schelingová	legno
+Beata Zofia Czeska-Maciejowska	porpora
+Beata Ángela Ginard Martí	arcobaleno
+Beata Ève de Saint-Martin	neon
+Beata Élisabeth Turgeon	bronzo
+Beata Émilie Tavernier Gamelin	vaporwave
+Beata Émilie d'Oultremont	smeraldo
+Beato Abbon d'Auxerre	bronzo
+Beato Abilio de la Cruz	fuoco
+Beato Acardo di San Vittore	neon
+Beato Achard z Clairvaux	bronzo
+Beato Acisclo	fuoco
+Beato Adalberto II d'Ostrevent	smeraldo
+Beato Adalgotto di Coira	bronzo
+Beato Adelelmo di Le Mans	bronzo
+Beato Adolf Mariano	argento
+Beato Adolf z Tunisu	argento
+Beato Adolph Kolping	lapislazzuli
+Beato Adriano Fortescue	fuoco
+Beato Adílio Da Ronch	fuoco
+Beato Agatangelo da Vendôme	lapislazzuli
+Beato Agnello da Pisa	legno
+Beato Agostino Casotti	arcobaleno
+Beato Agostino Novello	smeraldo
+Beato Agostino Viela Ezcurdia	fuoco
+Beato Agostino de Fango	vaporwave
+Beato Aimaro di Cluny	lapislazzuli
+Beato Aimone Taparelli	neon
+Beato Airaldo di Moriana	bronzo
+Beato Alano della Rupe	arcobaleno
+Beato Alano di Solminihac	arcobaleno
+Beato Alberic van Stavelot	neon
+Beato Alberto Calvi da Cilavegna	porpora
+Beato Alberto Marvelli	lapislazzuli
+Beato Alberto da Sarteano	vaporwave
+Beato Alberto di Villa d'Ogna	lapislazzuli
+Beato Alcuino di York	vaporwave
+Beato Alexandre Lenfant	lapislazzuli
+Beato Alexandru Rusu	vaporwave
+Beato Alfons Pacheco	vaporwave
+Beato Alfons z Cuzca	lapislazzuli
+Beato Alfons z Ossoria	porpora
+Beato Alfonso López López	vaporwave
+Beato Alfonso Maria dello Spirito Santo	legno
+Beato Alfonso Miquel Garriga	fuoco
+Beato Alfonso Sorribes Teixidó	fuoco
+Beato Alfred Parte Saiz	vaporwave
+Beato Alfredo Cremonesi	fuoco
+Beato Alfredo Fanjul Acebal	smeraldo
+Beato Alfredo Ildefonso Schuster	legno
+Beato Alojs Andritzki	fuoco
+Beato Alojzije Viktor Stepinac	argento
+Beato Ambrogio Sansedoni	smeraldo
+Beato Ambroise-Augustin Chevreux	arcobaleno
+Beato Amedeo IX di Savoia	lapislazzuli
+Beato Amedeo da Silva	arcobaleno
+Beato Amnichad von Fulda	legno
+Beato Anacleto González Flores	fuoco
+Beato Anastasio González Rodríguez	fuoco
+Beato Andrea Caccioli	smeraldo
+Beato Andrea Carlo Ferrari	bronzo
+Beato Andrea Dotti	vaporwave
+Beato Andrea Franchi	argento
+Beato Andrea Gallerani	vaporwave
+Beato Andrea Giacinto Longhin	vaporwave
+Beato Andrea da Segni	porpora
+Beato Andrea di Phu Yen	argento
+Beato Andreas Grego van Piscara	bronzo
+Beato Andrés Hibernón	argento
+Beato Angelelmus	argento
+Beato Angelico	lapislazzuli
+Beato Angelo Carletti	smeraldo
+Beato Angelo Paoli	smeraldo
+Beato Angelo Tancredi	argento
+Beato Angelo da Gualdo Tadino	legno
+Beato Angiolo Agostino Mazzinghi	legno
+Beato Aniceto Koplin	argento
+Beato Anselmo Polanco Fontecha	fuoco
+Beato Antoine Auriel-Constant	bronzo
+Beato Antoine Banassat	fuoco
+Beato Antoine Charmet	porpora
+Beato Antoine Chevrier	legno
+Beato Antolin Pablos Villanueva	argento
+Beato Anton Durcovici	arcobaleno
+Beato Anton Maria Schwartz	arcobaleno
+Beato Anton Martin Slomšek	legno
+Beato Anton Zogaj	neon
+Beato Antoni Maria Martín Hernández	neon
+Beato Antoni Świadek	smeraldo
+Beato Antonino Calvo y Calvo	fuoco
+Beato Antonio Baldinucci	bronzo
+Beato Antonio Botta	lapislazzuli
+Beato Antonio Dalmau Rosich	fuoco
+Beato Antonio Franco	bronzo
+Beato Antonio Lucci	porpora
+Beato Antonio Martissa	vaporwave
+Beato Antonio Middleton	vaporwave
+Beato Antonio Migliorati	bronzo
+Beato Antonio Neirotti	fuoco
+Beato Antonio Pavoni	smeraldo
+Beato Antonio Rosmini	neon
+Beato Antonio Suarez Riu	vaporwave
+Beato Antonio dell'Aquila	argento
+Beato Antonio di Gesù e Maria	fuoco
+Beato Apollinare da Posat	bronzo
+Beato Arcangelo Canetoli	legno
+Beato Arno di Salisburgo	neon
+Beato Arnoldo Rèche	legno
+Beato Arrigo da Bolzano	bronzo
+Beato Arsenio da Trigolo	smeraldo
+Beato Artemide Zatti	lapislazzuli
+Beato Artur Ros Montalt	fuoco
+Beato Assalonne di Capodistria	bronzo
+Beato Atanasio Vidaurreta Labra	fuoco
+Beato August Czartoryski	bronzo
+Beato Aurelio Angel Boix Cosials	fuoco
+Beato Aurelio María Villalón Acebrón	argento
+Beato Aurelio da Vinalesa	lapislazzuli
+Beato Baldassarre Ravaschieri	vaporwave
+Beato Balduino da Pisa	neon
+Beato Bartolo da San Gimignano	neon
+Beato Bartolomeo Aiutamicristo da Pisa	argento
+Beato Bartolomeo Fanti	lapislazzuli
+Beato Bartolomeo da Trasacco	smeraldo
+Beato Bartolomeo di Marmoutier	lapislazzuli
+Beato Bartolomeu Fanti	vaporwave
+Beato Basile Moreau	smeraldo
+Beato Batho von Freising	smeraldo
+Beato Battista Spagnoli	smeraldo
+Beato Benedetto Ricasoli	neon
+Beato Benedetto Sinigardi	smeraldo
+Beato Benedetto XI	vaporwave
+Beato Benedetto da Urbino	arcobaleno
+Beato Benedict Daswa	fuoco
+Beato Benigno Prieto del Pozo	fuoco
+Beato Benincasa	vaporwave
+Beato Bentivoglio de Bonis	neon
+Beato Bernard de Lugar Nuevo de Fenollet	argento
+Beato Bernard z Rebolleda	porpora
+Beato Bernardino Palaj	porpora
+Beato Bernardino da Feltre	argento
+Beato Bernardo Maria di Gesù	lapislazzuli
+Beato Bernardo da Offida	neon
+Beato Bernardo de Hoyos	argento
+Beato Bernhard I. von Hildesheim	porpora
+Beato Bernhard II.	legno
+Beato Bernhard Lichtenberg	legno
+Beato Bertold of Regensburg	arcobaleno
+Beato Bertrando di San Genesio	fuoco
+Beato Bogumilo di Gniezno	neon
+Beato Bolesław Strzelecki	argento
+Beato Bonaventura Badoer da Peraga	legno
+Beato Bonaventura da Barcellona	argento
+Beato Bonaventura da Forlì	porpora
+Beato Bonaventura da Potenza	lapislazzuli
+Beato Bonifacio di Savoia	porpora
+Beato Bonifacio di Valperga	vaporwave
+Beato Boso von Merseburg	argento
+Beato Bronislao Kostkowski	neon
+Beato Bronisław Komorowski	argento
+Beato Bronisław Markiewicz	smeraldo
+Beato Bruno Lemarchand	lapislazzuli
+Beato Buenaventura García de Paredes	fuoco
+Beato Buenaventura de Santa Catalina	fuoco
+Beato Callisto II	neon
+Beato Carino Pietro da Balsamo	porpora
+Beato Carl Lampert	fuoco
+Beato Carles de Montegranelli	arcobaleno
+Beato Carlo Gnocchi	lapislazzuli
+Beato Carlo I d'Austria	argento
+Beato Carlo Liviero	neon
+Beato Carlo Spinola	arcobaleno
+Beato Carlo Steeb	legno
+Beato Carlo da Montegranelli	legno
+Beato Carlo di Blois	smeraldo
+Beato Carlos Manuel Rodríguez Santiago	smeraldo
+Beato Cassiano da Nantes	porpora
+Beato Cecilio López López	fuoco
+Beato Ceferino Giménez Malla	fuoco
+Beato Charles Carnus	fuoco
+Beato Charles Deckers	fuoco
+Beato Charles-Antoine-Nicolas Ancel	argento
+Beato Christian Chessel	bronzo
+Beato Christian de Chergé	legno
+Beato Cipriano Iwene Tansi	argento
+Beato Ciriaco María Sancha y Hervás	neon
+Beato Claudio Béguignot	argento
+Beato Claudio Granzotto	vaporwave
+Beato Claudius Cayx-Dumas	vaporwave
+Beato Clemens August von Galen	argento
+Beato Clemente Vismara	bronzo
+Beato Clemente Šeptyc'kyj	neon
+Beato Columba Marmion	legno
+Beato Conor O'Devany	vaporwave
+Beato Contardo Ferrini	smeraldo
+Beato Corrado I di Raitenbuch	lapislazzuli
+Beato Corrado Miliani	neon
+Beato Corrado da Offida	legno
+Beato Corrado di Urach	vaporwave
+Beato Cosme Brun	lapislazzuli
+Beato Costanzo da Fabriano	bronzo
+Beato Crescencio García Pobo	arcobaleno
+Beato Cristoforo Amerio	lapislazzuli
+Beato Cristoforo di Romagna	smeraldo
+Beato Cristoforo di Santa Caterina	vaporwave
+Beato Croznato	legno
+Beato Cruz Laplana y Laguna	fuoco
+Beato Czesław Odrowąż	bronzo
+Beato Célestin Ringeard	smeraldo
+Beato Dalmau Moner	smeraldo
+Beato Daniel Brottier	argento
+Beato Daniel de Grammont	bronzo
+Beato Daniele de Ungrispach	smeraldo
+Beato Dariusz Acosta Zurita	fuoco
+Beato David Carlos Marañón	fuoco
+Beato Davide Okelo	neon
+Beato Dermot O'Hurley	fuoco
+Beato Diego Giuseppe da Cadice	porpora
+Beato Diego Luis de San Vitores	fuoco
+Beato Diego Ventaja Milán	fuoco
+Beato Diogo Carvalho	porpora
+Beato Dionigi della Natività	argento
+Beato Dionigi di Rijkel	bronzo
+Beato Dionisio Luis	argento
+Beato Dionisio Pamplona Polo	fuoco
+Beato Dioniso Vicente Ramos	neon
+Beato Dom Justo Takayama	neon
+Beato Domenico Barberi	lapislazzuli
+Beato Domenico Lentini	arcobaleno
+Beato Domenico Spadafora	neon
+Beato Domenico Vernagalli	smeraldo
+Beato Domenico del Santissimo Sacramento	porpora
+Beato Domenico di Prussia	lapislazzuli
+Beato Domingo Alonso de Frutos	fuoco
+Beato Domingo Caballé Bru	fuoco
+Beato Duns Scoto	bronzo
+Beato Edgardo Mortara	porpora
+Beato Edmund Bojanowski	smeraldo
+Beato Edmund Ignatius Rice	porpora
+Beato Edoardo Giuseppe Rosaz	vaporwave
+Beato Edoardo Ripoll Diego	fuoco
+Beato Eduard Profittlich	arcobaleno
+Beato Eduardo Francisco Pironio	legno
+Beato Edward Detkens	smeraldo
+Beato Edward Grzymała	porpora
+Beato Edward Jones	fuoco
+Beato Edward Kaźmierski	fuoco
+Beato Edward Poppe	argento
+Beato Edward Powell	fuoco
+Beato Edward Stransham	fuoco
+Beato Egid z Assisi	vaporwave
+Beato Egidio d'Assisi	vaporwave
+Beato Egidio da Laurenzana	vaporwave
+Beato Egidio da Vouzela	legno
+Beato Egidio di Lorenzana	lapislazzuli
+Beato Egilbert von Moosburg	lapislazzuli
+Beato Egino di Verona	smeraldo
+Beato Ekkehard von Huysburg	lapislazzuli
+Beato Elia Comini	fuoco
+Beato Elias Boutros Hoayek	bronzo
+Beato Eloi de Bianya	fuoco
+Beato Emanuele Buil Lalueza	fuoco
+Beato Emanuele Martínez Jarauta	fuoco
+Beato Emanuele Torras Sais	fuoco
+Beato Emanuele di Cremona	porpora
+Beato Emerico di Quart	arcobaleno
+Beato Emil Szramek	legno
+Beato Engelmar Unzeitig	smeraldo
+Beato Enrico Canadell Quintana	porpora
+Beato Enrico Comentina	legno
+Beato Enrico Krzysztofik	bronzo
+Beato Enrico Suso	porpora
+Beato Enrico da Susa	bronzo
+Beato Enrique Angelelli	fuoco
+Beato Enrique Juan Requena	lapislazzuli
+Beato Enrique Vidaurreta	fuoco
+Beato Epifanio Sierra Conde	fuoco
+Beato Ercamberto di Frisinga	legno
+Beato Ermanno I di Baden	smeraldo
+Beato Ermanno il contratto	arcobaleno
+Beato Ermenegildo dell'Assunta	arcobaleno
+Beato Eugenio Bossilkov	lapislazzuli
+Beato Eugenio III	lapislazzuli
+Beato Eusebio Maria Codina Millà	fuoco
+Beato Eusebio di Esztergom	argento
+Beato Eustachio Kugler	neon
+Beato Eustáquio van Lieshout	neon
+Beato Everald Hanse	smeraldo
+Beato Faroaldo II	porpora
+Beato Faustino Oteiza	fuoco
+Beato Faustino Pérez García	fuoco
+Beato Fazzio	legno
+Beato Fedele Chojnacki	vaporwave
+Beato Federico Herrera Bermejo	fuoco
+Beato Ferdinando Español Berdié	fuoco
+Beato Ferdinando Maria Baccilieri	porpora
+Beato Ferdinando d'Aviz	neon
+Beato Fernando Olmedo Reguera	smeraldo
+Beato Fernando Salinas Romeo	smeraldo
+Beato Fidel Fuidio	fuoco
+Beato Filip Ripoll Morata	fuoco
+Beato Filippo Rinaldi	vaporwave
+Beato Flaviano Michele Melki	vaporwave
+Beato Florentino Asensio Barroso	bronzo
+Beato Florentyn Felipe Naya	fuoco
+Beato Folchetto di Marsiglia	arcobaleno
+Beato Folco di Neuilly	legno
+Beato Francesco Bonifacio	fuoco
+Beato Francesco Calvo Burillo	lapislazzuli
+Beato Francesco Castán Meseguer	fuoco
+Beato Francesco Dachtera	arcobaleno
+Beato Francesco Faà di Bruno	arcobaleno
+Beato Francesco Gálvez	arcobaleno
+Beato Francesco Maria Greco	neon
+Beato Francesco Mottola	porpora
+Beato Francesco Pianzola	porpora
+Beato Francesco Roura Farró	fuoco
+Beato Francesco Saverio Seelos	smeraldo
+Beato Francesco Spoto	fuoco
+Beato Francesco Tomas Serer	arcobaleno
+Beato Francesco Venimbeni	neon
+Beato Francesco Zirano	vaporwave
+Beato Francesco di San Lorenzo	fuoco
+Beato Francis Morales Sedeño	lapislazzuli
+Beato Francisco Castelló y Aleu	vaporwave
+Beato Francisco Esteban Lacal	legno
+Beato Francisco Gárate	smeraldo
+Beato Francisco Pacheco	argento
+Beato Francisco Palau y Quer	legno
+Beato Franciscus Lé Livec de Trésurin	neon
+Beato Franciszek Carceller Galindo	lapislazzuli
+Beato Franciszek Kęsy	argento
+Beato Franciszek Pérez Godoy	arcobaleno
+Beato Franco Lippi	argento
+Beato Frano Gjini	vaporwave
+Beato Franz Jägerstätter	porpora
+Beato François Joseph Pey	lapislazzuli
+Beato François-Joseph de La Rochefoucauld	porpora
+Beato Friedrich von Regensburg	legno
+Beato Frowin	argento
+Beato Frédéric Janssoone	porpora
+Beato Frédéric Ozanam	vaporwave
+Beato Fulton John Sheen	arcobaleno
+Beato Gabriele Allegra	arcobaleno
+Beato Gabriele Ferretti	argento
+Beato Gaddo della Gherardesca	argento
+Beato Galeotto Roberto Malatesta	neon
+Beato Gamelberto	porpora
+Beato Gaspare de Bono	arcobaleno
+Beato Gaudenzio	bronzo
+Beato Gebhard di Salisburgo	vaporwave
+Beato Gennaro Maria Sarnelli	argento
+Beato Georg Häfner	bronzo
+Beato George Beesley	fuoco
+Beato George Napper	argento
+Beato George Nichols	argento
+Beato Gerardo Cagnoli	lapislazzuli
+Beato Gerardo Sasso	lapislazzuli
+Beato Gerhard Hirschfelder	legno
+Beato Gerlando di Apollonia	argento
+Beato German Gardiner	fuoco
+Beato Gezelinus von Schlebusch	argento
+Beato Gherardo di Serradeconti	porpora
+Beato Gherardo di Villamagna	vaporwave
+Beato Ghébrē Michele	porpora
+Beato Giacinto Maria Cormier	arcobaleno
+Beato Giacomino de' Canepacci	legno
+Beato Giacomo Abbondo	smeraldo
+Beato Giacomo Alberione	legno
+Beato Giacomo Falgarona Vilanova	fuoco
+Beato Giacomo Illirico	argento
+Beato Giacomo Kern	lapislazzuli
+Beato Giacomo Papocchi	vaporwave
+Beato Giacomo Salomoni	bronzo
+Beato Giacomo Strepa	porpora
+Beato Giacomo da Cerqueto	argento
+Beato Giacomo da Ghazir	argento
+Beato Giacomo da Ulma	neon
+Beato Giacomo da Viterbo	neon
+Beato Gianluigi da Besançon	vaporwave
+Beato Gildo Irwa	argento
+Beato Gilles von Saumur	lapislazzuli
+Beato Gioacchino Piccolomini	arcobaleno
+Beato Gioacchino da Fiore	neon
+Beato Giordano di Sassonia	neon
+Beato Giovannangelo Porro	lapislazzuli
+Beato Giovanni Baixeras Berenguer	fuoco
+Beato Giovanni Battista Lego	porpora
+Beato Giovanni Bono	argento
+Beato Giovanni Brenner	fuoco
+Beato Giovanni Codinachs Tuneu	fuoco
+Beato Giovanni Dominici	bronzo
+Beato Giovanni Duckett	smeraldo
+Beato Giovanni Díaz Nosti	fuoco
+Beato Giovanni Echarri Vique	fuoco
+Beato Giovanni Fausti	neon
+Beato Giovanni Finch	fuoco
+Beato Giovanni Giovenale Ancina	fuoco
+Beato Giovanni Gradenigo	porpora
+Beato Giovanni Maria Boccardo	argento
+Beato Giovanni Marinoni	neon
+Beato Giovanni Matteo Adami	fuoco
+Beato Giovanni Morosini	smeraldo
+Beato Giovanni Nepomuceno de Tschiderer	arcobaleno
+Beato Giovanni Pelingotto	neon
+Beato Giovanni Righi	lapislazzuli
+Beato Giovanni Saziari	arcobaleno
+Beato Giovanni Schiavo	vaporwave
+Beato Giovanni Soreth	legno
+Beato Giovanni Storey	smeraldo
+Beato Giovanni Sánchez Munárriz	fuoco
+Beato Giovanni Tavelli	smeraldo
+Beato Giovanni da Caramola	arcobaleno
+Beato Giovanni da Parma	legno
+Beato Giovanni da Penna San Giovanni	vaporwave
+Beato Giovanni da Vercelli	legno
+Beato Giovanni del Bastone	legno
+Beato Giovanni della Vergine del Castellar	bronzo
+Beato Giovanni della Verna	argento
+Beato Giovanni di Gesù e Maria	fuoco
+Beato Giovanni di Santa Marta	bronzo
+Beato Girolamo De Angelis	fuoco
+Beato Giselbert	argento
+Beato Giuliano Nakaura	argento
+Beato Giuliano da Valle	bronzo
+Beato Giuliano di Sant'Agostino	porpora
+Beato Giuseppe Allamano	arcobaleno
+Beato Giuseppe Amorós Hernández	fuoco
+Beato Giuseppe Benedetto Dusmet	neon
+Beato Giuseppe Brengaret Pujol	fuoco
+Beato Giuseppe Figuero Beltrán	fuoco
+Beato Giuseppe Girotti	smeraldo
+Beato Giuseppe Maria Badía Mateu	fuoco
+Beato Giuseppe Maria Blasco Juan	fuoco
+Beato Giuseppe Ormo Seró	fuoco
+Beato Giuseppe Pavón Bueno	fuoco
+Beato Giuseppe Ros Florensa	fuoco
+Beato Giuseppe Timoteo Giaccardo	porpora
+Beato Giuseppe Toniolo	arcobaleno
+Beato Giuseppe Tovini	legno
+Beato Giuseppe da Igualada	legno
+Beato Giuseppe di Gesù e Maria	fuoco
+Beato Giustino Russolillo	bronzo
+Beato Gjelosh Lulashi	legno
+Beato Gomidas Keumurdjian	argento
+Beato Gonario II di Torres	argento
+Beato Gonsalvo da Lagos	legno
+Beato Gonsalvo di Amarante	lapislazzuli
+Beato Gonzalo de Ubeda	neon
+Beato Gonçal J. Viñes i Masip	neon
+Beato Gratian von Kotor	neon
+Beato Grazia da Cattaro	argento
+Beato Gregorio Chirivás Lacambra	fuoco
+Beato Gregorio X	legno
+Beato Gregorio da Rimini	smeraldo
+Beato Grimoaldo della Purificazione	porpora
+Beato Grzegorz Frąckowiak	lapislazzuli
+Beato Guala de Roniis	legno
+Beato Gualtiero di Bruges	bronzo
+Beato Guerrico d'Igny	arcobaleno
+Beato Guglielmo Buccheri	smeraldo
+Beato Guglielmo Zucchi	bronzo
+Beato Guglielmo da Fenoglio	vaporwave
+Beato Guglielmo di Saint-Thierry	lapislazzuli
+Beato Guido da Cortona	arcobaleno
+Beato Guido di Montpellier	neon
+Beato Guilherme de Loarte	bronzo
+Beato Guilielmus Peregrinus	porpora
+Beato Guillaume Repin	fuoco
+Beato Guillaume-Antoine Delfaud	smeraldo
+Beato Guillaume-Joseph Chaminade	bronzo
+Beato Gundecaro II di Eichstatt	argento
+Beato Gérard-Martin Cendrier	lapislazzuli
+Beato Géraud de Salles	smeraldo
+Beato Hartwig di Salisburgo	argento
+Beato Heinrich von Ebrantshausen	neon
+Beato Henri Planchat	legno
+Beato Henry Heath	fuoco
+Beato Henry de Beaume	bronzo
+Beato Henryk Hlebowicz	smeraldo
+Beato Hesson	argento
+Beato Hryhorii Lakota	legno
+Beato Hryhoryj Chomyšyn	arcobaleno
+Beato Hugh Faringdon	neon
+Beato Hugo van Marchiennes	lapislazzuli
+Beato Hugolin Magalotti	porpora
+Beato Ignasi Casanovas Perramón	fuoco
+Beato Ignazio Falzon	argento
+Beato Ignazio de Azevedo	fuoco
+Beato Ilario Llorente Martín	fuoco
+Beato Ildefonso Fernández Muñiz	fuoco
+Beato Imad	argento
+Beato Innocenzo V	smeraldo
+Beato Innocenzo XI	smeraldo
+Beato Innocenzo da Berzo	lapislazzuli
+Beato Ioan Bălan	porpora
+Beato Ioan Suciu	neon
+Beato Ippolito Galantini	porpora
+Beato Isacco della Stella	argento
+Beato Isidore Bakanja	fuoco
+Beato Isidore De Loor	legno
+Beato Isidoro Ngei Ko Lat	legno
+Beato Iuliu Hossu	porpora
+Beato Ivan Merz	arcobaleno
+Beato Ivan Slezjuk	arcobaleno
+Beato Jacinto Serrano López	porpora
+Beato Jacinto Vera	arcobaleno
+Beato Jacopo da Varazze	argento
+Beato Jacques Friteyre-Durvé	lapislazzuli
+Beato Jacques Gagnot	smeraldo
+Beato Jacques Retouret	legno
+Beato Jacques-Désiré Laval	lapislazzuli
+Beato Jakob Gapp	neon
+Beato Jakub Zhou	fuoco
+Beato James Duckett	fuoco
+Beato James Thompson	fuoco
+Beato Jan Balicki	legno
+Beato Jan Beyzym	lapislazzuli
+Beato Jan Bula	porpora
+Beato Jan Macha	fuoco
+Beato Jan Nepomucen Chrzan	fuoco
+Beato Jan van Ruisbroek	argento
+Beato Javier Gorosterratzu	fuoco
+Beato Jean Charton de Millou	arcobaleno
+Beato Jean de Montmirail	porpora
+Beato Jean-Antoine Savine	argento
+Beato Jean-Baptiste Bottex	fuoco
+Beato Jean-Baptiste Duverneuil	bronzo
+Beato Jean-Baptiste Triquerie	legno
+Beato Jean-Baptiste Turpin du Cormier	arcobaleno
+Beato Jean-François Burté	argento
+Beato Jean-Marie du Lau d'Alleman	lapislazzuli
+Beato Jean-Martin Moyë	smeraldo
+Beato Jesús Emilio Jaramillo Monsalve	fuoco
+Beato Jesús Hita Miranda	lapislazzuli
+Beato Joan Mercer Soler	bronzo
+Beato Jocund Bonet Mercadé	argento
+Beato John Bodey	lapislazzuli
+Beato John Cornelius	porpora
+Beato John Forest	fuoco
+Beato John Pibush	porpora
+Beato Josafat Šiškov	arcobaleno
+Beato Josef Mayr-Nusser	fuoco
+Beato Joseph Boissel	fuoco
+Beato Joseph Thao Tiên	argento
+Beato Joseph-Marie Gros	arcobaleno
+Beato José Agustín Fariña	fuoco
+Beato José Calasanz Marqués	fuoco
+Beato José Cecilio Rodríguez González	lapislazzuli
+Beato José Gafo	arcobaleno
+Beato José García Mas	vaporwave
+Beato José María Cuartero Gascón	fuoco
+Beato José María Gran Cirera	fuoco
+Beato José María Peris Polo	fuoco
+Beato José María Segura Penadés	bronzo
+Beato José Olallo Valdés	smeraldo
+Beato José Polo Benito	bronzo
+Beato José Ramón Pascual Ferrer Botella	legno
+Beato José Tristany Pujol	argento
+Beato José de los Sagrados Corazones	neon
+Beato Jozef Johannes Perot	vaporwave
+Beato Juan Agramunt Riera	fuoco
+Beato Juan Bautista Ferreres Boluda	fuoco
+Beato Juan Duarte	fuoco
+Beato Juan María de la Cruz	fuoco
+Beato Juan de Palafox y Mendoza	legno
+Beato Juan de Prado	fuoco
+Beato Juana María Condesa Lluch	smeraldo
+Beato Julian Moreno	argento
+Beato Julien Maunoir	argento
+Beato Julio Melgar Salgado	smeraldo
+Beato Julián Navío Colado	fuoco
+Beato Julián Zarco-Bacas	fuoco
+Beato Jurgis Matulaitis	smeraldo
+Beato János Scheffler	arcobaleno
+Beato Józef Czempiel	bronzo
+Beato Józef Ferrer Esteve	fuoco
+Beato Józef Innocenty Guz	porpora
+Beato Józef Kowalski	porpora
+Beato Józef Ulma	smeraldo
+Beato Karl Leisner	porpora
+Beato Karol Navarro Miquel	neon
+Beato Kazimierz Gostyński	bronzo
+Beato Kazimierz Grelewski	argento
+Beato Kazimierz Sykulski	neon
+Beato Klaudiusz Antoni Rudolf de Laporte	porpora
+Beato Krystyn Gondek	vaporwave
+Beato Ladislao Findysz	smeraldo
+Beato Landolfo di Vergiate	smeraldo
+Beato Lanfranco di Canterbury	lapislazzuli
+Beato Laurentius Loricatus	neon
+Beato Lawrence Booth	bronzo
+Beato Lazzaro Tiersot	vaporwave
+Beato Leandro Cuesta Andrés	fuoco
+Beato Lek Sirdani	legno
+Beato Leon Inchausti	porpora
+Beato Leoncio Ibáñez Caballero	arcobaleno
+Beato Leonid Ivanovič Fëdorov	lapislazzuli
+Beato Leonzio Pérez Ramos	fuoco
+Beato Leopoldo da Alpandeire	smeraldo
+Beato Liberato Weiss	legno
+Beato Liborius Wagner	lapislazzuli
+Beato Lojze Grozde	fuoco
+Beato Lorenzino Sossio	neon
+Beato Lorenzo Lusitano	lapislazzuli
+Beato Lorenzo Santolaria Ester	lapislazzuli
+Beato Lorenzo Sobrevia Cañardo	fuoco
+Beato Lorenzo da Ripafratta	porpora
+Beato Lorenzo da Villamagna	vaporwave
+Beato Louis Aleman	legno
+Beato Louis Brisson	argento
+Beato Louis-Antoine Ormières	lapislazzuli
+Beato Louis-Édouard Cestac	lapislazzuli
+Beato Luca Passi	vaporwave
+Beato Luca Spicola	neon
+Beato Lucchese da Poggibonsi	legno
+Beato Lucien Botovasoa	fuoco
+Beato Lucien Croci	porpora
+Beato Lucio di Savoia	lapislazzuli
+Beato Ludovico IV di Turingia	vaporwave
+Beato Ludovico Sabbatini	porpora
+Beato Ludwig III. von Arnstein	vaporwave
+Beato Luigi Beltrame Quattrocchi	porpora
+Beato Luigi Biraghi	bronzo
+Beato Luigi Bordino	lapislazzuli
+Beato Luigi Caburlotto	argento
+Beato Luigi Escalé Binefa	fuoco
+Beato Luigi Lladó Teixidor	fuoco
+Beato Luigi Maria Monti	argento
+Beato Luigi Maria Palazzolo	porpora
+Beato Luigi Masferrer Vila	fuoco
+Beato Luigi Novarese	lapislazzuli
+Beato Luigi Rabatà	legno
+Beato Luigi Tezza	legno
+Beato Luigi Variara	lapislazzuli
+Beato Luis Erdoiza	bronzo
+Beato Luis Magaña Servín	lapislazzuli
+Beato Luis Obdulio Arroyo Navarro	fuoco
+Beato Luis Sotelo	smeraldo
+Beato Luis Urbano Lanaspa	argento
+Beato Luis Vidaurrázaga González	arcobaleno
+Beato Luithard	smeraldo
+Beato László Batthyány-Strattmann	smeraldo
+Beato Léonard Melki	porpora
+Beato Maciej Cardona Meseguer	neon
+Beato Maksymilian Binkiewicz	argento
+Beato Mamerto Esquiú	bronzo
+Beato Manfredo Settala	argento
+Beato Manno Guzmán	smeraldo
+Beato Manuel Albert Ginés	lapislazzuli
+Beato Manuel Basulto y Jiménez	fuoco
+Beato Manuel Borras y Ferré	fuoco
+Beato Manuel Domingo y Sol	arcobaleno
+Beato Manuel Gómez González	vaporwave
+Beato Manuel Medina Olmos	fuoco
+Beato Manuel Sanz Domínguez	argento
+Beato Manuel Torró Garcia	neon
+Beato Marcantonio Durando	neon
+Beato Marcel Callo	legno
+Beato Marcelino Ovejero Gómez	fuoco
+Beato Marcelo Spínola y Maestre	legno
+Beato Marco Criado	porpora
+Beato Marco d'Aviano	porpora
+Beato Marco da Bologna	lapislazzuli
+Beato Marco da Montegallo	argento
+Beato Maria Eugenio di Gesù Bambino	argento
+Beato Marian Górecki	vaporwave
+Beato Mariano Mullerat	fuoco
+Beato Mariano Palau Sin	legno
+Beato Mariano Revilla Rico	legno
+Beato Mariano da Roccacasale	smeraldo
+Beato Mariano de Jesús Euse Hoyos	arcobaleno
+Beato Mariano de la Mata	bronzo
+Beato Mariano di San Giuseppe	fuoco
+Beato Marie-Jean-Joseph Lataste	argento
+Beato Marie-Joseph Cassant	vaporwave
+Beato Mario Borzaga	argento
+Beato Mario Ciceri	bronzo
+Beato Mario Vergara	porpora
+Beato Markward von Prüm	neon
+Beato Martino Capelli	fuoco
+Beato Martí de Barcelona	fuoco
+Beato Martín Lozano Tello	fuoco
+Beato Martín Martínez Pascual	neon
+Beato Matteo Carreri	bronzo
+Beato Matteo Guimerà	vaporwave
+Beato Matteo Nieves	neon
+Beato Matteo di Albano	vaporwave
+Beato Mauro Palazuelos	fuoco
+Beato Mauro di Pécs	legno
+Beato Maurus Xaverius Herbst	smeraldo
+Beato Max Josef Metzger	fuoco
+Beato Meinwerk	smeraldo
+Beato Melchiorre dello Spirito Santo	neon
+Beato Melchiorre di Sant'Agostino	argento
+Beato Mercherdach	legno
+Beato Metod Dominik Trčka	smeraldo
+Beato Michael J. McGivney	porpora
+Beato Michał Giedroyć	argento
+Beato Michał Sopoćko	legno
+Beato Michel-Louis Brulard	legno
+Beato Michele Carcano	neon
+Beato Michele Czartoryski	porpora
+Beato Michele Masip González	fuoco
+Beato Michele Pini	vaporwave
+Beato Michele Rua	vaporwave
+Beato Michele Tomaszek	fuoco
+Beato Mieczysław Bohatkiewicz	arcobaleno
+Beato Miguel Francisco de la Santísima Trinidad	fuoco
+Beato Miguel de Carvalho	porpora
+Beato Miles Gerard	porpora
+Beato Miroslav Bulešić	fuoco
+Beato Modestino di Gesù e Maria	bronzo
+Beato Modesto Vegas Vegas	lapislazzuli
+Beato Monaldo da Capodistria	lapislazzuli
+Beato Montford Scott	bronzo
+Beato Mykola Čarneckyj	smeraldo
+Beato Narciso de Esténaga y Echevarría	smeraldo
+Beato Narcís Basté i Basté	smeraldo
+Beato Nicasio Sierra Ucar	fuoco
+Beato Niccolò Albergati	argento
+Beato Niccolò Caracciolo Moschino	porpora
+Beato Niccolò Fattore	porpora
+Beato Niccolò Stenone	porpora
+Beato Niceforo di Gesù e Maria	fuoco
+Beato Nicholas Horner	lapislazzuli
+Beato Nicholas Postgate	bronzo
+Beato Nicola Bunkerd Kitbamrung	argento
+Beato Nicola Paglia	argento
+Beato Nicola da Forca Palena	vaporwave
+Beato Nicola da Gesturi	bronzo
+Beato Nicolas Barré	porpora
+Beato Nicolas Roland	bronzo
+Beato Nicolas Tabouillot	porpora
+Beato Nicolò Rusca	fuoco
+Beato Notker I di San Gallo	argento
+Beato Notker II di San Gallo	lapislazzuli
+Beato Noël Pinot	neon
+Beato Nykyta Budka	legno
+Beato Oddone di Tournai	lapislazzuli
+Beato Odoardo Focherini	vaporwave
+Beato Odorico da Pordenone	porpora
+Beato Oleksij Zaryc'kyj	vaporwave
+Beato Ollegario di Tarragona	argento
+Beato Onorato da Biała	bronzo
+Beato Otto Neururer	fuoco
+Beato Otto von Cappenberg	smeraldo
+Beato Ottone di Frisinga	smeraldo
+Beato Pacifico da Cerano	legno
+Beato Padre Victor	lapislazzuli
+Beato Paolo Manna	arcobaleno
+Beato Paolo Yun Ji-chung	fuoco
+Beato Paschalis Carda Saporta	neon
+Beato Pascual Penadés Jornet	vaporwave
+Beato Patrick O'Healy	fuoco
+Beato Paul Josef Nardini	legno
+Beato Pavol Peter Gojdič	argento
+Beato Pedro Asúa Mendía	lapislazzuli
+Beato Pedro González	smeraldo
+Beato Pedro María Ramírez Ramos	fuoco
+Beato Pedro Salcedo Puchades	fuoco
+Beato Pedro de Gante	argento
+Beato Pere Tarrés i Claret	smeraldo
+Beato Peter Friedhofen	lapislazzuli
+Beato Petro Werhun	smeraldo
+Beato Petrus Bertholet	bronzo
+Beato Petrus Martret	vaporwave
+Beato Petâr Vičev	fuoco
+Beato Philip Powell	fuoco
+Beato Pier Pettinaio	legno
+Beato Pierre Bonhomme	neon
+Beato Pierre Lucien Claverie	legno
+Beato Pierre Marie Stanislas Guérin du Rocher	arcobaleno
+Beato Pierre Vigne	smeraldo
+Beato Pierre de Castelnau	bronzo
+Beato Pierre de Porcaro	neon
+Beato Pierre-Louis de La Rochefoucauld	argento
+Beato Pierre-Michel Guérin	bronzo
+Beato Pietro Acotanto	bronzo
+Beato Pietro Berno	bronzo
+Beato Pietro Cambiani	arcobaleno
+Beato Pietro Capucci	vaporwave
+Beato Pietro Casani	smeraldo
+Beato Pietro Cunill Padrós	fuoco
+Beato Pietro Gambacorta	porpora
+Beato Pietro García Bernal	fuoco
+Beato Pietro Geremia	smeraldo
+Beato Pietro Paolo Navarro	fuoco
+Beato Pietro Paolo Oros	argento
+Beato Pietro da Cuneo	argento
+Beato Pietro da Mogliano	lapislazzuli
+Beato Pietro di Clairvaux	argento
+Beato Pietro di Lussemburgo	argento
+Beato Pino Puglisi	smeraldo
+Beato Pio Alberto del Corona	porpora
+Beato Pio Heredia Zubía	neon
+Beato Pio di San Luigi	neon
+Beato Piotr Dańkowski	argento
+Beato Piotr Gelabert Amer	vaporwave
+Beato Placido Riccardi	smeraldo
+Beato Placido di Gesù	neon
+Beato Ponzio di Faucigny	legno
+Beato Prudencio della Croce	fuoco
+Beato Rafael Alcocer	porpora
+Beato Rafał Chyliński	lapislazzuli
+Beato Raffaele Briega Morales	fuoco
+Beato Raimondo Illa Salvia	fuoco
+Beato Raimondo Lullo	lapislazzuli
+Beato Raimondo Novich Rabionet	fuoco
+Beato Raimondo da Capua	legno
+Beato Ralph Crockett	porpora
+Beato Ralph Milner	fuoco
+Beato Ramiro Sanz de Galdeano Mañeru	fuoco
+Beato Ramón Grimaltós Monllor	porpora
+Beato Ramón Vicente Vargas González	vaporwave
+Beato Raoul de la Futaie	argento
+Beato Rathold von Aibling	argento
+Beato Raymond de Bar	porpora
+Beato Raymond du Puy de Provence	argento
+Beato Recaredo Centelles Abad	legno
+Beato Redento della Croce	fuoco
+Beato Reginaldo d'Orléans	smeraldo
+Beato Reginbaldo II di Dillingen	porpora
+Beato René-Louis Ambroise	smeraldo
+Beato Riccardo Thirkeld	bronzo
+Beato Riccardo di Arnsberg	vaporwave
+Beato Richard Fetherston	arcobaleno
+Beato Richard Herst	porpora
+Beato Richard Langhorne	porpora
+Beato Richard Martin	argento
+Beato Richard Sergeant	fuoco
+Beato Richard Simpson	lapislazzuli
+Beato Richard Whiting	porpora
+Beato Richard Yaxley	porpora
+Beato Richard de Saint-Vanne	lapislazzuli
+Beato Rinaldo da Concorezzo	vaporwave
+Beato Rizziero della Muccia	argento
+Beato Robert Anderton	smeraldo
+Beato Robert Dalby	neon
+Beato Robert Dibdale	vaporwave
+Beato Robert Grissold	argento
+Beato Robert Guérin du Rocher	arcobaleno
+Beato Robert Ludlam	arcobaleno
+Beato Robert Spiske	legno
+Beato Roberto da Salle	arcobaleno
+Beato Roberto il Monaco	arcobaleno
+Beato Rodolfo Acquaviva	smeraldo
+Beato Rodolfo di Camaldoli	vaporwave
+Beato Roger le Fort	vaporwave
+Beato Rolando Rivi	fuoco
+Beato Roman Archutowski	legno
+Beato Rotho	porpora
+Beato Rudolf Komorek	lapislazzuli
+Beato Rusten	bronzo
+Beato Rutilio Grande	fuoco
+Beato Salvador Huerta Gutiérrez	lapislazzuli
+Beato Salvatore Lilli	legno
+Beato Salvatore Pigem Serra	fuoco
+Beato Salvi Huix i Miralpeix	fuoco
+Beato Santi Avertano	porpora
+Beato Santiago Arriaga	arcobaleno
+Beato Santiago Mestre Iborra	legno
+Beato Santiago Pardo López	fuoco
+Beato Saverio Luigi Bandrés Jiménez	fuoco
+Beato Sebastiano Calvo Martínez	fuoco
+Beato Sebastiano Maggi	argento
+Beato Sebastiano Riera Coromina	fuoco
+Beato Sebastiano Valfrè	smeraldo
+Beato Sebastiano dell'Apparizione	legno
+Beato Secondino Ortega García	fuoco
+Beato Segundo de Santa Teresa	argento
+Beato Serafino Koda	arcobaleno
+Beato Serafino Morazzone	lapislazzuli
+Beato Sergio Cid Pazo	neon
+Beato Severian Baranyk	argento
+Beato Silvester Arnau	porpora
+Beato Simone Fidati	legno
+Beato Simone Rinalducci	vaporwave
+Beato Sinforiano Ducki	porpora
+Beato Stanisław Kubista	fuoco
+Beato Stanley Francis Rother	fuoco
+Beato Stefan Grelewski	arcobaleno
+Beato Stefano Bellesini	argento
+Beato Stefano Casadevall Puig	fuoco
+Beato Stefano Douayhy	vaporwave
+Beato Stefano Maconi	smeraldo
+Beato Stefano Sandòr	fuoco
+Beato Stefano di San Giuseppe	fuoco
+Beato Symeon Lukač	smeraldo
+Beato Szilárd Ignác Bogdánffy	legno
+Beato Taddeo McCarthy	bronzo
+Beato Tassilone III di Baviera	arcobaleno
+Beato Teodorico I di Metz	bronzo
+Beato Teodoro Illera del Olmo	argento
+Beato Teodoro Romža	smeraldo
+Beato Teodoro Ruiz de Larrinaga García	fuoco
+Beato Teofilius Matulionis	arcobaleno
+Beato Terence Albert O'Brien	arcobaleno
+Beato Terence James Cooke	legno
+Beato Thomas Abell	fuoco
+Beato Thomas Belson	fuoco
+Beato Thomas Cottam	fuoco
+Beato Thomas Holford	vaporwave
+Beato Thomas Palasor	fuoco
+Beato Thomas Pilchard	arcobaleno
+Beato Thomas Plumtree	neon
+Beato Thomas Pormort	vaporwave
+Beato Thomas Sprott	fuoco
+Beato Thomas Tichborne	fuoco
+Beato Thomas Tsugi	lapislazzuli
+Beato Thomas Tunstall	lapislazzuli
+Beato Thomas Whitbread	legno
+Beato Thurston Hunt	vaporwave
+Beato Timo di Salisburgo	fuoco
+Beato Timoteo da Monticchio	arcobaleno
+Beato Titu Liviu Chinezu	smeraldo
+Beato Tommaso Caccia	smeraldo
+Beato Tommaso Capdevila Miró	fuoco
+Beato Tommaso Reggio	neon
+Beato Tommaso Welbourne	lapislazzuli
+Beato Tommaso da Celano	lapislazzuli
+Beato Tommaso da Costacciaro	argento
+Beato Tommaso da Kempis	legno
+Beato Tommaso da Olera	neon
+Beato Tommaso da Tolentino	fuoco
+Beato Tomás Cuartero Gascón	fuoco
+Beato Tomás de Zumárraga	fuoco
+Beato Torello da Poppi	arcobaleno
+Beato Tullio Maruzzo	fuoco
+Beato Ubaldo Marchioni	fuoco
+Beato Ugo Panziera	neon
+Beato Ugo de Actis	porpora
+Beato Ugo di Fosses	argento
+Beato Ugo di Mâcon	vaporwave
+Beato Ugolino da Gualdo Cattaneo	vaporwave
+Beato Umberto III di Savoia	arcobaleno
+Beato Umberto di Romans	argento
+Beato Urbano V	neon
+Beato Utto di Metten	arcobaleno
+Beato Valentin Paquay	argento
+Beato Valentín Palencia	legno
+Beato Valeriu Traian Frențiu	lapislazzuli
+Beato Vasile Aftenie	fuoco
+Beato Vasiľ Hopko	neon
+Beato Venceslao Clarís Vilaregut	fuoco
+Beato Venturino da Bergamo	smeraldo
+Beato Vicente Blanco Guadilla	porpora
+Beato Vicente Burrel Enjuanes	fuoco
+Beato Vicente Cabanes Badenas	arcobaleno
+Beato Vicente Vilar David	legno
+Beato Vicente de Paul Canelles Vives	fuoco
+Beato Vicente de Santo António	smeraldo
+Beato Vilmos Apor	argento
+Beato Vincent L'Hénoret	fuoco
+Beato Vincentius Lewoniuk	legno
+Beato Vinçens Prennushi	smeraldo
+Beato Vitichindo	argento
+Beato Vladimir Ghika	lapislazzuli
+Beato Víctor Chumillas	fuoco
+Beato Wenceslao Pedernera	lapislazzuli
+Beato Werner von Ellerbach	porpora
+Beato Wilhelm Eiselin	legno
+Beato William Carter	fuoco
+Beato William Patenson	vaporwave
+Beato Wincenty Stefan Frelichowski	vaporwave
+Beato Wojciech Nierychlewski	legno
+Beato Wolfelmo di Brauweiler	bronzo
+Beato Władysław Bukowiński	legno
+Beato Władysław Goral	smeraldo
+Beato Władysław z Gielniowa	smeraldo
+Beato Yosafat Kotsylovs'kyi	bronzo
+Beato Zacarías Abadía Buesa	bronzo
+Beato Zbigniew Strzałkowski	fuoco
+Beato Zeffirino Namuncurà	smeraldo
+Beato Zefirino Agostini	argento
+Beato Zoltán Lajos Meszlényi	smeraldo
+Beato Zynoviy Kovalyk	fuoco
+Beato Zósimo Izquierdo Gil	smeraldo
+Beato Álvaro Santos Cejudo	argento
+Beato Álvaro de Córdoba	legno
+Beato Álvaro del Portillo	vaporwave
+Beato Ángel Hernández-Ranera de Diego	legno
+Beato Ángel de la Red Pérez	legno
+Beato Élie Leymarie de Laroche	bronzo
+San Babila di Antiochia	fuoco
+San Baboleno	smeraldo
+San Bachtheson	lapislazzuli
+San Bacolo di Sorrento	smeraldo
+San Badulf	neon
+San Baglan	lapislazzuli
+San Baino di Thérouanne	arcobaleno
+San Baldomero di Lione	argento
+San Baldovino di Rieti	legno
+San Baldredo	smeraldo
+San Banda Nawāz	neon
+San Barbato di Benevento	smeraldo
+San Barbaziano	smeraldo
+San Bardo	neon
+San Barebreo	vaporwave
+San Barlaam di Antiochia	vaporwave
+San Barnaba	porpora
+San Barsabiasz	porpora
+San Barsanufio di Optina	neon
+San Bartolo Longo	argento
+San Bartolomeo Fernandes	legno
+San Bartolomeo di Simeri	porpora
+San Bartolomeo il Giovane	porpora
+San Basarab V Neagoe	smeraldo
+San Bashnouna	smeraldo
+San Basileo di Amasea	lapislazzuli
+San Basilide di Alessandria	lapislazzuli
+San Basilio di Ancira	arcobaleno
+San Basilio di Bologna	neon
+San Basilio di Luni	lapislazzuli
+San Basilio di Seleucia	neon
+San Basilio il Benedetto	bronzo
+San Basilio il Giovane	legno
+San Basilio il Vecchio	argento
+San Basilisco	arcobaleno
+San Basinus von Trier	arcobaleno
+San Basolo di Verzy	bronzo
+San Bassiano di Lodi	legno
+San Basso di Lucera	fuoco
+San Basso di Nizza	fuoco
+San Baudilio di Nimes	neon
+San Baudolino eremita	porpora
+San Bavone di Gand	porpora
+San Bazyli Martysz	fuoco
+San Beat de Cerbi	argento
+San Beda il Venerabile	argento
+San Benedetto	arcobaleno
+San Benedetto Biscop	smeraldo
+San Benedetto Giuseppe Labre	bronzo
+San Benedetto I di Milano	arcobaleno
+San Benedetto II	smeraldo
+San Benedetto Menni	neon
+San Benedetto Revelli	vaporwave
+San Benedetto d'Alignan	lapislazzuli
+San Benedetto d'Aniane	smeraldo
+San Benedetto da San Fratello	neon
+San Benedetto di Dolia	porpora
+San Benedetto di Hermillon	bronzo
+San Benedikt-Stojislav	neon
+San Beniamino di Persia	fuoco
+San Benigno de' Medici	arcobaleno
+San Benigno di Armagh	bronzo
+San Benigno di Digione	fuoco
+San Benigno di Malcesine	argento
+San Benigno di Milano	lapislazzuli
+San Benildo Romançon	vaporwave
+San Benno di Meißen	arcobaleno
+San Berardo da Carbio	arcobaleno
+San Berardo da Teramo	argento
+San Berardo dei Marsi	bronzo
+San Berillo di Catania	lapislazzuli
+San Bernabé de Jesús Méndez Montoya	bronzo
+San Bernardino Realino	legno
+San Bernardino da Siena	argento
+San Bernardo Calvò	neon
+San Bernardo Tolomei	arcobaleno
+San Bernardo da Corleone	smeraldo
+San Bernardo degli Uberti	porpora
+San Bernardo di Carinola	legno
+San Bernardo di Mentone	arcobaleno
+San Bernardo di Tiron	porpora
+San Bernardo di Vienne	lapislazzuli
+San Bernardo pellegrino	lapislazzuli
+San Bernoardo di Hildesheim	arcobaleno
+San Bernoldo di Utrecht	vaporwave
+San Bernolfo di Asti	arcobaleno
+San Bernone di Cluny	lapislazzuli
+San Bernulf	vaporwave
+San Bertario di Montecassino	fuoco
+San Bertilone di Digione	arcobaleno
+San Bertino di Sithiu	lapislazzuli
+San Bertoaldo di Canterbury	argento
+San Bertoldo di Calabria	bronzo
+San Bertolfo	smeraldo
+San Bertrand	neon
+San Bertrando di Comminges	vaporwave
+San Bertrando di Le Mans	lapislazzuli
+San Bertuinus van Malonne	neon
+San Bertulfo di Bobbio	arcobaleno
+San Bessarione d'Egitto	neon
+San Besso	arcobaleno
+San Bettone di Sens	bronzo
+San Beuno	arcobaleno
+San Bevignate da Perugia	argento
+San Biagio di Sebaste	fuoco
+San Bibianus von Saintes	vaporwave
+San Birino di Dorchester	vaporwave
+San Biśuddhānanda Paramahaṃsa	porpora
+San Blano di Dunblane	vaporwave
+San Blitmondo	vaporwave
+San Bobuleno di Bobbio	smeraldo
+San Boetharius	smeraldo
+San Bonaventura da Bagnoregio	legno
+San Bonaventure Tolomei	porpora
+San Bonfiglio di Foligno	smeraldo
+San Bonifacio	fuoco
+San Bonifacio I	legno
+San Bonifacio IV	porpora
+San Bonifacio Zukowski	argento
+San Bonifacio di Losanna	arcobaleno
+San Bonifacio di Tarso	legno
+San Bonito di Clermont	arcobaleno
+San Bono di Milano	legno
+San Bononio di Lucedio	porpora
+San Bonosio di Salerno	neon
+San Bonoso di Treviri	bronzo
+San Boris I di Bulgaria	legno
+San Bosa di York	bronzo
+San Botulfo	bronzo
+San Botvido di Svezia	porpora
+San Bovo di Voghera	lapislazzuli
+San Bracario	lapislazzuli
+San Brannoc di Braunton	neon
+San Branueladro	argento
+San Braulione di Saragozza	argento
+San Bregwin	vaporwave
+San Brendano di Birr	bronzo
+San Brendano di Clonfert	porpora
+San Bretannione di Tomis	bronzo
+San Briaco eremita	bronzo
+San Brian Boru	bronzo
+San Brinolfo Algotsson	neon
+San Brioc	vaporwave
+San Brizio di Tours	bronzo
+San Bruno I di Colonia	legno
+San Bruno di Colonia	vaporwave
+San Bruno di Querfurt	legno
+San Bruno di Sassonia	neon
+San Bruno di Segni	legno
+San Bruno di Würzburg	arcobaleno
+San Brychan Brycheiniog	porpora
+San Budoc de Vannes	bronzo
+San Buonfiglio dei Monaldi	lapislazzuli
+San Buono	fuoco
+San Burcardo di Worms	porpora
+San Burcardo di Würzburg	porpora
+San Cadfan	lapislazzuli
+San Cadfarch	arcobaleno
+San Cadog Ddoeth	porpora
+San Cadroe di Metz	neon
+San Caio	lapislazzuli
+San Caio di Milano	lapislazzuli
+San Calepodio	arcobaleno
+San Caletrico di Chartres	porpora
+San Calimero di Milano	legno
+San Callimaco	argento
+San Callinico e compagni	bronzo
+San Callisto Caravario	neon
+San Callisto I	legno
+San Calminio	legno
+San Calogero di Sicilia	vaporwave
+San Calupan	vaporwave
+San Calva di Napoli	smeraldo
+San Camillo Costanzo	neon
+San Camillo de Lellis	bronzo
+San Candido	neon
+San Canio di Atella	fuoco
+San Canizio di Aghaboe	arcobaleno
+San Cannato	argento
+San Canuto IV di Danimarca	fuoco
+San Canuto Lavard	legno
+San Capitone	vaporwave
+San Caprasio di Agen	arcobaleno
+San Caprasio di Lérins	arcobaleno
+San Caradoc Freichfras	argento
+San Caralampo	arcobaleno
+San Carantoco	smeraldo
+San Carlo Acutis	vaporwave
+San Carlo Borromeo	porpora
+San Carlo I di Fiandra	fuoco
+San Carlo Lwanga	argento
+San Carlo da Sezze	arcobaleno
+San Carlo di Sant'Andrea	arcobaleno
+San Carlomanno	vaporwave
+San Carmelo di Savoia	neon
+San Caro di Malcesine	bronzo
+San Carpo	porpora
+San Carpoforo	vaporwave
+San Cartaco di Lismore	arcobaleno
+San Casimiro di Cracovia	vaporwave
+San Cassiano di Autun	arcobaleno
+San Cassiano di Benevento	porpora
+San Cassiano di Imola	legno
+San Cassiano di Tangeri	bronzo
+San Cassio	vaporwave
+San Cassio di Narni	lapislazzuli
+San Casto e Secondino	smeraldo
+San Castore di Apt	bronzo
+San Castore di Karden	smeraldo
+San Castrese di Sessa	fuoco
+San Castriciano	neon
+San Castulo	neon
+San Cataldo	vaporwave
+San Catello di Castellammare	smeraldo
+San Catervo di Tolentino	legno
+San Cathen	arcobaleno
+San Cawrdaf	lapislazzuli
+San Ceatta	neon
+San Ceccardo di Luni	bronzo
+San Cedda vescovo	argento
+San Ceidio Arcaw	vaporwave
+San Celadio di Alessandria	porpora
+San Celerino di Cartagine	argento
+San Celeste di Metz	argento
+San Celestino I	smeraldo
+San Celestino IV	legno
+San Celestino V	argento
+San Celso	legno
+San Celso di Armagh	vaporwave
+San Celso di Pozzuoli	bronzo
+San Celso di Vercelli	smeraldo
+San Celsus von Trier	bronzo
+San Cenelm	porpora
+San Censurio di Auxerre	smeraldo
+San Ceolfrid	porpora
+San Ceolwulf di Northumbria	lapislazzuli
+San Cerauno	legno
+San Cerazio di Grenoble	smeraldo
+San Cerbone di Populonia	lapislazzuli
+San Cerenico di Spoleto	vaporwave
+San Cesare di Durazzo	neon
+San Cesareo di Terracina	fuoco
+San Cesario d'Arles	lapislazzuli
+San Cesario di Damasco	smeraldo
+San Cesario di Nazianzo	lapislazzuli
+San Cesidio Giacomantonio	smeraldo
+San Cetteo di Amiterno	fuoco
+San Chad di Mercia	lapislazzuli
+San Chaim ibn Attar	bronzo
+San Charbel Makhluf	argento
+San Charles Garnier	smeraldo
+San Charles de Foucauld	fuoco
+San Cheledonio	legno
+San Cheremone di Nitria	vaporwave
+San Chetillo	neon
+San Chiaffredo	neon
+San Chiaro di Vienne	porpora
+San Chiliano	arcobaleno
+San Ciarán di Clonmacnoise	neon
+San Ciarán di Saighir	vaporwave
+San Cipriano	lapislazzuli
+San Cipriano di Antiochia	fuoco
+San Cipriano di Brescia	smeraldo
+San Cipriano di Calamizzi	bronzo
+San Cipriano di Suzdal	legno
+San Cipriano di Tolone	neon
+San Ciriaco di Augusta	neon
+San Ciriaco di Gerusalemme	fuoco
+San Ciriaco di Ostia	legno
+San Ciriaco di Roma	smeraldo
+San Cirillo	smeraldo
+San Cirillo Fileota	bronzo
+San Cirillo VI di Alessandria	smeraldo
+San Cirillo VI di Costantinopoli	fuoco
+San Cirillo di Antiochia	porpora
+San Cirillo di Reggio	smeraldo
+San Ciro	smeraldo
+San Ciro di Alessandria	lapislazzuli
+San Clair de Marmoutier	neon
+San Clair de Nantes	vaporwave
+San Clair du Beauvaisis	bronzo
+San Clateo	legno
+San Claude de la Colombière	smeraldo
+San Claudi de Viena	smeraldo
+San Claudio di Besançon	smeraldo
+San Clement of Ireland	arcobaleno
+San Clemente Alessandrino	arcobaleno
+San Clemente Maria Hofbauer	porpora
+San Clemente di Ancira	arcobaleno
+San Clemente di Metz	vaporwave
+San Clemente di Ocrida	argento
+San Cleofa	smeraldo
+San Cleonico	fuoco
+San Clodoaldo	bronzo
+San Clodolfo di Metz	arcobaleno
+San Cokhā Meḷā	legno
+San Colman mac Duagh	neon
+San Colmanno di Stockerau	argento
+San Colmano di Dromore	bronzo
+San Colomanno di Galizia	smeraldo
+San Colomano di Cloyne	smeraldo
+San Colomano di Lindisfarne	bronzo
+San Colomano di Würzburg	vaporwave
+San Colombano di Bobbio	arcobaleno
+San Columba di Iona	legno
+San Columba di Terryglass	porpora
+San Comgall di Bangor	lapislazzuli
+San Comizio	arcobaleno
+San Conan di Man	bronzo
+San Concorde de Saintes	vaporwave
+San Concordio di Spoleto	neon
+San Congaro	arcobaleno
+San Conlaedo	smeraldo
+San Connell of Aughrim	porpora
+San Cono da Teggiano	neon
+San Cono di Naso	bronzo
+San Cono il taumaturgo	neon
+San Conogan de Beuzit	porpora
+San Conone l'ortolano	porpora
+San Console di Como	bronzo
+San Constantin Brâncoveanu	fuoco
+San Contardo d'Este	arcobaleno
+San Conven	smeraldo
+San Convoione	legno
+San Corbiniano di Frisinga	legno
+San Corentino di Quimper	lapislazzuli
+San Cormac mac Cuilennáin	vaporwave
+San Cornelio	fuoco
+San Cornelio di Imola	smeraldo
+San Corrado Confalonieri	lapislazzuli
+San Corrado da Parzham	arcobaleno
+San Corrado di Baviera	smeraldo
+San Corrado di Costanza	porpora
+San Cosma d'Etolia	argento
+San Cosma di Maiuma	arcobaleno
+San Costabile Gentilcore	bronzo
+San Costantino	smeraldo
+San Costantino XI Paleologo	argento
+San Costantino di Gap	neon
+San Costanzo	bronzo
+San Costanzo d'Aquino	neon
+San Costanzo di Ancona	argento
+San Costanzo di Capri	bronzo
+San Costanzo di Niardo	bronzo
+San Costanzo di Perugia	neon
+San Credan	porpora
+San Crescentian	porpora
+San Crescentino di Città di Castello	arcobaleno
+San Crescentino o Crescenziano	lapislazzuli
+San Crescenzio di Roma	arcobaleno
+San Crescenzo di Bonito	legno
+San Cresci	arcobaleno
+San Cresto II di Siracusa	porpora
+San Cresto di Siracusa	smeraldo
+San Crisante	legno
+San Crisogono di Aquileia	vaporwave
+San Crisostomo di Smirne	fuoco
+San Crispiniano	porpora
+San Crispino	vaporwave
+San Crispino I di Pavia	porpora
+San Crispino da Viterbo	bronzo
+San Crispo	argento
+San Crispolito	legno
+San Cristanziano	legno
+San Cristino	porpora
+San Cristiolus	lapislazzuli
+San Cristoforo	fuoco
+San Cristóbal Magallanes Jara	legno
+San Crodegango di Metz	legno
+San Croidan	legno
+San Cromazio d'Aquileia	legno
+San Cucufate	legno
+San Cumiano di Bobbio	vaporwave
+San Cuniberto di Colonia	legno
+San Cutberto Mayne	fuoco
+San Cutberto di Lindisfarne	bronzo
+San Cuthbert di Canterbury	vaporwave
+San Cybi	legno
+San Cynog	smeraldo
+San Cynwyd Cynwydion	argento
+San Czesław Jóźwiak	fuoco
+San Cædmon	bronzo
+San César de Bus	legno
+San Dabheog	vaporwave
+San Dagoberto II	legno
+San Dallan Forgaill	legno
+San Dalmazio di Costantinopoli	legno
+San Dalmazzo di Pedona	fuoco
+San Damasceno Studita	arcobaleno
+San Damaso I	legno
+San Damiano	fuoco
+San Damiano d'Africa	bronzo
+San Damiano de Veuster	neon
+San Damiano di Pavia	vaporwave
+San Dana	argento
+San Daniel Varujan	fuoco
+San Daniel z Egiptu	argento
+San Daniele	bronzo
+San Daniele Comboni	smeraldo
+San Daniele Fasanella	porpora
+San Daniele di Padova	neon
+San Daniele di Russia	arcobaleno
+San Daniele lo Stilita	lapislazzuli
+San Daniele martire	lapislazzuli
+San Dasio di Nicomedia	vaporwave
+San David Galvan Bermudes	argento
+San David Lewis	fuoco
+San David Roldán Lara	neon
+San Davide I di Scozia	bronzo
+San Davide II di Trebisonda	argento
+San Davide IV di Georgia	legno
+San Davide di Menevia	neon
+San Davide di Svezia	neon
+San Davino Armeno	neon
+San Dazio di Milano	smeraldo
+San Declano di Ardmore	argento
+San Defendente	smeraldo
+San Deicolo di Lure	porpora
+San Deiniol	porpora
+San Delfino di Bordeaux	vaporwave
+San Demetriano di Chytri	lapislazzuli
+San Demetrio I di Georgia	porpora
+San Demetrio II di Georgia	neon
+San Demetrio di Alessandria	lapislazzuli
+San Demetrio di Russia	arcobaleno
+San Demetrio di Tessalonica	fuoco
+San Deocar	neon
+San Deodato di Nevers	argento
+San Deogratias	smeraldo
+San Derien	argento
+San Deruviano	legno
+San Desiderato di Besançon	lapislazzuli
+San Desiderato di Bourges	arcobaleno
+San Desiderato di Verdun	neon
+San Desiderio di Cahors	vaporwave
+San Desiderio di Langres	neon
+San Desiderio di Vienne	fuoco
+San Di Liébana	argento
+San Di Vendôme	arcobaleno
+San Diadoco di Fotice	neon
+San Didimo il Cieco	bronzo
+San Dieci martiri di Creta	neon
+San Diego Kisai	fuoco
+San Diego Oddi	lapislazzuli
+San Diego d'Acebo	porpora
+San Diego d'Alcalá	argento
+San Dimiry Klepinin	argento
+San Dinoto di Bangor	legno
+San Diodato di Montecassino	porpora
+San Diodoro di Tarso	legno
+San Diogene di Arras	lapislazzuli
+San Diomede di Tarso	porpora
+San Diomede il Giovane	bronzo
+San Dionigi di Augusta	neon
+San Dionigi di Corinto	neon
+San Dionigi di Milano	neon
+San Dionigi di Parigi	fuoco
+San Dionigi di Vienne	legno
+San Dionigi il Piccolo	vaporwave
+San Dionigi l'Areopagita	fuoco
+San Dionisio	argento
+San Dionisio di Alessandria	fuoco
+San Dionisio di Olimpo	arcobaleno
+San Dionisio di Zante	argento
+San Dioscoro di Alessandria	neon
+San Disibodo d'Irlanda	porpora
+San Disma	fuoco
+San Dodone di Wallers-en-Fagne	arcobaleno
+San Doetval	vaporwave
+San Dogfan	arcobaleno
+San Doha	porpora
+San Doimo	argento
+San Domenico Henares	fuoco
+San Domenico Loricato	arcobaleno
+San Domenico Savio	porpora
+San Domenico Tuoc	vaporwave
+San Domenico del Val	argento
+San Domenico della Calzada	vaporwave
+San Domenico di Guzmán	arcobaleno
+San Domenico di Silos	legno
+San Domenico di Sora	bronzo
+San Domingo Ibáñez de Erquicia	bronzo
+San Dominik Jędrzejewski	bronzo
+San Dominius	porpora
+San Domitien de Tongres	lapislazzuli
+San Domiziano di Melitene	lapislazzuli
+San Domizio	neon
+San Domnin de Grenoble	bronzo
+San Donald di Ogilvy	lapislazzuli
+San Donato d'Arezzo	neon
+San Donato da Ripacandida	legno
+San Donato di Besançon	bronzo
+San Donato di Eurea	lapislazzuli
+San Donato di Fiesole	lapislazzuli
+San Donato di Imola	neon
+San Donato di Montevergine	arcobaleno
+San Donaziano di Châlons	vaporwave
+San Donaziano di Nantes	neon
+San Donaziano di Reims	porpora
+San Donizetti Tavares de Lima	bronzo
+San Donnano di Eigg	lapislazzuli
+San Donnino di Digne	smeraldo
+San Donnino di Fidenza	porpora
+San Donnino di Vienne	bronzo
+San Doro da Benevento	bronzo
+San Doroteo	bronzo
+San Doroteo di Tiro	fuoco
+San Dositej Vasić	vaporwave
+San Dositeo di Gaza	porpora
+San Dosoftei	legno
+San Dovmont di Pskov	smeraldo
+San Drogo van Sebourg	vaporwave
+San Drostan	legno
+San Drottoveo di Parigi	neon
+San Dubricio di Llandaff	legno
+San Dulcedio di Agen	neon
+San Dulcidio	porpora
+San Dunaut Bwr	porpora
+San Dunstano di Canterbury	bronzo
+San Duthac	lapislazzuli
+San Dyfan	legno
+San Fabiano	fuoco
+San Fabio	porpora
+San Fabio il Vessillifero	bronzo
+San Fabriziano di Toledo	argento
+San Fachanan	lapislazzuli
+San Fachtna di Ross	porpora
+San Facondino	smeraldo
+San Falco di Palena	bronzo
+San Famiano	bronzo
+San Fantino il Giovane	arcobaleno
+San Fantino il Vecchio	neon
+San Fanurio	lapislazzuli
+San Farone di Meaux	porpora
+San Fastré de Cambron	lapislazzuli
+San Faustiniano	vaporwave
+San Faustino	arcobaleno
+San Faustino Míguez González	neon
+San Faustino di Brescia	neon
+San Faustino di Roma	legno
+San Faustino martire	argento
+San Fausto di Riez	lapislazzuli
+San Febadio di Agen	porpora
+San Fedele da Sigmaringen	vaporwave
+San Fedele di Como	porpora
+San Federico di Liegi	porpora
+San Federico di Utrecht	porpora
+San Fedlimino di Kilmore	bronzo
+San Felice	argento
+San Felice I	arcobaleno
+San Felice I di Metz	arcobaleno
+San Felice III	bronzo
+San Felice IV	legno
+San Felice da Cantalice	argento
+San Felice di Bologna	argento
+San Felice di Cartagine	legno
+San Felice di Como	bronzo
+San Felice di Dunwich	smeraldo
+San Felice di Genova	neon
+San Felice di Luni	argento
+San Felice di Massa Martana	vaporwave
+San Felice di Nola	arcobaleno
+San Felice di Pistoia	legno
+San Felice di Roma	bronzo
+San Felice di Spoleto	legno
+San Felice di Thibiuca	fuoco
+San Felice di Valois	arcobaleno
+San Felice eremita	porpora
+San Feliciano di Foligno	bronzo
+San Felicio	smeraldo
+San Feodosij Filippovič Stankevič	lapislazzuli
+San Ferdinando III di Castiglia	lapislazzuli
+San Ferdinando d'Aragona	arcobaleno
+San Fergus il Pitto	lapislazzuli
+San Fermo e Rustico	neon
+San Ferreolo di Besançon	arcobaleno
+San Ferreolo di Grenoble	legno
+San Ferreolo di Limoges	vaporwave
+San Ferreolo di Uzès	porpora
+San Ferreolo di Vienne	arcobaleno
+San Ferruccio di Besançon	lapislazzuli
+San Ferruccio di Magonza	argento
+San Fiacrio	lapislazzuli
+San Fidenzio di Padova	lapislazzuli
+San Filadelfo di Pattano	neon
+San Filarete	lapislazzuli
+San Filarete di Calabria	neon
+San Filareto	vaporwave
+San Filastrio	smeraldo
+San Filea di Thmuis	fuoco
+San Filemone	arcobaleno
+San Filiberto abate	vaporwave
+San Filip Zhang Zhihe	fuoco
+San Filippo	legno
+San Filippo Benizi	arcobaleno
+San Filippo Evans	legno
+San Filippo Neri	lapislazzuli
+San Filippo Smaldone	smeraldo
+San Filippo di Agira	neon
+San Filippo di Eraclea	lapislazzuli
+San Filippo di Gesù	fuoco
+San Filippo di Gortina	vaporwave
+San Filippo di Vienne	porpora
+San Filogonio di Antiochia	porpora
+San Filologo di Sinope	arcobaleno
+San Filoromo	fuoco
+San Filosof Nikolaevič Ornatskij	fuoco
+San Filosseno di Mabbug	argento
+San Finan di Lindisfarne	arcobaleno
+San Findbar di Cork	vaporwave
+San Fingar	arcobaleno
+San Finnian di Clonard	legno
+San Finnian di Moville	smeraldo
+San Fintano di Rheinau	porpora
+San Fiorenzo di Bastia	legno
+San Fiorenzo di Cahors	porpora
+San Fiorenzo di Semina	arcobaleno
+San Fiorenzo di Strasburgo	vaporwave
+San Fiorenzo di Tessalonica	legno
+San Fiorenzo di Vienne	fuoco
+San Firmino di Uzès	argento
+San Flannano di Killaloe	vaporwave
+San Flaviano	argento
+San Flaviano di Autun	porpora
+San Flaviano di Cartagine	porpora
+San Flaviano di Costantinopoli	vaporwave
+San Flaviano di Montefiascone	arcobaleno
+San Flaviano di Ricina	bronzo
+San Flavio di Rouen	lapislazzuli
+San Flavito	legno
+San Flegonte	argento
+San Florbertus van Gent	arcobaleno
+San Florenzio di Orange	argento
+San Floriano Stępniak	argento
+San Floriano di Lorch	fuoco
+San Floriano di Oderzo	arcobaleno
+San Florianus	vaporwave
+San Floribert	neon
+San Florido	bronzo
+San Florin di Remüs	smeraldo
+San Floro di Lodeve	bronzo
+San Foca di Sinope	smeraldo
+San Foillano di Fosses	lapislazzuli
+San Folco Scotti	legno
+San Folco confessore	argento
+San Folcuino di Therouanne	arcobaleno
+San Foma Danilevskij	argento
+San Forannan	smeraldo
+San Fortis di Astorga	vaporwave
+San Fortunato	arcobaleno
+San Fortunato di Aquileia	vaporwave
+San Fortunato di Casei	smeraldo
+San Fortunato di Fano	smeraldo
+San Fortunato di Lecce	lapislazzuli
+San Fortunato di Napoli	smeraldo
+San Fortunato di Todi	bronzo
+San Fotino di Benevento	argento
+San Fozio di Costantinopoli	arcobaleno
+San Fraimbault de Lassay	lapislazzuli
+San Frambold	bronzo
+San Francesc Gil de Frederic	fuoco
+San Francesco Antonio Fasani	arcobaleno
+San Francesco Borgia	vaporwave
+San Francesco Caracciolo	neon
+San Francesco Fogolla	fuoco
+San Francesco Marto	porpora
+San Francesco Saverio	lapislazzuli
+San Francesco Saverio Maria Bianchi	neon
+San Francesco Shoyemon	vaporwave
+San Francesco Solano	lapislazzuli
+San Francesco Spinelli	smeraldo
+San Francesco Stryjas	lapislazzuli
+San Francesco da Paola	arcobaleno
+San Francesco de Geronimo	lapislazzuli
+San Francesco di Sales	arcobaleno
+San Francisco Coll Guitart	lapislazzuli
+San Francisco Fernández de Capillas	fuoco
+San Francisco Serrano Frías	legno
+San Franciszek Drzewiecki	porpora
+San Franciszek Rogaczewski	vaporwave
+San Franciszek Rosłaniec	porpora
+San Franco da Assergi	lapislazzuli
+San François Jaccard	fuoco
+San François de Montmorency-Laval	arcobaleno
+San François-Isidore Gagelin	fuoco
+San Fraterno di Auxerre	neon
+San Fredardo di Mende	neon
+San Frediano di Lucca	bronzo
+San Frei Galvão	argento
+San Fremundo	smeraldo
+San Fridolino di Säckingen	arcobaleno
+San Frodoberto	lapislazzuli
+San Frodulfo di Barjon	bronzo
+San Fromond	lapislazzuli
+San Fromond de Coutances	porpora
+San Frontone di Périgueux	arcobaleno
+San Frumenzio d'Etiopia	lapislazzuli
+San Frutto	neon
+San Fruttuoso di Braga	legno
+San Fruttuoso di Tarragona	fuoco
+San Fulberto di Chartres	legno
+San Fulcrano di Lodève	arcobaleno
+San Fulgenzio di Astigi	lapislazzuli
+San Fulgenzio di Otricoli	arcobaleno
+San Fulgenzio di Ruspe	arcobaleno
+San Fursa di Lagny	lapislazzuli
+San Fusciano	legno
+San Fëdor Fëdorovič Ušakov	argento
+San Fëdor Jaroslavič	legno
+San Fëdor Kuz'mič	legno
+San Gabriel Lalemant	smeraldo
+San Gabriel de Duisco	fuoco
+San Gabriele dell'Addolorata	argento
+San Gabriele di Bialystok	bronzo
+San Gaetano Catanoso	bronzo
+San Gaetano Thiene	argento
+San Gaio Sollio Sidonio Apollinare	arcobaleno
+San Gaio di Corinto	lapislazzuli
+San Gaio di Efeso	argento
+San Galattorio di Lescar	bronzo
+San Galdino	legno
+San Galgano	legno
+San Gall II de Clermont	bronzo
+San Gallo	neon
+San Gallo I di Clermont	bronzo
+San Gallo di Aosta	lapislazzuli
+San Gamaliele	bronzo
+San Garabed der Sahaghian	fuoco
+San Gaspare del Bufalo	porpora
+San Gastone di Arras	bronzo
+San Gaucherio	argento
+San Gaudenzio di Arezzo	arcobaleno
+San Gaudenzio di Brescia	porpora
+San Gaudenzio di Novara	smeraldo
+San Gaudenzio di Rimini	arcobaleno
+San Gauderico di Vilavella	lapislazzuli
+San Gaudioso di Napoli	bronzo
+San Gaugerico di Cambrai	legno
+San Gault de Concise	bronzo
+San Gavino	fuoco
+San Gaziano di Tours	arcobaleno
+San Gebardo di Costanza	arcobaleno
+San Gebre Mesqel Lalibela	neon
+San Gedeone	bronzo
+San Gelasio I	arcobaleno
+San Gelasio II	porpora
+San Gemiliano da Cagliari	fuoco
+San Gemine	vaporwave
+San Geminiano di Modena	argento
+San Gemolo	argento
+San Genebaldo	argento
+San Generoso di Ortona dei Marsi	porpora
+San Generoso di Tivoli	smeraldo
+San Genesio di Arles	vaporwave
+San Genesio di Brescello	lapislazzuli
+San Genesio di Clermont	lapislazzuli
+San Genesio di Lione	smeraldo
+San Gengolfo di Borgogna	legno
+San Gennadio di Astorga	bronzo
+San Gennaro	fuoco
+San Gennaro di Antiochia	legno
+San Gentien	arcobaleno
+San George El Mozahem	neon
+San George Herbert	smeraldo
+San Gerado Della Porta	vaporwave
+San Geraldo d'Aurillac	arcobaleno
+San Geraldo di Beziers	neon
+San Geraldo di Braga	porpora
+San Geraldo di Sauve-Majeure	lapislazzuli
+San Gerardo Maiella	neon
+San Gerardo dei Tintori	legno
+San Gerardo di Brogne	argento
+San Gerardo di Chiaravalle	smeraldo
+San Gerardo di Csanád	fuoco
+San Gerardo di Gallinaro	porpora
+San Gerardo di Mâcon	arcobaleno
+San Gerardo di Toul	legno
+San Gerasimo	bronzo
+San Gerasimo di Cefalonia	porpora
+San Gerasimo di San Lorenzo	neon
+San Gerasimos Mikragiannanitīs	vaporwave
+San Gerbold	porpora
+San Gerboldo di Évreux	legno
+San Gerebald	argento
+San Geremaro	bronzo
+San Geremia I di Costantinopoli	lapislazzuli
+San Geremia da Valacchia	argento
+San Gereone di Colonia	bronzo
+San Gerfried	neon
+San Gerlaco di Valkenburg	vaporwave
+San Gerlando di Agrigento	porpora
+San Germain de Talloires	legno
+San Germanico di Smirne	smeraldo
+San Germano d'Alaska	vaporwave
+San Germano d'Auxerre	bronzo
+San Germano di Capua	legno
+San Germano di Granfelden	smeraldo
+San Germano di Normandia	neon
+San Germano di Parigi	bronzo
+San Germerio di Tolosa	porpora
+San Gero di Colonia	porpora
+San Gerolamo Emiliani	porpora
+San Geroldo di Colonia	legno
+San Geroldo di Großwalsertal	bronzo
+San Geronzio di Cervia	porpora
+San Geronzio di Italica	argento
+San Geronzio di Milano	porpora
+San Getulio	bronzo
+San Ghisleno di Mons	porpora
+San Giacinto Giordano Ansalone	fuoco
+San Giacinto Odrovaz	arcobaleno
+San Giacomo Baradeo	arcobaleno
+San Giacomo Bird	lapislazzuli
+San Giacomo d'Alfeo	fuoco
+San Giacomo della Marca	argento
+San Giacomo di Nisibi	bronzo
+San Giacomo di Saroug	arcobaleno
+San Giacomo di Tarantasia	neon
+San Giacomo il Giusto	fuoco
+San Giacomo il Minore	arcobaleno
+San Giacomo l'Interciso	fuoco
+San Giacuto	argento
+San Giancarlo Cornay	porpora
+San Gianuario	argento
+San Giasone Romano	legno
+San Gilbert de Neuffonts	argento
+San Gilberto di Caithness	neon
+San Gilberto di Limerick	lapislazzuli
+San Gilberto di Meaux	argento
+San Gilberto di Sempringham	vaporwave
+San Gildardo di Rouen	smeraldo
+San Gildas	legno
+San Gilduin	smeraldo
+San Gioacchino	smeraldo
+San Giocondo di Aosta	neon
+San Gioele	smeraldo
+San Giona	bronzo
+San Giona di Mosca	porpora
+San Giorgio Preca	neon
+San Giorgio d'Antiochia	arcobaleno
+San Giorgio di Amastri	arcobaleno
+San Giorgio di Mitilene	lapislazzuli
+San Giorgio di Sagla	neon
+San Giorgio di Sofia il Nuovo	vaporwave
+San Giorgio di Suelli	bronzo
+San Giorgio il Chozibita	neon
+San Giosafat Kuncewycz	argento
+San Giosuè lo Stilita	arcobaleno
+San Giovan Giuseppe della Croce	lapislazzuli
+San Giovanni	neon
+San Giovanni Almond	arcobaleno
+San Giovanni Antonio Farina	legno
+San Giovanni Battista Piamarta	vaporwave
+San Giovanni Battista Scalabrini	arcobaleno
+San Giovanni Battista Yi Kwang-hon	fuoco
+San Giovanni Berchmans	legno
+San Giovanni Bosco	vaporwave
+San Giovanni Calabria	smeraldo
+San Giovanni Calibita	vaporwave
+San Giovanni Cassiano	vaporwave
+San Giovanni Climaco	lapislazzuli
+San Giovanni Damasceno	smeraldo
+San Giovanni Eudes	bronzo
+San Giovanni Francesco Régis	argento
+San Giovanni Gabriele Perboyre	fuoco
+San Giovanni Grove	argento
+San Giovanni Gualberto	vaporwave
+San Giovanni Houghton	arcobaleno
+San Giovanni I	legno
+San Giovanni I di Siracusa	argento
+San Giovanni II	arcobaleno
+San Giovanni II di Gerusalemme	porpora
+San Giovanni III di Nicea	lapislazzuli
+San Giovanni Kukuzelis	argento
+San Giovanni Leonardi	vaporwave
+San Giovanni Liccio	bronzo
+San Giovanni Macías	neon
+San Giovanni Maria Scolarici	bronzo
+San Giovanni Maria Vianney	bronzo
+San Giovanni Mauropo	porpora
+San Giovanni Mazzucconi	fuoco
+San Giovanni Nepomuceno	porpora
+San Giovanni Nepomuceno Neumann	vaporwave
+San Giovanni Oldrati	arcobaleno
+San Giovanni Sarkander	smeraldo
+San Giovanni Theristis	vaporwave
+San Giovanni Vincenzo	arcobaleno
+San Giovanni Wall	vaporwave
+San Giovanni d'Ávila	neon
+San Giovanni da Capestrano	bronzo
+San Giovanni da Colonia	fuoco
+San Giovanni da Dukla	bronzo
+San Giovanni da Kęty	neon
+San Giovanni da Lodi	neon
+San Giovanni da Matera	argento
+San Giovanni da Parma	smeraldo
+San Giovanni da Salerno	smeraldo
+San Giovanni da San Facondo	lapislazzuli
+San Giovanni da Traù	neon
+San Giovanni da Triora	fuoco
+San Giovanni da Tufara	vaporwave
+San Giovanni de Britto	neon
+San Giovanni de Matha	argento
+San Giovanni de Ribera	smeraldo
+San Giovanni della Croce	vaporwave
+San Giovanni della Graticola	legno
+San Giovanni di Beverley	legno
+San Giovanni di Bridlington	argento
+San Giovanni di Dio	legno
+San Giovanni di Gaza	argento
+San Giovanni di Gorze	neon
+San Giovanni di Gotia	vaporwave
+San Giovanni di Goto	fuoco
+San Giovanni di Kronštadt	vaporwave
+San Giovanni di Montemarano	vaporwave
+San Giovanni di Mosca	porpora
+San Giovanni di Odzun	neon
+San Giovanni di Rila	neon
+San Giovanni di Shanghai e San Francisco	lapislazzuli
+San Giovanni di Spagna	bronzo
+San Giovanni di Tobolsk	argento
+San Giovanni di Tui	smeraldo
+San Giovanni di Valence	porpora
+San Giovanni di Warneton	lapislazzuli
+San Giovanni il Buono	porpora
+San Giovanni il Chiomato	smeraldo
+San Giovanni il Nuovo	fuoco
+San Giovanni il Russo	porpora
+San Giovanni l'Agnello	porpora
+San Giovanni l'Iberico	legno
+San Giovanni-Marco	arcobaleno
+San Giovenale di Narni	argento
+San Gioventino di Tadino	neon
+San Giovita	argento
+San Girio	neon
+San Girolamo di Pavia	argento
+San Giudicaele	arcobaleno
+San Giudoco di Piccardia	porpora
+San Giuliana	porpora
+San Giuliano	smeraldo
+San Giuliano Saba	lapislazzuli
+San Giuliano di Anazarbo	porpora
+San Giuliano di Brioude	fuoco
+San Giuliano di Emesa	neon
+San Giuliano di Le Mans	porpora
+San Giuliano di Sora	lapislazzuli
+San Giuliano di Terracina	porpora
+San Giuliano di Toledo	argento
+San Giuliano l'ospitaliere	lapislazzuli
+San Giulio I	bronzo
+San Giulio di Orta	vaporwave
+San Giuse Hoàng Lương Cảnh	fuoco
+San Giuseppe Benedetto Cottolengo	bronzo
+San Giuseppe Cafasso	lapislazzuli
+San Giuseppe Calasanzio	argento
+San Giuseppe I di Alessandria	porpora
+San Giuseppe Maria Gambaro	vaporwave
+San Giuseppe Maria Tomasi	arcobaleno
+San Giuseppe Moscati	argento
+San Giuseppe Oriol	legno
+San Giuseppe Pignatelli	porpora
+San Giuseppe Vaz	smeraldo
+San Giuseppe da Copertino	porpora
+San Giuseppe da Leonessa	bronzo
+San Giuseppe di Arimatea	legno
+San Giuseppe di Verona	lapislazzuli
+San Giuseppe il Giusto	bronzo
+San Giuseppe l'Innografo	porpora
+San Giustiniano	vaporwave
+San Giustiniano II Rinotmeto	fuoco
+San Giustiniano di Valencia	arcobaleno
+San Giustino	fuoco
+San Giustino de Jacobis	neon
+San Giustino di Chieti	vaporwave
+San Giustino di Siponto	argento
+San Giusto di Acerenza	bronzo
+San Giusto di Canterbury	bronzo
+San Giusto di Lione	arcobaleno
+San Giusto di Novalesa	bronzo
+San Giusto di Trieste	fuoco
+San Giusto di Urgell	porpora
+San Giusto di Vienne	fuoco
+San Giuventino	porpora
+San Giyorgis Haddis	legno
+San Glicerio di Milano	argento
+San Glisente	lapislazzuli
+San Goar	vaporwave
+San Gobano	arcobaleno
+San Gobrien de Vannes	porpora
+San Godefroid Coart	arcobaleno
+San Godescalco dei Vendi	vaporwave
+San Godric	lapislazzuli
+San Goerico di Metz	neon
+San Goffredo di Amiens	smeraldo
+San Goffredo di Cappenberg	lapislazzuli
+San Gondolfo di Metz	arcobaleno
+San Gontrano	argento
+San Gordiano	vaporwave
+San Gorgonio	legno
+San Gorgonio di Roma	legno
+San Gosberto di Osnabrück	porpora
+San Gottardo di Hildesheim	smeraldo
+San Gozzelino di Toul	porpora
+San Gratiliano	lapislazzuli
+San Grato di Aosta	arcobaleno
+San Graziano di Amiens	vaporwave
+San Gregenzio di Taphar	argento
+San Gregorio Barbarigo	vaporwave
+San Gregorio II	bronzo
+San Gregorio II di Agrigento	vaporwave
+San Gregorio III	smeraldo
+San Gregorio III di Costantinopoli	smeraldo
+San Gregorio Illuminatore	porpora
+San Gregorio Maria Grassi	fuoco
+San Gregorio Nazianzeno	lapislazzuli
+San Gregorio Palamas	arcobaleno
+San Gregorio Taumaturgo	argento
+San Gregorio V	fuoco
+San Gregorio V di Ostia	bronzo
+San Gregorio VII	porpora
+San Gregorio da Cerchiara	arcobaleno
+San Gregorio di Auxerre	porpora
+San Gregorio di Elvira	lapislazzuli
+San Gregorio di Langres	neon
+San Gregorio di Lilibeo	neon
+San Gregorio di Narek	porpora
+San Gregorio di Spoleto	arcobaleno
+San Gregorio di Tours	argento
+San Gregorio di Utrecht	bronzo
+San Gregorio il Decapolita	lapislazzuli
+San Grigol Peradze	lapislazzuli
+San Grigorij Camblak	argento
+San Grigorij Lebedev	fuoco
+San Grigorij di Pečers'k	argento
+San Gualberto di Hainaut	legno
+San Gualfardo di Verona	arcobaleno
+San Gualtero Garbagni	lapislazzuli
+San Gualtiero di Servigliano	lapislazzuli
+San Guarino di Sion	legno
+San Guenaele di Landévennec	porpora
+San Guerino di Poitou	arcobaleno
+San Guetnoco	bronzo
+San Guglielmo Courtet	bronzo
+San Guglielmo Tempier	neon
+San Guglielmo d'Aquitania	legno
+San Guglielmo da Volpiano	arcobaleno
+San Guglielmo de Léaval	bronzo
+San Guglielmo di Malavalle	smeraldo
+San Guglielmo di Parigi	smeraldo
+San Guglielmo di Rochester	vaporwave
+San Guglielmo di York	lapislazzuli
+San Guiberto di Gembloux	legno
+San Guido Maria Conforti	legno
+San Guido d'Acqui	bronzo
+San Guido della Gherardesca	neon
+San Guido di Anderlecht	vaporwave
+San Guido di Pomposa	legno
+San Guimerra di Carcassonne	legno
+San Gummaro	smeraldo
+San Gunter	argento
+San Gurmeet Ram Rahim Singh	arcobaleno
+San Gustavo di Rhuys	argento
+San Guénolé di Landévennec	legno
+San Guðmundur Arason	legno
+San Gwynllyw Farfog	bronzo
+San Gyaviira Mayanja Musoke	fuoco
+San Haakon V di Norvegia	porpora
+San Halvard Vebjørnsson	arcobaleno
+San Heahmund	argento
+San Heimerad	smeraldo
+San Henri Dorie	fuoco
+San Henryk Kaczorowski	porpora
+San Herbert	porpora
+San Hereberht of Huntingdon	bronzo
+San Hermenegild de Salceda	neon
+San Hermes de Bononia	lapislazzuli
+San Hermes di Filippopoli	bronzo
+San Hildegrim di Chalons	smeraldo
+San Hoel	lapislazzuli
+San Houardon	bronzo
+San Hovhannès Ier Mandakouni	bronzo
+San Humphroy de Thérouanne	vaporwave
+San Héctor Valdivielso Sáez	bronzo
+San Jacob Lacops	neon
+San Jacques Berthieu	fuoco
+San Jacques Chastan	fuoco
+San Jaenbert	argento
+San Jaropolk I di Kiev	neon
+San Jaropolk Izjaslavič	legno
+San Jean de Brébeuf	fuoco
+San Jean de La Lande	smeraldo
+San Jean-Baptiste Muard	smeraldo
+San Jean-Baptiste de La Salle	neon
+San Jean-François-Régis Clet	smeraldo
+San Jean-Gabriel-Taurin Dufresse	fuoco
+San Jean-Louis Bonnard	fuoco
+San Jean-Pierre Néel	fuoco
+San Jeiunio di Gerace	argento
+San Jerónimo Hermosilla	fuoco
+San Joaquín Royo Pérez	arcobaleno
+San Johannes Cirita	argento
+San John Boste	fuoco
+San John Coltrane	bronzo
+San John Fisher	fuoco
+San John Henry Newman	bronzo
+San John Jones	fuoco
+San John Kemble	neon
+San John Lloyd	arcobaleno
+San John Maron	smeraldo
+San John Ogilvie	fuoco
+San John Payne	smeraldo
+San John Plessington	bronzo
+San John Rigby	fuoco
+San John Stone	fuoco
+San John Sullivan	legno
+San Josef Freinademetz	porpora
+San Josemaría Escrivá de Balaguer	porpora
+San Josep Manyanet i Vives	neon
+San Joseph Gérard	arcobaleno
+San Joseph Marchand	vaporwave
+San Joseph Mukasa	vaporwave
+San José Gabriel del Rosario Brochero	porpora
+San José Gregorio Hernández	vaporwave
+San José María Díaz Sanjurjo	fuoco
+San José María Robles Hurtado	fuoco
+San José María Rubio y Peralta	smeraldo
+San José María Yermo y Parres	legno
+San José Melchor García-Sampedro Suárez	fuoco
+San José Sánchez del Río	fuoco
+San José de Anchieta	arcobaleno
+San Jovan Vladimir	legno
+San Juan Diego Cuauhtlatoatzin	argento
+San Juan Grande Román	vaporwave
+San Juan Jacobo Fernandez	fuoco
+San Juan de Ortega	smeraldo
+San Juan de Santo Tomás Alcover Figueras	arcobaleno
+San Juan del Castillo	arcobaleno
+San Junipero Serra	smeraldo
+San Jurij II di Vladimir	smeraldo
+San Just de Bretenières	fuoco
+San Jón Ögmundsson	smeraldo
+San Józef Achilles Puchała	neon
+San Józef Bilczewski	smeraldo
+San Józef Cebula	neon
+San Józef Kurzawa	neon
+San Józef Pawłowski	porpora
+San Józef Sebastian Pelczar	bronzo
+San Józef Straszewski	arcobaleno
+San Józef Zapłata	bronzo
+San Kaleb di Axum	porpora
+San Karol Herman Stępień	lapislazzuli
+San Kaspar Stanggassinger	argento
+San Kegham Parseghian	neon
+San Kevin di Glendalough	smeraldo
+San Kirion II	fuoco
+San Kizito	lapislazzuli
+San Krikor Zohrab	fuoco
+San Kuriakose Elias Chavara	vaporwave
+San Ladislao I d'Ungheria	arcobaleno
+San Laetus	vaporwave
+San Laisren di Leighlin	bronzo
+San Lamberto di Bauduen	neon
+San Lamberto di Frisinga	arcobaleno
+San Lamberto di Lione	smeraldo
+San Lamberto di Maastricht	bronzo
+San Lamberto di Saragozza	arcobaleno
+San Landelino di Lobbes	lapislazzuli
+San Landerico di Parigi	neon
+San Lanfranco Beccari	smeraldo
+San Lanno	vaporwave
+San Latuino di Séez	arcobaleno
+San Laudo di Coutances	porpora
+San Laurent Imbert	fuoco
+San Laurent de Salamine	bronzo
+San Lauriano	neon
+San Lautein	porpora
+San Laverio martire	neon
+San Lazzaro	lapislazzuli
+San Lazzaro Hrebeljanović	fuoco
+San Lazzaro di Betania	smeraldo
+San Lazzaro di Costantinopoli	neon
+San Lazzaro di Milano	legno
+San Leandro di Siviglia	legno
+San Leo di Montefeltro	bronzo
+San Leobino	legno
+San Leodegario di Autun	neon
+San Leoluca di Corleone	argento
+San Leon Wetmański	neon
+San Leonardo Kimura	vaporwave
+San Leonardo Murialdo	smeraldo
+San Leonardo da Porto Maurizio	vaporwave
+San Leonardo di Camaldoli	smeraldo
+San Leonardo di Noblac	arcobaleno
+San Leone Confessore	legno
+San Leone I	bronzo
+San Leone II	vaporwave
+San Leone II il Taumaturgo	lapislazzuli
+San Leone III	legno
+San Leone IV	bronzo
+San Leone IX	bronzo
+San Leone Karasumaru	fuoco
+San Leone di Bayonne	fuoco
+San Leone di Sens	arcobaleno
+San Leoniano di Vienne	argento
+San Leonida di Alessandria	argento
+San Leonino	legno
+San Leonzio II di Bordeaux	lapislazzuli
+San Leonzio di Cesarea di Cappadocia	argento
+San Leonzio di Fréjus	vaporwave
+San Leonzio di Saintes	argento
+San Leonzio di Tripoli	lapislazzuli
+San Leopardus	bronzo
+San Leopoldo III di Babenberg	lapislazzuli
+San Leopoldo da Castelnuovo	smeraldo
+San Leucio d'Alessandria	neon
+San Leudino di Toul	smeraldo
+San Liberale	legno
+San Liberato	smeraldo
+San Liberatore	neon
+San Liberio	bronzo
+San Libertino di Agrigento	lapislazzuli
+San Liberto di Saint-Trond	bronzo
+San Liborio di Le Mans	vaporwave
+San Liboso di Vaga	arcobaleno
+San Licerio di Couserans	argento
+San Licinio di Angers	vaporwave
+San Lidano d'Antena	bronzo
+San Lietberto	arcobaleno
+San Limenio di Vercelli	legno
+San Liphardus	argento
+San Litifredo I di Pavia	porpora
+San Liutvino di Treviri	legno
+San Livier de Marsal	porpora
+San Livino di Deventer	porpora
+San Lodovico Pavoni	porpora
+San Loman di Trim	arcobaleno
+San Lonegisilus Buciacensis	neon
+San Longino	argento
+San Longino di Marsiglia	porpora
+San Longino di Pomaria	neon
+San Lorentino d'Arezzo	porpora
+San Lorenzo	fuoco
+San Lorenzo Giustiniani	legno
+San Lorenzo I	legno
+San Lorenzo Maiorano	bronzo
+San Lorenzo Maria di San Francesco Saverio	argento
+San Lorenzo O'Toole	legno
+San Lorenzo Ruiz	neon
+San Lorenzo da Brindisi	lapislazzuli
+San Lorenzo da Frazzanò	lapislazzuli
+San Lorenzo di Canterbury	bronzo
+San Lorenzo di Novara	argento
+San Lotario I	legno
+San Lotario di Séez	legno
+San Loubouer	neon
+San Louis Beaulieu	fuoco
+San Louis Martin	vaporwave
+San Loup de Soissons	arcobaleno
+San Lubentius	arcobaleno
+San Luca Casali da Nicosia	arcobaleno
+San Luca di Carbone	neon
+San Luca di Demenna	argento
+San Luca di Melicuccà	legno
+San Luca di Steiris	argento
+San Luca lo Stilita	legno
+San Lucano di Sabiona	neon
+San Lucerius	argento
+San Luciano di Antiochia	argento
+San Luciano di Beauvais	fuoco
+San Lucido di Aquara	lapislazzuli
+San Lucifero di Cagliari	porpora
+San Lucio I	bronzo
+San Lucio di Adrianopoli	lapislazzuli
+San Lucio di Cavargna	vaporwave
+San Lucio di Cirene	argento
+San Lucio di Coira	arcobaleno
+San Ludano	smeraldo
+San Ludgero di Münster	neon
+San Ludolfo di Ratzeburg	legno
+San Ludovico da Casoria	arcobaleno
+San Ludovico di Tolosa	lapislazzuli
+San Ludwik Gietyngier	lapislazzuli
+San Ludwik Pius Bartosik	bronzo
+San Luigi Bertrando	porpora
+San Luigi Gonzaga	vaporwave
+San Luigi Guanella	arcobaleno
+San Luigi Maria Grignion de Montfort	porpora
+San Luigi Orione	lapislazzuli
+San Luigi Scrosoppi	smeraldo
+San Luigi Versiglia	fuoco
+San Luigi Zeffirino Moreau	arcobaleno
+San Luis Ibaraki	fuoco
+San Lullo di Magonza	neon
+San Luperculus	fuoco
+San Lupicino di Condat	porpora
+San Lupicino di Lione	porpora
+San Lupo di Limoges	vaporwave
+San Lupo di Lione	legno
+San Lupo di Sens	legno
+San Lupo di Troyes	arcobaleno
+San Lupulo	arcobaleno
+San Lussorio	porpora
+San Léon-Ignace Mangin	lapislazzuli
+San Macaire le Romain	neon
+San Macanisio di Connor	smeraldo
+San Macario	argento
+San Macario Macres	legno
+San Macario di Antiochia	bronzo
+San Macario di Collesano	neon
+San Macario di Corinto	lapislazzuli
+San Macario di Gerusalemme	porpora
+San Macario di Kanev	vaporwave
+San Machar di Aberdeen	porpora
+San Maclovio	argento
+San Maden	porpora
+San Madḫānina Egziʾ	arcobaleno
+San Magaldo di Man	neon
+San Maglorio di Dol	porpora
+San Magnerico	neon
+San Magno Felice Ennodio	legno
+San Magno di Anagni	porpora
+San Magno di Füssen	neon
+San Magno di Milano	legno
+San Magno di Oderzo	smeraldo
+San Magnus Erlendsson	bronzo
+San Maimbodo	argento
+San Mainchin di Limerick	argento
+San Maiolo di Cluny	neon
+San Makary I	fuoco
+San Malachia	arcobaleno
+San Malachia di Armagh	neon
+San Mamertino d'Auxerre	smeraldo
+San Mamerto di Vienne	argento
+San Mamete di Cesarea	lapislazzuli
+San Mamiliano di Palermo	smeraldo
+San Manaen	vaporwave
+San Mancio da Évora	smeraldo
+San Manerī Šaraf-ad-Dīn Aḥmad Ibn-Yaḥyā	smeraldo
+San Mansueto Savelli	vaporwave
+San Mansueto di Toul	smeraldo
+San Mansueto di Urusi	neon
+San Manuel González García	arcobaleno
+San Manuel Morales	lapislazzuli
+San Manuel Seco Gutiérrez	neon
+San Manuele	arcobaleno
+San Manvieu de Bayeux	smeraldo
+San Mar Behnam Sahada	bronzo
+San Marcellino	arcobaleno
+San Marcellino Champagnat	legno
+San Marcellino d'Embrun	argento
+San Marcellino di Ancona	legno
+San Marcellino di Cartagine	vaporwave
+San Marcello I	arcobaleno
+San Marcello di Chalon-sur-Saone	legno
+San Marcello di Parigi	smeraldo
+San Marcello di Tangeri	vaporwave
+San Marcello l'Acemeta	smeraldo
+San Marciano	lapislazzuli
+San Marciano di Frigento	neon
+San Marciano di Siracusa	argento
+San Marciano l'Asceta	argento
+San Marcin Oprządek	smeraldo
+San Marco	smeraldo
+San Marco Ji Tianxiang	porpora
+San Marco Križevčanin	fuoco
+San Marco di Atene	porpora
+San Marco di Atina	fuoco
+San Marco di Eca	neon
+San Marco di Efeso	porpora
+San Marcolino Amanni da Forlì	neon
+San Marculfo	smeraldo
+San Mari	bronzo
+San Marian Konopiński	smeraldo
+San Marian Skrzypczak	legno
+San Mariano d'Acerenza	lapislazzuli
+San Marie-Nicolas-Antoine Daveluy	fuoco
+San Marien de Combraille	argento
+San Marino	argento
+San Marino di Bodon	lapislazzuli
+San Marino di Cesarea	fuoco
+San Marino diacono	vaporwave
+San Mario di Avenches	porpora
+San Marolo	porpora
+San Marone	neon
+San Marquardo di Hildesheim	arcobaleno
+San Marsus	neon
+San Martin Luc Huin	fuoco
+San Martin of the Ascension	fuoco
+San Martiniano di Atene	vaporwave
+San Martiniano di Milano	argento
+San Martino I	lapislazzuli
+San Martino de Porres	arcobaleno
+San Martino di Bracara	argento
+San Martino di Tours	legno
+San Martino di Vienne	neon
+San Maruta	bronzo
+San Marziale di Limoges	lapislazzuli
+San Marziano di Tortona	argento
+San Massimiano	porpora
+San Massimiliano Maria Kolbe	fuoco
+San Massimiliano di Celeia	porpora
+San Massimiliano di Tebessa	legno
+San Massimino di Besançon	neon
+San Massimino di Micy	smeraldo
+San Massimino di Treviri	argento
+San Massimo III di Costantinopoli	porpora
+San Massimo III di Gerusalemme	porpora
+San Massimo d'Aveia	legno
+San Massimo di Alessandria	lapislazzuli
+San Massimo di Magonza	fuoco
+San Massimo di Napoli	fuoco
+San Massimo di Nola	arcobaleno
+San Massimo di Padova	lapislazzuli
+San Massimo di Pavia	bronzo
+San Massimo di Riez	porpora
+San Massimo di Torino	legno
+San Massimo di Verona	bronzo
+San Massimo di Évreux	bronzo
+San Massimo il Confessore	lapislazzuli
+San Materniano di Reims	legno
+San Materno di Colonia	arcobaleno
+San Materno di Milano	porpora
+San Mateus Moreira	arcobaleno
+San Mateusz Alonso de Leciniana	fuoco
+San Matino di Vertou	bronzo
+San Matroniano	neon
+San Matteo Correa Magallanes	fuoco
+San Matteo I di Alessandria	vaporwave
+San Matteo l'eremita	bronzo
+San Mattia	vaporwave
+San Mattia di Gerusalemme	legno
+San Maturino di Langres	arcobaleno
+San Maudeto di Bretagna	porpora
+San Maurelio di Imola	legno
+San Maurelio di Voghenza	lapislazzuli
+San Maurilio	smeraldo
+San Maurilius von Angers	porpora
+San Maurisilio di Milano	bronzo
+San Maurizio	argento
+San Maurizio di Bisanzio	fuoco
+San Mauro	vaporwave
+San Mauro di Cesena	arcobaleno
+San Mauro di Parenzo	argento
+San Mauro di Piacenza	porpora
+San Mauro di Veroli	arcobaleno
+San Mauro di Verona	bronzo
+San Mauronto di Douai	neon
+San Medardo di San Quintino	legno
+San Mederico di Autun	vaporwave
+San Medico di Otricoli	neon
+San Megingaudo di Würzburg	vaporwave
+San Meinardo di Riga	argento
+San Meinrado di Einsiedeln	smeraldo
+San Mela	arcobaleno
+San Melanio di Rennes	lapislazzuli
+San Melchiorre	arcobaleno
+San Melchiorre Grodecký	fuoco
+San Melchisedec I	vaporwave
+San Meldroc de Vannes	lapislazzuli
+San Melis di Ardagh	porpora
+San Melitone di Sardi	argento
+San Mellito di Canterbury	legno
+San Mellone di Rouen	legno
+San Melrubio	lapislazzuli
+San Memmio	porpora
+San Memnone	lapislazzuli
+San Memnone di Efeso	legno
+San Memorio	vaporwave
+San Mena d'Egitto	fuoco
+San Menas del Sannio	lapislazzuli
+San Mercuriale di Forlì	argento
+San Mercurio di Cesarea	fuoco
+San Mesrop Mashtots	neon
+San Metodio	legno
+San Metodio di Olimpo	legno
+San Metrano di Alessandria d'Egitto	argento
+San Metrofane di Bisanzio	smeraldo
+San Michael Bleive	fuoco
+San Michail Jaroslavič	fuoco
+San Michail Pavlovič Čel'cov	fuoco
+San Michał Kozal	fuoco
+San Michał Oziębłowski	arcobaleno
+San Michał Piaszczyński	smeraldo
+San Michał Woźniak	porpora
+San Michea	neon
+San Michel de Bourla	arcobaleno
+San Michel des Agrapha	bronzo
+San Michele Coniata	argento
+San Michele Kozaki	fuoco
+San Michele Sincello	lapislazzuli
+San Michele dei Santi	neon
+San Miguel Agustín Pro	fuoco
+San Mijalče Kirilov Parnaǆiev	smeraldo
+San Milio di Cornovaglia	lapislazzuli
+San Milziade	argento
+San Miniato di Firenze	argento
+San Minnborinus of Cologne	arcobaleno
+San Miro di Canzo	argento
+San Mirocle di Milano	smeraldo
+San Mitrio d'Aix	lapislazzuli
+San Mocio	vaporwave
+San Moderanno di Rennes	smeraldo
+San Modeste Andlauer	legno
+San Modeste de Vannes	vaporwave
+San Modesto di Gerusalemme	porpora
+San Modesto di Treviri	argento
+San Modestus	smeraldo
+San Moloc	porpora
+San Momble	bronzo
+San Mommolino di Fleury	legno
+San Mommolino di Noyon	argento
+San Mona di Milano	vaporwave
+San Montano	argento
+San Montano di Cartagine	argento
+San Montano di Toledo	neon
+San Monulphe de Maastricht	argento
+San Mosè di Corene	smeraldo
+San Mosè l'Etiope	porpora
+San Muci de Bizanci	neon
+San Mungo di Glasgow	bronzo
+San Munn	porpora
+San Muredach	lapislazzuli
+San Muziano Maria Wiaux	vaporwave
+San Mykola Cegel'skij	arcobaleno
+San Mykola Konrad	argento
+San Mönch Mälkeʾa Krestos	porpora
+San Mönch Täwäldä Mädḫen	argento
+San Namazio di Clermont	neon
+San Namazio di Vienne	legno
+San Namphamon de Madaure	porpora
+San Namphase	neon
+San Napoleone martire	arcobaleno
+San Narciso di Gerusalemme	bronzo
+San Narciso di Girona	smeraldo
+San Narcyz Putz	legno
+San Narcyz Turchan	porpora
+San Narno di Bergamo	arcobaleno
+San Narsete il Grande	fuoco
+San Narsète Lampronese	bronzo
+San Natale di Milano	neon
+San Nateo	smeraldo
+San Nathalan	vaporwave
+San Naucrazio Studita	arcobaleno
+San Naum	arcobaleno
+San Naum di Ocrida	lapislazzuli
+San Nazario	porpora
+San Nebridio di Egara	argento
+San Nectan	bronzo
+San Nectarios di Egina	argento
+San Nemesio	smeraldo
+San Neofito di Cipro	porpora
+San Neofito di Nicea	smeraldo
+San Nepoziano	argento
+San Nerses Shnorhali	arcobaleno
+San Nestore di Magydos	fuoco
+San Nettario d'Alvernia	lapislazzuli
+San Nettario di Autun	bronzo
+San Nicaise	fuoco
+San Nicandro	vaporwave
+San Nicanor Ascanio	bronzo
+San Nicanore	lapislazzuli
+San Nicasio Camuto de Burgio	smeraldo
+San Nicasio di Reims	argento
+San Niccolò I	legno
+San Niceta Pettorato	arcobaleno
+San Niceta di Aquileia	arcobaleno
+San Niceta di Calcedonia	argento
+San Niceta di Medikion	lapislazzuli
+San Niceta di Remesiana	legno
+San Niceta il Goto	fuoco
+San Nicezio di Besançon	vaporwave
+San Nicezio di Lione	neon
+San Nicezio di Treviri	vaporwave
+San Nicezio di Vienne	argento
+San Nicholas Ferrar	arcobaleno
+San Nicholas Pieck	fuoco
+San Nicholas Ridley	neon
+San Nicodemo	lapislazzuli
+San Nicodemo da Cirò	lapislazzuli
+San Nicodemo di Tismana	porpora
+San Nicodemo l'Agiorita	porpora
+San Nicola Cabasila	arcobaleno
+San Nicola Greco	bronzo
+San Nicola II Crisoberge	smeraldo
+San Nicola Owen	fuoco
+San Nicola Pellegrino	legno
+San Nicola Saggio	argento
+San Nicola Studita	porpora
+San Nicola Tavelić	lapislazzuli
+San Nicola da Tolentino	vaporwave
+San Nicola del Giappone	lapislazzuli
+San Nicola di Antiochia	vaporwave
+San Nicola di Flüe	neon
+San Nicola di Pskov	lapislazzuli
+San Nicola di Stilo	lapislazzuli
+San Nicolò Politi	vaporwave
+San Nicomede di Roma	legno
+San Nicone Metanoita	smeraldo
+San Nidan	lapislazzuli
+San Nikita Besogon	fuoco
+San Nikolaj Aleksandrovič Osipov	fuoco
+San Nikolaj Velimirović	vaporwave
+San Nikolaus Gross	fuoco
+San Nilo da Rossano	argento
+San Nimatullah Kassab Al-Hardini	lapislazzuli
+San Niniano di Whithorn	porpora
+San Niphon Kausokalybites	bronzo
+San Nivard de Reims	legno
+San Nonna	lapislazzuli
+San Nonnoso del Monte Soratte	arcobaleno
+San Norberto di Prémontré	porpora
+San Nostriano di Napoli	lapislazzuli
+San Nothhelm	neon
+San Novato	neon
+San Noël Chabanel	fuoco
+San Nuno Álvares Pereira	lapislazzuli
+San Nunzio Sulprizio	neon
+San Pabo Post Prydein	vaporwave
+San Paciano di Barcellona	arcobaleno
+San Pacifico da San Severino	smeraldo
+San Pacomio	smeraldo
+San Pafnuzio	vaporwave
+San Pafnuzio di Borovsk	porpora
+San Paisij di Hilendar	neon
+San Palaṭū Sāhiba	legno
+San Palemone	arcobaleno
+San Palerio di Telese	smeraldo
+San Palladio	argento
+San Palladio d'Auxerre	porpora
+San Palladio di Saintes	porpora
+San Pambone l'Egiziano	neon
+San Pammachio	vaporwave
+San Pancrazio	lapislazzuli
+San Pancrazio di Taormina	neon
+San Panfilo di Cesarea	argento
+San Panfilo di Sulmona	legno
+San Pantagato di Vienne	legno
+San Pantaleone di Nicomedia	lapislazzuli
+San Panteno	bronzo
+San Paolino Bigazzini	vaporwave
+San Paolino II	legno
+San Paolino di Capua	lapislazzuli
+San Paolino di Lucca	argento
+San Paolino di Nola	smeraldo
+San Paolino di Treviri	vaporwave
+San Paolino di York	argento
+San Paolo	porpora
+San Paolo Aureliano	vaporwave
+San Paolo Chen Changpin	bronzo
+San Paolo Chong Hasang	fuoco
+San Paolo I	argento
+San Paolo Miki	fuoco
+San Paolo della Croce	vaporwave
+San Paolo di Narbona	lapislazzuli
+San Paolo di Tammah	argento
+San Paolo di Tebe	vaporwave
+San Papia di Ierapoli	argento
+San Papiniano di Vita	bronzo
+San Papino	neon
+San Paragorio da Noli	lapislazzuli
+San Pardo di Larino	lapislazzuli
+San Pardulfo	lapislazzuli
+San Paride di Teano	porpora
+San Parisio	porpora
+San Parmenas	lapislazzuli
+San Partenio III di Costantinopoli	fuoco
+San Partenio di Lampsaco	smeraldo
+San Pascasio Radberto	bronzo
+San Pascasio di Vienne	smeraldo
+San Pasqual de Tormellas	neon
+San Pasquale Baylón	lapislazzuli
+San Pasquale I	bronzo
+San Pastore	lapislazzuli
+San Paterio di Brescia	argento
+San Paterniano	legno
+San Paterno di Avranches	legno
+San Paterno di Vannes	neon
+San Patrizio	arcobaleno
+San Patrocle de Bourges	arcobaleno
+San Patroclo di Troyes	smeraldo
+San Paul Denn	smeraldo
+San Paul Duong	bronzo
+San Paulus Hungarus	smeraldo
+San Pavel di Kolomna	fuoco
+San Paziente di Lione	arcobaleno
+San Paziente di Metz	porpora
+San Pedro Bautista Blásquez	fuoco
+San Pedro Poveda Castroverde	neon
+San Pedro de Mezonzo	arcobaleno
+San Pedro de San José de Bethencourt	bronzo
+San Peirio	arcobaleno
+San Pelagio I	arcobaleno
+San Pelagio di Cordova	neon
+San Pelagio di Emona	smeraldo
+San Pelino di Brindisi	neon
+San Pellegrino Laziosi	porpora
+San Pellegrino delle Alpi	smeraldo
+San Pellegrino di Auxerre	bronzo
+San Pellegrino di Roma	porpora
+San Pellegrino di Triocala	arcobaleno
+San Pere Sans Jordà	fuoco
+San Pergentino da Arezzo	argento
+San Periyāḻvār	argento
+San Perpetuo di Tours	legno
+San Peter Kasui Kibe	fuoco
+San Peter To Rot	fuoco
+San Peter de Honestis	legno
+San Petr Z. Belolikov	fuoco
+San Petroc	legno
+San Petronace di Montecassino	legno
+San Petronio	porpora
+San Pey Berland	smeraldo
+San Phaolô Nguyễn Văn Mỹ	fuoco
+San Philip Howard	lapislazzuli
+San Philippe Berruyer	lapislazzuli
+San Philípphê Phan Văn Minh	fuoco
+San Piatone di Tournai	arcobaleno
+San Pienzo di Poitiers	arcobaleno
+San Pier Benedetto da Urbino	lapislazzuli
+San Pier Damiani	argento
+San Pier Giorgio Frassati	vaporwave
+San Pier Giuliano Eymard	bronzo
+San Pierio	legno
+San Pierre Aumaître	fuoco
+San Pierre Dumoulin-Borie	fuoco
+San Pierre Fourier	vaporwave
+San Pierre Maubant	fuoco
+San Pietro	porpora
+San Pietro Almató	fuoco
+San Pietro Balsamo	fuoco
+San Pietro Calungsod	fuoco
+San Pietro Canisio	bronzo
+San Pietro Chanel	fuoco
+San Pietro Claver	lapislazzuli
+San Pietro Crisci da Foligno	bronzo
+San Pietro Crisologo	argento
+San Pietro Damasceno	fuoco
+San Pietro Donders	arcobaleno
+San Pietro Favre	argento
+San Pietro I Orseolo	legno
+San Pietro I di Alessandria	fuoco
+San Pietro I di Tarantasia	neon
+San Pietro II di Alessandria	bronzo
+San Pietro II di Tarantasia	smeraldo
+San Pietro III di Alessandria	neon
+San Pietro Igneo	porpora
+San Pietro Liu Wenyuan	bronzo
+San Pietro Mogila	arcobaleno
+San Pietro Nolasco	legno
+San Pietro Pappacarbone	porpora
+San Pietro Parenzo	argento
+San Pietro Pascasio	legno
+San Pietro Regalado	smeraldo
+San Pietro Tommaso	lapislazzuli
+San Pietro Trương Văn Thi	fuoco
+San Pietro Vo Dang Khoa	fuoco
+San Pietro d'Alcántara	arcobaleno
+San Pietro d'Arbués	neon
+San Pietro da Verona	legno
+San Pietro di Anagni	neon
+San Pietro di Argo	bronzo
+San Pietro di Atroa	argento
+San Pietro di Capitolias	fuoco
+San Pietro di Kruticy	fuoco
+San Pietro di Osma	neon
+San Pietro di Poitiers	smeraldo
+San Pietro di Rates	argento
+San Pietro di Sebaste	smeraldo
+San Pietro il Venerabile	arcobaleno
+San Pietro l'Aleuta	fuoco
+San Pietro l'Atonita	argento
+San Pietro l'Iberico	argento
+San Pietro l'eremita	lapislazzuli
+San Pimenio di Roma	porpora
+San Pinito di Cnosso	lapislazzuli
+San Pio I	arcobaleno
+San Pio V	lapislazzuli
+San Pio da Pietrelcina	porpora
+San Pionio	fuoco
+San Piotr Soler	bronzo
+San Pipino di Landen	porpora
+San Pirano di Cornovaglia	porpora
+San Pirmino di Murbach	argento
+San Placido	legno
+San Placido martire	fuoco
+San Platon Kulbusch	fuoco
+San Platone di Ancira	porpora
+San Plechelmo	porpora
+San Plegmund	argento
+San Plutarco	lapislazzuli
+San Podio di Firenze	legno
+San Policarpo II di Bisanzio	smeraldo
+San Policarpo di Smirne	fuoco
+San Policronio	argento
+San Polieucte di Costantinopoli	lapislazzuli
+San Polieucto di Melitene	argento
+San Pollione di Cibali	legno
+San Polydore Plasden	legno
+San Pompilio Maria Pirrotti	smeraldo
+San Pomponio di Napoli	lapislazzuli
+San Ponziano	neon
+San Ponziano da Spoleto	argento
+San Ponzio di Cimiez	bronzo
+San Ponzio di Pradleves	neon
+San Poppone di Stablo	smeraldo
+San Porfirio	porpora
+San Porfirio di Gaza	porpora
+San Possidio	lapislazzuli
+San Possidonio	vaporwave
+San Potamio	neon
+San Potamione di Agrigento	smeraldo
+San Potenziano	vaporwave
+San Potino di Lione	argento
+San Potito	lapislazzuli
+San Pragmazio di Autun	arcobaleno
+San Preietto di Clermont	vaporwave
+San Pretestato di Rouen	fuoco
+San Primiano di Ancona	lapislazzuli
+San Primiano di Larino	smeraldo
+San Primitivo	legno
+San Primo martire	argento
+San Prince de Soissons	porpora
+San Prisco	bronzo
+San Prisco di Capua	legno
+San Prisco di Nocera	legno
+San Privato di Mende	argento
+San Probino di Como	vaporwave
+San Probo di Rieti	neon
+San Prochor di Pečers'k	vaporwave
+San Proclo di Costantinopoli	porpora
+San Procolo	porpora
+San Procolo di Bologna	lapislazzuli
+San Procolo di Verona	argento
+San Procopio di Scitopoli	fuoco
+San Procopio di Sázava	neon
+San Procopio di Ustjug	legno
+San Procopio il Decapolita	argento
+San Procoro	argento
+San Proietto di Imola	legno
+San Proietto di Parenzo	lapislazzuli
+San Prosdocimo di Padova	legno
+San Prospero d'Aquitania	lapislazzuli
+San Prospero di Reggio Emilia	porpora
+San Prospero di Tarragona	argento
+San Prospero martire	smeraldo
+San Protadio di Besançon	lapislazzuli
+San Protasio	bronzo
+San Protasio di Losanna	neon
+San Protaso di Milano	argento
+San Proterio di Alessandria	legno
+San Proto martire	smeraldo
+San Prudent de Narbonne	legno
+San Prudenzio di Tarazona	porpora
+San Prudenzio di Troyes	legno
+San Publio di Atene	porpora
+San Publio di Malta	smeraldo
+San Publio di Zeugma	porpora
+San Pudente	porpora
+San Quadrato	porpora
+San Quadrato di Atene	fuoco
+San Quarto	arcobaleno
+San Quinidio	arcobaleno
+San Quinto	bronzo
+San Quinto di Capua	legno
+San Quinziano	legno
+San Quiriaco di Treviri	argento
+San Quirico	porpora
+San Quirino di Malmedy	lapislazzuli
+San Quirino di Neuss	vaporwave
+San Quirino di Siscia	fuoco
+San Quirino di Tegernsee	lapislazzuli
+San Quirinus of Tivoli	neon
+San Quodvultdeus	argento
+San Quotidiano di Cappadocia	smeraldo
+San Rabano Mauro	smeraldo
+San Rabban Ormisda	porpora
+San Racho of Autun	lapislazzuli
+San Radbodo	legno
+San Rafael Arnáiz Barón	lapislazzuli
+San Rafael Guízar Valencia	lapislazzuli
+San Raffaele di San Giuseppe	lapislazzuli
+San Raffaele martire	vaporwave
+San Ragneberto	neon
+San Raimondo Nonnato	porpora
+San Raimondo Zanfogni	bronzo
+San Raimondo di Fitero	vaporwave
+San Raimondo di Peñafort	neon
+San Raimondo di Roda	smeraldo
+San Rainerio di Cagli	arcobaleno
+San Ralph Sherwin	smeraldo
+San Ranieri Scacceri	arcobaleno
+San Raniero di Forcona	argento
+San Raoul di Bourges	lapislazzuli
+San Rastislav di Moravia	legno
+San Ratian	bronzo
+San Ratoldo	smeraldo
+San Raymond de Toulouse	lapislazzuli
+San Redento da Trani	vaporwave
+San Reginaldo di Mélinais	porpora
+San Regolo	smeraldo
+San Remaclo	bronzo
+San Remigio di Lione	neon
+San Remigio di Reims	vaporwave
+San Remigio di Rouen	smeraldo
+San Renato di Angers	arcobaleno
+San Renato di Sorrento	smeraldo
+San René Goupil	fuoco
+San Restituto di Cartagine	smeraldo
+San Reticio di Autun	neon
+San Rhain Dremrudd	neon
+San Ricario di Centule	lapislazzuli
+San Riccardo Pampuri	vaporwave
+San Riccardo del Wessex	legno
+San Riccardo di Andria	neon
+San Riccardo di Chichester	argento
+San Riccardo di Pontoise	neon
+San Riccardo di Sant'Anna	smeraldo
+San Riccardo di Vaucelles	vaporwave
+San Richard Gwyn	fuoco
+San Richard Reynolds	neon
+San Richard Rolle	smeraldo
+San Rigoberto di Reims	bronzo
+San Rimberto	bronzo
+San Rinaldo di Nocera Umbra	argento
+San Robert Lawrence	legno
+San Robert Southwell	fuoco
+San Roberto Bellarmino	legno
+San Roberto di Molesme	arcobaleno
+San Roberto di Newminster	porpora
+San Rocco	arcobaleno
+San Rodion Osljabja	legno
+San Rodobaldo II di Pavia	bronzo
+San Rodolfo Gabrielli	vaporwave
+San Rodrigo di Cordova	fuoco
+San Roland	arcobaleno
+San Rolando de' Medici	bronzo
+San Roman Lysko	bronzo
+San Roman Sitko	fuoco
+San Romano di Antiochia	argento
+San Romano di Auxerre	vaporwave
+San Romano di Condat	neon
+San Romano di Rouen	bronzo
+San Romano di Subiaco	arcobaleno
+San Romano martire	smeraldo
+San Romarico	smeraldo
+San Rombaldo di Mechelen	porpora
+San Romedio	lapislazzuli
+San Romolo di Fiesole	bronzo
+San Romolo di Genova	porpora
+San Romphaire de Coutances	porpora
+San Romualdo	legno
+San Ronano di Quimper	smeraldo
+San Roque González de Santa Cruz	lapislazzuli
+San Rostislav di Kiev	smeraldo
+San Ruadhan di Lorrha	lapislazzuli
+San Ruben Sevak	argento
+San Rubin	legno
+San Rudesindo	lapislazzuli
+San Rufillo di Forlimpopoli	arcobaleno
+San Rufinien	bronzo
+San Rufino	fuoco
+San Rufino di Assisi	neon
+San Rufo di Avignone	legno
+San Rufo di Capua	arcobaleno
+San Rufo di Tebe	smeraldo
+San Rufo di Tortosa	lapislazzuli
+San Rufus	smeraldo
+San Ruggero di Canne	vaporwave
+San Rupen Zartarian	lapislazzuli
+San Rupert Mayer	smeraldo
+San Ruperto di Bingen	argento
+San Ruperto di Salisburgo	argento
+San Ruricio di Limoges	legno
+San Rustico di Clermont	neon
+San Rustico di Lione	argento
+San Rustico di Narbona	smeraldo
+San Rustico di Verona	neon
+San Rémy Isoré	legno
+San Rögnvald Kali Kolsson	fuoco
+San Saba Archimandrita	porpora
+San Saba II di Serbia	bronzo
+San Saba il Giovane	neon
+San Saba il Goto	argento
+San Sabas Reyes Salazar	smeraldo
+San Sabiniano di Troyes	arcobaleno
+San Sabino	arcobaleno
+San Sabino di Avellino	legno
+San Sabino di Canosa	porpora
+San Sabino di Catania	porpora
+San Sabino di Ermopoli	legno
+San Sabino di Escanecrabe	neon
+San Sacerdote di Limoges	lapislazzuli
+San Sacerdote di Lione	lapislazzuli
+San Sagare di Laodicea	smeraldo
+San Salmanus	arcobaleno
+San Salom	lapislazzuli
+San Salomon Leclercq	lapislazzuli
+San Salomone I d'Imerezia	arcobaleno
+San Salomone di Bretagna	porpora
+San Salonio	arcobaleno
+San Salvatore da Horta	neon
+San Salvio di Amiens	legno
+San Salvius d'Albi	arcobaleno
+San Samuele	lapislazzuli
+San Sansone di Dol	porpora
+San Sansone ospitaliere	bronzo
+San Santulo	argento
+San Sargis	vaporwave
+San Sarkis Minassian	argento
+San Satiro di Milano	smeraldo
+San Satiro vescovo	smeraldo
+San Saturnin de Vannes	neon
+San Saturnino	vaporwave
+San Saturnino di Cagliari	arcobaleno
+San Saturnino di Cartagine	bronzo
+San Saturnino di Tolosa	bronzo
+San Saturnino di Verona	neon
+San Satyapīra	vaporwave
+San Sava di Serbia	smeraldo
+San Savin de Cerisier	legno
+San Saviniano di Sens	neon
+San Savino di Piacenza	bronzo
+San Savino di Spoleto	fuoco
+San Sebaldo da Norimberga	bronzo
+San Sebastiano	fuoco
+San Sebbi dell'Essex	arcobaleno
+San Secondino	legno
+San Secondo	smeraldo
+San Secondo di Asti	arcobaleno
+San Secondo di Avila	fuoco
+San Sedulio	smeraldo
+San Senano di Inis Cathaigh	legno
+San Senario di Avranches	legno
+San Senatore da Settala	legno
+San Sennen	vaporwave
+San Serafino da Montegranaro	arcobaleno
+San Serafino di Sarov	smeraldo
+San Seraphim Chichagov	fuoco
+San Serapione di Alessandria	smeraldo
+San Serapione di Antiochia	vaporwave
+San Serapione di Catania	fuoco
+San Serapione di Thmuis	lapislazzuli
+San Sereno di Marsiglia	vaporwave
+San Sereno di Sirmio	vaporwave
+San Sergio I	lapislazzuli
+San Sergio di Cesarea	legno
+San Sergio di Radonež	argento
+San Servazio di Tongres	smeraldo
+San Servolo	porpora
+San Sestio di Valence	arcobaleno
+San Setni	smeraldo
+San Settimio di Jesi	fuoco
+San Sever de Rustan	arcobaleno
+San Severino	porpora
+San Severino di Colonia	legno
+San Severino di Parigi	neon
+San Severino di Settempeda	vaporwave
+San Severo di Antiochia	lapislazzuli
+San Severo di Barcellona	porpora
+San Severo di Napoli	smeraldo
+San Severo di Ravenna	porpora
+San Severus von Trier	smeraldo
+San Siagrio di Autun	neon
+San Siagrio di Nizza	neon
+San Siamanto	arcobaleno
+San Siardo di Mariengaard	arcobaleno
+San Sidoine d'Aix	smeraldo
+San Siffredo di Carpentras	lapislazzuli
+San Sigeberht dell'Anglia orientale	arcobaleno
+San Sigeberto III	smeraldo
+San Sigfrido di Växjö	arcobaleno
+San Sigiranno	bronzo
+San Sigisberto	bronzo
+San Sigismondo	legno
+San Sigismondo Felice Feliński	legno
+San Sigismondo Gorazdowski	arcobaleno
+San Silvano del Monte Athos	bronzo
+San Silvano di Emesa	argento
+San Silvano di Gaza	legno
+San Silvano di Levroux	neon
+San Silverio	vaporwave
+San Silvester of Troina	vaporwave
+San Silvestro Guzzolini	porpora
+San Silvestro I	argento
+San Silvio di Tolosa	bronzo
+San Silʹvestr Olʹševskij	fuoco
+San Simeon N. Samojlovič	fuoco
+San Simeone I di Gerusalemme	fuoco
+San Simeone Stilita di Lesbo	legno
+San Simeone Stilita il Giovane	bronzo
+San Simeone Stilita il Vecchio	lapislazzuli
+San Simeone Studita	smeraldo
+San Simeone di Novgorod	argento
+San Simeone di Polirone	argento
+San Simeone di Siracusa	neon
+San Simeone il Vecchio	lapislazzuli
+San Simmaco	neon
+San Simmaco di Capua	legno
+San Simon Hoa	arcobaleno
+San Simone Phan Đắc Hòa	fuoco
+San Simone Stock	argento
+San Simone bar Sabbae	fuoco
+San Simone da Lipnica	smeraldo
+San Simone di Crépy	arcobaleno
+San Simone il Cananeo	neon
+San Simperto di Murbach	neon
+San Simplice de Rome	bronzo
+San Simpliciano	argento
+San Simplicio	smeraldo
+San Simplicio di Autun	arcobaleno
+San Simplicio di Olbia	neon
+San Simplicio di Verona	smeraldo
+San Simplicio di Vienne	arcobaleno
+San Siméon-François Berneux	fuoco
+San Simón de Rojas	vaporwave
+San Sinforiano di Autun	neon
+San Sinice de Reims	vaporwave
+San Siricio	vaporwave
+San Siro di Genova	neon
+San Siro di Pavia	vaporwave
+San Sisinnio	lapislazzuli
+San Sisto I	porpora
+San Sisto II	fuoco
+San Sisto III	vaporwave
+San Sisto di Reims	legno
+San Siviardo	legno
+San Sofronio di Cipro	porpora
+San Sola di Husen	smeraldo
+San Solario	lapislazzuli
+San Solenne di Chartres	bronzo
+San Sosipatro	arcobaleno
+San Sossio di Miseno	argento
+San Sostene da Corinto	smeraldo
+San Sostene di Calcedonia	neon
+San Sotero	arcobaleno
+San Sozonte	lapislazzuli
+San Suitbert	lapislazzuli
+San Sulien	arcobaleno
+San Sulpicio Severo	neon
+San Sulpizio di Bourges	porpora
+San Sulpizio il Pio	porpora
+San Taddeo Liu Ruiting	fuoco
+San Taddeo Studita	neon
+San Tadec	fuoco
+San Talaleo	legno
+San Tammaro	legno
+San Tammaro vescovo	bronzo
+San Tarasio di Costantinopoli	arcobaleno
+San Tarcisio	fuoco
+San Tariec	smeraldo
+San Tascio Cecilio Cipriano	fuoco
+San Tassac di Elphin	legno
+San Tatuino	smeraldo
+San Taurino di Evreux	bronzo
+San Taziano di Aquileia	arcobaleno
+San Taziano il Siro	argento
+San Tegulo	legno
+San Teilo di Llandaff	neon
+San Tekle Haymanot	smeraldo
+San Telemaco	fuoco
+San Telesforo	neon
+San Teobaldo di Provins	porpora
+San Teobaldo di Vienne	vaporwave
+San Teoctisto	fuoco
+San Teodardo di Narbona	lapislazzuli
+San Teodardo di Tongres	bronzo
+San Teodofrido di Corbie	bronzo
+San Teodoreto di Antiochia	smeraldo
+San Teodoreto di Cirro	neon
+San Teodorico	argento
+San Teodoro Grapto	arcobaleno
+San Teodoro I	argento
+San Teodoro I di Alessandria	fuoco
+San Teodoro Studita	bronzo
+San Teodoro di Amasea	fuoco
+San Teodoro di Canterbury	legno
+San Teodoro di Cirena	bronzo
+San Teodoro di Edessa	porpora
+San Teodoro di Eraclea	fuoco
+San Teodoro di Marsiglia	bronzo
+San Teodoro di Mopsuestia	porpora
+San Teodoro di Nicomedia	legno
+San Teodoro di Pavia	smeraldo
+San Teodoro di Perge	smeraldo
+San Teodoro di Sion	vaporwave
+San Teodoro di Tabenissi	argento
+San Teodoro il Siceota	vaporwave
+San Teodosio di Auxerre	smeraldo
+San Teodosio il Cenobiarca	argento
+San Teodoto de Cirenia	neon
+San Teodoto di Ancira	vaporwave
+San Teodulfo	neon
+San Teofane Confessore	arcobaleno
+San Teofane Grapto	lapislazzuli
+San Teofilatto di Nicomedia	neon
+San Teofilatto di Ocrida	neon
+San Teofilo da Corte	argento
+San Teofilo di Adana	neon
+San Teofilo di Cesarea in Palestina	smeraldo
+San Teofredo abati	legno
+San Teogene di Ippona	arcobaleno
+San Teognio	lapislazzuli
+San Teognoste il Greco	smeraldo
+San Teona di Alessandria	argento
+San Teostericto il Confessore	vaporwave
+San Teotimo di Tomi	argento
+San Teotonio di Coimbra	lapislazzuli
+San Terenziano di Todi	argento
+San Terenzio di Imola	legno
+San Terenzio di Luni	vaporwave
+San Terenzio di Pesaro	porpora
+San Ternan	arcobaleno
+San Tesauro Beccaria	lapislazzuli
+San Tetrico di Langres	argento
+San Theoderich von Reims	legno
+San Theodgar di Vestervig	porpora
+San Thibaut de Marly	argento
+San Thivisiau	vaporwave
+San Thomas Cranmer	porpora
+San Thomas Garnet	neon
+San Thurgood Marshall	legno
+San Thuribe du Mans	bronzo
+San Théophane Vénard	fuoco
+San Tiberio d'Agde	porpora
+San Tiburzio di Roma	porpora
+San Tichico	argento
+San Tichon di Zadonsk	smeraldo
+San Ticone di Amato	vaporwave
+San Timone	fuoco
+San Timoteo	smeraldo
+San Tiridate III di Armenia	bronzo
+San Tirso	arcobaleno
+San Tisilio	porpora
+San Tito	smeraldo
+San Tito Brandsma	porpora
+San Tito Flavio Clemente	fuoco
+San Tiziano	argento
+San Tiziano di Oderzo	porpora
+San Tommaso Becket	fuoco
+San Tommaso da Cori	lapislazzuli
+San Tommaso di Cantilupe	neon
+San Tommaso di Farfa	lapislazzuli
+San Tommaso di Terreti	neon
+San Tommaso di Villanova	lapislazzuli
+San Torgil	porpora
+San Toribio Romo González	smeraldo
+San Toribio di Liébana	argento
+San Torlaco	vaporwave
+San Torpete	porpora
+San Totnano di Würzburg	vaporwave
+San Tozzo	porpora
+San Trifilio di Leucosia	arcobaleno
+San Trifone	vaporwave
+San Trifone di Pečenga	smeraldo
+San Trillo	smeraldo
+San Trinio	arcobaleno
+San Trofimo di Arles	argento
+San Trofimo di Efeso	legno
+San Troiano di Saintes	smeraldo
+San Tsongkhapa	argento
+San Tudno	smeraldo
+San Tugdual di Tréguier	vaporwave
+San Tuotilo	neon
+San Turiau	bronzo
+San Turibio de Mogrovejo	arcobaleno
+San Turibio di Astorga	lapislazzuli
+San Vakhtang I Gorgasali	vaporwave
+San Valdeberto di Luxeuil	porpora
+San Valentin de Strasbourg	lapislazzuli
+San Valentino	fuoco
+San Valentino di Genova	lapislazzuli
+San Valentino di Mais	lapislazzuli
+San Valentín Berrio Ochoa	fuoco
+San Valeriano	neon
+San Valeriano da Roma	bronzo
+San Valeriano di Abbenza	smeraldo
+San Valeriano di Aquileia	lapislazzuli
+San Valeriano di Avensano	bronzo
+San Valeriano di Forlì	neon
+San Valeriano di Tournus	lapislazzuli
+San Valerio Piniano	smeraldo
+San Valerio del Bierzo	argento
+San Valerio di Alvito	neon
+San Valerio di Antibes	argento
+San Valerio di Leuconay	argento
+San Valerio di Saragozza	bronzo
+San Valerio di Treviri	vaporwave
+San Valero di Bouvignes	fuoco
+San Valteno di Melrose	vaporwave
+San Vandregisilo	smeraldo
+San Vardan Mamikonian	smeraldo
+San Varnerio di Oberwesel	fuoco
+San Varo	porpora
+San Vasyl' Velyčkovs'kyj	bronzo
+San Vedulphus	arcobaleno
+San Venant de Viviers	smeraldo
+San Venanzio Fortunato	bronzo
+San Venanzio di Camerino	bronzo
+San Venanzio di Delminium	argento
+San Venanzio di Luni	bronzo
+San Venceslao I	fuoco
+San Vendelino di Treviri	arcobaleno
+San Vendemiale	porpora
+San Venerando d'Évreux	lapislazzuli
+San Venerio	smeraldo
+San Venustiano	vaporwave
+San Verano di Cavaillon	argento
+San Verre Ier de Vienne	argento
+San Viatore di Bergamo	bronzo
+San Viatore di Lione	legno
+San Vicelino di Oldenburg	vaporwave
+San Vicente Le Quang Liem	fuoco
+San Vicente di Montes	arcobaleno
+San Vicentien de Rouffiac	bronzo
+San Vicinio	arcobaleno
+San Victor de Mouzon	bronzo
+San Victor de Plaisance	lapislazzuli
+San Victricio di Rouen	bronzo
+San Vigberto di Fritzlar	arcobaleno
+San Vigilio di Brescia	arcobaleno
+San Vigilio di Trento	neon
+San Vigor di Bayeux	smeraldo
+San Vilfrido di York	arcobaleno
+San Villeado di Brema	lapislazzuli
+San Villibaldo di Eichstätt	argento
+San Villibrordo	argento
+San Villigiso di Magonza	legno
+San Vincenzo Ferreri	lapislazzuli
+San Vincenzo Grossi	vaporwave
+San Vincenzo Kadłubek	bronzo
+San Vincenzo Maria Strambi	argento
+San Vincenzo Pallotti	neon
+San Vincenzo Romano	porpora
+San Vincenzo de' Paoli	porpora
+San Vincenzo di Agen	lapislazzuli
+San Vincenzo di Dax	bronzo
+San Vincenzo di Digne	legno
+San Vincenzo di Lerino	argento
+San Vincenzo di Saragozza	fuoco
+San Vincenzo di Soignies	lapislazzuli
+San Vincenzo di Troyes	bronzo
+San Vindiciano	neon
+San Virgilio di Arles	porpora
+San Virgilio di Salisburgo	arcobaleno
+San Virginio	porpora
+San Vitale	fuoco
+San Vitale d'Assisi	neon
+San Vitale da Gaza	smeraldo
+San Vitale di Castronovo	bronzo
+San Vitale di Milano	arcobaleno
+San Vitale di Savigny	legno
+San Vitaliano	lapislazzuli
+San Vitaliano da Capua	smeraldo
+San Vitaliano di Osimo	neon
+San Vitalico di Smirne	fuoco
+San Vitalij Bajrak	smeraldo
+San Vitalissimo	neon
+San Vito	fuoco
+San Vitone di Verdun	lapislazzuli
+San Vittore	vaporwave
+San Vittore I	neon
+San Vittore III	bronzo
+San Vittore Vescovo di Napoli	smeraldo
+San Vittore di Calcedonia	vaporwave
+San Vittore di Capua	neon
+San Vittore di Fausania	lapislazzuli
+San Vittore di Marsiglia	neon
+San Vittore di Vita	argento
+San Vittore di Xanten	bronzo
+San Vittore il Moro	lapislazzuli
+San Vittorino da Pioraco	porpora
+San Vittorino di Amiterno	arcobaleno
+San Vittorino di Petovio	bronzo
+San Vittorio di Cesarea	smeraldo
+San Vittorio di León	arcobaleno
+San Vivenzio di Blera	legno
+San Vivenzio di Reims	legno
+San Vivenziolo di Lione	lapislazzuli
+San Vladimir I di Kiev	porpora
+San Vladimir Pavlovič Palej	fuoco
+San Vladimiro	fuoco
+San Volfango di Ratisbona	argento
+San Volodymyr Pryjma	neon
+San Volusiano di Tours	argento
+San Vsevolod di Pskov	lapislazzuli
+San Vulfranno di Sens	neon
+San Vulfric	vaporwave
+San Vulstano di Worcester	lapislazzuli
+San Vunibaldo di Heidenheim	porpora
+San Wala	vaporwave
+San Walter di San Martino di Pontoise	lapislazzuli
+San Wigstan	fuoco
+San Wilfrido della Gherardesca	lapislazzuli
+San Willeicus	vaporwave
+San Wincenty Matuszewski	porpora
+San Winnoc	neon
+San Wirone di Roerdalen	neon
+San Witta di Büraburg	bronzo
+San Wolbodo	legno
+San Władysław Błądziński	lapislazzuli
+San Władysław Demski	arcobaleno
+San Władysław Maćkowiak	porpora
+San Władysław Miegoń	neon
+San Władysław Mączkowski	bronzo
+San Włodzimierz Laskowski	neon
+San Yakym Senkivskyi	neon
+San Yaroslav di Murom	arcobaleno
+San Ywi	bronzo
+San Ælfwald I di Northumbria	fuoco
+San Æthelwold di Winchester	porpora
+San Óscar Romero	vaporwave
+Sant'Aaron	argento
+Sant'Aba I	bronzo
+Sant'Abacuc	lapislazzuli
+Sant'Abbondanzio	bronzo
+Sant'Abbondio di Como	arcobaleno
+Sant'Abbondio di Cordova	argento
+Sant'Abbondio di Villers	argento
+Sant'Abbone di Fleury	porpora
+Sant'Abdalong of Marseilles	lapislazzuli
+Sant'Abdia	smeraldo
+Sant'Abdo	bronzo
+Sant'Abdon	porpora
+Sant'Abele di Reims	smeraldo
+Sant'Abeluzius	argento
+Sant'Abercio di Ierapoli	legno
+Sant'Abibo di Edessa	porpora
+Sant'Ableberto di Cambrai	porpora
+Sant'Abo di Tiflis	porpora
+Sant'Abra di Poitiers	bronzo
+Sant'Abraham de Cratea	argento
+Sant'Abramo di Arazd	fuoco
+Sant'Abramo di Clermont	argento
+Sant'Abramo di Efeso	argento
+Sant'Abramo di Kashkar	vaporwave
+Sant'Abramo di Rostov	smeraldo
+Sant'Abrunculo	legno
+Sant'Abudemio	legno
+Sant'Abundio	smeraldo
+Sant'Acacio Agatangelo	neon
+Sant'Acacio di Amida	legno
+Sant'Acacio di Beroea	arcobaleno
+Sant'Acacio di Bisanzio	smeraldo
+Sant'Acacio di Melitene	bronzo
+Sant'Acacio di Sebaste	vaporwave
+Sant'Acacio il Giovanne	arcobaleno
+Sant'Acaico di Corinto	smeraldo
+Sant'Acario	vaporwave
+Sant'Acca di Hexham	vaporwave
+Sant'Accolito di Parenzo	argento
+Sant'Achilla di Alessandria	bronzo
+Sant'Achilleo Kiwanuka	fuoco
+Sant'Acindino	arcobaleno
+Sant'Acisclo di Cordova	porpora
+Sant'Adalberone di Würzburg	vaporwave
+Sant'Adalberto I d'Ostrevent	legno
+Sant'Adalberto di Como	lapislazzuli
+Sant'Adalberto di Egmond	legno
+Sant'Adalberto di Magdeburgo	bronzo
+Sant'Adalberto di Praga	porpora
+Sant'Adalgar	lapislazzuli
+Sant'Adalgisio di Novara	arcobaleno
+Sant'Adalgisio di Thiérache	smeraldo
+Sant'Adalgott di Dissentis	argento
+Sant'Adalsinda	neon
+Sant'Adalwin di Salisburgo	smeraldo
+Sant'Adam Bargielski	smeraldo
+Sant'Adamnano di Iona	arcobaleno
+Sant'Adamo abate	bronzo
+Sant'Addai	argento
+Sant'Adela di Pfalzel	bronzo
+Sant'Adelaide di Borgogna	neon
+Sant'Adelaide di Vilich	bronzo
+Sant'Adelardo di Corbie	smeraldo
+Sant'Adelario di Erfurt	bronzo
+Sant'Adele d'Inghilterra	smeraldo
+Sant'Adelelmo di Burgos	porpora
+Sant'Adelfo di Metz	bronzo
+Sant'Adelmann von Beauvais	bronzo
+Sant'Adeodato I	vaporwave
+Sant'Adeodato II	arcobaleno
+Sant'Adeodato di Canterbury	bronzo
+Sant'Adiutore	vaporwave
+Sant'Adolfo di Cambrai	neon
+Sant'Adolfo di Osnabrück	porpora
+Sant'Adolphe de Cordoue	vaporwave
+Sant'Adone di Vienne	neon
+Sant'Adriano III	vaporwave
+Sant'Adriano di Canterbury	arcobaleno
+Sant'Adriano di Cesarea	vaporwave
+Sant'Adriano di Nicomedia	lapislazzuli
+Sant'Adulfo	arcobaleno
+Sant'Adwen	porpora
+Sant'Aedth Mac Brice	bronzo
+Sant'Aelhaiarn	porpora
+Sant'Aelredo di Rievaulx	argento
+Sant'Aethelred di Mercia	neon
+Sant'Afra di Augusta	fuoco
+Sant'Afraate	bronzo
+Sant'Afrodisio	lapislazzuli
+Sant'Agabio di Novara	smeraldo
+Sant'Agabio di Verona	smeraldo
+Sant'Agabo	lapislazzuli
+Sant'Agape	vaporwave
+Sant'Agape von Thessaloniki	fuoco
+Sant'Agapio di Cesarea	lapislazzuli
+Sant'Agapito	arcobaleno
+Sant'Agapito I	neon
+Sant'Agapito di Palestrina	vaporwave
+Sant'Agapito di Preneste	porpora
+Sant'Agata	fuoco
+Sant'Agatangelo di Roma	lapislazzuli
+Sant'Agathe Lin-tchao	fuoco
+Sant'Agatoclia	smeraldo
+Sant'Agatone	arcobaleno
+Sant'Agatone d'Egitto	smeraldo
+Sant'Agatone martire	argento
+Sant'Ageltrude	neon
+Sant'Agericus of Verdun	arcobaleno
+Sant'Aggeo	argento
+Sant'Agileo di Cartagine	legno
+Sant'Agilo	arcobaleno
+Sant'Agilulfo di Colonia	smeraldo
+Sant'Agnello di Napoli	porpora
+Sant'Agnese	fuoco
+Sant'Agnese Cao Kuiying	porpora
+Sant'Agnese d'Assisi	arcobaleno
+Sant'Agnese di Boemia	arcobaleno
+Sant'Agnese di Montepulciano	arcobaleno
+Sant'Agobardo di Lione	vaporwave
+Sant'Agostino Erlendsson	argento
+Sant'Agostino Roscelli	arcobaleno
+Sant'Agostino Schoeffler	bronzo
+Sant'Agostino Webster	argento
+Sant'Agostino Yi Kwang-hŏn	fuoco
+Sant'Agostino Zhao Rong	vaporwave
+Sant'Agostino di Canterbury	bronzo
+Sant'Agricola	neon
+Sant'Agricola di Avignone	legno
+Sant'Agricole de Chalon	vaporwave
+Sant'Agrippano	vaporwave
+Sant'Agrippina di Mineo	smeraldo
+Sant'Agrippino di Alessandria	legno
+Sant'Agrippino di Como	bronzo
+Sant'Agrippinus von Neapel	bronzo
+Sant'Agrizio di Treviri	porpora
+Sant'Ahmad ibn Ashir	porpora
+Sant'Ahmed il Calligrafo	lapislazzuli
+Sant'Ahudemmeh	fuoco
+Sant'Aia di Mons	lapislazzuli
+Sant'Aidano di Ferns	arcobaleno
+Sant'Aidano di Lindisfarne	neon
+Sant'Aigulfo di Lerins	lapislazzuli
+Sant'Ailerano	argento
+Sant'Aimo	arcobaleno
+Sant'Aimone di Halberstadt	porpora
+Sant'Albano Roe	vaporwave
+Sant'Albano d'Inghilterra	fuoco
+Sant'Albano da Magonza	neon
+Sant'Albaud de Toul	neon
+Sant'Albeo di Emly	argento
+Sant'Alberico Crescitelli	smeraldo
+Sant'Alberico di Cîteaux	legno
+Sant'Alberico di Utrecht	smeraldo
+Sant'Albert of Cashel	lapislazzuli
+Sant'Albertina Berkenbrock	vaporwave
+Sant'Albertino da Montone	argento
+Sant'Alberto Chmielowski	smeraldo
+Sant'Alberto Hurtado	bronzo
+Sant'Alberto Quadrelli	bronzo
+Sant'Alberto da Genova	neon
+Sant'Alberto da Montecorvino	lapislazzuli
+Sant'Alberto da Prezzate	bronzo
+Sant'Alberto degli Abati	porpora
+Sant'Alberto di Gerusalemme	legno
+Sant'Alberto di Lovanio	fuoco
+Sant'Alberto di Riga	neon
+Sant'Albina di Cesarea	legno
+Sant'Albino di Angers	argento
+Sant'Albino di Lione	argento
+Sant'Albino di Vercelli	lapislazzuli
+Sant'Albone di Metz	legno
+Sant'Albuino di Bressanone	vaporwave
+Sant'Albéron Ier de Louvain	neon
+Sant'Alcimo Ecdicio Avito	argento
+Sant'Aldebrando di Fossombrone	bronzo
+Sant'Aldegonda di Maubeuge	argento
+Sant'Aldelmo di Malmesbury	smeraldo
+Sant'Aldemaro di Capua	legno
+Sant'Alderaldo di Troyes	porpora
+Sant'Alderico di Sens	vaporwave
+Sant'Aldetrude di Maubeuge	arcobaleno
+Sant'Aldo eremita	porpora
+Sant'Aldrico di Le Mans	porpora
+Sant'Aleksandr	fuoco
+Sant'Aleksy Sobaszek	arcobaleno
+Sant'Alena	smeraldo
+Sant'Alessandra di Amiso	smeraldo
+Sant'Alessandro	neon
+Sant'Alessandro I	fuoco
+Sant'Alessandro Sauli	argento
+Sant'Alessandro di Alessandria	arcobaleno
+Sant'Alessandro di Bergamo	legno
+Sant'Alessandro di Comana	legno
+Sant'Alessandro di Gerusalemme	fuoco
+Sant'Alessandro di Lione	lapislazzuli
+Sant'Alessandro di Roma	lapislazzuli
+Sant'Alessandro di Svir	legno
+Sant'Alessandro di Tessalonica	fuoco
+Sant'Alessio Falconieri	vaporwave
+Sant'Alexander Briant	fuoco
+Sant'Alfano di Salerno	argento
+Sant'Alfeio di Cesarea	smeraldo
+Sant'Alferio Pappacarbone	smeraldo
+Sant'Alfonsa dell'Immacolata Concezione	lapislazzuli
+Sant'Alfonso Maria Fusco	vaporwave
+Sant'Alfonso Maria de' Liguori	lapislazzuli
+Sant'Alfonso Rodríguez	lapislazzuli
+Sant'Alfonso Rodríguez-Olmedo	legno
+Sant'Alfreda di Crowland	bronzo
+Sant'Alfredo di Hildesheim	bronzo
+Sant'Alfrico	porpora
+Sant'Alhmund di Northumbria	neon
+Sant'Alice Kotowska	arcobaleno
+Sant'Alice di Schaerbeek	legno
+Sant'Alipio di Tagaste	arcobaleno
+Sant'Alipio lo Stilita	lapislazzuli
+Sant'Allo di Bobbio	smeraldo
+Sant'Allucio di Campugliano in Valdinievole	vaporwave
+Sant'Alodia	arcobaleno
+Sant'Alojzy Liguda	legno
+Sant'Alonso de Orozco	argento
+Sant'Alpaide	legno
+Sant'Alpino di Châlons	vaporwave
+Sant'Altmann di Passavia	smeraldo
+Sant'Alto	arcobaleno
+Sant'Amabile di Riom	lapislazzuli
+Sant'Amadio degli Amidei	arcobaleno
+Sant'Amadoro del Quercy	lapislazzuli
+Sant'Amalberga di Maubeuge	bronzo
+Sant'Amalberga di Temse	argento
+Sant'Amando di Bordeaux	legno
+Sant'Amando di Ghisalba	bronzo
+Sant'Amando di Maastricht	neon
+Sant'Amando di Strasburgo	porpora
+Sant'Amanse de Reims	legno
+Sant'Amantius	neon
+Sant'Amanzio di Como	lapislazzuli
+Sant'Amasiano di Taranto	lapislazzuli
+Sant'Amata d'Assisi	smeraldo
+Sant'Amato Ronconi	smeraldo
+Sant'Amato di Nusco	lapislazzuli
+Sant'Amato di Remiremont	neon
+Sant'Amato di Sion	legno
+Sant'Amatore di Autun	arcobaleno
+Sant'Amatore di Auxerre	bronzo
+Sant'Amazio di Reims	argento
+Sant'Ambrogio Autperto	bronzo
+Sant'Ambrogio Kibuuka	vaporwave
+Sant'Ambrogio Traversari	porpora
+Sant'Ambrogio di Alessandria	vaporwave
+Sant'Ambrogio di Cahors	argento
+Sant'Ambrogio di Optina	bronzo
+Sant'Ambrogio di Sarapul	fuoco
+Sant'Ambroise de Saintes	bronzo
+Sant'Ambrose Barlow	legno
+Sant'Amedeo di Losanna	bronzo
+Sant'Amelia di Gerona	argento
+Sant'Amico di Avellana	bronzo
+Sant'Amico di Rambona	arcobaleno
+Sant'Ammonio di Nitria	arcobaleno
+Sant'Amoes	neon
+Sant'Amon de Toul	vaporwave
+Sant'Amos	vaporwave
+Sant'Ampelio di Milano	argento
+Sant'Ampelio eremita	porpora
+Sant'Amphilochios Makrēs	arcobaleno
+Sant'Amun	porpora
+Sant'Anania di Damasco	legno
+Sant'Anastasia di Sirmio	bronzo
+Sant'Anastasia martire	bronzo
+Sant'Anastasio	arcobaleno
+Sant'Anastasio I	porpora
+Sant'Anastasio II di Antiochia	fuoco
+Sant'Anastasio da Brescia	vaporwave
+Sant'Anastasio di Lleida	bronzo
+Sant'Anastasio di Pavia	lapislazzuli
+Sant'Anastasio di Sens	argento
+Sant'Anastasio il Persiano	fuoco
+Sant'Anastasio il Sinaita	porpora
+Sant'Anastasius monachus Cluniacensis	smeraldo
+Sant'Anastazy Pankiewicz	arcobaleno
+Sant'Anatalone	lapislazzuli
+Sant'Anatolia	lapislazzuli
+Sant'Anatolio di Nicea	smeraldo
+Sant'Andeolo del Vivarais	fuoco
+Sant'Andrea Avellino	argento
+Sant'Andrea Bobola	fuoco
+Sant'Andrea Bogoljubskij	fuoco
+Sant'Andrea Corsini	smeraldo
+Sant'Andrea Dũng Lạc	vaporwave
+Sant'Andrea Guasconi	neon
+Sant'Andrea Kaggwa	vaporwave
+Sant'Andrea Kim Taegon	fuoco
+Sant'Andrea Zoerard	arcobaleno
+Sant'Andrea da Fiesole Scoto	lapislazzuli
+Sant'Andrea de Soveral	smeraldo
+Sant'Andrea di Costantinopoli	porpora
+Sant'Andrea di Firenze	argento
+Sant'Andrea di Totma	bronzo
+Sant'Andreas Bauer	fuoco
+Sant'Andronico di Pannonia	fuoco
+Sant'Andrzej Wouters	vaporwave
+Sant'André Bessette	arcobaleno
+Sant'Anfilochio di Iconio	arcobaleno
+Sant'Anfione	porpora
+Sant'Angadrisma	argento
+Sant'Angela Merici	bronzo
+Sant'Angela da Foligno	legno
+Sant'Angela della Croce	bronzo
+Sant'Angelo d'Acri	legno
+Sant'Angelo da Gerusalemme	arcobaleno
+Sant'Angelome di Luxeuil	bronzo
+Sant'Angilberto di Saint-Riquier	vaporwave
+Sant'Angilramno di Sens	bronzo
+Sant'Aniano di Asti	smeraldo
+Sant'Aniano di Orléans	vaporwave
+Sant'Aniceto	smeraldo
+Sant'Anisia di Tessalonica	argento
+Sant'Anna	porpora
+Sant'Anna Line	neon
+Sant'Anna Michajlovna Sebrjakova	argento
+Sant'Anna Porfirogenita	arcobaleno
+Sant'Anna Schäffer	legno
+Sant'Anna di Kašin	lapislazzuli
+Sant'Anna di Serbia	smeraldo
+Sant'Anne-Marie Javouhey	arcobaleno
+Sant'Annibale Maria Di Francia	arcobaleno
+Sant'Annone II di Colonia	argento
+Sant'Annone di Verona	argento
+Sant'Ansano di Siena	argento
+Sant'Ansberto di Rouen	smeraldo
+Sant'Ansegiso di Fontenelle	lapislazzuli
+Sant'Anselmo I di Milano	porpora
+Sant'Anselmo di Lucca	lapislazzuli
+Sant'Anselmo di Nonantola	lapislazzuli
+Sant'Ansfrido di Utrecht	neon
+Sant'Ansovino di Camerino	argento
+Sant'Anstrude di Laon	lapislazzuli
+Sant'Ansverus	fuoco
+Sant'Antelmo di Chignin	bronzo
+Sant'Antero	neon
+Sant'Antide	neon
+Sant'Antigio	bronzo
+Sant'Antimo d'Iberia	fuoco
+Sant'Antimo di Nicomedia	fuoco
+Sant'Antimo di Roma	vaporwave
+Sant'Antioco Stratego	legno
+Sant'Antioco di Lione	smeraldo
+Sant'Antioco di Sulcis	lapislazzuli
+Sant'Antipa di Pergamo	fuoco
+Sant'Antipatro di Bostra	legno
+Sant'Antoine Daniel	argento
+Sant'Antoine d'Agen	porpora
+Sant'Antoni Beszta-Borowski	neon
+Sant'Antoni Julian Nowowiejski	arcobaleno
+Sant'Antoni Rewera	neon
+Sant'Antoni Zawistowski	porpora
+Sant'Antonin Bajewski	vaporwave
+Sant'Antonin de Capoue	lapislazzuli
+Sant'Antonin de Carpentras	lapislazzuli
+Sant'Antonina di Nicea	neon
+Sant'Antonino Fantosati	argento
+Sant'Antonino Pierozzi	bronzo
+Sant'Antonino di Apamea	smeraldo
+Sant'Antonino di Milano	neon
+Sant'Antonino di Pamiers	porpora
+Sant'Antonino di Piacenza	smeraldo
+Sant'Antonino di Roma	fuoco
+Sant'Antonino di Sorrento	vaporwave
+Sant'Antonio Kim Song-u	lapislazzuli
+Sant'Antonio Maria Gianelli	smeraldo
+Sant'Antonio Maria Zaccaria	lapislazzuli
+Sant'Antonio María Claret y Clará	legno
+Sant'Antonio abate	legno
+Sant'Antonio di Gerace	argento
+Sant'Antonio di Lerino	neon
+Sant'Antonio di Mart'q'opi	argento
+Sant'Antonio di Padova	vaporwave
+Sant'Antonio di Roma	argento
+Sant'Antusa di Costantinopoli	arcobaleno
+Sant'Apelle	neon
+Sant'Apollinaire Franco	arcobaleno
+Sant'Apollinare Claudio	lapislazzuli
+Sant'Apollinare di Ravenna	fuoco
+Sant'Apollinare di Valence	bronzo
+Sant'Apollo	smeraldo
+Sant'Apollonia di Alessandria	fuoco
+Sant'Apollonio	lapislazzuli
+Sant'Apollonio di Sardi	fuoco
+Sant'Apollonio di Tiana	lapislazzuli
+Sant'Apollonio l'Anacoreta	argento
+Sant'Apollonio martire	arcobaleno
+Sant'Apphia	legno
+Sant'Appiano	neon
+Sant'Appiano di Cesarea in Palestina	lapislazzuli
+Sant'Appiano di Comacchio	bronzo
+Sant'Aprio de Roma	arcobaleno
+Sant'Apro di Toul	neon
+Sant'Apronia	porpora
+Sant'Aptonio di Angoulême	porpora
+Sant'Aquilina	arcobaleno
+Sant'Aquilino di Evreux	lapislazzuli
+Sant'Aquilino di Milano	vaporwave
+Sant'Arbogaste di Strasburgo	neon
+Sant'Arcadio di Mauritania	fuoco
+Sant'Arcangelo Tadini	bronzo
+Sant'Arcano da Sansepolcro	porpora
+Sant'Archileone	vaporwave
+Sant'Archippo	legno
+Sant'Archippo di Colossi	porpora
+Sant'Arcontius	lapislazzuli
+Sant'Ardone di Aniane	legno
+Sant'Arduino di Ceprano	smeraldo
+Sant'Arduino di Rimini	lapislazzuli
+Sant'Aredio di Gap	arcobaleno
+Sant'Aredio di Limoges	smeraldo
+Sant'Areta di Cesarea	argento
+Sant'Areta e compagni	smeraldo
+Sant'Ariadne	vaporwave
+Sant'Arialdo martire	bronzo
+Sant'Arianna di Primnesso	smeraldo
+Sant'Aristarco di Tessalonica	neon
+Sant'Aristide Marciano	smeraldo
+Sant'Aristobulo di Britannia	vaporwave
+Sant'Aristone di Campania	legno
+Sant'Arkadij I. Ostalʹskij	fuoco
+Sant'Armagilo	bronzo
+Sant'Armengol di Urgell	argento
+Sant'Armentario di Pavia	vaporwave
+Sant'Arnoaldo di Metz	neon
+Sant'Arnoc	arcobaleno
+Sant'Arnold Janssen	smeraldo
+Sant'Arnolfo d'Olanda	bronzo
+Sant'Arnolfo di Gap	vaporwave
+Sant'Arnolfo di Metz	bronzo
+Sant'Arnolfo di Soissons	legno
+Sant'Arnolfo di Toul	lapislazzuli
+Sant'Arnoul de Mouzon	vaporwave
+Sant'Aroldo I di Danimarca	legno
+Sant'Arsacio	neon
+Sant'Arsazio di Nicomedia	arcobaleno
+Sant'Arsenio I	porpora
+Sant'Arsenio da Armo	smeraldo
+Sant'Arsenio il Cappadoce	bronzo
+Sant'Arsenio il Grande	arcobaleno
+Sant'Artaldo di Belley	legno
+Sant'Artelaide di Benevento	lapislazzuli
+Sant'Artema di Pozzuoli	bronzo
+Sant'Artemio	fuoco
+Sant'Artemone di Laodicea	argento
+Sant'Asafo	lapislazzuli
+Sant'Ascelina	neon
+Sant'Asclepio di Limoges	porpora
+Sant'Asella	arcobaleno
+Sant'Aseric	smeraldo
+Sant'Ashkhen	vaporwave
+Sant'Asincrito di Ircania	vaporwave
+Sant'Aspreno di Napoli	argento
+Sant'Assone di Torgau	neon
+Sant'Asteio di Durazzo	porpora
+Sant'Asterio di Amasea	vaporwave
+Sant'Asterio di Cesarea	porpora
+Sant'Asterio di Ostia	lapislazzuli
+Sant'Asterio di Petra	neon
+Sant'Atanasia	legno
+Sant'Atanasia di Egina	porpora
+Sant'Atanasio	argento
+Sant'Atanasio III di Costantinopoli	lapislazzuli
+Sant'Atanasio di Napoli	neon
+Sant'Atelmo	arcobaleno
+Sant'Atenagora di Atene	argento
+Sant'Atenodoro	legno
+Sant'Attala	lapislazzuli
+Sant'Attalo di Catania	vaporwave
+Sant'Attico di Costantinopoli	porpora
+Sant'Attilano di Zamora	argento
+Sant'Attilio	lapislazzuli
+Sant'Attinia e Greciniana	argento
+Sant'Attracta	porpora
+Sant'Auberto di Avranches	bronzo
+Sant'Audace	porpora
+Sant'Aude de Paris	neon
+Sant'Audoeno di Rouen	lapislazzuli
+Sant'Audomaro di Thérouanne	legno
+Sant'Augulo di Viviers	legno
+Sant'Augurio di Tarragona	argento
+Sant'Augusta di Serravalle	bronzo
+Sant'Augustinus Thevarparampil	argento
+Sant'Augusto Chapdelaine	porpora
+Sant'Augusto di Calatia	legno
+Sant'Augusto di Nicomedia	arcobaleno
+Sant'Augusto di San Sinforiano	bronzo
+Sant'Aunacario di Auxerre	arcobaleno
+Sant'Aurea di Amiens	vaporwave
+Sant'Aurea di Ostia	vaporwave
+Sant'Aurea di Parigi	bronzo
+Sant'Aurelia di Strasburgo	lapislazzuli
+Sant'Aurelia z Anagni	argento
+Sant'Aureliano	porpora
+Sant'Aureliano di Arles	vaporwave
+Sant'Aureliano di Limoges	legno
+Sant'Aurelio di Cartagine	arcobaleno
+Sant'Ausano di Milano	lapislazzuli
+Sant'Ausibio di Soli	smeraldo
+Sant'Ausonio di Angoulême	vaporwave
+Sant'Auspicio di Toul	legno
+Sant'Aussenzio di Bitinia	argento
+Sant'Austindo di Auch	legno
+Sant'Austreberthe de Pavilly	porpora
+Sant'Austregesilio di Bourges	smeraldo
+Sant'Austremonio vescovo	smeraldo
+Sant'Autberto di Cambrai	argento
+Sant'Autbodus	neon
+Sant'Autonomo	fuoco
+Sant'Autore di Metz	argento
+Sant'Avanus	legno
+Sant'Avendrace	smeraldo
+Sant'Avertino di Tours	smeraldo
+Sant'Avilio di Alessandria	vaporwave
+Sant'Avit de Rouen	smeraldo
+Sant'Avito di Clermont	arcobaleno
+Sant'Avito di Micy	argento
+Sant'Avvakum	porpora
+Sant'Eadfrido di Leominster	legno
+Sant'Eadsige	arcobaleno
+Sant'Eanswida di Folkestone	porpora
+Sant'Earconvaldo di Londra	neon
+Sant'Ebba di Coldingham	neon
+Sant'Eberardo del Friuli	neon
+Sant'Ebonzio	argento
+Sant'Ecclesio	legno
+Sant'Edburga di Caistor	smeraldo
+Sant'Edburga di Minster-in-Thanet	bronzo
+Sant'Edda di Winchester	vaporwave
+Sant'Edesio di Alessandria	porpora
+Sant'Edgardo il Pacifico	vaporwave
+Sant'Edisto	legno
+Sant'Edith Stein	neon
+Sant'Editta di Wilton	argento
+Sant'Edmondo Arrowsmith	vaporwave
+Sant'Edmondo I d'Inghilterra	fuoco
+Sant'Edmondo dell'Anglia orientale	bronzo
+Sant'Edmondo di Canterbury	bronzo
+Sant'Edmondo di Scozia	porpora
+Sant'Edmund Campion	fuoco
+Sant'Edmund Gennings	vaporwave
+Sant'Edoardo il Confessore	smeraldo
+Sant'Edoardo il Martire	fuoco
+Sant'Edvige di Andechs	smeraldo
+Sant'Edvige di Polonia	arcobaleno
+Sant'Edvino di Deira	lapislazzuli
+Sant'Efebo di Napoli	neon
+Sant'Efflamm	vaporwave
+Sant'Efisio	fuoco
+Sant'Efrem di Antiochia	bronzo
+Sant'Egesippo	argento
+Sant'Egidio	lapislazzuli
+Sant'Egidio Maria da Taranto	lapislazzuli
+Sant'Egidio da Sansepolcro	legno
+Sant'Egidio di Casaio	porpora
+Sant'Egwin di Evesham	lapislazzuli
+Sant'Eigen	argento
+Sant'Eigion	neon
+Sant'Eigrad	vaporwave
+Sant'Eigron	lapislazzuli
+Sant'Eilian	smeraldo
+Sant'Ekanātha	porpora
+Sant'Ekvtime Takaishvili	porpora
+Sant'Elder Tadej Štrbulović	legno
+Sant'Eldrado di Novalesa	legno
+Sant'Elen Lwyddog	lapislazzuli
+Sant'Elena d'Angiò	lapislazzuli
+Sant'Elena di Arzamas	neon
+Sant'Elena di Auxerre	argento
+Sant'Elena di Laurino	porpora
+Sant'Elena di Skövde	lapislazzuli
+Sant'Eleno di Alessandria	neon
+Sant'Eleonora di Provenza	neon
+Sant'Elerio di Jersey	arcobaleno
+Sant'Eleuterio	arcobaleno
+Sant'Eleuterio di Arce	argento
+Sant'Eleuterio di Auxerre	smeraldo
+Sant'Eleuterio di Parenzo	porpora
+Sant'Eleuterio di Spoleto	vaporwave
+Sant'Eleuterio di Tournai	arcobaleno
+Sant'Eleutherius	fuoco
+Sant'Elfego di Canterbury	fuoco
+Sant'Elfego il Vecchio	neon
+Sant'Elfleda di Whitby	porpora
+Sant'Elgiva di Shaftesbury	neon
+Sant'Elia Eudocia	vaporwave
+Sant'Elia Flaccilla	lapislazzuli
+Sant'Elia I di Gerusalemme	smeraldo
+Sant'Elia Pulcheria	lapislazzuli
+Sant'Elia Speleota	porpora
+Sant'Elia di Enna	vaporwave
+Sant'Elia di Ohren	smeraldo
+Sant'Elias Facchini	fuoco
+Sant'Eligio di Noyon	neon
+Sant'Eliodoro di Altino	porpora
+Sant'Elisabetta	neon
+Sant'Elisabetta d'Assia-Darmstadt	fuoco
+Sant'Elisabetta d'Ungheria	legno
+Sant'Elisabetta della Trinità	legno
+Sant'Elisabetta di Schönau	smeraldo
+Sant'Eliseo	argento
+Sant'Elizabeth Ann Bayley Seton	neon
+Sant'Elizabeth Rose	neon
+Sant'Elladio di Auxerre	porpora
+Sant'Elladio di Toledo	lapislazzuli
+Sant'Ellero di Galeata	lapislazzuli
+Sant'Elli	vaporwave
+Sant'Elouan	argento
+Sant'Elpidio Abate	smeraldo
+Sant'Elpis	legno
+Sant'Eluned	porpora
+Sant'Elzeario da Sabrano	vaporwave
+Sant'Emanuele	smeraldo
+Sant'Emerenziana	smeraldo
+Sant'Emerico d'Ungheria	bronzo
+Sant'Emeterio	bronzo
+Sant'Emidio d'Ascoli	fuoco
+Sant'Emilia de Vialar	argento
+Sant'Emiliana	bronzo
+Sant'Emiliana di Roma	neon
+Sant'Emiliano I di Vercelli	lapislazzuli
+Sant'Emiliano Tardif	porpora
+Sant'Emiliano d'Irlanda	arcobaleno
+Sant'Emiliano di Durostoro	porpora
+Sant'Emiliano di Trevi	porpora
+Sant'Emiliano di Valence	legno
+Sant'Emilio di Benevento	smeraldo
+Sant'Emma di Gurk	arcobaleno
+Sant'Emma di Lesum	bronzo
+Sant'Emmanuel Ruiz	argento
+Sant'Emmerano di Ratisbona	bronzo
+Sant'Enda di Aran	smeraldo
+Sant'Endellion	arcobaleno
+Sant'Enfleda di Northumbria	argento
+Sant'Engelmondo di Velsen	arcobaleno
+Sant'Engrazia	fuoco
+Sant'Enimia del Gévaudan	vaporwave
+Sant'Ennemondo di Lione	bronzo
+Sant'Enoch	lapislazzuli
+Sant'Enrico II del Sacro Romano Impero	lapislazzuli
+Sant'Enrico Morse	lapislazzuli
+Sant'Enrico Walpole	legno
+Sant'Enrico di Uppsala	porpora
+Sant'Enrique Antonio de Ossó y Cervelló	porpora
+Sant'Eobano di Utrecht	fuoco
+Sant'Eonio di Arles	porpora
+Sant'Eorpwald dell'Anglia orientale	vaporwave
+Sant'Epafra	smeraldo
+Sant'Epafrodito di Filippi	argento
+Sant'Epeneto di Cartagine	smeraldo
+Sant'Ephraim Katunakiōtēs	neon
+Sant'Epifanio di Pavia	lapislazzuli
+Sant'Epimaco	lapislazzuli
+Sant'Equizio abate	neon
+Sant'Equizio diacono	neon
+Sant'Eraclio di Alessandria	arcobaleno
+Sant'Erardo di Ratisbona	neon
+Sant'Erasto di Corinto	vaporwave
+Sant'Erberto Hoscam	lapislazzuli
+Sant'Erbin	neon
+Sant'Erc di Slane	legno
+Sant'Erchembodone di Thérouanne	neon
+Sant'Ercolano da Piegaro	arcobaleno
+Sant'Ercolano di Brescia	vaporwave
+Sant'Ercolano di Perugia	fuoco
+Sant'Eremberto di Tolosa	arcobaleno
+Sant'Erentrude di Salisburgo	bronzo
+Sant'Ereswida	smeraldo
+Sant'Erfyl	legno
+Sant'Eriberto di Colonia	smeraldo
+Sant'Eric IV di Danimarca	fuoco
+Sant'Erik IX di Svezia	arcobaleno
+Sant'Erlembaldo Cotta	porpora
+Sant'Erma	arcobaleno
+Sant'Ermagora di Aquileia	arcobaleno
+Sant'Ermanno Giuseppe di Colonia	neon
+Sant'Ermelinda	legno
+Sant'Ermenegilda di Ely	bronzo
+Sant'Ermenegildo	porpora
+Sant'Ermenfrido di Cusance	arcobaleno
+Sant'Ermengarda di Tours	arcobaleno
+Sant'Ermete	fuoco
+Sant'Ermete martire	smeraldo
+Sant'Ermin de Lobbes	vaporwave
+Sant'Ermione di Efeso	lapislazzuli
+Sant'Ermogene	fuoco
+Sant'Ermoigio	lapislazzuli
+Sant'Ermolao di Nicomedia	vaporwave
+Sant'Ernesto di Zwiefalten	porpora
+Sant'Erone di Antiochia	legno
+Sant'Erveo di Bretagna	arcobaleno
+Sant'Escrava Anastácia	smeraldo
+Sant'Esichio	argento
+Sant'Esichio I di Vienne	porpora
+Sant'Esichio II di Vienne	smeraldo
+Sant'Esichio di Antiochia	neon
+Sant'Esichio di Durostoro	bronzo
+Sant'Esichio di Gerusalemme	bronzo
+Sant'Eskillo di Straengnaes	fuoco
+Sant'Espedito di Melitene	arcobaleno
+Sant'Estelle	lapislazzuli
+Sant'Esteria di Bergamo	vaporwave
+Sant'Esuperanzio di Cingoli	bronzo
+Sant'Esuperanzio di Ravenna	neon
+Sant'Esuperanzio di Zurigo	smeraldo
+Sant'Esuperio di Bayeux	porpora
+Sant'Etelardo	lapislazzuli
+Sant'Etelberto del Kent	lapislazzuli
+Sant'Etelberto dell'Anglia orientale	neon
+Sant'Etelberto ed Etelredo	smeraldo
+Sant'Etelburga del Kent	arcobaleno
+Sant'Etelburga di Barking	smeraldo
+Sant'Etelburga di Faremoutiers	legno
+Sant'Eteldreda di Ely	smeraldo
+Sant'Eterio di Vienne	arcobaleno
+Sant'Ethelnoth	porpora
+Sant'Etienne-Théodore Cuenot	legno
+Sant'Etto	legno
+Sant'Eucario di Treviri	porpora
+Sant'Eucherio di Lione	bronzo
+Sant'Eucherio di Orléans	porpora
+Sant'Eudokia di Leušino	argento
+Sant'Eufemia	smeraldo
+Sant'Eufemia di Calcedonia	fuoco
+Sant'Eufemia di Ourense	argento
+Sant'Eufrasia del Sacro Cuore di Gesù	smeraldo
+Sant'Eufrasia di Costantinopoli	bronzo
+Sant'Eufrasio di Clermont	vaporwave
+Sant'Eufronio di Autun	legno
+Sant'Eufronio di Tours	arcobaleno
+Sant'Eufrosinia la Stolta	arcobaleno
+Sant'Eufrosino	vaporwave
+Sant'Eugendo	argento
+Sant'Eugenia d'Alsazia	arcobaleno
+Sant'Eugenia di Roma	porpora
+Sant'Eugenio I	argento
+Sant'Eugenio III di Toledo	argento
+Sant'Eugenio di Cartagine	legno
+Sant'Eugenio di Firenze	vaporwave
+Sant'Eugenio di Milano	bronzo
+Sant'Eugenio di Toledo	argento
+Sant'Eugenio di Valencia	bronzo
+Sant'Eugippio	neon
+Sant'Eugène de Mazenod	neon
+Sant'Eulalia di Barcellona	fuoco
+Sant'Eulalia di Mérida	smeraldo
+Sant'Eulalio di Siracusa	argento
+Sant'Eulampia	bronzo
+Sant'Eulampio	porpora
+Sant'Eulogio di Cordova	fuoco
+Sant'Eulogio di Edessa	neon
+Sant'Eulogio di Tarragona	vaporwave
+Sant'Eumenio di Gortina	argento
+Sant'Euplio di Catania	fuoco
+Sant'Euprepio di Verona	bronzo
+Sant'Eupsichio di Cesarea	smeraldo
+Sant'Eurosia Fabris Barban	lapislazzuli
+Sant'Eurosia di Jaca	bronzo
+Sant'Eusanio	legno
+Sant'Eusebia di Bergamo	neon
+Sant'Eusebia di Hamage	porpora
+Sant'Eusebio	lapislazzuli
+Sant'Eusebio di Antiochia	lapislazzuli
+Sant'Eusebio di Bologna	arcobaleno
+Sant'Eusebio di Cremona	vaporwave
+Sant'Eusebio di Milano	vaporwave
+Sant'Eusebio di Roma	lapislazzuli
+Sant'Eusebio di San Gallo	arcobaleno
+Sant'Eusebio di Vercelli	bronzo
+Sant'Euseo di Serravalle	bronzo
+Sant'Eustachio White	argento
+Sant'Eustadiola	arcobaleno
+Sant'Eustasio di Aosta	bronzo
+Sant'Eustasio di Luxeuil	bronzo
+Sant'Eustasio di Napoli	lapislazzuli
+Sant'Eustazio di Antiochia	vaporwave
+Sant'Eustazio di Tessalonica	lapislazzuli
+Sant'Eustochia Calafato	lapislazzuli
+Sant'Eustochio	vaporwave
+Sant'Eustorgio II	porpora
+Sant'Eustorgio di Milano	bronzo
+Sant'Eustrazio	neon
+Sant'Eutichiano	neon
+Sant'Eutichio	legno
+Sant'Eutichio di Roma	legno
+Sant'Eutimio di Costantinopoli	neon
+Sant'Eutimio di Sardi	fuoco
+Sant'Eutimio di Tărnovo	argento
+Sant'Eutizio di Ferento	fuoco
+Sant'Eutropia	smeraldo
+Sant'Eutropio	fuoco
+Sant'Eutropio di Orange	lapislazzuli
+Sant'Eutropio di Saintes	arcobaleno
+Sant'Eutropio di Valencia	argento
+Sant'Eva di Dreux	porpora
+Sant'Evagrio di Costantinopoli	neon
+Sant'Evaristo	legno
+Sant'Evasio	bronzo
+Sant'Evellio	lapislazzuli
+Sant'Evenzio	neon
+Sant'Evermarus	argento
+Sant'Evermodo di Ratzeburg	bronzo
+Sant'Evezio di Nicomedia	arcobaleno
+Sant'Evodio di Antiochia	fuoco
+Sant'Evodio di Rouen	neon
+Sant'Evurzio di Orléans	neon
+Sant'Ezechiele	smeraldo
+Sant'Ezequiel Moreno	vaporwave
+Sant'Ezio	bronzo
+Sant'Ia di Cornovaglia	neon
+Sant'Iarlath di Tuam	lapislazzuli
+Sant'Ida di Fischingen	bronzo
+Sant'Ida di Herzfeld	neon
+Sant'Idesbaldo delle Dune	lapislazzuli
+Sant'Idulfo di Moyenmoutier	neon
+Sant'Iduned	argento
+Sant'Ieroteo il Tesmoteta	fuoco
+Sant'Iese Tsilkneli	legno
+Sant'Igino	legno
+Sant'Ignacy Kłopotowski	neon
+Sant'Ignazio Clemente Delgado	fuoco
+Sant'Ignazio Elia III	bronzo
+Sant'Ignazio Maloyan	fuoco
+Sant'Ignazio da Laconi	argento
+Sant'Ignazio da Santhià	legno
+Sant'Ignazio di Antiochia	fuoco
+Sant'Ignoroc de Vannes	vaporwave
+Sant'Ilar	neon
+Sant'Ilariano di Perse	porpora
+Sant'Ilario	lapislazzuli
+Sant'Ilario di Aquileia	legno
+Sant'Ilario di Arles	argento
+Sant'Ilario di Javols	neon
+Sant'Ilario di Matera	neon
+Sant'Ilario di Poitiers	vaporwave
+Sant'Ilarione di Gaza	smeraldo
+Sant'Ilarione di Pelecete	legno
+Sant'Ilarione di Vereja	fuoco
+Sant'Ilarione il Georgiano	arcobaleno
+Sant'Ildefonso di Toledo	arcobaleno
+Sant'Ildemarca	porpora
+Sant'Ilia Chavchavadze	fuoco
+Sant'Ilid	smeraldo
+Sant'Illidio di Clermont	legno
+Sant'Illuminata di Todi	smeraldo
+Sant'Illuminato da Rieti	vaporwave
+Sant'Iltudo	arcobaleno
+Sant'Imelino di Vissenaeken	neon
+Sant'Imerio	smeraldo
+Sant'Imerio di Bosto	legno
+Sant'Indalezio	lapislazzuli
+Sant'Indract di Glastonbury	porpora
+Sant'Ine del Wessex	argento
+Sant'Ingegerd Olofsdotter	arcobaleno
+Sant'Ingenuino di Sabiona	legno
+Sant'Ingrid Elofsdotter	bronzo
+Sant'Innocentia	arcobaleno
+Sant'Innocenzo I	porpora
+Sant'Innocenzo da Caltagirone	porpora
+Sant'Innocenzo dell'Immacolata	bronzo
+Sant'Innocenzo di Tortona	lapislazzuli
+Sant'Innocenzo di Verona	arcobaleno
+Sant'Innocenzo e Vitale	lapislazzuli
+Sant'Ioann Ioannovič Vostorgov	fuoco
+Sant'Iosif l'Esicasta	neon
+Sant'Ipazio	smeraldo
+Sant'Ippazio di Gangra	fuoco
+Sant'Ippolito di Roma	vaporwave
+Sant'Irene da Lecce	lapislazzuli
+Sant'Irene del Portogallo	argento
+Sant'Irene di Bisanzio	porpora
+Sant'Irene di Roma	arcobaleno
+Sant'Irene di Tessalonica	fuoco
+Sant'Ireneo di Lione	fuoco
+Sant'Ireneo di Sirmio	fuoco
+Sant'Irmina di Oehren	argento
+Sant'Irmã Dulce	vaporwave
+Sant'Isabella Jagellona	porpora
+Sant'Isabella Maria della Passione	porpora
+Sant'Isabella d'Aragona	smeraldo
+Sant'Isacco Jogues	fuoco
+Sant'Isacco d'Armenia	porpora
+Sant'Isacco di Monteluco	smeraldo
+Sant'Isacco di Ninive	porpora
+Sant'Isan	neon
+Sant'Isernino	bronzo
+Sant'Isfrido di Ratzeburg	legno
+Sant'Isidoro di Chio	smeraldo
+Sant'Isidoro di Pelusio	arcobaleno
+Sant'Isidoro di Rostov	neon
+Sant'Isidoro di Siviglia	arcobaleno
+Sant'Isidoro l'Agricoltore	vaporwave
+Sant'Ismeria	porpora
+Sant'Ithier de Nevers	vaporwave
+Sant'Itta di Nivelles	porpora
+Sant'Iulitta Zubova	neon
+Sant'Ivan Ziatyk	arcobaleno
+Sant'Ivo Hélory	vaporwave
+Sant'Ivo di Chartres	porpora
+Sant'Ivo di Ramsey	porpora
+Sant'Obizio da Niardo	lapislazzuli
+Sant'Oda	smeraldo
+Sant'Oda di Canterbury	smeraldo
+Sant'Oddone di Cluny	neon
+Sant'Oddone di Novara	vaporwave
+Sant'Ode	vaporwave
+Sant'Oderisio di Montecassino	arcobaleno
+Sant'Odilone di Cluny	bronzo
+Sant'Odolfo di Stavoren	argento
+Sant'Odone I di Beauvais	smeraldo
+Sant'Odone di Urgell	neon
+Sant'Odrada van Balen	porpora
+Sant'Offa dell'Essex	arcobaleno
+Sant'Offa di Benevento	arcobaleno
+Sant'Olav II di Norvegia	bronzo
+Sant'Olcese	smeraldo
+Sant'Olga Michael	neon
+Sant'Olga di Kiev	bronzo
+Sant'Olimpia di Nicomedia	smeraldo
+Sant'Olinto Marella	neon
+Sant'Oliva di Anagni	neon
+Sant'Oliva di Brescia	argento
+Sant'Oliva di Palermo	lapislazzuli
+Sant'Oliviero Plunkett	fuoco
+Sant'Oliviero d'Ancona	smeraldo
+Sant'Olʹga Ložkina	bronzo
+Sant'Omeljan Kovč	argento
+Sant'Omobono Tucenghi	vaporwave
+Sant'Onesiforo	fuoco
+Sant'Onesimo	neon
+Sant'Onesimo di Soissons	argento
+Sant'Onorata di Pavia	neon
+Sant'Onorato	arcobaleno
+Sant'Onorato di Amiens	vaporwave
+Sant'Onorato di Arles	neon
+Sant'Onorato di Fondi	smeraldo
+Sant'Onorato di Marsiglia	smeraldo
+Sant'Onorato di Tolosa	lapislazzuli
+Sant'Onorina di Graville	porpora
+Sant'Onorio di Brescia	argento
+Sant'Onorio di Canterbury	vaporwave
+Sant'Onorio di Casalvieri	lapislazzuli
+Sant'Onuphre de Chio	vaporwave
+Sant'Oranna	bronzo
+Sant'Orante	vaporwave
+Sant'Orenzio	arcobaleno
+Sant'Oreste di Tiana	arcobaleno
+Sant'Oria di San Millán	arcobaleno
+Sant'Orienzio	bronzo
+Sant'Ormisda	legno
+Sant'Oronzo di Lecce	fuoco
+Sant'Orso di Aosta	argento
+Sant'Orso di Auxerre	arcobaleno
+Sant'Orso di Ravenna	arcobaleno
+Sant'Orso di Toul	arcobaleno
+Sant'Orsola	fuoco
+Sant'Ortaire de Landelles	vaporwave
+Sant'Osana	porpora
+Sant'Oscar di Brema	lapislazzuli
+Sant'Osio di Cordova	lapislazzuli
+Sant'Osmundo di Salisbury	vaporwave
+Sant'Osvaldo di Northumbria	legno
+Sant'Osvaldo di Worcester	bronzo
+Sant'Oswine di Deira	vaporwave
+Sant'Otmar di San Gallo	neon
+Sant'Ottato	bronzo
+Sant'Ottaviano di Como	porpora
+Sant'Ottaviano di Savona	neon
+Sant'Ottaviano di Volterra	arcobaleno
+Sant'Ottaziano di Brescia	arcobaleno
+Sant'Otterano di Iona	neon
+Sant'Ottilia di Alsazia	smeraldo
+Sant'Ottone Frangipane	smeraldo
+Sant'Ottone di Bamberga	lapislazzuli
+Sant'Ubaldesca Taccini	bronzo
+Sant'Ubaldo Baldassini	smeraldo
+Sant'Uberto di Liegi	neon
+Sant'Udaut	arcobaleno
+Sant'Ugo Canefri	neon
+Sant'Ugo Saladini	vaporwave
+Sant'Ugo di Bonnevaux	smeraldo
+Sant'Ugo di Champagne	lapislazzuli
+Sant'Ugo di Cluny	bronzo
+Sant'Ugo di Grenoble	lapislazzuli
+Sant'Ugo di Lincoln	neon
+Sant'Ugo di Novara di Sicilia	bronzo
+Sant'Ugolina di Vercelli	porpora
+Sant'Uguccione da Firenze	arcobaleno
+Sant'Ulphe	argento
+Sant'Ulpiano di Tiro	vaporwave
+Sant'Ulrico di Augusta	legno
+Sant'Ulrico di Zell	vaporwave
+Sant'Ultan di Ardbraccan	bronzo
+Sant'Ultano di Fosses	porpora
+Sant'Umberto di Maroilles	smeraldo
+Sant'Umile da Bisignano	arcobaleno
+Sant'Umiltà	arcobaleno
+Sant'Unni	lapislazzuli
+Sant'Urbain Lefebvre	lapislazzuli
+Sant'Urbano I	vaporwave
+Sant'Urbano di Langres	vaporwave
+Sant'Urbicio	porpora
+Sant'Urbicio di Metz	argento
+Sant'Urfol	smeraldo
+Sant'Ursicin de Cahors	legno
+Sant'Ursicino del Giura	neon
+Sant'Ursicino di Brescia	argento
+Sant'Ursicino di Ravenna	neon
+Sant'Ursino di Bourges	vaporwave
+Sant'Ursmaro di Lobbes	vaporwave
+Sant'Urso	lapislazzuli
+Sant'Urszula Ledóchowska	vaporwave
+Sant'Émilie de Rodat	lapislazzuli
+Santa Babila	lapislazzuli
+Santa Balbina da Roma	arcobaleno
+Santa Barbara	fuoco
+Santa Barbara Choe Yeong-i	fuoco
+Santa Bartolomea Capitanio	argento
+Santa Basilissa e Anastasia	neon
+Santa Bassa di Edessa	bronzo
+Santa Batilde	lapislazzuli
+Santa Beatrice II d'Este	smeraldo
+Santa Beatrice de Silva	neon
+Santa Begga di Andenne	lapislazzuli
+Santa Begu	neon
+Santa Benedetta Cambiagio Frassinello	vaporwave
+Santa Benigna di Breslavia	lapislazzuli
+Santa Bernadette Soubirous	arcobaleno
+Santa Berta dei Merovingi	bronzo
+Santa Bertha	neon
+Santa Bertha von Marbais	smeraldo
+Santa Bertilia	legno
+Santa Bertilla di Chelles	smeraldo
+Santa Bibiana martire	porpora
+Santa Bililde	neon
+Santa Blandina di Lione	vaporwave
+Santa Blesilla	porpora
+Santa Bona di Pisa	legno
+Santa Bonifacia Rodríguez Castro	smeraldo
+Santa Brigida d'Irlanda	smeraldo
+Santa Brigida di Svezia	smeraldo
+Santa Brigitte de Fiesole	smeraldo
+Santa Cagina	bronzo
+Santa Camilla Battista da Varano	neon
+Santa Camilla di Auxerre	vaporwave
+Santa Candida	neon
+Santa Candida Maria di Gesù	neon
+Santa Candida la Vecchia	neon
+Santa Canna	vaporwave
+Santa Carina di Ancira	neon
+Santa Carmen Sallés y Barangueras	bronzo
+Santa Carolina Santocanale	legno
+Santa Caterina Aliprandi	lapislazzuli
+Santa Caterina Labouré	vaporwave
+Santa Caterina Tomás	legno
+Santa Caterina Troiani	argento
+Santa Caterina Volpicelli	smeraldo
+Santa Caterina d'Alessandria	fuoco
+Santa Caterina da Bologna	legno
+Santa Caterina da Genova	vaporwave
+Santa Caterina da Siena	smeraldo
+Santa Caterina de' Ricci	vaporwave
+Santa Caterina di Svezia	porpora
+Santa Cecilia	fuoco
+Santa Cecilia Yu So-sa	lapislazzuli
+Santa Celestina	argento
+Santa Celestina Faron	arcobaleno
+Santa Cesaria di Arles	argento
+Santa Chelidonia monaca	vaporwave
+Santa Chiara d'Assisi	neon
+Santa Chiara da Montefalco	bronzo
+Santa Christina von Hamm	vaporwave
+Santa Ciriaca di Pianella	legno
+Santa Ciriaca di Roma	fuoco
+Santa Claudia	argento
+Santa Clelia Barbieri	arcobaleno
+Santa Clementina	neon
+Santa Cleopatra	argento
+Santa Clotilde	argento
+Santa Clotsinda	vaporwave
+Santa Cointa d'Alessandria	legno
+Santa Coletta di Corbie	bronzo
+Santa Colomba di Cordova	smeraldo
+Santa Colomba di Cornovaglia	bronzo
+Santa Colomba di Sens	fuoco
+Santa Columba de Roma	legno
+Santa Comasia	bronzo
+Santa Cordula	neon
+Santa Cornelia	arcobaleno
+Santa Corona	neon
+Santa Costantina	arcobaleno
+Santa Costanza d'Ungheria	arcobaleno
+Santa Crispina	legno
+Santa Cristiana di Georgia	argento
+Santa Cristina	fuoco
+Santa Cristina I di Svezia	neon
+Santa Cristina de Osma	argento
+Santa Cristina di Bolsena	vaporwave
+Santa Cunegonda	arcobaleno
+Santa Cunera	smeraldo
+Santa Cutburga	argento
+Santa Dafrosa di Roma	bronzo
+Santa Damnat	porpora
+Santa Darerca d'Irlanda	lapislazzuli
+Santa Daria di Venafro	bronzo
+Santa Degna di Roma	lapislazzuli
+Santa Degna di Todi	arcobaleno
+Santa Demetria di Roma	porpora
+Santa Derchairthinn	lapislazzuli
+Santa Derfuta	porpora
+Santa Devota	lapislazzuli
+Santa Di Sens	arcobaleno
+Santa Dignamerita di Salerno	argento
+Santa Dinfna	fuoco
+Santa Dionisia	smeraldo
+Santa Doamna Despina Milița	porpora
+Santa Doda di Metz	lapislazzuli
+Santa Doda di Reims	argento
+Santa Dolcelina	porpora
+Santa Domenica di Tropea	smeraldo
+Santa Domne Eafe	smeraldo
+Santa Donata	lapislazzuli
+Santa Donnina di Terni	arcobaleno
+Santa Dorotea	argento
+Santa Dorotea di Alessandria	bronzo
+Santa Dorotea di Montau	argento
+Santa Dwynwen	argento
+Santa Dwywe	bronzo
+Santa Fabiola di Roma	vaporwave
+Santa Fanchea	lapislazzuli
+Santa Fara	neon
+Santa Farailde di Gand	arcobaleno
+Santa Faustina Kowalska	argento
+Santa Faustina di Cizico	legno
+Santa Faustina di Como	legno
+Santa Febe	bronzo
+Santa Fede di Agen	arcobaleno
+Santa Felicissima	legno
+Santa Felicita	smeraldo
+Santa Felicita e figli	bronzo
+Santa Felicitas of Padua	vaporwave
+Santa Felicola	smeraldo
+Santa Feodosija Prokof'evna Morozova	argento
+Santa Filomena di Roma	vaporwave
+Santa Filotea	arcobaleno
+Santa Fina da San Gimignano	lapislazzuli
+Santa Fiorentina di Cartagena	lapislazzuli
+Santa Firmina di Amelia	arcobaleno
+Santa Flavia Domitilla	smeraldo
+Santa Flavia Giulia Elena	vaporwave
+Santa Flora di Beaulieu	porpora
+Santa Flora di Cordova	legno
+Santa Fortunata de Moquegua	legno
+Santa Fosca	vaporwave
+Santa Franca da Vitalta	neon
+Santa Francesca Romana	smeraldo
+Santa Francesca Saverio Cabrini	legno
+Santa Franciszka Siedliska	argento
+Santa Fridesvida	bronzo
+Santa Galla	bronzo
+Santa Gaudenzia	argento
+Santa Geltrude Comensoli	bronzo
+Santa Gemma Galgani	porpora
+Santa Gemma de Saintonges	arcobaleno
+Santa Gemma di Goriano Sicoli	legno
+Santa Genoveffa di Parigi	neon
+Santa Genoveva Torres Morales	lapislazzuli
+Santa Germana Cousin	lapislazzuli
+Santa Gertrude di Hamage	porpora
+Santa Gertrude di Helfta	neon
+Santa Gertrude di Nivelles	vaporwave
+Santa Giacinta Marescotti	neon
+Santa Giacinta Marto	smeraldo
+Santa Gianna Beretta Molla	neon
+Santa Gioacchina de Vedruna	bronzo
+Santa Giorgia	lapislazzuli
+Santa Giorgia Vergine	porpora
+Santa Giosafata Hordaševska	vaporwave
+Santa Giovanna Antida Thouret	argento
+Santa Giovanna Francesca Frémiot de Chantal	bronzo
+Santa Giovanna da Signa	lapislazzuli
+Santa Giovanna di Valois	legno
+Santa Giovanna la Mirofora	lapislazzuli
+Santa Giovina	arcobaleno
+Santa Gisella	legno
+Santa Giuditta di Ringelheim	lapislazzuli
+Santa Giulia Billiart	smeraldo
+Santa Giulia Eustochio	neon
+Santa Giulia Salzano	porpora
+Santa Giulia di Corsica	fuoco
+Santa Giuliana Falconieri	porpora
+Santa Giuliana di Cornillon	arcobaleno
+Santa Giuliana di Nicomedia	lapislazzuli
+Santa Giulitta	arcobaleno
+Santa Giunia	vaporwave
+Santa Giuseppina Bakhita	neon
+Santa Giuseppina Vannini	vaporwave
+Santa Giusta	neon
+Santa Giusta di Bazzano	legno
+Santa Giustina di Nicomedia	vaporwave
+Santa Giustina di Padova	vaporwave
+Santa Giustina vergine e martire	porpora
+Santa Gladys	smeraldo
+Santa Glafira	porpora
+Santa Gliceria di Eraclea	fuoco
+Santa Glossinde de Metz	lapislazzuli
+Santa Gobnait	neon
+Santa Godeleva martire	fuoco
+Santa Golindouch	smeraldo
+Santa Gorgonia di Nazianzo	bronzo
+Santa Grania	bronzo
+Santa Grata di Bergamo	porpora
+Santa Greca di Decimomannu	bronzo
+Santa Grimonie	argento
+Santa Gudula di Bruxelles	argento
+Santa Guglielmina	legno
+Santa Gwen Teirbron	porpora
+Santa Heriburg von Nottuln	smeraldo
+Santa Herlindis di Maaseik	neon
+Santa Hieu	bronzo
+Santa Hilaria z Augsburga	vaporwave
+Santa Hilda di Whitby	lapislazzuli
+Santa Hildelith	legno
+Santa Hiltrude de Liessies	smeraldo
+Santa Hosokawa Tamako	porpora
+Santa Jeanne Delanoue	legno
+Santa Jeanne Jugan	arcobaleno
+Santa Jeanne de Lestonnac	porpora
+Santa Jeanne Émilie de Villeneuve	arcobaleno
+Santa Jeanne-Elisabeth Bichier des Ages	porpora
+Santa Josefa Naval Girbés	arcobaleno
+Santa Juliana Boloňská	smeraldo
+Santa Jutta di Sangerhausen	legno
+Santa Kassia	neon
+Santa Kateri Tekakwitha	smeraldo
+Santa Katharina Kasper	arcobaleno
+Santa Katharine Mary Drexel	porpora
+Santa Kennera	argento
+Santa Ketevan	fuoco
+Santa Khosrovidukht	smeraldo
+Santa Kinga di Polonia	porpora
+Santa Ksenija di San Pietroburgo	bronzo
+Santa Kyranna di Salonicco	smeraldo
+Santa Landrada di Bilsen	argento
+Santa Lang Yang	legno
+Santa Larissa	argento
+Santa Laura di Cordova	arcobaleno
+Santa Laura di Costantinopoli	fuoco
+Santa Laura di Santa Caterina da Siena	argento
+Santa Lea di Roma	neon
+Santa Leocadia di Toledo	neon
+Santa Liberata	argento
+Santa Liberata da Como	vaporwave
+Santa Lidia	porpora
+Santa Lidija Wasiljewna Zaszczuk	neon
+Santa Liduina di Schiedam	porpora
+Santa Lioba di Tauberbischofsheim	neon
+Santa Liutbirg	lapislazzuli
+Santa Llechid	lapislazzuli
+Santa Louise-Thérèse de Montaignac de Chauvance	argento
+Santa Lucia	fuoco
+Santa Lucia Filippini	bronzo
+Santa Lucilla di Roma	argento
+Santa Lucina di Roma	neon
+Santa Lucy Yi Zhenmei	fuoco
+Santa Ludmilla di Boemia	fuoco
+Santa Luisa di Marillac	legno
+Santa Lupercilla	legno
+Santa Lutgarda	legno
+Santa Léonie Aviat	smeraldo
+Santa Mabyn	porpora
+Santa Macra di Reims	neon
+Santa Macrina l'Anziana	legno
+Santa Macrina la Giovane	smeraldo
+Santa Maddalena Sofia Barat	lapislazzuli
+Santa Maddalena di Nagasaki	neon
+Santa Madrona	lapislazzuli
+Santa Madruina	legno
+Santa Madrun	vaporwave
+Santa Marcella di Chio	arcobaleno
+Santa Marcella di Roma	legno
+Santa Marcellina	argento
+Santa Marciana di Mauritania	arcobaleno
+Santa Marfa di Suzdal	neon
+Santa Margaret Clitherow	legno
+Santa Margherita Bays	argento
+Santa Margherita Maria Alacoque	legno
+Santa Margherita Occhiena	vaporwave
+Santa Margherita Ward	fuoco
+Santa Margherita d'Inghilterra	legno
+Santa Margherita d'Ungheria	vaporwave
+Santa Margherita da Città di Castello	vaporwave
+Santa Margherita da Cortona	vaporwave
+Santa Margherita di Antiochia	fuoco
+Santa Margherita di Scozia	lapislazzuli
+Santa Marguerite Bourgeoys	bronzo
+Santa Maria Bernarda Bütler	bronzo
+Santa Maria Bertilla Boscardin	smeraldo
+Santa Maria Clemenza Staszewska	arcobaleno
+Santa Maria Crescentia Höss	lapislazzuli
+Santa Maria Cristina Brando	neon
+Santa Maria Crocifissa Costantini	arcobaleno
+Santa Maria Crocifissa Di Rosa	bronzo
+Santa Maria De Mattias	arcobaleno
+Santa Maria Domenica Mazzarello	argento
+Santa Maria Egiziaca	smeraldo
+Santa Maria Elisabeth Hesselblad	lapislazzuli
+Santa Maria Eugenia di Gesù	legno
+Santa Maria Francesca delle Cinque Piaghe	vaporwave
+Santa Maria Francesca di Gesù	argento
+Santa Maria Giuseppa Rossello	neon
+Santa Maria Goretti	fuoco
+Santa Maria Guo Lizhi	legno
+Santa Maria Helena Stollenwerk	porpora
+Santa Maria Josefa Sancho de Guerra	neon
+Santa Maria Maddalena Postel	smeraldo
+Santa Maria Maddalena de' Pazzi	argento
+Santa Maria Marta di Gesù Wołowska	smeraldo
+Santa Maria Rosa Molas y Vallvé	argento
+Santa Maria Teresa Chiramel Mankidiyan	bronzo
+Santa Maria Troncatti	arcobaleno
+Santa Maria d'Oignies	argento
+Santa Maria de Cervellòn	legno
+Santa Maria dell'Incarnazione Guyart	vaporwave
+Santa Maria di Belgorod	argento
+Santa Maria di Betania	smeraldo
+Santa Maria di Cleofa	lapislazzuli
+Santa Maria di Sant'Eufrasia Pelletier	porpora
+Santa Mariam Baouardy	arcobaleno
+Santa Mariamne	porpora
+Santa Mariana de Paredes y Flores	arcobaleno
+Santa Marianna Biernacka	neon
+Santa Marianna Cope	legno
+Santa Marie Adolphine	fuoco
+Santa Marie Rivier	bronzo
+Santa Marie-Amandine de Schakkebroek	fuoco
+Santa Marie-Azélie Guérin Martin	lapislazzuli
+Santa Marie-Marguerite d'Youville	bronzo
+Santa Marija Petković	bronzo
+Santa Marija Skobcova	fuoco
+Santa Marina di Bitinia	neon
+Santa Marina di Omura	legno
+Santa Marina di Ourense	arcobaleno
+Santa Marta de Astorga	vaporwave
+Santa Marta di Betania	legno
+Santa Marta di Cordova	smeraldo
+Santa Mary Clara Nanetti	fuoco
+Santa Mary Hermina of Jesus	fuoco
+Santa Mary MacKillop	arcobaleno
+Santa Maryam Sūltanah Danil Ghaţţas	argento
+Santa María Antonia de Paz y Figueroa	smeraldo
+Santa María Guadalupe García Zavala	neon
+Santa María Isabel Salvat Romero	legno
+Santa María Maravillas de Jesús	argento
+Santa María Venegas de la Torre	argento
+Santa María di Ágreda	neon
+Santa Massellenda	porpora
+Santa Massenzia	vaporwave
+Santa Massima	vaporwave
+Santa Matilde Téllez Robles	porpora
+Santa Matilde di Hackeborn	argento
+Santa Matilde di Ringelheim	vaporwave
+Santa Matrona di Capua	neon
+Santa Matrona la Cieca	bronzo
+Santa Matronilla	legno
+Santa Maura di Troyes	vaporwave
+Santa Melangell	porpora
+Santa Melania l'anziana	neon
+Santa Melania la giovane	porpora
+Santa Melitina	legno
+Santa Menne	arcobaleno
+Santa Mesia Elia	fuoco
+Santa Messalina di Foligno	vaporwave
+Santa Micaela Desmaisières y López Dicastillo y Olmeda	arcobaleno
+Santa Mieczysława Kowalska	neon
+Santa Mildburga di Wenlock	porpora
+Santa Mildgita	neon
+Santa Mildred	neon
+Santa Milica di Serbia	argento
+Santa Mirope di Chio	neon
+Santa Monegonda	arcobaleno
+Santa Monica	vaporwave
+Santa Morwenna	neon
+Santa Mundizia	fuoco
+Santa Mustiola	lapislazzuli
+Santa Narcisa di Gesù Martillo y Moràn	lapislazzuli
+Santa Natalia di Nicomedia	lapislazzuli
+Santa Nazaria Ignazia di Santa Teresa di Gesù	arcobaleno
+Santa Neomisia di Anagni	porpora
+Santa Neosnadia	neon
+Santa Nicarete	porpora
+Santa Nicea	vaporwave
+Santa Ninfa	porpora
+Santa Non	bronzo
+Santa Notburga di Eben	bronzo
+Santa Palazia	fuoco
+Santa Paola Elisabetta Cerioli	smeraldo
+Santa Paola Frassinetti	vaporwave
+Santa Paola Romana	arcobaleno
+Santa Paolina	arcobaleno
+Santa Paolina Visintainer	vaporwave
+Santa Parasceva Pyatnitsa	fuoco
+Santa Parasceva di Roma	vaporwave
+Santa Parascheva di Iasi	legno
+Santa Paschasia	porpora
+Santa Patrizia di Costantinopoli	argento
+Santa Patrizia di Nicomedia	argento
+Santa Paula Montal Fornés	vaporwave
+Santa Pazienzi	argento
+Santa Pelagia Bereža di Ustjug	legno
+Santa Pelagia di Antiochia	vaporwave
+Santa Pelagia di Tarso	argento
+Santa Pelagia la Vergine	lapislazzuli
+Santa Perpetua	fuoco
+Santa Petronilla	porpora
+Santa Piroska d'Ungheria	lapislazzuli
+Santa Plectrude	bronzo
+Santa Polissena	argento
+Santa Potamiena d'Alessandria	arcobaleno
+Santa Prassede	legno
+Santa Preuve de Laon	argento
+Santa Priscilla	neon
+Santa Pudenziana di Roma	porpora
+Santa Quiteria	bronzo
+Santa Radegonda	lapislazzuli
+Santa Rafaela Porras y Ayllón	legno
+Santa Ragenfreda di Denain	argento
+Santa Rais	lapislazzuli
+Santa Rebecca Ar-Rayès	porpora
+Santa Regina di Alise	vaporwave
+Santa Regina di Ostrevent	legno
+Santa Reinilde di Saints	smeraldo
+Santa Reparata di Cesarea di Palestina	bronzo
+Santa Restituta d'Africa	legno
+Santa Restituta di Sora	neon
+Santa Rhian	porpora
+Santa Riccarda di Svevia	neon
+Santa Rictrude di Marchiennes	vaporwave
+Santa Ripsima	argento
+Santa Rita da Cascia	arcobaleno
+Santa Rosa Venerini	bronzo
+Santa Rosa da Lima	porpora
+Santa Rosa da Viterbo	vaporwave
+Santa Rosalia	legno
+Santa Rose-Philippine Duchesne	legno
+Santa Rosellina di Villeneuve	lapislazzuli
+Santa Roswitha di Gandersheim	porpora
+Santa Rufina	argento
+Santa Rut	vaporwave
+Santa Sabina	lapislazzuli
+Santa Sabrina di Troyes	neon
+Santa Salaberga di Laon	legno
+Santa Salome	vaporwave
+Santa Samaritana	neon
+Santa Samthann di Clonbroney	smeraldo
+Santa Sara	smeraldo
+Santa Sara di Antiochia	argento
+Santa Sara la Nera	lapislazzuli
+Santa Savina	porpora
+Santa Scolastica da Norcia	porpora
+Santa Segolena di Albi	smeraldo
+Santa Senhorinha de Bastos	neon
+Santa Serafina Sforza	porpora
+Santa Serena di Roma	vaporwave
+Santa Serena di Spoleto	smeraldo
+Santa Severa di Pyrgi	vaporwave
+Santa Sexburga di Ely	smeraldo
+Santa Shushanik	fuoco
+Santa Silvia	bronzo
+Santa Silvia d'Aquitania	argento
+Santa Sincletica	smeraldo
+Santa Sinforosa di Tivoli	bronzo
+Santa Sofia	vaporwave
+Santa Sofija Michajłowna Bołotowa	bronzo
+Santa Sofronia	smeraldo
+Santa Solange	lapislazzuli
+Santa Soline	porpora
+Santa Sotere	neon
+Santa Sperandea	bronzo
+Santa Stanisława Rodzińska	smeraldo
+Santa Suina di Cagliari	bronzo
+Santa Sunniva	porpora
+Santa Susanna	bronzo
+Santa Susanna di Roma	legno
+Santa Susanna la Diaconessa	porpora
+Santa Tabita	lapislazzuli
+Santa Taide	vaporwave
+Santa Tamara Alexandrovna Marjanova	lapislazzuli
+Santa Tamara di Georgia	legno
+Santa Tarsilia di Roma	smeraldo
+Santa Tathana	neon
+Santa Tatiana di Roma	neon
+Santa Tecla da Lentini	porpora
+Santa Tecla di Iconio	bronzo
+Santa Teoctisto di Lesbo	porpora
+Santa Teodechilde di Jouarre	legno
+Santa Teodolinda	argento
+Santa Teodora	porpora
+Santa Teodora di Arta	lapislazzuli
+Santa Teodosia da Costantinopoli	vaporwave
+Santa Teodosia di Cesarea	neon
+Santa Teofano di Bisanzio	porpora
+Santa Teopista	legno
+Santa Teresa Eustochio Verzeri	legno
+Santa Teresa Margherita Redi	legno
+Santa Teresa di Gesù di Los Andes	legno
+Santa Teresa di Lisieux	bronzo
+Santa Teresa di Sant'Agostino	fuoco
+Santa Thiatildis	argento
+Santa Théodore Guérin	bronzo
+Santa Tibbe	lapislazzuli
+Santa Tomaide di Lesbo	smeraldo
+Santa Toscana di Zevio	arcobaleno
+Santa Trifena di Cizico	bronzo
+Santa Trifina	bronzo
+Santa Trofimena	lapislazzuli
+Santa Tydfil	lapislazzuli
+Santa Valdetrude di Mons	arcobaleno
+Santa Valeria	porpora
+Santa Valpurga di Heidenheim	neon
+Santa Varvara Jakovleva	fuoco
+Santa Veneranda	bronzo
+Santa Veneria	vaporwave
+Santa Vera la Taciturna	legno
+Santa Verdiana	porpora
+Santa Verena di Zurzach	legno
+Santa Veronica	arcobaleno
+Santa Veronica Giuliani	smeraldo
+Santa Viatrice di Roma	bronzo
+Santa Viborada di San Gallo	smeraldo
+Santa Victoire Rasoamanarivo	porpora
+Santa Vincenza Gerosa	lapislazzuli
+Santa Virginia Centurione Bracelli	bronzo
+Santa Virginia von Poitu	argento
+Santa Vissia di Fermo	neon
+Santa Vitburga di Dereham	vaporwave
+Santa Vittoria	vaporwave
+Santa Vittoria di Cordova	smeraldo
+Santa Vulfetruda di Nivelles	arcobaleno
+Santa Wenna	fuoco
+Santa Werburga	argento
+Santa Wilfrida	arcobaleno
+Santa Winifred	lapislazzuli
+Santa Wivine di Gran Bigard	arcobaleno
+Santa Wulfilda	porpora
+Santa Yvette of Huy	vaporwave
+Santa Zaira	neon
+Santa Zdislava Berka	argento
+Santa Zenaida di Tarso	argento
+Santa Zenobia	porpora
+Santa Zita	neon
+Santa Zoe	neon
+Santo Scenute d'Atripe	legno
+Santo Shenuda di Alessandria	argento
+Santo Smbat Byurat	fuoco
+Santo Spes	vaporwave
+Santo Spes di Norcia	porpora
+Santo Spiridione di Trimitonte	smeraldo
+Santo Stachys l'Apostolo	bronzo
+Santo Stamp	vaporwave
+Santo Stanislao Casimiritano	legno
+Santo Stanislao Kostka	porpora
+Santo Stanislao di Cracovia	lapislazzuli
+Santo Stanisław Kostka Starowieyski	porpora
+Santo Stanisław Kubski	vaporwave
+Santo Stanisław Mysakowski	argento
+Santo Stanisław Papczyński	arcobaleno
+Santo Stanisław Pyrtek	vaporwave
+Santo Stapinus	neon
+Santo Stefan III Branković	bronzo
+Santo Stefano	fuoco
+Santo Stefano Harding	legno
+Santo Stefano I	fuoco
+Santo Stefano I d'Ungheria	argento
+Santo Stefano I di Costantinopoli	argento
+Santo Stefano I di Napoli	lapislazzuli
+Santo Stefano II Dragutin	smeraldo
+Santo Stefano III	arcobaleno
+Santo Stefano III Lazaro	vaporwave
+Santo Stefano III il Grande	arcobaleno
+Santo Stefano IV	porpora
+Santo Stefano IX	bronzo
+Santo Stefano Min Kuk-ka	porpora
+Santo Stefano Minicillo	argento
+Santo Stefano Pongrácz	smeraldo
+Santo Stefano Prvovenčani	bronzo
+Santo Stefano Sabaita	neon
+Santo Stefano Uroš II Milutin	smeraldo
+Santo Stefano Uroš III Dečanski	vaporwave
+Santo Stefano Uroš V di Serbia	arcobaleno
+Santo Stefano Vladislav I di Serbia	vaporwave
+Santo Stefano d'Obazine	lapislazzuli
+Santo Stefano da Cuneo	fuoco
+Santo Stefano del Lupo	neon
+Santo Stefano di Apt	bronzo
+Santo Stefano di Calagonis	porpora
+Santo Stefano di Châtillon	neon
+Santo Stefano di Grandmont	porpora
+Santo Stefano di Lione	smeraldo
+Santo Stefano di Nicea	smeraldo
+Santo Stefano il Giovane	fuoco
+Santo Stiliano di Paflagonia	smeraldo
+Santo Stratocle	fuoco
+Santo Stratonicus	argento
+Santo Sturmio di Fulda	argento
+Santo Sventibaldo di Lotaringia	porpora
+Santo Svitino di Winchester	arcobaleno
+Santo Svāmī Pranvananda Saraswati	argento
+Santo Swithun Wells	fuoco
+Santo Sándor Kőrösi Csoma	legno
+Santo Zaccaria	lapislazzuli
+Santo Zaccaria di Vienne	argento
+Santo Zaccheo di Gerusalemme	neon
+Santo Zama	argento
+Santo Zanobi vescovo	porpora
+Santo Zebedeo	porpora
+Santo Zefirino	argento
+Santo Zeno di Verona	smeraldo
+Santo Zenobio di Sidone	arcobaleno
+Santo Zenone di Egitto	vaporwave
+Santo Zenone di Filadelfia	bronzo
+Santo Zenone di Palestina	smeraldo
+Santo Zenone di Roma	bronzo
+Santo Zinovij Otenskij	neon
+Santo Zoltan z Egeru	arcobaleno
+Santo Zopito	legno
+Santo Zosimo	fuoco
+Santo Zosimo di Siracusa	vaporwave
+Santo Zotico di Costantinopoli	arcobaleno
+Santo Zotico di Nicomedia	legno
+Santo Zygmunt Pisarski	vaporwave
+Santo Zygmunt Sajna	porpora
