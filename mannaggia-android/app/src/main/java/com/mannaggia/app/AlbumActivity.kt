@@ -24,6 +24,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.tabs.TabLayout
@@ -358,6 +359,9 @@ class AlbumActivity : AppCompatActivity() {
         val dialog = BottomSheetDialog(this)
         val view = layoutInflater.inflate(R.layout.dialog_santo, null)
         dialog.setContentView(view)
+        // Fully open: on small screens the half-open sheet hid the buttons under the edge.
+        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        dialog.behavior.skipCollapsed = true
         val avatar = view.findViewById<ImageView>(R.id.imgAvatar)
         val frame = view.findViewById<ImageView>(R.id.imgFrame)
         val bookmark = view.findViewById<ImageButton>(R.id.btnBookmark)
