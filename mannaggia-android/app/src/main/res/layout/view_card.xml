@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- The card of the last saint invoked, always shown under the phrase:
      label (new / already in the album / special), portrait with its frame and the
-     favourite bookmark (tap to add; full and disabled if already a favourite),
+     favourite bookmark (a toggle; half transparent while not a favourite),
      card number and name. -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
