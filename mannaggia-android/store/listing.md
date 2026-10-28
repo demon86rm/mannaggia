@@ -49,6 +49,11 @@ L'elenco dei santi proviene da Wikidata (CC0). I caratteri gotici sono sotto SIL
 
 Umorismo da sistemisti, senza bestemmie.
 
+## Note di rilascio 2.1.2 (max 500 caratteri)
+
+• Nuova opzione Colorful: una cornice animata per ogni figurina, la palma per i martiri (grazie a lucatarik!)
+• Si sblocca col nuovo trofeo Parroco, all'album al 25%: se ci sei già, arriva alla prossima imprecazione
+
 ## Note di rilascio 2.1.1 (max 500 caratteri)
 
 • Nuova schermata Info con novità, prossimi arrivi e crediti
