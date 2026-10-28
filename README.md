@@ -48,6 +48,7 @@ Mannaggia è gratuita e senza sponsor, e così resterà. Puoi aiutarla così:
 
 - **[Segnala un problema o proponi un'idea](https://github.com/demon86rm/mannaggia/issues/new/choose)**, anche dall'app (Opzioni → Progetto).
 - **Fai fork e apri una pull request**: santi dimenticati, achievement da inventare, correzioni.
+- **Curioso di come è fatta?** La mappa dei componenti è in [`docs/architettura-app.html`](docs/architettura-app.html): scaricala e aprila nel browser. Ogni blocco porta alle righe di codice da cui viene.
 - **[Offrimi un caffè su Ko-fi](https://ko-fi.com/demon86rm)**: aiuta a coprire i costi (account sviluppatore, ore di GPU per la voce) o è semplicemente un grazie.
 
 ## Compilare da sorgente
