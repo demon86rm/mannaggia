@@ -18,8 +18,11 @@ object Trofei {
     /** Where an invocation came from. */
     enum class Fonte { PULSANTE, SCUOTIMENTO, CALENDARIO, WIDGET, RIQUADRO }
 
-    /** CORNICE: an animated frame for the legendary cards; FORMULA: an invocation formula (Formule). */
-    enum class Tipo { COLORE, CARATTERE, EFFETTO, FIGURINA, CORNICE, FORMULA }
+    /**
+     * CORNICE: an animated frame for the legendary cards; FORMULA: an invocation formula (Formule);
+     * OPZIONE: a switch in Options (its key).
+     */
+    enum class Tipo { COLORE, CARATTERE, EFFETTO, FIGURINA, CORNICE, FORMULA, OPZIONE }
 
     /** A cosmetic reward: [valore] is the preference value (or the special card's name). */
     data class Ricompensa(val tipo: Tipo, val valore: String, val nome: String) {
@@ -31,6 +34,7 @@ object Trofei {
                 Tipo.FIGURINA -> "Figurina speciale: $nome"
                 Tipo.CORNICE -> "Nuova cornice: $nome"
                 Tipo.FORMULA -> "Nuova formula: $nome"
+                Tipo.OPZIONE -> "Nuova opzione: $nome"
             }
     }
 
@@ -59,6 +63,7 @@ object Trofei {
             carattere("sans-serif-smallcaps", "Maiuscoletto")),
         Trofeo("devoto", "Devoto", "100 imprecazioni", colore("porpora", "Porpora cardinalizia")),
         Trofeo("sacrestano", "Sacrestano", "Album al 10%", carattere("sans-serif-light", "Leggero")),
+        Trofeo("parroco", "Parroco", "Album al 25%", Ricompensa(Tipo.OPZIONE, Prefs.KEY_COLORFUL, "Colorful")),
         Trofeo("vescovo", "Vescovo", "Album al 50%", effetto("fiamma", "Fiamma")),
         Trofeo("papa", "Papa", "Album completo", figurina("Santo Subito")),
         Trofeo("leggenda", "Colpo di fortuna", "Trovare il primo santo leggendario", figurina("San Culo")),
@@ -179,6 +184,7 @@ object Trofei {
         ok: MutableList<String>, albumSize: Int, total: Int, legendary: Boolean, saint: String, allSpecials: Boolean,
     ) {
         if (total > 0 && albumSize * 10 >= total) ok += "sacrestano"
+        if (total > 0 && albumSize * 4 >= total) ok += "parroco"
         if (total > 0 && albumSize * 2 >= total) ok += "vescovo"
         if (albumSize >= MILLE_SAINTS) ok += "mille"
         if (total > 0 && albumSize >= total) ok += "papa"

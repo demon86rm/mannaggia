@@ -60,6 +60,8 @@ class SettingsActivity : AppCompatActivity() {
             onlyUnlocked(Prefs.KEY_EFFECT, Trofei.Tipo.EFFETTO)
             onlyUnlocked(Prefs.KEY_FRAME, Trofei.Tipo.CORNICE)
             findPreference<ListPreference>(Prefs.KEY_FRAME)?.let { it.isVisible = it.entries.size > 1 }  // only gold so far
+            findPreference<Preference>(Prefs.KEY_COLORFUL)?.isVisible =
+                BuildConfig.DEBUG || Trofei.rewardAvailable(requireContext(), Trofei.Tipo.OPZIONE, Prefs.KEY_COLORFUL)
             formulas()
             onClick("issues") { openUrl(ISSUES_URL) }
             onClick("contribute") { openUrl(REPO_URL) }
