@@ -41,6 +41,8 @@ object Prefs {
     private const val KEY_ALBUM_FILTER = "album_filter"
     const val ALBUM_SORT_NUMBER = "number"
     const val ALBUM_SORT_NAME = "name"
+    const val ALBUM_SORT_DISCOVERY = "discovery"
+    private const val KEY_ALBUM_DESCENDING = "album_descending"
     const val ALBUM_FILTER_ALL = "all"
     const val ALBUM_FILTER_SAINTS = "santi"
     const val ALBUM_FILTER_BLESSED = "beati"
@@ -105,6 +107,9 @@ object Prefs {
 
     fun albumSort(context: Context) = prefs(context).getString(KEY_ALBUM_SORT, ALBUM_SORT_NUMBER) ?: ALBUM_SORT_NUMBER
     fun setAlbumSort(context: Context, value: String) = prefs(context).edit().putString(KEY_ALBUM_SORT, value).apply()
+
+    fun albumDescending(context: Context) = prefs(context).getBoolean(KEY_ALBUM_DESCENDING, false)
+    fun setAlbumDescending(context: Context, value: Boolean) = prefs(context).edit().putBoolean(KEY_ALBUM_DESCENDING, value).apply()
 
     fun albumFilter(context: Context) = prefs(context).getString(KEY_ALBUM_FILTER, ALBUM_FILTER_ALL) ?: ALBUM_FILTER_ALL
     fun setAlbumFilter(context: Context, value: String) = prefs(context).edit().putString(KEY_ALBUM_FILTER, value).apply()

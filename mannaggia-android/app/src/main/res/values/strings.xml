@@ -56,6 +56,9 @@
     <string name="album_sort">Ordina per</string>
     <string name="album_sort_number">Numero della figurina</string>
     <string name="album_sort_name">Nome</string>
+    <string name="album_sort_discovery">Data di scoperta</string>
+    <string name="album_sort_ascending">Crescente</string>
+    <string name="album_sort_descending">Decrescente</string>
     <string name="album_filter">Mostra</string>
     <string name="album_filter_all">Santi e beati</string>
     <string name="album_filter_saints">Solo santi</string>
