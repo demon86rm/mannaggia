@@ -49,6 +49,8 @@
     <string name="fav_add">Aggiungi ai preferiti</string>
     <string name="fav_remove">Togli dai preferiti</string>
     <string name="fav_badge">Preferito</string>
+    <string name="pref_formula_title">Formula dell\'invocazione</string>
+    <string name="pref_formula_random">A caso tra le sbloccate</string>
     <string name="album_sort_filter">Ordina e filtra</string>
     <string name="album_sort">Ordina per</string>
     <string name="album_sort_number">Numero della figurina</string>

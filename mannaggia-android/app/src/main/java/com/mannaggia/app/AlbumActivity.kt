@@ -268,7 +268,10 @@ class AlbumActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.tts_unavailable, Toast.LENGTH_SHORT).show()
             return
         }
-        tts?.speak(Pronuncia.perVoce(Mannaggia.phraseOf(saint)), TextToSpeech.QUEUE_FLUSH, null, "preferito")
+        lifecycleScope.launch {
+            val phrase = Mannaggia.phraseOf(this@AlbumActivity, saint)
+            tts?.speak(Pronuncia.perVoce(phrase), TextToSpeech.QUEUE_FLUSH, null, "preferito")
+        }
     }
 
     // --- Album tab: multiple selection ----------------------------------------------------

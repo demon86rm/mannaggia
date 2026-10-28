@@ -1770,6 +1770,11 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
     (out / "speciali.txt").write_text(
         "# Figurine speciali fuori catalogo: la riga N e' la figurina SN (si sbloccano coi trofei).\n"
         + "\n".join(SPECIALI) + "\n", encoding="utf-8")
+    # "Sant'" hides the gender: the app needs the female ones for the formulas ({maschile|femminile}).
+    sante = sorted(n for n in names if n.startswith("Sant'") and facts.get(n, {}).get("female"))
+    (out / "sante.txt").write_text(
+        "# Sante il cui nome inizia con Sant' (genere da Wikidata): per le formule d'invocazione.\n"
+        + "\n".join(sante) + "\n", encoding="utf-8")
     (out / "cornici.txt").write_text(
         "# Leggendari con una cornice speciale al posto di quella d'oro: santo<TAB>nome (file <nome>_NN.png).\n"
         + "".join(f"{n}\t{nome}\n" for n, (nome, _) in CORNICI.items()), encoding="utf-8")

@@ -218,7 +218,7 @@ class MainActivity : AppCompatActivity() {
             binding.btnMannaggia.isEnabled = false
             cardSlot.show(special, Trofei.specialNumber(special), isNew = true, legendary = false,
                 special = true, animate = Prefs.cardAnimEnabled(this))
-            val phrase = Mannaggia.phraseOf(special)
+            val phrase = Mannaggia.phraseOf(this@MainActivity, special)
             PhraseEffects.setText(binding.txtResult, phrase)
             if (Prefs.ttsEnabled(this)) speakAndWait(phrase) else delay(SHOW_ONLY_COOLDOWN_MS)
             binding.btnMannaggia.isEnabled = true
@@ -297,7 +297,7 @@ class MainActivity : AppCompatActivity() {
                         else Trofei.invocazione(this@MainActivity, fonte, saint, isNew)
                     }
                     announceTrophies()
-                    val phrase = Mannaggia.phraseOf(saint)
+                    val phrase = Mannaggia.phraseOf(this@MainActivity, saint)
                     PhraseEffects.setText(binding.txtResult, phrase)
                     if (Prefs.ttsEnabled(this@MainActivity)) {
                         if (choir) cardSlot.awaitChoir(CHOIR_MAX_WAIT_MS)  // first the choir, then the voice

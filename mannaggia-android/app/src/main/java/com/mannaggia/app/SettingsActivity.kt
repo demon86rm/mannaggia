@@ -59,6 +59,7 @@ class SettingsActivity : AppCompatActivity() {
             onlyUnlocked(Prefs.KEY_COLOR, Trofei.Tipo.COLORE)
             onlyUnlocked(Prefs.KEY_FONT, Trofei.Tipo.CARATTERE)
             onlyUnlocked(Prefs.KEY_EFFECT, Trofei.Tipo.EFFETTO)
+            formulas()
             onClick("upcoming") { showUpcoming() }
             onClick("issues") { openUrl(ISSUES_URL) }
             onClick("contribute") { openUrl(REPO_URL) }
@@ -71,6 +72,18 @@ class SettingsActivity : AppCompatActivity() {
             }
             list.entries = keep.map { list.entries[it] }.toTypedArray()
             list.entryValues = keep.map { list.entryValues[it] }.toTypedArray()
+        }
+
+        /** The formulas available (with a sample saint), plus "at random" when there is a choice. */
+        private fun formulas() {
+            val list = findPreference<ListPreference>(Prefs.KEY_FORMULA) ?: return
+            val ok = Formule.TUTTE.filter { Formule.disponibile(requireContext(), it.id) }
+            val names = ok.map { Formule.esempio(it) } + if (ok.size > 1) listOf(getString(R.string.pref_formula_random)) else emptyList()
+            val values = ok.map { it.id } + if (ok.size > 1) listOf(Formule.A_CASO) else emptyList()
+            list.entries = names.toTypedArray()
+            list.entryValues = values.toTypedArray()
+            if (list.value !in values) list.value = Formule.PREDEFINITA
+            list.isVisible = ok.size > 1                // nothing to choose until a formula is won
         }
 
         private fun onClick(key: String, action: () -> Unit) {

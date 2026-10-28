@@ -19,7 +19,7 @@ object Trofei {
     enum class Fonte { PULSANTE, SCUOTIMENTO, CALENDARIO, WIDGET, RIQUADRO }
 
     /** IN_ARRIVO: the reward comes with a later update (the gift trophies wait for the frames). */
-    enum class Tipo { COLORE, CARATTERE, EFFETTO, FIGURINA, IN_ARRIVO }
+    enum class Tipo { COLORE, CARATTERE, EFFETTO, FIGURINA, IN_ARRIVO, FORMULA }
 
     /** A cosmetic reward: [valore] is the preference value (or the special card's name). */
     data class Ricompensa(val tipo: Tipo, val valore: String, val nome: String) {
@@ -30,6 +30,7 @@ object Trofei {
                 Tipo.EFFETTO -> "Nuovo effetto: $nome"
                 Tipo.FIGURINA -> "Figurina speciale: $nome"
                 Tipo.IN_ARRIVO -> "Ricompensa in arrivo con un prossimo aggiornamento"
+                Tipo.FORMULA -> "Nuova formula: $nome"
             }
     }
 

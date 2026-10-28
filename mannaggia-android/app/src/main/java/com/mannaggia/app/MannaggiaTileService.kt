@@ -33,7 +33,7 @@ class MannaggiaTileService : TileService() {
                 val saint = Mannaggia.randomSaint(this@MannaggiaTileService)
                 val isNew = !Trofei.isSpecial(saint) && Album.record(this@MannaggiaTileService, saint)
                 Trofei.invocazione(this@MannaggiaTileService, Trofei.Fonte.RIQUADRO, saint, isNew)
-                Mannaggia.phraseOf(saint)
+                Mannaggia.phraseOf(this@MannaggiaTileService, saint)
             }.getOrElse { "Errore: ${it.message}" }
             showNotification(phrase)
             setTileState(Tile.STATE_INACTIVE)

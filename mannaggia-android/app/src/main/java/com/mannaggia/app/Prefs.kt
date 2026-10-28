@@ -44,6 +44,8 @@ object Prefs {
     const val ALBUM_FILTER_ALL = "all"
     const val ALBUM_FILTER_SAINTS = "santi"
     const val ALBUM_FILTER_BLESSED = "beati"
+    /** Invocation formula id (Formule), or Formule.A_CASO. */
+    const val KEY_FORMULA = "formula"
     /** Date (yyyy-MM-dd) of the last saint-of-the-day invocation: one a day. */
     private const val KEY_SAINT_OF_DAY_USED = "saint_of_day_used"
 
@@ -103,6 +105,8 @@ object Prefs {
 
     fun albumFilter(context: Context) = prefs(context).getString(KEY_ALBUM_FILTER, ALBUM_FILTER_ALL) ?: ALBUM_FILTER_ALL
     fun setAlbumFilter(context: Context, value: String) = prefs(context).edit().putString(KEY_ALBUM_FILTER, value).apply()
+
+    fun formula(context: Context) = prefs(context).getString(KEY_FORMULA, Formule.PREDEFINITA) ?: Formule.PREDEFINITA
 
     fun saintOfDayUsedToday(context: Context) = prefs(context).getString(KEY_SAINT_OF_DAY_USED, null) == today()
 

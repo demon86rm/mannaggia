@@ -69,6 +69,14 @@
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
 
+        <!-- Entries filled in SettingsActivity from Formule (only those unlocked, all in debug builds). -->
+        <ListPreference
+            android:key="formula"
+            android:defaultValue="mannaggia"
+            android:title="@string/pref_formula_title"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
         <ListPreference
             android:key="effect"
             android:defaultValue="none"
