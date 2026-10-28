@@ -1648,15 +1648,20 @@ def coppa():
 
 
 def condividi():
-    """Share icon for the main screen: three gold medallions joined by two cords, in the avatar style."""
+    """Share icon for the main screen: the usual three-node glyph in gold, with a wide halo
+    floating above the top node (gold reads on both the light and the dark theme)."""
     c = Canvas()
-    for a, b in (((15, 24), (33, 13)), ((15, 24), (33, 35))):
-        c.line([a, b], WOOD_DARK, w=3)
-    for x, y in ((33, 13), (15, 24), (33, 35)):
-        c.ell((x - 6, y - 6, x + 6, y + 6), GOLD)
-        c.ell((x - 3, y - 3, x + 4, y + 4), GOLD_DARK)
-        c.ell((x - 3, y - 4, x + 2, y + 1), GOLD_LIGHT)
-        c.px(x - 2, y - 3, (255, 250, 220))
+    nodes = [(33, 23), (14, 33), (33, 42)]
+    for a, b in ((nodes[1], nodes[0]), (nodes[1], nodes[2])):
+        c.line([a, b], GOLD_DARK, w=3)
+    for x, y in nodes:
+        c.ell((x - 5, y - 5, x + 5, y + 5), GOLD_DARK)
+        c.ell((x - 4, y - 4, x + 3, y + 3), GOLD)
+        c.px(x - 2, y - 2, GOLD_LIGHT)
+    cx, cy, rx, ry = 33, 8, 9, 2
+    c.d.ellipse((cx - rx - 1, cy - ry - 1, cx + rx + 1, cy + ry + 1), outline=HALO_RING + (255,), width=2)
+    c.d.ellipse((cx - rx, cy - ry, cx + rx, cy + ry), outline=HALO + (255,))
+    c.px(cx - rx + 2, cy - ry, (255, 250, 220))
     return outline(c.img)
 
 

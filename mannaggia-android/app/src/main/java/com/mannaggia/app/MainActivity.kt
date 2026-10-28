@@ -273,7 +273,7 @@ class MainActivity : AppCompatActivity() {
         bookmark.visibility = View.INVISIBLE
         val image = binding.cardSlot.cardImage.drawToBitmap()
         bookmark.visibility = was
-        Condividi.card(this, saint, image, getString(R.string.share_invocation_text, phrase))
+        Condividi.card(this, saint, image, phrase)
     }
 
     /** Long press on the phrase: copy it (Android 13+ confirms on its own). */
