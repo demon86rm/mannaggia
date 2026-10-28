@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -62,7 +61,6 @@ class SettingsActivity : AppCompatActivity() {
             onlyUnlocked(Prefs.KEY_FRAME, Trofei.Tipo.CORNICE)
             findPreference<ListPreference>(Prefs.KEY_FRAME)?.let { it.isVisible = it.entries.size > 1 }  // only gold so far
             formulas()
-            onClick("upcoming") { showUpcoming() }
             onClick("issues") { openUrl(ISSUES_URL) }
             onClick("contribute") { openUrl(REPO_URL) }
         }
@@ -90,17 +88,6 @@ class SettingsActivity : AppCompatActivity() {
 
         private fun onClick(key: String, action: () -> Unit) {
             findPreference<Preference>(key)?.setOnPreferenceClickListener { action(); true }
-        }
-
-        /** Roadmap from res/values/strings.xml, with a shortcut to propose ideas. */
-        private fun showUpcoming() {
-            val items = resources.getStringArray(R.array.upcoming_features)
-            AlertDialog.Builder(requireContext())
-                .setTitle(R.string.upcoming_title)
-                .setMessage(items.joinToString("\n\n"))
-                .setNeutralButton(R.string.upcoming_propose) { _, _ -> openUrl(ISSUES_URL) }
-                .setPositiveButton(R.string.about_close, null)
-                .show()
         }
 
         /** Links open in the browser, so the app itself still needs no network access. */

@@ -101,12 +101,6 @@
         app:iconSpaceReserved="false">
 
         <Preference
-            android:key="upcoming"
-            android:title="@string/pref_upcoming_title"
-            android:summary="@string/pref_upcoming_summary"
-            app:iconSpaceReserved="false" />
-
-        <Preference
             android:key="issues"
             android:title="@string/pref_issues_title"
             android:summary="@string/pref_issues_summary"

@@ -46,6 +46,8 @@ object Prefs {
     const val ALBUM_FILTER_ALL = "all"
     const val ALBUM_FILTER_SAINTS = "santi"
     const val ALBUM_FILTER_BLESSED = "beati"
+    /** versionCode whose "what's new" popup was handled (shown, or skipped on a fresh install). */
+    private const val KEY_SEEN_VERSION = "seen_version"
     /** Frame of the legendary cards: an asset prefix ("cornice" = gold, or a reward frame). */
     const val KEY_FRAME = "frame"
     /** Invocation formula id (Formule), or Formule.A_CASO. */
@@ -113,6 +115,9 @@ object Prefs {
 
     fun albumFilter(context: Context) = prefs(context).getString(KEY_ALBUM_FILTER, ALBUM_FILTER_ALL) ?: ALBUM_FILTER_ALL
     fun setAlbumFilter(context: Context, value: String) = prefs(context).edit().putString(KEY_ALBUM_FILTER, value).apply()
+
+    fun seenVersion(context: Context) = prefs(context).getInt(KEY_SEEN_VERSION, -1)
+    fun setSeenVersion(context: Context, version: Int) = prefs(context).edit().putInt(KEY_SEEN_VERSION, version).apply()
 
     fun frame(context: Context) = prefs(context).getString(KEY_FRAME, Avatars.GOLD_FRAME) ?: Avatars.GOLD_FRAME
 

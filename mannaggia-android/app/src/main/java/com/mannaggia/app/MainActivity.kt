@@ -12,10 +12,7 @@ import android.os.Bundle
 import android.util.Log
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
-import android.text.method.LinkMovementMethod
-import android.text.util.Linkify
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -53,8 +50,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cardSlot: CardSlot
     private lateinit var trophyPop: TrophyPop
 
+    /** Whatever the answer, then the "what's new" popup (never on top of the permission dialog). */
     private val requestNotifPermission =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* no-op */ }
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { showNewsIfUpdated() }
+
+    /** Opened by a gift link: no "what's new" popup this time (it waits for the next launch). */
+    private var giftLaunch = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         splashDone = savedInstanceState?.getBoolean(KEY_SPLASH_DONE) == true
         // A gift link (Dono) opened the app: its card appears once the splash is gone.
         val gift = if (savedInstanceState == null) intent.data else null
+        giftLaunch = gift != null
         if (!splashDone) Splash.show(this, afterRecreation = savedInstanceState != null) {
             splashDone = true
             askForNotificationPermissionIfNeeded()
@@ -90,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             Prefs.markSaintOfDayUsed(this)
             showSaintOfDay(saint)
         }
-        binding.btnInfo.setOnClickListener { showAbout() }
+        binding.btnInfo.setOnClickListener { startActivity(Intent(this, InfoActivity::class.java)) }
         binding.btnSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
@@ -352,24 +354,33 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** License, source link and credits (GPLv3 asks for them to be visible). */
-    private fun showAbout() {
-        val dialog = AlertDialog.Builder(this)
-            .setTitle(getString(R.string.about_title, BuildConfig.VERSION_NAME))
-            .setMessage(getString(R.string.about_text))
-            .setPositiveButton(R.string.about_close, null)
-            .show()
-        dialog.findViewById<TextView>(android.R.id.message)?.apply {
-            Linkify.addLinks(this, Linkify.WEB_URLS)
-            movementMethod = LinkMovementMethod.getInstance()
-        }
-    }
-
+    /** Asks for the notification permission if needed; otherwise goes on to the "what's new" popup. */
     private fun askForNotificationPermissionIfNeeded() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
-        val granted = ContextCompat.checkSelfPermission(
+        val granted = Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || ContextCompat.checkSelfPermission(
             this, Manifest.permission.POST_NOTIFICATIONS
         ) == PackageManager.PERMISSION_GRANTED
-        if (!granted) requestNotifPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+        if (granted) showNewsIfUpdated() else requestNotifPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+    }
+
+    /**
+     * After an update, once: the changelog block of this version, with "Tutte le novità" to Info.
+     * A fresh install only records the version; testers coming from 2.1.0 have no record yet,
+     * so the install times tell the two apart.
+     */
+    private fun showNewsIfUpdated() {
+        if (giftLaunch || isFinishing) return
+        val seen = Prefs.seenVersion(this)
+        if (seen >= BuildConfig.VERSION_CODE) return
+        val info = packageManager.getPackageInfo(packageName, 0)
+        val block = Novita.blocco(this, BuildConfig.VERSION_NAME)
+        Prefs.setSeenVersion(this, BuildConfig.VERSION_CODE)
+        if ((seen < 0 && info.firstInstallTime == info.lastUpdateTime) || block == null) return
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.news_title, BuildConfig.VERSION_NAME.substringBefore('-')))
+            .setMessage(block.joinToString("\n"))
+            .setPositiveButton(android.R.string.ok, null)
+            .setNeutralButton(R.string.news_all) { _, _ -> startActivity(Intent(this, InfoActivity::class.java)) }
+            .show()
     }
 
     companion object {

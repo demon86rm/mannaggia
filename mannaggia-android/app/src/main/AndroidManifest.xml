@@ -53,6 +53,10 @@
             android:label="@string/trophies_title" />
 
         <activity
+            android:name=".InfoActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".AlbumActivity"
             android:exported="false"
             android:label="@string/album_title" />
