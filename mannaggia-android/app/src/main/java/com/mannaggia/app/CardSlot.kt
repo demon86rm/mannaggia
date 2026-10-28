@@ -112,6 +112,8 @@ class CardSlot(
                 else -> card.imgFrame.visibility = View.GONE
             }
 
+            showBookmark(context, saint)
+
             val view = card.root
             view.visibility = View.VISIBLE
             if (!isNew) {
@@ -160,6 +162,24 @@ class CardSlot(
 
             // 3. A copy flies into the binder; the card stays.
             flyCopy()
+        }
+    }
+
+    /** The favourite bookmark: a tap adds [saint]; full and disabled once it is a favourite. */
+    private suspend fun showBookmark(context: android.content.Context, saint: String) {
+        val btn = card.btnBookmark
+        suspend fun set(full: Boolean) {
+            btn.setImageDrawable(Avatars.bookmark(context, full))
+            btn.isEnabled = !full
+            btn.contentDescription = context.getString(if (full) R.string.fav_badge else R.string.fav_add)
+        }
+        set(saint in Preferiti.all(context))
+        btn.visibility = View.VISIBLE
+        btn.setOnClickListener {
+            scope.launch {
+                Preferiti.add(context, listOf(saint))
+                set(true)
+            }
         }
     }
 
