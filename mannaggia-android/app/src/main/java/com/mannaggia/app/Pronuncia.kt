@@ -17,6 +17,7 @@ object Pronuncia {
         "TLS" to "ti elle èsse",                    // open "e", as the letter is said
         "change request" to "ceinge riquest",       // soft g: the final e makes it like "change"
         "777" to "sette sette sette",                // the permissions, digit by digit
+        "Mannaggia te e la" to "Mannaggia te, e la", // the formula: a pause, or "te e" melts into "tee"
     )
 
     private val WORDS = Regex("""\b(${PAROLE.keys.joinToString("|") { Regex.escape(it) }})\b""", RegexOption.IGNORE_CASE)
