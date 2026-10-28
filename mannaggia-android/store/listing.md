@@ -49,6 +49,16 @@ L'elenco dei santi proviene da Wikidata (CC0). I caratteri gotici sono sotto SIL
 
 Umorismo da sistemisti, senza bestemmie.
 
+## Note di rilascio 2.1.1 (max 500 caratteri)
+
+• Nuova schermata Info con novità, prossimi arrivi e crediti
+• Formule d'invocazione da sbloccare imprecando
+• Cornici per i leggendari e il colore Incenso, in premio coi trofei dei doni
+• Segnalibro dei preferiti sulla carta appena invocata
+• Album ordinabile per data di scoperta, crescente o decrescente
+• Condizioni dei trofei nel dettaglio, Esorcismo più facile
+• San Rocco ha ritrovato la sua provola
+
 ## Note di rilascio 2.1.0 (max 500 caratteri)
 
 • Regala i tuoi santi agli amici: dal dettaglio dell'album tocca «Regala» e manda il link, la figurina finisce nel loro album
