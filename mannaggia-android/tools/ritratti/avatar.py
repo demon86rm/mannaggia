@@ -1244,6 +1244,157 @@ def cornice_fuoco(step=None):
     return c.img
 
 
+# --- Cornici premio (trofei dei doni e Ognissanti), scelte in Opzioni per i leggendari ---
+
+def ring(d):
+    """Pixels of the ring at depth d (0 = outer edge), clockwise from the top-left."""
+    lo, hi = d, S - 1 - d
+    top = [(x, lo) for x in range(lo, hi + 1)]
+    right = [(hi, y) for y in range(lo + 1, hi + 1)]
+    bottom = [(x, hi) for x in range(hi - 1, lo - 1, -1)]
+    left = [(lo, y) for y in range(hi - 1, lo, -1)]
+    return top + right + bottom + left
+
+
+def put(c, x, y, col, alpha=255):
+    c.img.putpixel((x, y), tuple(col) + (alpha,))
+
+
+def mix(c1, c2, t):
+    return tuple(round(p + (q - p) * t) for p, q in zip(c1, c2))
+
+
+# --- Alloro: laurel sprigs along a thin stem, gold berries, a glint on the stem --
+LEAF_D, LEAF, LEAF_L = (36, 84, 40), (72, 142, 60), (150, 206, 108)
+STEM = (104, 96, 44)
+BERRY, BERRY_L = (214, 160, 40), (252, 228, 132)
+# One leaf, in (along the stem, away from it): base dark, then mid, tip light.
+LEAF_PX = ((0, 1, LEAF_D), (1, 1, LEAF_D), (2, 1, LEAF), (1, 2, LEAF), (2, 2, LEAF), (3, 2, LEAF_L))
+LEAF_STEP = 6                                            # one leaf out, then one in, every 6 px
+
+
+def alloro(step=0):
+    """Laurel wreath: on each side a stem at depth 2 with staggered leaves on both sides,
+    pointing clockwise, and transparent gaps between them so they read as leaves."""
+    c = Canvas()
+    # Sides as (start, along, outward normal); the stem runs at depth 2.
+    sides = (((2, 2), (1, 0), (0, -1)), ((S - 3, 2), (0, 1), (1, 0)),
+             ((S - 3, S - 3), (-1, 0), (0, 1)), ((2, S - 3), (0, -1), (-1, 0)))
+    length = S - 5
+    for (ox, oy), (ux, uy), (nx, ny) in sides:
+        for t in range(length):
+            put(c, ox + ux * t, oy + uy * t, STEM)
+        for t in range(2, length - 4):
+            side = 1 if t % LEAF_STEP == 0 else (-1 if t % LEAF_STEP == LEAF_STEP // 2 else 0)
+            if not side:
+                continue
+            for da, db, col in LEAF_PX:
+                x = ox + ux * (t + da) + nx * db * side
+                y = oy + uy * (t + da) + ny * db * side
+                if 0 <= x < S and 0 <= y < S:
+                    put(c, x, y, col)
+    # Berries: a gold pair at each corner and in the middle of each side, pulsing in turn.
+    spots = [(2, 2), (S - 3, 2), (S - 3, S - 3), (2, S - 3),
+             (S // 2, 1), (S - 2, S // 2), (S // 2, S - 2), (1, S // 2)]
+    for k, (x, y) in enumerate(spots):
+        lit = (step + k * 3) % 6 < 2
+        put(c, x, y, BERRY_L if lit else BERRY)
+        put(c, x + (1 if x < S // 2 else -1), y, BERRY)
+    stem = [(x, y) for (x, y) in ring(2)]                # glint running along the stem
+    n = len(stem)
+    for j, col in enumerate(((200, 190, 110), (250, 240, 190), (200, 190, 110))):
+        x, y = stem[(step * n // FRAME_STEPS + j) % n]
+        if c.img.getpixel((x, y))[:3] == STEM:
+            put(c, x, y, col)
+    return c.img
+
+
+# --- Vetrata: stained glass segments, lead lines, light sweeping round ----------
+GLASS = [(40, 80, 170), (170, 40, 50), (220, 170, 40), (50, 130, 70), (110, 50, 140)]
+LEAD = (30, 26, 34)
+
+
+def vetrata(step=0):
+    c = Canvas()
+    n = len(ring(0))
+    for x, y in ring(0): put(c, x, y, LEAD)              # lead outline outside and inside
+    for x, y in ring(3): put(c, x, y, LEAD)
+    for d in (1, 2):
+        r = ring(d)
+        m = len(r)
+        for i, (x, y) in enumerate(r):
+            pos = i * n / m                              # same angle on every ring
+            if pos % 6 < n / m:                          # lead between panes
+                put(c, x, y, LEAD)
+                continue
+            base = GLASS[int(pos // 6) % len(GLASS)]
+            wave = 0.5 + 0.5 * math.cos(2 * math.pi * (pos / n - step / FRAME_STEPS))
+            put(c, x, y, mix(base, (255, 250, 230), 0.6 * wave ** 4) if d == 1 else
+                mix(base, (0, 0, 0), 0.15))
+    return c.img
+
+
+# --- Gemme: gold frame studded with coloured gems twinkling ---------------------
+GEMS = [GEM_RED, GEM_BLUE,
+        [(20, 90, 40), (30, 140, 70), (80, 200, 120), (180, 255, 200)],
+        [(70, 30, 100), (120, 50, 160), (170, 100, 220), (225, 190, 255)]]
+
+
+def gemme(step=0):
+    c = Canvas()
+    for x, y in ring(0): put(c, x, y, GOLD_DARK)
+    for x, y in ring(1): put(c, x, y, GOLD)
+    for x, y in ring(2): put(c, x, y, GOLD_LIGHT)
+    r = ring(1)
+    n = len(r)
+    for k in range(16):
+        x, y = r[k * n // 16]
+        pal = GEMS[k % 4]
+        lvl = (step + k * 5) % 6
+        lvl = lvl if lvl < 4 else 6 - lvl
+        for dx, dy in ((0, 0), (1, 0), (0, 1), (-1, 0), (0, -1)):
+            if 0 <= x + dx < S and 0 <= y + dy < S and (dx, dy) != (0, 0):
+                put(c, x + dx, y + dy, pal[0])
+        put(c, x, y, pal[lvl])
+        if lvl == 3:
+            put(c, x, y, (255, 255, 255))
+    return c.img
+
+
+# --- Ognissanti: double gold frame, rays from corners and sides, sparkles -------
+def ognissanti(step=0):
+    c = Canvas()
+    for x, y in ring(0): put(c, x, y, GOLD_DARK)
+    for x, y in ring(1): put(c, x, y, GOLD_LIGHT)
+    for x, y in ring(2): put(c, x, y, GOLD)
+    for x, y in ring(3): put(c, x, y, (255, 236, 160), 150)   # soft glow, see-through
+    # Rays: beams from the corners and the middle of each side, lighting up in turn.
+    beams = []
+    for (cx, cy, dx, dy) in ((2, 2, 1, 1), (S - 3, 2, -1, 1), (S - 3, S - 3, -1, -1), (2, S - 3, 1, -1)):
+        beams.append([(cx + dx * i, cy + dy * i) for i in range(1, 8)])
+    for (cx, cy, dx, dy) in ((S // 2, 2, 0, 1), (S - 3, S // 2, -1, 0), (S // 2, S - 3, 0, -1), (2, S // 2, 1, 0)):
+        beams.append([(cx + dx * i, cy + dy * i) for i in range(1, 5)])
+    for k, beam in enumerate(beams):
+        bright = 0.5 + 0.5 * math.cos(2 * math.pi * (step / FRAME_STEPS - k / len(beams)))
+        for i, (x, y) in enumerate(beam):
+            fade = 1 - i / (len(beam) + 1)
+            col = mix(GOLD_LIGHT, (255, 255, 255), bright)
+            put(c, x, y, col, round(255 * min(1, fade * (0.6 + 0.6 * bright))))
+            if i < 2 and (x + 1) < S - 3:                # a 2 px wide base
+                put(c, x + 1 if beam[0][0] < S // 2 else x - 1, y, col, round(200 * fade))
+    r = ring(1)                                          # two white sparkles chasing round
+    n = len(r)
+    for off in (0, n // 2):
+        for j, col in enumerate(((255, 250, 220), (255, 255, 255), (255, 250, 220))):
+            x, y = r[(step * n // FRAME_STEPS + off + j) % n]
+            put(c, x, y, col)
+    return c.img
+
+
+# Cornici premio: nome (= prefisso dei file e valore in Opzioni) -> funzione. "cornice" e' l'oro.
+CORNICI_PREMIO = {"alloro": alloro, "vetrata": vetrata, "gemme": gemme, "ognissanti": ognissanti}
+
+
 # Cornici speciali per alcuni leggendari (al posto di quella d'oro): santo -> (nome, funzione).
 # L'app trova il nome in cornici.txt e carica <nome>_00..11.png.
 CORNICI = {
@@ -1756,7 +1907,7 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
             print(f"  avatar: {i}/{len(names)}", file=sys.stderr)
     for step in range(FRAME_STEPS):
         cornice(step).save(out / f"cornice_{step:02d}.png", optimize=True)
-        for nome, disegna in CORNICI.values():
+        for nome, disegna in list(CORNICI.values()) + list(CORNICI_PREMIO.items()):
             disegna(step).save(out / f"{nome}_{step:02d}.png", optimize=True)
     # Card numbers: N. 1 is the most famous saint (most Wikipedia sitelinks), ties by name.
     by_fame = sorted(names, key=lambda n: (-facts.get(n, {}).get("sitelinks", 0), n))
