@@ -86,6 +86,9 @@ object Avatars {
     /** The pixel-art trophy cup (main screen, trophy list, unlock banner). */
     suspend fun cup(context: Context): BitmapDrawable? = icon(context, "coppa.png")
 
+    /** The pixel-art share icon of the main screen. */
+    suspend fun shareIcon(context: Context): BitmapDrawable? = icon(context, "condividi.png")
+
     /** Banner bookmark of the favourite cards: [full] for a favourite, a faint outline otherwise. */
     suspend fun bookmark(context: Context, full: Boolean): BitmapDrawable? =
         icon(context, if (full) "segnalibro.png" else "segnalibro_vuoto.png")

@@ -1,6 +1,8 @@
 package com.mannaggia.app
 
 import android.Manifest
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -19,6 +21,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.drawToBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
@@ -100,6 +103,8 @@ class MainActivity : AppCompatActivity() {
             showSaintOfDay(saint)
         }
         binding.btnInfo.setOnClickListener { startActivity(Intent(this, InfoActivity::class.java)) }
+        binding.btnShare.setOnClickListener { shareInvocation() }
+        binding.txtResult.setOnLongClickListener { copyPhrase(); true }
         binding.btnSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
@@ -148,6 +153,7 @@ class MainActivity : AppCompatActivity() {
             binding.btnInfo.setImageDrawable(Avatars.ribbonButton(this@MainActivity, "info"))
             binding.btnAlbum.setImageDrawable(Avatars.binder(this@MainActivity))
             binding.btnTrophies.setImageDrawable(Avatars.cup(this@MainActivity))
+            binding.btnShare.setImageDrawable(Avatars.shareIcon(this@MainActivity))
             binding.btnSaintOfDay.setImageDrawable(Avatars.saintOfDayIcon(this@MainActivity))
             binding.btnSaintOfDay.visibility = View.VISIBLE
         }
@@ -229,6 +235,7 @@ class MainActivity : AppCompatActivity() {
                 special = true, animate = Prefs.cardAnimEnabled(this))
             val phrase = Mannaggia.phraseOf(this@MainActivity, special)
             PhraseEffects.setText(binding.txtResult, phrase)
+            shown(special, phrase)
             if (Prefs.ttsEnabled(this)) speakAndWait(phrase) else delay(SHOW_ONLY_COOLDOWN_MS)
             binding.btnMannaggia.isEnabled = true
         }
@@ -245,6 +252,35 @@ class MainActivity : AppCompatActivity() {
         val number = if (special) Trofei.specialNumber(saint) else Avatars.number(this, saint)
         cardSlot.show(saint, number, isNew, legendary, special, Prefs.cardAnimEnabled(this))
         return isNew && legendary
+    }
+
+    /** The saint and phrase on screen, for sharing and copying (null while an invocation starts). */
+    private var shownSaint: String? = null
+    private var shownPhrase: String? = null
+
+    private fun shown(saint: String?, phrase: String?) {
+        shownSaint = saint
+        shownPhrase = phrase
+        binding.btnShare.visibility = if (phrase != null) View.VISIBLE else View.INVISIBLE
+    }
+
+    /** Share the card on screen (portrait and frame, without the bookmark) with the phrase. */
+    private fun shareInvocation() {
+        val saint = shownSaint ?: return
+        val phrase = shownPhrase ?: return
+        val bookmark = binding.cardSlot.btnBookmark
+        val was = bookmark.visibility
+        bookmark.visibility = View.INVISIBLE
+        val image = binding.cardSlot.cardImage.drawToBitmap()
+        bookmark.visibility = was
+        Condividi.card(this, saint, image, getString(R.string.share_invocation_text, phrase))
+    }
+
+    /** Long press on the phrase: copy it (Android 13+ confirms on its own). */
+    private fun copyPhrase() {
+        val phrase = shownPhrase ?: return
+        getSystemService(ClipboardManager::class.java).setPrimaryClip(ClipData.newPlainText("Mannaggia", phrase))
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) Toast.makeText(this, R.string.phrase_copied, Toast.LENGTH_SHORT).show()
     }
 
     private fun showSaintOfDay(saint: String?) {
@@ -292,6 +328,7 @@ class MainActivity : AppCompatActivity() {
         binding.progress.visibility = View.VISIBLE
         binding.btnMannaggia.isEnabled = false
         PhraseEffects.setText(binding.txtResult, "")
+        shown(null, null)
 
         currentJob = lifecycleScope.launch {
             val result = runCatching { pick() }
@@ -309,6 +346,7 @@ class MainActivity : AppCompatActivity() {
                     announceTrophies()
                     val phrase = Mannaggia.phraseOf(this@MainActivity, saint)
                     PhraseEffects.setText(binding.txtResult, phrase)
+                    shown(saint, phrase)
                     if (Prefs.ttsEnabled(this@MainActivity)) {
                         if (choir) cardSlot.awaitChoir(CHOIR_MAX_WAIT_MS)  // first the choir, then the voice
                         speakAndWait(phrase)

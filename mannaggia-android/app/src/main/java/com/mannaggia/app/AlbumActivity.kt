@@ -17,7 +17,6 @@ import android.widget.RadioGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.drawToBitmap
 import androidx.core.view.WindowInsetsCompat
@@ -32,7 +31,6 @@ import com.mannaggia.app.databinding.ActivityAlbumBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.io.File
 import java.text.Collator
 import java.text.DateFormatSymbols
 import java.util.Date
@@ -351,16 +349,9 @@ class AlbumActivity : AppCompatActivity() {
     /** Share the card as an image (portrait and frame as shown) with a line of text. */
     private fun shareCard(card: Card, image: View) {
         val saint = card.entry.saint
-        val file = File(File(cacheDir, "condivisi").apply { mkdirs() }, "${Avatars.fileId(saint)}.png")
-        file.outputStream().use { image.drawToBitmap().compress(Bitmap.CompressFormat.PNG, 100, it) }
         val number = if (card.special) getString(R.string.share_special, card.number)
         else getString(R.string.share_number, card.number)
-        val send = Intent(Intent.ACTION_SEND)
-            .setType("image/png")
-            .putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, "$packageName.condivisi", file))
-            .putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text, saint, number))
-            .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        startActivity(Intent.createChooser(send, getString(R.string.share_chooser)))
+        Condividi.card(this, saint, image.drawToBitmap(), getString(R.string.share_text, saint, number))
     }
 
     /** Gift the card to a friend: a link that adds it to their album (see [Dono]). */

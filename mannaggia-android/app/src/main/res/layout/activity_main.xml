@@ -151,6 +151,20 @@
         app:layout_constraintBottom_toTopOf="@id/btnAlbum"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Share the last invocation (card image and phrase), left of the "Mannaggia!" button. -->
+    <ImageView
+        android:id="@+id/btnShare"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/share_invocation"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/btnMannaggia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnMannaggia" />
+
     <!-- Trophies (pixel-art cup), on top of the bottom-right column. -->
     <ImageView
         android:id="@+id/btnTrophies"

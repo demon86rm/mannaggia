@@ -1647,6 +1647,19 @@ def coppa():
     return outline(c.img)
 
 
+def condividi():
+    """Share icon for the main screen: three gold medallions joined by two cords, in the avatar style."""
+    c = Canvas()
+    for a, b in (((15, 24), (33, 13)), ((15, 24), (33, 35))):
+        c.line([a, b], WOOD_DARK, w=3)
+    for x, y in ((33, 13), (15, 24), (33, 35)):
+        c.ell((x - 6, y - 6, x + 6, y + 6), GOLD)
+        c.ell((x - 3, y - 3, x + 4, y + 4), GOLD_DARK)
+        c.ell((x - 3, y - 4, x + 2, y + 1), GOLD_LIGHT)
+        c.px(x - 2, y - 3, (255, 250, 220))
+    return outline(c.img)
+
+
 def calendario():
     """Saint-of-the-day icon: a calendar page with a gold star, in the avatar style."""
     c = Canvas()
@@ -2108,6 +2121,7 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
     raccoglitore().convert("RGBA").save(out / "raccoglitore.png", optimize=True)
     calendario().convert("RGBA").save(out / "santo_del_giorno.png", optimize=True)
     coppa().convert("RGBA").save(out / "coppa.png", optimize=True)
+    condividi().convert("RGBA").save(out / "condividi.png", optimize=True)
     timbro().save(out / "timbro_nuova.png", optimize=True)
     for nome in PULSANTI:
         pulsante(False, nome).save(out / f"pulsante_{nome}.png", optimize=True)

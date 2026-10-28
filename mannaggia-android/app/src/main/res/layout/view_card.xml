@@ -27,6 +27,7 @@
             android:textSize="16sp" />
 
         <com.mannaggia.app.SquareFrameLayout
+            android:id="@+id/cardImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

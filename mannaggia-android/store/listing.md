@@ -53,6 +53,7 @@ Umorismo da sistemisti, senza bestemmie.
 
 • Nuova opzione Colorful: una cornice animata per ogni figurina, la palma per i martiri (grazie a lucatarik!)
 • Si sblocca col nuovo trofeo Parroco, all'album al 25%: se ci sei già, arriva alla prossima imprecazione
+• Condividi l'invocazione con l'icona accanto a «Mannaggia!»; tieni premuta la frase per copiarla
 
 ## Note di rilascio 2.1.1 (max 500 caratteri)
 
