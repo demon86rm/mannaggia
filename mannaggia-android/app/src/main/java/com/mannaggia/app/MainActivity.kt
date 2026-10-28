@@ -56,6 +56,12 @@ class MainActivity : AppCompatActivity() {
 
     /** Opened by a gift link: no "what's new" popup this time (it waits for the next launch). */
     private var giftLaunch = false
+    /**
+     * The launch intent's gift link or debug saint has been handled. Saved across recreation:
+     * right after a cold start the activity can be recreated, and checking only for a null
+     * savedInstanceState lost the gift.
+     */
+    private var launchHandled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +73,8 @@ class MainActivity : AppCompatActivity() {
         // after it, so the dialog doesn't cover it.
         splashDone = savedInstanceState?.getBoolean(KEY_SPLASH_DONE) == true
         // A gift link (Dono) opened the app: its card appears once the splash is gone.
-        val gift = if (savedInstanceState == null) intent.data else null
+        launchHandled = savedInstanceState?.getBoolean(KEY_LAUNCH_HANDLED) == true
+        val gift = if (launchHandled) null else intent.data
         giftLaunch = gift != null
         if (!splashDone) Splash.show(this, afterRecreation = savedInstanceState != null) {
             splashDone = true
@@ -79,8 +86,8 @@ class MainActivity : AppCompatActivity() {
         }
         // Debug builds only: start with a given saint, e.g.
         // adb shell am start -n io.github.demon86rm.mannaggia.debug/com.mannaggia.app.MainActivity -e santo "San Carlo I di Fiandra"
-        if (BuildConfig.DEBUG && savedInstanceState == null) intent.getStringExtra("santo")?.let { santo ->
-            binding.root.post { invokeSaint(Trofei.Fonte.PULSANTE) { santo } }
+        if (BuildConfig.DEBUG && !launchHandled) intent.getStringExtra("santo")?.let { santo ->
+            binding.root.post { launchHandled = true; invokeSaint(Trofei.Fonte.PULSANTE) { santo } }
         }
         applySystemBarInsets()
 
@@ -263,6 +270,7 @@ class MainActivity : AppCompatActivity() {
     /** Show the card of a gift link, if [uri] is a valid one (invalid links are ignored). */
     private fun receiveGift(uri: Uri?) {
         if (uri == null) return
+        launchHandled = true
         lifecycleScope.launch {
             val saint = Dono.parse(this@MainActivity, uri) ?: return@launch
             invokeSaint(gift = true) { saint }
@@ -393,6 +401,7 @@ class MainActivity : AppCompatActivity() {
         private const val CHOIR_MAX_WAIT_MS = 4_000L
         private const val SPEECH_TIMEOUT_MS = 15_000L
         private const val KEY_SPLASH_DONE = "splash_done"
+        private const val KEY_LAUNCH_HANDLED = "launch_handled"
         /** Pause between the invoked saint and the special card it won, so both get seen. */
         private const val UNWRAP_PAUSE_MS = 1_200L
     }
@@ -400,6 +409,7 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putBoolean(KEY_SPLASH_DONE, splashDone)
+        outState.putBoolean(KEY_LAUNCH_HANDLED, launchHandled)
     }
 
     /** True once the splash has been shown to the end (kept across recreations). */
