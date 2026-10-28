@@ -3,9 +3,10 @@
 # insieme alle note di store/listing.md.
 
 ## 2.1.2
-• Nuova opzione Colorful: una cornice animata per ogni figurina, la palma per i martiri (grazie a lucatarik!)
-• Si sblocca col nuovo trofeo Parroco, all'album al 25%: se ci sei già, arriva alla prossima imprecazione
-• Condividi l'invocazione con l'icona accanto a «Mannaggia!»; tieni premuta la frase per copiarla
+• Nuova opzione Colorful: una cornice animata per ogni figurina (contributo di lucatarik)
+• Per i martiri, una cornice speciale rossa ornata con la palma del martirio
+• Le nuove cornici si sbloccano completando l'album al 25%, con il trofeo «Parroco»
+• Condividi l'invocazione con l'icona accanto al tasto «Mannaggia!» oppure tieni premuta la frase per copiarla!
 
 ## 2.1.1
 • Nuova schermata Info: novità, prossimi arrivi e crediti
