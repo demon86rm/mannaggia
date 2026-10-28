@@ -11,8 +11,8 @@ variazioni (carnagione, colori, volto) sono deterministiche: dipendono dal nome.
 I santi leggendari hanno in piu' una cornice d'oro (cornice()), disegnata come
 livello separato cosi' l'app puo' applicarla sopra l'avatar. Alcuni hanno una cornice
 tutta loro (CORNICI, es. le fiamme del rogo per Giovanna d'Arco). Con l'opzione
-"Colorful" dell'app anche gli altri santi hanno una cornice animata (COLORATE: argento,
-legno, arcobaleno, neon, vaporwave, ...; il fuoco ai martiri non leggendari), elencata in cornici_colorful.txt.
+"Colorful" dell'app anche gli altri santi hanno una cornice animata (COLORATE: bronzo,
+legno, arcobaleno, neon, vaporwave, ...; la palma ai martiri non leggendari), elencata in cornici_colorful.txt.
 
 Uso (venv con pillow; dalla cartella mannaggia-android):
     python tools/ritratti/avatar.py --nomi lista.txt --out ~/mannaggia-avatar-prova
@@ -1485,10 +1485,9 @@ def _cornice_semplice(dark, light, base, gem, step=None, grana=None):
     return c.img
 
 
-def cornice_argento(step=None):
-    """Silver frame: still for the special (off-catalogue) cards, animated among the
-    colorful ones."""
-    return _cornice_semplice(SILVER_DARK, SILVER_LIGHT, SILVER, (90, 170, 230), step)
+def cornice_argento():
+    """Still silver frame for the special (off-catalogue) cards."""
+    return _cornice_semplice(SILVER_DARK, SILVER_LIGHT, SILVER, (90, 170, 230))
 
 
 def cornice_bronzo(step=None):
@@ -1585,9 +1584,38 @@ def cornice_vaporwave(step=None):
     return c.img
 
 
+PALMA_ROSSO, PALMA_ROSSO_SCURO = (204, 46, 40), (104, 16, 22)
+
+
+def cornice_palma(step=None):
+    """Martyr's palm frame: liturgical red border, a green palm frond in each corner whose
+    leaflets sway between two poses, and a glint running round the plain border."""
+    step = step or 0
+    c = Canvas()
+    c.d.rectangle((0, 0, S - 1, S - 1), outline=PALMA_ROSSO_SCURO + (255,))
+    c.d.rectangle((1, 1, S - 2, S - 2), outline=PALMA_ROSSO + (255,))
+    swing = step % 6 >= 3                                   # two poses, twice per loop
+    for flip_x, flip_y in ((False, False), (True, False), (True, True), (False, True)):
+        def put_px(x, y, col):
+            c.px(S - 1 - x if flip_x else x, S - 1 - y if flip_y else y, col)
+        for k in range(1, 9):                               # the rib, from the corner inwards
+            put_px(k, k, LEAF_D)
+        for k in (2, 4, 6):                                 # leaflet pairs, shorter towards the tip
+            n = 4 - k // 2
+            for j in range(1, n + 1):
+                col = LEAF_L if j == n else LEAF
+                d = 1 if swing and j == n else 0            # the tips droop towards the frond's tip
+                put_px(k + j, k + d, col)
+                put_px(k + d, k + j, col)
+    _luccichio(c, step, (PALMA_ROSSO_SCURO, PALMA_ROSSO),
+               (_schiarisci(PALMA_ROSSO, 0.3), _schiarisci(PALMA_ROSSO, 0.7), _schiarisci(PALMA_ROSSO, 0.3)))
+    return c.img
+
+
 # Cornici dell'opzione "Colorful" dell'app: nome -> funzione (file <nome>_00..11.png).
-# I leggendari tengono la loro cornice; ai martiri va il fuoco, agli altri una delle COLORATE.
-COLORATE = {"argento": cornice_argento, "bronzo": cornice_bronzo, "legno": cornice_legno,
+# I leggendari tengono la loro cornice; ai martiri va la palma, agli altri una delle COLORATE
+# (non l'argento, che resta il segno delle figurine speciali).
+COLORATE = {"bronzo": cornice_bronzo, "legno": cornice_legno,
             "arcobaleno": cornice_arcobaleno, "smeraldo": cornice_smeraldo,
             "porpora": cornice_porpora, "lapislazzuli": cornice_lapislazzuli,
             "neon": cornice_neon, "vaporwave": cornice_vaporwave}
@@ -1595,12 +1623,12 @@ COLORATE = {"argento": cornice_argento, "bronzo": cornice_bronzo, "legno": corni
 
 def cornice_colorata(name, t, leggendario):
     """Colorful frame name of [name]: none (None) for legendary saints, martyrs too, which
-    keep theirs (gold, or CORNICI); "fuoco" for the other martyrs; otherwise one of
+    keep theirs (gold, or CORNICI); "palma" for the other martyrs; otherwise one of
     COLORATE, random but fixed (it depends only on the name)."""
     if leggendario:
         return None
     if t.martire:
-        return "fuoco"
+        return "palma"
     return list(COLORATE)[h(name, "cornice") % len(COLORATE)]
 
 def coppa():
@@ -1897,7 +1925,7 @@ def render_colorful(name, t, nome):
     """Avatar with its frame of the Colorful option ([nome] from cornice_colorata())."""
     img = render(name, t)
     if nome:
-        img.alpha_composite((cornice_fuoco if nome == "fuoco" else COLORATE[nome])())
+        img.alpha_composite((cornice_palma if nome == "palma" else COLORATE[nome])())
     return img.convert("RGB")
 
 
@@ -2063,14 +2091,14 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
         cornice(step).save(out / f"cornice_{step:02d}.png", optimize=True)
         for nome, disegna in list(CORNICI.values()) + list(CORNICI_PREMIO.items()):
             disegna(step).save(out / f"{nome}_{step:02d}.png", optimize=True)
-        for nome, disegna in COLORATE.items():
+        for nome, disegna in list(COLORATE.items()) + [("palma", cornice_palma)]:
             disegna(step).save(out / f"{nome}_{step:02d}.png", optimize=True)
     # Card numbers: N. 1 is the most famous saint (most Wikipedia sitelinks), ties by name.
     by_fame = sorted(names, key=lambda n: (-facts.get(n, {}).get("sitelinks", 0), n))
     leggendari = by_fame[:n_leggendari]
     colorate = {n: cornice_colorata(n, tratti[n], n in leggendari) for n in names}
     (out / "cornici_colorful.txt").write_text(
-        "# Cornici dell'opzione Colorful: santo<TAB>nome (file <nome>_NN.png). Fuoco ai martiri; i\n"
+        "# Cornici dell'opzione Colorful: santo<TAB>nome (file <nome>_NN.png). Palma ai martiri; i\n"
         "# leggendari non ci sono e tengono la loro cornice.\n"
         + "".join(f"{n}\t{c}\n" for n, c in colorate.items() if c), encoding="utf-8")
     (out / "catalogo.txt").write_text(
