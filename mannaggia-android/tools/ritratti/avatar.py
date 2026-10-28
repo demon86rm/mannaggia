@@ -298,7 +298,7 @@ FAMOSI = {
     "San Gerardo Maiella": T(eta="giovane", capelli="corti", colore_capelli="nero",
                              abito="talare", attributo="giglio+teschio"),
     "San Rocco": T(capelli="corti", colore_capelli="castano", barba="corta", copricapo="pellegrino",
-                   abito="tunica", colore_abito=(110, 80, 56), attributo="bordone+cane"),
+                   abito="tunica", colore_abito=(110, 80, 56), attributo="bordone_provola+cane"),
     "San Ranieri Scacceri": T(capelli="lunghi", colore_capelli="castano", barba="lunga",
                               abito="tunica", colore_abito=(110, 80, 56), attributo="bordone"),
     "San Bruno di Colonia": T(capelli="tonsura", colore_capelli="castano", copricapo="cappuccio",
@@ -783,6 +783,18 @@ def at_croce_x(c):  # croce decussata di Sant'Andrea, dietro la spalla
 def at_bordone(c):  # bastone del pellegrino con la zucca
     c.line([(42, 6), (42, 47)], WOOD, 2)
     c.ell((40, 12, 45, 18), (200, 150, 70))
+
+
+PROVOLA, PROVOLA_D, PROVOLA_L = (238, 214, 150), (204, 168, 96), (252, 240, 200)
+
+
+def at_bordone_provola(c):  # San Rocco: "mannaggia la provola di San Rocco", la sua zucca presa per una provola
+    c.line([(42, 6), (42, 47)], WOOD, 2)
+    c.ell((41, 9, 44, 12), PROVOLA)                 # la testina
+    c.line([(40, 13), (45, 13)], (120, 84, 44))      # lo spago
+    c.ell((38, 14, 47, 24), PROVOLA)                 # la pancia
+    c.ell((39, 19, 47, 24), PROVOLA_D)               # ombra in basso
+    c.ell((39, 15, 43, 18), PROVOLA_L)               # lucido
 
 
 def at_conchiglia(c):
