@@ -129,7 +129,7 @@ object Avatars {
                         .toMap()
                 }
         }.getOrDefault(emptyMap()).also { specialFrames = it }
-        map[saint] ?: GOLD_FRAME
+        map[saint] ?: Prefs.frame(context)              // read every time: the choice can change in Options
     }
 
     /**

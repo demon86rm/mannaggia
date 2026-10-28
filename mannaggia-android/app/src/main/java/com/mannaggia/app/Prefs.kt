@@ -44,6 +44,8 @@ object Prefs {
     const val ALBUM_FILTER_ALL = "all"
     const val ALBUM_FILTER_SAINTS = "santi"
     const val ALBUM_FILTER_BLESSED = "beati"
+    /** Frame of the legendary cards: an asset prefix ("cornice" = gold, or a reward frame). */
+    const val KEY_FRAME = "frame"
     /** Invocation formula id (Formule), or Formule.A_CASO. */
     const val KEY_FORMULA = "formula"
     /** Date (yyyy-MM-dd) of the last saint-of-the-day invocation: one a day. */
@@ -64,6 +66,7 @@ object Prefs {
         "acquasanta" to R.color.phrase_acquasanta,
         "inferno" to R.color.phrase_inferno,
         "porpora" to R.color.phrase_porpora,
+        "incenso" to R.color.phrase_incenso,
     )
 
     /** Glow radius, in dp, for the neon effect. */
@@ -105,6 +108,8 @@ object Prefs {
 
     fun albumFilter(context: Context) = prefs(context).getString(KEY_ALBUM_FILTER, ALBUM_FILTER_ALL) ?: ALBUM_FILTER_ALL
     fun setAlbumFilter(context: Context, value: String) = prefs(context).edit().putString(KEY_ALBUM_FILTER, value).apply()
+
+    fun frame(context: Context) = prefs(context).getString(KEY_FRAME, Avatars.GOLD_FRAME) ?: Avatars.GOLD_FRAME
 
     fun formula(context: Context) = prefs(context).getString(KEY_FORMULA, Formule.PREDEFINITA) ?: Formule.PREDEFINITA
 

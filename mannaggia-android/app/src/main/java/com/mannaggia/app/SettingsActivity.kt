@@ -59,6 +59,8 @@ class SettingsActivity : AppCompatActivity() {
             onlyUnlocked(Prefs.KEY_COLOR, Trofei.Tipo.COLORE)
             onlyUnlocked(Prefs.KEY_FONT, Trofei.Tipo.CARATTERE)
             onlyUnlocked(Prefs.KEY_EFFECT, Trofei.Tipo.EFFETTO)
+            onlyUnlocked(Prefs.KEY_FRAME, Trofei.Tipo.CORNICE)
+            findPreference<ListPreference>(Prefs.KEY_FRAME)?.let { it.isVisible = it.entries.size > 1 }  // only gold so far
             formulas()
             onClick("upcoming") { showUpcoming() }
             onClick("issues") { openUrl(ISSUES_URL) }

@@ -69,6 +69,15 @@
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
 
+        <ListPreference
+            android:key="frame"
+            android:defaultValue="cornice"
+            android:entries="@array/frame_names"
+            android:entryValues="@array/frame_values"
+            android:title="@string/pref_frame_title"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
         <!-- Entries filled in SettingsActivity from Formule (only those unlocked, all in debug builds). -->
         <ListPreference
             android:key="formula"
