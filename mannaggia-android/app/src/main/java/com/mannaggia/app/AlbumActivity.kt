@@ -50,8 +50,9 @@ import java.util.Locale
  * counting as an invocation for the album or the trophies); a long press opens the detail
  * without the voice.
  *
- * "Ordina e filtra" in the toolbar sorts both tabs by card number or by name (without the
- * title, so "Santa Chiara" goes under C) and shows every card, only saints or only blessed,
+ * "Ordina e filtra" in the toolbar sorts both tabs by card number, by name (without the
+ * title, so "Santa Chiara" goes under C) or by discovery, ascending or descending, and
+ * shows every card, only saints or only blessed,
  * with the counter of that category. Special cards always come first.
  */
 class AlbumActivity : AppCompatActivity() {
@@ -164,10 +165,13 @@ class AlbumActivity : AppCompatActivity() {
         val filter = Prefs.albumFilter(this)
         val tab = if (showFavourites) cards.filter { it.entry.saint in favourites } else cards
         val (specials, saints) = tab.filter { inFilter(it, filter) }.partition { it.special }
-        val sorted = if (Prefs.albumSort(this) == Prefs.ALBUM_SORT_NAME)
-            saints.sortedWith(compareBy(collator) { it: Card -> Mannaggia.withoutTitle(it.entry.saint) })
-        else saints                                     // already by card number
-        val entries = specials + sorted
+        val sorted = when (Prefs.albumSort(this)) {
+            Prefs.ALBUM_SORT_NAME -> saints.sortedWith(compareBy(collator) { it: Card -> Mannaggia.withoutTitle(it.entry.saint) })
+            Prefs.ALBUM_SORT_DISCOVERY -> saints.sortedBy { it.discovery }
+            else -> saints                              // already by card number
+        }
+        // Special cards stay first in both directions.
+        val entries = specials + if (Prefs.albumDescending(this)) sorted.asReversed() else sorted
         if (showFavourites) {
             binding.txtCount.text = getString(R.string.fav_count, entries.size)
             binding.progressAlbum.visibility = View.GONE
@@ -232,14 +236,28 @@ class AlbumActivity : AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.dialog_album_order, null)
         val sort = view.findViewById<RadioGroup>(R.id.groupSort)
         val filter = view.findViewById<RadioGroup>(R.id.groupFilter)
-        sort.check(if (Prefs.albumSort(this) == Prefs.ALBUM_SORT_NAME) R.id.sortName else R.id.sortNumber)
+        val direction = view.findViewById<RadioGroup>(R.id.groupDirection)
+        sort.check(when (Prefs.albumSort(this)) {
+            Prefs.ALBUM_SORT_NAME -> R.id.sortName
+            Prefs.ALBUM_SORT_DISCOVERY -> R.id.sortDiscovery
+            else -> R.id.sortNumber
+        })
+        direction.check(if (Prefs.albumDescending(this)) R.id.sortDescending else R.id.sortAscending)
         filter.check(when (Prefs.albumFilter(this)) {
             Prefs.ALBUM_FILTER_SAINTS -> R.id.filterSaints
             Prefs.ALBUM_FILTER_BLESSED -> R.id.filterBlessed
             else -> R.id.filterAll
         })
         sort.setOnCheckedChangeListener { _, id ->
-            Prefs.setAlbumSort(this, if (id == R.id.sortName) Prefs.ALBUM_SORT_NAME else Prefs.ALBUM_SORT_NUMBER)
+            Prefs.setAlbumSort(this, when (id) {
+                R.id.sortName -> Prefs.ALBUM_SORT_NAME
+                R.id.sortDiscovery -> Prefs.ALBUM_SORT_DISCOVERY
+                else -> Prefs.ALBUM_SORT_NUMBER
+            })
+            show()
+        }
+        direction.setOnCheckedChangeListener { _, id ->
+            Prefs.setAlbumDescending(this, id == R.id.sortDescending)
             show()
         }
         filter.setOnCheckedChangeListener { _, id ->
@@ -268,7 +286,10 @@ class AlbumActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.tts_unavailable, Toast.LENGTH_SHORT).show()
             return
         }
-        tts?.speak(Pronuncia.perVoce(Mannaggia.phraseOf(saint)), TextToSpeech.QUEUE_FLUSH, null, "preferito")
+        lifecycleScope.launch {
+            val phrase = Mannaggia.phraseOf(this@AlbumActivity, saint)
+            tts?.speak(Pronuncia.perVoce(phrase), TextToSpeech.QUEUE_FLUSH, null, "preferito")
+        }
     }
 
     // --- Album tab: multiple selection ----------------------------------------------------

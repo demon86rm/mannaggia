@@ -29,7 +29,8 @@ object Mannaggia {
      * Build the final phrase shown (and spoken) to the user: "Mannaggia <saint>!", or for
      * the special cards their own invocation, "<saint>, proteggici da ...!".
      */
-    fun phraseOf(saint: String): String = ESCLAMAZIONI[saint] ?: "Mannaggia $saint!"
+    /** The phrase for [saint]: a special card's own invocation, otherwise the chosen formula. */
+    suspend fun phraseOf(context: Context, saint: String): String = ESCLAMAZIONI[saint] ?: Formule.frase(context, saint)
 
     /** The special cards (trophy rewards, see Trofei) don't curse: they protect. */
     private val ESCLAMAZIONI = mapOf(

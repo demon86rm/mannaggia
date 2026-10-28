@@ -1,0 +1,48 @@
+# Novità per versione, la più recente in cima: la scheda "Novità" di Info e il popup dopo un
+# aggiornamento (solo il blocco della versione installata). Aggiornare a ogni versione,
+# insieme alle note di store/listing.md.
+
+## 2.1.1
+• Nuova schermata Info: novità, prossimi arrivi e crediti
+• Formule d'invocazione da sbloccare imprecando: sceglile in Opzioni
+• Cornici per i santi leggendari: Alloro, Vetrata, Gemme e Ognissanti. I trofei dei doni ora le danno in premio, insieme al colore Incenso: se li hai già vinti, le trovi in Opzioni
+• Nuovo trofeo per chi completa davvero tutto
+• Lo stendardo dei preferiti anche sulla carta appena invocata: toccalo per aggiungere o togliere il santo
+• Album ordinabile per data di scoperta, in ordine crescente o decrescente
+• Trofei: le condizioni ora sono nel dettaglio; l'Esorcismo è più facile
+• San Rocco ha ritrovato la sua provola
+
+## 2.1.0
+• Regala i tuoi santi agli amici: dal dettaglio dell'album tocca «Regala» e manda il link, la figurina finisce nel loro album
+• Condividi le tue figurine su WhatsApp, Telegram e social
+• Nuovi trofei segreti per chi fa e riceve doni
+
+## 2.0.1
+• Santa Giovanna d'Arco ha una cornice tutta sua: le fiamme del rogo (grazie a lucatarik!)
+• Album: ordina le figurine per numero o per nome e mostra solo i santi o solo i beati
+• Pronuncia corretta dei nomi spagnoli con la "y" (es. "Calvo y Calvo")
+• Niente più "San Saint…": 48 nomi corretti, le figurine già trovate restano
+
+## 2.0.0
+Prima versione sul Google Play Store!
+• Album dei santi in pixel art, con i leggendari e il santo del giorno
+• Trofei segreti con colori, caratteri ed effetti da sbloccare
+• Figurine speciali con la loro invocazione
+• Preferiti da invocare al volo
+• Caratteri gotici, schermata iniziale col coro angelico
+• Pronuncia migliorata per numeri romani e sigle
+
+## 1.2.0
+• L'app funziona offline: oltre 5400 santi e beati inclusi, da Wikidata
+• La pronuncia usa la sintesi vocale del telefono
+• Nessun accesso a Internet
+
+## 1.1.0
+• Nuova icona: un fumetto con un'imprecazione censurata sotto un'aureola
+• Nuove icone per la notifica e il riquadro delle Impostazioni rapide
+
+## 1.0.0
+Prima versione dell'app Android, solo su GitHub.
+• Pronuncia della frase con la sintesi vocale
+• Mannaggia scuotendo il telefono
+• Widget per la schermata Home

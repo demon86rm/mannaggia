@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -59,7 +58,9 @@ class SettingsActivity : AppCompatActivity() {
             onlyUnlocked(Prefs.KEY_COLOR, Trofei.Tipo.COLORE)
             onlyUnlocked(Prefs.KEY_FONT, Trofei.Tipo.CARATTERE)
             onlyUnlocked(Prefs.KEY_EFFECT, Trofei.Tipo.EFFETTO)
-            onClick("upcoming") { showUpcoming() }
+            onlyUnlocked(Prefs.KEY_FRAME, Trofei.Tipo.CORNICE)
+            findPreference<ListPreference>(Prefs.KEY_FRAME)?.let { it.isVisible = it.entries.size > 1 }  // only gold so far
+            formulas()
             onClick("issues") { openUrl(ISSUES_URL) }
             onClick("contribute") { openUrl(REPO_URL) }
         }
@@ -73,19 +74,20 @@ class SettingsActivity : AppCompatActivity() {
             list.entryValues = keep.map { list.entryValues[it] }.toTypedArray()
         }
 
-        private fun onClick(key: String, action: () -> Unit) {
-            findPreference<Preference>(key)?.setOnPreferenceClickListener { action(); true }
+        /** The formulas available (with a sample saint), plus "at random" when there is a choice. */
+        private fun formulas() {
+            val list = findPreference<ListPreference>(Prefs.KEY_FORMULA) ?: return
+            val ok = Formule.TUTTE.filter { Formule.disponibile(requireContext(), it.id) }
+            val names = ok.map { Formule.esempio(it) } + if (ok.size > 1) listOf(getString(R.string.pref_formula_random)) else emptyList()
+            val values = ok.map { it.id } + if (ok.size > 1) listOf(Formule.A_CASO) else emptyList()
+            list.entries = names.toTypedArray()
+            list.entryValues = values.toTypedArray()
+            if (list.value !in values) list.value = Formule.PREDEFINITA
+            list.isVisible = ok.size > 1                // nothing to choose until a formula is won
         }
 
-        /** Roadmap from res/values/strings.xml, with a shortcut to propose ideas. */
-        private fun showUpcoming() {
-            val items = resources.getStringArray(R.array.upcoming_features)
-            AlertDialog.Builder(requireContext())
-                .setTitle(R.string.upcoming_title)
-                .setMessage(items.joinToString("\n\n"))
-                .setNeutralButton(R.string.upcoming_propose) { _, _ -> openUrl(ISSUES_URL) }
-                .setPositiveButton(R.string.about_close, null)
-                .show()
+        private fun onClick(key: String, action: () -> Unit) {
+            findPreference<Preference>(key)?.setOnPreferenceClickListener { action(); true }
         }
 
         /** Links open in the browser, so the app itself still needs no network access. */

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- The card of the last saint invoked, always shown under the phrase:
-     label (new / already in the album / special), portrait with its frame,
+     label (new / already in the album / special), portrait with its frame and the
+     favourite bookmark (a toggle; half transparent while not a favourite),
      card number and name. -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -41,6 +42,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/btnBookmark"
+                android:layout_width="40dp"
+                android:layout_height="56dp"
+                android:layout_gravity="top|start"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/fav_add"
+                android:padding="6dp"
                 android:scaleType="fitCenter"
                 android:visibility="gone" />
         </com.mannaggia.app.SquareFrameLayout>

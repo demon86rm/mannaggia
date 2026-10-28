@@ -47,7 +47,7 @@ class MannaggiaWidgetProvider : AppWidgetProvider() {
                 val saint = Mannaggia.randomSaint(context)
                 val isNew = !Trofei.isSpecial(saint) && Album.record(context, saint)
                 Trofei.invocazione(context, Trofei.Fonte.WIDGET, saint, isNew)
-                Mannaggia.phraseOf(saint)
+                Mannaggia.phraseOf(context, saint)
             }.getOrElse { "Errore" }
             try {
                 for (id in ids) render(context, mgr, id, text = phrase)

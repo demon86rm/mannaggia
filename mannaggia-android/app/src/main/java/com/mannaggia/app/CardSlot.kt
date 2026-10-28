@@ -112,6 +112,8 @@ class CardSlot(
                 else -> card.imgFrame.visibility = View.GONE
             }
 
+            showBookmark(context, saint)
+
             val view = card.root
             view.visibility = View.VISIBLE
             if (!isNew) {
@@ -160,6 +162,29 @@ class CardSlot(
 
             // 3. A copy flies into the binder; the card stays.
             flyCopy()
+        }
+    }
+
+    /**
+     * The favourite bookmark, a toggle: a tap adds [saint], another removes it. Not a favourite
+     * yet, it is the coloured banner half transparent (the empty outline of the album passed
+     * unnoticed on the card).
+     */
+    private suspend fun showBookmark(context: android.content.Context, saint: String) {
+        val btn = card.btnBookmark
+        btn.setImageDrawable(Avatars.bookmark(context, true))
+        fun set(full: Boolean) {
+            btn.alpha = if (full) 1f else BOOKMARK_OFF_ALPHA
+            btn.contentDescription = context.getString(if (full) R.string.fav_remove else R.string.fav_add)
+        }
+        set(saint in Preferiti.all(context))
+        btn.visibility = View.VISIBLE
+        btn.setOnClickListener {
+            scope.launch {
+                val full = saint in Preferiti.all(context)
+                if (full) Preferiti.remove(context, listOf(saint)) else Preferiti.add(context, listOf(saint))
+                set(!full)
+            }
         }
     }
 
@@ -327,6 +352,10 @@ class CardSlot(
         (v.layoutParams as? ViewGroup.MarginLayoutParams)?.let(side) ?: 0
 
     companion object {
+
+        /** The card bookmark while the saint is not a favourite. */
+
+        private const val BOOKMARK_OFF_ALPHA = 0.45f
         private const val POP_IN_MS = 220L
         private const val STAMP_MS = 260L
         private const val FADE_MS = 150L

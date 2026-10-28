@@ -40,7 +40,7 @@ Server giù? Deploy del venerdì andato male? Mannaggia invoca per te uno degli 
 
 - 🎙️ **Voce "Mannaggia"**: un pacchetto vocale opzionale con voce neurale, in alternativa alla sintesi del telefono.
 
-La lista aggiornata è anche nell'app, in Opzioni → Prossimamente.
+La lista aggiornata è anche nell'app, in Info → Prossimamente.
 
 ## Contribuisci
 

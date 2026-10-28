@@ -60,6 +60,7 @@
         <item>Acquasanta</item>
         <item>Fuoco infernale</item>
         <item>Porpora cardinalizia</item>
+        <item>Incenso</item>
     </string-array>
     <string-array name="color_values">
         <item>theme</item>
@@ -73,6 +74,23 @@
         <item>acquasanta</item>
         <item>inferno</item>
         <item>porpora</item>
+        <item>incenso</item>
+    </string-array>
+
+    <!-- Frame of the legendary cards: gold always, the others are trophy rewards (values = asset prefixes). -->
+    <string-array name="frame_names">
+        <item>Oro (predefinita)</item>
+        <item>Alloro</item>
+        <item>Vetrata</item>
+        <item>Gemme</item>
+        <item>Ognissanti</item>
+    </string-array>
+    <string-array name="frame_values">
+        <item>cornice</item>
+        <item>alloro</item>
+        <item>vetrata</item>
+        <item>gemme</item>
+        <item>ognissanti</item>
     </string-array>
 
     <!-- Phrase effect: neon is always there, the others are trophy rewards. -->

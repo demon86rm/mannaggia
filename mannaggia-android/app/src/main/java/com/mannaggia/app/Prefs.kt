@@ -41,9 +41,17 @@ object Prefs {
     private const val KEY_ALBUM_FILTER = "album_filter"
     const val ALBUM_SORT_NUMBER = "number"
     const val ALBUM_SORT_NAME = "name"
+    const val ALBUM_SORT_DISCOVERY = "discovery"
+    private const val KEY_ALBUM_DESCENDING = "album_descending"
     const val ALBUM_FILTER_ALL = "all"
     const val ALBUM_FILTER_SAINTS = "santi"
     const val ALBUM_FILTER_BLESSED = "beati"
+    /** versionCode whose "what's new" popup was handled (shown, or skipped on a fresh install). */
+    private const val KEY_SEEN_VERSION = "seen_version"
+    /** Frame of the legendary cards: an asset prefix ("cornice" = gold, or a reward frame). */
+    const val KEY_FRAME = "frame"
+    /** Invocation formula id (Formule), or Formule.A_CASO. */
+    const val KEY_FORMULA = "formula"
     /** Date (yyyy-MM-dd) of the last saint-of-the-day invocation: one a day. */
     private const val KEY_SAINT_OF_DAY_USED = "saint_of_day_used"
 
@@ -62,6 +70,7 @@ object Prefs {
         "acquasanta" to R.color.phrase_acquasanta,
         "inferno" to R.color.phrase_inferno,
         "porpora" to R.color.phrase_porpora,
+        "incenso" to R.color.phrase_incenso,
     )
 
     /** Glow radius, in dp, for the neon effect. */
@@ -101,8 +110,18 @@ object Prefs {
     fun albumSort(context: Context) = prefs(context).getString(KEY_ALBUM_SORT, ALBUM_SORT_NUMBER) ?: ALBUM_SORT_NUMBER
     fun setAlbumSort(context: Context, value: String) = prefs(context).edit().putString(KEY_ALBUM_SORT, value).apply()
 
+    fun albumDescending(context: Context) = prefs(context).getBoolean(KEY_ALBUM_DESCENDING, false)
+    fun setAlbumDescending(context: Context, value: Boolean) = prefs(context).edit().putBoolean(KEY_ALBUM_DESCENDING, value).apply()
+
     fun albumFilter(context: Context) = prefs(context).getString(KEY_ALBUM_FILTER, ALBUM_FILTER_ALL) ?: ALBUM_FILTER_ALL
     fun setAlbumFilter(context: Context, value: String) = prefs(context).edit().putString(KEY_ALBUM_FILTER, value).apply()
+
+    fun seenVersion(context: Context) = prefs(context).getInt(KEY_SEEN_VERSION, -1)
+    fun setSeenVersion(context: Context, version: Int) = prefs(context).edit().putInt(KEY_SEEN_VERSION, version).apply()
+
+    fun frame(context: Context) = prefs(context).getString(KEY_FRAME, Avatars.GOLD_FRAME) ?: Avatars.GOLD_FRAME
+
+    fun formula(context: Context) = prefs(context).getString(KEY_FORMULA, Formule.PREDEFINITA) ?: Formule.PREDEFINITA
 
     fun saintOfDayUsedToday(context: Context) = prefs(context).getString(KEY_SAINT_OF_DAY_USED, null) == today()
 

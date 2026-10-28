@@ -14,3 +14,6 @@ venv/
 
 # Android build output (distributed via GitHub Releases)
 *.apk
+
+# graphify knowledge graph (local)
+graphify-out/

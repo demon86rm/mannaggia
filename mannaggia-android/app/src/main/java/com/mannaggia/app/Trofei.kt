@@ -18,8 +18,8 @@ object Trofei {
     /** Where an invocation came from. */
     enum class Fonte { PULSANTE, SCUOTIMENTO, CALENDARIO, WIDGET, RIQUADRO }
 
-    /** IN_ARRIVO: the reward comes with a later update (the gift trophies wait for the frames). */
-    enum class Tipo { COLORE, CARATTERE, EFFETTO, FIGURINA, IN_ARRIVO }
+    /** CORNICE: an animated frame for the legendary cards; FORMULA: an invocation formula (Formule). */
+    enum class Tipo { COLORE, CARATTERE, EFFETTO, FIGURINA, CORNICE, FORMULA }
 
     /** A cosmetic reward: [valore] is the preference value (or the special card's name). */
     data class Ricompensa(val tipo: Tipo, val valore: String, val nome: String) {
@@ -29,7 +29,8 @@ object Trofei {
                 Tipo.CARATTERE -> "Nuovo carattere: $nome"
                 Tipo.EFFETTO -> "Nuovo effetto: $nome"
                 Tipo.FIGURINA -> "Figurina speciale: $nome"
-                Tipo.IN_ARRIVO -> "Ricompensa in arrivo con un prossimo aggiornamento"
+                Tipo.CORNICE -> "Nuova cornice: $nome"
+                Tipo.FORMULA -> "Nuova formula: $nome"
             }
     }
 
@@ -39,7 +40,8 @@ object Trofei {
     private fun carattere(v: String, n: String) = Ricompensa(Tipo.CARATTERE, v, n)
     private fun effetto(v: String, n: String) = Ricompensa(Tipo.EFFETTO, v, n)
     private fun figurina(n: String) = Ricompensa(Tipo.FIGURINA, n, n)
-    private fun inArrivo(id: String) = Ricompensa(Tipo.IN_ARRIVO, id, "")
+    private fun cornice(v: String, n: String) = Ricompensa(Tipo.CORNICE, v, n)
+    private fun formula(id: String) = Ricompensa(Tipo.FORMULA, id, Formule.esempio(Formule.TUTTE.first { it.id == id }))
 
     val TUTTI = listOf(
         Trofeo("primo", "Primo peccato", "La prima imprecazione", colore("oro", "Oro zecchino")),
@@ -76,12 +78,23 @@ object Trofei {
         // Last FIGURINA reward, so Santa Cunegonda is card S7 (same order as SPECIALI in avatar.py).
         Trofeo("vua", "In onore dei Veteran Unix Admins", "50 imprecazioni",
             figurina("Santa Cunegonda Bipalluta")),
-        // Gifts (made + saints received): rewards with the alternative frames.
-        Trofeo("dono1", "Primo dono", "Fare o ricevere il primo dono", inArrivo("dono1")),
-        Trofeo("dono10", "Buon samaritano", "10 doni fatti o ricevuti", inArrivo("dono10")),
-        Trofeo("dono50", "Elemosiniere", "50 doni fatti o ricevuti", inArrivo("dono50")),
-        Trofeo("dono100", "Comunione dei santi", "100 doni fatti o ricevuti", inArrivo("dono100")),
+        // Gifts (made + saints received).
+        Trofeo("dono1", "Primo dono", "Fare o ricevere il primo dono", colore("incenso", "Incenso")),
+        Trofeo("dono10", "Buon samaritano", "10 doni fatti o ricevuti", cornice("alloro", "Alloro")),
+        Trofeo("dono50", "Elemosiniere", "50 doni fatti o ricevuti", cornice("vetrata", "Vetrata")),
+        Trofeo("dono100", "Comunione dei santi", "100 doni fatti o ricevuti", cornice("gemme", "Gemme")),
+        Trofeo("ognissanti", "Ognissanti", "Trovare tutti i santi e tutte le figurine speciali",
+            cornice("ognissanti", "Ognissanti")),
+        // Invocation formulas (the author's), at invocation milestones.
+        Trofeo("guai", "Saaanto, Santo combinaguai!", "125 imprecazioni", formula("guai")),
+        Trofeo("fatti", "San Tommaso Ficcanaso", "250 imprecazioni", formula("fatti")),
+        Trofeo("pelle", "La Sacra Epidermide", "275 imprecazioni", formula("pelle")),
+        Trofeo("pentecoste", "Pentecoste Strikes back!", "300 imprecazioni", formula("pentecoste")),
+        Trofeo("sandali", "I sandali de chi?!?", "350 imprecazioni", formula("sandali")),
     )
+
+    /** Formula trophy id -> invocations needed. */
+    private val FORMULE_A = mapOf("guai" to 125, "fatti" to 250, "pelle" to 275, "pentecoste" to 300, "sandali" to 350)
 
     private val BY_ID = TUTTI.associateBy { it.id }
 
@@ -151,7 +164,8 @@ object Trofei {
             if (count >= VUA_INVOCATIONS) ok += "vua"   // mannaggia.sh summoned her every 50 saints
             if (count >= 100) ok += "devoto"
             if (count >= 1000) ok += "root"
-            collezione(ok, albumSize, total, legendary, saint)
+            FORMULE_A.forEach { (id, n) -> if (count >= n) ok += id }
+            collezione(ok, albumSize, total, legendary, saint, allSpecials(context))
             if (dayMatch) ok += "onomastico"
             if (weekday == Calendar.FRIDAY && hour in 17..18) ok += "venerdi"
             if (monoRun >= SUDO_IN_A_ROW) ok += "sudo"
@@ -161,11 +175,15 @@ object Trofei {
     }
 
     /** Trophies for what the album holds: found by invocation or received as a gift. */
-    private fun collezione(ok: MutableList<String>, albumSize: Int, total: Int, legendary: Boolean, saint: String) {
+    private fun collezione(
+        ok: MutableList<String>, albumSize: Int, total: Int, legendary: Boolean, saint: String, allSpecials: Boolean,
+    ) {
         if (total > 0 && albumSize * 10 >= total) ok += "sacrestano"
         if (total > 0 && albumSize * 2 >= total) ok += "vescovo"
         if (albumSize >= MILLE_SAINTS) ok += "mille"
         if (total > 0 && albumSize >= total) ok += "papa"
+        // shortcut: specials won elsewhere (shake, options) are seen at the next invocation or album opening, fine for a final goal.
+        if (total > 0 && albumSize >= total && allSpecials) ok += "ognissanti"
         if (legendary) ok += "leggenda"
         if (MAGONZA.containsMatchIn(saint)) ok += "gutenberg"
     }
@@ -179,7 +197,7 @@ object Trofei {
         val gifts = Dono.count(context)
         synchronized(this) {
             val ok = mutableListOf<String>()
-            collezione(ok, albumSize, total, legendary, saint)
+            collezione(ok, albumSize, total, legendary, saint, allSpecials(context))
             doni(ok, gifts)
             unlock(context, ok)
         }
@@ -225,10 +243,13 @@ object Trofei {
         if (n >= HELVETICA_CHANGES) unlock(context, listOf("helvetica"))
     }
 
-    /** The album was opened: 50 openings in a row without new cards in between. */
+    /** The album was opened: 50 openings in a row without new cards in between; also "Ognissanti". */
     suspend fun aperturaAlbum(context: Context) {
         val size = Album.entries(context).size
+        val albumSize = Album.entries(context).count { !isSpecial(it.saint) }
+        val total = Mannaggia.saintCount(context)
         synchronized(this) {
+            if (total > 0 && albumSize >= total && allSpecials(context)) unlock(context, listOf("ognissanti"))
             val p = prefs(context)
             val empty = if (size == p.getInt("albumSizeAtOpen", -1)) p.getInt("emptyOpens", 0) + 1 else 0
             p.edit().putInt("albumSizeAtOpen", size).putInt("emptyOpens", empty).apply()
@@ -244,6 +265,10 @@ object Trofei {
         prefs(context).getLong("unlocked_$id", 0L).takeIf { it > 0 }
 
     fun unlockedCount(context: Context) = TUTTI.count { isUnlocked(context, it.id) }
+
+    /** All the special cards (S1–S7) won. */
+    private fun allSpecials(context: Context) =
+        TUTTI.filter { it.ricompensa.tipo == Tipo.FIGURINA }.all { isUnlocked(context, it.id) }
 
     /** True if the reward [valore] of type [tipo] belongs to an unlocked trophy (or to no trophy). */
     fun rewardAvailable(context: Context, tipo: Tipo, valore: String): Boolean {

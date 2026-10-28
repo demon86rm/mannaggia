@@ -20,8 +20,6 @@
     <string name="pref_color_title">Colore</string>
     <string name="pref_effect_title">Effetto</string>
     <string name="pref_cat_project">Progetto</string>
-    <string name="pref_upcoming_title">Prossimamente</string>
-    <string name="pref_upcoming_summary">Le novità in arrivo</string>
     <string name="pref_issues_title">Segnala un problema o proponi un\'idea</string>
     <string name="pref_issues_summary">Apri una issue su GitHub</string>
     <string name="pref_contribute_title">Contribuisci al codice</string>
@@ -29,7 +27,7 @@
     <string name="upcoming_title">Prossimamente</string>
     <string name="upcoming_propose">Proponi un\'idea</string>
     <string name="no_browser">Nessun browser disponibile</string>
-    <!-- Roadmap shown in Options → Prossimamente. Update here when plans change. -->
+    <!-- Roadmap shown in Info → Prossimamente. Update here when plans change. -->
     <string-array name="upcoming_features">
         <item>🎙️ Voce \"Mannaggia\": un pacchetto vocale opzionale con una voce neurale, in alternativa alla sintesi del telefono.</item>
         <item>🏆 Altri trofei segreti, e figurine che nel calendario non ci sono.</item>
@@ -49,10 +47,16 @@
     <string name="fav_add">Aggiungi ai preferiti</string>
     <string name="fav_remove">Togli dai preferiti</string>
     <string name="fav_badge">Preferito</string>
+    <string name="pref_frame_title">Cornice dei leggendari</string>
+    <string name="pref_formula_title">Formula dell\'invocazione</string>
+    <string name="pref_formula_random">A caso tra le sbloccate</string>
     <string name="album_sort_filter">Ordina e filtra</string>
     <string name="album_sort">Ordina per</string>
     <string name="album_sort_number">Numero della figurina</string>
     <string name="album_sort_name">Nome</string>
+    <string name="album_sort_discovery">Data di scoperta</string>
+    <string name="album_sort_ascending">Crescente</string>
+    <string name="album_sort_descending">Decrescente</string>
     <string name="album_filter">Mostra</string>
     <string name="album_filter_all">Santi e beati</string>
     <string name="album_filter_saints">Solo santi</string>
@@ -105,4 +109,8 @@ Cambialo da «Ordina e filtra».</string>
     <string name="about_title">Mannaggia %1$s</string>
     <string name="about_text">Invocazione automatica dei santi per Veteran Unix Admin depressi. Port Android di mannaggia.sh.\n\nSoftware libero, rilasciato sotto licenza GNU GPL v3. Codice sorgente:\nhttps://github.com/demon86rm/mannaggia\n\nIdee e segnalazioni:\nhttps://github.com/demon86rm/mannaggia/issues\n\nScript originale: idea di Alexiobash, ampliato e mantenuto da Pietro \"Legolas\" Suffritti, con Enrico \"Henryx\" Bianchi, Alessandro \"Aleskandro\" Di Stefano, Davide \"kk0nrad\" Corrado e tutti i contributori.\n\nApp Android: demon86rm.\n\nElenco dei santi e feste: Wikidata (CC0).\n\nRitratti dei santi: disegni originali in pixel art, GPL v3.\n\nCoro angelico e jingle dei trofei: sintetizzati apposta, GPL v3.\n\nCaratteri gotici: MedievalSharp (Wojciech Kalinowski), Berthold Mainzer Fraktur e Altgotisch (Peter Wiegel, CAT-Fonts), UnifrakturMaguntia (j. \'mach\' wust, Peter Wiegel), Eagle Lake (Brian J. Bonislawsky, Astigmatic), SIL Open Font License 1.1.\n\nL\'app non raccoglie né trasmette dati personali.</string>
     <string name="about_close">Chiudi</string>
+    <string name="tab_news">Novità</string>
+    <string name="tab_credits">Crediti</string>
+    <string name="news_title">Novità della versione %1$s</string>
+    <string name="news_all">Tutte le novità</string>
 </resources>

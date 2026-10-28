@@ -70,6 +70,23 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
+            android:key="frame"
+            android:defaultValue="cornice"
+            android:entries="@array/frame_names"
+            android:entryValues="@array/frame_values"
+            android:title="@string/pref_frame_title"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <!-- Entries filled in SettingsActivity from Formule (only those unlocked, all in debug builds). -->
+        <ListPreference
+            android:key="formula"
+            android:defaultValue="mannaggia"
+            android:title="@string/pref_formula_title"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
             android:key="effect"
             android:defaultValue="none"
             android:entries="@array/effect_names"
@@ -82,12 +99,6 @@
     <PreferenceCategory
         android:title="@string/pref_cat_project"
         app:iconSpaceReserved="false">
-
-        <Preference
-            android:key="upcoming"
-            android:title="@string/pref_upcoming_title"
-            android:summary="@string/pref_upcoming_summary"
-            app:iconSpaceReserved="false" />
 
         <Preference
             android:key="issues"

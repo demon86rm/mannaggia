@@ -17,7 +17,7 @@
         android:id="@+id/groupSort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="12dp">
+        android:paddingBottom="0dp">
 
         <RadioButton
             android:id="@+id/sortNumber"
@@ -30,6 +30,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/album_sort_name" />
+
+        <RadioButton
+            android:id="@+id/sortDiscovery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/album_sort_discovery" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/groupDirection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="12dp">
+
+        <RadioButton
+            android:id="@+id/sortAscending"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/album_sort_ascending" />
+
+        <RadioButton
+            android:id="@+id/sortDescending"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/album_sort_descending" />
     </RadioGroup>
 
     <TextView

@@ -12,10 +12,7 @@ import android.os.Bundle
 import android.util.Log
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
-import android.text.method.LinkMovementMethod
-import android.text.util.Linkify
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -53,8 +50,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cardSlot: CardSlot
     private lateinit var trophyPop: TrophyPop
 
+    /** Whatever the answer, then the "what's new" popup (never on top of the permission dialog). */
     private val requestNotifPermission =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* no-op */ }
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { showNewsIfUpdated() }
+
+    /** Opened by a gift link: no "what's new" popup this time (it waits for the next launch). */
+    private var giftLaunch = false
+    /**
+     * The launch intent's gift link or debug saint has been handled. Saved across recreation:
+     * right after a cold start the activity can be recreated, and checking only for a null
+     * savedInstanceState lost the gift.
+     */
+    private var launchHandled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +73,9 @@ class MainActivity : AppCompatActivity() {
         // after it, so the dialog doesn't cover it.
         splashDone = savedInstanceState?.getBoolean(KEY_SPLASH_DONE) == true
         // A gift link (Dono) opened the app: its card appears once the splash is gone.
-        val gift = if (savedInstanceState == null) intent.data else null
+        launchHandled = savedInstanceState?.getBoolean(KEY_LAUNCH_HANDLED) == true
+        val gift = if (launchHandled) null else intent.data
+        giftLaunch = gift != null
         if (!splashDone) Splash.show(this, afterRecreation = savedInstanceState != null) {
             splashDone = true
             askForNotificationPermissionIfNeeded()
@@ -77,8 +86,8 @@ class MainActivity : AppCompatActivity() {
         }
         // Debug builds only: start with a given saint, e.g.
         // adb shell am start -n io.github.demon86rm.mannaggia.debug/com.mannaggia.app.MainActivity -e santo "San Carlo I di Fiandra"
-        if (BuildConfig.DEBUG && savedInstanceState == null) intent.getStringExtra("santo")?.let { santo ->
-            binding.root.post { invokeSaint(Trofei.Fonte.PULSANTE) { santo } }
+        if (BuildConfig.DEBUG && !launchHandled) intent.getStringExtra("santo")?.let { santo ->
+            binding.root.post { launchHandled = true; invokeSaint(Trofei.Fonte.PULSANTE) { santo } }
         }
         applySystemBarInsets()
 
@@ -90,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             Prefs.markSaintOfDayUsed(this)
             showSaintOfDay(saint)
         }
-        binding.btnInfo.setOnClickListener { showAbout() }
+        binding.btnInfo.setOnClickListener { startActivity(Intent(this, InfoActivity::class.java)) }
         binding.btnSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
@@ -218,7 +227,7 @@ class MainActivity : AppCompatActivity() {
             binding.btnMannaggia.isEnabled = false
             cardSlot.show(special, Trofei.specialNumber(special), isNew = true, legendary = false,
                 special = true, animate = Prefs.cardAnimEnabled(this))
-            val phrase = Mannaggia.phraseOf(special)
+            val phrase = Mannaggia.phraseOf(this@MainActivity, special)
             PhraseEffects.setText(binding.txtResult, phrase)
             if (Prefs.ttsEnabled(this)) speakAndWait(phrase) else delay(SHOW_ONLY_COOLDOWN_MS)
             binding.btnMannaggia.isEnabled = true
@@ -261,6 +270,7 @@ class MainActivity : AppCompatActivity() {
     /** Show the card of a gift link, if [uri] is a valid one (invalid links are ignored). */
     private fun receiveGift(uri: Uri?) {
         if (uri == null) return
+        launchHandled = true
         lifecycleScope.launch {
             val saint = Dono.parse(this@MainActivity, uri) ?: return@launch
             invokeSaint(gift = true) { saint }
@@ -297,7 +307,7 @@ class MainActivity : AppCompatActivity() {
                         else Trofei.invocazione(this@MainActivity, fonte, saint, isNew)
                     }
                     announceTrophies()
-                    val phrase = Mannaggia.phraseOf(saint)
+                    val phrase = Mannaggia.phraseOf(this@MainActivity, saint)
                     PhraseEffects.setText(binding.txtResult, phrase)
                     if (Prefs.ttsEnabled(this@MainActivity)) {
                         if (choir) cardSlot.awaitChoir(CHOIR_MAX_WAIT_MS)  // first the choir, then the voice
@@ -352,24 +362,33 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** License, source link and credits (GPLv3 asks for them to be visible). */
-    private fun showAbout() {
-        val dialog = AlertDialog.Builder(this)
-            .setTitle(getString(R.string.about_title, BuildConfig.VERSION_NAME))
-            .setMessage(getString(R.string.about_text))
-            .setPositiveButton(R.string.about_close, null)
-            .show()
-        dialog.findViewById<TextView>(android.R.id.message)?.apply {
-            Linkify.addLinks(this, Linkify.WEB_URLS)
-            movementMethod = LinkMovementMethod.getInstance()
-        }
-    }
-
+    /** Asks for the notification permission if needed; otherwise goes on to the "what's new" popup. */
     private fun askForNotificationPermissionIfNeeded() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
-        val granted = ContextCompat.checkSelfPermission(
+        val granted = Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || ContextCompat.checkSelfPermission(
             this, Manifest.permission.POST_NOTIFICATIONS
         ) == PackageManager.PERMISSION_GRANTED
-        if (!granted) requestNotifPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+        if (granted) showNewsIfUpdated() else requestNotifPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+    }
+
+    /**
+     * After an update, once: the changelog block of this version, with "Tutte le novità" to Info.
+     * A fresh install only records the version; testers coming from 2.1.0 have no record yet,
+     * so the install times tell the two apart.
+     */
+    private fun showNewsIfUpdated() {
+        if (giftLaunch || isFinishing) return
+        val seen = Prefs.seenVersion(this)
+        if (seen >= BuildConfig.VERSION_CODE) return
+        val info = packageManager.getPackageInfo(packageName, 0)
+        val block = Novita.blocco(this, BuildConfig.VERSION_NAME)
+        Prefs.setSeenVersion(this, BuildConfig.VERSION_CODE)
+        if ((seen < 0 && info.firstInstallTime == info.lastUpdateTime) || block == null) return
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.news_title, BuildConfig.VERSION_NAME.substringBefore('-')))
+            .setMessage(block.joinToString("\n"))
+            .setPositiveButton(android.R.string.ok, null)
+            .setNeutralButton(R.string.news_all) { _, _ -> startActivity(Intent(this, InfoActivity::class.java)) }
+            .show()
     }
 
     companion object {
@@ -382,6 +401,7 @@ class MainActivity : AppCompatActivity() {
         private const val CHOIR_MAX_WAIT_MS = 4_000L
         private const val SPEECH_TIMEOUT_MS = 15_000L
         private const val KEY_SPLASH_DONE = "splash_done"
+        private const val KEY_LAUNCH_HANDLED = "launch_handled"
         /** Pause between the invoked saint and the special card it won, so both get seen. */
         private const val UNWRAP_PAUSE_MS = 1_200L
     }
@@ -389,6 +409,7 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putBoolean(KEY_SPLASH_DONE, splashDone)
+        outState.putBoolean(KEY_LAUNCH_HANDLED, launchHandled)
     }
 
     /** True once the splash has been shown to the end (kept across recreations). */
