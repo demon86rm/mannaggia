@@ -96,7 +96,7 @@ object Trofei {
         Trofeo("dono10", "Buon samaritano", "10 doni fatti o ricevuti", cornice("alloro", "Alloro")),
         Trofeo("dono50", "Elemosiniere", "50 doni fatti o ricevuti", cornice("vetrata", "Vetrata")),
         Trofeo("dono100", "Comunione dei santi", "100 doni fatti o ricevuti", cornice("gemme", "Gemme")),
-        Trofeo("ognissanti", "Ognissanti", "Trovare tutti i santi e tutte le figurine speciali",
+        Trofeo("ognissanti", "La Passione di Mannaggia!", "Trovare tutti i santi e tutte le figurine speciali",
             cornice("ognissanti", "Ognissanti")),
         // Invocation formulas (the author's), at invocation milestones.
         Trofeo("guai", "Saaanto, Santo combinaguai!", "125 imprecazioni", formula("guai")),
@@ -104,10 +104,14 @@ object Trofei {
         Trofeo("pelle", "La Sacra Epidermide", "275 imprecazioni", formula("pelle")),
         Trofeo("pentecoste", "Pentecoste Strikes back!", "300 imprecazioni", formula("pentecoste")),
         Trofeo("sandali", "I sandali de chi?!?", "350 imprecazioni", formula("sandali")),
+        Trofeo("bestiario", "Bestiarium", "400 imprecazioni", formula("bestiario")),
+        Trofeo("iconoclastia", "Iconoclasta", "500 imprecazioni", formula("iconoclastia")),
+        Trofeo("penitenziagite", "Il Nome della Rosa", "777 imprecazioni", formula("penitenziagite")),
     )
 
     /** Formula trophy id -> invocations needed. */
-    private val FORMULE_A = mapOf("guai" to 125, "fatti" to 250, "pelle" to 275, "pentecoste" to 300, "sandali" to 350)
+    private val FORMULE_A = mapOf("guai" to 125, "fatti" to 250, "pelle" to 275, "pentecoste" to 300, "sandali" to 350,
+        "bestiario" to 400, "iconoclastia" to 500, "penitenziagite" to 777)
 
     private val BY_ID = TUTTI.associateBy { it.id }
 
@@ -257,7 +261,7 @@ object Trofei {
         if (n >= HELVETICA_CHANGES) unlock(context, listOf("helvetica"))
     }
 
-    /** The album was opened: 50 openings in a row without new cards in between; also "Ognissanti". */
+    /** The album was opened: 50 openings in a row without new cards in between; also "ognissanti". */
     suspend fun aperturaAlbum(context: Context) {
         val size = Album.entries(context).size
         val albumSize = Album.entries(context).count { !isSpecial(it.saint) }

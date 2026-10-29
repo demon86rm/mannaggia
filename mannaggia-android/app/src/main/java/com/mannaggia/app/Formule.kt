@@ -24,6 +24,9 @@ object Formule {
         Formula("pelle", "Accidenti alla Pelle di {santo}!"),
         Formula("pentecoste", "Mannaggia te e la Pentecoste, {santo}"),
         Formula("sandali", "Mannaggia i sandali di {santo}!"),
+        Formula("bestiario", "{Maledetto quel tardigrado|Maledetta quella scolopendra} di {santo}!"),
+        Formula("iconoclastia", "Eclissati {santo}, e che l'iconoclastia ti si porti via!"),
+        Formula("penitenziagite", "Penitenziagite {santo}!"),
     )
 
     private val SCELTA = Regex("""\{([^{}|]*)\|([^{}|]*)\}""")
