@@ -333,6 +333,12 @@ object Trofei {
         ids.mapNotNull { BY_ID[it] }
     }
 
+    /** Debug builds: unlock the Battista's back now, with its hint (see Retro). */
+    fun debugUnlockRetro(context: Context) = synchronized(this) {
+        val p = prefs(context)
+        if (!p.contains(KEY_RETRO)) p.edit().putLong(KEY_RETRO, System.currentTimeMillis()).putBoolean(KEY_RETRO_NOTICE, true).apply()
+    }
+
     /** Debug builds: unlock everything, one trophy at a time. */
     fun debugUnlockNext(context: Context): Boolean = synchronized(this) {
         val next = TUTTI.firstOrNull { !isUnlocked(context, it.id) } ?: return false

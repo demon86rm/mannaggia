@@ -148,12 +148,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
-            // Debug builds only: long-press the ribbon to draw an unlocked special card (with its
-            // invocation, spoken if Pronuncia is on), or Santa Cunegonda if none is unlocked yet.
+            // Debug builds only: long-press the ribbon to unlock San Giovanni Battista's back (with
+            // its hint) and draw him, so the flip icon and the turn can be tried at once.
             binding.btnMannaggia.setOnLongClickListener {
-                invokeSaint(Trofei.Fonte.PULSANTE) {
-                    Trofei.unlockedSpecials(this).randomOrNull() ?: Trofei.SPECIALI.last()
-                }
+                Trofei.debugUnlockRetro(this)
+                invokeSaint(Trofei.Fonte.PULSANTE) { Retro.FRONTE }
                 true
             }
         }
