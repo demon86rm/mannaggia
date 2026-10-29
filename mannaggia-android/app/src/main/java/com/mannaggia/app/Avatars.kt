@@ -86,6 +86,12 @@ object Avatars {
     /** The pixel-art trophy cup (main screen, trophy list, unlock banner). */
     suspend fun cup(context: Context): BitmapDrawable? = icon(context, "coppa.png")
 
+    /** The "flip the card" icon (San Giovanni Battista's secret back, see Retro). */
+    suspend fun flipIcon(context: Context): BitmapDrawable? = icon(context, "gira.png")
+
+    /** The portrait on the back of San Giovanni Battista's card. */
+    suspend fun decollato(context: Context): BitmapDrawable? = icon(context, "decollato.png")
+
     /** The pixel-art share icon of the main screen. */
     suspend fun shareIcon(context: Context): BitmapDrawable? = icon(context, "condividi.png")
 

@@ -1,0 +1,75 @@
+package com.mannaggia.app
+
+import android.content.Context
+import android.view.View
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.lifecycle.LifecycleCoroutineScope
+import kotlinx.coroutines.launch
+
+/**
+ * The secret back of San Giovanni Battista: "San Giovanni Decollato" (assets/avatar/decollato.png,
+ * by avatar.py). No trophy and not in the catalogue: invoking on 29 August or 31 October with
+ * the Battista already in the album unlocks it (Trofei.invocazione), then his card can be flipped.
+ */
+object Retro {
+
+    const val FRONTE = "San Giovanni Battista"
+    const val NOME = "San Giovanni Decollato"
+    const val FRASE = "Occhio alla testa, San Giovanni decollato!"
+    val GIORNI = setOf("08-29", "10-31")     // the Beheading, and Halloween
+
+    /** Debug builds: pretend today is this MM-DD (adb shell am start ... -e data 10-31). */
+    @Volatile
+    var debugOggi: String? = null
+
+    private const val TURN_MS = 160L
+
+    /**
+     * Give the card of [saint] its flip [button] when the back is unlocked (hidden otherwise).
+     * Halfway through the turn of [image] the portrait, the frame and [name] change side;
+     * [onFlip] then gets true for the back.
+     */
+    fun attach(
+        scope: LifecycleCoroutineScope, button: ImageButton, image: View, avatar: ImageView, frame: ImageView,
+        name: TextView, saint: String, onFlip: (Boolean) -> Unit = {},
+    ) {
+        val context = button.context
+        button.visibility = View.GONE
+        button.setOnClickListener(null)
+        image.animate().cancel()
+        image.rotationY = 0f
+        if (saint != FRONTE || !Trofei.retroSbloccato(context)) return
+        image.cameraDistance = 8000 * context.resources.displayMetrics.density
+        var back = false
+        var front: Triple<android.graphics.drawable.Drawable?, android.graphics.drawable.Drawable?, Int>? = null
+        scope.launch {
+            button.setImageDrawable(Avatars.flipIcon(context))
+            button.visibility = View.VISIBLE
+        }
+        button.setOnClickListener {
+            if (image.rotationY != 0f) return@setOnClickListener   // already turning
+            image.animate().rotationY(90f).setDuration(TURN_MS).withEndAction {
+                scope.launch {
+                    if (!back) {
+                        front = Triple(avatar.drawable, frame.drawable, frame.visibility)
+                        avatar.setImageDrawable(Avatars.decollato(context))
+                        frame.setImageDrawable(Avatars.silverFrame(context))
+                        frame.visibility = View.VISIBLE
+                        name.text = NOME
+                    } else {
+                        front?.let { (a, f, v) -> avatar.setImageDrawable(a); frame.setImageDrawable(f); frame.visibility = v }
+                        name.text = FRONTE
+                    }
+                    back = !back
+                    image.rotationY = -90f
+                    image.animate().rotationY(0f).setDuration(TURN_MS).start()
+                    onFlip(back)
+                }
+            }.start()
+        }
+    }
+
+    fun isRetroDay(monthDay: String) = (debugOggi ?: monthDay) in GIORNI
+}

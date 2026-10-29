@@ -49,6 +49,8 @@ class CardSlot(
     private val topLimit: View,
     private val phrase: View,
     private val button: View,
+    /** The card of [Retro.FRONTE] was flipped: true for its back. */
+    private val onFlip: (saint: String, back: Boolean) -> Unit = { _, _ -> },
 ) {
 
     private var job: Job? = null
@@ -118,6 +120,9 @@ class CardSlot(
             }
 
             showBookmark(context, saint)
+            Retro.attach(scope, card.btnFlip, card.cardImage, card.imgAvatar, card.imgFrame, card.txtSaint, saint) { back ->
+                onFlip(saint, back)
+            }
 
             val view = card.root
             view.visibility = View.VISIBLE

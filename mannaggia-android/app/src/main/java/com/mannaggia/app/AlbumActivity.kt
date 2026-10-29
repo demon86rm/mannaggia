@@ -347,11 +347,15 @@ class AlbumActivity : AppCompatActivity() {
     // --- Share and gift -------------------------------------------------------------------
 
     /** Share the card as an image (portrait and frame as shown) with a line of text. */
-    private fun shareCard(card: Card, image: View) {
-        val saint = card.entry.saint
+    private fun shareCard(card: Card, image: View, saint: String = card.entry.saint) {
         val number = if (card.special) getString(R.string.share_special, card.number)
         else getString(R.string.share_number, card.number)
-        Condividi.card(this, saint, image.drawToBitmap(), getString(R.string.share_text, saint, number))
+        val flip = image.findViewById<View>(R.id.btnFlip)
+        val was = flip.visibility
+        flip.visibility = View.INVISIBLE
+        val bitmap = image.drawToBitmap()
+        flip.visibility = was
+        Condividi.card(this, saint, bitmap, getString(R.string.share_text, saint, number))
     }
 
     /** Gift the card to a friend: a link that adds it to their album (see [Dono]). */
@@ -388,7 +392,10 @@ class AlbumActivity : AppCompatActivity() {
             bookmark.setImageDrawable(Avatars.bookmark(this@AlbumActivity, fav))
             bookmark.contentDescription = getString(if (fav) R.string.fav_remove else R.string.fav_add)
         }
-        view.findViewById<View>(R.id.btnShare).setOnClickListener { shareCard(card, view.findViewById(R.id.cardImage)) }
+        var shownName = entry.saint                    // San Giovanni Battista can show his back (Retro)
+        view.findViewById<View>(R.id.btnShare).setOnClickListener { shareCard(card, view.findViewById(R.id.cardImage), shownName) }
+        Retro.attach(lifecycleScope, view.findViewById(R.id.btnFlip), view.findViewById(R.id.cardImage), avatar, frame,
+            view.findViewById(R.id.txtSaint), entry.saint) { back -> shownName = if (back) Retro.NOME else entry.saint }
         view.findViewById<View>(R.id.btnGift).apply {
             if (card.special) visibility = View.GONE        // special cards are won, not given
             else setOnClickListener { giftCard(entry.saint) }

@@ -130,6 +130,8 @@ object Trofei {
     private const val PAZIENZA_OPENS = 50
     private const val HELVETICA_CHANGES = 666
     private const val EVANGELISTA_SHARES = 10
+    private const val KEY_RETRO = "retro_decollato"
+    private const val KEY_RETRO_NOTICE = "retro_avviso"
     private const val SUDO_IN_A_ROW = 10
     private const val AMANUENSE_INVOCATIONS = 50
     private const val VUA_INVOCATIONS = 50
@@ -147,7 +149,9 @@ object Trofei {
     suspend fun invocazione(context: Context, fonte: Fonte, saint: String, isNew: Boolean) {
         val legendary = isNew && Avatars.isLegendary(context, saint)
         val dayMatch = fonte != Fonte.CALENDARIO && saint == Mannaggia.saintOfDay(context)
-        val albumSize = Album.entries(context).count { !isSpecial(it.saint) }
+        val entries = Album.entries(context)
+        val albumSize = entries.count { !isSpecial(it.saint) }
+        val hasBattista = entries.any { it.saint == Retro.FRONTE }
         val total = Mannaggia.saintCount(context)
         synchronized(this) {
             val p = prefs(context)
@@ -170,6 +174,10 @@ object Trofei {
             e.putInt("monoRun", monoRun)
             val medieval = p.getInt("medieval", 0) + if (Prefs.isMedieval(context)) 1 else 0
             e.putInt("medieval", medieval)
+            val monthDay = String.format(Locale.ROOT, "%02d-%02d", cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH))
+            if (hasBattista && Retro.isRetroDay(monthDay) && !p.contains(KEY_RETRO)) {
+                e.putLong(KEY_RETRO, System.currentTimeMillis()).putBoolean(KEY_RETRO_NOTICE, true)
+            }
             e.apply()
 
             val hour = cal.get(Calendar.HOUR_OF_DAY)
@@ -253,6 +261,15 @@ object Trofei {
         if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY && cal.get(Calendar.HOUR_OF_DAY) in 9..11) ok += "messa"
         if (shakes.size >= ESORCISMO_SHAKES && now - shakes.first() <= ESORCISMO_WINDOW_MS) ok += "esorcismo"
         unlock(context, ok)
+    }
+
+    /** The back of San Giovanni Battista is unlocked (see Retro). */
+    fun retroSbloccato(context: Context) = prefs(context).contains(KEY_RETRO)
+
+    /** True once, right after the back was unlocked: time for the hint. */
+    fun takeRetroNotice(context: Context): Boolean = synchronized(this) {
+        val p = prefs(context)
+        p.getBoolean(KEY_RETRO_NOTICE, false).also { if (it) p.edit().remove(KEY_RETRO_NOTICE).apply() }
     }
 
     /** A card or picture was shared to an app actually chosen in the share sheet (see Condividi). */

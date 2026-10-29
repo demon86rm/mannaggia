@@ -89,6 +89,8 @@ class MainActivity : AppCompatActivity() {
         }
         // Debug builds only: start with a given saint, e.g.
         // adb shell am start -n io.github.demon86rm.mannaggia.debug/com.mannaggia.app.MainActivity -e santo "San Carlo I di Fiandra"
+        // Debug builds only: pretend today is a given day for Retro, e.g. -e data 10-31.
+        if (BuildConfig.DEBUG) intent.getStringExtra("data")?.let { Retro.debugOggi = it }
         if (BuildConfig.DEBUG && !launchHandled) intent.getStringExtra("santo")?.let { santo ->
             binding.root.post { launchHandled = true; invokeSaint(Trofei.Fonte.PULSANTE) { santo } }
         }
@@ -116,7 +118,14 @@ class MainActivity : AppCompatActivity() {
             binding.cardSlot, binding.cardFit, binding.imgStamp, binding.imgGlow, binding.cardFx,
             binding.btnAlbum, lifecycleScope,
             root = binding.root, topLimit = binding.btnSettings, phrase = binding.txtResult, button = binding.btnMannaggia,
-        )
+        ) { saint, back ->
+            // San Giovanni Battista's secret back has its own phrase; the front gets his again.
+            lifecycleScope.launch {
+                val phrase = if (back) Retro.FRASE else Mannaggia.phraseOf(this@MainActivity, saint)
+                PhraseEffects.setText(binding.txtResult, phrase)
+                shown(if (back) Retro.NOME else saint, phrase)
+            }
+        }
         // Trophy banners wait while a legendary card (with its choir) is on stage.
         trophyPop = TrophyPop(binding.trophyPop, lifecycleScope) { cardSlot.isHolding }
         binding.btnTrophies.setOnClickListener {
@@ -210,6 +219,7 @@ class MainActivity : AppCompatActivity() {
     private fun announceTrophies() {
         val unlocked = Trofei.takePending(this)
         trophyPop.show(unlocked)
+        if (Trofei.takeRetroNotice(this)) Toast.makeText(this, R.string.retro_notice, Toast.LENGTH_LONG).show()
         // A special card won with a trophy is "unwrapped": shown and spoken right away,
         // after the phrase in progress if there is one (see invokeSaint).
         newSpecials += unlocked.filter { it.ricompensa.tipo == Trofei.Tipo.FIGURINA }.map { it.ricompensa.valore }
@@ -264,15 +274,15 @@ class MainActivity : AppCompatActivity() {
         binding.btnShare.visibility = if (phrase != null) View.VISIBLE else View.INVISIBLE
     }
 
-    /** Share the card on screen (portrait and frame, without the bookmark) with the phrase. */
+    /** Share the card on screen (portrait and frame, without the bookmark and flip buttons) with the phrase. */
     private fun shareInvocation() {
         val saint = shownSaint ?: return
         val phrase = shownPhrase ?: return
-        val bookmark = binding.cardSlot.btnBookmark
-        val was = bookmark.visibility
-        bookmark.visibility = View.INVISIBLE
+        val buttons = listOf(binding.cardSlot.btnBookmark, binding.cardSlot.btnFlip)
+        val was = buttons.map { it.visibility }
+        buttons.forEach { it.visibility = View.INVISIBLE }
         val image = binding.cardSlot.cardImage.drawToBitmap()
-        bookmark.visibility = was
+        buttons.zip(was).forEach { (b, v) -> b.visibility = v }
         Condividi.card(this, saint, image, phrase)
     }
 

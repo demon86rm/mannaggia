@@ -1147,6 +1147,41 @@ def render(name, t):
     return img
 
 
+def decollato():
+    """The secret back of San Giovanni Battista: only his head (no neck, no body) resting on a
+    gold platter, as in the paintings with Salome; paler skin, cartoon "X" eyes and the tongue
+    out, no blood. Same traits and seed as his front."""
+    name = "San Giovanni Battista"
+    t = FAMOSI[name]
+    skin = mix(SKINS[t.pelle if t.pelle is not None else [0, 1, 1, 2][h(name, "pelle") % 4]], (236, 232, 226), 0.35)
+    hair = HAIRS[t.colore_capelli]
+    bg = BG_CATEGORIA.get(categoria(t)) or BACKGROUNDS[h(name, "sfondo") % len(BACKGROUNDS)]
+    halo = Canvas()
+    draw_halo(halo, t)
+    fig = Canvas()
+    fig.ell((16, 10, 32, 30), skin)                       # head, as draw_head but without the neck
+    fig.recolor((29, 10, 33, 30), skin, shade(skin, 0.9))
+    fig.ell((14, 18, 17, 23), skin); fig.ell((31, 18, 34, 23), shade(skin, 0.9))
+    draw_hair(fig, t, hair, skin)
+    draw_face(fig, t, skin, name)
+    for x in (20, 27):                                    # cartoon "X" eyes
+        fig.rect((x - 1, 19, x + 1, 21), skin)
+        for dx, dy in ((-1, -1), (0, 0), (1, 1), (1, -1), (-1, 1)):
+            fig.px(x + dx, 20 + dy, EYE)
+    draw_beard(fig, t, hair)
+    TONGUE = (226, 104, 120)                              # tongue out, raspberry style
+    fig.rect((23, 27, 25, 30), TONGUE); fig.px(24, 31, TONGUE)
+    fig.line([(24, 28), (24, 30)], shade(TONGUE, 0.8))
+    img = Image.new("RGBA", (S, S), bg + (255,))
+    ImageDraw.Draw(img).rectangle((0, 36, S, S), fill=shade(bg, 0.85) + (255,))
+    img.alpha_composite(outline(halo.img), (0, 4))
+    plate = Canvas()
+    plate.ell((6, 36, 42, 46), GOLD_DARK); plate.ell((7, 36, 41, 44), GOLD_LIGHT); plate.ell((11, 37, 37, 43), GOLD)
+    img.alpha_composite(outline(plate.img))
+    img.alpha_composite(outline(fig.img).crop((0, 0, S, 43)), (0, 2))   # the head sits on the plate
+    return img
+
+
 # Gemme: scala di luminosita' della stessa tinta, dalla piu' scura alla piu' chiara.
 GEM_RED = [(120, 20, 30), (178, 34, 44), (230, 70, 80), (255, 150, 150)]
 GEM_BLUE = [(30, 60, 120), (60, 110, 190), (110, 160, 240), (190, 220, 255)]
@@ -1694,6 +1729,16 @@ def condividi():
     return outline(c.img)
 
 
+def gira():
+    """"Flip the card" icon: two silver arrows chasing each other round a circle."""
+    c = Canvas()
+    c.d.arc((10, 10, 38, 38), 200, 340, fill=STEEL_LIGHT + (255,), width=4)
+    c.d.arc((10, 10, 38, 38), 20, 160, fill=STEEL_LIGHT + (255,), width=4)
+    c.poly([(36, 15), (42, 26), (30, 24)], STEEL_LIGHT)      # head of the upper arrow, pointing down
+    c.poly([(12, 33), (6, 22), (18, 24)], STEEL_LIGHT)       # head of the lower arrow, pointing up
+    return outline(c.img)
+
+
 def calendario():
     """Saint-of-the-day icon: a calendar page with a gold star, in the avatar style."""
     c = Canvas()
@@ -2167,6 +2212,8 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
     segnalibro(False).save(out / "segnalibro_vuoto.png", optimize=True)
     for n, t in SPECIALI.items():
         render(n, t).convert("RGB").save(out / f"{file_id(n)}.png", optimize=True)
+    decollato().convert("RGB").save(out / "decollato.png", optimize=True)
+    gira().save(out / "gira.png", optimize=True)
     (out / "speciali.txt").write_text(
         "# Figurine speciali fuori catalogo: la riga N e' la figurina SN (si sbloccano coi trofei).\n"
         + "\n".join(SPECIALI) + "\n", encoding="utf-8")
