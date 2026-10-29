@@ -118,6 +118,7 @@ class MainActivity : AppCompatActivity() {
             binding.cardSlot, binding.cardFit, binding.imgStamp, binding.imgGlow, binding.cardFx,
             binding.btnAlbum, lifecycleScope,
             root = binding.root, topLimit = binding.btnSettings, phrase = binding.txtResult, button = binding.btnMannaggia,
+            flip = binding.btnFlip,
         ) { saint, back ->
             // San Giovanni Battista's secret back has its own phrase; the front gets his again.
             lifecycleScope.launch {
@@ -274,15 +275,15 @@ class MainActivity : AppCompatActivity() {
         binding.btnShare.visibility = if (phrase != null) View.VISIBLE else View.INVISIBLE
     }
 
-    /** Share the card on screen (portrait and frame, without the bookmark and flip buttons) with the phrase. */
+    /** Share the card on screen (portrait and frame, without the bookmark) with the phrase. */
     private fun shareInvocation() {
         val saint = shownSaint ?: return
         val phrase = shownPhrase ?: return
-        val buttons = listOf(binding.cardSlot.btnBookmark, binding.cardSlot.btnFlip)
-        val was = buttons.map { it.visibility }
-        buttons.forEach { it.visibility = View.INVISIBLE }
+        val bookmark = binding.cardSlot.btnBookmark
+        val was = bookmark.visibility
+        bookmark.visibility = View.INVISIBLE
         val image = binding.cardSlot.cardImage.drawToBitmap()
-        buttons.zip(was).forEach { (b, v) -> b.visibility = v }
+        bookmark.visibility = was
         Condividi.card(this, saint, image, phrase)
     }
 

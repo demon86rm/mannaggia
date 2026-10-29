@@ -56,17 +56,6 @@
                 android:padding="6dp"
                 android:scaleType="fitCenter"
                 android:visibility="gone" />
-
-            <ImageButton
-                android:id="@+id/btnFlip"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="bottom|end"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/flip_card"
-                android:padding="4dp"
-                android:scaleType="fitCenter"
-                android:visibility="gone" />
         </com.mannaggia.app.SquareFrameLayout>
 
         <TextView

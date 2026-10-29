@@ -363,12 +363,7 @@ class AlbumActivity : AppCompatActivity() {
     private fun shareCard(card: Card, image: View, saint: String = card.entry.saint) {
         val number = if (card.special) getString(R.string.share_special, card.number)
         else getString(R.string.share_number, card.number)
-        val flip = image.findViewById<View>(R.id.btnFlip)
-        val was = flip.visibility
-        flip.visibility = View.INVISIBLE
-        val bitmap = image.drawToBitmap()
-        flip.visibility = was
-        Condividi.card(this, saint, bitmap, getString(R.string.share_text, saint, number))
+        Condividi.card(this, saint, image.drawToBitmap(), getString(R.string.share_text, saint, number))
     }
 
     /** Gift the card to a friend: a link that adds it to their album (see [Dono]). */

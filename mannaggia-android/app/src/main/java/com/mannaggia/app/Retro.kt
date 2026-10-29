@@ -2,7 +2,7 @@ package com.mannaggia.app
 
 import android.content.Context
 import android.view.View
-import android.widget.ImageButton
+import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.LifecycleCoroutineScope
@@ -25,14 +25,16 @@ object Retro {
     var debugOggi: String? = null
 
     private const val TURN_MS = 160L
+    private const val BOUNCE_MS = 450L
 
     /**
-     * Give the card of [saint] its flip [button] when the back is unlocked (hidden otherwise).
+     * Show the flip [button] (outside the card) with a bounce when [saint] is the Battista and his
+     * back is unlocked; hide it otherwise.
      * Halfway through the turn of [image] the portrait, the frame and [name] change side;
      * [onFlip] then gets true for the back.
      */
     fun attach(
-        scope: LifecycleCoroutineScope, button: ImageButton, image: View, avatar: ImageView, frame: ImageView,
+        scope: LifecycleCoroutineScope, button: ImageView, image: View, avatar: ImageView, frame: ImageView,
         name: TextView, saint: String, onFlip: (Boolean) -> Unit = {},
     ) {
         val context = button.context
@@ -47,6 +49,8 @@ object Retro {
         scope.launch {
             button.setImageDrawable(Avatars.flipIcon(context))
             button.visibility = View.VISIBLE
+            button.scaleX = 0.3f; button.scaleY = 0.3f
+            button.animate().scaleX(1f).scaleY(1f).setDuration(BOUNCE_MS).setInterpolator(OvershootInterpolator(3f)).start()
         }
         button.setOnClickListener {
             if (image.rotationY != 0f) return@setOnClickListener   // already turning

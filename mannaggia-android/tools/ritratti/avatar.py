@@ -1730,13 +1730,37 @@ def condividi():
 
 
 def gira():
-    """"Flip the card" icon: two silver arrows chasing each other round a circle."""
-    c = Canvas()
-    c.d.arc((10, 10, 38, 38), 200, 340, fill=STEEL_LIGHT + (255,), width=4)
-    c.d.arc((10, 10, 38, 38), 20, 160, fill=STEEL_LIGHT + (255,), width=4)
-    c.poly([(36, 15), (42, 26), (30, 24)], STEEL_LIGHT)      # head of the upper arrow, pointing down
-    c.poly([(12, 33), (6, 22), (18, 24)], STEEL_LIGHT)       # head of the lower arrow, pointing up
-    return outline(c.img)
+    """"Flip the card" icon: a gold ribbon ring seen in perspective, like a bracelet; on the front
+    the arrow points right, on the back (its darker inner face) it comes back left. Drawn 4x
+    bigger and scaled down without smoothing, dark gold edges."""
+    k, n = 4, S * 4
+    big = Image.new("RGBA", (n, n), (0, 0, 0, 0))
+    d = ImageDraw.Draw(big)
+    cx, cy, rx, ry, h = n // 2, 78, 80, 26, 30
+    back = shade(GOLD, 0.72)
+
+    def pt(t, dy=0):
+        r = math.radians(t)
+        return (cx + rx * math.cos(r), cy + ry * math.sin(r) + dy)
+
+    def band(t0, t1, height, col):
+        step = 1 if t1 > t0 else -1
+        ts = list(range(t0, t1 + step, step))
+        d.polygon([pt(t) for t in ts] + [pt(t, height) for t in reversed(ts)],
+                  fill=col + (255,), outline=GOLD_DARK + (255,), width=k)
+
+    def head(t, height, col, pointing):
+        x, y = pt(t)
+        mid, half = y + height / 2, height / 2 + 4 * k
+        d.polygon([(x + pointing * height * 1.15, mid), (x, mid - half), (x, mid + half)],
+                  fill=col + (255,), outline=GOLD_DARK + (255,), width=k)
+
+    hb = h * 0.55                                  # the back is seen from inside, narrower
+    band(355, 262, hb, back); head(262, hb, back, -1)
+    band(228, 185, hb, back)
+    band(178, 72, h, GOLD); head(72, h, GOLD, +1)
+    band(38, 2, h, GOLD)
+    return big.resize((S, S), Image.NEAREST)
 
 
 def calendario():
