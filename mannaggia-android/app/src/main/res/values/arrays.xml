@@ -84,6 +84,7 @@
         <item>Vetrata</item>
         <item>Gemme</item>
         <item>Ognissanti</item>
+        <item>Canonica</item>
     </string-array>
     <string-array name="frame_values">
         <item>cornice</item>
@@ -91,6 +92,7 @@
         <item>vetrata</item>
         <item>gemme</item>
         <item>ognissanti</item>
+        <item>canonica</item>
     </string-array>
 
     <!-- Phrase effect: neon is always there, the others are trophy rewards. -->

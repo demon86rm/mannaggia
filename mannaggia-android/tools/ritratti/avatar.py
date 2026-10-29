@@ -1410,7 +1410,36 @@ def ognissanti(step=0):
 
 
 # Cornici premio: nome (= prefisso dei file e valore in Opzioni) -> funzione. "cornice" e' l'oro.
-CORNICI_PREMIO = {"alloro": alloro, "vetrata": vetrata, "gemme": gemme, "ognissanti": ognissanti}
+# --- Canonica: a wooden parish frame, iron nails in the corners, two candles flickering --
+CANDELA, CANDELA_OMBRA = (246, 242, 232), (214, 208, 196)
+FIAMMA = [(255, 200, 70), (255, 150, 50), (255, 230, 120)]
+
+
+def canonica(step=0):
+    """Wooden frame with grain on the middle ring, nailed corner blocks, and two candles on
+    gold holders along the bottom edge whose flames flicker."""
+    c = Canvas()
+    for d, col in ((0, WOOD_DARK), (1, WOOD), (2, (176, 124, 76))):
+        c.d.rectangle((d, d, S - 1 - d, S - 1 - d), outline=col + (255,))
+    for j, (x, y) in enumerate(ring(1)):
+        if j % 9 < 2:
+            put(c, x, y, WOOD_DARK)
+    for (x, y) in CORNERS:
+        c.rect((x, y, x + 4, y + 4), WOOD)
+        c.d.rectangle((x, y, x + 4, y + 4), outline=WOOD_DARK + (255,))
+        c.px(x + 2, y + 2, STEEL_LIGHT)
+    for x in (6, S - 8):
+        c.rect((x - 1, S - 5, x + 2, S - 4), GOLD)
+        c.rect((x, S - 11, x + 1, S - 6), CANDELA)
+        c.px(x + 1, S - 11, CANDELA_OMBRA)
+        flame = FIAMMA[(step + x) % 3]
+        c.px(x, S - 12, flame); c.px(x + 1, S - 12, flame)
+        c.px(x + (step // 2) % 2, S - 13, (255, 250, 220))
+    return c.img
+
+
+CORNICI_PREMIO = {"alloro": alloro, "vetrata": vetrata, "gemme": gemme, "ognissanti": ognissanti,
+                  "canonica": canonica}
 
 
 # Cornici speciali per alcuni leggendari (al posto di quella d'oro): santo -> (nome, funzione).

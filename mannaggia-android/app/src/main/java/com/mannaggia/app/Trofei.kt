@@ -38,7 +38,14 @@ object Trofei {
             }
     }
 
-    data class Trofeo(val id: String, val nome: String, val condizione: String, val ricompensa: Ricompensa)
+    /** [extra]: further rewards of the same trophy (shown and unlocked with the main one). */
+    data class Trofeo(
+        val id: String, val nome: String, val condizione: String, val ricompensa: Ricompensa,
+        val extra: List<Ricompensa> = emptyList(),
+    ) {
+        val ricompense get() = listOf(ricompensa) + extra
+        val descrizione get() = ricompense.joinToString("\n") { it.descrizione }
+    }
 
     private fun colore(v: String, n: String) = Ricompensa(Tipo.COLORE, v, n)
     private fun carattere(v: String, n: String) = Ricompensa(Tipo.CARATTERE, v, n)
@@ -63,7 +70,8 @@ object Trofei {
             carattere("sans-serif-smallcaps", "Maiuscoletto")),
         Trofeo("devoto", "Devoto", "100 imprecazioni", colore("porpora", "Porpora cardinalizia")),
         Trofeo("sacrestano", "Sacrestano", "Album al 10%", carattere("sans-serif-light", "Leggero")),
-        Trofeo("parroco", "Parroco", "Album al 25%", Ricompensa(Tipo.OPZIONE, Prefs.KEY_COLORFUL, "Colorful")),
+        Trofeo("parroco", "Parroco", "Album al 25%", Ricompensa(Tipo.OPZIONE, Prefs.KEY_COLORFUL, "Colorful"),
+            listOf(cornice("canonica", "Canonica"))),
         Trofeo("vescovo", "Vescovo", "Album al 50%", effetto("fiamma", "Fiamma")),
         Trofeo("papa", "Papa", "Album completo", figurina("Santo Subito")),
         Trofeo("leggenda", "Colpo di fortuna", "Trovare il primo santo leggendario", figurina("San Culo")),
@@ -278,7 +286,7 @@ object Trofei {
 
     /** True if the reward [valore] of type [tipo] belongs to an unlocked trophy (or to no trophy). */
     fun rewardAvailable(context: Context, tipo: Tipo, valore: String): Boolean {
-        val owner = TUTTI.firstOrNull { it.ricompensa.tipo == tipo && it.ricompensa.valore == valore }
+        val owner = TUTTI.firstOrNull { t -> t.ricompense.any { it.tipo == tipo && it.valore == valore } }
         return owner == null || isUnlocked(context, owner.id)
     }
 
