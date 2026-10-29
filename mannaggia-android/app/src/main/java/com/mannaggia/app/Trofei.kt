@@ -92,6 +92,7 @@ object Trofei {
         Trofeo("vua", "In onore dei Veteran Unix Admins", "50 imprecazioni",
             figurina("Santa Cunegonda Bipalluta")),
         // Gifts (made + saints received).
+        Trofeo("evangelista", "Evangelista", "Condividere 10 volte un santo o un quadro", colore("pergamena", "Pergamena")),
         Trofeo("dono1", "Primo dono", "Fare o ricevere il primo dono", colore("incenso", "Incenso")),
         Trofeo("dono10", "Buon samaritano", "10 doni fatti o ricevuti", cornice("alloro", "Alloro")),
         Trofeo("dono50", "Elemosiniere", "50 doni fatti o ricevuti", cornice("vetrata", "Vetrata")),
@@ -128,6 +129,7 @@ object Trofei {
     private const val PELLEGRINO_DAYS = 7
     private const val PAZIENZA_OPENS = 50
     private const val HELVETICA_CHANGES = 666
+    private const val EVANGELISTA_SHARES = 10
     private const val SUDO_IN_A_ROW = 10
     private const val AMANUENSE_INVOCATIONS = 50
     private const val VUA_INVOCATIONS = 50
@@ -251,6 +253,14 @@ object Trofei {
         if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY && cal.get(Calendar.HOUR_OF_DAY) in 9..11) ok += "messa"
         if (shakes.size >= ESORCISMO_SHAKES && now - shakes.first() <= ESORCISMO_WINDOW_MS) ok += "esorcismo"
         unlock(context, ok)
+    }
+
+    /** A card or picture was shared to an app actually chosen in the share sheet (see Condividi). */
+    fun condivisione(context: Context) = synchronized(this) {
+        val p = prefs(context)
+        val n = p.getInt("shares", 0) + 1
+        p.edit().putInt("shares", n).apply()
+        if (n >= EVANGELISTA_SHARES) unlock(context, listOf("evangelista"))
     }
 
     /** The phrase font was changed in Options. */

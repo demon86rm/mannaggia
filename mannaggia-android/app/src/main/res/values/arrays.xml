@@ -61,6 +61,7 @@
         <item>Fuoco infernale</item>
         <item>Porpora cardinalizia</item>
         <item>Incenso</item>
+        <item>Pergamena</item>
     </string-array>
     <string-array name="color_values">
         <item>theme</item>
@@ -75,6 +76,7 @@
         <item>inferno</item>
         <item>porpora</item>
         <item>incenso</item>
+        <item>pergamena</item>
     </string-array>
 
     <!-- Frame of the legendary cards: gold always, the others are trophy rewards (values = asset prefixes). -->

@@ -74,6 +74,11 @@
         </service>
 
         <!-- Home Screen Widget -->
+        <!-- The share sheet reports the app chosen (Evangelista counts real shares only). -->
+        <receiver
+            android:name=".Condividi$Scelta"
+            android:exported="false" />
+
         <receiver
             android:name=".MannaggiaWidgetProvider"
             android:exported="true"

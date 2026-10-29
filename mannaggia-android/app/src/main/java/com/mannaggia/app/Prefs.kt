@@ -72,6 +72,7 @@ object Prefs {
         "inferno" to R.color.phrase_inferno,
         "porpora" to R.color.phrase_porpora,
         "incenso" to R.color.phrase_incenso,
+        "pergamena" to R.color.phrase_pergamena,
     )
 
     /** Glow radius, in dp, for the neon effect. */
