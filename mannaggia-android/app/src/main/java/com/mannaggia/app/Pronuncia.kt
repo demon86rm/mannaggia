@@ -1,5 +1,7 @@
 package com.mannaggia.app
 
+import android.content.Context
+
 /**
  * What the voice should read for a phrase, when the device text-to-speech would get it
  * wrong. The phrase on screen stays as it is; only the spoken text changes:
@@ -39,8 +41,12 @@ object Pronuncia {
         "ventottesimo", "ventinovesimo", "trentesimo",
     )
 
-    /** The text to give to the voice for [phrase]. */
-    fun perVoce(phrase: String): String {
+    /**
+     * The text to give to the voice for [phrase]. The fixes are tuned on the phone's default voice:
+     * with another engine chosen in Options, the phrase goes as written.
+     */
+    fun perVoce(context: Context, phrase: String): String {
+        if (Prefs.ttsEngine(context) != null) return phrase
         val female = FEMALE_TITLE.containsMatchIn(phrase)
         val numbers = ROMAN.replace(phrase) { m ->
             val n = romanValue(m.value)

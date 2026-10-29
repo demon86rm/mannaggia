@@ -391,13 +391,13 @@ class MainActivity : AppCompatActivity() {
 
     /** Speak [text] and suspend until it has been spoken (or [SPEECH_TIMEOUT_MS] at most). */
     private suspend fun speakAndWait(text: String) {
-        if (BuildConfig.DEBUG) Log.d("Pronuncia", "$text -> ${Pronuncia.perVoce(text)}")
+        if (BuildConfig.DEBUG) Log.d("Pronuncia", "$text -> ${Pronuncia.perVoce(this, text)}")
         if (!ttsReady) {
             Toast.makeText(this, R.string.tts_unavailable, Toast.LENGTH_SHORT).show()
             return
         }
         val done = CompletableDeferred<Unit>().also { speechDone = it }
-        if (tts?.speak(Pronuncia.perVoce(text), TextToSpeech.QUEUE_FLUSH, null, "mannaggia") != TextToSpeech.SUCCESS) return
+        if (tts?.speak(Pronuncia.perVoce(this, text), TextToSpeech.QUEUE_FLUSH, null, "mannaggia") != TextToSpeech.SUCCESS) return
         // Safety net: some engines never report the end of an utterance.
         withTimeoutOrNull(SPEECH_TIMEOUT_MS) { done.await() }
     }

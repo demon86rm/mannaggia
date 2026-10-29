@@ -304,7 +304,7 @@ class AlbumActivity : AppCompatActivity() {
         }
         lifecycleScope.launch {
             val phrase = Mannaggia.phraseOf(this@AlbumActivity, saint)
-            tts?.speak(Pronuncia.perVoce(phrase), TextToSpeech.QUEUE_FLUSH, null, "preferito")
+            tts?.speak(Pronuncia.perVoce(this@AlbumActivity, phrase), TextToSpeech.QUEUE_FLUSH, null, "preferito")
         }
     }
 
@@ -453,7 +453,7 @@ class AlbumActivity : AppCompatActivity() {
             shownName = if (back) Retro.NOME else entry.saint
             if (Prefs.ttsEnabled(this) && ttsReady) lifecycleScope.launch {   // each turn says its phrase
                 val phrase = if (back) Retro.FRASE else Mannaggia.phraseOf(this@AlbumActivity, entry.saint)
-                tts?.speak(Pronuncia.perVoce(phrase), TextToSpeech.QUEUE_FLUSH, null, "retro")
+                tts?.speak(Pronuncia.perVoce(this@AlbumActivity, phrase), TextToSpeech.QUEUE_FLUSH, null, "retro")
             }
         }
         view.findViewById<View>(R.id.btnGift).apply {
