@@ -171,7 +171,7 @@ object Avatars {
     }
 
     /** The frames of animation [name] (<name>_00..11.png); the gold ones if they are missing. */
-    private fun frameBitmaps(context: Context, name: String): List<Bitmap> =
+    fun frameBitmaps(context: Context, name: String): List<Bitmap> =
         frameCache[name] ?: runCatching {
             (0 until FRAME_COUNT).map { i -> decode(context, "${name}_%02d.png".format(i)) }
         }.getOrElse { if (name == GOLD_FRAME) throw it else return frameBitmaps(context, GOLD_FRAME) }

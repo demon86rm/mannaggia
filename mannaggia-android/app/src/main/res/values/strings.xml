@@ -42,7 +42,7 @@
     <string name="splash_subtitle">Un santo a caso, quando serve.</string>
     <string name="tab_album">Album</string>
     <string name="tab_preferiti">Preferiti</string>
-    <string name="fav_count">%1$d preferiti · tocca una figurina per invocarla</string>
+    <string name="fav_count">%1$d preferiti · tocca per invocare, tieni premuto per comporre un quadro</string>
     <string name="fav_empty">Nessun preferito: nell\'album tieni premuta una figurina per sceglierla.</string>
     <string name="fav_add">Aggiungi ai preferiti</string>
     <string name="fav_remove">Togli dai preferiti</string>
@@ -72,6 +72,17 @@ Cambialo da «Ordina e filtra».</string>
     <!-- "Ho trovato Santa Giovanna d'Arco (N° 6) su Mannaggia! <link>" -->
     <string name="share_text">Ho trovato %1$s (%2$s) su Mannaggia! https://play.google.com/store/apps/details?id=io.github.demon86rm.mannaggia</string>
     <string name="share_invocation">Condividi l\'invocazione</string>
+    <string name="quadro_title">I miei santi</string>
+    <string name="quadro_activity_title">Il quadro</string>
+    <string name="quadro_action">Componi un quadro</string>
+    <string name="quadro_max">Al massimo 9 santi per quadro</string>
+    <string name="quadro_frame">Cornice</string>
+    <string name="quadro_save">Salva</string>
+    <string name="quadro_file">I miei santi</string>
+    <string name="quadro_format_png">Immagine (PNG)</string>
+    <string name="quadro_format_gif">Animazione (GIF)</string>
+    <string name="quadro_saved">Quadro salvato</string>
+    <string name="quadro_save_failed">Non sono riuscito a salvare il quadro</string>
     <string name="flip_card">Gira la carta</string>
     <string name="retro_notice">San Giovanni Battista ha qualcosa da mostrarti…</string>
     <string name="phrase_copied">Frase copiata</string>

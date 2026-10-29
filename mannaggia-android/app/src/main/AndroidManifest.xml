@@ -57,6 +57,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".QuadroActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".AlbumActivity"
             android:exported="false"
             android:label="@string/album_title" />

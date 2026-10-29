@@ -97,6 +97,30 @@
         <item>canonica</item>
     </string-array>
 
+    <!-- Frames of the "Colorful" option, also for the quadro (values = asset prefixes). -->
+    <string-array name="quadro_colorful_names">
+        <item>Bronzo</item>
+        <item>Legno</item>
+        <item>Arcobaleno</item>
+        <item>Smeraldo</item>
+        <item>Porpora</item>
+        <item>Lapislazzuli</item>
+        <item>Neon</item>
+        <item>Vaporwave</item>
+        <item>Palma</item>
+    </string-array>
+    <string-array name="quadro_colorful_values">
+        <item>bronzo</item>
+        <item>legno</item>
+        <item>arcobaleno</item>
+        <item>smeraldo</item>
+        <item>porpora</item>
+        <item>lapislazzuli</item>
+        <item>neon</item>
+        <item>vaporwave</item>
+        <item>palma</item>
+    </string-array>
+
     <!-- Phrase effect: neon is always there, the others are trophy rewards. -->
     <string-array name="effect_names">
         <item>Nessuno</item>

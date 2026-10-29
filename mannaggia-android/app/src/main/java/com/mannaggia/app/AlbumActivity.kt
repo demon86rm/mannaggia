@@ -86,6 +86,7 @@ class AlbumActivity : AppCompatActivity() {
         binding.toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_favourite -> toggleSelectedFavourites()
+                R.id.action_quadro -> composeQuadro()
                 R.id.action_sort_filter -> showSortFilter()
             }
             true
@@ -220,7 +221,7 @@ class AlbumActivity : AppCompatActivity() {
 
     private fun onCardLongClick(entries: List<Card>, position: Int) {
         val card = entries[position]
-        if (showFavourites) showDetail(card) else toggleSelection(card.entry.saint)
+        toggleSelection(card.entry.saint)     // in both tabs: the favourites one composes a picture
     }
 
     private fun inFilter(card: Card, filter: String) = when (filter) {
@@ -318,6 +319,7 @@ class AlbumActivity : AppCompatActivity() {
                 setTitle(if (allFavourites) R.string.fav_remove else R.string.fav_add)
                 bookmarkBitmap?.let { icon = menuIcon(it) }
             }
+            binding.toolbar.menu.findItem(R.id.action_quadro).isVisible = showFavourites
         } else {
             binding.toolbar.setTitle(R.string.album_title)
             binding.toolbar.inflateMenu(R.menu.album)
@@ -330,6 +332,17 @@ class AlbumActivity : AppCompatActivity() {
         val w = h * bitmap.width / bitmap.height
         val scaled = Bitmap.createScaledBitmap(bitmap, w, h, false).apply { density = resources.displayMetrics.densityDpi }
         return Avatars.pixelated(this, scaled)
+    }
+
+    /** "I miei santi": a picture of the selected favourites, at most [Quadro.MAX]. */
+    private fun composeQuadro() {
+        if (selected.size > Quadro.MAX) {
+            Toast.makeText(this, R.string.quadro_max, Toast.LENGTH_SHORT).show()
+            return
+        }
+        startActivity(Intent(this, QuadroActivity::class.java)
+            .putStringArrayListExtra(QuadroActivity.EXTRA_SAINTS, ArrayList(selected)))
+        clearSelection()
     }
 
     /** Add the selected cards to the favourites, or remove them if they all are already. */
