@@ -22,7 +22,7 @@ object Formule {
         Formula("guai", "{Stramaledetto|Stramaledetta} {santo}, solo guai!"),
         Formula("fatti", "Ma non potevi farti i cazzi tuoi, {santo}?"),
         Formula("pelle", "Accidenti alla Pelle di {santo}!"),
-        Formula("pentecoste", "Mannaggia te e la Pentecoste, {santo}"),
+        Formula("pentecoste", "Mannaggia la Pentecoste e te, {santo}!"),
         Formula("sandali", "Mannaggia i sandali di {santo}!"),
         Formula("bestiario", "{Maledetto quel tardigrado|Maledetta quella scolopendra} di {santo}!"),
         Formula("iconoclastia", "Eclissati {santo}, e che l'iconoclastia ti si porti via!"),
