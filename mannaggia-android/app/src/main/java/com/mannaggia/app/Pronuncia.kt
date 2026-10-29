@@ -18,6 +18,7 @@ object Pronuncia {
         "change request" to "ceinge riquest",       // soft g: the final e makes it like "change"
         "777" to "sette sette sette",                // the permissions, digit by digit
         "Penitenziagite" to "Penitenziàgite",        // the stress on the "a", not on the "i"
+        "Eclissati" to "Eclìssati",                  // the stress on the first "i", not on the "a"
     )
 
     private val WORDS = Regex("""\b(${PAROLE.keys.joinToString("|") { Regex.escape(it) }})\b""", RegexOption.IGNORE_CASE)
