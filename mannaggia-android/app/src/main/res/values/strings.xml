@@ -85,6 +85,8 @@ Cambialo da «Ordina e filtra».</string>
     <string name="quadro_format_gif">Animazione (GIF)</string>
     <string name="quadro_saved">Quadro salvato</string>
     <string name="quadro_save_failed">Non sono riuscito a salvare il quadro</string>
+    <string name="pref_tts_engine_title">Voce</string>
+    <string name="pref_tts_engine_default">Predefinita del telefono</string>
     <string name="flip_card">Gira la carta</string>
     <string name="retro_notice">San Giovanni Battista ha qualcosa da mostrarti…</string>
     <string name="phrase_copied">Frase copiata</string>

@@ -3,6 +3,13 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <!-- Lets Options list the TTS apps installed (Android 11+ package visibility); not a permission. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+
     <application
         android:name=".MannaggiaApp"
         android:allowBackup="true"

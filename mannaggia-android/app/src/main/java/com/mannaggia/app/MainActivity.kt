@@ -177,7 +177,18 @@ class MainActivity : AppCompatActivity() {
             if (!invokeSaint(Trofei.Fonte.SCUOTIMENTO)) announceTrophies()  // a busy shake can still unlock
         }
 
-        tts = TextToSpeech(this) { status ->
+        initTts()
+
+    }
+
+    /** The engine the voice was started with: when Options change it, the voice restarts (onResume). */
+    private var ttsEngine: String? = null
+
+    private fun initTts() {
+        tts?.shutdown()
+        ttsReady = false
+        ttsEngine = Prefs.ttsEngine(this)
+        tts = TextToSpeech(this, { status ->
             if (status == TextToSpeech.SUCCESS) {
                 val result = tts?.setLanguage(Locale.ITALIAN)
                 ttsReady = result != TextToSpeech.LANG_MISSING_DATA &&
@@ -191,14 +202,14 @@ class MainActivity : AppCompatActivity() {
                     override fun onStop(utteranceId: String?, interrupted: Boolean) { speechDone?.complete(Unit) }
                 })
             }
-        }
-
+        }, ttsEngine)
     }
 
     override fun onResume() {
         super.onResume()
         // Options may have changed in SettingsActivity.
         Prefs.applyPhraseStyle(binding.txtResult, themeTextColor)
+        if (Prefs.ttsEngine(this) != ttsEngine) initTts()
         // Refreshed on every resume, so it is right even after midnight.
         lifecycleScope.launch { showSaintOfDay(runCatching { Mannaggia.saintOfDay(this@MainActivity) }.getOrNull()) }
         // Trophies unlocked elsewhere (widget, tile, options, album) are announced here.

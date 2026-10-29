@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -63,6 +64,7 @@ class SettingsActivity : AppCompatActivity() {
             findPreference<Preference>(Prefs.KEY_COLORFUL)?.isVisible =
                 BuildConfig.DEBUG || Trofei.rewardAvailable(requireContext(), Trofei.Tipo.OPZIONE, Prefs.KEY_COLORFUL)
             formulas()
+            ttsEngines()
             onClick("issues") { openUrl(ISSUES_URL) }
             onClick("contribute") { openUrl(REPO_URL) }
         }
@@ -74,6 +76,17 @@ class SettingsActivity : AppCompatActivity() {
             }
             list.entries = keep.map { list.entries[it] }.toTypedArray()
             list.entryValues = keep.map { list.entryValues[it] }.toTypedArray()
+        }
+
+        /** The phone's default voice, then every TTS app installed; disabled while Pronuncia is off. */
+        private fun ttsEngines() {
+            val list = findPreference<ListPreference>(Prefs.KEY_TTS_ENGINE) ?: return
+            val probe = TextToSpeech(requireContext().applicationContext, null)
+            val engines = probe.engines
+            probe.shutdown()
+            list.entries = (listOf(getString(R.string.pref_tts_engine_default)) + engines.map { it.label }).toTypedArray()
+            list.entryValues = (listOf("") + engines.map { it.name }).toTypedArray()
+            if (list.value !in list.entryValues.map { it.toString() }) list.value = ""   // an engine since uninstalled
         }
 
         /** The formulas available (with a sample saint), plus "at random" when there is a choice. */

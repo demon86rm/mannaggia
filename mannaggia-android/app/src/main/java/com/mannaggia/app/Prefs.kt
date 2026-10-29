@@ -20,6 +20,7 @@ object Prefs {
 
     const val KEY_SHAKE = "shake"
     const val KEY_TTS = "tts"
+    const val KEY_TTS_ENGINE = "tts_engine"
     const val KEY_FONT = "font"
     /** font_values prefix of the fonts bundled in res/font (e.g. "font:medievalsharp"). */
     private const val BUNDLED_FONT = "font:"
@@ -84,6 +85,9 @@ object Prefs {
     fun shakeEnabled(context: Context) = prefs(context).getBoolean(KEY_SHAKE, true)
 
     fun ttsEnabled(context: Context) = prefs(context).getBoolean(KEY_TTS, false)
+
+    /** The TTS engine package chosen in Options, or null for the phone's default one. */
+    fun ttsEngine(context: Context): String? = prefs(context).getString(KEY_TTS_ENGINE, "").takeUnless { it.isNullOrEmpty() }
 
     /** Animate each new album card; legendary saints are animated anyway. */
     fun cardAnimEnabled(context: Context) = prefs(context).getBoolean(KEY_CARD_ANIM, true)

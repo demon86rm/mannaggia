@@ -114,12 +114,12 @@ class AlbumActivity : AppCompatActivity() {
             override fun onTabUnselected(tab: TabLayout.Tab) = Unit
             override fun onTabReselected(tab: TabLayout.Tab) = Unit
         })
-        tts = TextToSpeech(this) { status ->
+        tts = TextToSpeech(this, { status ->
             if (status == TextToSpeech.SUCCESS) {
                 val result = tts?.setLanguage(Locale.ITALIAN)
                 ttsReady = result != TextToSpeech.LANG_MISSING_DATA && result != TextToSpeech.LANG_NOT_SUPPORTED
             }
-        }
+        }, Prefs.ttsEngine(this))
         if (savedInstanceState == null) lifecycleScope.launch { Trofei.aperturaAlbum(this@AlbumActivity) }
     }
 
