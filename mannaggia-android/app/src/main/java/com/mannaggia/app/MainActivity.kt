@@ -121,10 +121,12 @@ class MainActivity : AppCompatActivity() {
             flip = binding.btnFlip,
         ) { saint, back ->
             // San Giovanni Battista's secret back has its own phrase; the front gets his again.
+            // Each turn says it, when Pronuncia is on.
             lifecycleScope.launch {
                 val phrase = if (back) Retro.FRASE else Mannaggia.phraseOf(this@MainActivity, saint)
                 PhraseEffects.setText(binding.txtResult, phrase)
                 shown(if (back) Retro.NOME else saint, phrase)
+                if (Prefs.ttsEnabled(this@MainActivity)) speakAndWait(phrase)
             }
         }
         // Trophy banners wait while a legendary card (with its choir) is on stage.

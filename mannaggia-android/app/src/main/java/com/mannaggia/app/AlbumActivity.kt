@@ -403,7 +403,13 @@ class AlbumActivity : AppCompatActivity() {
         var shownName = entry.saint                    // San Giovanni Battista can show his back (Retro)
         view.findViewById<View>(R.id.btnShare).setOnClickListener { shareCard(card, view.findViewById(R.id.cardImage), shownName) }
         Retro.attach(lifecycleScope, view.findViewById(R.id.btnFlip), view.findViewById(R.id.cardImage), avatar, frame,
-            view.findViewById(R.id.txtSaint), entry.saint) { back -> shownName = if (back) Retro.NOME else entry.saint }
+            view.findViewById(R.id.txtSaint), entry.saint) { back ->
+            shownName = if (back) Retro.NOME else entry.saint
+            if (Prefs.ttsEnabled(this) && ttsReady) lifecycleScope.launch {   // each turn says its phrase
+                val phrase = if (back) Retro.FRASE else Mannaggia.phraseOf(this@AlbumActivity, entry.saint)
+                tts?.speak(Pronuncia.perVoce(phrase), TextToSpeech.QUEUE_FLUSH, null, "retro")
+            }
+        }
         view.findViewById<View>(R.id.btnGift).apply {
             if (card.special) visibility = View.GONE        // special cards are won, not given
             else setOnClickListener { giftCard(entry.saint) }
