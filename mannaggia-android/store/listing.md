@@ -52,9 +52,11 @@ Umorismo da sistemisti, senza bestemmie.
 ## Note di rilascio 2.1.2 (max 500 caratteri)
 
 • Nuova opzione Colorful: una cornice animata per ogni figurina (contributo di lucatarik)
-• Per i martiri, una cornice speciale rossa ornata con la palma del martirio
-• Le nuove cornici si sbloccano completando l'album al 25%, con il trofeo «Parroco»
-• Condividi l'invocazione con l'icona accanto al tasto «Mannaggia!» oppure tieni premuta la frase per copiarla!
+• Per i martiri, una cornice rossa con la palma del martirio
+• Si sbloccano col trofeo «Parroco» (album al 25%), che dà anche la cornice Canonica
+• «I miei santi»: un quadro con fino a 9 preferiti, anche animato, da salvare o condividere
+• Tre nuove formule e il trofeo «Evangelista», col colore Pergamena
+• Condividi l'invocazione con l'icona accanto a «Mannaggia!», o tieni premuta la frase per copiarla
 
 ## Note di rilascio 2.1.1 (max 500 caratteri)
 
