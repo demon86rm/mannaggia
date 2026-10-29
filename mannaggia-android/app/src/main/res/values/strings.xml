@@ -51,6 +51,8 @@
     <string name="pref_formula_title">Formula dell\'invocazione</string>
     <string name="pref_formula_random">A caso tra le sbloccate</string>
     <string name="album_sort_filter">Ordina e filtra</string>
+    <string name="album_search">Cerca per nome o numero</string>
+    <string name="album_empty_search">Nessuna figurina trovata.</string>
     <string name="album_sort">Ordina per</string>
     <string name="album_sort_number">Numero della figurina</string>
     <string name="album_sort_name">Nome</string>

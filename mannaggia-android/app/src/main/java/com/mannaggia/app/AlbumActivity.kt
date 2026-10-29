@@ -17,6 +17,7 @@ import android.widget.RadioGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.drawToBitmap
 import androidx.core.view.WindowInsetsCompat
@@ -33,6 +34,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.text.Collator
 import java.text.DateFormatSymbols
+import java.text.Normalizer
 import java.util.Date
 import java.util.Locale
 
@@ -159,11 +161,25 @@ class AlbumActivity : AppCompatActivity() {
         val special get() = trophy != null
     }
 
-    /** Fill the grid for the current tab, with the chosen order and filter. */
+    /** The search in the toolbar: part of a name (accents and case ignored), a card number or "S3". */
+    private var query = ""
+
+    private fun plain(s: String) = Normalizer.normalize(s, Normalizer.Form.NFD).replace(Regex("\\p{M}+"), "").lowercase(Locale.ITALIAN)
+
+    private fun matches(card: Card): Boolean {
+        val q = query.trim()
+        if (q.isEmpty()) return true
+        q.toIntOrNull()?.let { return !card.special && card.number == it }
+        Regex("(?i)s(\\d+)").matchEntire(q)?.let { return card.special && card.number == it.groupValues[1].toInt() }
+        return plain(card.entry.saint).contains(plain(q))
+    }
+
+    /** Fill the grid for the current tab, with the chosen order, filter and search. */
     private fun show() {
         val filter = Prefs.albumFilter(this)
         val tab = if (showFavourites) cards.filter { it.entry.saint in favourites } else cards
         val (specials, saints) = tab.filter { inFilter(it, filter) }.partition { it.special }
+            .let { (sp, sa) -> sp.filter(::matches) to sa.filter(::matches) }
         val sorted = when (Prefs.albumSort(this)) {
             Prefs.ALBUM_SORT_NAME -> saints.sortedWith(compareBy(collator) { it: Card -> Mannaggia.withoutTitle(it.entry.saint) })
             Prefs.ALBUM_SORT_DISCOVERY -> saints.sortedBy { it.discovery }
@@ -196,7 +212,8 @@ class AlbumActivity : AppCompatActivity() {
             binding.progressAlbum.progress = found
             binding.txtEmpty.setText(R.string.album_empty)
         }
-        if (entries.isEmpty() && tab.isNotEmpty()) binding.txtEmpty.setText(R.string.album_empty_filter)
+        if (entries.isEmpty() && tab.isNotEmpty())
+            binding.txtEmpty.setText(if (query.isNotBlank()) R.string.album_empty_search else R.string.album_empty_filter)
         binding.txtEmpty.visibility = if (entries.isEmpty()) View.VISIBLE else View.GONE
         binding.list.visibility = if (entries.isEmpty()) View.GONE else View.VISIBLE
         binding.list.adapter = AlbumAdapter(
@@ -310,6 +327,8 @@ class AlbumActivity : AppCompatActivity() {
     private fun updateToolbar() {
         val selecting = selected.isNotEmpty()
         exitSelection.isEnabled = selecting
+        // Typing in the search refreshes the grid: keep the menu (and the search box) as it is.
+        if (!selecting && binding.toolbar.menu.findItem(R.id.action_search) != null) return
         binding.toolbar.menu.clear()
         if (selecting) {
             binding.toolbar.title = getString(R.string.album_selected, selected.size)
@@ -323,7 +342,34 @@ class AlbumActivity : AppCompatActivity() {
         } else {
             binding.toolbar.setTitle(R.string.album_title)
             binding.toolbar.inflateMenu(R.menu.album)
+            setUpSearch()
         }
+    }
+
+    /** The search box; the menu is rebuilt on every selection change, so the query is restored. */
+    private fun setUpSearch() {
+        val item = binding.toolbar.menu.findItem(R.id.action_search)
+        val search = item.actionView as SearchView
+        search.queryHint = getString(R.string.album_search)
+        if (query.isNotEmpty()) {
+            item.expandActionView()
+            search.setQuery(query, false)
+            search.clearFocus()
+        }
+        item.setOnActionExpandListener(object : android.view.MenuItem.OnActionExpandListener {
+            override fun onMenuItemActionExpand(item: android.view.MenuItem) = true
+            override fun onMenuItemActionCollapse(item: android.view.MenuItem): Boolean {
+                if (query.isNotEmpty() && selected.isEmpty()) { query = ""; show() }   // closing the search shows all again
+                return true
+            }
+        })
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(text: String): Boolean { search.clearFocus(); return true }
+            override fun onQueryTextChange(text: String): Boolean {
+                if (text != query) { query = text; show() }
+                return true
+            }
+        })
     }
 
     /** The pixel-art bookmark scaled (crisp) to the 24dp height of a toolbar icon. */
