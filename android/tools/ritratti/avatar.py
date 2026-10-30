@@ -14,7 +14,7 @@ tutta loro (CORNICI, es. le fiamme del rogo per Giovanna d'Arco). Con l'opzione
 "Colorful" dell'app anche gli altri santi hanno una cornice animata (COLORATE: bronzo,
 legno, arcobaleno, neon, vaporwave, ...; la palma ai martiri non leggendari), elencata in cornici_colorful.txt.
 
-Uso (venv con pillow; dalla cartella mannaggia-android):
+Uso (venv con pillow; dalla cartella android):
     python tools/ritratti/avatar.py --nomi lista.txt --out ~/mannaggia-avatar-prova
     python tools/ritratti/avatar.py --famosi --out ~/mannaggia-avatar-prova   # tutta la tabella
     python tools/ritratti/avatar.py --tutti --app app/src/main/assets/avatar \\

@@ -5,7 +5,7 @@ Quattro note ascendenti di Do maggiore (Do-Mi-Sol-Do) con il timbro di una
 campanella: parziali non armoniche che decadono in fretta, piu' un filo di
 riverbero. Seme fisso: il file si rigenera uguale.
 
-Uso (venv con numpy, ffmpeg nel PATH; dalla cartella mannaggia-android):
+Uso (venv con numpy, ffmpeg nel PATH; dalla cartella android):
     python tools/suoni/jingle.py --out app/src/main/res/raw/trofeo.ogg
 """
 

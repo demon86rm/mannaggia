@@ -1,12 +1,12 @@
 # Mannaggia
 
-Generatore di "Mannaggia <santo>!". Nella root ci sono lo script bash (`mannaggia.sh`) e quello Python (`mannaggia_py.py`); l'app Android sta in `mannaggia-android/`.
+Generatore di "Mannaggia <santo>!". Gli script storici (`mannaggia.sh`, `mannaggia_py.py`) stanno in `legacy/`, l'app Android in `android/`, la documentazione in `docs/`.
 
 ## Build Android
 - Il repo non ha `gradlew`: usa Gradle 9.8.1 installato a parte (AGP 9.4.1).
 - JDK: il JBR di Android Studio, con `JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"`.
 - Su WSL (desktop Windows): `JAVA_HOME=/snap/android-studio/current/jbr`, `ANDROID_HOME=~/Android/Sdk`, Gradle in `~/opt/gradle-9.8.1/bin/gradle`. Il debug keystore di WSL è diverso da quello del Mac: per installare sopra un APK compilato sul Mac va copiato `~/.android/debug.keystore` dal Mac.
-- Esegui i comandi da `mannaggia-android/`: `gradle assembleDebug` / `gradle bundleRelease`.
+- Esegui i comandi da `android/`: `gradle assembleDebug` / `gradle bundleRelease`.
 - La firma release legge `MANNAGGIA_STORE_FILE`, `MANNAGGIA_STORE_PASSWORD`, `MANNAGGIA_KEY_ALIAS` e `MANNAGGIA_KEY_PASSWORD` da `~/.gradle/gradle.properties`. Mai metterli nel repo.
 - Package `io.github.demon86rm.mannaggia`, target/compile SDK 36, min 24.
 

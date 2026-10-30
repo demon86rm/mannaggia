@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="mannaggia-android/store/feature-graphic.png" alt="Mannaggia" width="640">
+  <img src="android/store/feature-graphic.png" alt="Mannaggia" width="640">
 </p>
 
 <h1 align="center">Mannaggia</h1>
@@ -53,14 +53,14 @@ Mannaggia è gratuita e senza sponsor, e così resterà. Puoi aiutarla così:
 
 ## Compilare da sorgente
 
-L'app sta in [`mannaggia-android/`](mannaggia-android): Kotlin, Android SDK 36, minimo Android 7.0.
+L'app sta in [`android/`](android): Kotlin, Android SDK 36, minimo Android 7.0.
 
 ```sh
-cd mannaggia-android
+cd android
 gradle assembleDebug
 ```
 
-Servono Gradle 9.8 o superiore (il repo non include `gradlew`) e un JDK 17 o superiore, per esempio il JBR di Android Studio. L'elenco dei santi (`app/src/main/assets/santi.txt`) è generato da Wikidata con [`tools/genera_santi.py`](mannaggia-android/tools/genera_santi.py).
+Servono Gradle 9.8 o superiore (il repo non include `gradlew`) e un JDK 17 o superiore, per esempio il JBR di Android Studio. L'elenco dei santi (`app/src/main/assets/santi.txt`) è generato da Wikidata con [`tools/genera_santi.py`](android/tools/genera_santi.py).
 
 ## Le origini
 
@@ -85,7 +85,7 @@ Parametri da riga di comando:
 <details>
 <summary><b>mannaggia_py.py</b>: la versione Python con interfaccia grafica</summary>
 
-Conversione di `mannaggia.sh` in un'applicazione Python con Tkinter. Requisiti, installazione e uso sono in [`readme-py.md`](readme-py.md).
+Conversione di `mannaggia.sh` in un'applicazione Python con Tkinter. Requisiti, installazione e uso sono in [`legacy/readme-py.md`](legacy/readme-py.md).
 
 </details>
 
