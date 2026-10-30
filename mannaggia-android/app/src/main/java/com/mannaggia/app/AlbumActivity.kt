@@ -447,10 +447,18 @@ class AlbumActivity : AppCompatActivity() {
             bookmark.contentDescription = getString(if (fav) R.string.fav_remove else R.string.fav_add)
         }
         var shownName = entry.saint                    // San Giovanni Battista can show his back (Retro)
+        val feast = view.findViewById<TextView>(R.id.txtFeast)
+        var frontFeast: CharSequence = ""
         view.findViewById<View>(R.id.btnShare).setOnClickListener { shareCard(card, view.findViewById(R.id.cardImage), shownName) }
         Retro.attach(lifecycleScope, view.findViewById(R.id.btnFlip), view.findViewById(R.id.cardImage), avatar, frame,
             view.findViewById(R.id.txtSaint), entry.saint) { back ->
             shownName = if (back) Retro.NOME else entry.saint
+            if (back) {
+                frontFeast = feast.text
+                feast.text = getString(R.string.album_feast, formatDay(Retro.FESTA))
+            } else {
+                feast.text = frontFeast
+            }
             if (Prefs.ttsEnabled(this) && ttsReady) lifecycleScope.launch {   // each turn says its phrase
                 val phrase = if (back) Retro.FRASE else Mannaggia.phraseOf(this@AlbumActivity, entry.saint)
                 tts?.speak(Pronuncia.perVoce(this@AlbumActivity, phrase), TextToSpeech.QUEUE_FLUSH, null, "retro")

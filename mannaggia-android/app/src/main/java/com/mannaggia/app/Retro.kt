@@ -18,7 +18,8 @@ object Retro {
     const val FRONTE = "San Giovanni Battista"
     const val NOME = "San Giovanni Decollato"
     const val FRASE = "Occhio alla testa, San Giovanni decollato!"
-    val GIORNI = setOf("08-29", "10-31")     // the Beheading, and Halloween
+    const val FESTA = "08-29"                // the Beheading: his feast on the back of the card
+    val GIORNI = setOf(FESTA, "10-31")       // and Halloween
 
     /** Debug builds: pretend today is this MM-DD (adb shell am start ... -e data 10-31). */
     @Volatile
