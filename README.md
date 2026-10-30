@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://forms.gle/wHWbGGDAmRQnpswL7"><img src="https://img.shields.io/date/1794006000?label=fine%20test%20chiuso&color=8B0000" alt="Tempo alla fine del test chiuso"></a>
+  <a href="https://forms.gle/wHWbGGDAmRQnpswL7"><img src="https://img.shields.io/date/1794092340?label=fine%20test%20chiuso&color=8B0000" alt="Tempo alla fine del test chiuso"></a>
   <img src="https://img.shields.io/badge/Android-7.0%2B-8B0000?logo=android&logoColor=white" alt="Android 7.0 o superiore">
   <a href="LICENSE"><img src="https://img.shields.io/badge/licenza-GPLv3-blue" alt="Licenza GPLv3"></a>
   <a href="https://ko-fi.com/demon86rm"><img src="https://img.shields.io/badge/Ko--fi-offrimi%20un%20caff%C3%A8-ff5e5b?logo=ko-fi&logoColor=white" alt="Ko-fi"></a>
