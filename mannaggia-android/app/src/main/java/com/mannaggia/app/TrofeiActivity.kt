@@ -85,7 +85,7 @@ class TrofeiActivity : AppCompatActivity() {
                 holder.cup.alpha = 1f
                 holder.name.text = t.nome
                 holder.condition.visibility = View.GONE
-                holder.reward.text = t.ricompensa.descrizione
+                holder.reward.text = t.descrizione
                 holder.reward.visibility = View.VISIBLE
                 val d = Date(at)
                 holder.date.text = getString(
@@ -97,7 +97,7 @@ class TrofeiActivity : AppCompatActivity() {
                 holder.itemView.setOnClickListener {
                     AlertDialog.Builder(this@TrofeiActivity)
                         .setTitle(t.nome)
-                        .setMessage(listOf(t.condizione, t.ricompensa.descrizione, holder.date.text).joinToString("\n\n"))
+                        .setMessage(listOf(t.condizione, t.descrizione, holder.date.text).joinToString("\n\n"))
                         .setPositiveButton(android.R.string.ok, null)
                         .show()
                 }

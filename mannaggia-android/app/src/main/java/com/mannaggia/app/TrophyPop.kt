@@ -34,7 +34,7 @@ class TrophyPop(
                 while (busy()) delay(250)
                 val t = queue.removeFirst()
                 pop.txtTrophy.text = t.nome
-                pop.txtReward.text = t.ricompensa.descrizione
+                pop.txtReward.text = t.descrizione
                 val root = pop.root
                 root.visibility = View.INVISIBLE
                 root.post {

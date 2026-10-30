@@ -18,8 +18,11 @@ object Trofei {
     /** Where an invocation came from. */
     enum class Fonte { PULSANTE, SCUOTIMENTO, CALENDARIO, WIDGET, RIQUADRO }
 
-    /** CORNICE: an animated frame for the legendary cards; FORMULA: an invocation formula (Formule). */
-    enum class Tipo { COLORE, CARATTERE, EFFETTO, FIGURINA, CORNICE, FORMULA }
+    /**
+     * CORNICE: an animated frame for the legendary cards; FORMULA: an invocation formula (Formule);
+     * OPZIONE: a switch in Options (its key).
+     */
+    enum class Tipo { COLORE, CARATTERE, EFFETTO, FIGURINA, CORNICE, FORMULA, OPZIONE }
 
     /** A cosmetic reward: [valore] is the preference value (or the special card's name). */
     data class Ricompensa(val tipo: Tipo, val valore: String, val nome: String) {
@@ -31,10 +34,18 @@ object Trofei {
                 Tipo.FIGURINA -> "Figurina speciale: $nome"
                 Tipo.CORNICE -> "Nuova cornice: $nome"
                 Tipo.FORMULA -> "Nuova formula: $nome"
+                Tipo.OPZIONE -> "Nuova opzione: $nome"
             }
     }
 
-    data class Trofeo(val id: String, val nome: String, val condizione: String, val ricompensa: Ricompensa)
+    /** [extra]: further rewards of the same trophy (shown and unlocked with the main one). */
+    data class Trofeo(
+        val id: String, val nome: String, val condizione: String, val ricompensa: Ricompensa,
+        val extra: List<Ricompensa> = emptyList(),
+    ) {
+        val ricompense get() = listOf(ricompensa) + extra
+        val descrizione get() = ricompense.joinToString("\n") { it.descrizione }
+    }
 
     private fun colore(v: String, n: String) = Ricompensa(Tipo.COLORE, v, n)
     private fun carattere(v: String, n: String) = Ricompensa(Tipo.CARATTERE, v, n)
@@ -59,6 +70,8 @@ object Trofei {
             carattere("sans-serif-smallcaps", "Maiuscoletto")),
         Trofeo("devoto", "Devoto", "100 imprecazioni", colore("porpora", "Porpora cardinalizia")),
         Trofeo("sacrestano", "Sacrestano", "Album al 10%", carattere("sans-serif-light", "Leggero")),
+        Trofeo("parroco", "Parroco", "Album al 25%", Ricompensa(Tipo.OPZIONE, Prefs.KEY_COLORFUL, "Colorful"),
+            listOf(cornice("canonica", "Canonica"))),
         Trofeo("vescovo", "Vescovo", "Album al 50%", effetto("fiamma", "Fiamma")),
         Trofeo("papa", "Papa", "Album completo", figurina("Santo Subito")),
         Trofeo("leggenda", "Colpo di fortuna", "Trovare il primo santo leggendario", figurina("San Culo")),
@@ -79,11 +92,12 @@ object Trofei {
         Trofeo("vua", "In onore dei Veteran Unix Admins", "50 imprecazioni",
             figurina("Santa Cunegonda Bipalluta")),
         // Gifts (made + saints received).
+        Trofeo("evangelista", "Evangelista", "Condividere 10 volte un santo o un quadro", colore("pergamena", "Pergamena")),
         Trofeo("dono1", "Primo dono", "Fare o ricevere il primo dono", colore("incenso", "Incenso")),
         Trofeo("dono10", "Buon samaritano", "10 doni fatti o ricevuti", cornice("alloro", "Alloro")),
         Trofeo("dono50", "Elemosiniere", "50 doni fatti o ricevuti", cornice("vetrata", "Vetrata")),
         Trofeo("dono100", "Comunione dei santi", "100 doni fatti o ricevuti", cornice("gemme", "Gemme")),
-        Trofeo("ognissanti", "Ognissanti", "Trovare tutti i santi e tutte le figurine speciali",
+        Trofeo("ognissanti", "La Passione di Mannaggia!", "Trovare tutti i santi e tutte le figurine speciali",
             cornice("ognissanti", "Ognissanti")),
         // Invocation formulas (the author's), at invocation milestones.
         Trofeo("guai", "Saaanto, Santo combinaguai!", "125 imprecazioni", formula("guai")),
@@ -91,10 +105,14 @@ object Trofei {
         Trofeo("pelle", "La Sacra Epidermide", "275 imprecazioni", formula("pelle")),
         Trofeo("pentecoste", "Pentecoste Strikes back!", "300 imprecazioni", formula("pentecoste")),
         Trofeo("sandali", "I sandali de chi?!?", "350 imprecazioni", formula("sandali")),
+        Trofeo("bestiario", "Bestiarium", "400 imprecazioni", formula("bestiario")),
+        Trofeo("iconoclastia", "Iconoclasta", "500 imprecazioni", formula("iconoclastia")),
+        Trofeo("penitenziagite", "Il Nome della Rosa", "777 imprecazioni", formula("penitenziagite")),
     )
 
     /** Formula trophy id -> invocations needed. */
-    private val FORMULE_A = mapOf("guai" to 125, "fatti" to 250, "pelle" to 275, "pentecoste" to 300, "sandali" to 350)
+    private val FORMULE_A = mapOf("guai" to 125, "fatti" to 250, "pelle" to 275, "pentecoste" to 300, "sandali" to 350,
+        "bestiario" to 400, "iconoclastia" to 500, "penitenziagite" to 777)
 
     private val BY_ID = TUTTI.associateBy { it.id }
 
@@ -111,6 +129,9 @@ object Trofei {
     private const val PELLEGRINO_DAYS = 7
     private const val PAZIENZA_OPENS = 50
     private const val HELVETICA_CHANGES = 666
+    private const val EVANGELISTA_SHARES = 10
+    private const val KEY_RETRO = "retro_decollato"
+    private const val KEY_RETRO_NOTICE = "retro_avviso"
     private const val SUDO_IN_A_ROW = 10
     private const val AMANUENSE_INVOCATIONS = 50
     private const val VUA_INVOCATIONS = 50
@@ -128,7 +149,9 @@ object Trofei {
     suspend fun invocazione(context: Context, fonte: Fonte, saint: String, isNew: Boolean) {
         val legendary = isNew && Avatars.isLegendary(context, saint)
         val dayMatch = fonte != Fonte.CALENDARIO && saint == Mannaggia.saintOfDay(context)
-        val albumSize = Album.entries(context).count { !isSpecial(it.saint) }
+        val entries = Album.entries(context)
+        val albumSize = entries.count { !isSpecial(it.saint) }
+        val hasBattista = entries.any { it.saint == Retro.FRONTE }
         val total = Mannaggia.saintCount(context)
         synchronized(this) {
             val p = prefs(context)
@@ -151,6 +174,10 @@ object Trofei {
             e.putInt("monoRun", monoRun)
             val medieval = p.getInt("medieval", 0) + if (Prefs.isMedieval(context)) 1 else 0
             e.putInt("medieval", medieval)
+            val monthDay = String.format(Locale.ROOT, "%02d-%02d", cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH))
+            if (hasBattista && Retro.isRetroDay(monthDay) && !p.contains(KEY_RETRO)) {
+                e.putLong(KEY_RETRO, System.currentTimeMillis()).putBoolean(KEY_RETRO_NOTICE, true)
+            }
             e.apply()
 
             val hour = cal.get(Calendar.HOUR_OF_DAY)
@@ -179,6 +206,7 @@ object Trofei {
         ok: MutableList<String>, albumSize: Int, total: Int, legendary: Boolean, saint: String, allSpecials: Boolean,
     ) {
         if (total > 0 && albumSize * 10 >= total) ok += "sacrestano"
+        if (total > 0 && albumSize * 4 >= total) ok += "parroco"
         if (total > 0 && albumSize * 2 >= total) ok += "vescovo"
         if (albumSize >= MILLE_SAINTS) ok += "mille"
         if (total > 0 && albumSize >= total) ok += "papa"
@@ -235,6 +263,23 @@ object Trofei {
         unlock(context, ok)
     }
 
+    /** The back of San Giovanni Battista is unlocked (see Retro). */
+    fun retroSbloccato(context: Context) = prefs(context).contains(KEY_RETRO)
+
+    /** True once, right after the back was unlocked: time for the hint. */
+    fun takeRetroNotice(context: Context): Boolean = synchronized(this) {
+        val p = prefs(context)
+        p.getBoolean(KEY_RETRO_NOTICE, false).also { if (it) p.edit().remove(KEY_RETRO_NOTICE).apply() }
+    }
+
+    /** A card or picture was shared to an app actually chosen in the share sheet (see Condividi). */
+    fun condivisione(context: Context) = synchronized(this) {
+        val p = prefs(context)
+        val n = p.getInt("shares", 0) + 1
+        p.edit().putInt("shares", n).apply()
+        if (n >= EVANGELISTA_SHARES) unlock(context, listOf("evangelista"))
+    }
+
     /** The phrase font was changed in Options. */
     fun cambioCarattere(context: Context) = synchronized(this) {
         val p = prefs(context)
@@ -243,7 +288,7 @@ object Trofei {
         if (n >= HELVETICA_CHANGES) unlock(context, listOf("helvetica"))
     }
 
-    /** The album was opened: 50 openings in a row without new cards in between; also "Ognissanti". */
+    /** The album was opened: 50 openings in a row without new cards in between; also "ognissanti". */
     suspend fun aperturaAlbum(context: Context) {
         val size = Album.entries(context).size
         val albumSize = Album.entries(context).count { !isSpecial(it.saint) }
@@ -272,7 +317,7 @@ object Trofei {
 
     /** True if the reward [valore] of type [tipo] belongs to an unlocked trophy (or to no trophy). */
     fun rewardAvailable(context: Context, tipo: Tipo, valore: String): Boolean {
-        val owner = TUTTI.firstOrNull { it.ricompensa.tipo == tipo && it.ricompensa.valore == valore }
+        val owner = TUTTI.firstOrNull { t -> t.ricompense.any { it.tipo == tipo && it.valore == valore } }
         return owner == null || isUnlocked(context, owner.id)
     }
 
@@ -286,6 +331,12 @@ object Trofei {
         val ids = p.getString("pending", "")!!.split(',').filter { it.isNotEmpty() }
         p.edit().remove("pending").apply()
         ids.mapNotNull { BY_ID[it] }
+    }
+
+    /** Debug builds: unlock the Battista's back now, with its hint (see Retro). */
+    fun debugUnlockRetro(context: Context) = synchronized(this) {
+        val p = prefs(context)
+        if (!p.contains(KEY_RETRO)) p.edit().putLong(KEY_RETRO, System.currentTimeMillis()).putBoolean(KEY_RETRO_NOTICE, true).apply()
     }
 
     /** Debug builds: unlock everything, one trophy at a time. */

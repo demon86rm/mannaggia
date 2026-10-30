@@ -2,6 +2,15 @@
 # aggiornamento (solo il blocco della versione installata). Aggiornare a ogni versione,
 # insieme alle note di store/listing.md.
 
+## 2.1.2
+• Opzione Colorful: una cornice animata per ogni figurina (contributo di lucatarik)
+• Per i martiri, una cornice dedicata
+• Colorful, cornice Martiri e Canonica si sbloccano col trofeo «Parroco» (album 25%)
+• «I miei santi»: un quadro con fino a 9 preferiti (PNG o GIF) da salvare o condividere
+• 3 nuove formule e trofeo «Evangelista» (reward: colore Pergamena)
+• Condividi con l'icona accanto a «Mannaggia!», o tieni premuta la frase per copiarla
+• Cerca nell'album; scegli la voce in Opzioni
+
 ## 2.1.1
 • Nuova schermata Info: novità, prossimi arrivi e crediti
 • Formule d'invocazione da sbloccare imprecando: sceglile in Opzioni
