@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="android/store/feature-graphic.png" alt="Mannaggia" width="640">
+  <img src="docs/img/banner.png" alt="Mannaggia" width="640">
 </p>
 
 <h1 align="center">Mannaggia</h1>
