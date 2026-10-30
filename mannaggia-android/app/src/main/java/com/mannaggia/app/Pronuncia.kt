@@ -24,7 +24,6 @@ object Pronuncia {
 
     /** Stress marks tuned on the phone's default voice: left out with another engine chosen in Options. */
     private val ACCENTI = mapOf(
-        "Penitenziagite" to "Penìtenziàgite",        // tested by the author on the Google voice: both accents needed
         "Eclissati" to "Eclìssati",                  // the stress on the first "i", not on the "a"
     )
 
