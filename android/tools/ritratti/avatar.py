@@ -2043,9 +2043,10 @@ def icona_launcher(zoom=5):
 
 
 def genera_grafica():
-    """The banner, the Play icon and the launcher icon, each in its place."""
+    """The banner (repo and Play feature graphic), the Play icon and the launcher icon."""
     (ROOT.parent / "docs/img").mkdir(parents=True, exist_ok=True)
     banner().save(ROOT.parent / "docs/img/banner.png", optimize=True)
+    banner().save(ROOT / "store/feature-graphic.png", optimize=True)
     icona_play().save(ROOT / "store/icon-512.png", optimize=True)
     res = ROOT / "app/src/main/res/drawable-nodpi"
     res.mkdir(exist_ok=True)
