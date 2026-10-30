@@ -7,7 +7,7 @@ compatibile con la GPLv3:
 2. ritaglia un quadrato attorno al volto (OpenCV YuNet), o in alto se non ne trova;
 3. riduce a 48x48 e a una tavolozza di pochi colori, senza dithering.
 
-Uso (venv con pillow, opencv-python-headless e numpy; dalla cartella mannaggia-android):
+Uso (venv con pillow, opencv-python-headless e numpy; dalla cartella android):
     python tools/ritratti/ritratti.py --nomi lista.txt --casuali 10 --out ~/mannaggia-ritratti-prova
 
 Crea <out>/<sha1(santo)[:12]>.png (lo stesso nome dei file audio), crediti.tsv e
@@ -33,7 +33,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageEnhance
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent.parent  # mannaggia-android/
+ROOT = HERE.parent.parent  # android/
 USER_AGENT = "mannaggia-ritratti/1.0 (https://github.com/demon86rm/mannaggia)"
 YUNET_URL = ("https://github.com/opencv/opencv_zoo/raw/main/models/"
              "face_detection_yunet/face_detection_yunet_2023mar.onnx")

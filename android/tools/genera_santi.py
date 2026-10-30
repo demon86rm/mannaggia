@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Genera app/src/main/assets/santi.txt a partire da Wikidata (dati CC0).
 
-Uso (dalla cartella mannaggia-android):
+Uso (dalla cartella android):
     python3 -I tools/genera_santi.py > app/src/main/assets/santi.txt
     python3 -I tools/genera_santi.py --feste app/src/main/assets/feste.tsv \\
         --solo app/src/main/assets/santi.txt

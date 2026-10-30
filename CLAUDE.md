@@ -1,12 +1,12 @@
 # Mannaggia
 
-Generatore di "Mannaggia <santo>!". Nella root ci sono lo script bash (`mannaggia.sh`) e quello Python (`mannaggia_py.py`); l'app Android sta in `mannaggia-android/`.
+Generatore di "Mannaggia <santo>!". Gli script storici (`mannaggia.sh`, `mannaggia_py.py`) stanno in `legacy/`, l'app Android in `android/`, la documentazione in `docs/`.
 
 ## Build Android
 - Il repo non ha `gradlew`: usa Gradle 9.8.1 installato a parte (AGP 9.4.1).
 - JDK: il JBR di Android Studio, con `JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"`.
 - Su WSL (desktop Windows): `JAVA_HOME=/snap/android-studio/current/jbr`, `ANDROID_HOME=~/Android/Sdk`, Gradle in `~/opt/gradle-9.8.1/bin/gradle`. Il debug keystore di WSL è diverso da quello del Mac: per installare sopra un APK compilato sul Mac va copiato `~/.android/debug.keystore` dal Mac.
-- Esegui i comandi da `mannaggia-android/`: `gradle assembleDebug` / `gradle bundleRelease`.
+- Esegui i comandi da `android/`: `gradle assembleDebug` / `gradle bundleRelease`.
 - La firma release legge `MANNAGGIA_STORE_FILE`, `MANNAGGIA_STORE_PASSWORD`, `MANNAGGIA_KEY_ALIAS` e `MANNAGGIA_KEY_PASSWORD` da `~/.gradle/gradle.properties`. Mai metterli nel repo.
 - Package `io.github.demon86rm.mannaggia`, target/compile SDK 36, min 24.
 
@@ -21,6 +21,7 @@ Generatore di "Mannaggia <santo>!". Nella root ci sono lo script bash (`mannaggi
 - Dopo ogni modifica ai filtri (santo/beato, religione) controlla a campione prefissi, numero di righe ed esclusioni.
 - `app/src/main/assets/feste.tsv` (santo del giorno) è generato dallo stesso script, solo per i santi già in `santi.txt`: `python3 -I tools/genera_santi.py --feste app/src/main/assets/feste.tsv --solo app/src/main/assets/santi.txt`. Non modificarlo a mano. Le correzioni (feste mancanti su Wikidata, santo del giorno imposto) vanno in `EXTRA_FEASTS` e `SAINT_OF_DAY` nello script.
 - `app/src/main/assets/avatar/` (ritratti pixel art dell'album, cornice animata, cornici speciali di alcuni leggendari elencate in `cornici.txt` e definite in `CORNICI`, come le fiamme di Giovanna d'Arco, cornici dell'opzione "Colorful" elencate in `cornici_colorful.txt` e definite in `COLORATE` (palma ai martiri non leggendari), cornici premio dei leggendari in `CORNICI_PREMIO` (Alloro, Vetrata, Gemme, Ognissanti, Canonica), retro segreto di San Giovanni Battista (`decollato.png`, vedi `Retro.kt`) e icone "gira" e "condividi", timbro "Nuova!", pulsanti "Mannaggia!", "Opzioni" e "Info", segnalibro dei preferiti, logo e titolo dello splash, `leggendari.txt`) è generato da `tools/ritratti/avatar.py`: `python tools/ritratti/avatar.py --tutti --app app/src/main/assets/avatar --cache tools/ritratti/tratti_wikidata.json` (venv `~/venv/ritratti` con pillow). Non modificarlo a mano: l'iconografia dei santi famosi sta in `FAMOSI`, le regole per gli altri in `regole()`. Va rigenerato se cambia `santi.txt`.
+- Il banner del repo (`docs/img/banner.png`, uguale alla feature graphic `store/feature-graphic.png`), l'icona del Play (`store/icon-512.png`) e l'icona dell'app (`res/drawable-nodpi/ic_launcher_foreground.png`) sono generati da `python tools/ritratti/avatar.py --grafica`: partono da `logo()` e dal titolo dello splash.
 - `app/src/main/res/raw/coro.ogg` (coro dei leggendari, ~3 s) è sintetizzato da `tools/suoni/coro.py`: `python tools/suoni/coro.py --out app/src/main/res/raw/coro.ogg` (venv `~/venv/ritratti`, ffmpeg). Nessun campione registrato: è originale, GPL.
 - `app/src/main/res/raw/trofeo.ogg` (jingle dei trofei) è sintetizzato da `tools/suoni/jingle.py`: `python tools/suoni/jingle.py --out app/src/main/res/raw/trofeo.ogg`.
 - Il testo della frase va impostato con `PhraseEffects.setText()`, non con `txtResult.text`: l'effetto Terminale lo riscrive mentre lo batte.

@@ -5,7 +5,7 @@ Un accordo di Re maggiore cantato su "aah": per ogni nota qualche voce leggermen
 stonata, con armoniche pesate sulle formanti della vocale "a" e vibrato; un
 luccichio acuto a meta'; riverbero da chiesa. Seme fisso: il file si rigenera uguale.
 
-Uso (venv con numpy, ffmpeg nel PATH; dalla cartella mannaggia-android):
+Uso (venv con numpy, ffmpeg nel PATH; dalla cartella android):
     python tools/suoni/coro.py --out app/src/main/res/raw/coro.ogg
 """
 

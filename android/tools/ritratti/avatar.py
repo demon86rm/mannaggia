@@ -14,7 +14,7 @@ tutta loro (CORNICI, es. le fiamme del rogo per Giovanna d'Arco). Con l'opzione
 "Colorful" dell'app anche gli altri santi hanno una cornice animata (COLORATE: bronzo,
 legno, arcobaleno, neon, vaporwave, ...; la palma ai martiri non leggendari), elencata in cornici_colorful.txt.
 
-Uso (venv con pillow; dalla cartella mannaggia-android):
+Uso (venv con pillow; dalla cartella android):
     python tools/ritratti/avatar.py --nomi lista.txt --out ~/mannaggia-avatar-prova
     python tools/ritratti/avatar.py --famosi --out ~/mannaggia-avatar-prova   # tutta la tabella
     python tools/ritratti/avatar.py --tutti --app app/src/main/assets/avatar \\
@@ -30,7 +30,7 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
@@ -2005,6 +2005,54 @@ def logo():
     return outline(c.img)
 
 
+def banner(zoom=7):
+    """The repo banner, 1024x500: the splash screen's logo, gothic title and subtitle on its red,
+    with a gold frame around."""
+    w, h = 1024, 500
+    img = Image.new("RGBA", (w, h), LOGO_RED + (255,))
+    big = lambda im: im.resize((im.width * zoom, im.height * zoom), Image.NEAREST)
+    mark, title = big(logo()), big(etichetta(CAPOLETTERA_M, "annaggia!", "nudo"))
+    x = (w - (mark.width + 40 + title.width)) // 2
+    img.alpha_composite(mark, (x, (h - mark.height) // 2))
+    tx, ty = x + mark.width + 40, (h - title.height) // 2 - 34
+    img.alpha_composite(title, (tx, ty))
+    d = ImageDraw.Draw(img)
+    font = ImageFont.truetype(str(ROOT / "app/src/main/res/font/unifraktur_maguntia.ttf"), 50)
+    d.text((tx + title.width // 2, ty + title.height + 44), "Un santo a caso, quando serve.",
+           font=font, fill=(255, 193, 7), anchor="mm")          # the subtitle's colour on the splash
+    for i, col in enumerate((GOLD_DARK, GOLD_LIGHT, GOLD_DARK)):
+        p = 6 * (i + 2)
+        d.rectangle((p, p, w - 1 - p, h - 1 - p), outline=col, width=6)
+    return img.convert("RGB")
+
+
+def icona_play(zoom=11):
+    """The Play icon, 512x512: the logo on the red background."""
+    img = Image.new("RGBA", (512, 512), LOGO_RED + (255,))
+    mark = logo().resize((40 * zoom, 38 * zoom), Image.NEAREST)
+    img.alpha_composite(mark, ((512 - mark.width) // 2, (512 - mark.height) // 2))
+    return img.convert("RGB")
+
+
+def icona_launcher(zoom=5):
+    """Foreground of the adaptive app icon, 432x432 (xxxhdpi): the logo within the safe zone."""
+    img = Image.new("RGBA", (432, 432), (0, 0, 0, 0))
+    mark = logo().resize((40 * zoom, 38 * zoom), Image.NEAREST)
+    img.alpha_composite(mark, ((432 - mark.width) // 2, (432 - mark.height) // 2))
+    return img
+
+
+def genera_grafica():
+    """The banner (repo and Play feature graphic), the Play icon and the launcher icon."""
+    (ROOT.parent / "docs/img").mkdir(parents=True, exist_ok=True)
+    banner().save(ROOT.parent / "docs/img/banner.png", optimize=True)
+    banner().save(ROOT / "store/feature-graphic.png", optimize=True)
+    icona_play().save(ROOT / "store/icon-512.png", optimize=True)
+    res = ROOT / "app/src/main/res/drawable-nodpi"
+    res.mkdir(exist_ok=True)
+    icona_launcher().save(res / "ic_launcher_foreground.png", optimize=True)
+
+
 def anteprima_timbro(out, zoom=8):
     """Save the stamp variants and the button, enlarged, for review."""
     out.mkdir(parents=True, exist_ok=True)
@@ -2290,10 +2338,14 @@ def main():
     ap.add_argument("--zoom", type=int, default=5)
     ap.add_argument("--colonne", type=int, default=8)
     ap.add_argument("--anteprima-timbro", action="store_true", help="varianti del timbro \"Nuova!\" e il pulsante in --out")
+    ap.add_argument("--grafica", action="store_true", help="banner del repo, icona del Play e icona dell'app")
     args = ap.parse_args()
     out = Path(args.out).expanduser()
     if args.anteprima_timbro:
         anteprima_timbro(out)
+        return
+    if args.grafica:
+        genera_grafica()
         return
     if args.tutti:
         if args.app:
