@@ -25,6 +25,13 @@ object Pronuncia {
     /** Stress marks tuned on the phone's default voice: left out with another engine chosen in Options. */
     private val ACCENTI = mapOf(
         "Eclissati" to "Eclìssati",                  // the stress on the first "i", not on the "a"
+        // Women called Elia, stressed on the "E": the prophet and the men keep "Elìa", so full names only.
+        "Elia Pulcheria" to "Èlia Pulcheria",
+        "Elia Eudocia" to "Èlia Eudocia",
+        "Elia Flaccilla" to "Èlia Flaccilla",
+        "Elia di Ohren" to "Èlia di Ohren",
+        "Elia di San Clemente" to "Èlia di San Clemente",
+        "Mesia Elia" to "Mesia Èlia",
     )
 
     private fun words(map: Map<String, String>) =
