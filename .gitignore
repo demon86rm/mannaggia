@@ -17,3 +17,6 @@ venv/
 
 # graphify knowledge graph (local)
 graphify-out/
+
+# Archify working folders (candidates, receipts); the published diagram lives in docs/
+.archify/
