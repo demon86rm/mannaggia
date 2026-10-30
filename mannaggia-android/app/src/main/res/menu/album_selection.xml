@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Album selection mode: add the selected cards to the favourites (or remove them). -->
+<!-- Album selection mode: add the selected cards to the favourites (or remove them); in the
+     favourites tab also compose a picture of them ("I miei santi"). -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_favourite"
         android:title="@string/fav_add"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/action_quadro"
+        android:title="@string/quadro_action"
+        android:visible="false"
+        app:showAsAction="ifRoom|withText" />
 </menu>

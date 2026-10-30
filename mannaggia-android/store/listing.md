@@ -49,6 +49,16 @@ L'elenco dei santi proviene da Wikidata (CC0). I caratteri gotici sono sotto SIL
 
 Umorismo da sistemisti, senza bestemmie.
 
+## Note di rilascio 2.1.2 (max 500 caratteri)
+
+• Opzione Colorful: una cornice animata per ogni figurina (contributo di lucatarik)
+• Per i martiri, una cornice dedicata
+• Colorful, cornice Martiri e Canonica si sbloccano col trofeo «Parroco» (album 25%)
+• «I miei santi»: un quadro con fino a 9 preferiti (PNG o GIF) da salvare o condividere
+• 3 nuove formule e trofeo «Evangelista» (reward: colore Pergamena)
+• Condividi con l'icona accanto a «Mannaggia!», o tieni premuta la frase per copiarla
+• Cerca nell'album; scegli la voce in Opzioni
+
 ## Note di rilascio 2.1.1 (max 500 caratteri)
 
 • Nuova schermata Info con novità, prossimi arrivi e crediti

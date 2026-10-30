@@ -1,5 +1,7 @@
 package com.mannaggia.app
 
+import android.content.Context
+
 /**
  * What the voice should read for a phrase, when the device text-to-speech would get it
  * wrong. The phrase on screen stays as it is; only the spoken text changes:
@@ -7,7 +9,8 @@ package com.mannaggia.app
  *   "San Carlo primo", "Santa Beatrice II" → "Santa Beatrice seconda"): a lone "I" is
  *   otherwise read as the letter;
  * - the Spanish "y" between two names ("Calvo y Calvo") is read "i", not "uai";
- * - single words the voice mispronounces get a phonetic spelling ([PAROLE]).
+ * - single words the voice mispronounces get a phonetic spelling ([PAROLE]);
+ * - stress marks for the default voice only ([ACCENTI]).
  */
 object Pronuncia {
 
@@ -19,7 +22,23 @@ object Pronuncia {
         "777" to "sette sette sette",                // the permissions, digit by digit
     )
 
-    private val WORDS = Regex("""\b(${PAROLE.keys.joinToString("|") { Regex.escape(it) }})\b""", RegexOption.IGNORE_CASE)
+    /** Stress marks tuned on the phone's default voice: left out with another engine chosen in Options. */
+    private val ACCENTI = mapOf(
+        "Eclissati" to "Eclìssati",                  // the stress on the first "i", not on the "a"
+        // Women called Elia, stressed on the "E": the prophet and the men keep "Elìa", so full names only.
+        "Elia Pulcheria" to "Èlia Pulcheria",
+        "Elia Eudocia" to "Èlia Eudocia",
+        "Elia Flaccilla" to "Èlia Flaccilla",
+        "Elia di Ohren" to "Èlia di Ohren",
+        "Elia di San Clemente" to "Èlia di San Clemente",
+        "Mesia Elia" to "Mesia Èlia",
+    )
+
+    private fun words(map: Map<String, String>) =
+        Regex("""\b(${map.keys.joinToString("|") { Regex.escape(it) }})\b""", RegexOption.IGNORE_CASE)
+
+    private val WORDS = words(PAROLE)
+    private val STRESSED = words(ACCENTI)
 
     /** A Roman numeral standing alone after a name (followed by a space, punctuation or the end). */
     private val ROMAN = Regex("""(?<=\s)(?=[IVXLCDM])(M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3}))(?=[\s!,.;:]|$)""")
@@ -37,8 +56,11 @@ object Pronuncia {
         "ventottesimo", "ventinovesimo", "trentesimo",
     )
 
-    /** The text to give to the voice for [phrase]. */
-    fun perVoce(phrase: String): String {
+    /**
+     * The text to give to the voice for [phrase]. The stress marks ([ACCENTI]) are tuned on the
+     * phone's default voice and left out with another engine chosen in Options; the rest always applies.
+     */
+    fun perVoce(context: Context, phrase: String): String {
         val female = FEMALE_TITLE.containsMatchIn(phrase)
         val numbers = ROMAN.replace(phrase) { m ->
             val n = romanValue(m.value)
@@ -46,7 +68,9 @@ object Pronuncia {
             if (female) word.dropLast(1) + "a" else word
         }
         val spanish = SPANISH_AND.replace(numbers, " i ")
-        return WORDS.replace(spanish) { m -> PAROLE.entries.first { it.key.equals(m.value, ignoreCase = true) }.value }
+        val fixed = WORDS.replace(spanish) { m -> PAROLE.entries.first { it.key.equals(m.value, ignoreCase = true) }.value }
+        if (Prefs.ttsEngine(context) != null) return fixed
+        return STRESSED.replace(fixed) { m -> ACCENTI.entries.first { it.key.equals(m.value, ignoreCase = true) }.value }
     }
 
     private fun romanValue(s: String): Int {

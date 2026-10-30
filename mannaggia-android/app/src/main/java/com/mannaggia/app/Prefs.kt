@@ -20,6 +20,7 @@ object Prefs {
 
     const val KEY_SHAKE = "shake"
     const val KEY_TTS = "tts"
+    const val KEY_TTS_ENGINE = "tts_engine"
     const val KEY_FONT = "font"
     /** font_values prefix of the fonts bundled in res/font (e.g. "font:medievalsharp"). */
     private const val BUNDLED_FONT = "font:"
@@ -36,6 +37,7 @@ object Prefs {
     const val KEY_THEME = "theme"
     const val KEY_CARD_ANIM = "card_anim"
     const val KEY_SPLASH_CHOIR = "splash_choir"
+    const val KEY_COLORFUL = "colorful"
     /** Album order (ALBUM_SORT_*) and which cards it shows (ALBUM_FILTER_*). */
     private const val KEY_ALBUM_SORT = "album_sort"
     private const val KEY_ALBUM_FILTER = "album_filter"
@@ -71,6 +73,7 @@ object Prefs {
         "inferno" to R.color.phrase_inferno,
         "porpora" to R.color.phrase_porpora,
         "incenso" to R.color.phrase_incenso,
+        "pergamena" to R.color.phrase_pergamena,
     )
 
     /** Glow radius, in dp, for the neon effect. */
@@ -83,8 +86,14 @@ object Prefs {
 
     fun ttsEnabled(context: Context) = prefs(context).getBoolean(KEY_TTS, false)
 
+    /** The TTS engine package chosen in Options, or null for the phone's default one. */
+    fun ttsEngine(context: Context): String? = prefs(context).getString(KEY_TTS_ENGINE, "").takeUnless { it.isNullOrEmpty() }
+
     /** Animate each new album card; legendary saints are animated anyway. */
     fun cardAnimEnabled(context: Context) = prefs(context).getBoolean(KEY_CARD_ANIM, true)
+
+    /** Animated frames for every card (Avatars.frameName), not only the legendary ones. */
+    fun colorfulEnabled(context: Context) = prefs(context).getBoolean(KEY_COLORFUL, false)
 
     /** The angelic choir on the splash screen (at the media volume). */
     fun splashChoirEnabled(context: Context) = prefs(context).getBoolean(KEY_SPLASH_CHOIR, true)

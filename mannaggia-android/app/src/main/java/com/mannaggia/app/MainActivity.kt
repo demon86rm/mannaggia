@@ -1,6 +1,8 @@
 package com.mannaggia.app
 
 import android.Manifest
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -19,6 +21,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.drawToBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
@@ -86,6 +89,8 @@ class MainActivity : AppCompatActivity() {
         }
         // Debug builds only: start with a given saint, e.g.
         // adb shell am start -n io.github.demon86rm.mannaggia.debug/com.mannaggia.app.MainActivity -e santo "San Carlo I di Fiandra"
+        // Debug builds only: pretend today is a given day for Retro, e.g. -e data 10-31.
+        if (BuildConfig.DEBUG) intent.getStringExtra("data")?.let { Retro.debugOggi = it }
         if (BuildConfig.DEBUG && !launchHandled) intent.getStringExtra("santo")?.let { santo ->
             binding.root.post { launchHandled = true; invokeSaint(Trofei.Fonte.PULSANTE) { santo } }
         }
@@ -100,6 +105,8 @@ class MainActivity : AppCompatActivity() {
             showSaintOfDay(saint)
         }
         binding.btnInfo.setOnClickListener { startActivity(Intent(this, InfoActivity::class.java)) }
+        binding.btnShare.setOnClickListener { shareInvocation() }
+        binding.txtResult.setOnLongClickListener { copyPhrase(); true }
         binding.btnSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
@@ -111,7 +118,17 @@ class MainActivity : AppCompatActivity() {
             binding.cardSlot, binding.cardFit, binding.imgStamp, binding.imgGlow, binding.cardFx,
             binding.btnAlbum, lifecycleScope,
             root = binding.root, topLimit = binding.btnSettings, phrase = binding.txtResult, button = binding.btnMannaggia,
-        )
+            flip = binding.btnFlip,
+        ) { saint, back ->
+            // San Giovanni Battista's secret back has its own phrase; the front gets his again.
+            // Each turn says it, when Pronuncia is on.
+            lifecycleScope.launch {
+                val phrase = if (back) Retro.FRASE else Mannaggia.phraseOf(this@MainActivity, saint)
+                PhraseEffects.setText(binding.txtResult, phrase)
+                shown(if (back) Retro.NOME else saint, phrase)
+                if (Prefs.ttsEnabled(this@MainActivity)) speakAndWait(phrase)
+            }
+        }
         // Trophy banners wait while a legendary card (with its choir) is on stage.
         trophyPop = TrophyPop(binding.trophyPop, lifecycleScope) { cardSlot.isHolding }
         binding.btnTrophies.setOnClickListener {
@@ -133,12 +150,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
-            // Debug builds only: long-press the ribbon to draw an unlocked special card (with its
-            // invocation, spoken if Pronuncia is on), or Santa Cunegonda if none is unlocked yet.
+            // Debug builds only: long-press the ribbon to unlock San Giovanni Battista's back (with
+            // its hint) and draw him, so the flip icon and the turn can be tried at once.
             binding.btnMannaggia.setOnLongClickListener {
-                invokeSaint(Trofei.Fonte.PULSANTE) {
-                    Trofei.unlockedSpecials(this).randomOrNull() ?: Trofei.SPECIALI.last()
-                }
+                Trofei.debugUnlockRetro(this)
+                invokeSaint(Trofei.Fonte.PULSANTE) { Retro.FRONTE }
                 true
             }
         }
@@ -148,6 +164,7 @@ class MainActivity : AppCompatActivity() {
             binding.btnInfo.setImageDrawable(Avatars.ribbonButton(this@MainActivity, "info"))
             binding.btnAlbum.setImageDrawable(Avatars.binder(this@MainActivity))
             binding.btnTrophies.setImageDrawable(Avatars.cup(this@MainActivity))
+            binding.btnShare.setImageDrawable(Avatars.shareIcon(this@MainActivity))
             binding.btnSaintOfDay.setImageDrawable(Avatars.saintOfDayIcon(this@MainActivity))
             binding.btnSaintOfDay.visibility = View.VISIBLE
         }
@@ -160,7 +177,18 @@ class MainActivity : AppCompatActivity() {
             if (!invokeSaint(Trofei.Fonte.SCUOTIMENTO)) announceTrophies()  // a busy shake can still unlock
         }
 
-        tts = TextToSpeech(this) { status ->
+        initTts()
+
+    }
+
+    /** The engine the voice was started with: when Options change it, the voice restarts (onResume). */
+    private var ttsEngine: String? = null
+
+    private fun initTts() {
+        tts?.shutdown()
+        ttsReady = false
+        ttsEngine = Prefs.ttsEngine(this)
+        tts = TextToSpeech(this, { status ->
             if (status == TextToSpeech.SUCCESS) {
                 val result = tts?.setLanguage(Locale.ITALIAN)
                 ttsReady = result != TextToSpeech.LANG_MISSING_DATA &&
@@ -174,14 +202,14 @@ class MainActivity : AppCompatActivity() {
                     override fun onStop(utteranceId: String?, interrupted: Boolean) { speechDone?.complete(Unit) }
                 })
             }
-        }
-
+        }, ttsEngine)
     }
 
     override fun onResume() {
         super.onResume()
         // Options may have changed in SettingsActivity.
         Prefs.applyPhraseStyle(binding.txtResult, themeTextColor)
+        if (Prefs.ttsEngine(this) != ttsEngine) initTts()
         // Refreshed on every resume, so it is right even after midnight.
         lifecycleScope.launch { showSaintOfDay(runCatching { Mannaggia.saintOfDay(this@MainActivity) }.getOrNull()) }
         // Trophies unlocked elsewhere (widget, tile, options, album) are announced here.
@@ -204,6 +232,7 @@ class MainActivity : AppCompatActivity() {
     private fun announceTrophies() {
         val unlocked = Trofei.takePending(this)
         trophyPop.show(unlocked)
+        if (Trofei.takeRetroNotice(this)) Toast.makeText(this, R.string.retro_notice, Toast.LENGTH_LONG).show()
         // A special card won with a trophy is "unwrapped": shown and spoken right away,
         // after the phrase in progress if there is one (see invokeSaint).
         newSpecials += unlocked.filter { it.ricompensa.tipo == Trofei.Tipo.FIGURINA }.map { it.ricompensa.valore }
@@ -229,6 +258,7 @@ class MainActivity : AppCompatActivity() {
                 special = true, animate = Prefs.cardAnimEnabled(this))
             val phrase = Mannaggia.phraseOf(this@MainActivity, special)
             PhraseEffects.setText(binding.txtResult, phrase)
+            shown(special, phrase)
             if (Prefs.ttsEnabled(this)) speakAndWait(phrase) else delay(SHOW_ONLY_COOLDOWN_MS)
             binding.btnMannaggia.isEnabled = true
         }
@@ -245,6 +275,35 @@ class MainActivity : AppCompatActivity() {
         val number = if (special) Trofei.specialNumber(saint) else Avatars.number(this, saint)
         cardSlot.show(saint, number, isNew, legendary, special, Prefs.cardAnimEnabled(this))
         return isNew && legendary
+    }
+
+    /** The saint and phrase on screen, for sharing and copying (null while an invocation starts). */
+    private var shownSaint: String? = null
+    private var shownPhrase: String? = null
+
+    private fun shown(saint: String?, phrase: String?) {
+        shownSaint = saint
+        shownPhrase = phrase
+        binding.btnShare.visibility = if (phrase != null) View.VISIBLE else View.INVISIBLE
+    }
+
+    /** Share the card on screen (portrait and frame, without the bookmark) with the phrase. */
+    private fun shareInvocation() {
+        val saint = shownSaint ?: return
+        val phrase = shownPhrase ?: return
+        val bookmark = binding.cardSlot.btnBookmark
+        val was = bookmark.visibility
+        bookmark.visibility = View.INVISIBLE
+        val image = binding.cardSlot.cardImage.drawToBitmap()
+        bookmark.visibility = was
+        Condividi.card(this, saint, image, phrase)
+    }
+
+    /** Long press on the phrase: copy it (Android 13+ confirms on its own). */
+    private fun copyPhrase() {
+        val phrase = shownPhrase ?: return
+        getSystemService(ClipboardManager::class.java).setPrimaryClip(ClipData.newPlainText("Mannaggia", phrase))
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) Toast.makeText(this, R.string.phrase_copied, Toast.LENGTH_SHORT).show()
     }
 
     private fun showSaintOfDay(saint: String?) {
@@ -292,6 +351,7 @@ class MainActivity : AppCompatActivity() {
         binding.progress.visibility = View.VISIBLE
         binding.btnMannaggia.isEnabled = false
         PhraseEffects.setText(binding.txtResult, "")
+        shown(null, null)
 
         currentJob = lifecycleScope.launch {
             val result = runCatching { pick() }
@@ -309,6 +369,7 @@ class MainActivity : AppCompatActivity() {
                     announceTrophies()
                     val phrase = Mannaggia.phraseOf(this@MainActivity, saint)
                     PhraseEffects.setText(binding.txtResult, phrase)
+                    shown(saint, phrase)
                     if (Prefs.ttsEnabled(this@MainActivity)) {
                         if (choir) cardSlot.awaitChoir(CHOIR_MAX_WAIT_MS)  // first the choir, then the voice
                         speakAndWait(phrase)
@@ -330,13 +391,13 @@ class MainActivity : AppCompatActivity() {
 
     /** Speak [text] and suspend until it has been spoken (or [SPEECH_TIMEOUT_MS] at most). */
     private suspend fun speakAndWait(text: String) {
-        if (BuildConfig.DEBUG) Log.d("Pronuncia", "$text -> ${Pronuncia.perVoce(text)}")
+        if (BuildConfig.DEBUG) Log.d("Pronuncia", "$text -> ${Pronuncia.perVoce(this, text)}")
         if (!ttsReady) {
             Toast.makeText(this, R.string.tts_unavailable, Toast.LENGTH_SHORT).show()
             return
         }
         val done = CompletableDeferred<Unit>().also { speechDone = it }
-        if (tts?.speak(Pronuncia.perVoce(text), TextToSpeech.QUEUE_FLUSH, null, "mannaggia") != TextToSpeech.SUCCESS) return
+        if (tts?.speak(Pronuncia.perVoce(this, text), TextToSpeech.QUEUE_FLUSH, null, "mannaggia") != TextToSpeech.SUCCESS) return
         // Safety net: some engines never report the end of an utterance.
         withTimeoutOrNull(SPEECH_TIMEOUT_MS) { done.await() }
     }

@@ -33,6 +33,15 @@
             android:title="@string/pref_tts_title"
             android:summary="@string/pref_tts_summary"
             app:iconSpaceReserved="false" />
+
+        <!-- The voice engine: the phone's default, or another TTS app installed (list filled in code). -->
+        <ListPreference
+            android:key="tts_engine"
+            android:defaultValue=""
+            android:dependency="tts"
+            android:title="@string/pref_tts_engine_title"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -94,6 +103,13 @@
             android:title="@string/pref_effect_title"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreferenceCompat
+            android:key="colorful"
+            android:defaultValue="false"
+            android:title="@string/pref_colorful_title"
+            android:summary="@string/pref_colorful_summary"
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
     <PreferenceCategory

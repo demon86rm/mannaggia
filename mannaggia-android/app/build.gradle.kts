@@ -14,8 +14,8 @@ android {
         applicationId = "io.github.demon86rm.mannaggia"
         minSdk = 24
         targetSdk = 36
-        versionCode = 7
-        versionName = "2.1.1"
+        versionCode = 8
+        versionName = "2.1.2"
     }
 
     signingConfigs {
