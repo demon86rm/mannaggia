@@ -57,7 +57,7 @@ Mannaggia è gratuita e senza sponsor, e così resterà. Puoi aiutarla così:
 
 - **[Segnala un problema o proponi un'idea](https://github.com/demon86rm/mannaggia/issues/new/choose)**, anche dall'app (Opzioni → Progetto).
 - **Fai fork e apri una pull request**: santi dimenticati, achievement da inventare, correzioni. Le regole del progetto sono in [`CONTRIBUTING.md`](CONTRIBUTING.md).
-- **Curioso di come è fatta?** La [mappa dei componenti](docs/architettura-app.html) va scaricata e aperta nel browser: ogni blocco porta alle righe di codice da cui viene.
+- **Curioso di come è fatta?** Guarda la [mappa dei componenti](https://demon86rm.github.io/mannaggia/architettura/): ogni blocco porta alle righe di codice da cui viene (il file è in [`docs/architettura-app.html`](docs/architettura-app.html)).
 - **[Offrimi un caffè su Ko-fi](https://ko-fi.com/demon86rm)**: aiuta a coprire i costi (account sviluppatore, ore di GPU per la voce) o è semplicemente un grazie.
 
 ## Compilare da sorgente
@@ -69,7 +69,7 @@ cd android
 gradle assembleDebug
 ```
 
-Servono Gradle 9.8 o superiore (il repo non include `gradlew`) e un JDK 17 o superiore. La guida completa è in [`docs/sviluppo.md`](docs/sviluppo.md), la mappa dei componenti in [`docs/architettura-app.html`](docs/architettura-app.html).
+Servono Gradle 9.8 o superiore (il repo non include `gradlew`) e un JDK 17 o superiore. La guida completa è in [`docs/sviluppo.md`](docs/sviluppo.md), la mappa dei componenti in [`docs/architettura-app.html`](docs/architettura-app.html) ([da vedere online](https://demon86rm.github.io/mannaggia/architettura/)).
 
 ## Le origini
 
