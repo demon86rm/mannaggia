@@ -38,6 +38,10 @@ Generatore di "Mannaggia <santo>!". Gli script storici (`mannaggia.sh`, `mannagg
 - Il link è input non fidato: si accettano solo nomi di `santi.txt`. Il santo sta nel frammento `#` (il pulsante della pagina usa la query, perché `intent://` occupa il frammento).
 - Non rinominare l'account GitHub: il dominio dei link è `demon86rm.github.io`.
 
+## Mappa dei componenti
+- `docs/architettura-app.html` è generata con Archify (skill `archify`, candidato in `.archify/`, fuori dal repo) e fissata a un commit di main.
+- Per vederla nel browser c'è una copia identica in `mannaggia/architettura/index.html` del repo `demon86rm/demon86rm.github.io` (`https://demon86rm.github.io/mannaggia/architettura/`): a ogni aggiornamento della mappa va ricopiata anche lì. Non attivare GitHub Pages sul repo `mannaggia`: coprirebbe `demon86rm.github.io/mannaggia/` del sito, con la pagina del progetto e quella dei doni.
+
 ## Shell
 - zsh: nei comandi da incollare niente `!` tra virgolette doppie (history expansion). Usa le virgolette singole e `'\''` per gli apostrofi.
 - Metti tra virgolette singole i glob negli argomenti, ad es. `--include='*.kt'`.
