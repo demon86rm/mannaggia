@@ -10,19 +10,19 @@
 </p>
 
 <p align="center">
-  <a href="https://forms.gle/wHWbGGDAmRQnpswL7"><img src="https://img.shields.io/date/1794092340?label=fine%20test%20chiuso&color=8B0000" alt="Tempo alla fine del test chiuso"></a>
+  <a href="https://play.google.com/store/apps/details?id=io.github.demon86rm.mannaggia"><img src="https://img.shields.io/badge/Google%20Play-scarica-8B0000?logo=googleplay&logoColor=white" alt="Scarica da Google Play"></a>
   <img src="https://img.shields.io/badge/Android-7.0%2B-8B0000?logo=android&logoColor=white" alt="Android 7.0 o superiore">
   <a href="LICENSE"><img src="https://img.shields.io/badge/licenza-GPLv3-blue" alt="Licenza GPLv3"></a>
   <a href="https://ko-fi.com/demon86rm"><img src="https://img.shields.io/badge/Ko--fi-offrimi%20un%20caff%C3%A8-ff5e5b?logo=ko-fi&logoColor=white" alt="Ko-fi"></a>
 </p>
 
-> 🇬🇧 **In short:** Mannaggia is a free, open-source, ad-free Android app that curses on your behalf by summoning a random Catholic saint ("Mannaggia San Pietro!") whenever things go wrong. It is the mobile heir of `mannaggia.sh`, a cult script among Italian sysadmins. Every saint you invoke becomes a pixel-art card in your album, with secret trophies to win and cards to give to friends. It works fully offline, needs no network permission and collects no data. The app is in Italian. Want to help it reach Google Play? [Join the closed test](https://forms.gle/wHWbGGDAmRQnpswL7).
+> 🇬🇧 **In short:** Mannaggia is a free, open-source, ad-free Android app that curses on your behalf by summoning a random Catholic saint ("Mannaggia San Pietro!") whenever things go wrong. It is the mobile heir of `mannaggia.sh`, a cult script among Italian sysadmins. Every saint you invoke becomes a pixel-art card in your album, with secret trophies to win and cards to give to friends. It works fully offline, needs no network permission and collects no data. The app is in Italian. [Get it on Google Play](https://play.google.com/store/apps/details?id=io.github.demon86rm.mannaggia).
 
 ## Scarica
 
-**[⬇️ Scarica l'APK](https://github.com/demon86rm/mannaggia/releases/latest/download/mannaggia.apk)** · [tutte le versioni](https://github.com/demon86rm/mannaggia/releases)
+**[▶️ Scarica da Google Play](https://play.google.com/store/apps/details?id=io.github.demon86rm.mannaggia)**: si installa e si aggiorna come qualsiasi altra app.
 
-**Sul Google Play Store manca poco**: Google chiede un test chiuso con almeno 12 tester per 14 giorni. Hai un telefono Android e un account Google? **[Diventa tester](https://forms.gle/wHWbGGDAmRQnpswL7)**: ti aggiungo alla lista e ti scrivo quando puoi installarla.
+Non usi il Play Store? [Scarica l'APK](https://github.com/demon86rm/mannaggia/releases/latest/download/mannaggia.apk) · [tutte le versioni](https://github.com/demon86rm/mannaggia/releases)
 
 ## Cosa fa
 
