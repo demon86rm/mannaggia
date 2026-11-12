@@ -1127,7 +1127,7 @@ San Vladimir Pavlovič Palej
 San Vsevolod di Pskov
 Sant'Adela di Pfalzel
 Sant'Adriano di Nicomedia
-Sant'Ageltrude
+Beato Bernardo II di Baden
 Sant'Agnese di Montepulciano
 Sant'Agrippino di Alessandria
 Sant'Alipio lo Stilita
@@ -5420,4 +5420,3 @@ Santa Roswitha di Gandersheim
 Santa Zenobia
 Santo Stratonicus
 Santo Svāmī Pranvananda Saraswati
-Beato Bernardo II di Baden

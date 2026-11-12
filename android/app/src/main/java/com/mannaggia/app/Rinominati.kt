@@ -12,6 +12,10 @@ package com.mannaggia.app
 object Rinominati {
 
     private val RINOMINATI = mapOf(
+        // After 2.1.2: Ageltrude, an empress, is not a saint (a wrong Wikidata entry, see EXCLUDE in
+        // tools/genera_santi.py). Beato Bernardo II di Baden takes her place and her card number,
+        // so whoever had her card keeps it, with its discovery date.
+        "Sant'Ageltrude" to "Beato Bernardo II di Baden",
         "Beato Saint Richard Martin" to "Beato Richard Martin",
         "San Saint Amun" to "Sant'Amun",
         "San Saint Antide" to "Sant'Antide",
