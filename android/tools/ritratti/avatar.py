@@ -349,6 +349,9 @@ FAMOSI = {
                                    abito="moderno", colore_abito=(90, 90, 110), attributo="bastone"),
     "San Carlo Acutis": T(eta="giovane", capelli="ricci", colore_capelli="castano",
                           abito="moderno", colore_abito=(170, 40, 50), attributo="nessuno"),
+    # The jazz saxophonist, canonized by the African Orthodox Church (Wikidata marks him as a saint).
+    "San John Coltrane": T(pelle=4, capelli="corti", colore_capelli="nero",
+                           abito="moderno", colore_abito=(52, 54, 66), attributo="sassofono"),
 }
 
 # Figurine speciali fuori catalogo (S1..S7), sbloccabili solo con i trofei.
@@ -1051,6 +1054,18 @@ def at_terminale(c):  # portatile con il prompt verde
     c.line([(30, 37), (32, 37)], (90, 230, 110)); c.px(34, 37, (90, 230, 110))   # "$ _"
     c.line([(30, 40), (38, 40)], (60, 170, 80))
     c.rect((26, 44, 47, 46), (110, 114, 124))
+
+
+def at_sassofono(c):  # tenor sax held at the side: crook and mouthpiece up, body down, flared bell turned up
+    BRASS, BRASS_DARK, BRASS_LIGHT = (226, 176, 64), (164, 116, 34), (250, 222, 140)
+    c.line([(32, 21), (35, 24)], BRASS_DARK); c.px(31, 20, BLACK)                  # crook, mouthpiece
+    c.line([(36, 24), (37, 41)], BRASS, 3)                                          # body
+    c.line([(37, 43), (42, 42)], BRASS, 3)                                          # U-bend
+    c.poly([(40, 42), (44, 42), (46, 31), (39, 31)], BRASS)                         # the bell, flaring upwards
+    c.line([(39, 31), (46, 31)], BRASS_DARK); c.line([(40, 32), (45, 32)], (70, 50, 22))   # its rim and opening
+    for y in (28, 32, 36, 40):
+        c.px(35, y, BRASS_DARK)                                                     # keys
+    c.line([(37, 25), (38, 40)], BRASS_LIGHT)                                       # lit edge
 
 
 def at_clessidra(c):
