@@ -40,8 +40,11 @@ FEMALE = {"Q6581072", "Q1052281"}  # femmina, donna transgender
 # L'ebraismo resta: figure bibliche come San Giuseppe sono marcate cosi'.
 NON_CHRISTIAN = ["Q9089", "Q432", "Q9603", "Q748", "Q9316"]
 
-# Voci escluse a mano: Shu'ayb (profeta islamico/druso marcato come santo).
-EXCLUDE = {"Q982867"}
+# Voci escluse a mano: qid -> nome nell'app (None se non e' mai stato in santi.txt).
+# - Shu'ayb: profeta islamico/druso marcato come santo.
+# - Ageltrude, imperatrice (IX secolo): "santo" solo per un dato importato da de.wikipedia, la voce
+#   italiana non parla di santita'. Tolta dopo l'uscita: --aggiungi la toglie anche da santi.txt.
+EXCLUDE = {"Q982867": None, "Q515982": "Sant'Ageltrude"}
 
 # Voci aggiunte a mano: santi o beati a cui Wikidata non da' lo stato di santita' (P411), quindi
 # la query non li trova. Qid -> etichetta italiana, santo (True) o beato (False), femmina.
@@ -210,14 +213,15 @@ def main():
                                              "EXTRA_PEOPLE, senza Wikidata (le altre feste restano le stesse)")
     ap.add_argument("--correggi", help="rifà i titoli dei nomi di questo santi.txt, senza Wikidata "
                                        "(i santi restano gli stessi, cosi' l'album non cambia)")
-    ap.add_argument("--aggiungi", help="i nomi di questo santi.txt piu' le voci di EXTRA_PEOPLE, senza "
-                                       "Wikidata (gli altri santi restano gli stessi)")
+    ap.add_argument("--aggiungi", help="i nomi di questo santi.txt piu' le voci di EXTRA_PEOPLE, meno quelle "
+                                       "di EXCLUDE, senza Wikidata (gli altri santi restano gli stessi)")
     args = ap.parse_args()
     if args.correggi:
         print_names(retitle(args.correggi))
         return
     if args.aggiungi:
-        print_names(read_names(args.aggiungi) | {display_name(extra_person(*e)) for e in EXTRA_PEOPLE.values()})
+        print_names((read_names(args.aggiungi) | {display_name(extra_person(*e)) for e in EXTRA_PEOPLE.values()})
+                    - set(EXCLUDE.values()))
         return
     if args.feste and args.aggiungi_feste:
         add_extra_feasts(args.aggiungi_feste, args.feste)
@@ -241,10 +245,11 @@ def print_names(names):
 
 def add_extra_feasts(old_path, path):
     """The feasts of [old_path] plus the EXTRA_FEASTS of the EXTRA_PEOPLE, each at the end of its day
-    (they have no sitelinks from the feast query, as in write_feasts)."""
+    (they have no sitelinks from the feast query, as in write_feasts), minus those of EXCLUDE."""
     lines = open(old_path, encoding="utf-8").read().splitlines(keepends=True)
     head = [l for l in lines if l.startswith("#")]
-    body = [l for l in lines if l.strip() and not l.startswith("#")]
+    esclusi = set(EXCLUDE.values())
+    body = [l for l in lines if l.strip() and not l.startswith("#") and l.rstrip("\n").split("\t")[1] not in esclusi]
     for name in sorted(display_name(extra_person(*e)) for e in EXTRA_PEOPLE.values()):
         body += [f"{day}\t{name}\n" for day in EXTRA_FEASTS.get(name, []) if f"{day}\t{name}\n" not in body]
     body.sort(key=lambda l: l[:5])  # stable: within a day the old order stays, the new ones go last
