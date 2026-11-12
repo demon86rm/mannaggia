@@ -195,7 +195,7 @@ Beata Maria Assunta Pallotta	neon
 Beata Maria Barba	smeraldo
 Beata Maria Bolognesi	bronzo
 Beata Maria Caterina di Sant'Agostino	bronzo
-Beata Maria Clementina Anuarite Nengapeta	bronzo
+Beata Maria Clementina Anuarite Nengapeta	palma
 Beata Maria Climent Mateu	neon
 Beata Maria Corsini	legno
 Beata Maria Costanza Panas	vaporwave
@@ -554,7 +554,7 @@ Beato Daniel de Grammont	lapislazzuli
 Beato Daniele de Ungrispach	arcobaleno
 Beato Dariusz Acosta Zurita	palma
 Beato David Carlos Marañón	palma
-Beato Davide Okelo	arcobaleno
+Beato Davide Okelo	palma
 Beato Dermot O'Hurley	palma
 Beato Diego Giuseppe da Cadice	porpora
 Beato Diego Luis de San Vitores	palma
@@ -719,7 +719,7 @@ Beato Giacomo da Ghazir	arcobaleno
 Beato Giacomo da Ulma	bronzo
 Beato Giacomo da Viterbo	arcobaleno
 Beato Gianluigi da Besançon	neon
-Beato Gildo Irwa	arcobaleno
+Beato Gildo Irwa	palma
 Beato Gilles von Saumur	bronzo
 Beato Gioacchino Piccolomini	bronzo
 Beato Gioacchino da Fiore	bronzo
@@ -1513,7 +1513,7 @@ San Carantoco	legno
 San Carlo Acutis	arcobaleno
 San Carlo Borromeo	porpora
 San Carlo I di Fiandra	palma
-San Carlo Lwanga	smeraldo
+San Carlo Lwanga	palma
 San Carlo da Sezze	lapislazzuli
 San Carlo di Sant'Andrea	lapislazzuli
 San Carlomanno	neon
@@ -2443,7 +2443,7 @@ San Josemaría Escrivá de Balaguer	bronzo
 San Josep Manyanet i Vives	bronzo
 San Joseph Gérard	smeraldo
 San Joseph Marchand	neon
-San Joseph Mukasa	legno
+San Joseph Mukasa	palma
 San José Gabriel del Rosario Brochero	smeraldo
 San José Gregorio Hernández	smeraldo
 San José María Díaz Sanjurjo	palma
@@ -2478,7 +2478,7 @@ San Kaspar Stanggassinger	smeraldo
 San Kegham Parseghian	lapislazzuli
 San Kevin di Glendalough	lapislazzuli
 San Kirion II	palma
-San Kizito	neon
+San Kizito	palma
 San Krikor Zohrab	palma
 San Kuriakose Elias Chavara	arcobaleno
 San Ladislao I d'Ungheria	smeraldo
@@ -2570,7 +2570,7 @@ San Lorenzo I	arcobaleno
 San Lorenzo Maiorano	vaporwave
 San Lorenzo Maria di San Francesco Saverio	lapislazzuli
 San Lorenzo O'Toole	neon
-San Lorenzo Ruiz	porpora
+San Lorenzo Ruiz	palma
 San Lorenzo da Brindisi	porpora
 San Lorenzo da Frazzanò	legno
 San Lorenzo di Canterbury	lapislazzuli
@@ -2840,7 +2840,7 @@ San Montano di Cartagine	smeraldo
 San Montano di Toledo	legno
 San Monulphe de Maastricht	vaporwave
 San Mosè di Corene	porpora
-San Mosè l'Etiope	vaporwave
+San Mosè l'Etiope	palma
 San Muci de Bizanci	neon
 San Mungo di Glasgow	bronzo
 San Munn	legno
@@ -3858,7 +3858,7 @@ Sant'Agostino Roscelli	legno
 Sant'Agostino Schoeffler	smeraldo
 Sant'Agostino Webster	lapislazzuli
 Sant'Agostino Yi Kwang-hŏn	palma
-Sant'Agostino Zhao Rong	porpora
+Sant'Agostino Zhao Rong	palma
 Sant'Agostino di Canterbury	arcobaleno
 Sant'Agricola	neon
 Sant'Agricola di Avignone	smeraldo
@@ -3981,7 +3981,7 @@ Sant'Amatore di Autun	legno
 Sant'Amatore di Auxerre	smeraldo
 Sant'Amazio di Reims	arcobaleno
 Sant'Ambrogio Autperto	bronzo
-Sant'Ambrogio Kibuuka	lapislazzuli
+Sant'Ambrogio Kibuuka	palma
 Sant'Ambrogio Traversari	bronzo
 Sant'Ambrogio di Alessandria	porpora
 Sant'Ambrogio di Cahors	neon
@@ -4025,7 +4025,7 @@ Sant'Andrea Bogoljubskij	palma
 Sant'Andrea Corsini	bronzo
 Sant'Andrea Dũng Lạc	neon
 Sant'Andrea Guasconi	smeraldo
-Sant'Andrea Kaggwa	lapislazzuli
+Sant'Andrea Kaggwa	palma
 Sant'Andrea Kim Taegon	palma
 Sant'Andrea Zoerard	arcobaleno
 Sant'Andrea da Fiesole Scoto	vaporwave

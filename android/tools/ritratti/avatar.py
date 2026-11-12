@@ -39,7 +39,7 @@ S = 48  # lato dell'avatar
 # --- Tavolozza ----------------------------------------------------------------
 
 OUTLINE = (34, 24, 32)
-SKINS = [(246, 208, 176), (234, 186, 146), (212, 156, 112), (172, 116, 78), (120, 80, 54)]
+SKINS = [(246, 208, 176), (234, 186, 146), (212, 156, 112), (172, 116, 78), (120, 80, 54), (90, 58, 40)]
 HAIRS = {"nero": (40, 32, 30), "castano": (104, 66, 40), "biondo": (214, 172, 92),
          "rosso": (160, 72, 36), "grigio": (150, 146, 144), "bianco": (232, 228, 220)}
 GOLD, GOLD_DARK, GOLD_LIGHT = (232, 184, 56), (176, 124, 28), (252, 228, 132)
@@ -349,6 +349,37 @@ FAMOSI = {
                                    abito="moderno", colore_abito=(90, 90, 110), attributo="bastone"),
     "San Carlo Acutis": T(eta="giovane", capelli="ricci", colore_capelli="castano",
                           abito="moderno", colore_abito=(170, 40, 50), attributo="nessuno"),
+    # Saints of other peoples (skin in PELLE): traits from their best-known images, 2026-11-12.
+    "Santa Giuseppina Bakhita": T(donna=True, copricapo="velo", colore_velo=BLACK, abito="suora", attributo="nessuno"),
+    "San Mosè l'Etiope": T(eta="anziano", capelli="ricci", colore_capelli="bianco", barba="lunga", abito="saio",
+                           colore_abito=(96, 78, 62), attributo="bastone", martire=True),
+    "Beata Maria Clementina Anuarite Nengapeta": T(donna=True, eta="giovane", copricapo="velo", colore_velo=WHITE,
+                                                   abito="suora", attributo="palma", martire=True),
+    "Beato Isidore Bakanja": T(eta="giovane", capelli="ricci", colore_capelli="nero", abito="tunica",
+                               colore_abito=WHITE, attributo="palma", martire=True),
+    "Santa Sara la Nera": T(donna=True, copricapo="velo", colore_velo=(56, 96, 176), abito="tunica",
+                            colore_abito=(178, 140, 60), attributo="nessuno"),
+    "San Martino de Porres": T(capelli="ricci", colore_capelli="nero", abito="domenicano", attributo="scopa"),
+    **{n: T(eta=e, capelli="ricci", colore_capelli="nero", abito="tunica", colore_abito=WHITE,
+            attributo="palma", martire=True)
+       for n, e in (("San Carlo Lwanga", "giovane"), ("San Kizito", "giovane"), ("San Joseph Mukasa", "adulto"),
+                    ("San Gyaviira Mayanja Musoke", "giovane"), ("Sant'Achilleo Kiwanuka", "giovane"),
+                    ("Sant'Ambrogio Kibuuka", "giovane"), ("Sant'Andrea Kaggwa", "adulto"),
+                    ("Beato Davide Okelo", "giovane"), ("Beato Gildo Irwa", "giovane"))},
+    "Sant'Andrea Kim Taegon": T(eta="giovane", capelli="corti", colore_capelli="nero", abito="tunica",
+                                colore_abito=(212, 224, 236), attributo="palma", martire=True),
+    "San Paolo Miki": T(capelli="corti", colore_capelli="nero", abito="talare", attributo="croce", martire=True),
+    "Sant'Agostino Zhao Rong": T(capelli="corti", colore_capelli="nero", abito="talare", attributo="palma", martire=True),
+    "San Lorenzo Ruiz": T(capelli="corti", colore_capelli="nero", abito="tunica", colore_abito=WHITE,
+                          attributo="palma", martire=True),
+    "Santa Kateri Tekakwitha": T(donna=True, eta="giovane", capelli="lunghi", colore_capelli="nero", abito="tunica",
+                                 colore_abito=(138, 90, 58), attributo="giglio"),
+    "San Juan Diego Cuauhtlatoatzin": T(capelli="lunghi", colore_capelli="nero", abito="tunica",
+                                        colore_abito=(200, 168, 120), attributo="rosa"),
+    "San Charbel Makhluf": T(eta="anziano", capelli="nessuno", colore_capelli="bianco", barba="lunga",
+                             copricapo="cappuccio", abito="benedettino", attributo="nessuno"),
+    "San Kuriakose Elias Chavara": T(capelli="corti", colore_capelli="nero", barba="corta", abito="talare",
+                                     colore_abito=WHITE, attributo="libro"),
     # The jazz saxophonist, canonized by the African Orthodox Church (Wikidata marks him as a saint).
     "San John Coltrane": T(pelle=4, capelli="corti", colore_capelli="nero",
                            abito="moderno", colore_abito=(52, 54, 66), attributo="sassofono"),
@@ -855,6 +886,13 @@ def at_coltello(c):
     c.line([(41, 36), (41, 43)], WOOD, 2)
 
 
+def at_scopa(c):  # San Martino de Porres's broom
+    c.line([(34, 18), (40, 38)], WOOD, 2)
+    c.poly([(37, 37), (44, 35), (47, 47), (39, 47)], (200, 160, 80))
+    for x in (40, 42, 44):
+        c.line([(x, 39), (x + 1, 47)], (150, 116, 56))
+
+
 def at_bastone(c):
     c.line([(42, 8), (41, 47)], WOOD, 3)
 
@@ -1131,9 +1169,34 @@ def categoria(t):
     return None
 
 
+# Skin set by hand: the name hash picks only among the 3 lightest SKINS, and Wikidata has no reliable
+# data for it. Checked on the Wikidata images (2026-11-12); more come from the users' reports.
+# Value: an index in SKINS or an RGB. These saints also get black hair, unless old or set in FAMOSI.
+PELLE = {
+    "Santa Giuseppina Bakhita": 5, "San Mosè l'Etiope": 5, "Beata Maria Clementina Anuarite Nengapeta": 5,
+    "Beato Isidore Bakanja": 5, "Santa Sara la Nera": 4, "San Martino de Porres": 4, "Sant'Agostino d'Ippona": 3,
+    # the martyrs of Uganda in the list
+    "San Carlo Lwanga": 5, "San Kizito": 4, "San Joseph Mukasa": 5, "San Gyaviira Mayanja Musoke": 4,
+    "Sant'Achilleo Kiwanuka": 5, "Sant'Ambrogio Kibuuka": 4, "Sant'Andrea Kaggwa": 5, "Beato Davide Okelo": 4,
+    "Beato Gildo Irwa": 5,
+    "Sant'Andrea Kim Taegon": (226, 180, 140), "San Paolo Miki": (220, 174, 132), "Sant'Agostino Zhao Rong": (216, 168, 126),
+    "San Lorenzo Ruiz": (192, 138, 94), "Santa Kateri Tekakwitha": (176, 118, 80),
+    "San Juan Diego Cuauhtlatoatzin": (168, 112, 74), "San Charbel Makhluf": (216, 168, 128),
+    "San Kuriakose Elias Chavara": (154, 102, 68),
+}
+
+
+def pelle_di(name, t):
+    p = PELLE.get(name, t.pelle)
+    if p is None:
+        p = [0, 1, 1, 2][h(name, "pelle") % 4]
+    return SKINS[p] if isinstance(p, int) else p
+
+
 def render(name, t):
-    skin = SKINS[t.pelle if t.pelle is not None else [0, 1, 1, 2][h(name, "pelle") % 4]]
-    hair = HAIRS[t.colore_capelli or ["nero", "castano", "castano", "biondo", "rosso", "nero"][h(name, "capelli") % 6]]
+    skin = pelle_di(name, t)
+    hair = HAIRS[t.colore_capelli or ("nero" if name in PELLE else None)
+                 or ["nero", "castano", "castano", "biondo", "rosso", "nero"][h(name, "capelli") % 6]]
     if t.eta == "anziano" and not t.colore_capelli:
         hair = HAIRS["grigio" if h(name, "grigio") % 2 else "bianco"]
     robe = t.colore_abito or {
@@ -1168,7 +1231,7 @@ def decollato():
     out, no blood. Same traits and seed as his front."""
     name = "San Giovanni Battista"
     t = FAMOSI[name]
-    skin = mix(SKINS[t.pelle if t.pelle is not None else [0, 1, 1, 2][h(name, "pelle") % 4]], (236, 232, 226), 0.35)
+    skin = mix(pelle_di(name, t), (236, 232, 226), 0.35)
     hair = HAIRS[t.colore_capelli]
     bg = BG_CATEGORIA.get(categoria(t)) or BACKGROUNDS[h(name, "sfondo") % len(BACKGROUNDS)]
     halo = Canvas()
