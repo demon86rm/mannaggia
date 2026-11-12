@@ -7,7 +7,8 @@ Uso (dalla cartella android):
         --solo app/src/main/assets/santi.txt
 
 Interroga l'endpoint SPARQL di Wikidata per le persone con stato di
-canonizzazione "santo" o "beato" che hanno un'etichetta in italiano,
+canonizzazione "santo" o "beato" che hanno un'etichetta in italiano (piu' quelli
+in EXTRA_PEOPLE, a cui Wikidata non da' lo stato di santita'),
 esclude le figure di altre religioni, e
 antepone il titolo corretto (San, Sant', Santo, Santa, Beato, Beata).
 
@@ -42,6 +43,13 @@ NON_CHRISTIAN = ["Q9089", "Q432", "Q9603", "Q748", "Q9316"]
 # Voci escluse a mano: Shu'ayb (profeta islamico/druso marcato come santo).
 EXCLUDE = {"Q982867"}
 
+# Voci aggiunte a mano: santi o beati a cui Wikidata non da' lo stato di santita' (P411), quindi
+# la query non li trova. Qid -> etichetta italiana, santo (True) o beato (False), femmina.
+# Bernardo II di Baden: beatificato da Clemente XIV nel 1769 (it.wikipedia.org/wiki/Bernardo_II_di_Baden).
+EXTRA_PEOPLE = {
+    "Q523903": ("Bernardo II di Baden", False, False),
+}
+
 # Esseri umani (Q5) o figure bibliche (Q20643955, es. San Giuseppe).
 QUERY_TEMPLATE = """
 SELECT ?item ?label ?status ?gender WHERE {
@@ -71,6 +79,7 @@ SELECT ?item ?feastLabel ?sitelinks WHERE {
 EXTRA_FEASTS = {
     "San Giuseppe": ["03-19"],
     "San Paolo di Tarso": ["06-29"],
+    "Beato Bernardo II di Baden": ["07-15"],
 }
 # Santo del giorno imposto (giorno -> santo): finisce in cima a quel giorno.
 SAINT_OF_DAY = {
@@ -133,6 +142,9 @@ def collect(rows):
             p["blessed"] = True
         if "gender" in row and row["gender"]["value"].rsplit("/", 1)[1] in FEMALE:
             p["female"] = True
+    for qid, (label, saint, female) in EXTRA_PEOPLE.items():
+        people.setdefault(qid, {"label": label, "saint": saint, "blessed": not saint, "female": female,
+                                "feasts": set(), "sitelinks": 0})
     return people
 
 
@@ -194,11 +206,21 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--feste", help="scrive le feste in questo file invece di stampare i santi")
     ap.add_argument("--solo", help="con --feste: tiene solo i santi di questo santi.txt")
+    ap.add_argument("--aggiungi-feste", help="con --feste: le feste di questo feste.tsv piu' quelle di "
+                                             "EXTRA_PEOPLE, senza Wikidata (le altre feste restano le stesse)")
     ap.add_argument("--correggi", help="rifà i titoli dei nomi di questo santi.txt, senza Wikidata "
                                        "(i santi restano gli stessi, cosi' l'album non cambia)")
+    ap.add_argument("--aggiungi", help="i nomi di questo santi.txt piu' le voci di EXTRA_PEOPLE, senza "
+                                       "Wikidata (gli altri santi restano gli stessi)")
     args = ap.parse_args()
     if args.correggi:
         print_names(retitle(args.correggi))
+        return
+    if args.aggiungi:
+        print_names(read_names(args.aggiungi) | {display_name(extra_person(*e)) for e in EXTRA_PEOPLE.values()})
+        return
+    if args.feste and args.aggiungi_feste:
+        add_extra_feasts(args.aggiungi_feste, args.feste)
         return
     if args.feste:
         if not args.solo:
@@ -215,6 +237,28 @@ def print_names(names):
     for n in sorted(names):
         print(n)
     print(f"{len(names)} nomi", file=sys.stderr)
+
+
+def add_extra_feasts(old_path, path):
+    """The feasts of [old_path] plus the EXTRA_FEASTS of the EXTRA_PEOPLE, each at the end of its day
+    (they have no sitelinks from the feast query, as in write_feasts)."""
+    lines = open(old_path, encoding="utf-8").read().splitlines(keepends=True)
+    head = [l for l in lines if l.startswith("#")]
+    body = [l for l in lines if l.strip() and not l.startswith("#")]
+    for name in sorted(display_name(extra_person(*e)) for e in EXTRA_PEOPLE.values()):
+        body += [f"{day}\t{name}\n" for day in EXTRA_FEASTS.get(name, []) if f"{day}\t{name}\n" not in body]
+    body.sort(key=lambda l: l[:5])  # stable: within a day the old order stays, the new ones go last
+    with open(path, "w", encoding="utf-8") as out:
+        out.writelines(head + body)
+    print(f"{len(body)} feste", file=sys.stderr)
+
+
+def read_names(path):
+    return {l.strip() for l in open(path, encoding="utf-8") if l.strip() and not l.startswith("#")}
+
+
+def extra_person(label, saint, female):
+    return {"label": label, "saint": saint, "female": female}
 
 
 def retitle(path):

@@ -2230,6 +2230,11 @@ def file_id(name):
     return hashlib.sha1(name.encode("utf-8")).hexdigest()[:12]
 
 
+# Saints added to santi.txt after the first catalogue (EXTRA_PEOPLE of genera_santi.py): numbered at
+# the end, in this order, so the card numbers of the others don't change.
+IN_CODA = ["Beato Bernardo II di Baden"]
+
+
 def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=False):
     """All saints: <sha1>.png (no frame), cornice_NN.png, the CORNICI frames with cornici.txt,
     the COLORATE frames with cornici_colorful.txt, leggendari.txt and, unless [app] (only
@@ -2257,8 +2262,9 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
             disegna(step).save(out / f"{nome}_{step:02d}.png", optimize=True)
         for nome, disegna in list(COLORATE.items()) + [("palma", cornice_palma)]:
             disegna(step).save(out / f"{nome}_{step:02d}.png", optimize=True)
-    # Card numbers: N. 1 is the most famous saint (most Wikipedia sitelinks), ties by name.
-    by_fame = sorted(names, key=lambda n: (-facts.get(n, {}).get("sitelinks", 0), n))
+    # Card numbers: N. 1 is the most famous saint (most Wikipedia sitelinks), ties by name; IN_CODA last.
+    by_fame = sorted((n for n in names if n not in IN_CODA), key=lambda n: (-facts.get(n, {}).get("sitelinks", 0), n))
+    by_fame += [n for n in IN_CODA if n in names]
     leggendari = by_fame[:n_leggendari]
     colorate = {n: cornice_colorata(n, tratti[n], n in leggendari) for n in names}
     (out / "cornici_colorful.txt").write_text(
