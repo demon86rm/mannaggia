@@ -151,8 +151,8 @@ class QuadroActivity : AppCompatActivity() {
         private const val KEY_FRAME = "frame"
         private const val FRAMES = 12
         private const val FRAME_MS = 167
-        private const val PREVIEW_ZOOM = 2
-        private const val PNG_ZOOM = 4
-        private const val GIF_ZOOM = 3
+        private const val PREVIEW_ZOOM = 1
+        private const val PNG_ZOOM = 2
+        private const val GIF_ZOOM = 2
     }
 }

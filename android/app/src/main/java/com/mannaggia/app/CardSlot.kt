@@ -101,7 +101,7 @@ class CardSlot(
                 isNew -> R.string.card_new
                 else -> R.string.card_owned
             })
-            card.imgAvatar.setImageDrawable(Avatars.load(context, saint)?.let { Avatars.pixelated(context, it) })
+            card.imgAvatar.setImageDrawable(Avatars.animated(context, saint))
             (card.imgFrame.drawable as? AnimationDrawable)?.stop()
             when {
                 special -> {

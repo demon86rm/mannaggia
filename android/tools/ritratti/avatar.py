@@ -2315,7 +2315,7 @@ POSTO = {"Beato Bernardo II di Baden": "Sant'Ageltrude"}
 
 
 def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=False):
-    """All saints: <sha1>.png (no frame), cornice_NN.png, the CORNICI frames with cornici.txt,
+    """All saints: <sha1>.png (no frame; not with [app]: the app's 96 px portraits come from tools/ritratti96), cornice_NN.png, the CORNICI frames with cornici.txt,
     the COLORATE frames with cornici_colorful.txt, leggendari.txt and, unless [app] (only
     what the app ships), tratti.tsv and review sheets."""
     import random
@@ -2330,7 +2330,8 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
     rows = []
     for i, n in enumerate(names, 1):
         t = tratti[n]
-        render(n, t).convert("RGB").save(out / f"{file_id(n)}.png", optimize=True)
+        if not app:   # the app's 96 px portraits come from tools/ritratti96 (installa.py), not from here
+            render(n, t).convert("RGB").save(out / f"{file_id(n)}.png", optimize=True)
         rows.append((n, file_id(n), "tabella" if n in FAMOSI else ("regole" if n in facts else "solo nome"),
                      t.abito, t.copricapo, t.attributo))
         if i % 500 == 0:
@@ -2370,9 +2371,7 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
     logo().save(out / "logo.png", optimize=True)
     etichetta(CAPOLETTERA_M, "annaggia!", "nudo").save(out / "titolo.png", optimize=True)
     segnalibro(False).save(out / "segnalibro_vuoto.png", optimize=True)
-    for n, t in SPECIALI.items():
-        render(n, t).convert("RGB").save(out / f"{file_id(n)}.png", optimize=True)
-    decollato().convert("RGB").save(out / "decollato.png", optimize=True)
+    # specials and the Battista back: at 96 px, from tools/ritratti96 (installa.py)
     gira().save(out / "gira.png", optimize=True)
     (out / "speciali.txt").write_text(
         "# Figurine speciali fuori catalogo: la riga N e' la figurina SN (si sbloccano coi trofei).\n"

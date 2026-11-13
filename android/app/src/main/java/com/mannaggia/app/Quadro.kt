@@ -16,14 +16,15 @@ import androidx.core.content.res.ResourcesCompat
  * "I miei santi": up to 9 favourite cards in centred, symmetric rows (5 = 2-1-2, 7 = 2-3-2,
  * 8 = 3-2-3), names under the portraits, a title on top and one of the animated frames
  * stretched around the whole picture (corners kept, the plain middle of each side repeated).
- * Drawn in avatar pixels, then scaled up by an integer factor so the pixels stay crisp.
+ * Drawn in the pixels of the 96 px portraits, then scaled up by an integer factor so the pixels stay
+ * crisp. The frames are 48 px art: each of their pixels covers 2 (round a card) or 4 (round the picture) of ours.
  */
 class Quadro private constructor(
     private val context: Context,
     private val cards: List<Card>,
     private val frame: List<Bitmap>,
 ) {
-    /** A portrait with its own animated (or still) frame, if any. */
+    /** A 96 px portrait with its own animated (or still) 48 px frame, if any. */
     class Card(val name: String, val portrait: Bitmap, val frame: List<Bitmap>?)
 
     private val rows = RIGHE.getValue(cards.size)
@@ -38,7 +39,7 @@ class Quadro private constructor(
         val slots = slots()
         for ((card, x, y) in slots) {
             c.drawBitmap(card.portrait, x.toFloat(), y.toFloat(), null)
-            card.frame?.let { c.drawBitmap(it[step % it.size], x.toFloat(), y.toFloat(), null) }
+            card.frame?.let { c.drawBitmap(it[step % it.size], null, Rect(x, y, x + CELL, y + CELL), null) }
         }
         stretch(c, frame[step % frame.size])
         val big = Bitmap.createScaledBitmap(small, width * zoom, height * zoom, false)
@@ -50,13 +51,13 @@ class Quadro private constructor(
         }
         bc.drawText(context.getString(R.string.quadro_title), width * zoom / 2f, TITLE_Y * zoom, title)
         val label = TextPaint(Paint.ANTI_ALIAS_FLAG).apply { typeface = font; color = INK; textSize = NAME_SIZE * zoom }
-        val labelW = (CELL + GAP_X - 2) * zoom
+        val labelW = (CELL + GAP_X - 4) * zoom
         for ((card, x, y) in slots) {
             val text = StaticLayout.Builder.obtain(card.name, 0, card.name.length, label, labelW)
                 .setAlignment(Layout.Alignment.ALIGN_CENTER).setMaxLines(2)
                 .setEllipsize(TextUtils.TruncateAt.END).setIncludePad(false).build()
             bc.save()
-            bc.translate((x + CELL / 2f) * zoom - labelW / 2f, (y + CELL + 1f) * zoom)
+            bc.translate((x + CELL / 2f) * zoom - labelW / 2f, (y + CELL + 2f) * zoom)
             text.draw(bc)
             bc.restore()
         }
@@ -74,11 +75,11 @@ class Quadro private constructor(
         return out
     }
 
-    /** The frame, twice as big, around the whole picture: corners kept, sides tiled. */
+    /** The frame, four times as big (its art is 48 px), around the whole picture: corners kept, sides tiled. */
     private fun stretch(c: Canvas, f1: Bitmap) {
-        val f = Bitmap.createScaledBitmap(f1, f1.width * 2, f1.height * 2, false)
+        val f = Bitmap.createScaledBitmap(f1, f1.width * 4, f1.height * 4, false)
         val n = f.width
-        val k = CORNER * 2
+        val k = CORNER * 4
         val mid = n - 2 * k
         fun put(sx: Int, sy: Int, sw: Int, sh: Int, dx: Int, dy: Int) =
             c.drawBitmap(f, Rect(sx, sy, sx + sw, sy + sh), Rect(dx, dy, dx + sw, dy + sh), null)
@@ -103,18 +104,18 @@ class Quadro private constructor(
         const val MAX = 9
         val RIGHE = mapOf(1 to listOf(1), 2 to listOf(2), 3 to listOf(3), 4 to listOf(2, 2), 5 to listOf(2, 1, 2),
             6 to listOf(3, 3), 7 to listOf(2, 3, 2), 8 to listOf(3, 2, 3), 9 to listOf(3, 3, 3))
-        private const val CELL = 48
-        private const val GAP_X = 10
-        private const val GAP_Y = 6
-        private const val LABEL = 13
-        private const val SIDE = 28
-        private const val TOP = 48
-        private const val BOTTOM = 22
-        private const val MIN_W = 160            // room for the title with a single saint
-        private const val CORNER = 14            // corner decorations (gems, nails, candles) stay whole
-        private const val TITLE_Y = 32f
-        private const val TITLE_SIZE = 14f
-        private const val NAME_SIZE = 4.5f
+        private const val CELL = 96
+        private const val GAP_X = 20
+        private const val GAP_Y = 12
+        private const val LABEL = 26
+        private const val SIDE = 56
+        private const val TOP = 96
+        private const val BOTTOM = 44
+        private const val MIN_W = 320            // room for the title with a single saint
+        private const val CORNER = 14            // corner decorations (gems, nails, candles) stay whole (in pixels of the 48 px frame)
+        private const val TITLE_Y = 64f
+        private const val TITLE_SIZE = 28f
+        private const val NAME_SIZE = 9f
         private val PAPER = Color.rgb(246, 238, 220)
         private val INK = Color.rgb(60, 30, 30)
 

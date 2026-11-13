@@ -479,9 +479,7 @@ class AlbumActivity : AppCompatActivity() {
         }
         lifecycleScope.launch {
             showBookmark()
-            Avatars.load(this@AlbumActivity, entry.saint)?.let {
-                avatar.setImageDrawable(Avatars.pixelated(this@AlbumActivity, it))
-            }
+            avatar.setImageDrawable(Avatars.animated(this@AlbumActivity, entry.saint))
             val feasts = Mannaggia.feastsOf(this@AlbumActivity, entry.saint)
             view.findViewById<TextView>(R.id.txtFeast).text =
                 if (card.special) getString(R.string.album_feast_special)
