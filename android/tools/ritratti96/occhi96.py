@@ -4,7 +4,7 @@
         [--anteprima ~/mannaggia-cache/anteprima96] [--speciali ~/mannaggia-cache/speciali_occhi96] \
         [--pazienza ~/mannaggia-cache/pazienza_occhi96]
 
-occhi96.tsv: id <TAB> iris <TAB> brows <TAB> lower lash <TAB> shape ("" or "mono") <TAB> glasses (0/1).
+occhi96.tsv: id <TAB> iris <TAB> brows (the hair colour x 0.75; the specials: sampled) <TAB> lower lash <TAB> shape ("" or "mono") <TAB> glasses (0/1).
 The colours are read from the portraits drawn WITH open eyes (anteprima96.px.js, and the specials), at fixed
 pixels: the left eye is at x 36, y 41 in the 94 px figure, +1 in the 96 px image (outline), so brow (35,37), iris (36,44), lower lash (37,46). The app draws the
 same eyes on the portrait without eyes.
@@ -25,13 +25,15 @@ a = ap.parse_args()
 app = Path(a.app)
 fid = lambda n: hashlib.sha1(n.encode("utf-8")).hexdigest()[:12]
 hexa = lambda im, x, y: "#%02x%02x%02x" % im.getpixel((x, y))[:3]
+# brows: the hair colour, a little darker (the ramp's darkest step was pure black for most saints)
+brow = lambda h: "#%02x%02x%02x" % tuple(round(int(h[i:i + 2], 16) * 0.75) for i in (1, 3, 5))
 
 data = json.loads(re.search(r"var TRATTI = (.*)\n", (HERE / "tratti96.data.js").read_text(encoding="utf-8")).group(1))
 GLASSES = {fid("San Massimiliano Maria Kolbe"), fid("San Josemaría Escrivá de Balaguer")}
 rows = []
 for d in data:
     im = Image.open(Path(a.anteprima) / "sprites" / f"p_{d['id']}.png").convert("RGB")
-    rows.append((d["id"], hexa(im, 36, 44), hexa(im, 35, 37), hexa(im, 37, 46), d.get("occhi") or "", int(d["id"] in GLASSES)))
+    rows.append((d["id"], hexa(im, 36, 44), brow(d["chioma"]), hexa(im, 37, 46), d.get("occhi") or "", int(d["id"] in GLASSES)))
 speciali = [l.strip() for l in (app / "speciali.txt").read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")]
 sp = Path(a.speciali) / "sprites"
 files = ["spec_s1_santo_subito", "spec_s2_san_culo", "spec_s3_san_calendario", "spec_s4_san_deploy", "spec_s5_san_sudo", None, "spec_s7_santa_cunegonda"]

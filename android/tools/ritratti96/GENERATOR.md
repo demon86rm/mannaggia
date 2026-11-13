@@ -39,7 +39,7 @@ $PY -I installa.py --app ../../app/src/main/assets/avatar
 
 ## Dati degli occhi per l'app
 
-`occhi96.py` scrive in `assets/avatar/` `occhi96.tsv` (per ogni ritratto: iride, sopracciglia, ciglia sotto, forma, occhiali) e `emozioni.txt` (le 6 emozioni di `occhi.px.js`, che sono la fonte unica). I colori li legge da ritratti con gli occhi aperti, a pixel fissi, quindi prima servono le anteprime:
+`occhi96.py` scrive in `assets/avatar/` `occhi96.tsv` (per ogni ritratto: iride, sopracciglia, ciglia sotto, forma, occhiali) e `emozioni.txt` (le 6 emozioni di `occhi.px.js`, che sono la fonte unica). Le sopracciglia hanno il colore dei capelli (`chioma`) per 0,75; gli altri colori li legge da ritratti con gli occhi aperti, a pixel fissi, quindi prima servono le anteprime:
 
 ```sh
 $PXL build anteprima96.px.js --no-preview --out ~/mannaggia-cache/anteprima96
