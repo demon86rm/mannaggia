@@ -14,7 +14,7 @@ ZONE = [(x, y) for y in range(34, 47) for x in list(range(32, 42)) + list(range(
 bad = []
 for d in data:
     im = Image.open(out / f"p_{d['id']}.png").convert("RGB")
-    ok = {im.getpixel((34, 44)), im.getpixel((64, 44))}          # skin base, far-side shadow
+    ok = {im.getpixel((34, 44)), im.getpixel((62, 44))}          # skin base, far-side shadow (both inside the area)
     wrong = [(x, y) for x, y in ZONE if im.getpixel((x, y)) not in ok]
     if wrong:
         bad.append((d["n"], len(wrong), wrong[:4]))

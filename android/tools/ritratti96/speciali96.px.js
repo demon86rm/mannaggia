@@ -39,17 +39,17 @@ EXTRA96.cuffie = () => ({ testa: [clip((x, y) => y <= 30, ring(cx, 32, 22, "#2a2
 const SPEC = {
   s1_santo_subito: { eta: "anziano", capelli: "corti", chioma: "#e8e4dc", copricapo: "zucchetto_bianco", abito: "papa", veste: "#f0eee8",
     attributi: ["striscione"], pelle: "#f6d0b0", sfondo: "#b2944a", iride: "#4c6a8a", viso: 1, naso_v: 1, bocca: 2 },
-  s2_san_culo: { eta: "giovane", capelli: "ricci", chioma: "#d6ac5c", abito: "tunica", veste: "#3c5aaa",
+  s2_san_culo: { eta: "giovane", capelli: "ricci", chioma: "#d6ac5c", abito: "tunica", tunica_v: 1, taglio: 2, veste: "#3c5aaa",
     attributi: ["ferro_cavallo", "quadrifoglio"], pelle: "#eaba92", sfondo: "#548c82", iride: "#4c6a8a", guance: true, bocca: 2, naso_v: 2 },
-  s3_san_calendario: { capelli: "corti", chioma: "#684228", barba: "corta", abito: "tunica", veste: "#96323c",
+  s3_san_calendario: { capelli: "corti", chioma: "#684228", barba: "corta", taglio: 1, abito: "tunica", veste: "#96323c",
     attributi: ["calendario_mano"], pelle: "#d49c70", sfondo: "#78609a", iride: "#5a4636", viso: 2 },
-  s4_san_deploy: { capelli: "corti", chioma: "#684228", barba: "corta", abito: "moderno", veste: "#323c50", extra: ["cuffie"], occhiali: true,
+  s4_san_deploy: { capelli: "corti", chioma: "#684228", barba: "corta", taglio: 3, abito: "moderno", veste: "#323c50", extra: ["cuffie"], occhiali: true,
     attributi: ["server_fuoco"], pelle: "#eaba92", sfondo: "#465a78", iride: "#5a4636", naso_v: 1 },
   s5_san_sudo: { eta: "giovane", capelli: "corti", chioma: "#684228", copricapo: "cappuccio", abito: "felpa", veste: "#555a66",
     attributi: ["terminale"], pelle: "#f6d0b0", sfondo: "#2a3a30", iride: "#5a6a3e", guance: true },
   s6_santa_pazienza: { donna: true, eta: "anziano", copricapo: "velo", velo: "#6e78a0", abito: "suora", veste: "#6e78a0",
     attributi: ["clessidra"], pelle: "#e2b08c", sfondo: "#5e78a8", iride: "#6a5a4a", bocca: 2 },
-  s7_santa_cunegonda: { donna: true, copricapo: "velo", velo: "#3c3c46", velo_ombra_scura: true, abito: "suora", veste: "#3c3c46",
+  s7_santa_cunegonda: { donna: true, copricapo: "velo", velo: "#3c3c46", abito: "suora", veste: "#3c3c46",
     attributi: ["fulmine", "sfere"], pelle: "#eaba92", sfondo: "#5a4a6a", iride: "#4c6a8a", guance: true, viso: 1 },
 }
 for (const [k, d] of Object.entries(SPEC)) { if (k === "s5_san_sudo") continue; ritratto96(`spec_${k}`, { ...d }); ritratto96(`specanim_${k}`, { ...d }, { seq: EMOZIONI.sinistra_destra }) }
