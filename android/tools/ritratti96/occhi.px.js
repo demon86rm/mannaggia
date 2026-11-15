@@ -34,34 +34,63 @@ var EMOZIONI = {
                 ...rep(2, { g: [1, -1] }), ...rep(2, { g: [1, 0] }), ...rep(12, { lid: "h", brow: [1, 1] }), ...rep(11), ...blink()],
 }
 
-function occhi(c, cx, f, { y = 39, browY = 33, iride = "I", pelle = () => "3", ciglio = "6", ombra = "2", forma = "" } = {}) {
-  // forma "mono": an eye without the lid crease, one row less of white and the outer corner a little higher
-  const [dx, dy] = f.g
+// The "B" eyes (approved on Santa Giovanna, 2026-11-13), animated: arched tapered brows (three rows for
+// an old man, "folte"), the lid's crease, a three-tone iris with the pupil and a glint, the lid's shadow on
+// the white's top row, rounded lower corners, a lash at the outer end. Rows from the eye's row y (41 in
+// the figure): crease y-3, lid y-1, white y..y+3, lower lid y+4; brows from browY (36).
+// Lids: "n" open; "w" wide, one row more; "d" lowered, "h" half-closed (the upper lid comes down over the
+// white, the skin above it in the crease tone); "x" closed, an arc of lashes.
+// pelle(ex): the crease and lower-lid tone of that eye's side; ciglio: the brows; coda: their outer tail
+// (ciglio mixed with the skin); iride: the iris' middle tone (hex), its dark and light tones mixed from it.
+// forma "mono": no crease (the white keeps all its rows: the user). occhiali: no outer lash (it would land
+// on the frame).
+// The brows never go above y 33, the top of the eye zone (incredulo raises them two rows).
+var _mixO = (a, b, t) => {
+  if (!/^#[0-9a-f]{6}$/i.test(a)) return a
+  const p = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)), x = p(a), y = p(b)
+  return "#" + x.map((v, i) => Math.round(v + (y[i] - v) * t).toString(16).padStart(2, "0")).join("")
+}
+var LID_B = "#2a1a18", OMBRA_B = "#d9cfd2"
+function occhi(c, cx, f, { y = 41, browY = 36, iride = "#5a4636", pelle = () => "3", ciglio = "6", coda = null, folte = false, forma = "", occhiali = false } = {}) {
+  const [dx, dy] = f.g, mono = forma === "mono"
+  const IR = [_mixO(iride, "#000000", 0.45), iride, _mixO(iride, "#ffffff", 0.3)]
+  const tail = coda || ciglio
+  // the brows' rows for i = 0 (inner) .. 6 (outer), relative to browY
+  const BR = folte ? [[-1, 0, 1], [-1, 0, 1], [-2, -1, 0], [-2, -1, 0], [-2, -1, 0], [-1, 0], [0, 1]]
+    : [[0, 1], [0, 1], [-1, 0], [-1, 0], [-1, 0], [0], [1]]
   for (const [ex, lato] of [[cx - 11, 0], [cx + 10, 1]]) {
-    // brow: two rows, the outer end longer; "worry" lifts the inner half one row
-    const by = browY + f.brow[lato], out = lato ? 1 : -1
-    for (let i = 0; i <= 6; i++) {
-      const x = ex + out * (i - 1), inner = i <= 2
-      const yy = by + (f.worry && inner ? -1 : 0)
-      c.px(x, yy + 1, ciglio); if (i <= 5) c.px(x, yy, ciglio)
-    }
-    if (f.lid === "x") {                                   // closed: the lashes' curve
-      c.hline(ex - 3, y + 2, 7, "E"); c.px(ex - 4, y + 1, "E"); c.px(ex + 4, y + 1, "E")
+    const out = lato ? 1 : -1, sk = pelle(ex)
+    const lidRow = { w: y - 2, n: y - 1, d: y, h: y + 1, x: y + 1 }[f.lid]
+    // the crease, and the lowered lid's skin over the white
+    if (!mono) c.hline(ex - 3, y - 3, 7, sk)
+    for (let yy = y - 1; yy < lidRow; yy++) c.hline(ex - 3, yy, 7, sk)
+    // the brows: offset, the inner half raised when worried, never above the eye zone
+    const off = Math.max(f.brow[lato], 33 - (browY + (folte ? -2 : -1) - (f.worry ? 1 : 0)))
+    BR.forEach((rows, i) => rows.forEach((r, k) => {
+      const yy = browY + off + r - (f.worry && i <= 2 ? 1 : 0)
+      c.px(ex + out * (i - 1), yy, i >= 5 || (folte && k === rows.length - 1) ? tail : ciglio)
+    }))
+    if (f.lid === "x") {                                             // closed: an arc of lashes, the lash at the end
+      c.hline(ex - 2, y + 2, 5, LID_B); c.px(ex - 3, y + 1, LID_B); c.px(ex + 3, y + 1, LID_B)
+      c.px(ex + out * 4, y, LID_B)
+      c.hline(ex - 2, y + 4, 5, sk)
       continue
     }
-    let top = { w: y - 1, n: y, d: y + 1, h: y + 2 }[f.lid]     // first visible row of the white
-    if (forma === "mono") top = Math.min(top + 1, y + 2)
+    const top = lidRow + 1
     for (let yy = top; yy <= y + 3; yy++) for (let x = ex - 3; x <= ex + 3; x++) {
-      const ix = x - (ex - 1 + dx), iy = yy - (y + dy)
-      const inIris = ix >= 0 && ix < 3 && iy >= 0 && iy < 4
-      let col = inIris ? iride : "W"
-      if (inIris && ix === 1 && (f.small ? iy === 1 : iy === 1 || iy === 2)) col = "E"     // pupil
-      if (inIris && ix === 0 && yy === Math.max(top, y + dy)) col = "W"                   // glint, top-left
+      if (yy === y + 3 && Math.abs(x - ex) === 3) continue              // rounded lower corners
+      const ix = x - (ex + dx), iy = yy - (y + dy)
+      let col = yy === top ? OMBRA_B : "W"
+      if (Math.abs(ix) <= 1 && iy >= 0 && iy <= 3) {
+        col = iy <= 1 ? IR[0] : iy === 2 ? IR[1] : IR[2]
+        if (ix === 0 && (f.small ? iy === 1 : iy === 1 || iy === 2)) col = "E"   // the pupil
+        if (ix === -1 && yy === Math.max(top, y + dy)) col = "X"                 // the glint, top-left
+      }
       c.px(x, yy, col)
     }
-    c.hline(ex - 4, top - 1, 9, "E")                       // upper lid
-    if (forma === "mono") c.px(ex + out * 5, top - 2, "E")     // its outer end, lifted
-    c.hline(ex - 2, y + 4, 5, ombra)                       // lower lash
+    c.hline(ex - 4, lidRow, 9, LID_B); c.px(ex + out * 4, lidRow + 1, LID_B)     // the lid, its outer corner
+    if (!occhiali) c.px(ex + out * 5, lidRow - 1, LID_B)                       // the lash
+    c.hline(ex - 2, y + 4, 5, sk)                                              // the lower lid
   }
 }
 

@@ -60,7 +60,7 @@ const CORPO = PAZIENZA_CORPO = [
 // the 96 px generator (y 41, brows 36: one row lower than the first prototype), for the app overlay.
 for (const [emo, seq] of Object.entries(EMOZIONI)) {
   anim(`_p_fig_${emo}`, { w: F, h: F, outline: "K", frames: seq.length, fps: 12 },
-    ...CORPO, (c) => occhi(c, cx, seq[c.frame], { y: 41, browY: 36, pelle: (x) => (x > cx + 11 ? "2" : "3"), ciglio: "G" }))
+    ...CORPO, (c) => occhi(c, cx, seq[c.frame], { y: 41, browY: 36, iride: "#6a5a4a", pelle: (x) => (x > cx + 11 ? "2" : "3"), ciglio: "G", folte: false }))
   sprite(`pazienza_${emo}`, { w: S, h: S },
     rect(0, 0, S, S, "B"), rect(0, 72, S, S, "N"),
     stamp("_p_aureola", 0, 0),

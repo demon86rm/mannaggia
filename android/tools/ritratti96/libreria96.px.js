@@ -272,34 +272,6 @@ function collo6(d) {
   const { cx } = G96
   return [(c) => { for (let y = 58; y <= 71; y++) for (let x = cx - 12; x < cx + 12; x++) c.px(x, y, colloT(d, x, y)) }]
 }
-// The finer eyes ("B"), still and open, for the sample sheets only (OCCHI_B): arched tapered brows, the
-// lid's crease, a three-tone iris, the lid's shadow on the white, rounded lower corners, a lash at the
-// outer end. The animated ones are occhi() in occhi.px.js, the model for Occhi.kt
-function occhiB(c, d) {
-  const { cx } = G96, SK = d._sk6, ciglio = d.sopracciglia || mixc(d.chioma || "#5a4030", "#000000", 0.25)
-  const coda = mixc(ciglio, SK[3], 0.3), ir = d.iride || "#5a4636", iride = [mixc(ir, "#000000", 0.45), ir, mixc(ir, "#ffffff", 0.3)]
-  const folte = d.eta === "anziano" && !d.donna
-  for (const [ex, out] of [[cx - 11, -1], [cx + 10, 1]]) {
-    const pelle = out > 0 ? SK[1] : SK[2]
-    for (let i = 0; i <= 6; i++) {
-      const rows = folte ? [[35, 36, 37], [35, 36, 37], [34, 35, 36], [34, 35, 36], [34, 35, 36], [35, 36], [36, 37]][i]
-        : [[36, 37], [36, 37], [35, 36], [35, 36], [35, 36], [36], [37]][i]
-      rows.forEach((y, k) => c.px(ex + out * (i - 1), y, i >= 5 || (folte && k === rows.length - 1) ? coda : ciglio))
-    }
-    c.hline(ex - 3, 38, 7, pelle)
-    for (let y = 41; y <= 44; y++) for (let x = ex - 3; x <= ex + 3; x++) {
-      if (y === 44 && Math.abs(x - ex) === 3) continue
-      const ix = x - ex
-      let col = y === 41 ? "#d9cfd2" : "W"
-      if (Math.abs(ix) <= 1) col = y <= 42 ? iride[0] : y === 43 ? iride[1] : iride[2]
-      if (ix === 0 && (y === 42 || y === 43)) col = "E"
-      if (ix === -1 && y === 41) col = "X"
-      c.px(x, y, col)
-    }
-    c.hline(ex - 4, 40, 9, "#2a1a18"); c.px(ex + out * 4, 41, "#2a1a18"); c.px(ex + out * 5, 39, "#2a1a18")
-    c.hline(ex - 2, 45, 5, pelle)
-  }
-}
 
 // --- hair and beard in the rich style. Their shapes are the ones above (capelliDietro, capelliDavanti,
 // barba), drawn in marker colours; then one pass repaints every marked pixel with a tone of the six
@@ -1914,7 +1886,7 @@ function attrSprite(a, d) {
   return `_at_${k}`
 }
 // seq: an emotion of EMOZIONI (occhi.px.js) for an animated preview; without it the eyes are still
-function ritratto96(nome, d, { con_occhi = true, seq = null, occhi_b = false } = {}) {
+function ritratto96(nome, d, { con_occhi = true, seq = null } = {}) {
   const { S, F, cx, EYE_Y, BROW_Y, FAR } = G96
   // skin in six tones; the parts still drawn with four (ears, a bald skull, necklines) take the middle ones
   const sk6 = rampa6(d.pelle, PELLE6), sk = sk6.slice(1, 5), hr = rampa(d.chioma || "#5a4030", { shift: 8, sat: 0.8 })   // hair colour: under a veil it is only the brows
@@ -1933,9 +1905,11 @@ function ritratto96(nome, d, { con_occhi = true, seq = null, occhi_b = false } =
   const al = aureola6(d.beato, d.leggendario), viso = faccia6(d)
   const pg = d.donna && d.capelli === "lunghi" && !coperto ? pieghe6(d, viso) : null
   const tg = !d.donna && d.taglio && !coperto ? tagli6(d, viso) : null
-  // the B eyes are still and have neither the "mono" shape nor glasses: those keep occhi()
-  const occ = con_occhi && occhi_b && !seq && !d.occhi && !d.occhiali ? [(c) => occhiB(c, d)] : con_occhi ? [(c) => { occhi(c, cx, seq ? seq[c.frame] : fr(), { y: EYE_Y, browY: BROW_Y, iride: d.iride || "#5a4636",
-    pelle: (x) => (x > cx + FAR ? sk[1] : sk[2]), ciglio: d.sopracciglia || hr[0], ombra: sk[1], forma: d.occhi || "" })
+  // the eyes (occhi() in occhi.px.js, the B eyes, the model for Occhi.kt), still or as an emotion
+  const ciglio = d.sopracciglia || mixc(d.chioma || "#5a4030", "#000000", 0.25)
+  const occ = con_occhi ? [(c) => { occhi(c, cx, seq ? seq[c.frame] : fr(), { y: EYE_Y, browY: BROW_Y, iride: d.iride || "#5a4636",
+    pelle: (x) => (x > cx + FAR ? sk6[1] : sk6[2]), ciglio, coda: mixc(ciglio, sk6[3], 0.3), folte: d.eta === "anziano" && !d.donna,
+    forma: d.occhi || "", occhiali: !!d.occhiali })
     if (d.occhiali) occhiali(c, cx, { y: EYE_Y, ...(typeof d.occhiali === "object" ? d.occhiali : {}) }) }] : []
   const extra = (d.extra || []).map((e) => (typeof EXTRA96 !== "undefined" && EXTRA96[e] ? EXTRA96[e](d) : {}))
   const busto = (ABITI[d.abito] || ABITI.tunica)(d, rb, d.secondo || "#3a5a9a")

@@ -5,5 +5,4 @@ include("libreria96.px.js")
 include("parti96.px.js")
 include("tratti96.data.js")
 var CON_OCCHI = typeof CON_OCCHI === "undefined" ? false : CON_OCCHI
-var OCCHI_B = typeof OCCHI_B === "undefined" ? false : OCCHI_B     // the finer eyes, for sample sheets
-for (const d of TRATTI) ritratto96(`p_${d.id}`, d, { con_occhi: CON_OCCHI, occhi_b: OCCHI_B })
+for (const d of TRATTI) ritratto96(`p_${d.id}`, d, { con_occhi: CON_OCCHI })
