@@ -803,7 +803,7 @@ function tunicaT(d) {
   const { cx, F } = G96, v = d.tunica_v || 0, C = rampaMat(d.veste), SK = d._sk6, G = ORO6, T = (R, t) => R[tra05(t)]
   const [h0, s0, l0] = _hsl(...hex2rgb(d.veste)), oro = l0 < 0.3 || (h0 >= 250 && h0 <= 330 && s0 > 0.15)
   const K = oro ? G : PORPORA6
-  const [nx, ny, ncy] = v === 2 ? [17, 5.5, 70] : [11, 3.5, 69]     // the neckline
+  const [nx, ny, ncy] = v === 2 ? [17, 5.5, 70] : [12.5, 3.5, 69]   // the neckline (12.5: the neck's outer columns stay skin)
   const tono = (x, y, sopra) => {
     const dx = x - cx, a = Math.abs(dx)
     if (q96(x, y, cx, ncy, nx, ny) <= 1) {                          // bare skin: the neck, and the collarbones in a wide neck
@@ -911,7 +911,7 @@ ABITI.talare = function (d) {
     const dx = x - cx
     if (v === 3 && y >= 65 && q96(x, y, cx, 69, 15, 5) <= 1) {      // the amice, as the bishop's
       c.px(x, y, LINO6[q96(x, y, cx, 68, 15, 5) > 1 ? 2 : y <= 66 && dx < 4 ? 5 : dx > 8 ? 3 : 4])
-    } else if (v !== 3 && y >= 65 && q96(x, y, cx, 69, 13, 4) <= 1) { // the standing collar, over the neck; its tab
+    } else if (v !== 3 && y >= 66 && q96(x, y, cx, 69, 13, 4) <= 1) { // the standing collar, over the neck; its tab (from y 66: at 65 the ellipse left one lone pixel)
       c.px(x, y, Math.abs(dx) <= 3 && y >= 66 && y <= 69 ? LINO6[y === 69 ? 3 : 5] : C[q96(x, y, cx, 68, 13, 4) > 1 ? 1 : y <= 66 && dx < 4 ? 5 : dx > 8 ? 2 : 4])
     } else if (c.get(x, y) === PK_V) c.px(x, y, tono(x, y, c.get(x, y - 1) === 0))
   } }]
@@ -1779,7 +1779,7 @@ ABITI.cardinale = function (d) {
   const { cx } = G96, v = d.cardinale_v || 0, C = rampaMat(d.veste), G = ORO6, T = (Q, t) => Q[tra05(t)]
   return busto96((x, y, sopra) => {
     const dx = x - cx, a = Math.abs(dx), qc = q96(x, y, cx, 73, 36, 13.5)
-    if (y >= 65 && q96(x, y, cx, 69, 13, 4) <= 1) return LINO6[q96(x, y, cx, 68, 13, 4) > 1 ? 2 : y <= 66 && dx < 4 ? 5 : dx > 8 ? 3 : 4]   // the collar
+    if (y >= 66 && q96(x, y, cx, 69, 13, 4) <= 1) return LINO6[q96(x, y, cx, 68, 13, 4) > 1 ? 2 : y <= 66 && dx < 4 ? 5 : dx > 8 ? 3 : 4]   // the collar
     if (sopra === null) return null
     if (v === 1 && (qc <= 1 || y <= 78)) {                           // ermine
       if (mod96(dx + 3, 8) === 0 && mod96(y + mod96(Math.floor((dx + 3) / 8), 2) * 3, 6) <= 1 && qc < 0.9) return "#1e1a20"
