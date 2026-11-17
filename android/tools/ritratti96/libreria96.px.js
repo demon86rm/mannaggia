@@ -155,7 +155,9 @@ var ABITI = {
 // --- the face: skin, shading, features. Never inside the eye area.
 // face variants (d.viso, d.naso_v, d.bocca from the name, see esporta.py), all within the approved
 // proportions (face rx 18-19, ry 21-22) and outside the eye area
-var VISI = [[18, 21, false], [19, 21, false], [18, 22, true]]          // rx, ry, squarer chin
+// rx, ry, squarer chin, tapered chin. 0 and 3 are the women's (3 narrows to the chin from y 54), 2 and 4 the
+// men's (4: broad, the square chin); 1 is no longer assigned (esporta.py)
+var VISI = [[18, 21, false], [19, 21, false], [18, 22, true], [18, 21, false, true], [19, 22, true]]
 function faccia(d, sk) {
   const { cx, FAR } = G96, lab = d.labbra === "piene", largo = d.naso === "largo"
   const [rx, ry, mento] = VISI[d.viso || 0]
@@ -187,9 +189,16 @@ var inZonaOcchi = (x, y) => y >= 33 && y <= 45 && ((x >= G96.cx - 16 && x <= G96
 var q96 = (x, y, x0, y0, rx, ry) => ((x - x0) / rx) ** 2 + ((y - y0) / ry) ** 2
 // Returns { viso, ombra }: the face, and the shadow that hair and headgear cast on it, to draw after them
 function faccia6(d) {
-  const { cx, F, FAR } = G96, SK = d._sk6, [rx, ry, mento] = VISI[d.viso || 0]
-  // the same outline as pxl's ellipse(cx, 43, rx, ry), which faccia() draws: half a pixel wider
-  const inV = (x, y) => q96(x, y, cx, 43, rx + 0.5, ry + 0.5) <= 1 || (mento && y >= 60 && y <= 63 && Math.abs(x - cx) <= 8)
+  const { cx, F, FAR } = G96, SK = d._sk6, [rx, ry, mento, punta] = VISI[d.viso || 0]
+  // the same outline as pxl's ellipse(cx, 43, rx, ry), which faccia() draws: half a pixel wider. A tapered
+  // chin narrows it smoothly from y 46, down to 0.82 of its width at the chin (a straight cut left a step:
+  // the user); a square chin is cut flat at y 62, two rows clear of a collar's top (the user, 2026-11-17)
+  const inV = (x, y) => {
+    if (mento) return y <= 62 && (q96(x, y, cx, 43, rx + 0.5, ry + 0.5) <= 1 || (y >= 59 && Math.abs(x - cx) <= 8))
+    if (!punta || y < 46) return q96(x, y, cx, 43, rx + 0.5, ry + 0.5) <= 1
+    const e = 1 - ((y - 43) / (ry + 0.5)) ** 2
+    return e >= 0 && Math.abs(x - cx) <= (rx + 0.5) * Math.sqrt(e) * (1 - 0.18 * ((y - 46) / (ry - 3)) ** 1.5)
+  }
   const vecchio = d.eta === "anziano", calvo = d.capelli === "calvo", largo = d.naso === "largo", piene = d.labbra === "piene"
   const nv = d.naso_v || 0, bv = d.bocca || 0, w = [4, 2, 3][bv], barbuto = d.barba === "corta" || d.barba === "lunga"
   const L = [mixc(SK[0], "#7a2a30", 0.5), mixc(SK[2], "#c84a4a", d.donna ? 0.45 : 0.25), mixc(SK[4], "#e87878", d.donna ? 0.4 : 0.2)]   // the mouth's line, the lip, its light
@@ -352,8 +361,8 @@ function capelli6(d, viso, st) {
 }
 // Women's long hair, d.piega (from the name, esporta.py): 0 or none the shoulder-length cut with a fringe
 // of capelliDietro/capelliDavanti; 1 long and straight over the shoulders, a centre parting; 2 the same
-// in waves; 3 gathered in a bun, the ears bare; 4 a braid over the shoulder; 5 a chin-length bob with a
-// side parting and a swept fringe. Each is three masks in the marker colour: behind the figure, over the
+// in waves; 3 gathered in a bun, the ears bare; 4 a braid over the shoulder; 5 a modern bob, a deep side
+// parting, no fringe, the ends curling in. Each is three masks in the marker colour: behind the figure, over the
 // shoulders, over the face (there only above the eye area, or at its sides from |dx| 17)
 function pieghe6(d, viso) {
   const { cx, F } = G96, p = d.piega
@@ -371,8 +380,10 @@ function pieghe6(d, viso) {
   if (p === 4) return { orecchie: true, dietro: segna((x, y, a) => q96(x, y, cx, 32, 21.5, 18.5) <= 1 && y <= 47),
     spalle: segna((x, y) => y >= 46 && y <= 88 && Math.abs(x - (cx - 19 + (y - 46) * 0.07)) <= 3.4 - Math.max(0, y - 82) * 0.5),
     davanti: segna(raccolti) }
-  if (p === 5) return { dietro: segna((x, y, a) => q96(x, y, cx, 34, 23.5, 20) <= 1 || (y >= 34 && y <= 57 && a <= 23.5 - Math.max(0, y - 53) * 1.1)),
-    davanti: segna((x, y, a) => viso.dentro(x, y) && (y <= (x < cx - 10 ? 24 + (cx - 10 - x) * 0.9 : Math.min(30, 23 + (x - cx + 10) * 0.32)) || (a >= 17 && y <= 55))) }
+  // 5, the modern bob (redrawn 2026-11-17, unlike the men's page-boy): no fringe, a deep side parting
+  // that leaves the forehead open, fuller towards the bottom, the ends curling in under the jaw
+  if (p === 5) return { dietro: segna((x, y, a) => q96(x, y, cx, 34, 23.5, 20) <= 1 || (y >= 34 && y <= 59 && a <= 24.5 - Math.max(0, y - 54) * 1.6)),
+    davanti: segna((x, y, a) => viso.dentro(x, y) && (y <= 20 + Math.abs(x - (cx - 6)) * 0.45 || (a >= 17 - Math.max(0, y - 51) * 0.8 && y >= 22 && y <= 58))) }
   return null
 }
 
@@ -1908,7 +1919,7 @@ function ritratto96(nome, d, { con_occhi = true, seq = null } = {}) {
   // the eyes (occhi() in occhi.px.js, the B eyes, the model for Occhi.kt), still or as an emotion
   const ciglio = d.sopracciglia || mixc(d.chioma || "#5a4030", "#000000", 0.25)
   const occ = con_occhi ? [(c) => { occhi(c, cx, seq ? seq[c.frame] : fr(), { y: EYE_Y, browY: BROW_Y, iride: d.iride || "#5a4636",
-    pelle: (x) => (x > cx + FAR ? sk6[1] : sk6[2]), ciglio, coda: mixc(ciglio, sk6[3], 0.3), folte: d.eta === "anziano" && !d.donna,
+    pelle: (x) => (x > cx + FAR ? sk6[1] : sk6[2]), ciglio, coda: mixc(ciglio, sk6[3], 0.3), folte: d.eta === "anziano" && !d.donna, donna: !!d.donna,
     forma: d.occhi || "", occhiali: !!d.occhiali })
     if (d.occhiali) occhiali(c, cx, { y: EYE_Y, ...(typeof d.occhiali === "object" ? d.occhiali : {}) }) }] : []
   const extra = (d.extra || []).map((e) => (typeof EXTRA96 !== "undefined" && EXTRA96[e] ? EXTRA96[e](d) : {}))

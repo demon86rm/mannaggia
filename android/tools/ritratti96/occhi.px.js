@@ -40,6 +40,7 @@ var EMOZIONI = {
 // the figure): crease y-3, lid y-1, white y..y+3, lower lid y+4; brows from browY (36).
 // Lids: "n" open; "w" wide, one row more; "d" lowered, "h" half-closed (the upper lid comes down over the
 // white, the skin above it in the crease tone); "x" closed, an arc of lashes.
+// donna: thin arched brows and a longer lash at the outer corner; otherwise a man's straight thick brows.
 // pelle(ex): the crease and lower-lid tone of that eye's side; ciglio: the brows; coda: their outer tail
 // (ciglio mixed with the skin); iride: the iris' middle tone (hex), its dark and light tones mixed from it.
 // forma "mono": no crease (the white keeps all its rows: the user). occhiali: no outer lash (it would land
@@ -51,13 +52,16 @@ var _mixO = (a, b, t) => {
   return "#" + x.map((v, i) => Math.round(v + (y[i] - v) * t).toString(16).padStart(2, "0")).join("")
 }
 var LID_B = "#2a1a18", OMBRA_B = "#d9cfd2"
-function occhi(c, cx, f, { y = 41, browY = 36, iride = "#5a4636", pelle = () => "3", ciglio = "6", coda = null, folte = false, forma = "", occhiali = false } = {}) {
+function occhi(c, cx, f, { y = 41, browY = 36, iride = "#5a4636", pelle = () => "3", ciglio = "6", coda = null, folte = false, forma = "", occhiali = false, donna = false } = {}) {
   const [dx, dy] = f.g, mono = forma === "mono"
   const IR = [_mixO(iride, "#000000", 0.45), iride, _mixO(iride, "#ffffff", 0.3)]
   const tail = coda || ciglio
   // the brows' rows for i = 0 (inner) .. 6 (outer), relative to browY
+  // by sex (the user, 2026-11-17): a woman's thin and arched, one row; a man's thick and straighter;
+  // an old man's bushy, three rows
   const BR = folte ? [[-1, 0, 1], [-1, 0, 1], [-2, -1, 0], [-2, -1, 0], [-2, -1, 0], [-1, 0], [0, 1]]
-    : [[0, 1], [0, 1], [-1, 0], [-1, 0], [-1, 0], [0], [1]]
+    : donna ? [[1], [0], [-1], [-1], [-1], [0], [1]]
+    : [[-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1, 0], [0]]
   for (const [ex, lato] of [[cx - 11, 0], [cx + 10, 1]]) {
     const out = lato ? 1 : -1, sk = pelle(ex)
     const lidRow = { w: y - 2, n: y - 1, d: y, h: y + 1, x: y + 1 }[f.lid]
@@ -90,6 +94,7 @@ function occhi(c, cx, f, { y = 41, browY = 36, iride = "#5a4636", pelle = () => 
     }
     c.hline(ex - 4, lidRow, 9, LID_B); c.px(ex + out * 4, lidRow + 1, LID_B)     // the lid, its outer corner
     if (!occhiali) c.px(ex + out * 5, lidRow - 1, LID_B)                       // the lash
+    if (donna) { c.px(ex + out * 5, lidRow, LID_B); c.px(ex + out * 6, lidRow - 2, LID_B) }   // a woman's: a longer wing
     c.hline(ex - 2, y + 4, 5, sk)                                              // the lower lid
   }
 }

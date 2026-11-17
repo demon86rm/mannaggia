@@ -146,11 +146,14 @@ def voce(n):
          "pelle": hexc(skin), "chioma": hexc(hair), "veste": hexc(robe), "sfondo": hexc(bg),
          "velo": hexc(av.veil_color(t, robe)) if cop == "velo" else None,
          "secondo": hexc(av.ROBES[h(n, "manto") % len(av.ROBES)]) if abito == "mantello" else None,
-         "iride": IRIDI[h(n, "iride") % len(IRIDI)], "guance": t.donna or t.eta == "giovane"}
+         "iride": IRIDI[h(n, "iride") % len(IRIDI)], "guance": t.donna}   # a blush only for women (the user, 2026-11-17)
     if abito == "regale":                   # the mantle in the colour avatar.py gives kings (red or purple)
         d["secondo"], d["veste"] = d["veste"], "#e8dcc0"
     # face variants, fixed by the name (as the colours): face shape, nose, mouth, curly-hair style, hairline
-    d.update({"viso": h(n, "viso") % 3, "naso_v": h(n, "naso") % 3, "bocca": h(n, "bocca") % 3,
+    # face shape by sex (the user, 2026-11-17): women the soft oval (0) or the tapered chin (3), men the
+    # square chin (2) or the broad square jaw (4); VISI in libreria96
+    d.update({"viso": (2, 4)[h(n, "viso") % 2] if not t.donna else (0, 3)[h(n, "viso") % 2],
+              "naso_v": h(n, "naso") % 3, "bocca": h(n, "bocca") % 3,
               "afro_v": h(n, "afro") % 3, "attacc": h(n, "attaccatura") % 3 - 1})
     if abito == "vescovo":                  # cope, chasuble with a Y orphrey, chasuble with the pallium (ABITI.vescovo)
         d["vescovo_v"] = h(n, "paramenti") % 3
@@ -178,6 +181,10 @@ def voce(n):
     # The old geometric cut (0) is no longer given to women: the user found it unnatural
     if d.get("donna") and d.get("capelli") == "lunghi":
         d["piega"] = (1, 2, 4, 5)[h(n, "piega") % 4] if d.get("copricapo") else 1 + h(n, "piega") % 5
+        # the bob (5) is modern: only for women born after 1900 (the user, 2026-11-17); the others get one of
+        # the long styles instead, the bun (3) never under headgear
+        if d["piega"] == 5 and not ((facts.get(n) or {}).get("birth") or 0) > 1900:
+            d["piega"] = (1, 2, 4)[h(n, "caschetto96") % 3] if d.get("copricapo") else (1, 2, 3, 4)[h(n, "caschetto96") % 4]
     if n in UGANDA and h(n, "kanzu") % 2:   # the barkcloth over the shoulder, on the white kanzu
         d.update({"abito": "mantello", "veste": "#ece6da", "secondo": "#9a5032"})
     d.update(ECCEZIONI.get(n, {}))          # here for the dress, and again at the end for the variants
@@ -283,6 +290,12 @@ def voce(n):
     if tg:
         tg = tg.get(d["eta"], tg["adulto"]) if isinstance(tg, dict) else tg
         d["taglio"] = tg[h(n, "taglio96") % len(tg)]   # not "taglio": avatar.py draws the hair family with that one
+        # the page-boy (corti 5) only for men born 1300-1500, when it was worn (the user, 2026-11-17): on the
+        # others it looked like a woman's bob
+        nato = (facts.get(n) or {}).get("birth")
+        if d["capelli"] == "corti" and d["taglio"] == 5 and not (nato is not None and 1300 <= nato <= 1500):
+            altri = [t for t in tg if t != 5]
+            d["taglio"] = altri[h(n, "paggio96") % len(altri)]
     # the lily (ATTRIBUTI96.giglio), the user's rules of 2026-11-15: a Western sovereign the gold sceptre with
     # the fleur-de-lis (2); the others, the Eastern sovereigns among them, the flower: of them two in three
     # the stalk with three open flowers (0), one in three an open flower and two buds (1), from the name.

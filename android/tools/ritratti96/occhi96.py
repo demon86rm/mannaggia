@@ -5,11 +5,11 @@
         [--pazienza ~/mannaggia-cache/pazienza_occhi96]
 
 occhi96.tsv: id <TAB> iris (middle tone) <TAB> brows <TAB> skin (crease and lower lid) <TAB> shape ("" or "mono")
-<TAB> glasses (0/1) <TAB> brows' tail <TAB> bushy brows (0/1).
+<TAB> glasses (0/1) <TAB> brows' tail <TAB> bushy brows (0/1) <TAB> woman (0/1: thin arched brows, a longer lash).
 The colours are read from the portraits drawn WITH open eyes (anteprima96.px.js, and the specials: the B
 eyes of occhi() in occhi.px.js), at fixed pixels of the left eye. It is at x 36, y 41 in the 94 px figure,
-+1 in the 96 px image (outline): iris (36,44), brows (37,37), skin (37,46), the brows' tail (32,38); the brows
-are bushy (three rows) when (37,36) has their colour too. The app draws the same eyes on the portrait
++1 in the 96 px image (outline): iris (36,44), brows (37,37), skin (37,46), the brows' tail (32,37) for a man,
+(32,38) for a woman (her brows arch lower at the end). Bushy and woman come from the data (old men). The app draws the same eyes on the portrait
 without eyes (Occhi.kt).
 emozioni.txt: the 6 emotions of occhi.px.js (EMOZIONI), one line each: name, then 48 steps "dx,dy,lid,browL,browR,worry,small".
 """
@@ -29,10 +29,9 @@ app = Path(a.app)
 fid = lambda n: hashlib.sha1(n.encode("utf-8")).hexdigest()[:12]
 hexa = lambda im, x, y: "#%02x%02x%02x" % im.getpixel((x, y))[:3]
 
-def campioni(im):
-    """iris, brows, skin, tail, bushy: sampled from a portrait with open B eyes."""
-    b = hexa(im, 37, 37)
-    return hexa(im, 36, 44), b, hexa(im, 37, 46), hexa(im, 32, 38), int(hexa(im, 37, 36) == b)
+def campioni(im, donna):
+    """iris, brows, skin, tail: sampled from a portrait with open B eyes."""
+    return hexa(im, 36, 44), hexa(im, 37, 37), hexa(im, 37, 46), hexa(im, 32, 38 if donna else 37)
 
 
 data = json.loads(re.search(r"var TRATTI = (.*)\n", (HERE / "tratti96.data.js").read_text(encoding="utf-8")).group(1))
@@ -40,17 +39,19 @@ GLASSES = {fid("San Massimiliano Maria Kolbe"), fid("San Josemaría Escrivá de 
 rows = []
 for d in data:
     im = Image.open(Path(a.anteprima) / "sprites" / f"p_{d['id']}.png").convert("RGB")
-    i, b, s, t, f = campioni(im)
-    rows.append((d["id"], i, b, s, d.get("occhi") or "", int(d["id"] in GLASSES), t, f))
+    i, b, s, t = campioni(im, d["donna"])
+    rows.append((d["id"], i, b, s, d.get("occhi") or "", int(d["id"] in GLASSES), t,
+                 int(d["eta"] == "anziano" and not d["donna"]), int(bool(d["donna"]))))
 speciali = [l.strip() for l in (app / "speciali.txt").read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")]
 sp = Path(a.speciali) / "sprites"
 files = ["spec_s1_santo_subito", "spec_s2_san_culo", "spec_s3_san_calendario", "spec_s4_san_deploy", "spec_s5_san_sudo", None, "spec_s7_santa_cunegonda"]
 for i, (nome, f) in enumerate(zip(speciali, files), 1):
     src = Path(a.pazienza) / "sprites" / "pazienza_96.png" if f is None else sp / f"{f}.png"
     im = Image.open(src).convert("RGB")
-    ir, b, s, t, f = campioni(im)
-    rows.append((fid(nome), ir, b, s, "", int(i == 4), t, f))
-(app / "occhi96.tsv").write_text("# id\tiride\tsopracciglia\tpelle\tforma\tocchiali\tcoda\tfolte\n" +
+    donna = nome.startswith("Santa")
+    ir, b, s, t = campioni(im, donna)
+    rows.append((fid(nome), ir, b, s, "", int(i == 4), t, int(i == 1), int(donna)))   # S1, the old pope: bushy brows
+(app / "occhi96.tsv").write_text("# id\tiride\tsopracciglia\tpelle\tforma\tocchiali\tcoda\tfolte\tdonna\n" +
                                  "".join("\t".join(map(str, r)) + "\n" for r in rows), encoding="utf-8")
 
 src = (HERE / "occhi.px.js").read_text(encoding="utf-8")

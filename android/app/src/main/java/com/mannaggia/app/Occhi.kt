@@ -30,9 +30,10 @@ object Occhi {
     /**
      * What changes from saint to saint: the iris' middle tone (its dark and light tones are mixed from it),
      * the brows and their outer tail, the skin tone of the lid's crease and of the lower lid, a "mono" eye
-     * (no crease), glasses, bushy brows (three rows, old men).
+     * (no crease), glasses, bushy brows (three rows, old men), a woman (thin arched brows, a longer lash).
      */
-    class Params(val iris: Int, val brows: Int, val skin: Int, val mono: Boolean, val glasses: Boolean, val tail: Int, val bushy: Boolean)
+    class Params(val iris: Int, val brows: Int, val skin: Int, val mono: Boolean, val glasses: Boolean, val tail: Int, val bushy: Boolean,
+                 val woman: Boolean)
 
     const val STEP_MS = 83L
     private const val DIR = "avatar"
@@ -52,10 +53,12 @@ object Occhi {
     @Volatile private var params: Map<String, Params>? = null
     @Volatile private var emotions: Map<String, List<Step>>? = null
 
-    private val fallback = Params(Color.parseColor("#5a4636"), Color.BLACK, Color.parseColor("#d78146"), false, false, Color.BLACK, false)
+    private val fallback = Params(Color.parseColor("#5a4636"), Color.BLACK, Color.parseColor("#d78146"), false, false, Color.BLACK, false, false)
 
-    /** The brows' rows for i = 0 (inner end) .. 6 (outer end), relative to BROW_Y; three rows when bushy. */
-    private val BROWS = arrayOf(intArrayOf(0, 1), intArrayOf(0, 1), intArrayOf(-1, 0), intArrayOf(-1, 0), intArrayOf(-1, 0), intArrayOf(0), intArrayOf(1))
+    /** The brows' rows for i = 0 (inner end) .. 6 (outer end), relative to BROW_Y: a man's straight and thick,
+     *  a woman's thin and arched, an old man's bushy (three rows). */
+    private val BROWS = arrayOf(intArrayOf(-1, 0), intArrayOf(-1, 0), intArrayOf(-1, 0), intArrayOf(-1, 0), intArrayOf(-1, 0), intArrayOf(-1, 0), intArrayOf(0))
+    private val WOMAN = arrayOf(intArrayOf(1), intArrayOf(0), intArrayOf(-1), intArrayOf(-1), intArrayOf(-1), intArrayOf(0), intArrayOf(1))
     private val BUSHY = arrayOf(intArrayOf(-1, 0, 1), intArrayOf(-1, 0, 1), intArrayOf(-2, -1, 0), intArrayOf(-2, -1, 0),
         intArrayOf(-2, -1, 0), intArrayOf(-1, 0), intArrayOf(0, 1))
 
@@ -71,10 +74,11 @@ object Occhi {
             context.applicationContext.assets.open("$DIR/occhi96.tsv").bufferedReader(Charsets.UTF_8).useLines { lines ->
                 lines.filter { it.isNotBlank() && !it.startsWith("#") }.mapNotNull { line ->
                     val c = line.split('\t')
-                    // 8 columns; a file of the old eyes has 6 (no tail, no bushy flag): the tail is then the brows' colour
+                    // 9 columns; older files have 6 (no tail, bushy, woman: the tail is then the brows' colour) or 8 (no woman)
                     if (c.size < 6) null else c[0] to Params(
                         Color.parseColor(c[1]), Color.parseColor(c[2]), Color.parseColor(c[3]), c[4] == "mono", c[5] == "1",
-                        if (c.size >= 8) Color.parseColor(c[6]) else Color.parseColor(c[2]), c.size >= 8 && c[7] == "1")
+                        if (c.size >= 8) Color.parseColor(c[6]) else Color.parseColor(c[2]), c.size >= 8 && c[7] == "1",
+                        c.size >= 9 && c[8] == "1")
                 }.toMap()
             }
         }.getOrDefault(emptyMap()).also { params = it }
@@ -112,7 +116,7 @@ object Occhi {
         fun vline(x: Int, y: Int, n: Int, c: Int) { for (i in 0 until n) px(x, y + i, c) }
         val y = EYE_Y
         val iris = intArrayOf(mix(p.iris, Color.BLACK, 0.45), p.iris, mix(p.iris, Color.WHITE, 0.3))
-        val rowsOf = if (p.bushy) BUSHY else BROWS
+        val rowsOf = if (p.bushy) BUSHY else if (p.woman) WOMAN else BROWS
         for ((lato, ex) in listOf(CX - 11, CX + 10).withIndex()) {
             val out = if (lato == 1) 1 else -1
             val lidRow = when (f.lid) { 'w' -> y - 2; 'd' -> y; 'h', 'x' -> y + 1; else -> y - 1 }
@@ -147,6 +151,7 @@ object Occhi {
             }
             hline(ex - 4, lidRow, 9, LID); px(ex + out * 4, lidRow + 1, LID)  // the lid, its outer corner
             if (!p.glasses) px(ex + out * 5, lidRow - 1, LID)              // the lash (it would land on the frame)
+            if (p.woman) { px(ex + out * 5, lidRow, LID); px(ex + out * 6, lidRow - 2, LID) }   // a woman's: a longer wing
             hline(ex - 2, y + 4, 5, p.skin)                                 // the lower lid
         }
         if (p.glasses) {

@@ -39,7 +39,7 @@ $PY -I installa.py --app ../../app/src/main/assets/avatar
 
 ## Dati degli occhi per l'app
 
-`occhi96.py` scrive in `assets/avatar/` `occhi96.tsv` (per ogni ritratto, 8 colonne: iride, sopracciglia, pelle della piega e della palpebra sotto, forma, occhiali, coda delle sopracciglia, sopracciglia folte) e `emozioni.txt` (le 6 emozioni di `occhi.px.js`, che sono la fonte unica). Tutti i colori li legge, a pixel fissi, da ritratti con gli occhi B aperti, quindi prima servono le anteprime. `Occhi.kt` legge anche il file vecchio a 6 colonne (coda uguale alle sopracciglia, niente folte):
+`occhi96.py` scrive in `assets/avatar/` `occhi96.tsv` (per ogni ritratto, 9 colonne: iride, sopracciglia, pelle della piega e della palpebra sotto, forma, occhiali, coda delle sopracciglia, sopracciglia folte, donna) e `emozioni.txt` (le 6 emozioni di `occhi.px.js`, che sono la fonte unica). Tutti i colori li legge, a pixel fissi, da ritratti con gli occhi B aperti, quindi prima servono le anteprime. `Occhi.kt` legge anche i file vecchi a 6 e 8 colonne:
 
 ```sh
 $PXL build anteprima96.px.js --no-preview --out ~/mannaggia-cache/anteprima96
@@ -88,7 +88,7 @@ Lo stile approvato sui provini a mano (sei toni per materiale, luce da in alto a
 - `rampa6(base, rif)`: scala a sei toni di un colore qualsiasi, presa da una scala scelta a mano dello stesso materiale (`PELLE6`, `ORO6`, `ORO6_BEATO`). Il tono 3 è il colore di base.
 - `faccia6(d)` e `collo6(d)`: viso e collo, con le varianti di viso, naso e bocca, le rughe degli anziani e l'ombra che capelli e copricapi gettano sulla fronte (`ombra`, da disegnare dopo di loro). Nella zona degli occhi restano due soli toni.
 - `aureola6(beato, legg)` e `sfondo6(d)`: i leggendari hanno l'aureola punzonata con i raggi e lo sfondo a losanghe, gli altri aureola e sfondo semplici.
-- Gli occhi sono gli occhi B di `occhi()` in `occhi.px.js` (approvati animati il 2026-11-15): sopracciglia ad arco che si assottigliano (tre righe, «folte», per gli uomini anziani), piega della palpebra, iride a tre toni con pupilla e riflesso, ombra della palpebra sulla prima riga del bianco, angoli bassi arrotondati, ciglia all'esterno. Cinque palpebre: aperti, spalancati, abbassati, socchiusi, chiusi. L'occhio «mono» non ha la piega e tiene tutte le righe del bianco; con gli occhiali niente ciglia esterna. Le sopracciglia non salgono mai sopra y 33. `Occhi.kt` ne è la copia riga per riga.
+- Gli occhi sono gli occhi B di `occhi()` in `occhi.px.js` (approvati animati il 2026-11-15): sopracciglia ad arco che si assottigliano (tre righe, «folte», per gli uomini anziani), piega della palpebra, iride a tre toni con pupilla e riflesso, ombra della palpebra sulla prima riga del bianco, angoli bassi arrotondati, ciglia all'esterno. Cinque palpebre: aperti, spalancati, abbassati, socchiusi, chiusi. Per genere (2026-11-17): sopracciglia delle donne sottili ad arco, una riga, e ciglia esterna più lunga; degli uomini spesse e più dritte, due righe; degli anziani folte, tre righe. L'occhio «mono» non ha la piega e tiene tutte le righe del bianco; con gli occhiali niente ciglia esterna. Le sopracciglia non salgono mai sopra y 33. `Occhi.kt` ne è la copia riga per riga.
 
 - `capelli6(d, viso)` e `barba6(d, viso)`: capelli e barbe. Le sagome restano quelle di `capelliDietro`, `capelliDavanti` e `barba`, disegnate con colori segnaposto (`MARCA_C`, `MARCA_B`); poi una passata ridipinge ogni pixel segnato con uno dei sei toni di `chioma6(colore)`: ciocche a ventaglio, riflesso, bordo in luce, punte in ombra, frangia frastagliata; ricci e afro tengono le loro luci. I baffi sono una forma a due lobi, mai una riga attraverso la barba, e sotto c'è la bocca. `tara96` va per primo tra gli elementi della figura. Il bordo superiore della barba è una curva (guance, naso e dintorni della bocca liberi, basette fino a y 46); i baffi stanno sopra la bocca (righe 52–53), poi una riga di pelle, la bocca a y 55 e il labbro a y 56: con la barba la bocca la disegna `barba6`, non `faccia6`.
 - `pieghe6(d, viso)`: acconciature delle donne con i capelli lunghi, scelte da `d.piega` (1 lunghi lisci sulle spalle, 2 mossi, 3 raccolti a crocchia, 4 treccia sulla spalla, 5 caschetto con la riga di lato; 0 o assente il taglio di sempre). `esporta.py` sceglie `piega` dal nome tra le cinque nuove, in parti uguali; sotto un copricapo la crocchia non si usa. Il taglio di sempre (0) non va più alle donne.
@@ -127,3 +127,9 @@ Gli attributi sono ancora a quattro toni. Le figurine speciali S1–S4 e S7 pass
 - **Contorni:** un solo contorno da 1 px per ogni elemento. Gli attributi hanno il proprio e vengono appoggiati sopra la figura già contornata.
 - **Due attributi non si sovrappongono:** il secondo va a sinistra, specchiato.
 - **Cappuccio della felpa:** viene ridisegnato dopo il viso, e il suo bordo sopra i capelli è in ombra, mai chiaro.
+
+## Viso e capelli per genere (2026-11-17)
+
+- `VISI`: 0 ovale morbido e 3 mento affusolato (si stringe dolcemente da y 46) per le donne; 2 mento squadrato e 4 mascella larga squadrata per gli uomini, tagliati in piano a y 62, due righe sopra il colletto. 1 non si assegna più.
+- Rossore sulle guance solo alle donne (`guance` in `esporta.py`).
+- Taglio a paggio (corti 5) solo agli uomini nati fra il 1300 e il 1500; caschetto (piega 5) solo alle donne nate dopo il 1900, ridisegnato senza frangia, con la riga di lato profonda e le punte che girano sotto la mascella.
