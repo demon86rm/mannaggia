@@ -336,6 +336,10 @@ FAMOSI = {
     "Santa Giovanna d'Arco": T(donna=True, eta="giovane", capelli="corti", colore_capelli="castano",
                                abito="armatura", attributo="spada", martire=True),
     # Re, imperatori
+    # the margrave of Baden (1428-1458, died young) as his statue in the Stiftskirche of Baden-Baden (the
+    # user, 2026-11-18): in armour, bareheaded, long hair, a staff with a cross on top
+    "Beato Bernardo II di Baden": T(beato=True, eta="giovane", capelli="lunghi", colore_capelli="castano",
+                                    abito="armatura", attributo="croce"),
     "San Costantino I": T(capelli="corti", colore_capelli="castano", copricapo="corona",
                           abito="regale", colore_abito=(130, 40, 120), attributo="croce"),
     # Santi del Novecento

@@ -78,6 +78,7 @@ RELIGIOSE = {"Santa Giulia Billiart", "Santa Marguerite Bourgeoys", "Santa Maria
 ECCEZIONI = {"San Hoel": {"regale_v": 2, "corona_v": 2},
              "Beata Nera Tolomei": {"tunica_v": 0},
              "San Giosafat Kuncewycz": {"mitra_v": 2},     # a Greek Catholic bishop, with no Eastern label
+             "Beato Bernardo II di Baden": {"croce_v": 1},  # his statue's cross is gold (the user, 2026-11-18)
              "San Cirillo VI di Alessandria": {"abito": "talare", "talare_v": 1, "veste": "#2c282e", "copricapo": None,
                                                "barba": "lunga", "chioma": "#e8e4dc"}}
 ripieghi = collections.Counter()

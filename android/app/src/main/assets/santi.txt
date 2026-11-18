@@ -1375,6 +1375,8 @@ San Baudolino eremita
 San Bavone di Gand
 San Bazyli Martysz
 San Beat de Cerbi
+San Beato di Liébana
+San Beato di Vendôme
 San Beda il Venerabile
 San Benedetto
 San Benedetto Biscop
@@ -1773,8 +1775,6 @@ San Desiderato di Verdun
 San Desiderio di Cahors
 San Desiderio di Langres
 San Desiderio di Vienne
-San Di Liébana
-San Di Vendôme
 San Diadoco di Fotice
 San Didimo il Cieco
 San Dieci martiri di Creta
@@ -4804,6 +4804,7 @@ Santa Bartolomea Capitanio
 Santa Basilissa e Anastasia
 Santa Bassa di Edessa
 Santa Batilde
+Santa Beata di Sens
 Santa Beatrice II d'Este
 Santa Beatrice de Silva
 Santa Begga di Andenne
@@ -4894,7 +4895,6 @@ Santa Demetria di Roma
 Santa Derchairthinn
 Santa Derfuta
 Santa Devota
-Santa Di Sens
 Santa Dignamerita di Salerno
 Santa Dinfna
 Santa Dionisia

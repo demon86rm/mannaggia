@@ -165,7 +165,11 @@ def add_feasts(people, rows):
 
 def display_name(p):
     """Name as shown in the app ("San Pietro"), or None if the label is unusable."""
-    name = TITLE_RE.sub("", p["label"].strip()).replace("’", "'")
+    label = p["label"].strip()
+    m = TITLE_RE.match(label)
+    # "Beato di Vendôme", "Beata di Sens": there Beato/Beata is the name (Beatus, Beata), not the title
+    keep = m and re.match(r"(di|da|de|del|della|d')\b", label[m.end():])
+    name = (label if keep else TITLE_RE.sub("", label)).replace("’", "'")
     name = name[:1].upper() + name[1:]
     # Scarta etichette non tradotte (Q-id), con parentesi, cifre o alfabeti non latini.
     if len(name) < 3 or not VALID_RE.match(name) or re.search(r"\d", name):
@@ -281,6 +285,9 @@ def retitle(path):
             continue
         m = re.match(r"^(Sant'|Santo|Santa|San|Beato|Beata) ?(.*)$", old)
         title, label = m.group(1), m.group(2)
+        # the old titles stripped a Beato/Beata that was the name: "San Di Vendôme" was "Beato di Vendôme"
+        if re.match(r"(Di|Da|De|Del|Della|D') ", label):
+            label = ("Beata " if title in ("Santa", "Beata") else "Beato ") + label[0].lower() + label[1:]
         # "Sant'" hides the gender, but it only comes before a vowel, where the title is the same.
         female = title in ("Santa", "Beata")
         new = display_name({"label": label, "saint": not title.startswith("Beat"), "female": female})

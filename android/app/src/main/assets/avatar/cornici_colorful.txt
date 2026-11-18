@@ -1760,8 +1760,8 @@ San Desiderato di Verdun	lapislazzuli
 San Desiderio di Cahors	bronzo
 San Desiderio di Langres	bronzo
 San Desiderio di Vienne	palma
-San Di Liébana	bronzo
-San Di Vendôme	legno
+San Beato di Liébana	bronzo
+San Beato di Vendôme	legno
 San Diadoco di Fotice	vaporwave
 San Didimo il Cieco	neon
 San Dieci martiri di Creta	porpora
@@ -4849,7 +4849,7 @@ Santa Demetria di Roma	porpora
 Santa Derchairthinn	smeraldo
 Santa Derfuta	smeraldo
 Santa Devota	bronzo
-Santa Di Sens	smeraldo
+Santa Beata di Sens	smeraldo
 Santa Dignamerita di Salerno	vaporwave
 Santa Dinfna	palma
 Santa Dionisia	neon

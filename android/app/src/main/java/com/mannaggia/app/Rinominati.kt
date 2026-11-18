@@ -16,6 +16,11 @@ object Rinominati {
         // tools/genera_santi.py). Beato Bernardo II di Baden takes her place and her card number,
         // so whoever had her card keeps it, with its discovery date.
         "Sant'Ageltrude" to "Beato Bernardo II di Baden",
+        // After 2.1.2: Beato/Beata was the name, not the title (Beatus of Vendôme and of Liébana, Beata of Sens),
+        // and the title fix had stripped it (tools/genera_santi.py, display_name)
+        "San Di Vendôme" to "San Beato di Vendôme",
+        "San Di Liébana" to "San Beato di Liébana",
+        "Santa Di Sens" to "Santa Beata di Sens",
         "Beato Saint Richard Martin" to "Beato Richard Martin",
         "San Saint Amun" to "Sant'Amun",
         "San Saint Antide" to "Sant'Antide",

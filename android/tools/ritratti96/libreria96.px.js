@@ -1215,10 +1215,10 @@ COPRICAPI.tiara = function (d) {
 // thumb, in the saint's skin; manica96: the wide sleeve it comes out of, in the robe's colour. Order in an
 // attribute: sleeve, shaft, hand. ATTR_MANO: what the sprite depends on, for attrSprite's key
 var LEGNO6 = ["#2e1c12", "#4a2e1a", "#6e4626", "#946236", "#b8844c", "#d8a86c"]
-var ATTR_MANO = { pastorale: (d) => d.pelle + d.veste + (d.mitra_v || 0), croce: (d) => d.pelle + d.veste + (d.croce_v || 0),
-  bastone: (d) => d.pelle + d.veste + (d.bastone_v || 0),
-  giglio: (d) => d.pelle + d.veste + (d.giglio_v || 0), palma: (d) => d.pelle + d.veste + (d.palma_v || 0),
-  spada: (d) => d.pelle + d.veste + (d.spada_v || 0),
+var ATTR_MANO = { pastorale: (d) => d.pelle + d.veste + manicaK96(d) + (d.mitra_v || 0), croce: (d) => d.pelle + d.veste + manicaK96(d) + (d.croce_v || 0),
+  bastone: (d) => d.pelle + d.veste + manicaK96(d) + (d.bastone_v || 0),
+  giglio: (d) => d.pelle + d.veste + manicaK96(d) + (d.giglio_v || 0), palma: (d) => d.pelle + d.veste + manicaK96(d) + (d.palma_v || 0),
+  spada: (d) => d.pelle + d.veste + manicaK96(d) + (d.spada_v || 0),
   libro: (d) => "" + (d.libro_v || 0) + (d.libro_c || 0) }
 // a shaft 3 px wide on the axis x 81, from y0 down: tones t of scale Q for its left, middle and right column
 function asta96(c, y0, Q, t) { for (let y = y0; y <= 93; y++) for (let i = 0; i < 3; i++) c.px(80 + i, y, Q[t[i]]) }
@@ -1230,6 +1230,10 @@ function mano96(c, R) {
     c.px(85, y, R[5]); c.px(86, y, R[5]); c.px(85, y + 2, R[0]); c.px(84, y + 2, R[0]) }
   c.px(75, 73, "_"); c.px(75, 84, "_"); c.px(89, 73, "_"); c.px(89, 84, "_")
 }
+// The sleeve's scale: the robe's cloth, or the armour's metal for a soldier (plate and mail steel, the
+// centurion bronze; the uniform is cloth): a blue robe never seen elsewhere showed under the hand
+var manicaR96 = (d) => d.abito === "armatura" && (d.armatura_v || 0) !== 3 ? (d.armatura_v === 1 ? BRONZO6 : ACCIAIO6) : rampaMat(d.veste)
+var manicaK96 = (d) => (d.abito === "armatura" ? "A" + (d.armatura_v || 0) : "")
 function manica96(c, R) {
   for (let y = 85; y <= 93; y++) for (let x = 74 - (y - 85) / 3; x <= 93; x++) {
     const xi = Math.round(x)
@@ -1253,7 +1257,7 @@ ATTRIBUTI96.pastorale = function (d) {
     const q = Math.hypot(x - x0, y - y0)
     if (q <= r && q > r - w && fine(x, y)) c.px(x, y, Q[tra05(luce(x, y, x0, y0, r) - (q <= r - w + 1 ? 1 : 0) + (q > r - 1 && x + y < x0 + y0 ? 1 : 0))]) } }
   return [(c) => {
-    manica96(c, rampaMat(d.veste))
+    manica96(c, manicaR96(d))
     if (v === 1) {
       const x0 = A + 5, y0 = 20
       asta(c, y0, LEGNO6, [4, 3, 1])
@@ -1285,7 +1289,7 @@ ATTRIBUTI96.croce = function (d) {
   const v = d.croce_v || 0, Q = v === 1 || v === 3 ? ORO6 : LEGNO6, A = 81
   const braccio = (c, y, m) => { for (let x = A - m; x <= A + m; x++) { c.px(x, y - 1, Q[x < A ? 5 : 4]); c.px(x, y, Q[3]); c.px(x, y + 1, Q[1]) } }
   return [(c) => {
-    manica96(c, rampaMat(d.veste))
+    manica96(c, manicaR96(d))
     asta96(c, v === 3 ? 26 : 30, Q, [4, 3, 1])
     if (v === 3) {
       braccio(c, 32, 3); braccio(c, 39, 7)
@@ -1316,7 +1320,7 @@ ATTRIBUTI96.croce = function (d) {
 ATTRIBUTI96.bastone = function (d) {
   const v = d.bastone_v || 0, Q = LEGNO6
   return [(c) => {
-    manica96(c, rampaMat(d.veste))
+    manica96(c, manicaR96(d))
     asta96(c, v ? 17 : 14, Q, [4, 3, 1])
     if (v) { for (let x = 75; x <= 87; x++) { c.px(x, 14, Q[x < 81 ? 5 : 4]); c.px(x, 15, Q[3]); c.px(x, 16, Q[1]) } c.px(75, 16, Q[2]); c.px(87, 14, Q[3]) }
     else {
@@ -1352,7 +1356,7 @@ ATTRIBUTI96.giglio = function (d) {
   let c0
   return [(c) => {
     c0 = c
-    manica96(c, rampaMat(d.veste))
+    manica96(c, manicaR96(d))
     if (v === 2) {                                                   // the sceptre
       asta96(c, 29, G, [4, 3, 1])
       for (let y = 40; y < 44; y++) for (let x = 78; x <= 84; x++) if (!((y === 40 || y === 43) && (x === 78 || x === 84))) c.px(x, y, G[y === 40 ? 5 : y === 43 ? 1 : x > 82 ? 2 : 3])
@@ -1383,7 +1387,7 @@ var PALMA6 = ["#1c3414", "#2c4e1c", "#3e6a26", "#588a32", "#78a844", "#a0c860"]
 ATTRIBUTI96.palma = function (d) {
   const v = d.palma_v || 0, V = PALMA6, G = ORO6
   return [(c) => {
-    manica96(c, rampaMat(d.veste))
+    manica96(c, manicaR96(d))
     const corona = (dietro) => {                                     // the wreath round (81, 64): gold laurel leaves on a thin ring
       for (let k = 0; k < 64; k++) {                                 // the ring
         const a = (k / 64) * 2 * Math.PI, x = Math.round(81 + 6.6 * Math.cos(a)), y = Math.round(64 + 2.8 * Math.sin(a))
@@ -1433,7 +1437,7 @@ ATTRIBUTI96.spada = function (d) {
     }
   }
   return [(c) => {
-    manica96(c, rampaMat(d.veste))
+    manica96(c, manicaR96(d))
     if (v === 1) {                                                   // the gladius
       lama(c, 46, 68, 6, 8, () => 0, false)
       for (let x = 75; x <= 87; x++) { const q = ((x - 81) / 6.4) ** 2; if (q <= 1) { c.px(x, 69, B[x < 79 ? 5 : 4]); c.px(x, 70, B[3]); c.px(x, 71, B[1]) } }
