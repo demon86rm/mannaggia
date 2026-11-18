@@ -11,8 +11,8 @@
          2dp per pixel, padded to a 48dp touch target. -->
     <ImageView
         android:id="@+id/btnSettings"
-        android:layout_width="108dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/btn_settings_w"
+        android:layout_height="@dimen/btn_settings_h"
         android:paddingVertical="2dp"
         android:clickable="true"
         android:contentDescription="@string/btn_settings"
@@ -23,8 +23,8 @@
 
     <ImageView
         android:id="@+id/btnInfo"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/btn_info_w"
+        android:layout_height="@dimen/btn_info_h"
         android:paddingVertical="5dp"
         android:clickable="true"
         android:contentDescription="@string/btn_info"
@@ -38,9 +38,9 @@
         android:id="@+id/txtResult"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="@dimen/result_gap"
         android:gravity="center"
-        android:textSize="28sp"
+        android:textSize="@dimen/result_text_size"
         android:text=""
         app:layout_constraintBottom_toTopOf="@id/cardFit"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,8 +49,8 @@
     <!-- Pulsing gold glow behind a new legendary card (see CardSlot). -->
     <ImageView
         android:id="@+id/imgGlow"
-        android:layout_width="320dp"
-        android:layout_height="320dp"
+        android:layout_width="@dimen/glow_size"
+        android:layout_height="@dimen/glow_size"
         android:contentDescription="@null"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/cardFit"
@@ -75,18 +75,18 @@
         <include
             android:id="@+id/cardSlot"
             layout="@layout/view_card"
-            android:layout_width="180dp"
+            android:layout_width="@dimen/card_max_width"
             android:layout_height="wrap_content"
             android:visibility="invisible" />
 
         <!-- "Nuova!" stamp (pixel art, see Avatars.newStamp) over the top corner of a new card. -->
         <ImageView
             android:id="@+id/imgStamp"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/stamp_width"
             android:layout_height="wrap_content"
             android:layout_gravity="top|end"
-            android:layout_marginTop="-22dp"
-            android:layout_marginEnd="-28dp"
+            android:layout_marginTop="@dimen/stamp_margin_top"
+            android:layout_marginEnd="@dimen/stamp_margin_end"
             android:adjustViewBounds="true"
             android:contentDescription="@string/card_stamp_new"
             android:elevation="14dp"
@@ -96,13 +96,13 @@
     </FrameLayout>
 
     <!-- Pixel-art "Mannaggia!" ribbon (see Avatars.ribbonButton): centred on the
-         saint-of-the-day icon, at most 200dp, clear of the icon column (72dp). -->
+         saint-of-the-day icon, at most @dimen/btn_mannaggia_max, clear of the icon column (@dimen/icon_column). -->
     <ImageView
         android:id="@+id/btnMannaggia"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginStart="@dimen/icon_column"
+        android:layout_marginEnd="@dimen/icon_column"
         android:adjustViewBounds="true"
         android:clickable="true"
         android:contentDescription="@string/btn_mannaggia"
@@ -112,7 +112,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/btnSaintOfDay"
-        app:layout_constraintWidth_max="200dp" />
+        app:layout_constraintWidth_max="@dimen/btn_mannaggia_max" />
 
     <ProgressBar
         android:id="@+id/progress"
@@ -127,8 +127,8 @@
     <!-- Pixel-art card binder: opens the album; new cards fly into it. -->
     <ImageView
         android:id="@+id/btnAlbum"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/btn_album"
         android:padding="4dp"
@@ -140,8 +140,8 @@
          "ghost" (half transparent, disabled) once used or when no saint is celebrated. -->
     <ImageView
         android:id="@+id/btnSaintOfDay"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:layout_marginBottom="8dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/saint_of_day_none"
@@ -154,8 +154,8 @@
     <!-- Share the last invocation (card image and phrase), left of the "Mannaggia!" button. -->
     <ImageView
         android:id="@+id/btnShare"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/share_invocation"
         android:padding="8dp"
@@ -169,8 +169,8 @@
          shown with a bounce whenever his card appears and the back is unlocked. -->
     <ImageView
         android:id="@+id/btnFlip"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:layout_marginBottom="8dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/flip_card"
@@ -183,8 +183,8 @@
     <!-- Trophies (pixel-art cup), on top of the bottom-right column. -->
     <ImageView
         android:id="@+id/btnTrophies"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:layout_marginBottom="8dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/btn_trophies"

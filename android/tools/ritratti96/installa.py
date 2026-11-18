@@ -7,8 +7,9 @@
 - ritratti96: p_<id>.png -> <id>.png (the 5420 saints of santi.txt)
 - speciali_app96: s1..s5, s7 and decollato96 -> the file_id of the saint on that line of speciali.txt, and decollato.png
 - pazienza_app96: pazienza96_base -> the file_id of S6
+- martiri.txt: the martyrs (tratti96.data.js, from avatar.py), for the «… martire» label of the parchment card
 """
-import argparse, hashlib, shutil, sys
+import argparse, hashlib, json, re, shutil, sys
 from pathlib import Path
 
 ap = argparse.ArgumentParser()
@@ -30,4 +31,7 @@ for i, nome in enumerate(speciali, 1):
     src = pz / "pazienza96_base.png" if i == 6 else sp / f"s{i}.png"
     shutil.copyfile(src, app / (fid(nome) + ".png")); n += 1
 shutil.copyfile(sp / "decollato96.png", app / "decollato.png")
-print(f"{n} portraits + decollato.png -> {app}")
+dati = json.loads(re.search(r"var TRATTI = (.*)\n", (Path(__file__).parent / "tratti96.data.js").read_text(encoding="utf-8")).group(1))
+martiri = [d["n"] for d in dati if d.get("martire")]
+(app / "martiri.txt").write_text("# I martiri (Wikidata, via avatar.py): etichetta «… martire» della carta.\n" + "\n".join(martiri) + "\n", encoding="utf-8")
+print(f"{n} portraits + decollato.png + martiri.txt ({len(martiri)}) -> {app}")

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 360-410dp wide (most phones). Buttons, icons, stamp, glow and the card's widest width; the text sizes depend on the height: see values-h700dp. -->
+<resources>
+    <dimen name="icon_size">64dp</dimen>
+    <dimen name="icon_column">72dp</dimen>
+    <dimen name="btn_settings_w">108dp</dimen>
+    <dimen name="btn_settings_h">48dp</dimen>
+    <dimen name="btn_info_w">70dp</dimen>
+    <dimen name="btn_info_h">48dp</dimen>
+    <dimen name="btn_mannaggia_max">200dp</dimen>
+    <dimen name="card_max_width">220dp</dimen>
+    <dimen name="stamp_width">100dp</dimen>
+    <dimen name="stamp_margin_top">-36dp</dimen>
+    <dimen name="stamp_margin_end">-36dp</dimen>
+    <dimen name="glow_size">320dp</dimen>
+</resources>

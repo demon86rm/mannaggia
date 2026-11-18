@@ -52,4 +52,4 @@ Generatore di "Mannaggia <santo>!". Gli script storici (`mannaggia.sh`, `mannagg
 ## Play Store
 - Pubblicazione gratuita, senza pubblicità.
 - Le licenze accettabili per dipendenze e asset sono Apache-2.0, MIT, BSD, CC0, CC-BY e GPL. Niente licenze NC.
-- Solo per i font è ammessa anche la SIL OFL 1.1: il file `.ttf` va in `res/font/` senza modifiche, la licenza originale in `assets/licenze/OFL-<font>.txt` e i crediti in `about_text`.
+- Solo per i font è ammessa anche la SIL OFL 1.1: il file `.ttf` va in `res/font/` senza modifiche, la licenza originale in `assets/licenze/OFL-<font>.txt` e i crediti in `about_text`. Eccezione: un font completato da uno script in `tools/font/` (originale, licenza e script nel repo, nome di famiglia cambiato), come `hamlet_tertia.otf` da `tools/font/hamlet_esteso.py` (Hamlet Tertia 18 con le lettere accentate di `santi.txt`): si rigenera se cambia `santi.txt`.

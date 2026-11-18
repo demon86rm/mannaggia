@@ -434,8 +434,13 @@ class AlbumActivity : AppCompatActivity() {
         dialog.behavior.skipCollapsed = true
         val avatar = view.findViewById<ImageView>(R.id.imgAvatar)
         val frame = view.findViewById<ImageView>(R.id.imgFrame)
-        val bookmark = view.findViewById<ImageButton>(R.id.btnBookmark)
+        val bookmark = view.findViewById<ImageButton>(R.id.btnBookmarkDetail)
         view.findViewById<TextView>(R.id.txtSaint).text = entry.saint
+        view.findViewById<TextView>(R.id.txtNumber).text =
+            getString(if (card.special) R.string.card_number_special else R.string.card_number, card.number)
+        lifecycleScope.launch {
+            view.findViewById<TextView>(R.id.txtLabel).text = Pergamena.etichetta(Avatars.etichetta(this@AlbumActivity, entry.saint, card.special))
+        }
         view.findViewById<TextView>(R.id.txtFound).text = if (card.trophy != null)
             getString(R.string.album_detail_special, card.number, card.trophy.nome) + "\n" + foundOn(entry)
         else

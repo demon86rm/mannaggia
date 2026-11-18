@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Children of Pergamena: where they sit and their text size, in parchment pixels (112 x 170). -->
+    <declare-styleable name="Pergamena_Layout">
+        <attr name="pxRect" format="string" />
+        <attr name="pxText" format="float" />
+    </declare-styleable>
+</resources>

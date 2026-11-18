@@ -35,6 +35,9 @@ object Avatars {
     @Volatile
     private var legendary: Set<String>? = null
 
+    @Volatile
+    private var martyrs: Set<String>? = null
+
     /** Frame name -> its animation frames ("cornice" is the gold one). */
     private val frameCache = ConcurrentHashMap<String, List<Bitmap>>()
 
@@ -80,6 +83,32 @@ object Avatars {
                 .useLines { lines -> lines.map { it.trim() }.filter { it.isNotEmpty() && !it.startsWith("#") }.toSet() }
         }.getOrDefault(emptySet()).also { legendary = it }
         saint in set
+    }
+
+    /**
+     * The label on top of the parchment card: the saint's category. «Figurina speciale» for the special
+     * cards; «Santo/Santa leggendario/a» for the legendaries; «… martire» for the martyrs
+     * (assets/avatar/martiri.txt, from tools/ritratti96/installa.py); else Santo, Santa, Beato or Beata
+     * from the title («Sant'» hides the gender: Formule.female).
+     */
+    suspend fun etichetta(context: Context, saint: String, special: Boolean): String {
+        if (special) return context.getString(R.string.cat_speciale)
+        val female = Formule.female(context, saint)
+        val beato = saint.startsWith("Beato ") || saint.startsWith("Beata ")
+        if (!beato && isLegendary(context, saint)) return context.getString(if (female) R.string.cat_leggendaria else R.string.cat_leggendario)
+        val base = context.getString(when {
+            beato && female -> R.string.cat_beata
+            beato -> R.string.cat_beato
+            female -> R.string.cat_santa
+            else -> R.string.cat_santo
+        })
+        val set = martyrs ?: withContext(Dispatchers.IO) {
+            runCatching {
+                context.applicationContext.assets.open("$DIR/martiri.txt").bufferedReader(Charsets.UTF_8)
+                    .useLines { lines -> lines.map { it.trim() }.filter { it.isNotEmpty() && !it.startsWith("#") }.toSet() }
+            }.getOrDefault(emptySet())
+        }.also { martyrs = it }
+        return if (saint in set) context.getString(R.string.cat_martire, base) else base
     }
 
     /** Card number of [saint]: 1 is the most famous (and rarest to find among the famous). */

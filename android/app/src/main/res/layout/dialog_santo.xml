@@ -1,47 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Album detail (bottom sheet): big portrait, name, legend badge, feast and discovery. -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Album detail (bottom sheet): the card on parchment, legend badge, feast and discovery. It scrolls:
+     on small screens the parchment card and the texts under it are taller than the sheet. -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="24dp">
 
-    <!-- Also the image shared with "Condividi" (portrait and frame). -->
-    <FrameLayout
-        android:id="@+id/cardImage"
+    <!-- The card on parchment, as on the home screen; its cardImage (portrait and frame) is also the
+         image shared with "Condividi". -->
+    <include
+        layout="@layout/view_card"
         android:layout_width="240dp"
-        android:layout_height="240dp">
-
-        <ImageView
-            android:id="@+id/imgAvatar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@null"
-            android:scaleType="fitCenter" />
-
-        <ImageView
-            android:id="@+id/imgFrame"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@null"
-            android:scaleType="fitCenter"
-            android:visibility="gone" />
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/txtSaint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/unifraktur_maguntia"
-        android:gravity="center"
-        android:textAppearance="?attr/textAppearanceHeadlineSmall"
-        android:textSize="28sp" />
+        android:layout_height="wrap_content" />
 
     <!-- Favourite on/off: the banner bookmark, full or empty. -->
     <ImageButton
-        android:id="@+id/btnBookmark"
+        android:id="@+id/btnBookmarkDetail"
         android:layout_width="48dp"
         android:layout_height="56dp"
         android:layout_marginTop="8dp"
@@ -109,3 +89,4 @@
         android:textAppearance="?attr/textAppearanceBodySmall"
         android:textColor="?android:attr/textColorSecondary" />
 </LinearLayout>
+</androidx.core.widget.NestedScrollView>
