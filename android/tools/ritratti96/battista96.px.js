@@ -1,50 +1,78 @@
-// San Giovanni Battista's secret back, 96 px (approved proposal A): the head upright on the plate. Pale, X eyes, tongue, no blood.
-// Other proposals (B on its side, C tilted, A2 dishevelled): battista96_prove.px.js
-// The beard follows the jaw (no clip with a straight edge) and spreads on the plate (no stalk under the chin).
+// San Giovanni Battista's secret back, 96 px, in the rich style (approved 2026-11-18): the head of his front
+// portrait (libreria96: hair, beard, face) upright on a gold plate. Pale, X eyes, tongue out, no blood.
+// Legendary like the front: diapered ground and punched halo. The beard lies in the plate's well, with uneven tips.
 // (included by speciali96.px.js, which already has libreria96, parti96 and tratti96.data.js: do not include them again, it resets ATTRIBUTI96)
 {
 const { S, F, cx } = G96
-const NERO = "#1e1a20", ORO = rampa("#e2b646")
 const b = TRATTI.find((t) => t.n === "San Giovanni Battista")
-const sk = rampa(mixc(b.pelle, "#ece8e2", 0.35), { shift: 10, sat: 0.6 }), hr = rampa(b.chioma, { shift: 8, sat: 0.8 })
-const d = { ...b, _sk: sk, copricapo: null, eta: "adulto", capelli: "lunghi", barba: null }
-const al = ALONE.santo
-const ell = (x, y, x0, y0, rx, ry) => ((x - x0) / rx) ** 2 + ((y - y0) / ry) ** 2 <= 1
+const PY = 81
+const DY = 8                                    // the head sits lower, on the plate
+// pale, cold skin: the colour of today's back
+const d0 = { ...b, pelle: mixc(b.pelle, "#dcdedc", 0.5), copricapo: null }
+const sk6 = rampa6(d0.pelle, PELLE6), sk = sk6.slice(1, 5), hr = rampa(d0.chioma, { shift: 8, sat: 0.8 })
+const d = { ...d0 }
+_MAT = []
+d._sk = sk; d._sk6 = sk6; d._rb = rampa(d.veste, { shift: 12 })
+const viso = faccia6(d)
+const tg = !d.donna && d.taglio ? tagli6(d, viso) : null
+_MAT = null
 
-// hair behind the face: a mass on top, long locks on both sides, ragged lower edge (never a straight wall)
-const LOCKS = [[-22, 36, -25, 52, -24, 63, -21, 59, -19, 69, -16, 57, -17, 42]]
-const capelliBat = [ellipse(cx, 35, 23, 20, hr[2]), ...LOCKS.flatMap((p) => simm(p, hr[2])),
-  recolor({ [hr[2]]: hr[1] }, (x, y) => x > cx + 13)]
+// X eyes: two strokes, dark core and a paler shadow under each arm (the sockets sunk and bluish)
+const OCC = mixc(sk6[1], "#4a5a7a", 0.35), X = "#2a1a1c"
+const xEye = (x0, y0) => (c) => {
+  for (let k = -2; k <= 2; k++) for (const s of [1, -1]) { c.px(x0 + k, y0 + s * k + 1, OCC) }
+  for (let k = -2; k <= 2; k++) { c.px(x0 + k, y0 + k, X); c.px(x0 + k, y0 - k, X) } }
+// mouth open with the tongue out, shaded: lit top-left, groove in the middle, darker right and below
+const LING = ["#7a2a36", "#a8404e", "#c85a68", "#e2788a", "#f2a0ae", "#fbd0d6"]
+const bocca = (c) => {
+  for (let x = cx - 3; x <= cx + 3; x++) { c.px(x, 54, "#3a1418"); c.px(x, 55, x > cx + 1 ? "#3a1418" : "#5a1e26") }
+  const L = [[-2, 2], [-2, 2], [-2, 2], [-1, 1]]
+  L.forEach(([a, z], i) => { for (let dx = a; dx <= z; dx++) {
+    let t = 3 - (dx > 0 ? 1 : 0) - (i === 3 ? 1 : 0)
+    if (i === 0 && dx < 0) t = 4
+    if (dx === 0 && i < 3) t = 2
+    if (dx === a && i === 0) t = 5
+    c.px(cx + dx, 56 + i, LING[t]) } }) }
 
-// beard: a band round the jaw that leaves the cheeks and the mouth free; the sideburns start at the ears,
-// the cheek line is curved, below the chin it falls in a rounded mass with two uneven tips
-const finestra = (x, y) => ell(x, y, cx, 41, 15.5, 12.5) || (Math.abs(x - cx) <= 5 && y >= 53 && y <= 57)
-const sagoma = (x, y) => (ell(x, y, cx, 51, 19.5, 18) || ell(x, y, cx, 59, 14, 13)) && y >= 44 &&
-  y <= 67 + [5, 3, 6, 2, 4, 1, 3, 5, 2][Math.abs(Math.round((x - cx) / 3)) % 9]
-const barbaBat = [clip((x, y) => sagoma(x, y) && !finestra(x, y), rect(cx - 21, 44, 43, 32, hr[2])),
-  hline(cx - 8, 52, 17, hr[2]), hline(cx - 7, 53, 15, hr[1]),                              // the moustache
-  ...[[-9, 62, -10, 70], [-4, 61, -5, 72], [2, 61, 2, 73], [7, 62, 9, 70], [-13, 57, -15, 65], [12, 57, 14, 64]]
-    .map(([x0, y0, x1, y1]) => line(cx + x0, y0, cx + x1, y1, hr[1])),
-  recolor({ [hr[2]]: hr[1] }, (x, y) => x > cx + 9 && y > 44)]
+sprite("_bt6_testa", { w: F, h: F, outline: "K" }, tara96,
+  ...(tg ? tg.dietro : capelliDietro(d, MARCA_C)),
+  ...orecchie(tg && tg.coperte ? { ...d, capelli: "lunghi" } : d, sk), viso.viso,
+  ...(tg ? tg.davanti : capelliDavanti(d, MARCA_C)), capelli6(d, viso, tg && tg.stile),
+  ...barba(d, MARCA_B), barba6(d, viso), viso.ombra,
+  xEye(cx - 11, 41), xEye(cx + 10, 41), bocca,
+  // the beard lies in the well: nothing below its near edge (head coordinates, DY higher than the plate's)
+  (c) => { for (let y = 0; y < F; y++) for (let x = 0; x < F; x++)
+    if (y + DY > PY - 2 && (q96(x, y + DY, cx, PY - 1, 31.5, 6.5) > 1 || y + DY > PY + 1 + [2, 0, 3, 1, 2, 0][Math.floor((x + 1) / 3) % 6]))
+      c.px(x, y, "_") })
 
-const croce = (x0, y0) => (c) => { for (let k = -2; k <= 2; k++) { c.px(x0 + k, y0 + k, NERO); c.px(x0 + k, y0 - k, NERO) } }
-sprite("_bt_raw0", { w: F, h: F },
-  ...capelliBat, ...orecchie(d, sk), ...faccia(d, sk), ...capelliDavanti(d, hr), ...barbaBat,
-  rect(cx - 3, 54, 7, 2, "#a8485a"), rect(cx - 2, 56, 5, 3, "#e2788a"), px(cx, 58, "#e2788a"), vline(cx, 56, 3, "#b84a5a"))   // mouth open, tongue out
-sprite("_bt_raw", { w: F, h: F }, stamp("_bt_raw0", 0, 0), croce(cx - 11, 41), croce(cx + 10, 41))
+// the plate, gold in six tones: a rim lit on top and dark below, the well sunk (its far edge lit,
+// its near edge in shadow), a reflection of the sky on the left
+sprite("_bt6_piatto", { w: F, h: F, outline: "K" }, (c) => {
+  for (let y = PY - 13; y <= PY + 13; y++) for (let x = 0; x < F; x++) {
+    const e = q96(x, y, cx, PY, 42.5, 11.5)
+    if (e > 1) continue
+    const w = q96(x, y, cx, PY - 1, 32.5, 7.5), ombra = x > cx + 16
+    let k
+    if (w > 1) {                                       // the rim
+      k = y < PY - 1 ? 4 : y > PY + 3 ? 2 : 3
+      if (e > 0.82) k = y < PY ? 5 : 1
+      if (ombra) k--
+      if (x < cx - 24 && x > cx - 34 && y < PY - 3 && y > PY - 8) k = 5
+    } else {                                           // the well
+      k = 2
+      if (w > 0.72) k = y < PY - 1 ? 1 : 3
+      if (ombra) k--
+      if (x < cx - 14 && x > cx - 24 && y > PY - 1 && y < PY + 3) k = 3
+    }
+    c.px(x, y, ORO6[tra05(k)])
+  } })
+// the head's shadow on the plate: one dark ellipse in the well
+const ombraPiatto = (c) => { for (let y = PY - 4; y <= PY + 5; y++) for (let x = 0; x < F; x++)
+  if (q96(x, y, cx + 3, PY + 1, 21, 4.5) <= 1 && q96(x, y, cx, PY - 1, 32.5, 7.5) <= 1) c.px(x, y, mixc(ORO6[1], "#000000", 0.3)) }
 
-const piatto = (cy) => [ellipse(cx, cy, 42, 11, ORO[1]), ellipse(cx, cy - 1, 40, 9, ORO[3]), ellipse(cx, cy, 32, 6, ORO[2]),
-  recolor({ [ORO[2]]: ORO[1] }, (x, y) => x > cx + 14)]
-sprite("_bt_piatto", { w: F, h: F, outline: "K" }, ...piatto(80))
-const alone = (nome, cy) => sprite(nome, { w: F, h: F, outline: "K" }, circ(cx, cy, 35, al[0]), circ(cx, cy, 33, al[1]), circ(cx, cy, 29, al[2]),
-  recolor({ [al[2]]: al[3] }, (x, y) => x + y > cx + cy + 22))
-const sfondo = () => [rect(0, 0, S, S, b.sfondo), rect(0, 72, S, S - 72, mixc(b.sfondo, "#000000", 0.15))]
-// a soft shadow of the head on the plate
-const ombraPiatto = (x0, y0, rx, ry) => ellipse(x0, y0, rx, ry, mixc(ORO[1], "#000000", 0.25))
-
-// A: upright, the beard lies on the plate
-sprite("_bt_a", { w: F, h: F, outline: "K" }, stamp("_bt_raw", 0, 0))
-sprite("decollato96", { w: S, h: S }, ...sfondo(), stamp("_bt_aureola_a", 0, 0),
-  stamp("_bt_piatto", 0, 0), layer("ombra", { shade: true }, stamp("_bt_a", 2, 10)), ombraPiatto(cx + 1, 80, 22, 4), stamp("_bt_a", 0, 8))
-alone("_bt_aureola_a", 42)
+const al = aureola6(false, true)
+const carta = (nome, legg) => sprite(nome, { w: S, h: S }, ...sfondo6({ ...b, leggendario: legg }),
+  stamp(al, 0, DY), stamp("_bt6_piatto", 0, 0), ombraPiatto,
+  layer("ombra", { shade: true }, stamp("_bt6_testa", 2, DY + 2)), stamp("_bt6_testa", 0, DY))
+carta("decollato96", true)
 }
