@@ -53,6 +53,10 @@ EXTRA_PEOPLE = {
     "Q523903": ("Bernardo II di Baden", False, False),
 }
 
+# Etichette italiane corrette a mano: qid -> etichetta. "Raffaele martire" (Q7294033) e' Raffaele di
+# Lesbo, martire nel 1463 con Nicola e Irene: l'etichetta di Wikidata non lo distingue dagli altri Raffaele.
+LABELS = {"Q7294033": "Raffaele di Lesbo"}
+
 # Esseri umani (Q5) o figure bibliche (Q20643955, es. San Giuseppe).
 QUERY_TEMPLATE = """
 SELECT ?item ?label ?status ?gender WHERE {
@@ -135,7 +139,7 @@ def collect(rows):
         qid = row["item"]["value"].rsplit("/", 1)[1]
         if qid in EXCLUDE:
             continue
-        p = people.setdefault(qid, {"label": row["label"]["value"], "saint": False,
+        p = people.setdefault(qid, {"label": LABELS.get(qid, row["label"]["value"]), "saint": False,
                                     "blessed": False, "female": False,
                                     "feasts": set(), "sitelinks": 0})
         status = row["status"]["value"].rsplit("/", 1)[1]

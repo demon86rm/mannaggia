@@ -256,9 +256,11 @@ San Czesław Jóźwiak
 San Dalmazzo di Pedona
 San Damiano
 San Daniel Varujan
+San Daniele martire
 San David Lewis
 San Demetrio di Tessalonica
 San Desiderio di Vienne
+San Dieci martiri di Creta
 San Diego Kisai
 San Dionigi di Parigi
 San Dionigi l'Areopagita
@@ -267,6 +269,7 @@ San Disma
 San Domenico Henares
 San Doroteo di Tiro
 San Fabiano
+San Faustino martire
 San Felice di Thibiuca
 San Filea di Thmuis
 San Filip Zhang Zhihe
@@ -335,6 +338,7 @@ San Kirion II
 San Kizito
 San Krikor Zohrab
 San Laurent Imbert
+San Laverio martire
 San Lazzaro Hrebeljanović
 San Leone Karasumaru
 San Leone di Bayonne
@@ -368,6 +372,7 @@ San Michał Kozal
 San Michele Kozaki
 San Miguel Agustín Pro
 San Mosè l'Etiope
+San Napoleone martire
 San Narsete il Grande
 San Nestore di Magydos
 San Nicaise
@@ -408,14 +413,19 @@ San Placido martire
 San Platon Kulbusch
 San Policarpo di Smirne
 San Pretestato di Rouen
+San Primo martire
 San Procopio di Scitopoli
+San Prospero martire
+San Proto martire
 San Quadrato di Atene
 San Quirino di Siscia
+San Raffaele di Lesbo
 San René Goupil
 San Richard Gwyn
 San Robert Southwell
 San Rodrigo di Cordova
 San Roman Sitko
+San Romano martire
 San Rufino
 San Rögnvald Kali Kolsson
 San Savino di Spoleto
@@ -465,6 +475,7 @@ Sant'Afra di Augusta
 Sant'Agape von Thessaloniki
 Sant'Agata
 Sant'Agathe Lin-tchao
+Sant'Agatone martire
 Sant'Agnese
 Sant'Agostino Yi Kwang-hŏn
 Sant'Agostino Zhao Rong
@@ -478,6 +489,7 @@ Sant'Alessandro di Tessalonica
 Sant'Alexander Briant
 Sant'Ambrogio Kibuuka
 Sant'Ambrogio di Sarapul
+Sant'Anastasia martire
 Sant'Anastasio II di Antiochia
 Sant'Anastasio il Persiano
 Sant'Andeolo del Vivarais
@@ -495,7 +507,9 @@ Sant'Antonino di Roma
 Sant'Apollinare di Ravenna
 Sant'Apollonia di Alessandria
 Sant'Apollonio di Sardi
+Sant'Apollonio martire
 Sant'Arcadio di Mauritania
+Sant'Arialdo martire
 Sant'Arkadij I. Ostalʹskij
 Sant'Artemio
 Sant'Autonomo
@@ -513,6 +527,7 @@ Sant'Eobano di Utrecht
 Sant'Ercolano di Perugia
 Sant'Eric IV di Danimarca
 Sant'Ermete
+Sant'Ermete martire
 Sant'Ermogene
 Sant'Eskillo di Straengnaes
 Sant'Eufemia di Calcedonia
@@ -541,6 +556,7 @@ Sant'Oronzo di Lecce
 Sant'Orsola
 Santa Barbara
 Santa Barbara Choe Yeong-i
+Santa Bibiana martire
 Santa Caterina d'Alessandria
 Santa Cecilia
 Santa Ciriaca di Roma
@@ -549,6 +565,7 @@ Santa Cristina
 Santa Dinfna
 Santa Giovanna d'Arco
 Santa Giulia di Corsica
+Santa Giustina vergine e martire
 Santa Gliceria di Eraclea
 Santa Godeleva martire
 Santa Ketevan

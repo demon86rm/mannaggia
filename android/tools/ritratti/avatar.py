@@ -2230,6 +2230,11 @@ def wikidata_tratti(names, cache=None):
             for n, f in facts.items()}
 
 
+# Martyrs that neither the name nor Wikidata's labels say: San Raffaele di Lesbo (1463), once
+# "San Raffaele martire" (renamed by LABELS in tools/genera_santi.py).
+MARTIRI = {"San Raffaele di Lesbo"}
+
+
 def regole(name, donna, beato, labels, birth):
     t = Tratti(donna=donna, beato=beato)
     has = lambda *ws: any(w in labels for w in ws)  # noqa: E731
@@ -2239,8 +2244,10 @@ def regole(name, donna, beato, labels, birth):
     else:
         t.capelli = ["corti", "corti", "ricci", "calvo"][h(name, "taglio") % 4]
         t.barba = ["nessuna", "corta", "lunga"][h(name, "barba") % 3] if (birth or 0) < 1600 else "nessuna"
+    # Also by the name ("San Placido martire"), when Wikidata has no label for it, and MARTIRI.
     t.martire = has("martyr", "execution", "decapitation", "beheading", "killed", "homicide", "crucifixion",
-                    "shot", "capital punishment", "burned at the stake", "stoning", "hanging")
+                    "shot", "capital punishment", "burned at the stake", "stoning", "hanging") \
+        or "martir" in name.lower() or name in MARTIRI
     if has("pope"):
         t.copricapo, t.abito, t.attributo = ("tiara" if (birth or 0) < 1900 else "zucchetto_bianco"), "papa", "croce"
     elif has("cardinal"):
@@ -2277,8 +2284,8 @@ def regole(name, donna, beato, labels, birth):
             t.barba, t.eta = "lunga", "anziano"
     elif has("priest", "jesuit", "presbyter", "missionary", "deacon"):
         t.abito, t.attributo = "talare", "libro"
-    if t.martire and t.attributo in ("nessuno", "libro", "croce", "giglio", "bastone"):
-        t.attributo = "palma"  # the martyr's palm wins over generic attributes, not over the crozier
+    if t.martire and t.attributo == "nessuno":
+        t.attributo = "palma"  # only an empty hand: the red background, the label and the frame already say martyr
     elif t.attributo == "nessuno":
         t.attributo = ["nessuno", "libro", "croce", "giglio"][h(name, "attr") % 4]
     # The epithet wins over the age set above (e.g. the hermit's): "San Basilio il Giovane"
