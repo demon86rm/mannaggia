@@ -20,6 +20,9 @@ object Pronuncia {
         "TLS" to "ti elle èsse",                    // open "e", as the letter is said
         "change request" to "ceinge riquest",       // soft g: the final e makes it like "change"
         "777" to "sette sette sette",                // the permissions, digit by digit
+        // Polish "sz" is the Italian "sc" of "scena"; the voice spelled it "Marti esse zeta". Only this
+        // word: Hungarian "sz" (László, Esztergom) is an "s". "sh" rather than "sch", which reads "sk"
+        "Martysz" to "Martish",
     )
 
     /** Stress marks tuned on the phone's default voice: left out with another engine chosen in Options. */
