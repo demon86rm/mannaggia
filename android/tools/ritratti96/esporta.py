@@ -321,6 +321,11 @@ def voce(n):
                         else 2 if any(k in lab for k in ("writer", "theologian", "doctor of the church")) else 0)
         d["libro_c"] = h(n, "libro96") % 4
     d.update(ECCEZIONI.get(n, {}))
+    # the mouth at rest (bocca.px.js, the user 2026-11-18): age, sex and beard pick the family, the name the form in it
+    barbuto, vecchio = d["barba"] in ("corta", "lunga"), d["eta"] == "anziano"
+    fam = (("A0", "A1") if vecchio else ("W0", "W1", "W2")) if t.donna else \
+        (("B3", "B2") if vecchio else ("B0", "B1", "B2")) if barbuto else (("A0", "A1") if vecchio else ("M0", "M1", "M2"))
+    d["bocca_f"] = fam[h(n, "bocca96") % len(fam)]
     return d
 
 

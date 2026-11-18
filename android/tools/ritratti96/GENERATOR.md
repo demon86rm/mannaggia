@@ -25,6 +25,7 @@ $PXL build ritratti96.px.js --no-preview --out ~/mannaggia-cache/ritratti96   # 
 $PXL build buchi96.px.js    --no-preview --out ~/mannaggia-cache/buchi96      # gli stessi su sfondo magenta
 $PY -I verifica_occhi.py ~/mannaggia-cache/ritratti96   # deve dire 5420/5420 ok
 $PY -I verifica_buchi.py                                # deve dire 5420/5420 ok
+$PY -I verifica_bocca.py ~/mannaggia-cache/ritratti96   # deve dire 5420/5420 ok
 ```
 
 ## Copia negli asset dell'app
@@ -39,7 +40,7 @@ $PY -I installa.py --app ../../app/src/main/assets/avatar
 
 ## Dati degli occhi per l'app
 
-`occhi96.py` scrive in `assets/avatar/` `occhi96.tsv` (per ogni ritratto, 9 colonne: iride, sopracciglia, pelle della piega e della palpebra sotto, forma, occhiali, coda delle sopracciglia, sopracciglia folte, donna) e `emozioni.txt` (le 6 emozioni di `occhi.px.js`, che sono la fonte unica). Tutti i colori li legge, a pixel fissi, da ritratti con gli occhi B aperti, quindi prima servono le anteprime. `Occhi.kt` legge anche i file vecchi a 6 e 8 colonne:
+`occhi96.py` scrive in `assets/avatar/` anche i dati della bocca: `bocca96.tsv` (forma a riposo, barba, cinque colori, letti dall'angolo in alto a sinistra delle anteprime, dove `ritratto96` li lascia) e `bocche.txt` (le forme di `bocca.px.js`), e la colonna bocca di `emozioni.txt`. Poi `occhi96.tsv` (per ogni ritratto, 9 colonne: iride, sopracciglia, pelle della piega e della palpebra sotto, forma, occhiali, coda delle sopracciglia, sopracciglia folte, donna) e `emozioni.txt` (le 6 emozioni di `occhi.px.js`, che sono la fonte unica). Tutti i colori li legge, a pixel fissi, da ritratti con gli occhi B aperti, quindi prima servono le anteprime. `Occhi.kt` legge anche i file vecchi a 6 e 8 colonne:
 
 ```sh
 $PXL build anteprima96.px.js --no-preview --out ~/mannaggia-cache/anteprima96
@@ -79,6 +80,8 @@ Il risultato è `~/mannaggia-cache/ritratti96/sprites/p_<id>.png`, dove `<id>` s
 | `combinazioni96.px.js` | Tutte le combinazioni di naso e bocca, per il foglio di controllo. |
 | `provino_etnie.px.js` | Il primo provino dei tratti dei santi di altri popoli. |
 | `*_vN.px.js`, `esporta_v1.py` | Copie delle versioni precedenti. |
+| `bocca.px.js` | Le bocche (2026-11-18): le forme a riposo per famiglia (donne W0–W2, anziani A0–A1, uomini M0–M2, barbuti B0–B2, barbuti anziani B3/B2: `bocca_f` in `esporta.py`, il nome sceglie la forma) e quelle delle emozioni (O, socchiusa, sbuffo, storta, broncio, mezzo sorriso). I ritratti con `bocca_f` non hanno la bocca: la disegna l'app (`Bocca.kt`, che legge `bocche.txt`). Le figurine speciali la tengono disegnata. |
+| `verifica_bocca.py` | Controllo: nella zona della bocca (righe 53–58, dx −7…7; per i barbuti l'apertura sotto i baffi) un solo colore di pelle. |
 | `occhi.px.js` | Occhi, sopracciglia, le 6 emozioni (`EMOZIONI`, 48 passi da 83 ms) e gli occhiali (`occhiali()`). Sono il modello per `Occhi.kt`. |
 
 ## Stile «ricco» (in corso)

@@ -15,7 +15,7 @@ import kotlin.math.max
 import kotlin.random.Random
 
 /**
- * The eyes of the 96 px portraits. The portraits in assets/avatar/ have no eyes: they are drawn here,
+ * The eyes of the 96 px portraits (and, through [Bocca], the mouth). The portraits in assets/avatar/ have no eyes: they are drawn here,
  * on top, so they can move. This is a port of `occhi()` and `occhiali()` in tools/ritratti96/occhi.px.js,
  * and the six emotions are read from assets/avatar/emozioni.txt (made from the same file), so the
  * drawing stays in one place. Per-saint colours are in assets/avatar/occhi96.tsv.
@@ -24,8 +24,9 @@ import kotlin.random.Random
  */
 object Occhi {
 
-    /** One step of an emotion (12 steps per second): gaze, lid, brows, worried inner brows, small pupil. */
-    class Step(val dx: Int, val dy: Int, val lid: Char, val browL: Int, val browR: Int, val worry: Boolean, val small: Boolean)
+    /** One step of an emotion (12 steps per second): gaze, lid, brows, worried inner brows, small pupil, the mouth ([Bocca]: "" at rest). */
+    class Step(val dx: Int, val dy: Int, val lid: Char, val browL: Int, val browR: Int, val worry: Boolean, val small: Boolean,
+               val mouth: String = "")
 
     /**
      * What changes from saint to saint: the iris' middle tone (its dark and light tones are mixed from it),
@@ -33,7 +34,7 @@ object Occhi {
      * (no crease), glasses, bushy brows (three rows, old men), a woman (thin arched brows, a longer lash).
      */
     class Params(val iris: Int, val brows: Int, val skin: Int, val mono: Boolean, val glasses: Boolean, val tail: Int, val bushy: Boolean,
-                 val woman: Boolean)
+                 val woman: Boolean, val mouth: Bocca.Params? = null)
 
     const val STEP_MS = 83L
     private const val DIR = "avatar"
@@ -82,7 +83,9 @@ object Occhi {
                 }.toMap()
             }
         }.getOrDefault(emptyMap()).also { params = it }
-        return map[fileId] ?: fallback
+        val p = map[fileId] ?: fallback
+        val m = Bocca.params(context, fileId) ?: return p
+        return Params(p.iris, p.brows, p.skin, p.mono, p.glasses, p.tail, p.bushy, p.woman, m)
     }
 
     /** The emotions by name, from emozioni.txt. */
@@ -93,7 +96,9 @@ object Occhi {
                     val (name, steps) = line.split('\t')
                     name to steps.split(';').map { s ->
                         val f = s.split(',')
-                        Step(f[0].toInt(), f[1].toInt(), f[2][0], f[3].toInt(), f[4].toInt(), f[5] == "1", f[6] == "1")
+                        // an 8th field, the mouth, since 2.2.0 ("-" at rest)
+                        Step(f[0].toInt(), f[1].toInt(), f[2][0], f[3].toInt(), f[4].toInt(), f[5] == "1", f[6] == "1",
+                            f.getOrNull(7)?.takeIf { it != "-" } ?: "")
                     }
                 }
             }
@@ -163,6 +168,7 @@ object Occhi {
             hline(CX - 5, y, 9, FRAME)                              // bridge
             hline(CX - 19, y - 1, 3, FRAME); hline(CX + 16, y - 1, 3, FRAME)   // temples
         }
+        p.mouth?.let { Bocca.draw(b, it, f.mouth) }
     }
 
     /**

@@ -11,7 +11,12 @@ eyes of occhi() in occhi.px.js), at fixed pixels of the left eye. It is at x 36,
 +1 in the 96 px image (outline): iris (36,44), brows (37,37), skin (37,46), the brows' tail (32,37) for a man,
 (32,38) for a woman (her brows arch lower at the end). Bushy and woman come from the data (old men). The app draws the same eyes on the portrait
 without eyes (Occhi.kt).
-emozioni.txt: the 6 emotions of occhi.px.js (EMOZIONI), one line each: name, then 48 steps "dx,dy,lid,browL,browR,worry,small".
+emozioni.txt: the 6 emotions of occhi.px.js (EMOZIONI), one line each: name, then 48 steps "dx,dy,lid,browL,browR,worry,small,mouth"
+(mouth "-" for the saint's own at rest).
+bocca96.tsv: id <TAB> the mouth at rest (bocca_f) <TAB> bearded (0/1) <TAB> skin shadow, line, lip, lip light, inside: the
+colours ritratto96 leaves in the top-left corner of the previews (figure pixels (0..4, 0), +1 in the image). Only the
+saints of tratti96.data.js: the specials keep the mouth drawn in their portrait.
+bocche.txt: the forms of bocca.px.js (BOCCHE), one line each: name, then its rows from y 53 ("-" for a row left alone).
 """
 import argparse, hashlib, json, re, subprocess
 from pathlib import Path
@@ -36,10 +41,11 @@ def campioni(im, donna):
 
 data = json.loads(re.search(r"var TRATTI = (.*)\n", (HERE / "tratti96.data.js").read_text(encoding="utf-8")).group(1))
 GLASSES = {fid("San Massimiliano Maria Kolbe"), fid("San Josemaría Escrivá de Balaguer")}
-rows = []
+rows, bocche = [], []
 for d in data:
     im = Image.open(Path(a.anteprima) / "sprites" / f"p_{d['id']}.png").convert("RGB")
     i, b, s, t = campioni(im, d["donna"])
+    bocche.append((d["id"], d["bocca_f"], int(d["barba"] in ("corta", "lunga")), *(hexa(im, 1 + k, 1) for k in range(5))))
     rows.append((d["id"], i, b, s, d.get("occhi") or "", int(d["id"] in GLASSES), t,
                  int(d["eta"] == "anziano" and not d["donna"]), int(bool(d["donna"]))))
 speciali = [l.strip() for l in (app / "speciali.txt").read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")]
@@ -54,12 +60,21 @@ for i, (nome, f) in enumerate(zip(speciali, files), 1):
 (app / "occhi96.tsv").write_text("# id\tiride\tsopracciglia\tpelle\tforma\tocchiali\tcoda\tfolte\tdonna\n" +
                                  "".join("\t".join(map(str, r)) + "\n" for r in rows), encoding="utf-8")
 
+(app / "bocca96.tsv").write_text("# id\tforma\tbarba\tombra\tlinea\tlabbro\tluce\tdentro\n" +
+                                 "".join("\t".join(map(str, r)) + "\n" for r in bocche), encoding="utf-8")
+src = (HERE / "bocca.px.js").read_text(encoding="utf-8")
+code = src[src.index("var BOCCHE ="):src.index("// the form of a step")]
+js = "const B = new Function(%s + '; return BOCCHE')(); console.log(JSON.stringify(B))" % json.dumps(code)
+forme = json.loads(subprocess.run(["node", "-e", js], capture_output=True, text=True, check=True).stdout)
+(app / "bocche.txt").write_text("# forma<TAB>righe dalla y 53 della figura, colonne dx -7..7 (bocca.px.js): L linea, l labbro, h luce, s ombra, K dentro\n" +
+                                "".join(f + "\t" + ";".join(r or "-" for r in rows_) + "\n" for f, rows_ in forme.items()), encoding="utf-8")
+
 src = (HERE / "occhi.px.js").read_text(encoding="utf-8")
 code = src[src.index("var fr ="):src.index("function occhi(")]
 js = "const E = new Function(%s + '; return EMOZIONI')(); console.log(JSON.stringify(E))" % json.dumps(code)
 em = json.loads(subprocess.run(["node", "-e", js], capture_output=True, text=True, check=True).stdout)
-lines = ["# emozione<TAB>passi (12 al secondo): dx,dy,palpebra,sopracciglioSx,sopracciglioDx,preoccupato,pupilla_piccola"]
+lines = ["# emozione<TAB>passi (12 al secondo): dx,dy,palpebra,sopracciglioSx,sopracciglioDx,preoccupato,pupilla_piccola,bocca"]
 for nome, seq in em.items():
-    lines.append(nome + "\t" + ";".join(f"{f['g'][0]},{f['g'][1]},{f['lid']},{f['brow'][0]},{f['brow'][1]},{int(f['worry'])},{int(f['small'])}" for f in seq))
+    lines.append(nome + "\t" + ";".join(f"{f['g'][0]},{f['g'][1]},{f['lid']},{f['brow'][0]},{f['brow'][1]},{int(f['worry'])},{int(f['small'])},{f['m'] or '-'}" for f in seq))
 (app / "emozioni.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 print(len(rows), "rows;", {k: len(v) for k, v in em.items()})

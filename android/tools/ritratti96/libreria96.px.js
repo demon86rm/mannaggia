@@ -6,6 +6,7 @@
 // drawn in that area (verifica_occhi() checks it).
 // Everything is `var`/function: this file is included by several files.
 include("occhi.px.js")
+include("bocca.px.js")
 pal({ K: "#22181f", W: "#fff6ea", X: "#ffffff", E: "#2a2228" })
 shades("1234", "#888890")   // a ramp: the shade layer needs one (on hex colours it darkens)
 
@@ -239,6 +240,7 @@ function faccia6(d) {
     if (largo && y === 52 && a === 3) col = SK[1]
     // mouth: 0 wide, 1 narrow, 2 a smile with the corners up; the line at y 54, the lower lip, its shadow
     if (barbuto) return col                                         // barba6() draws the mouth under the moustache
+    if (d.bocca_f) return col                                       // the app draws it (bocca.px.js): its zone stays skin
     const sy = piene ? 57 : 56
     if (y === 54 && a <= w) col = L[0]
     if (y === 55 && a <= w - 1) col = dx === -1 ? L[2] : L[1]
@@ -510,7 +512,7 @@ function barba6(d, viso) {
       const vecchia = e(x, y) || (a <= 5 && y >= 52 && y <= 56)     // barba()'s shape, with the opening it leaves in skin
       const qui = (vecchia || (viso.dentro(x, y) && (y === 46 || y === 47))) && !libera(x, y)
       let t
-      if (y >= 54 && y <= 56 && a <= 58 - y) { c.px(x, y, y === 54 ? SK[2] : y === 55 ? L[0] : dx === -1 ? L[2] : L[1]); continue }   // skin, the mouth, the lip
+      if (y >= 54 && y <= 56 && a <= 58 - y) { c.px(x, y, y === 54 || d.bocca_f ? SK[2] : y === 55 ? L[0] : dx === -1 ? L[2] : L[1]); continue }   // skin, the mouth, the lip (the app's, with bocca_f)
       if (baffi(a, y)) t = (y === 52 ? 4 : y === 53 ? 3 : 2) - (dx > 0 ? 1 : 0)
       else if (qui) {
         const st = (xx) => Math.floor(lunga ? (xx - cx + 1.6 * Math.sin(y / 3.5 + xx / 9)) / 3 : (xx - cx) / (1 + (y - 46) / 40) / 3), si = st(x)
@@ -1925,7 +1927,11 @@ function ritratto96(nome, d, { con_occhi = true, seq = null } = {}) {
   const occ = con_occhi ? [(c) => { occhi(c, cx, seq ? seq[c.frame] : fr(), { y: EYE_Y, browY: BROW_Y, iride: d.iride || "#5a4636",
     pelle: (x) => (x > cx + FAR ? sk6[1] : sk6[2]), ciglio, coda: mixc(ciglio, sk6[3], 0.3), folte: d.eta === "anziano" && !d.donna, donna: !!d.donna,
     forma: d.occhi || "", occhiali: !!d.occhiali })
-    if (d.occhiali) occhiali(c, cx, { y: EYE_Y, ...(typeof d.occhiali === "object" ? d.occhiali : {}) }) }] : []
+    if (d.occhiali) occhiali(c, cx, { y: EYE_Y, ...(typeof d.occhiali === "object" ? d.occhiali : {}) })
+    // the mouth (bocca.px.js), and its colours in the top-left corner for occhi96.py (only these previews have them)
+    if (d.bocca_f) { const col = coloriBocca(sk6, !!d.donna), barbuto = d.barba === "corta" || d.barba === "lunga"
+      bocca(c, cx, formaBocca(d.bocca_f, seq ? seq[c.frame].m : "", barbuto), col)
+      ;[col.s, col.L, col.l, col.h, col.K].forEach((k, i) => c.px(i, 0, k)) } }] : []
   const extra = (d.extra || []).map((e) => (typeof EXTRA96 !== "undefined" && EXTRA96[e] ? EXTRA96[e](d) : {}))
   const busto = (ABITI[d.abito] || ABITI.tunica)(d, rb, d.secondo || "#3a5a9a")
   _MAT = null

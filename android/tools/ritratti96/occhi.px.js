@@ -7,8 +7,9 @@
 //   lid    "n" open, "w" wide open (one row more), "h" half-closed, "d" lowered (looking down), "x" closed
 //   brow   rows up (negative) or down for the left and right brow; worry: the inner ends raised
 //   small  a small pupil (surprise)
+//   m      the mouth (bocca.px.js): "" the saint's own at rest, or an emotion's
 
-var fr = (o = {}) => ({ g: [0, 0], lid: "n", brow: [0, 0], worry: false, small: false, ...o })
+var fr = (o = {}) => ({ g: [0, 0], lid: "n", brow: [0, 0], worry: false, small: false, m: "", ...o })
 var rep = (n, o) => Array.from({ length: n }, () => fr(o))
 var blink = (base = {}) => [fr({ ...base, lid: "h" }), fr({ ...base, lid: "x" }), fr({ ...base, lid: "x" }), fr({ ...base, lid: "h" })]
 
@@ -18,20 +19,20 @@ var EMOZIONI = {
   // the classic: still, a blink, a look left and right
   sinistra_destra: [...rep(16), ...blink(), ...rep(8), ...rep(6, { g: [-1, 0] }), ...rep(2), ...rep(6, { g: [1, 0] }), ...rep(6)],
   // sly: half-closed, a smug sideways glance with one brow up, back
-  scaltro: [...rep(12, { lid: "h" }), ...rep(14, { lid: "h", g: [1, 0], brow: [0, -1] }), ...rep(8, { lid: "h" }),
+  scaltro: [...rep(12, { lid: "h" }), ...rep(14, { lid: "h", g: [1, 0], brow: [0, -1], m: "s" }), ...rep(8, { lid: "h" }),
             ...blink({ lid: "h" }), ...rep(10, { lid: "h" })],
   // eyes to heaven, "Oh Gesù": the iris up under the lid, brows raised and worried
-  cielo: [...rep(10), ...rep(2, { g: [0, -1], worry: true }), ...rep(18, { g: [0, -2], brow: [-1, -1], worry: true }),
-          ...rep(2, { g: [0, -1], worry: true }), ...rep(6), ...blink(), ...rep(6)],
+  cielo: [...rep(10), ...rep(2, { g: [0, -1], worry: true, m: "c" }), ...rep(18, { g: [0, -2], brow: [-1, -1], worry: true, m: "c" }),
+          ...rep(2, { g: [0, -1], worry: true, m: "c" }), ...rep(6), ...blink(), ...rep(6)],
   // disbelief: eyes wide, pupils small, brows high, a quick blink, wide again
-  incredulo: [...rep(8), ...rep(16, { lid: "w", small: true, brow: [-2, -2] }), fr({ lid: "x", brow: [-2, -2] }),
-              ...rep(9, { lid: "w", small: true, brow: [-2, -2] }), ...rep(10), ...blink()],
+  incredulo: [...rep(8), ...rep(16, { lid: "w", small: true, brow: [-2, -2], m: "o" }), fr({ lid: "x", brow: [-2, -2], m: "o" }),
+              ...rep(9, { lid: "w", small: true, brow: [-2, -2], m: "o" }), ...rep(10), ...blink()],
   // looking down at a smartphone: lids lowered, iris low; a glance up and back down
-  smartphone: [...rep(18, { lid: "d", g: [0, 1] }), ...rep(5, { g: [0, 0] }), ...rep(14, { lid: "d", g: [0, 1] }),
-               ...blink({ lid: "d", g: [0, 1] }), ...rep(7, { lid: "d", g: [0, 1] })],
+  smartphone: [...rep(18, { lid: "d", g: [0, 1], m: "p" }), ...rep(5, { g: [0, 0] }), ...rep(14, { lid: "d", g: [0, 1], m: "p" }),
+               ...blink({ lid: "d", g: [0, 1], m: "p" }), ...rep(7, { lid: "d", g: [0, 1], m: "p" })],
   // fed up, the eye roll: left, up-left, up, up-right, right, then a sigh with half-closed lids
-  spazientito: [...rep(10), ...rep(2, { g: [-1, 0] }), ...rep(2, { g: [-1, -1] }), ...rep(3, { g: [0, -2] }),
-                ...rep(2, { g: [1, -1] }), ...rep(2, { g: [1, 0] }), ...rep(12, { lid: "h", brow: [1, 1] }), ...rep(11), ...blink()],
+  spazientito: [...rep(10), ...rep(2, { g: [-1, 0], m: "t" }), ...rep(2, { g: [-1, -1], m: "t" }), ...rep(3, { g: [0, -2], m: "t" }),
+                ...rep(2, { g: [1, -1], m: "t" }), ...rep(2, { g: [1, 0], m: "t" }), ...rep(12, { lid: "h", brow: [1, 1], m: "u" }), ...rep(11), ...blink()],
 }
 
 // The "B" eyes (approved on Santa Giovanna, 2026-11-13), animated: arched tapered brows (three rows for
