@@ -62,7 +62,7 @@
 
         <ListPreference
             android:key="font"
-            android:defaultValue="sans-serif"
+            android:defaultValue="font:hamlet_tertia"
             android:entries="@array/font_names"
             android:entryValues="@array/font_values"
             android:title="@string/pref_font_title"

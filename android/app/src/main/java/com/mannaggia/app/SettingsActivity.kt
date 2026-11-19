@@ -55,6 +55,7 @@ class SettingsActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.preferences, rootKey)
             Prefs.effect(requireContext())  // migrate the old neon switch before showing the list
+            Prefs.font(requireContext())  // and the old default font
             // Trophy rewards appear in the lists only once unlocked.
             onlyUnlocked(Prefs.KEY_COLOR, Trofei.Tipo.COLORE)
             onlyUnlocked(Prefs.KEY_FONT, Trofei.Tipo.CARATTERE)

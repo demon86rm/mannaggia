@@ -2,7 +2,8 @@
 <resources>
     <!-- System font families: nothing bundled, no extra font licenses. -->
     <string-array name="font_names">
-        <item>Predefinito</item>
+        <item>Hamlet Tertia (predefinito)</item>
+        <item>Semplice</item>
         <item>Condensato</item>
         <item>Serif</item>
         <item>Monospace (terminale)</item>
@@ -19,6 +20,7 @@
         <item>Unifraktur</item>
     </string-array>
     <string-array name="font_values">
+        <item>font:hamlet_tertia</item>
         <item>sans-serif</item>
         <item>sans-serif-condensed</item>
         <item>serif</item>

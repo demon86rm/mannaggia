@@ -45,7 +45,7 @@ class Quadro private constructor(
         val big = Bitmap.createScaledBitmap(small, width * zoom, height * zoom, false)
         small.recycle()
         val bc = Canvas(big)
-        val font = ResourcesCompat.getFont(context, R.font.unifraktur_maguntia)
+        val font = ResourcesCompat.getFont(context, R.font.hamlet_tertia)
         val title = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
             typeface = font; color = INK; textSize = TITLE_SIZE * zoom; textAlign = Paint.Align.CENTER
         }
