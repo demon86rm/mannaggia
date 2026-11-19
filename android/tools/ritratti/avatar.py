@@ -1140,8 +1140,8 @@ def draw_attributes(c, t):
 
 # --- Composizione -------------------------------------------------------------
 
-def outline(layer):
-    """Dark 1-px outline around everything drawn (on transparent neighbours)."""
+def outline(layer, col=OUTLINE):
+    """Dark 1-px outline (or [col]) around everything drawn (on transparent neighbours)."""
     src = layer.copy()
     out = layer.copy()
     w, h = layer.size
@@ -1152,7 +1152,7 @@ def outline(layer):
             for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 nx, ny = x + dx, y + dy
                 if 0 <= nx < w and 0 <= ny < h and src.getpixel((nx, ny))[3]:
-                    out.putpixel((x, y), OUTLINE + (255,))
+                    out.putpixel((x, y), col + (255,))
                     break
     return out
 
@@ -1582,31 +1582,6 @@ def gif_leggendario(name, t, path, zoom=6, ms=FRAME_MS):
     frames[0].save(path, save_all=True, append_images=frames[1:], duration=ms, loop=0)
 
 
-def raccoglitore():
-    """The card binder icon for the main screen, in the same style as the avatars."""
-    c = Canvas()
-    LEATHER, LEATHER_DARK, LEATHER_LIGHT = (150, 40, 44), (104, 26, 32), (184, 64, 64)
-    # A card sticking out of the top, with a little halo and face.
-    c.rect((20, 2, 38, 18), (246, 242, 232))
-    c.ell((25, 4, 33, 12), HALO); c.ell((27, 6, 31, 11), (234, 186, 146))
-    # Cover.
-    c.rect((8, 9, 42, 45), LEATHER)
-    c.rect((36, 9, 42, 45), LEATHER_DARK)
-    c.rect((8, 9, 13, 45), LEATHER_DARK)               # dorso
-    c.line([(14, 11), (14, 43)], LEATHER_LIGHT)
-    for y in (14, 26, 38):                               # anelli
-        c.rect((6, y, 11, y + 2), GOLD); c.px(6, y, GOLD_LIGHT)
-    for (x, y) in ((38, 9), (38, 41)):                   # angoli d'oro
-        c.rect((x, y, x + 4, y + 4), GOLD)
-    c.px(42, 9, GOLD_DARK); c.px(42, 45, GOLD_DARK)
-    # Emblem: a gold halo on a plate.
-    c.rect((19, 21, 35, 33), GOLD_DARK)
-    c.rect((20, 22, 34, 32), GOLD)
-    c.ring((23, 23, 31, 31), GOLD_LIGHT)
-    c.px(27, 27, (255, 250, 220))
-    return outline(c.img)
-
-
 SILVER, SILVER_DARK, SILVER_LIGHT = (196, 202, 212), (120, 126, 140), (238, 242, 248)
 
 
@@ -1777,41 +1752,8 @@ def cornice_colorata(name, t, leggendario):
         return "palma"
     return list(COLORATE)[h(name, "cornice") % len(COLORATE)]
 
-def coppa():
-    """Trophy cup icon for the main screen, in the avatar style."""
-    c = Canvas()
-    c.ell((7, 10, 17, 24), GOLD); c.d.ellipse((10, 13, 15, 21), fill=(0, 0, 0, 0))   # manici
-    c.ell((31, 10, 41, 24), GOLD); c.d.ellipse((33, 13, 38, 21), fill=(0, 0, 0, 0))
-    c.poly([(12, 8), (36, 8), (34, 22), (28, 29), (20, 29), (14, 22)], GOLD)        # coppa
-    c.poly([(30, 9), (35, 9), (33, 21), (28, 27)], GOLD_DARK)
-    c.poly([(15, 9), (19, 9), (19, 22), (16, 20)], GOLD_LIGHT)
-    c.rect((12, 6, 36, 9), GOLD_LIGHT)                                                  # bordo
-    c.rect((21, 29, 27, 35), GOLD_DARK)                                                 # stelo
-    c.rect((15, 35, 33, 39), GOLD); c.rect((12, 39, 36, 44), WOOD)                      # base
-    c.rect((19, 40, 29, 42), GOLD_LIGHT)
-    c.px(24, 15, (255, 255, 255)); c.px(23, 16, (255, 250, 220)); c.px(25, 16, (255, 250, 220))
-    return outline(c.img)
 
-
-def condividi():
-    """Share icon for the main screen: the usual three-node glyph in gold, with a wide halo
-    floating above the top node (gold reads on both the light and the dark theme)."""
-    c = Canvas()
-    nodes = [(33, 23), (14, 33), (33, 42)]
-    for a, b in ((nodes[1], nodes[0]), (nodes[1], nodes[2])):
-        c.line([a, b], GOLD_DARK, w=3)
-    for x, y in nodes:
-        c.ell((x - 5, y - 5, x + 5, y + 5), GOLD_DARK)
-        c.ell((x - 4, y - 4, x + 3, y + 3), GOLD)
-        c.px(x - 2, y - 2, GOLD_LIGHT)
-    cx, cy, rx, ry = 33, 8, 9, 2
-    c.d.ellipse((cx - rx - 1, cy - ry - 1, cx + rx + 1, cy + ry + 1), outline=HALO_RING + (255,), width=2)
-    c.d.ellipse((cx - rx, cy - ry, cx + rx, cy + ry), outline=HALO + (255,))
-    c.px(cx - rx + 2, cy - ry, (255, 250, 220))
-    return outline(c.img)
-
-
-def gira():
+def _gira_base():
     """"Flip the card" icon: a gold ribbon ring seen in perspective, like a bracelet; on the front
     the arrow points right, on the back (its darker inner face) it comes back left. Drawn 4x
     bigger and scaled down without smoothing, dark gold edges."""
@@ -1843,25 +1785,6 @@ def gira():
     band(178, 72, h, GOLD); head(72, h, GOLD, +1)
     band(38, 2, h, GOLD)
     return big.resize((S, S), Image.NEAREST)
-
-
-def calendario():
-    """Saint-of-the-day icon: a calendar page with a gold star, in the avatar style."""
-    c = Canvas()
-    PAGE, PAGE_SHADE = (246, 242, 232), (214, 208, 196)
-    c.rect((8, 10, 40, 44), PAGE)
-    c.rect((8, 40, 40, 44), PAGE_SHADE)               # pagine sotto
-    c.line([(9, 42), (39, 42)], PAGE)
-    c.rect((8, 8, 40, 16), RED)                       # testata
-    c.rect((8, 8, 40, 9), shade(RED, 1.2))
-    for x in (14, 33):                                # anelli
-        c.rect((x, 4, x + 1, 11), STEEL_DARK); c.px(x, 4, STEEL_LIGHT)
-    # Gold star in the middle of the page.
-    star = [(24, 19), (26, 25), (32, 25), (27, 29), (29, 35), (24, 31), (19, 35), (21, 29), (16, 25), (22, 25)]
-    c.poly(star, GOLD)
-    c.poly([(24, 21), (25, 25), (24, 29), (22, 26)], GOLD_LIGHT)
-    c.px(24, 25, (255, 250, 220))
-    return outline(c.img)
 
 
 # Gothic (textura) lowercase for the pixel-art labels, 7 px x-height: thin and bold strokes.
@@ -1997,6 +1920,8 @@ def etichetta(capolettera, parola, variante="piena", premuto=False):
         x0 = capolettera[r].find("X")
         if x0 >= 0:
             c.px(cx + x0, cy + r, luce)
+    if nudo:                                                # the splash title: the gold capital in relief (rich style)
+        _capolettera_ricca(c.img, capolettera, cx, cy, ORO6)
     # Gothic lowercase, sitting on the baseline of the initial.
     ink = (250, 246, 236) if nudo else PERGAMENA if nastro else INCHIOSTRO
     base = cy + cap_h
@@ -2007,23 +1932,11 @@ def etichetta(capolettera, parola, variante="piena", premuto=False):
     return outline(c.img)
 
 
-def timbro(variante="piena"):
-    """"Nuova!" stamp for new cards (red initial N, gothic lowercase on parchment)."""
-    return etichetta(CAPOLETTERA_N, "uova!", variante)
-
-
 PULSANTI = {
     "mannaggia": (CAPOLETTERA_M, "annaggia!"),
     "opzioni": (CAPOLETTERA_O, "pzioni"),
     "info": (CAPOLETTERA_I, "nfo"),
 }
-
-
-def pulsante(premuto=False, nome="mannaggia"):
-    """Main-screen buttons ("Mannaggia!", "Opzioni", "Info"): gold initial, parchment
-    letters on a red ribbon, readable on light and dark themes alike."""
-    cap, parola = PULSANTI[nome]
-    return etichetta(cap, parola, "nastro", premuto)
 
 
 # Favourites bookmark: a swallow-tailed banner hanging from a gold rod (palette: cloth, border).
@@ -2035,7 +1948,7 @@ STENDARDI = {
 SEGNALIBRO_W, SEGNALIBRO_H = 14, 22
 
 
-def segnalibro(attivo=True, colori="lapislazzuli"):
+def _segnalibro_base(attivo=True, colori="lapislazzuli"):
     """Bookmark of the favourite cards: full banner when [attivo], a faint outline otherwise."""
     drappo, bordo = STENDARDI[colori]
     w, h = SEGNALIBRO_W, SEGNALIBRO_H
@@ -2066,28 +1979,358 @@ GRAWLIX = {
 LOGO_RED = (139, 0, 0)          # #8B0000, the red of the icon and of the store graphic
 
 
+# --- Rich style for the logo, the labels and the main-screen icons (the user, 2026-11-19) -------------
+# Six tones per material, light from the top left, as in the 96 px portraits (tools/ritratti96): each
+# part is a set of pixels toned by _bevel() (lit top and left edges, dark bottom and right) or by its
+# own tone function. The icons have a dark-gold outline instead of the dark one, so they read on the
+# dark theme too.
+
+def _hex(h):
+    return tuple(int(h[i:i + 2], 16) for i in (1, 3, 5))
+
+
+ORO6 = [_hex(c) for c in ("#7a4a14", "#a86c1c", "#d09a2c", "#eac050", "#fbe08a", "#fff6cc")]
+ROSSO6 = [_hex(c) for c in ("#3a0a10", "#5c1018", "#82161e", "#a82028", "#c83a38", "#e26a58")]
+PERG6 = [_hex(c) for c in ("#8a6a48", "#b4946a", "#d4bc8e", "#e8d8b0", "#f4e8c8", "#fdf6e2")]
+CARTA6 = [_hex(c) for c in ("#8a8278", "#b0a89c", "#d0c8ba", "#e6e0d4", "#f4f0e6", "#fffdf6")]
+CREMA6 = [_hex(c) for c in ("#7e6e60", "#a8988a", "#cdbfae", "#e6dccc", "#f6f0e4", "#fffcf6")]
+CUOIO6 = [_hex(c) for c in ("#3a0e10", "#5a161a", "#7e2226", "#9a2e30", "#b84a46", "#d4706a")]
+LEGNO6 = [_hex(c) for c in ("#3a2210", "#56341a", "#764a26", "#946034", "#b07a48", "#c89a68")]
+ACCIAIO6 = [_hex(c) for c in ("#2a2a32", "#4a4a56", "#6a6e7c", "#9096a4", "#bcc2ce", "#eef0f6")]
+LAPIS6 = [_hex(c) for c in ("#101a40", "#18285e", "#22387e", "#2e4a9a", "#4a68b8", "#7a94d4")]
+ROSSO_LOGO6 = [_hex(c) for c in ("#2e0406", "#520a0c", "#780e10", "#8b0000", "#b42a20", "#dc5a3c")]
+INCARNATO4 = [_hex(c) for c in ("#8a5040", "#b06a54", "#d08c6c", "#e8ac88")]
+ORO_SCURO = _hex("#6a4012")          # the icons' outline (the user: the dark one disappears on the dark theme)
+ORO_STELLA = _hex("#9a6620")         # the calendar star's edge on the white page
+
+
+def _t(R, t):
+    return R[max(0, min(len(R) - 1, round(t)))]
+
+
+def _put(img, pix):
+    for (x, y), c in pix.items():
+        if 0 <= x < img.width and 0 <= y < img.height:
+            img.putpixel((x, y), c + (255,))
+
+
+def _bevel(mask, R, base=3.0, grad=None, lit=1.0, dark=1.0):
+    """Tones for a set of pixels: the edges facing the light lighter, the others darker, plus grad(x, y)."""
+    out = {}
+    for (x, y) in mask:
+        t = base + (grad(x, y) if grad else 0)
+        if (x, y - 1) not in mask:
+            t += lit * (1.3 if (x - 1, y) not in mask else 1)
+        elif (x - 1, y) not in mask:
+            t += lit * 0.7
+        if (x, y + 1) not in mask:
+            t -= dark * 1.4
+        elif (x + 1, y) not in mask:
+            t -= dark * 0.8
+        out[(x, y)] = _t(R, t)
+    return out
+
+
+def _maschera_glifo(g, x0, y0):
+    return {(x0 + k, y0 + r) for r, row in enumerate(g) for k, ch in enumerate(row) if ch == "X"}
+
+
+def _ellisse(cx, cy, rx, ry, w=S, h=S):
+    return {(x, y) for y in range(h) for x in range(w) if ((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2 <= 1}
+
+
+def _ricolora(img, mats):
+    """Re-tones a drawing: mats maps one of its colours to (ramp, base, grad); the others stay."""
+    px, (w, h) = img.load(), img.size
+    gruppi = {}
+    for y in range(h):
+        for x in range(w):
+            c = px[x, y]
+            if c[3] and c[:3] in mats:
+                gruppi.setdefault(c[:3], set()).add((x, y))
+    out = img.copy()
+    for col, mask in gruppi.items():
+        R, base, grad = mats[col]
+        _put(out, _bevel(mask, R, base=base, grad=grad))
+    return out
+
+
+def _capolettera_ricca(img, cap, x0, y0, R):
+    """A capital in relief from ramp R, with a diagonal sheen across the strokes."""
+    _put(img, _bevel(_maschera_glifo(cap, x0, y0), R, grad=lambda x, y: 1 if (x + y) % 7 == 0 else 0))
+
+
 def logo():
-    """The app icon in pixel art: a white speech bubble saying "#@!*" under a gold halo."""
-    w, h = 40, 38
-    c = Canvas(w, h)
-    # Halo: a gold ring, lighter on the far side.
-    c.ell((10, 0, 29, 7), HALO_RING); c.d.ellipse((13, 2, 26, 5), fill=(0, 0, 0, 0))
-    c.d.arc((10, 0, 29, 7), 190, 350, fill=HALO + (255,))
-    # Bubble: rounded box, snug around the text, with the tail down on the left.
-    c.d.rounded_rectangle((1, 10, 38, 29), radius=5, fill=(250, 248, 242, 255))
-    c.poly([(8, 28), (15, 28), (5, 36)], (250, 248, 242))
-    c.line([(3, 28), (36, 28)], (222, 216, 206))                  # shade along the bottom
-    # "#@!*", centred in the bubble.
-    word = "#@!*"
-    width = sum(len(GRAWLIX[ch][0]) for ch in word) + 2 * (len(word) - 1)
-    x = (w - width) // 2
+    """The app icon, 64 px: a white speech bubble saying "#@!*" in red relief under a gold halo."""
+    w, h = 64, 62
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    q = lambda x, y, cx, cy, rx, ry: ((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2
+    # The halo: a gold ring seen from slightly above, the hole open.
+    HX, HY = 32, 7.5
+    anello = {(x, y) for y in range(h) for x in range(w) if q(x, y, HX, HY, 15.5, 6) <= 1 and q(x, y, HX, HY, 10.5, 3) > 1}
+
+    def tono_anello(x, y):
+        nx, ny = (x + 0.5 - HX) / 15.5, (y + 0.5 - HY) / 6
+        t = 3.4 - nx * 1.2 if ny > 0 else 2 - nx * 0.8                     # the near side lit, the far one seen from inside
+        if q(x, y, HX, HY, 15.5, 6) > 0.72:
+            t -= 1.3 if ny > 0 else 0.5                                     # the outer rim turns away
+        if ny > 0 and q(x, y, HX, HY, 11.6, 3.8) <= 1:
+            t += 1.2                                                        # the inner lip catches the light
+        if ny > 0.2 and -0.6 < nx < -0.2 and q(x, y, HX, HY, 13.4, 5) <= 1 and q(x, y, HX, HY, 12.4, 4.3) > 1:
+            t = 5                                                           # the glint
+        if ny > 0.3 and abs(nx) < 0.75 and x % 3 == 0 and q(x, y, HX, HY, 14.4, 5.4) <= 1 and q(x, y, HX, HY, 12.9, 4.5) > 1:
+            t -= 2                                                          # the punched dots
+        return _t(ORO6, t)
+    # The bubble: a rounded box with the tail down on the left.
+    X0, X1, Y0, Y1, R = 2, 61, 16, 47, 8
+
+    def in_box(x, y):
+        if not (X0 <= x <= X1 and Y0 <= y <= Y1):
+            return False
+        ax = X0 + R - x if x < X0 + R else x - (X1 - R) if x > X1 - R else 0
+        ay = Y0 + R - y if y < Y0 + R else y - (Y1 - R) if y > Y1 - R else 0
+        return ax * ax + ay * ay <= (R + 0.3) ** 2
+
+    def in_coda(x, y):
+        if not (Y1 - 3 < y <= 59):
+            return False
+        u = (y - (Y1 - 3)) / (59 - (Y1 - 3))
+        return 12 - 6 * u <= x <= 24 - 18 * u ** 0.8
+    nuvola = {(x, y) for y in range(h) for x in range(w) if in_box(x, y) or in_coda(x, y)}
+
+    def tono_nuvola(x, y):
+        t = 4 if q(x, y, 27, 27, 33, 17.5) <= 1 else 3                      # the lit body, the underside turning away
+        if (x - 1, y) not in nuvola or (x, y - 1) not in nuvola:
+            t += 1
+        if (x + 1, y) not in nuvola or (x, y + 1) not in nuvola:
+            t -= 1.4
+        elif (x + 2, y) not in nuvola or (x, y + 2) not in nuvola:
+            t -= 0.7
+        if in_coda(x, y) and not in_box(x, y):
+            t -= 0.6
+        return _t(CREMA6, t)
+    # "#@!*" in red relief: the glyphs at 2x.
+    testo, word, gap = set(), "#@!*", 3
+    x0 = (w - (sum(len(GRAWLIX[ch][0]) * 2 for ch in word) + gap * (len(word) - 1))) // 2
     for ch in word:
-        _glifo(c, GRAWLIX[ch], x, 16, LOGO_RED)
-        x += len(GRAWLIX[ch][0]) + 2
-    return outline(c.img)
+        for r, row in enumerate(GRAWLIX[ch]):
+            for k, v in enumerate(row):
+                if v == "X":
+                    testo |= {(x0 + k * 2 + a, 25 + r * 2 + b) for a in (0, 1) for b in (0, 1)}
+        x0 += len(GRAWLIX[ch][0]) * 2 + gap
+
+    def tono_testo(x, y):
+        t = 3
+        if (x, y - 1) not in testo:
+            t += 1.6
+        elif (x - 1, y) not in testo:
+            t += 0.8
+        if (x, y + 1) not in testo:
+            t -= 1.6
+        elif (x + 1, y) not in testo:
+            t -= 0.8
+        return _t(ROSSO_LOGO6, t)
+    _put(img, {(x, y): tono_testo(x, y) if (x, y) in testo else _t(CREMA6, 2.4) if (x - 1, y - 1) in testo else tono_nuvola(x, y)
+               for (x, y) in nuvola})
+    _put(img, {p: tono_anello(*p) for p in anello})
+    # 1 px of transparent margin all round for the outline.
+    out = Image.new("RGBA", (w + 2, h + 2), (0, 0, 0, 0))
+    out.paste(img, (1, 1))
+    return outline(out)
 
 
-def banner(zoom=7):
+def _misure(cap, parola):
+    word_w = sum(len(GOTICA_PIENA[ch][0]) for ch in parola) + len(parola) - 1
+    giu = max(len(GOTICA_PIENA[ch]) - GLIFO_SU.get(ch, 0) - 7 for ch in parola)
+    return 1 + 3 + len(cap[0]) + 2 + word_w + 3 + 1, 1 + 2 + len(cap) + giu + 2 + 1
+
+
+def _scritta(img, cap, parola, x0, y0, cap_R, ink, ombra):
+    """The capital in relief, the gothic lowercase in [ink] with a 1 px [ombra] under it."""
+    _capolettera_ricca(img, cap, x0, y0, cap_R)
+    base, x, lettere = y0 + len(cap), x0 + len(cap[0]) + 2, set()
+    for ch in parola:
+        lettere |= _maschera_glifo(GOTICA_PIENA[ch], x, base - 7 - GLIFO_SU.get(ch, 0))
+        x += len(GOTICA_PIENA[ch][0]) + 1
+    _put(img, {(a + 1, b + 1): ombra for (a, b) in lettere if (a + 1, b + 1) not in lettere})
+    _put(img, {p: ink for p in lettere})
+
+
+def pulsante(premuto=False, nome="mannaggia"):
+    """Main-screen buttons ("Mannaggia!", "Opzioni", "Info"): a red ribbon of six tones with a gold
+    edge, the gold capital in relief, parchment letters. Pressed: darker, the content 1 px down."""
+    cap, parola = PULSANTI[nome]
+    w, h = _misure(cap, parola)
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    giu = -1 if premuto else 0
+    corpo = {(x, y) for y in range(1, h - 1) for x in range(1, w - 1)} - {(1, 1), (w - 2, 1), (1, h - 2), (w - 2, h - 2)}
+    _put(img, _bevel(corpo, ROSSO6, base=3 + giu, grad=lambda x, y: (-0.7 if y >= h * 0.62 else 0) + (0.6 if y == 2 else 0)))
+    bordo = {(x, y) for (x, y) in corpo if any(p not in corpo for p in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)))}
+    _put(img, {(x, y): _t(ORO6, (4.4 if y == 1 or x == 1 else 1.6) + giu) for (x, y) in bordo})
+    _scritta(img, cap, parola, 4, 3 + (1 if premuto else 0), ORO6, PERGAMENA, ROSSO6[0])
+    return outline(img)
+
+
+def timbro():
+    """"Nuova!" stamp for new cards: worn parchment, the N in red relief, dark ink."""
+    cap, parola = CAPOLETTERA_N, "uova!"
+    w, h = _misure(cap, parola)
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    carta = {(x, y) for y in range(1, h - 1) for x in range(1, w - 1)} - {(1, 1), (w - 2, 1), (1, h - 2), (w - 2, h - 2), (w - 2, 2), (2, h - 2)}
+    grana = lambda x, y: (-0.8 if y >= h - 3 else 0) + (-0.6 if (x * 7 + y * 13) % 17 == 0 and y > 2 else 0)   # the bottom in shade, worn specks
+    _put(img, _bevel(carta, PERG6, base=3.6, grad=grana, lit=0.8))
+    _scritta(img, cap, parola, 4, 3, ROSSO6, INCHIOSTRO, PERG6[2])
+    return outline(img)
+
+
+def coppa():
+    """Trophy cup icon for the main screen: a gold cup shaded like a cylinder, on a wooden plinth."""
+    img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    for cx in (11.5, 36.5):                                                 # the handles, behind the bowl
+        _put(img, _bevel(_ellisse(cx, 16, 5.6, 6.6) - _ellisse(cx, 16, 3, 4), ORO6, base=2.6))
+    bowl = {(x, y) for y in range(8, 30) for x in range(S) if abs(x + 0.5 - 24) <= 12.5 - max(0, y - 18) ** 1.6 * 0.42}
+
+    def tono_bowl(x, y):
+        nx = (x + 0.5 - 24) / 12.5
+        t = 5 if -0.62 < nx < -0.38 else 3.1 - nx * 1.8                     # lit left, dark right, a vertical glint
+        if (x + 1, y) not in bowl:
+            t -= 0.6
+        if y >= 26:
+            t -= 0.6
+        return _t(ORO6, t)
+    _put(img, {p: tono_bowl(*p) for p in bowl})
+    lip, dentro = _ellisse(24, 8.5, 12.8, 2.8), _ellisse(24, 8.7, 10.6, 1.7)   # the rim from above, the inside in shadow
+    _put(img, {(x, y): _t(ORO6, 4.6 - (x - 24) * 0.09) for (x, y) in lip - dentro})
+    _put(img, {(x, y): _t(ORO6, 1 if y <= 8 else 0.4) for (x, y) in dentro})
+    stelo = {(x, y) for y in range(29, 36) for x in range(22, 26)} | _ellisse(24, 32.5, 3.5, 1.5)
+    _put(img, {(x, y): _t(ORO6, 3.2 - (x + 0.5 - 24) * 0.55 + (0.8 if y == 32 else 0)) for (x, y) in stelo})
+    piede = {(x, y) for y in range(35, 39) for x in range(S) if abs(x + 0.5 - 24) <= 6 + (y - 35) * 1.6}
+    _put(img, _bevel(piede, ORO6, base=3, grad=lambda x, y: -(x + 0.5 - 24) * 0.12))
+    _put(img, _bevel({(x, y) for y in range(39, 45) for x in range(12, 36)}, LEGNO6, base=2.6, grad=lambda x, y: -(x + 0.5 - 24) * 0.05))
+    _put(img, _bevel({(x, y) for y in range(40, 43) for x in range(19, 29)}, ORO6, base=3.2))
+    _put(img, {(23, 16): (255, 250, 220), (22, 17): ORO6[5]})
+    return outline(img, ORO_SCURO)
+
+
+def calendario():
+    """Saint-of-the-day icon: a calendar page with a red header, steel rings and a faceted gold star."""
+    img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    _put(img, {(x, y): _t(CARTA6, 2.2 if y >= 42 else 2.8) for y in range(13, 45) for x in range(9, 41)})   # the pages under
+    _put(img, {(x, 42): CARTA6[4] for x in range(10, 40)})
+    piega = {(x, y) for y in range(34, 41) for x in range(33, 40) if x + y >= 74}   # the corner folded away
+    pagina = {(x, y) for y in range(13, 41) for x in range(8, 40)} - piega
+    _put(img, {(x, y): _t(CARTA6, 4 - (0.7 if x >= 38 else 0) - (0.9 if y >= 39 else 0) + (0.6 if x == 8 else 0)) for (x, y) in pagina})
+    _put(img, {(x, y): _t(CARTA6, 2.6 + (x - 34) * 0.15) for y in range(35, 41) for x in range(34, 40)
+               if 70 <= x + y <= 74 and x - 34 >= 40 - y - 6 and y - 35 >= 39 - x - 5})
+    testata = {(x, y) for y in range(8, 17) for x in range(8, 41)}
+    _put(img, _bevel(testata, ROSSO6, base=3, grad=lambda x, y: (0.8 if y == 9 else 0) - (0.8 if y >= 15 else 0)))
+    for x0 in (13, 32):                                                     # the rings, steel cylinders
+        _put(img, {(x, y): _t(ACCIAIO6, (4.6 if x == x0 else 3 if x == x0 + 1 else 1.4) - (0.8 if y == 11 else 0))
+                   for y in range(3, 12) for x in range(x0, x0 + 3)})
+        _put(img, {(x0 + 1, 12): ROSSO6[0]})
+    cx, cy = 24, 28                                                         # the star: two facets per point
+    pts = [(cx + (10 if i % 2 == 0 else 4.2) * math.sin(i * math.pi / 5), cy - (10 if i % 2 == 0 else 4.2) * math.cos(i * math.pi / 5))
+           for i in range(10)]
+    stella = set()
+    for y in range(S):
+        for x in range(S):
+            px, py, dentro = x + 0.5, y + 0.5, False
+            for i in range(10):
+                (x1, y1), (x2, y2) = pts[i], pts[(i + 1) % 10]
+                if (y1 > py) != (y2 > py) and px < x1 + (py - y1) * (x2 - x1) / (y2 - y1):
+                    dentro = not dentro
+            if dentro:
+                stella.add((x, y))
+
+    def tono_stella(x, y):
+        a = math.atan2(x + 0.5 - cx, -(y + 0.5 - cy)) % (2 * math.pi)
+        lato = (a / (math.pi / 5)) % 2                                      # the facet left or right of a point's axis
+        return _t(ORO6, 3 + math.cos(a + math.radians(45)) * 1.2 + (0.7 if lato < 1 else -0.7))
+    _put(img, {(x + dx, y + dy): ORO_STELLA for (x, y) in stella for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))
+               if (x + dx, y + dy) not in stella})                          # its edge, apart from the white
+    _put(img, {p: tono_stella(*p) for p in stella})
+    _put(img, {(cx, cy): ORO6[5]})
+    return outline(img, ORO_SCURO)
+
+
+def raccoglitore():
+    """The card binder icon: a tooled leather cover with gold rings, corners and emblem, a card sticking out."""
+    img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    _put(img, _bevel({(x, y) for y in range(2, 14) for x in range(20, 38)}, CARTA6, base=3.8, lit=0.6))   # the card, a tiny saint
+    _put(img, {p: _t(ORO6, 4 - (p[1] - 5) * 0.6) for p in _ellisse(29, 5.5, 4.2, 1.8) - _ellisse(29, 5.5, 2.6, 0.9)})
+    _put(img, {p: INCARNATO4[2 if p[0] < 30 else 1] for p in _ellisse(29, 10, 2.8, 3)})
+
+    def tono_copertina(x, y):
+        t = 3 - (0.7 if x >= 37 else 0) - (0.6 if y >= 43 else 0)
+        if x <= 13:
+            t = 1.8 + (0.8 if x == 9 else 0)                                # the spine
+        if x == 14:
+            t = 4                                                           # its ridge
+        if (x in (17, 39) and 12 <= y <= 42) or (y in (12, 42) and 17 <= x <= 39):
+            t -= 1                                                          # the blind-tooled frame
+        if (x in (18, 40) and 13 <= y <= 42) or (y in (13, 43) and 18 <= x <= 39):
+            t += 0.6
+        return _t(CUOIO6, t)
+    _put(img, {(x, y): tono_copertina(x, y) for y in range(9, 46) for x in range(8, 43)})
+    for (x0, y0) in ((38, 9), (38, 41)):                                    # the gold corners
+        _put(img, _bevel({(x, y) for y in range(y0, y0 + 5) for x in range(x0, x0 + 5)
+                          if (y0 == 9 and x - x0 >= y - y0) or (y0 == 41 and x - x0 >= (y0 + 4) - y)}, ORO6, base=3.2))
+    for y0 in (14, 26, 38):                                                 # the rings
+        _put(img, {(x, y): _t(ORO6, (4.6 if y == y0 else 3 if y == y0 + 1 else 1.4) - (x - 8) * 0.15) for y in range(y0, y0 + 3) for x in range(5, 12)})
+    _put(img, _bevel({(x, y) for y in range(21, 34) for x in range(20, 36)}, ORO6, base=3, grad=lambda x, y: -(x - 27) * 0.06))
+    _put(img, _bevel(_ellisse(28, 27.5, 5, 5) - _ellisse(28, 27.5, 3, 3), ORO6, base=4, grad=lambda x, y: -((x - 28) + (y - 27.5)) * 0.15))
+    _put(img, {(28, 27): ORO6[5]})
+    return outline(img, ORO_SCURO)
+
+
+def condividi():
+    """Share icon: three gold spheres joined by bars, lit from the top left, a halo above the top one."""
+    img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    nodi = [(33, 23), (14, 33), (33, 42)]
+    aste = set()
+    for (ax, ay), (bx, by) in ((nodi[1], nodi[0]), (nodi[1], nodi[2])):
+        n = max(abs(bx - ax), abs(by - ay))
+        for i in range(n + 1):
+            x, y = round(ax + (bx - ax) * i / n), round(ay + (by - ay) * i / n)
+            aste |= {(x, y), (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)}
+    _put(img, _bevel(aste, ORO6, base=2.4))
+    for (cx, cy) in nodi:
+        _put(img, {(x, y): _t(ORO6, 3 - ((x + 0.5 - cx) * 0.35 + (y + 0.5 - cy) * 0.45) + (1.3 if (x + 2.5 - cx) ** 2 + (y + 2.5 - cy) ** 2 < 2.2 else 0))
+                   for (x, y) in _ellisse(cx, cy, 5.3, 5.3)})
+    alone = _ellisse(33, 8, 10.5, 3.6) - _ellisse(33, 8, 7.5, 1.7)
+    _put(img, {(x, y): _t(ORO6, (3.4 if y > 8 else 2) - (x - 33) * 0.08 + (1.5 if y > 8 and 26 <= x <= 29 else 0)) for (x, y) in alone})
+    return outline(img, ORO_SCURO)
+
+
+def gira():
+    """"Flip the card" icon: the gold ribbon ring re-toned, the front band lit on top and to the left,
+    the inside face in shade."""
+    return _ricolora(_gira_base(), {GOLD: (ORO6, 3.2, lambda x, y: -(x - 24) * 0.05),
+                                    shade(GOLD, 0.72): (ORO6, 1.6, lambda x, y: -(x - 24) * 0.03),
+                                    GOLD_DARK: (ORO6, 0.6, None)})
+
+
+def segnalibro(attivo=True, colori="lapislazzuli"):
+    """Bookmark of the favourite cards, re-toned: the cloth with a lit fold on the left, the gold border
+    and rod in relief, a dark-gold outline. Empty: a faint outline, as before."""
+    img = _segnalibro_base(attivo, colori)
+    if not attivo:
+        return img
+    drappo, bordo = STENDARDI[colori]
+    R = LAPIS6 if colori == "lapislazzuli" else [shade(drappo, f) for f in (0.45, 0.65, 0.85, 1.0, 1.25, 1.5)]
+    mats = {drappo: (R, 2.8, lambda x, y: -(x - 7) * 0.18 - (0.6 if y > 14 else 0)), shade(drappo, 1.25): (R, 4.2, None)}
+    if bordo == GOLD:
+        mats.update({GOLD: (ORO6, 3, None), GOLD_DARK: (ORO6, 1.5, None), GOLD_LIGHT: (ORO6, 5, None)})
+    out = _ricolora(img, mats)
+    px = out.load()
+    for y in range(out.height):
+        for x in range(out.width):
+            if px[x, y][3] and px[x, y][:3] == OUTLINE:
+                px[x, y] = ORO_SCURO + (255,)
+    return out
+
+
+def banner(zoom=5):
     """The repo banner, 1024x500: the splash screen's logo, gothic title and subtitle on its red,
     with a gold frame around."""
     w, h = 1024, 500
@@ -2099,7 +2342,7 @@ def banner(zoom=7):
     tx, ty = x + mark.width + 40, (h - title.height) // 2 - 34
     img.alpha_composite(title, (tx, ty))
     d = ImageDraw.Draw(img)
-    font = ImageFont.truetype(str(ROOT / "app/src/main/res/font/unifraktur_maguntia.ttf"), 50)
+    font = ImageFont.truetype(str(ROOT / "app/src/main/res/font/unifraktur_maguntia.ttf"), 40)
     d.text((tx + title.width // 2, ty + title.height + 44), "Un santo a caso, quando serve.",
            font=font, fill=(255, 193, 7), anchor="mm")          # the subtitle's colour on the splash
     for i, col in enumerate((GOLD_DARK, GOLD_LIGHT, GOLD_DARK)):
@@ -2108,18 +2351,21 @@ def banner(zoom=7):
     return img.convert("RGB")
 
 
-def icona_play(zoom=11):
+def icona_play(zoom=7):
     """The Play icon, 512x512: the logo on the red background."""
     img = Image.new("RGBA", (512, 512), LOGO_RED + (255,))
-    mark = logo().resize((40 * zoom, 38 * zoom), Image.NEAREST)
+    mark = logo()
+    mark = mark.resize((mark.width * zoom, mark.height * zoom), Image.NEAREST)
     img.alpha_composite(mark, ((512 - mark.width) // 2, (512 - mark.height) // 2))
     return img.convert("RGB")
 
 
-def icona_launcher(zoom=5):
-    """Foreground of the adaptive app icon, 432x432 (xxxhdpi): the logo within the safe zone."""
+def icona_launcher(zoom=4):
+    """Foreground of the adaptive app icon, 432x432 (xxxhdpi): the logo filling the 72 dp a launcher shows
+    (the bubble's sides go a little past the 66 dp safe zone, the user's choice: a bigger logo)."""
     img = Image.new("RGBA", (432, 432), (0, 0, 0, 0))
-    mark = logo().resize((40 * zoom, 38 * zoom), Image.NEAREST)
+    mark = logo()
+    mark = mark.resize((mark.width * zoom, mark.height * zoom), Image.NEAREST)
     img.alpha_composite(mark, ((432 - mark.width) // 2, (432 - mark.height) // 2))
     return img
 
@@ -2139,7 +2385,7 @@ def anteprima_timbro(out, zoom=8):
     """Save the stamp variants and the button, enlarged, for review."""
     out.mkdir(parents=True, exist_ok=True)
     for v in ("piena", "sottile", "nastro"):
-        img = timbro(v)
+        img = timbro() if v == "piena" else etichetta(CAPOLETTERA_N, "uova!", v)
         img.resize((img.width * zoom, img.height * zoom), Image.NEAREST).save(out / f"timbro-{v}.png")
     for nome in PULSANTI:
         for premuto in (False, True):

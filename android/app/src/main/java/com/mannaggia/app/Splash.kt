@@ -34,8 +34,8 @@ object Splash {
     private const val FADE_MS = 300L
     /** Without the Android 12+ system splash signal, start this long after the window focus. */
     private const val SYSTEM_SPLASH_FALLBACK_MS = 2_500L
-    /** Share of the screen width for the logo and the title (as in the approved mock-up). */
-    private const val LOGO_WIDTH = 0.46f
+    /** Largest share of the screen width for the logo and the title; both take the same pixel size. */
+    private const val LOGO_WIDTH = 0.50f
     private const val TITLE_WIDTH = 0.74f
     private const val SUBTITLE_SIZE = 0.062f
 
@@ -116,8 +116,10 @@ object Splash {
             val title = Avatars.splashTitle(activity)
             splash.post {
                 val w = splash.width
-                size(splash.findViewById(R.id.imgSplashLogo), logo, w * LOGO_WIDTH)
-                size(splash.findViewById(R.id.imgSplashTitle), title, w * TITLE_WIDTH)
+                // one whole factor for both, the largest that fits both widths: the same pixel size
+                val k = minOf(fit(logo, w * LOGO_WIDTH), fit(title, w * TITLE_WIDTH))
+                size(splash.findViewById(R.id.imgSplashLogo), logo, k)
+                size(splash.findViewById(R.id.imgSplashTitle), title, k)
                 splash.findViewById<TextView>(R.id.txtSplashSubtitle)
                     .setTextSize(TypedValue.COMPLEX_UNIT_PX, w * SUBTITLE_SIZE)
                 splash.findViewById<View>(R.id.splashContent).visibility = View.VISIBLE
@@ -134,10 +136,13 @@ object Splash {
      */
     private fun choirAllowed(context: Context) = Prefs.splashChoirEnabled(context)
 
-    /** Show [bitmap] scaled by the largest whole factor that fits [maxWidth]: crisp pixels. */
-    private fun size(view: ImageView, bitmap: android.graphics.Bitmap?, maxWidth: Float) {
+    /** The largest whole factor that fits [bitmap] in [maxWidth] (any, if there is no bitmap). */
+    private fun fit(bitmap: android.graphics.Bitmap?, maxWidth: Float) =
+        if (bitmap == null) Int.MAX_VALUE else (maxWidth / bitmap.width).toInt().coerceAtLeast(1)
+
+    /** Show [bitmap] scaled by the whole factor [k]: crisp pixels. */
+    private fun size(view: ImageView, bitmap: android.graphics.Bitmap?, k: Int) {
         bitmap ?: return
-        val k = (maxWidth / bitmap.width).toInt().coerceAtLeast(1)
         view.layoutParams = view.layoutParams.apply {
             width = bitmap.width * k
             height = bitmap.height * k
