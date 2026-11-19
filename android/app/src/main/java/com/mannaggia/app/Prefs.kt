@@ -84,7 +84,7 @@ object Prefs {
 
     fun shakeEnabled(context: Context) = prefs(context).getBoolean(KEY_SHAKE, true)
 
-    fun ttsEnabled(context: Context) = prefs(context).getBoolean(KEY_TTS, false)
+    fun ttsEnabled(context: Context) = prefs(context).getBoolean(KEY_TTS, true)
 
     /** The TTS engine package chosen in Options, or null for the phone's default one. */
     fun ttsEngine(context: Context): String? = prefs(context).getString(KEY_TTS_ENGINE, "").takeUnless { it.isNullOrEmpty() }
