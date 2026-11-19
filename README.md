@@ -37,11 +37,11 @@ Server giù? Deploy del venerdì andato male? Mannaggia invoca per te uno degli 
 - **Pulsante "Mannaggia!"**, oppure **scuoti il telefono** con l'app aperta.
 - **Widget** per la schermata Home e **riquadro nelle Impostazioni rapide**, per imprecare da qualunque schermata.
 - **Santo del giorno**: l'icona col calendario invoca il santo festeggiato oggi, una volta al giorno.
-- **Album dei santi**: ogni santo invocato diventa una figurina in pixel art, col suo abito e i suoi attributi. I 50 più famosi sono leggendari, con una cornice che scintilla. Cerca per nome o numero, ordina, filtra.
+- **Album dei santi**: ogni santo invocato diventa una figurina in pixel art, col suo abito e i suoi attributi, e con occhi e bocca animati che cambiano espressione. I 50 più famosi sono leggendari, con una cornice che scintilla. Cerca per nome o numero, ordina, filtra.
 - **Trofei segreti**: certi gesti, orari e costanze vengono premiati con colori, caratteri, effetti, cornici, formule d'invocazione e qualche figurina che nel calendario non troverai. Cosa sblocca cosa non lo diciamo.
 - **Doni**: regala una figurina a un amico con un link (la tua resta nell'album) e condividi le carte su qualsiasi app.
 - **«I miei santi»**: componi un quadro con fino a 9 preferiti, da salvare o condividere come immagine o GIF animata.
-- **Pronuncia** della frase con la sintesi vocale del telefono, o con un'altra app di voci.
+- **Pronuncia** della frase con la sintesi vocale del telefono, o con un'altra app di voci, anche toccando una figurina nell'album.
 - **Stile a piacere**: tema chiaro o scuro, carattere, colore ed effetto, con anteprima dal vivo.
 - **Rispetta la tua privacy**: funziona offline, non chiede permessi di rete, niente pubblicità, account o tracciamento ([informativa](PRIVACY.md)).
 
