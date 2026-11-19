@@ -13,6 +13,8 @@
     <string name="pref_shake_summary">Scuoti il telefono con l\'app aperta per invocare un santo</string>
     <string name="pref_tts_title">Pronuncia</string>
     <string name="pref_tts_summary">Legge la frase con la sintesi vocale del telefono</string>
+    <string name="pref_album_voice_title">Invoca dall\'album</string>
+    <string name="pref_album_voice_summary">Toccando una figurina nell\'album o nei preferiti, la voce pronuncia la sua invocazione</string>
     <string name="pref_cat_style">Stile della frase</string>
     <string name="pref_preview_text">Mannaggia San Pietro!</string>
     <string name="pref_theme_title">Tema</string>
@@ -43,6 +45,7 @@
     <string name="tab_album">Album</string>
     <string name="tab_preferiti">Preferiti</string>
     <string name="fav_count">%1$d preferiti · tocca per invocare, tieni premuto per comporre un quadro</string>
+    <string name="fav_count_muto">%1$d preferiti · tieni premuto per comporre un quadro</string>
     <string name="fav_empty">Nessun preferito: nell\'album tieni premuta una figurina per sceglierla.</string>
     <string name="fav_add">Aggiungi ai preferiti</string>
     <string name="fav_remove">Togli dai preferiti</string>

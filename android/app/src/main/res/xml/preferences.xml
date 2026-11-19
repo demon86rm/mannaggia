@@ -34,6 +34,14 @@
             android:summary="@string/pref_tts_summary"
             app:iconSpaceReserved="false" />
 
+        <SwitchPreferenceCompat
+            android:key="album_voice"
+            android:defaultValue="true"
+            android:dependency="tts"
+            android:title="@string/pref_album_voice_title"
+            android:summary="@string/pref_album_voice_summary"
+            app:iconSpaceReserved="false" />
+
         <!-- The voice engine: the phone's default, or another TTS app installed (list filled in code). -->
         <ListPreference
             android:key="tts_engine"

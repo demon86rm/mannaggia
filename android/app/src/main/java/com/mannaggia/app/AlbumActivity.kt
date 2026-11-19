@@ -41,14 +41,14 @@ import java.util.Locale
 /**
  * Album: the saints invoked so far as pixel-art cards, sorted by card number
  * (N. 1 = most famous; legendary saints first, with a sparkling gold frame),
- * with the X/total counter. Tapping a card opens its detail.
+ * with the X/total counter. Tapping a card opens its detail and, with the "Invoca dall'album"
+ * option (only when Pronuncia is on), speaks its phrase on demand, without counting as an
+ * invocation for the album or the trophies.
  *
  * Two tabs: "Album" (every card found) and "Preferiti" (the favourite cards, marked by a
- * banner bookmark). In the album a long press starts a multiple selection to add cards to
- * the favourites; the detail has a bookmark toggle too. In "Preferiti" a tap opens the
- * card's detail and speaks its phrase on demand (whatever the Pronuncia option, and without
- * counting as an invocation for the album or the trophies); a long press opens the detail
- * without the voice.
+ * banner bookmark). In both a long press starts a multiple selection, where a tap adds or
+ * removes a card: in the album to add cards to the favourites (the detail has a bookmark
+ * toggle too), in "Preferiti" also to compose a picture.
  *
  * "Ordina e filtra" in the toolbar sorts both tabs by card number, by name (without the
  * title, so "Santa Chiara" goes under C) or by discovery, ascending or descending, and
@@ -188,7 +188,7 @@ class AlbumActivity : AppCompatActivity() {
         // Special cards stay first in both directions.
         val entries = specials + if (Prefs.albumDescending(this)) sorted.asReversed() else sorted
         if (showFavourites) {
-            binding.txtCount.text = getString(R.string.fav_count, entries.size)
+            binding.txtCount.text = getString(if (Prefs.albumVoice(this)) R.string.fav_count else R.string.fav_count_muto, entries.size)
             binding.progressAlbum.visibility = View.GONE
             binding.txtEmpty.setText(R.string.fav_empty)
         } else {
@@ -228,11 +228,10 @@ class AlbumActivity : AppCompatActivity() {
         val saint = card.entry.saint
         when {
             selected.isNotEmpty() -> toggleSelection(saint)
-            showFavourites -> {                 // the card pops up, as in the album, and speaks
+            else -> {
                 showDetail(card)
-                invokeOnDemand(saint, view)
+                if (Prefs.albumVoice(this)) invokeOnDemand(saint, view)
             }
-            else -> showDetail(card)
         }
     }
 
@@ -291,7 +290,7 @@ class AlbumActivity : AppCompatActivity() {
             .show()
     }
 
-    // --- Favourites tab: on-demand invocation ----------------------------------------------
+    // --- On-demand invocation (album and favourites) ----------------------------------------------
 
     /** Speak the card's phrase now: no text, no album or trophy bookkeeping. */
     private fun invokeOnDemand(saint: String, view: View) {
