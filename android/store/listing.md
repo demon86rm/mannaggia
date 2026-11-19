@@ -49,6 +49,16 @@ L'elenco dei santi proviene da Wikidata (CC0). I caratteri gotici sono sotto SIL
 
 Umorismo da sistemisti, senza bestemmie.
 
+## Note di rilascio 2.2.0 (max 500 caratteri)
+
+• Tutti i 5420 santi ridisegnati: ritratti più grandi e dettagliati
+• Occhi e bocche animati: i santi sbattono le palpebre e cambiano espressione
+• Carta in pergamena e carattere gotico più leggibile, anche i numeri romani
+• Il nuovo carattere è anche il predefinito delle invocazioni (il vecchio è «Semplice»)
+• Tocca una figurina nell'album per sentirne l'invocazione (opzione «Invoca dall'album»)
+• Pronuncia attiva di default
+• Nuova grafica: icona, schermata iniziale, pulsanti e icone
+
 ## Note di rilascio 2.1.2 (max 500 caratteri)
 
 • Opzione Colorful: una cornice animata per ogni figurina (contributo di lucatarik)
