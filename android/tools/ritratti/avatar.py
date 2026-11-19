@@ -2342,7 +2342,7 @@ def banner(zoom=5):
     tx, ty = x + mark.width + 40, (h - title.height) // 2 - 34
     img.alpha_composite(title, (tx, ty))
     d = ImageDraw.Draw(img)
-    font = ImageFont.truetype(str(ROOT / "app/src/main/res/font/unifraktur_maguntia.ttf"), 40)
+    font = ImageFont.truetype(str(ROOT / "app/src/main/res/font/hamlet_tertia.otf"), 40)
     d.text((tx + title.width // 2, ty + title.height + 44), "Un santo a caso, quando serve.",
            font=font, fill=(255, 193, 7), anchor="mm")          # the subtitle's colour on the splash
     for i, col in enumerate((GOLD_DARK, GOLD_LIGHT, GOLD_DARK)):

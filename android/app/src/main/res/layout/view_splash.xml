@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/unifraktur_maguntia"
+            android:fontFamily="@font/hamlet_tertia"
             android:text="@string/splash_subtitle"
             android:textColor="#FFC107" />
     </LinearLayout>
