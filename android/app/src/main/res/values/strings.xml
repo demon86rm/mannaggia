@@ -13,6 +13,8 @@
     <string name="pref_shake_summary">Scuoti il telefono con l\'app aperta per invocare un santo</string>
     <string name="pref_tts_title">Pronuncia</string>
     <string name="pref_tts_summary">Legge la frase con la sintesi vocale del telefono</string>
+    <string name="pref_album_voice_title">Invoca dall\'album</string>
+    <string name="pref_album_voice_summary">Toccando una figurina nell\'album o nei preferiti, la voce pronuncia la sua invocazione</string>
     <string name="pref_cat_style">Stile della frase</string>
     <string name="pref_preview_text">Mannaggia San Pietro!</string>
     <string name="pref_theme_title">Tema</string>
@@ -43,6 +45,7 @@
     <string name="tab_album">Album</string>
     <string name="tab_preferiti">Preferiti</string>
     <string name="fav_count">%1$d preferiti · tocca per invocare, tieni premuto per comporre un quadro</string>
+    <string name="fav_count_muto">%1$d preferiti · tieni premuto per comporre un quadro</string>
     <string name="fav_empty">Nessun preferito: nell\'album tieni premuta una figurina per sceglierla.</string>
     <string name="fav_add">Aggiungi ai preferiti</string>
     <string name="fav_remove">Togli dai preferiti</string>
@@ -101,14 +104,19 @@ Cambialo da «Ordina e filtra».</string>
     <string name="album_legendary">⭐ Santo leggendario</string>
     <string name="album_feast">Festa: %1$s</string>
     <string name="album_feast_unknown">Festa non nota</string>
-    <string name="card_number">N° %1$d</string>
+    <string name="card_number">Nº %1$d</string>
     <string name="card_number_special">S%1$d</string>
     <string name="album_detail_special">Figurina speciale S%1$d · trofeo «%2$s»</string>
     <string name="album_feast_special">Fuori calendario</string>
-    <string name="card_new">📖 Nuova figurina!</string>
-    <string name="card_new_legendary">⭐ Santo leggendario!</string>
-    <string name="card_owned">Già nell\'album</string>
-    <string name="card_special">✨ Figurina speciale</string>
+    <!-- The category on top of the parchment card (Avatars.etichetta). -->
+    <string name="cat_santo">Santo</string>
+    <string name="cat_santa">Santa</string>
+    <string name="cat_beato">Beato</string>
+    <string name="cat_beata">Beata</string>
+    <string name="cat_martire">%1$s martire</string>
+    <string name="cat_leggendario">Santo leggendario</string>
+    <string name="cat_leggendaria">Santa leggendaria</string>
+    <string name="cat_speciale">Figurina speciale</string>
     <string name="card_stamp_new">NUOVA!</string>
     <string name="card_tap_hint">Tocca per metterla nell\'album</string>
     <string name="album_detail_found_number">N° %1$d · scoperta #%2$d</string>
@@ -128,7 +136,7 @@ Cambialo da «Ordina e filtra».</string>
     <string name="album_empty">Nessun santo, per ora.\nTorna qui dopo il primo Mannaggia!</string>
     <string name="tts_unavailable">Voce italiana non disponibile</string>
     <string name="about_title">Mannaggia %1$s</string>
-    <string name="about_text">Invocazione automatica dei santi per Veteran Unix Admin depressi. Port Android di mannaggia.sh.\n\nSoftware libero, rilasciato sotto licenza GNU GPL v3. Codice sorgente:\nhttps://github.com/demon86rm/mannaggia\n\nIdee e segnalazioni:\nhttps://github.com/demon86rm/mannaggia/issues\n\nScript originale: idea di Alexiobash, ampliato e mantenuto da Pietro \"Legolas\" Suffritti, con Enrico \"Henryx\" Bianchi, Alessandro \"Aleskandro\" Di Stefano, Davide \"kk0nrad\" Corrado e tutti i contributori.\n\nApp Android: demon86rm.\n\nElenco dei santi e feste: Wikidata (CC0).\n\nRitratti dei santi: disegni originali in pixel art, GPL v3.\n\nCoro angelico e jingle dei trofei: sintetizzati apposta, GPL v3.\n\nCaratteri gotici: MedievalSharp (Wojciech Kalinowski), Berthold Mainzer Fraktur e Altgotisch (Peter Wiegel, CAT-Fonts), UnifrakturMaguntia (j. \'mach\' wust, Peter Wiegel), Eagle Lake (Brian J. Bonislawsky, Astigmatic), SIL Open Font License 1.1.\n\nL\'app non raccoglie né trasmette dati personali.</string>
+    <string name="about_text">Invocazione automatica dei santi per Veteran Unix Admin depressi. Port Android di mannaggia.sh.\n\nSoftware libero, rilasciato sotto licenza GNU GPL v3. Codice sorgente:\nhttps://github.com/demon86rm/mannaggia\n\nIdee e segnalazioni:\nhttps://github.com/demon86rm/mannaggia/issues\n\nScript originale: idea di Alexiobash, ampliato e mantenuto da Pietro \"Legolas\" Suffritti, con Enrico \"Henryx\" Bianchi, Alessandro \"Aleskandro\" Di Stefano, Davide \"kk0nrad\" Corrado e tutti i contributori.\n\nApp Android: demon86rm.\n\nElenco dei santi e feste: Wikidata (CC0).\n\nRitratti dei santi: disegni originali in pixel art, GPL v3.\n\nCoro angelico e jingle dei trofei: sintetizzati apposta, GPL v3.\n\nCaratteri gotici: MedievalSharp (Wojciech Kalinowski), Berthold Mainzer Fraktur e Altgotisch (Peter Wiegel, CAT-Fonts), UnifrakturMaguntia (j. \'mach\' wust, Peter Wiegel), Eagle Lake (Brian J. Bonislawsky, Astigmatic), SIL Open Font License 1.1.\n\nCarattere delle carte: Hamlet Tertia (Alexis Faudot, Rafael Ribas, Jérôme Knebusch; progetto Gotico-Antiqua, ANRT Nancy), SIL Open Font License 1.1, completato con le lettere accentate dei nomi dei santi.\n\nL\'app non raccoglie né trasmette dati personali.</string>
     <string name="about_close">Chiudi</string>
     <string name="tab_news">Novità</string>
     <string name="tab_credits">Crediti</string>

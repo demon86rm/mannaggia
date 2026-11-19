@@ -937,7 +937,7 @@ San Caradoc Freichfras
 San Carlo di Sant'Andrea
 San Corbiniano di Frisinga
 San Cosma di Maiuma
-San Di Liébana
+San Beato di Liébana
 San Felice di Valois
 San Finnian di Clonard
 San Gaudenzio di Brescia
@@ -3092,7 +3092,7 @@ San Cybi
 San David Galvan Bermudes
 San Defendente
 San Desiderato di Bourges
-San Di Vendôme
+San Beato di Vendôme
 San Drostan
 San Felice di Como
 San Ferreolo di Grenoble
@@ -5233,7 +5233,7 @@ Santa Daria di Venafro
 Santa Degna di Roma
 Santa Degna di Todi
 Santa Derfuta
-Santa Di Sens
+Santa Beata di Sens
 Santa Donata
 Santa Faustina di Como
 Santa Felicitas of Padua
@@ -5377,7 +5377,7 @@ San Plutarco
 San Proietto di Parenzo
 San Quarto
 San Quinto
-San Raffaele martire
+San Raffaele di Lesbo
 San Rufus
 San Satyapīra
 San Sennen

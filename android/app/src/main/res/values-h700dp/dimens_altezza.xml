@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Screens at least 700dp tall: the roomy card and the full-size phrase. -->
+<resources>
+    <dimen name="card_label_size">16sp</dimen>
+    <dimen name="card_number_size">14sp</dimen>
+    <dimen name="card_name_size">16sp</dimen>
+    <dimen name="card_padding">8dp</dimen>
+    <dimen name="card_label_gap">6dp</dimen>
+    <dimen name="result_text_size">28sp</dimen>
+    <dimen name="result_gap">36dp</dimen>
+</resources>

@@ -1368,6 +1368,8 @@ San Baudolino eremita	legno
 San Bavone di Gand	vaporwave
 San Bazyli Martysz	palma
 San Beat de Cerbi	neon
+San Beato di Liébana	smeraldo
+San Beato di Vendôme	arcobaleno
 San Beda il Venerabile	legno
 San Benedetto	lapislazzuli
 San Benedetto Biscop	smeraldo
@@ -1726,7 +1728,7 @@ San Daniele Fasanella	lapislazzuli
 San Daniele di Padova	vaporwave
 San Daniele di Russia	vaporwave
 San Daniele lo Stilita	arcobaleno
-San Daniele martire	smeraldo
+San Daniele martire	palma
 San Dasio di Nicomedia	lapislazzuli
 San David Galvan Bermudes	arcobaleno
 San David Lewis	palma
@@ -1760,11 +1762,9 @@ San Desiderato di Verdun	lapislazzuli
 San Desiderio di Cahors	bronzo
 San Desiderio di Langres	bronzo
 San Desiderio di Vienne	palma
-San Di Liébana	bronzo
-San Di Vendôme	legno
 San Diadoco di Fotice	vaporwave
 San Didimo il Cieco	neon
-San Dieci martiri di Creta	porpora
+San Dieci martiri di Creta	palma
 San Diego Kisai	palma
 San Diego Oddi	smeraldo
 San Diego d'Acebo	neon
@@ -1863,7 +1863,7 @@ San Faustino	neon
 San Faustino Míguez González	vaporwave
 San Faustino di Brescia	bronzo
 San Faustino di Roma	arcobaleno
-San Faustino martire	legno
+San Faustino martire	palma
 San Fausto di Riez	lapislazzuli
 San Febadio di Agen	arcobaleno
 San Fedele da Sigmaringen	porpora
@@ -2499,7 +2499,7 @@ San Laurent Imbert	palma
 San Laurent de Salamine	smeraldo
 San Lauriano	lapislazzuli
 San Lautein	vaporwave
-San Laverio martire	bronzo
+San Laverio martire	palma
 San Lazzaro	legno
 San Lazzaro Hrebeljanović	palma
 San Lazzaro di Betania	arcobaleno
@@ -2854,7 +2854,7 @@ San Namazio di Clermont	vaporwave
 San Namazio di Vienne	legno
 San Namphamon de Madaure	lapislazzuli
 San Namphase	vaporwave
-San Napoleone martire	porpora
+San Napoleone martire	palma
 San Narciso di Gerusalemme	vaporwave
 San Narciso di Girona	bronzo
 San Narcyz Putz	bronzo
@@ -3143,7 +3143,7 @@ San Pretestato di Rouen	palma
 San Primiano di Ancona	legno
 San Primiano di Larino	bronzo
 San Primitivo	arcobaleno
-San Primo martire	legno
+San Primo martire	palma
 San Prince de Soissons	arcobaleno
 San Prisco	vaporwave
 San Prisco di Capua	smeraldo
@@ -3167,13 +3167,13 @@ San Prosdocimo di Padova	lapislazzuli
 San Prospero d'Aquitania	vaporwave
 San Prospero di Reggio Emilia	bronzo
 San Prospero di Tarragona	legno
-San Prospero martire	neon
+San Prospero martire	palma
 San Protadio di Besançon	porpora
 San Protasio	vaporwave
 San Protasio di Losanna	neon
 San Protaso di Milano	lapislazzuli
 San Proterio di Alessandria	lapislazzuli
-San Proto martire	porpora
+San Proto martire	palma
 San Prudent de Narbonne	bronzo
 San Prudenzio di Tarazona	bronzo
 San Prudenzio di Troyes	lapislazzuli
@@ -3203,8 +3203,8 @@ San Racho of Autun	smeraldo
 San Radbodo	smeraldo
 San Rafael Arnáiz Barón	vaporwave
 San Rafael Guízar Valencia	vaporwave
+San Raffaele di Lesbo	palma
 San Raffaele di San Giuseppe	bronzo
-San Raffaele martire	smeraldo
 San Ragneberto	vaporwave
 San Raimondo Nonnato	vaporwave
 San Raimondo Zanfogni	legno
@@ -3266,7 +3266,7 @@ San Romano di Auxerre	bronzo
 San Romano di Condat	bronzo
 San Romano di Rouen	smeraldo
 San Romano di Subiaco	legno
-San Romano martire	smeraldo
+San Romano martire	palma
 San Romarico	legno
 San Rombaldo di Mechelen	bronzo
 San Romedio	arcobaleno
@@ -3839,7 +3839,7 @@ Sant'Agathe Lin-tchao	palma
 Sant'Agatoclia	bronzo
 Sant'Agatone	arcobaleno
 Sant'Agatone d'Egitto	bronzo
-Sant'Agatone martire	neon
+Sant'Agatone martire	palma
 Sant'Agericus of Verdun	smeraldo
 Sant'Aggeo	vaporwave
 Sant'Agileo di Cartagine	arcobaleno
@@ -4002,7 +4002,7 @@ Sant'Amphilochios Makrēs	porpora
 Sant'Amun	vaporwave
 Sant'Anania di Damasco	smeraldo
 Sant'Anastasia di Sirmio	vaporwave
-Sant'Anastasia martire	neon
+Sant'Anastasia martire	palma
 Sant'Anastasio	smeraldo
 Sant'Anastasio I	smeraldo
 Sant'Anastasio II di Antiochia	palma
@@ -4124,7 +4124,7 @@ Sant'Apollonio	smeraldo
 Sant'Apollonio di Sardi	palma
 Sant'Apollonio di Tiana	legno
 Sant'Apollonio l'Anacoreta	neon
-Sant'Apollonio martire	smeraldo
+Sant'Apollonio martire	palma
 Sant'Apphia	porpora
 Sant'Appiano	lapislazzuli
 Sant'Appiano di Cesarea in Palestina	lapislazzuli
@@ -4152,7 +4152,7 @@ Sant'Aredio di Limoges	legno
 Sant'Areta di Cesarea	porpora
 Sant'Areta e compagni	bronzo
 Sant'Ariadne	porpora
-Sant'Arialdo martire	neon
+Sant'Arialdo martire	palma
 Sant'Arianna di Primnesso	porpora
 Sant'Aristarco di Tessalonica	arcobaleno
 Sant'Aristide Marciano	legno
@@ -4420,7 +4420,7 @@ Sant'Ermenegildo	smeraldo
 Sant'Ermenfrido di Cusance	legno
 Sant'Ermengarda di Tours	porpora
 Sant'Ermete	palma
-Sant'Ermete martire	neon
+Sant'Ermete martire	palma
 Sant'Ermin de Lobbes	arcobaleno
 Sant'Ermione di Efeso	neon
 Sant'Ermogene	palma
@@ -4759,6 +4759,7 @@ Santa Bartolomea Capitanio	vaporwave
 Santa Basilissa e Anastasia	neon
 Santa Bassa di Edessa	smeraldo
 Santa Batilde	neon
+Santa Beata di Sens	legno
 Santa Beatrice II d'Este	legno
 Santa Beatrice de Silva	bronzo
 Santa Begga di Andenne	arcobaleno
@@ -4771,7 +4772,7 @@ Santa Bertha	bronzo
 Santa Bertha von Marbais	arcobaleno
 Santa Bertilia	smeraldo
 Santa Bertilla di Chelles	arcobaleno
-Santa Bibiana martire	arcobaleno
+Santa Bibiana martire	palma
 Santa Bililde	legno
 Santa Blandina di Lione	neon
 Santa Blesilla	legno
@@ -4849,7 +4850,6 @@ Santa Demetria di Roma	porpora
 Santa Derchairthinn	smeraldo
 Santa Derfuta	smeraldo
 Santa Devota	bronzo
-Santa Di Sens	smeraldo
 Santa Dignamerita di Salerno	vaporwave
 Santa Dinfna	palma
 Santa Dionisia	neon
@@ -4939,7 +4939,7 @@ Santa Giusta	neon
 Santa Giusta di Bazzano	bronzo
 Santa Giustina di Nicomedia	neon
 Santa Giustina di Padova	smeraldo
-Santa Giustina vergine e martire	legno
+Santa Giustina vergine e martire	palma
 Santa Gladys	vaporwave
 Santa Glafira	bronzo
 Santa Gliceria di Eraclea	palma

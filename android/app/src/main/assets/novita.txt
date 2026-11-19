@@ -2,6 +2,15 @@
 # aggiornamento (solo il blocco della versione installata). Aggiornare a ogni versione,
 # insieme alle note di store/listing.md.
 
+## 2.2.0
+• Tutti i 5420 santi ridisegnati: ritratti più grandi e dettagliati
+• Occhi e bocche animati: i santi sbattono le palpebre e cambiano espressione
+• Carta in pergamena e carattere gotico più leggibile, anche i numeri romani
+• Il nuovo carattere è anche il predefinito delle invocazioni (il vecchio è «Semplice»)
+• Tocca una figurina nell'album per sentirne l'invocazione (opzione «Invoca dall'album»)
+• Pronuncia attiva di default
+• Nuova grafica: icona, schermata iniziale, pulsanti e icone
+
 ## 2.1.2
 • Opzione Colorful: una cornice animata per ogni figurina (contributo di lucatarik)
 • Per i martiri, una cornice dedicata

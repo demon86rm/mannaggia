@@ -1,83 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- The card of the last saint invoked, always shown under the phrase:
-     label (new / already in the album / special), portrait with its frame and the
-     favourite bookmark (a toggle; half transparent while not a favourite),
-     card number and name. -->
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- The card on parchment (Pergamena: positions and text sizes in parchment pixels, 112 x 170), shown
+     under the phrase and in the album detail: the saint's category on top (its initial in red), the
+     portrait with its frame and the favourite bookmark (a toggle; half transparent while not a
+     favourite) inside the ink rule, card number and name below, in Hamlet Tertia. -->
+<com.mannaggia.app.Pergamena xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="180dp"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="12dp">
+    android:layout_width="@dimen/card_max_width"
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/txtLabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
+        app:pxRect="4,3,104,21"
+        app:pxText="10"
+        android:fontFamily="@font/hamlet_tertia"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:textColor="@color/inchiostro" />
 
-        <TextView
-            android:id="@+id/txtLabel"
+    <com.mannaggia.app.SquareFrameLayout
+        android:id="@+id/cardImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:pxRect="8,28,96,96">
+
+        <ImageView
+            android:id="@+id/imgAvatar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingBottom="6dp"
-            android:fontFamily="@font/unifraktur_maguntia"
-            android:textAppearance="?attr/textAppearanceLabelLarge"
-            android:textSize="16sp" />
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter" />
 
-        <com.mannaggia.app.SquareFrameLayout
-            android:id="@+id/cardImage"
+        <ImageView
+            android:id="@+id/imgFrame"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
 
-            <ImageView
-                android:id="@+id/imgAvatar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@null"
-                android:scaleType="fitCenter" />
+        <ImageButton
+            android:id="@+id/btnBookmark"
+            android:layout_width="40dp"
+            android:layout_height="56dp"
+            android:layout_gravity="top|start"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/fav_add"
+            android:padding="6dp"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+    </com.mannaggia.app.SquareFrameLayout>
 
-            <ImageView
-                android:id="@+id/imgFrame"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@null"
-                android:scaleType="fitCenter"
-                android:visibility="gone" />
+    <TextView
+        android:id="@+id/txtNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:pxRect="6,131,100,11"
+        app:pxText="7.5"
+        android:fontFamily="@font/hamlet_tertia"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:textColor="@color/inchiostro_bruno" />
 
-            <ImageButton
-                android:id="@+id/btnBookmark"
-                android:layout_width="40dp"
-                android:layout_height="56dp"
-                android:layout_gravity="top|start"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/fav_add"
-                android:padding="6dp"
-                android:scaleType="fitCenter"
-                android:visibility="gone" />
-        </com.mannaggia.app.SquareFrameLayout>
-
-        <TextView
-            android:id="@+id/txtNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:gravity="center"
-            android:fontFamily="@font/unifraktur_maguntia"
-            android:textAppearance="?attr/textAppearanceLabelMedium"
-            android:textColor="?android:attr/textColorSecondary"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/txtSaint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:fontFamily="@font/unifraktur_maguntia"
-            android:textAppearance="?attr/textAppearanceTitleSmall"
-            android:textSize="16sp" />
-    </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+    <TextView
+        android:id="@+id/txtSaint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:pxRect="6,143,100,23"
+        app:pxText="9"
+        android:fontFamily="@font/hamlet_tertia"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:lineSpacingMultiplier="0.9"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textColor="@color/inchiostro" />
+</com.mannaggia.app.Pergamena>

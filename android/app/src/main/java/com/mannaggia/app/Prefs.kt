@@ -21,10 +21,14 @@ object Prefs {
     const val KEY_SHAKE = "shake"
     const val KEY_TTS = "tts"
     const val KEY_TTS_ENGINE = "tts_engine"
+    const val KEY_ALBUM_VOICE = "album_voice"
     const val KEY_FONT = "font"
     /** font_values prefix of the fonts bundled in res/font (e.g. "font:medievalsharp"). */
     private const val BUNDLED_FONT = "font:"
     const val FONT_MEDIEVAL = "font:medievalsharp"
+    const val FONT_DEFAULT = "font:hamlet_tertia"
+    /** Set once the old default ("sans-serif") has been moved to FONT_DEFAULT (2.2.0). */
+    private const val KEY_FONT_MIGRATED = "font_hamlet"
     const val KEY_COLOR = "color"
     const val KEY_EFFECT = "effect"
     /** Old on/off neon switch, migrated to KEY_EFFECT = "neon". */
@@ -84,7 +88,10 @@ object Prefs {
 
     fun shakeEnabled(context: Context) = prefs(context).getBoolean(KEY_SHAKE, true)
 
-    fun ttsEnabled(context: Context) = prefs(context).getBoolean(KEY_TTS, false)
+    fun ttsEnabled(context: Context) = prefs(context).getBoolean(KEY_TTS, true)
+
+    /** Tapping a card in the album or the favourites speaks its phrase (only with Pronuncia on). */
+    fun albumVoice(context: Context) = ttsEnabled(context) && prefs(context).getBoolean(KEY_ALBUM_VOICE, true)
 
     /** The TTS engine package chosen in Options, or null for the phone's default one. */
     fun ttsEngine(context: Context): String? = prefs(context).getString(KEY_TTS_ENGINE, "").takeUnless { it.isNullOrEmpty() }
@@ -99,7 +106,7 @@ object Prefs {
     fun splashChoirEnabled(context: Context) = prefs(context).getBoolean(KEY_SPLASH_CHOIR, true)
 
     /** True when the phrase font is "Medievale" (trophy "Amanuense"). */
-    fun isMedieval(context: Context) = prefs(context).getString(KEY_FONT, "sans-serif") == FONT_MEDIEVAL
+    fun isMedieval(context: Context) = font(context) == FONT_MEDIEVAL
 
     /**
      * The phrase typeface for a font_values entry: a system family in bold, or a font
@@ -114,7 +121,7 @@ object Prefs {
     }
 
     /** True when the phrase font is "Monospace (terminale)" (trophy "sudo !!"). */
-    fun isMonospace(context: Context) = prefs(context).getString(KEY_FONT, "sans-serif") == "monospace"
+    fun isMonospace(context: Context) = font(context) == "monospace"
 
     fun albumSort(context: Context) = prefs(context).getString(KEY_ALBUM_SORT, ALBUM_SORT_NUMBER) ?: ALBUM_SORT_NUMBER
     fun setAlbumSort(context: Context, value: String) = prefs(context).edit().putString(KEY_ALBUM_SORT, value).apply()
@@ -159,7 +166,7 @@ object Prefs {
     fun applyPhraseStyle(view: TextView, themeColor: Int) {
         val p = prefs(view.context)
 
-        view.typeface = phraseTypeface(view.context, p.getString(KEY_FONT, "sans-serif") ?: "sans-serif")
+        view.typeface = phraseTypeface(view.context, font(view.context))
         PhraseEffects.refit(view)
 
         val colorRes = PHRASE_COLORS[p.getString(KEY_COLOR, COLOR_THEME)]
@@ -176,6 +183,20 @@ object Prefs {
             view.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT)
             PhraseEffects.start(view, effect, color)
         }
+    }
+
+    /**
+     * The phrase font. The first time, the old default "sans-serif" becomes Hamlet Tertia:
+     * it cannot be told apart from a deliberate choice, and the user chose to move everyone.
+     */
+    fun font(context: Context): String {
+        val p = prefs(context)
+        if (!p.getBoolean(KEY_FONT_MIGRATED, false)) {
+            val e = p.edit().putBoolean(KEY_FONT_MIGRATED, true)
+            if (p.getString(KEY_FONT, null) == "sans-serif") e.putString(KEY_FONT, FONT_DEFAULT)
+            e.apply()
+        }
+        return p.getString(KEY_FONT, FONT_DEFAULT) ?: FONT_DEFAULT
     }
 
     /** The phrase effect; migrates the old neon switch the first time. */

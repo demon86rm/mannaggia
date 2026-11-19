@@ -1,0 +1,600 @@
+# I martiri (Wikidata, via avatar.py): etichetta «… martire» della carta.
+Beata Apolonia du Saint-Sacrement
+Beata Blasa di Maria
+Beata Crescencia Valls Espí
+Beata Feliciana Uribe Orbe
+Beata Giuseppina di San Giovanni di Dio
+Beata Karolina Kózkówna
+Beata Leonella Sgorbati
+Beata Margaret Pole
+Beata Maria Agostina Rivas López
+Beata Maria Clementina Anuarite Nengapeta
+Beata Maria Dolorosa
+Beata Maria Sagrario di San Luigi Gonzaga
+Beata Maria di Gesù Deluil-Martiny
+Beata Odile Baumgarten
+Beata Pierina Morosini
+Beata Rani Maria Vattalil
+Beata Suor San Luigi
+Beata Suor Santa Marta
+Beata Sára Salkaházi
+Beata Teresa di Sant'Ignazio
+Beato Abilio de la Cruz
+Beato Acisclo
+Beato Adriano Fortescue
+Beato Adílio Da Ronch
+Beato Agostino Viela Ezcurdia
+Beato Alfonso Miquel Garriga
+Beato Alfonso Sorribes Teixidó
+Beato Alfredo Cremonesi
+Beato Alojs Andritzki
+Beato Anacleto González Flores
+Beato Anastasio González Rodríguez
+Beato Anselmo Polanco Fontecha
+Beato Antoine Banassat
+Beato Antonino Calvo y Calvo
+Beato Antonio Dalmau Rosich
+Beato Antonio Neirotti
+Beato Antonio di Gesù e Maria
+Beato Artur Ros Montalt
+Beato Atanasio Vidaurreta Labra
+Beato Aurelio Angel Boix Cosials
+Beato Benedict Daswa
+Beato Benigno Prieto del Pozo
+Beato Bertrando di San Genesio
+Beato Buenaventura García de Paredes
+Beato Buenaventura de Santa Catalina
+Beato Carl Lampert
+Beato Cecilio López López
+Beato Ceferino Giménez Malla
+Beato Charles Carnus
+Beato Charles Deckers
+Beato Cruz Laplana y Laguna
+Beato Dariusz Acosta Zurita
+Beato David Carlos Marañón
+Beato Davide Okelo
+Beato Dermot O'Hurley
+Beato Diego Luis de San Vitores
+Beato Diego Ventaja Milán
+Beato Dionisio Pamplona Polo
+Beato Domingo Alonso de Frutos
+Beato Domingo Caballé Bru
+Beato Edoardo Ripoll Diego
+Beato Edward Jones
+Beato Edward Kaźmierski
+Beato Edward Powell
+Beato Edward Stransham
+Beato Elia Comini
+Beato Eloi de Bianya
+Beato Emanuele Buil Lalueza
+Beato Emanuele Martínez Jarauta
+Beato Emanuele Torras Sais
+Beato Enrique Angelelli
+Beato Enrique Vidaurreta
+Beato Epifanio Sierra Conde
+Beato Eusebio Maria Codina Millà
+Beato Faustino Oteiza
+Beato Faustino Pérez García
+Beato Federico Herrera Bermejo
+Beato Ferdinando Español Berdié
+Beato Fidel Fuidio
+Beato Filip Ripoll Morata
+Beato Florentyn Felipe Naya
+Beato Francesco Bonifacio
+Beato Francesco Castán Meseguer
+Beato Francesco Roura Farró
+Beato Francesco Spoto
+Beato Francesco di San Lorenzo
+Beato George Beesley
+Beato German Gardiner
+Beato Giacomo Falgarona Vilanova
+Beato Gildo Irwa
+Beato Giovanni Baixeras Berenguer
+Beato Giovanni Brenner
+Beato Giovanni Codinachs Tuneu
+Beato Giovanni Díaz Nosti
+Beato Giovanni Echarri Vique
+Beato Giovanni Finch
+Beato Giovanni Giovenale Ancina
+Beato Giovanni Matteo Adami
+Beato Giovanni Sánchez Munárriz
+Beato Giovanni di Gesù e Maria
+Beato Girolamo De Angelis
+Beato Giuseppe Amorós Hernández
+Beato Giuseppe Brengaret Pujol
+Beato Giuseppe Figuero Beltrán
+Beato Giuseppe Maria Badía Mateu
+Beato Giuseppe Maria Blasco Juan
+Beato Giuseppe Ormo Seró
+Beato Giuseppe Pavón Bueno
+Beato Giuseppe Ros Florensa
+Beato Giuseppe di Gesù e Maria
+Beato Gregorio Chirivás Lacambra
+Beato Guillaume Repin
+Beato Henry Heath
+Beato Ignasi Casanovas Perramón
+Beato Ignazio de Azevedo
+Beato Ilario Llorente Martín
+Beato Ildefonso Fernández Muñiz
+Beato Isidore Bakanja
+Beato Jakub Zhou
+Beato James Duckett
+Beato James Thompson
+Beato Jan Macha
+Beato Jan Nepomucen Chrzan
+Beato Javier Gorosterratzu
+Beato Jean-Baptiste Bottex
+Beato Jesús Emilio Jaramillo Monsalve
+Beato John Forest
+Beato Josef Mayr-Nusser
+Beato Joseph Boissel
+Beato José Agustín Fariña
+Beato José Calasanz Marqués
+Beato José María Cuartero Gascón
+Beato José María Gran Cirera
+Beato José María Peris Polo
+Beato Juan Agramunt Riera
+Beato Juan Bautista Ferreres Boluda
+Beato Juan Duarte
+Beato Juan María de la Cruz
+Beato Juan de Prado
+Beato Julián Navío Colado
+Beato Julián Zarco-Bacas
+Beato Józef Ferrer Esteve
+Beato Leandro Cuesta Andrés
+Beato Leonzio Pérez Ramos
+Beato Lojze Grozde
+Beato Lorenzo Sobrevia Cañardo
+Beato Lucien Botovasoa
+Beato Luigi Escalé Binefa
+Beato Luigi Lladó Teixidor
+Beato Luigi Masferrer Vila
+Beato Luis Obdulio Arroyo Navarro
+Beato Manuel Basulto y Jiménez
+Beato Manuel Borras y Ferré
+Beato Manuel Medina Olmos
+Beato Marcelino Ovejero Gómez
+Beato Mariano Mullerat
+Beato Mariano di San Giuseppe
+Beato Martino Capelli
+Beato Martí de Barcelona
+Beato Martín Lozano Tello
+Beato Mauro Palazuelos
+Beato Max Josef Metzger
+Beato Michele Masip González
+Beato Michele Tomaszek
+Beato Miguel Francisco de la Santísima Trinidad
+Beato Miroslav Bulešić
+Beato Nicasio Sierra Ucar
+Beato Niceforo di Gesù e Maria
+Beato Nicolò Rusca
+Beato Otto Neururer
+Beato Paolo Yun Ji-chung
+Beato Patrick O'Healy
+Beato Pedro María Ramírez Ramos
+Beato Pedro Salcedo Puchades
+Beato Petâr Vičev
+Beato Philip Powell
+Beato Pietro Cunill Padrós
+Beato Pietro García Bernal
+Beato Pietro Paolo Navarro
+Beato Prudencio della Croce
+Beato Raffaele Briega Morales
+Beato Raimondo Illa Salvia
+Beato Raimondo Novich Rabionet
+Beato Ralph Milner
+Beato Ramiro Sanz de Galdeano Mañeru
+Beato Redento della Croce
+Beato Richard Sergeant
+Beato Rolando Rivi
+Beato Rutilio Grande
+Beato Salvatore Pigem Serra
+Beato Salvi Huix i Miralpeix
+Beato Santiago Pardo López
+Beato Saverio Luigi Bandrés Jiménez
+Beato Sebastiano Calvo Martínez
+Beato Sebastiano Riera Coromina
+Beato Secondino Ortega García
+Beato Severino Boezio
+Beato Stanisław Kubista
+Beato Stanley Francis Rother
+Beato Stefano Casadevall Puig
+Beato Stefano Sandòr
+Beato Stefano di San Giuseppe
+Beato Teodoro Ruiz de Larrinaga García
+Beato Thomas Abell
+Beato Thomas Belson
+Beato Thomas Cottam
+Beato Thomas Palasor
+Beato Thomas Sprott
+Beato Thomas Tichborne
+Beato Timo di Salisburgo
+Beato Tommaso Capdevila Miró
+Beato Tommaso da Tolentino
+Beato Tomás Cuartero Gascón
+Beato Tomás de Zumárraga
+Beato Tullio Maruzzo
+Beato Ubaldo Marchioni
+Beato Vasile Aftenie
+Beato Venceslao Clarís Vilaregut
+Beato Vicente Burrel Enjuanes
+Beato Vicente de Paul Canelles Vives
+Beato Vincent L'Hénoret
+Beato Víctor Chumillas
+Beato William Carter
+Beato Zbigniew Strzałkowski
+Beato Zynoviy Kovalyk
+San Babila di Antiochia
+San Basso di Lucera
+San Basso di Nizza
+San Bazyli Martysz
+San Beniamino di Persia
+San Benigno di Digione
+San Bertario di Montecassino
+San Biagio di Sebaste
+San Bonifacio
+San Buono
+San Canio di Atella
+San Canuto IV di Danimarca
+San Carlo I di Fiandra
+San Carlo Lwanga
+San Castrese di Sessa
+San Cesareo di Terracina
+San Cetteo di Amiterno
+San Charles de Foucauld
+San Cipriano di Antiochia
+San Ciriaco di Gerusalemme
+San Cirillo VI di Costantinopoli
+San Clemente I
+San Cleonico
+San Constantin Brâncoveanu
+San Cornelio
+San Crisostomo di Smirne
+San Cristoforo
+San Cutberto Mayne
+San Czesław Jóźwiak
+San Dalmazzo di Pedona
+San Damiano
+San Daniel Varujan
+San Daniele martire
+San David Lewis
+San Demetrio di Tessalonica
+San Desiderio di Vienne
+San Dieci martiri di Creta
+San Diego Kisai
+San Dionigi di Parigi
+San Dionigi l'Areopagita
+San Dionisio di Alessandria
+San Disma
+San Domenico Henares
+San Doroteo di Tiro
+San Fabiano
+San Faustino martire
+San Felice di Thibiuca
+San Filea di Thmuis
+San Filip Zhang Zhihe
+San Filippo di Gesù
+San Filoromo
+San Filosof Nikolaevič Ornatskij
+San Fiorenzo di Vienne
+San Floriano di Lorch
+San Francesc Gil de Frederic
+San Francesco Fogolla
+San Francisco Fernández de Capillas
+San François Jaccard
+San François-Isidore Gagelin
+San Fruttuoso di Tarragona
+San Gabriel de Duisco
+San Garabed der Sahaghian
+San Gavino
+San Gemiliano da Cagliari
+San Gennaro
+San Gerardo di Csanád
+San Giacinto Giordano Ansalone
+San Giacomo d'Alfeo
+San Giacomo il Giusto
+San Giacomo l'Interciso
+San Giorgio
+San Giovanni Battista
+San Giovanni Battista Yi Kwang-hon
+San Giovanni Gabriele Perboyre
+San Giovanni Mazzucconi
+San Giovanni da Colonia
+San Giovanni da Triora
+San Giovanni di Goto
+San Giovanni il Nuovo
+San Giuliano di Brioude
+San Giuse Hoàng Lương Cảnh
+San Giustiniano II Rinotmeto
+San Giustino
+San Giusto di Trieste
+San Giusto di Vienne
+San Gregorio Maria Grassi
+San Gregorio V
+San Grigorij Lebedev
+San Gyaviira Mayanja Musoke
+San Henri Dorie
+San Jacques Berthieu
+San Jacques Chastan
+San Jean de Brébeuf
+San Jean-Gabriel-Taurin Dufresse
+San Jean-Louis Bonnard
+San Jean-Pierre Néel
+San Jerónimo Hermosilla
+San John Boste
+San John Fisher
+San John Jones
+San John Ogilvie
+San John Rigby
+San John Stone
+San Joseph Mukasa
+San José María Díaz Sanjurjo
+San José María Robles Hurtado
+San José Melchor García-Sampedro Suárez
+San José Sánchez del Río
+San Juan Jacobo Fernandez
+San Just de Bretenières
+San Kirion II
+San Kizito
+San Krikor Zohrab
+San Laurent Imbert
+San Laverio martire
+San Lazzaro Hrebeljanović
+San Leone Karasumaru
+San Leone di Bayonne
+San Lorenzo
+San Lorenzo Ruiz
+San Louis Beaulieu
+San Luciano di Beauvais
+San Luigi Versiglia
+San Luis Ibaraki
+San Luperculus
+San Makary I
+San Marco Križevčanin
+San Marco di Atina
+San Marie-Nicolas-Antoine Daveluy
+San Marino di Cesarea
+San Martin Luc Huin
+San Martin of the Ascension
+San Massimiliano Maria Kolbe
+San Massimo di Magonza
+San Massimo di Napoli
+San Mateusz Alonso de Leciniana
+San Matteo Correa Magallanes
+San Maurizio di Bisanzio
+San Melchiorre Grodecký
+San Mena d'Egitto
+San Mercurio di Cesarea
+San Michael Bleive
+San Michail Jaroslavič
+San Michail Pavlovič Čel'cov
+San Michał Kozal
+San Michele Kozaki
+San Miguel Agustín Pro
+San Mosè l'Etiope
+San Napoleone martire
+San Narsete il Grande
+San Nestore di Magydos
+San Nicaise
+San Niceta il Goto
+San Nicholas Pieck
+San Nicola Owen
+San Nikita Besogon
+San Nikolaj Aleksandrovič Osipov
+San Nikolaus Gross
+San Noël Chabanel
+San Paolo Chong Hasang
+San Paolo Miki
+San Partenio III di Costantinopoli
+San Pavel di Kolomna
+San Pedro Bautista Blásquez
+San Pere Sans Jordà
+San Peter Kasui Kibe
+San Peter To Rot
+San Petr Z. Belolikov
+San Phaolô Nguyễn Văn Mỹ
+San Philípphê Phan Văn Minh
+San Pierre Aumaître
+San Pierre Dumoulin-Borie
+San Pierre Maubant
+San Pietro Almató
+San Pietro Balsamo
+San Pietro Calungsod
+San Pietro Chanel
+San Pietro Damasceno
+San Pietro I di Alessandria
+San Pietro Trương Văn Thi
+San Pietro Vo Dang Khoa
+San Pietro di Capitolias
+San Pietro di Kruticy
+San Pietro l'Aleuta
+San Pionio
+San Placido martire
+San Platon Kulbusch
+San Policarpo di Smirne
+San Pretestato di Rouen
+San Primo martire
+San Procopio di Scitopoli
+San Prospero martire
+San Proto martire
+San Quadrato di Atene
+San Quirino di Siscia
+San Raffaele di Lesbo
+San René Goupil
+San Richard Gwyn
+San Robert Southwell
+San Rodrigo di Cordova
+San Roman Sitko
+San Romano martire
+San Rufino
+San Rögnvald Kali Kolsson
+San Savino di Spoleto
+San Sebastiano
+San Secondo di Avila
+San Seraphim Chichagov
+San Serapione di Catania
+San Settimio di Jesi
+San Silʹvestr Olʹševskij
+San Simeon N. Samojlovič
+San Simeone I di Gerusalemme
+San Simone Phan Đắc Hòa
+San Simone bar Sabbae
+San Siméon-François Berneux
+San Sisto II
+San Taddeo Liu Ruiting
+San Tadec
+San Tarcisio
+San Tascio Cecilio Cipriano
+San Telemaco
+San Teoctisto
+San Teodoro I di Alessandria
+San Teodoro di Amasea
+San Teodoro di Eraclea
+San Théophane Vénard
+San Timone
+San Tito Flavio Clemente
+San Tommaso Becket
+San Tommaso Moro
+San Valentino
+San Valentín Berrio Ochoa
+San Valero di Bouvignes
+San Varnerio di Oberwesel
+San Venceslao I
+San Vicente Le Quang Liem
+San Vincenzo di Saragozza
+San Vitale
+San Vitalico di Smirne
+San Vito
+San Vladimir Pavlovič Palej
+San Vladimiro
+San Wigstan
+San Ælfwald I di Northumbria
+Sant'Abramo di Arazd
+Sant'Achilleo Kiwanuka
+Sant'Afra di Augusta
+Sant'Agape von Thessaloniki
+Sant'Agata
+Sant'Agathe Lin-tchao
+Sant'Agatone martire
+Sant'Agnese
+Sant'Agostino Yi Kwang-hŏn
+Sant'Agostino Zhao Rong
+Sant'Ahudemmeh
+Sant'Albano d'Inghilterra
+Sant'Alberto di Lovanio
+Sant'Aleksandr
+Sant'Alessandro I
+Sant'Alessandro di Gerusalemme
+Sant'Alessandro di Tessalonica
+Sant'Alexander Briant
+Sant'Ambrogio Kibuuka
+Sant'Ambrogio di Sarapul
+Sant'Anastasia martire
+Sant'Anastasio II di Antiochia
+Sant'Anastasio il Persiano
+Sant'Andeolo del Vivarais
+Sant'Andrea Bobola
+Sant'Andrea Bogoljubskij
+Sant'Andrea Kaggwa
+Sant'Andrea Kim Taegon
+Sant'Andreas Bauer
+Sant'Andronico di Pannonia
+Sant'Ansverus
+Sant'Antimo d'Iberia
+Sant'Antimo di Nicomedia
+Sant'Antipa di Pergamo
+Sant'Antonino di Roma
+Sant'Apollinare di Ravenna
+Sant'Apollonia di Alessandria
+Sant'Apollonio di Sardi
+Sant'Apollonio martire
+Sant'Arcadio di Mauritania
+Sant'Arialdo martire
+Sant'Arkadij I. Ostalʹskij
+Sant'Artemio
+Sant'Autonomo
+Sant'Edmondo I d'Inghilterra
+Sant'Edmund Campion
+Sant'Edoardo il Martire
+Sant'Efisio
+Sant'Eleutherius
+Sant'Elfego di Canterbury
+Sant'Elias Facchini
+Sant'Elisabetta d'Assia-Darmstadt
+Sant'Emidio d'Ascoli
+Sant'Engrazia
+Sant'Eobano di Utrecht
+Sant'Ercolano di Perugia
+Sant'Eric IV di Danimarca
+Sant'Ermete
+Sant'Ermete martire
+Sant'Ermogene
+Sant'Eskillo di Straengnaes
+Sant'Eufemia di Calcedonia
+Sant'Eulalia di Barcellona
+Sant'Eulogio di Cordova
+Sant'Euplio di Catania
+Sant'Eutimio di Sardi
+Sant'Eutizio di Ferento
+Sant'Eutropio
+Sant'Evodio di Antiochia
+Sant'Ieroteo il Tesmoteta
+Sant'Ignazio Clemente Delgado
+Sant'Ignazio Maloyan
+Sant'Ignazio di Antiochia
+Sant'Ilarione di Vereja
+Sant'Ilia Chavchavadze
+Sant'Ioann Ioannovič Vostorgov
+Sant'Ippazio di Gangra
+Sant'Irene di Tessalonica
+Sant'Ireneo di Lione
+Sant'Ireneo di Sirmio
+Sant'Isacco Jogues
+Sant'Oliviero Plunkett
+Sant'Onesiforo
+Sant'Oronzo di Lecce
+Sant'Orsola
+Santa Barbara
+Santa Barbara Choe Yeong-i
+Santa Bibiana martire
+Santa Caterina d'Alessandria
+Santa Cecilia
+Santa Ciriaca di Roma
+Santa Colomba di Sens
+Santa Cristina
+Santa Dinfna
+Santa Giovanna d'Arco
+Santa Giulia di Corsica
+Santa Giustina vergine e martire
+Santa Gliceria di Eraclea
+Santa Godeleva martire
+Santa Ketevan
+Santa Laura di Costantinopoli
+Santa Lucia
+Santa Lucy Yi Zhenmei
+Santa Ludmilla di Boemia
+Santa Margherita Ward
+Santa Margherita di Antiochia
+Santa Maria Goretti
+Santa Marie Adolphine
+Santa Marie-Amandine de Schakkebroek
+Santa Marija Skobcova
+Santa Mary Clara Nanetti
+Santa Mary Hermina of Jesus
+Santa Mesia Elia
+Santa Mundizia
+Santa Palazia
+Santa Parasceva Pyatnitsa
+Santa Perpetua
+Santa Shushanik
+Santa Teresa di Sant'Agostino
+Santa Varvara Jakovleva
+Santa Wenna
+Santo Smbat Byurat
+Santo Stefano
+Santo Stefano I
+Santo Stefano da Cuneo
+Santo Stefano il Giovane
+Santo Stratocle
+Santo Swithun Wells
+Santo Zosimo

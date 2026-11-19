@@ -95,13 +95,8 @@ class CardSlot(
             card.txtNumber.text = number?.let {
                 context.getString(if (special) R.string.card_number_special else R.string.card_number, it)
             } ?: ""
-            card.txtLabel.text = context.getString(when {
-                special -> R.string.card_special
-                newLegend -> R.string.card_new_legendary
-                isNew -> R.string.card_new
-                else -> R.string.card_owned
-            })
-            card.imgAvatar.setImageDrawable(Avatars.load(context, saint)?.let { Avatars.pixelated(context, it) })
+            card.txtLabel.text = Pergamena.etichetta(Avatars.etichetta(context, saint, special))   // the state is the stamp's
+            card.imgAvatar.setImageDrawable(Avatars.animated(context, saint))
             (card.imgFrame.drawable as? AnimationDrawable)?.stop()
             when {
                 special -> {
@@ -343,7 +338,7 @@ class CardSlot(
         // 1. Width: narrower when even the whole space between phrase and button is short.
         val width = view.width
         val target = (width + (maxBottom - minTop - fitH)).toInt()
-            .coerceIn((MIN_CARD_DP * density).toInt(), (MAX_CARD_DP * density).toInt())
+            .coerceIn((MIN_CARD_DP * density).toInt(), view.resources.getDimensionPixelSize(R.dimen.card_max_width))
         if (kotlin.math.abs(target - width) >= 1) {
             view.layoutParams = view.layoutParams.apply { this.width = target }
             return                                          // refit after the new layout
@@ -380,8 +375,7 @@ class CardSlot(
         private const val FLY_MS = 480L
         private const val BUMP_MS = 260L
         private const val GLOW_PULSE_MS = 700L
-        /** Card width: 180dp as designed, down to 90dp on cramped screens. */
-        private const val MAX_CARD_DP = 180f
+        /** Card width: at most @dimen/card_max_width (by screen width), down to 90dp on cramped screens. */
         private const val MIN_CARD_DP = 90f
         /** Breathing space below the top buttons and above the button. */
         private const val GAP_DP = 12f

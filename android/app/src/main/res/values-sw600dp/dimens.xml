@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 600dp and wider (tablets). Buttons, icons, stamp, glow and the card's widest width; the text sizes depend on the height: see values-h700dp. -->
+<resources>
+    <dimen name="icon_size">96dp</dimen>
+    <dimen name="icon_column">104dp</dimen>
+    <dimen name="btn_settings_w">160dp</dimen>
+    <dimen name="btn_settings_h">72dp</dimen>
+    <dimen name="btn_info_w">104dp</dimen>
+    <dimen name="btn_info_h">72dp</dimen>
+    <dimen name="btn_mannaggia_max">320dp</dimen>
+    <dimen name="card_max_width">360dp</dimen>
+    <dimen name="stamp_width">150dp</dimen>
+    <dimen name="stamp_margin_top">-54dp</dimen>
+    <dimen name="stamp_margin_end">-56dp</dimen>
+    <dimen name="glow_size">480dp</dimen>
+</resources>

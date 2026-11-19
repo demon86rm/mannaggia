@@ -29,9 +29,17 @@
 
         <SwitchPreferenceCompat
             android:key="tts"
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:title="@string/pref_tts_title"
             android:summary="@string/pref_tts_summary"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:key="album_voice"
+            android:defaultValue="true"
+            android:dependency="tts"
+            android:title="@string/pref_album_voice_title"
+            android:summary="@string/pref_album_voice_summary"
             app:iconSpaceReserved="false" />
 
         <!-- The voice engine: the phone's default, or another TTS app installed (list filled in code). -->
@@ -62,7 +70,7 @@
 
         <ListPreference
             android:key="font"
-            android:defaultValue="sans-serif"
+            android:defaultValue="font:hamlet_tertia"
             android:entries="@array/font_names"
             android:entryValues="@array/font_values"
             android:title="@string/pref_font_title"

@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:fontFamily="@font/unifraktur_maguntia"
+            android:fontFamily="@font/hamlet_tertia"
             android:textAppearance="?attr/textAppearanceLabelSmall"
             android:textColor="?android:attr/textColorSecondary"
             android:textSize="13sp" />
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:fontFamily="@font/unifraktur_maguntia"
+            android:fontFamily="@font/hamlet_tertia"
             android:lines="2"
             android:textAppearance="?attr/textAppearanceLabelMedium"
             android:textSize="14sp" />
