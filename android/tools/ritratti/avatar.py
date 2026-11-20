@@ -2569,6 +2569,10 @@ def file_id(name):
 # (EXTRA_PEOPLE of genera_santi.py) takes the number of one removed (EXCLUDE), new -> removed;
 # None numbers him at the end. The removed one stays in tratti_wikidata.json for its place.
 POSTO = {"Beato Bernardo II di Baden": "Sant'Ageltrude"}
+# Renamed saints keep their card number: among equally famous saints they sort under the old name
+# (the same pairs are in Rinominati.kt).
+NOME_VECCHIO = {"San Beato di Liébana": "San Di Liébana", "San Beato di Vendôme": "San Di Vendôme",
+                "Santa Beata di Sens": "Santa Di Sens"}
 
 
 def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=False):
@@ -2599,10 +2603,10 @@ def genera_tutti(santi_path, out, cache, n_leggendari, provini, seed=1, app=Fals
             disegna(step).save(out / f"{nome}_{step:02d}.png", optimize=True)
         for nome, disegna in list(COLORATE.items()) + [("palma", cornice_palma)]:
             disegna(step).save(out / f"{nome}_{step:02d}.png", optimize=True)
-    # Card numbers: N. 1 is the most famous saint (most Wikipedia sitelinks), ties by name; POSTO above.
+    # Card numbers: N. 1 is the most famous saint (most Wikipedia sitelinks), ties by name; POSTO and NOME_VECCHIO above.
     tolti = [v for k, v in POSTO.items() if v and k in names]
     fama = {**wikidata_facts(tolti, cache), **facts}
-    by_fame = sorted([n for n in names if n not in POSTO] + tolti, key=lambda n: (-fama.get(n, {}).get("sitelinks", 0), n))
+    by_fame = sorted([n for n in names if n not in POSTO] + tolti, key=lambda n: (-fama.get(n, {}).get("sitelinks", 0), NOME_VECCHIO.get(n, n)))
     by_fame = [next((k for k, v in POSTO.items() if v == n), n) for n in by_fame]
     by_fame += [n for n, v in POSTO.items() if not v and n in names]
     leggendari = by_fame[:n_leggendari]
