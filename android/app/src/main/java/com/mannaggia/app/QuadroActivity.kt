@@ -152,7 +152,8 @@ class QuadroActivity : AppCompatActivity() {
         private const val FRAMES = 12
         private const val FRAME_MS = 167
         private const val PREVIEW_ZOOM = 1
-        private const val PNG_ZOOM = 2
-        private const val GIF_ZOOM = 2
+        /** PNG about 1800×2300 with 9 saints; the GIF smaller, its 12 frames go through our encoder. */
+        private const val PNG_ZOOM = 4
+        private const val GIF_ZOOM = 3
     }
 }
