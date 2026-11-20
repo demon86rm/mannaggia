@@ -53,3 +53,14 @@ Generatore di "Mannaggia <santo>!". Gli script storici (`mannaggia.sh`, `mannagg
 - Pubblicazione gratuita, senza pubblicità.
 - Le licenze accettabili per dipendenze e asset sono Apache-2.0, MIT, BSD, CC0, CC-BY e GPL. Niente licenze NC.
 - Solo per i font è ammessa anche la SIL OFL 1.1: il file `.ttf` va in `res/font/` senza modifiche, la licenza originale in `assets/licenze/OFL-<font>.txt` e i crediti in `about_text`. Eccezione: un font completato da uno script in `tools/font/` (originale, licenza e script nel repo, nome di famiglia cambiato), come `hamlet_tertia.otf` da `tools/font/hamlet_esteso.py` (Hamlet Tertia 18 con le lettere accentate di `santi.txt`): si rigenera se cambia `santi.txt`.
+
+<!-- rtk-instructions v2 -->
+# Command output
+
+Command output here is condensed to save tokens, keeping every signal and
+dropping costly noise. Treat it as the complete result: run commands
+normally, and batch related commands into one call to avoid extra turns.
+Truncated results state their recovery path in their own output. Re-run a
+command as `rtk bypass <cmd>` only when its result is unusable: empty when
+output was clearly expected, contradicting its exit code, or garbled.
+<!-- /rtk-instructions -->
