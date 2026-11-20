@@ -105,9 +105,9 @@ class Quadro private constructor(
         val RIGHE = mapOf(1 to listOf(1), 2 to listOf(2), 3 to listOf(3), 4 to listOf(2, 2), 5 to listOf(2, 1, 2),
             6 to listOf(3, 3), 7 to listOf(2, 3, 2), 8 to listOf(3, 2, 3), 9 to listOf(3, 3, 3))
         private const val CELL = 96
-        private const val GAP_X = 20
+        private const val GAP_X = 28             // the names are as wide as a cell plus this gap
         private const val GAP_Y = 12
-        private const val LABEL = 26
+        private const val LABEL = 44             // two lines of names at NAME_SIZE
         private const val SIDE = 56
         private const val TOP = 96
         private const val BOTTOM = 44
@@ -115,7 +115,7 @@ class Quadro private constructor(
         private const val CORNER = 14            // corner decorations (gems, nails, candles) stay whole (in pixels of the 48 px frame)
         private const val TITLE_Y = 64f
         private const val TITLE_SIZE = 28f
-        private const val NAME_SIZE = 9f
+        private const val NAME_SIZE = 14f        // 9 was ~18 px in the PNG: unreadable once shared
         private val PAPER = Color.rgb(246, 238, 220)
         private val INK = Color.rgb(60, 30, 30)
 
